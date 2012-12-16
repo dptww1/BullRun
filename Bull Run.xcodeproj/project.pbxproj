@@ -93,6 +93,7 @@
 				CC858549167A72610054E60D /* Products */,
 			);
 			sourceTree = "<group>";
+			wrapsLines = 0;
 		};
 		CC858549167A72610054E60D /* Products */ = {
 			isa = PBXGroup;
