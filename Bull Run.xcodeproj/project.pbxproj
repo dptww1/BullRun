@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC46B549167F6F1700A829DF /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = CC46B548167F6F1700A829DF /* map.png */; };
 		CC85854D167A72610054E60D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC85854C167A72610054E60D /* UIKit.framework */; };
 		CC85854F167A72610054E60D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC85854E167A72610054E60D /* Foundation.framework */; };
 		CC858551167A72610054E60D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC858550167A72610054E60D /* CoreGraphics.framework */; };
@@ -23,7 +24,6 @@
 		CC858573167A72610054E60D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC85854E167A72610054E60D /* Foundation.framework */; };
 		CC85857B167A72610054E60D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CC858579167A72610054E60D /* InfoPlist.strings */; };
 		CC85857E167A72610054E60D /* Bull_RunTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CC85857D167A72610054E60D /* Bull_RunTests.m */; };
-		CCE53B28167D4ED200A794B5 /* .gitkeep in Resources */ = {isa = PBXBuildFile; fileRef = CCE53B27167D4ED200A794B5 /* .gitkeep */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CC46B548167F6F1700A829DF /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
 		CC858548167A72610054E60D /* Bull Run.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bull Run.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC85854C167A72610054E60D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CC85854E167A72610054E60D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -59,7 +60,6 @@
 		CC85857A167A72610054E60D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CC85857C167A72610054E60D /* Bull_RunTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bull_RunTests.h; sourceTree = "<group>"; };
 		CC85857D167A72610054E60D /* Bull_RunTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Bull_RunTests.m; sourceTree = "<group>"; };
-		CCE53B27167D4ED200A794B5 /* .gitkeep */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,7 +175,7 @@
 		CCE53B26167D4ED200A794B5 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				CCE53B27167D4ED200A794B5 /* .gitkeep */,
+				CC46B548167F6F1700A829DF /* map.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -257,7 +257,7 @@
 				CC858561167A72610054E60D /* Default@2x.png in Resources */,
 				CC858563167A72610054E60D /* Default-568h@2x.png in Resources */,
 				CC858566167A72610054E60D /* MainStoryboard.storyboard in Resources */,
-				CCE53B28167D4ED200A794B5 /* .gitkeep in Resources */,
+				CC46B549167F6F1700A829DF /* map.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
