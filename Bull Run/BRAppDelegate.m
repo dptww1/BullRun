@@ -7,12 +7,17 @@
 //
 
 #import "BRAppDelegate.h"
+#import "MapViewController.h"
 
 @implementation BRAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    MapViewController* mapController = [[MapViewController alloc] init];
+    UINavigationController* navController = [[UINavigationController alloc] initWithRootViewController:mapController];
+    [navController setNavigationBarHidden:YES];
+    [[self window] setRootViewController:navController];
+
     return YES;
 }
 							

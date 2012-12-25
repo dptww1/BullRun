@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC0CF374168900B9006D902D /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0CF372168900B9006D902D /* MapViewController.m */; };
+		CC0CF375168900B9006D902D /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC0CF373168900B9006D902D /* MapViewController.xib */; };
+		CC0CF37B1689177F006D902D /* HexMapCoordinateTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0CF37A1689177F006D902D /* HexMapCoordinateTransformer.m */; };
+		CC0CF37E1689184C006D902D /* HexMapGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0CF37D1689184C006D902D /* HexMapGeometry.m */; };
 		CC46B549167F6F1700A829DF /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = CC46B548167F6F1700A829DF /* map.png */; };
 		CC85854D167A72610054E60D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC85854C167A72610054E60D /* UIKit.framework */; };
 		CC85854F167A72610054E60D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC85854E167A72610054E60D /* Foundation.framework */; };
@@ -17,8 +21,6 @@
 		CC85855F167A72610054E60D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = CC85855E167A72610054E60D /* Default.png */; };
 		CC858561167A72610054E60D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC858560167A72610054E60D /* Default@2x.png */; };
 		CC858563167A72610054E60D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC858562167A72610054E60D /* Default-568h@2x.png */; };
-		CC858566167A72610054E60D /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC858564167A72610054E60D /* MainStoryboard.storyboard */; };
-		CC858569167A72610054E60D /* BRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC858568167A72610054E60D /* BRViewController.m */; };
 		CC858571167A72610054E60D /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC858570167A72610054E60D /* SenTestingKit.framework */; };
 		CC858572167A72610054E60D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC85854C167A72610054E60D /* UIKit.framework */; };
 		CC858573167A72610054E60D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC85854E167A72610054E60D /* Foundation.framework */; };
@@ -37,6 +39,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CC0CF371168900B9006D902D /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapViewController.h; path = ../MapViewController.h; sourceTree = "<group>"; };
+		CC0CF372168900B9006D902D /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapViewController.m; path = ../MapViewController.m; sourceTree = "<group>"; };
+		CC0CF373168900B9006D902D /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MapViewController.xib; path = ../MapViewController.xib; sourceTree = "<group>"; };
+		CC0CF3791689177E006D902D /* HexMapCoordinateTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HexMapCoordinateTransformer.h; sourceTree = "<group>"; };
+		CC0CF37A1689177F006D902D /* HexMapCoordinateTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HexMapCoordinateTransformer.m; sourceTree = "<group>"; };
+		CC0CF37C1689184C006D902D /* HexMapGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HexMapGeometry.h; sourceTree = "<group>"; };
+		CC0CF37D1689184C006D902D /* HexMapGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HexMapGeometry.m; sourceTree = "<group>"; };
 		CC46B548167F6F1700A829DF /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
 		CC858548167A72610054E60D /* Bull Run.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bull Run.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC85854C167A72610054E60D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -51,9 +60,6 @@
 		CC85855E167A72610054E60D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		CC858560167A72610054E60D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		CC858562167A72610054E60D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		CC858565167A72610054E60D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		CC858567167A72610054E60D /* BRViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BRViewController.h; sourceTree = "<group>"; };
-		CC858568167A72610054E60D /* BRViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BRViewController.m; sourceTree = "<group>"; };
 		CC85856F167A72610054E60D /* Bull RunTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bull RunTests.octest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC858570167A72610054E60D /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		CC858578167A72610054E60D /* Bull RunTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bull RunTests-Info.plist"; sourceTree = "<group>"; };
@@ -86,6 +92,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CC0CF37F168A40B2006D902D /* HexMap */ = {
+			isa = PBXGroup;
+			children = (
+				CC0CF3791689177E006D902D /* HexMapCoordinateTransformer.h */,
+				CC0CF37A1689177F006D902D /* HexMapCoordinateTransformer.m */,
+				CC0CF37C1689184C006D902D /* HexMapGeometry.h */,
+				CC0CF37D1689184C006D902D /* HexMapGeometry.m */,
+			);
+			name = HexMap;
+			sourceTree = "<group>";
+		};
 		CC85853D167A72600054E60D = {
 			isa = PBXGroup;
 			children = (
@@ -120,12 +137,13 @@
 		CC858552167A72610054E60D /* Bull Run */ = {
 			isa = PBXGroup;
 			children = (
-				CCE53B25167D4ED200A794B5 /* Resources */,
+				CC0CF37F168A40B2006D902D /* HexMap */,
 				CC85855B167A72610054E60D /* BRAppDelegate.h */,
 				CC85855C167A72610054E60D /* BRAppDelegate.m */,
-				CC858564167A72610054E60D /* MainStoryboard.storyboard */,
-				CC858567167A72610054E60D /* BRViewController.h */,
-				CC858568167A72610054E60D /* BRViewController.m */,
+				CC0CF371168900B9006D902D /* MapViewController.h */,
+				CC0CF372168900B9006D902D /* MapViewController.m */,
+				CC0CF373168900B9006D902D /* MapViewController.xib */,
+				CCE53B25167D4ED200A794B5 /* Resources */,
 				CC858553167A72610054E60D /* Supporting Files */,
 			);
 			path = "Bull Run";
@@ -256,8 +274,8 @@
 				CC85855F167A72610054E60D /* Default.png in Resources */,
 				CC858561167A72610054E60D /* Default@2x.png in Resources */,
 				CC858563167A72610054E60D /* Default-568h@2x.png in Resources */,
-				CC858566167A72610054E60D /* MainStoryboard.storyboard in Resources */,
 				CC46B549167F6F1700A829DF /* map.png in Resources */,
+				CC0CF375168900B9006D902D /* MapViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,7 +312,9 @@
 			files = (
 				CC858559167A72610054E60D /* main.m in Sources */,
 				CC85855D167A72610054E60D /* BRAppDelegate.m in Sources */,
-				CC858569167A72610054E60D /* BRViewController.m in Sources */,
+				CC0CF374168900B9006D902D /* MapViewController.m in Sources */,
+				CC0CF37B1689177F006D902D /* HexMapCoordinateTransformer.m in Sources */,
+				CC0CF37E1689184C006D902D /* HexMapGeometry.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,14 +343,6 @@
 				CC858556167A72610054E60D /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		CC858564167A72610054E60D /* MainStoryboard.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CC858565167A72610054E60D /* en */,
-			);
-			name = MainStoryboard.storyboard;
 			sourceTree = "<group>";
 		};
 		CC858579167A72610054E60D /* InfoPlist.strings */ = {
