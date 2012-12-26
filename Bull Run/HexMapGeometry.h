@@ -7,13 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
-typedef struct {
-    int column;
-    int row;
-} Hex;
-
-extern Hex HexMake(int col, int row);
+#import "Hex.h"
 
 /**
  * Structure defining the basic geometry of a hexmap, a two-dimensional array of hexagons. 
@@ -66,6 +60,6 @@ extern Hex HexMake(int col, int row);
 /**
  * Determine if the given hex defines a legal location for this hexmap.
  */
-- (BOOL)legal:(Hex)hex;
+- (BOOL)legal:(Hex*)hex;
 
 @end

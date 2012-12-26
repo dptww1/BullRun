@@ -1,0 +1,7 @@
+Current State:
+
+Working on getting hex identification from taps working
+
+Notes:
+
+MapViewController.xib looks odd in XCode, but works fine in the simulator, because a coordinate transform is being used.

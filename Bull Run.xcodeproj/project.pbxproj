@@ -11,6 +11,8 @@
 		CC0CF375168900B9006D902D /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC0CF373168900B9006D902D /* MapViewController.xib */; };
 		CC0CF37B1689177F006D902D /* HexMapCoordinateTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0CF37A1689177F006D902D /* HexMapCoordinateTransformer.m */; };
 		CC0CF37E1689184C006D902D /* HexMapGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0CF37D1689184C006D902D /* HexMapGeometry.m */; };
+		CC0CF381168A4E72006D902D /* README.textile in Resources */ = {isa = PBXBuildFile; fileRef = CC0CF380168A4E72006D902D /* README.textile */; };
+		CC0CF384168A527C006D902D /* Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0CF383168A527C006D902D /* Hex.m */; };
 		CC46B549167F6F1700A829DF /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = CC46B548167F6F1700A829DF /* map.png */; };
 		CC85854D167A72610054E60D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC85854C167A72610054E60D /* UIKit.framework */; };
 		CC85854F167A72610054E60D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC85854E167A72610054E60D /* Foundation.framework */; };
@@ -46,6 +48,9 @@
 		CC0CF37A1689177F006D902D /* HexMapCoordinateTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HexMapCoordinateTransformer.m; sourceTree = "<group>"; };
 		CC0CF37C1689184C006D902D /* HexMapGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HexMapGeometry.h; sourceTree = "<group>"; };
 		CC0CF37D1689184C006D902D /* HexMapGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HexMapGeometry.m; sourceTree = "<group>"; };
+		CC0CF380168A4E72006D902D /* README.textile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.textile; sourceTree = "<group>"; };
+		CC0CF382168A527C006D902D /* Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hex.h; sourceTree = "<group>"; };
+		CC0CF383168A527C006D902D /* Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Hex.m; sourceTree = "<group>"; };
 		CC46B548167F6F1700A829DF /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
 		CC858548167A72610054E60D /* Bull Run.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bull Run.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC85854C167A72610054E60D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -99,6 +104,8 @@
 				CC0CF37A1689177F006D902D /* HexMapCoordinateTransformer.m */,
 				CC0CF37C1689184C006D902D /* HexMapGeometry.h */,
 				CC0CF37D1689184C006D902D /* HexMapGeometry.m */,
+				CC0CF382168A527C006D902D /* Hex.h */,
+				CC0CF383168A527C006D902D /* Hex.m */,
 			);
 			name = HexMap;
 			sourceTree = "<group>";
@@ -106,6 +113,7 @@
 		CC85853D167A72600054E60D = {
 			isa = PBXGroup;
 			children = (
+				CC0CF380168A4E72006D902D /* README.textile */,
 				CC858552167A72610054E60D /* Bull Run */,
 				CC858576167A72610054E60D /* Bull RunTests */,
 				CC85854B167A72610054E60D /* Frameworks */,
@@ -276,6 +284,7 @@
 				CC858563167A72610054E60D /* Default-568h@2x.png in Resources */,
 				CC46B549167F6F1700A829DF /* map.png in Resources */,
 				CC0CF375168900B9006D902D /* MapViewController.xib in Resources */,
+				CC0CF381168A4E72006D902D /* README.textile in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -315,6 +324,7 @@
 				CC0CF374168900B9006D902D /* MapViewController.m in Sources */,
 				CC0CF37B1689177F006D902D /* HexMapCoordinateTransformer.m in Sources */,
 				CC0CF37E1689184C006D902D /* HexMapGeometry.m in Sources */,
+				CC0CF384168A527C006D902D /* Hex.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
