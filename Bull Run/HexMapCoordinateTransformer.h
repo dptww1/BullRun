@@ -16,7 +16,7 @@
 @property (nonatomic)         CGSize          hexSize;
 
 - (id)initWithGeometry:(HexMapGeometry*)geometry origin:(CGPoint)origin hexSize:(CGSize)hexSize;
-- (CGPoint)hexToScreen:(Hex*)hex;
+- (CGPoint)hexToScreen:(Hex)hex;
 - (Hex)screenToHex:(CGPoint)point;
 
 @end
