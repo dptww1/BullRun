@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 Dave Townsend. All rights reserved.
 //
 
+/*
 #import "Hex.h"
 
 @implementation Hex {
@@ -31,3 +32,4 @@
 }
 
 @end
+*/

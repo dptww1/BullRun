@@ -60,6 +60,6 @@
 /**
  * Determine if the given hex defines a legal location for this hexmap.
  */
-- (BOOL)legal:(Hex*)hex;
+- (BOOL)legal:(Hex)hex;
 
 @end

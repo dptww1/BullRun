@@ -6,12 +6,9 @@
 //  Copyright (c) 2012 Dave Townsend. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+typedef struct {
+    int column;
+    int row;
+} Hex;
 
-@interface Hex : NSObject
-
-- (id)initWithColumn:(int)col row:(int)row;
-- (int)row;
-- (int)column;
-
-@end
+#define HexMake(col, row) (Hex){ (col), (row) }

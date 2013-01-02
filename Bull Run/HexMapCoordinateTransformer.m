@@ -21,11 +21,11 @@
     return self;
 }
 
-- (CGPoint)hexToScreen:(Hex*)hex {
+- (CGPoint)hexToScreen:(Hex)hex {
     return CGPointMake(0.0, 0.0);
 }
 
-- (Hex*)screenToHex:(CGPoint)point {
+- (Hex)screenToHex:(CGPoint)point {
     CGPoint p = [self offsetFromOrigin:point];
     
     // Hardwired for Bull Run's geometry for now.... :^(
@@ -45,12 +45,12 @@
     }
     
     if (p.x < 0.0 || p.y < 0.0)
-        return nil;
+        return HexMake(-1, -1);
     
     int row = p.y / [self hexSize].height;
     
-    Hex* h = [[Hex alloc] initWithColumn:col row:row];
-    return [[self geometry] legal:h] ? h : nil;
+    Hex h = HexMake(col, row);
+    return [[self geometry] legal:h] ? h : HexMake(-1, -1);
 }
 
 #pragma ￼privateMethods
