@@ -13,10 +13,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    MapViewController* mapController = [[MapViewController alloc] init];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    MapViewController* mapController = [[MapViewController alloc] initWithNibName:nil bundle:nil];
     UINavigationController* navController = [[UINavigationController alloc] initWithRootViewController:mapController];
     [navController setNavigationBarHidden:YES];
     [[self window] setRootViewController:navController];
+    
+    [self.window makeKeyAndVisible];
 
     return YES;
 }
