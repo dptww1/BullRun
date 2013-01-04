@@ -13,5 +13,6 @@
 @interface MapViewController : UIViewController
 
 @property (nonatomic, strong) HexMapCoordinateTransformer* coordXformer;
+@property (nonatomic, weak)   IBOutlet UIImageView*        infoBox;
 
 @end

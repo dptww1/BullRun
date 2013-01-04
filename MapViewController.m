@@ -17,6 +17,8 @@
 
 @implementation MapViewController
 
+#pragma mark - Initialization
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
@@ -36,6 +38,8 @@
     return self;
 }
 
+#pragma mark - Callbacks
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -49,11 +53,15 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     for (UITouch* t in touches) {
         CGPoint p = [t locationInView:[self view]];
-        Hex hex = [[self coordXformer] screenToHex:p];
-        if ([[[self coordXformer] geometry] legal:hex])
-            NSLog(@"Touch at screen (%f,%f) hex (%02d%02d)", p.x, p.y, hex.column, hex.row);
-        else
-            NSLog(@"Touch at screen (%f,%f) isn't a legal hex!", p.x, p.y);
+        if (CGRectContainsPoint([_infoBox frame], p)) {
+            NSLog(@"Touched InfoBox!");
+        } else {
+            Hex hex = [[self coordXformer] screenToHex:p];
+            if ([[[self coordXformer] geometry] legal:hex])
+                NSLog(@"Touch at screen (%f,%f) hex (%02d%02d)", p.x, p.y, hex.column, hex.row);
+            else
+                NSLog(@"Touch at screen (%f,%f) isn't a legal hex!", p.x, p.y);
+        }
     }
 }
 

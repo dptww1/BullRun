@@ -9,6 +9,15 @@
 #import "HexMapCoordinateTransformer.h"
 #import "HexMapGeometry.h"
 
+
+@implementation HexMapCoordinateTransformer (Private)
+
+- (CGPoint)offsetFromOrigin:(CGPoint)p {
+    return CGPointMake(p.x - [self origin].x, p.y - [self origin].y);
+}
+
+@end
+
 @implementation HexMapCoordinateTransformer
 
 - (id)initWithGeometry:(HexMapGeometry *)geometry origin:(CGPoint)origin hexSize:(CGSize)hexSize {
@@ -52,12 +61,5 @@
     Hex h = HexMake(col, row);
     return [[self geometry] legal:h] ? h : HexMake(-1, -1);
 }
-
-#pragma ￼privateMethods
-
-- (CGPoint)offsetFromOrigin:(CGPoint)p {
-    return CGPointMake(p.x - [self origin].x, p.y - [self origin].y);
-}
-#pragma -
 
 @end
