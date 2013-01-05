@@ -28,4 +28,9 @@
 }
 */
 
+- (void)setUnitName:(NSString *)name originalStrength:(int)ostr {
+    [unitName setText:name];
+    [originalStrength setText:[[NSString alloc] initWithFormat:@"%d", ostr]];
+}
+
 @end

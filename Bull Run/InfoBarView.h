@@ -10,9 +10,11 @@
 
 @interface InfoBarView : UIView {
     __weak IBOutlet UILabel*        originalStrength;
-    __weak IBOutlet UILabel*        unitName;
     __weak IBOutlet UIProgressView* currentStrength;
     __weak IBOutlet UIImageView*    unitImage;
+    __weak IBOutlet UILabel*        unitName;
 }
+
+- (void)setUnitName:(NSString*)name originalStrength:(int)ostr;
 
 @end

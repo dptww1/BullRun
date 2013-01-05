@@ -67,9 +67,13 @@
             NSLog(@"Touched InfoBox!");
         } else {
             Hex hex = [[self coordXformer] screenToHex:p];
-            if ([[[self coordXformer] geometry] legal:hex])
+            if ([[[self coordXformer] geometry] legal:hex]) {
                 NSLog(@"Touch at screen (%f,%f) hex (%02d%02d)", p.x, p.y, hex.column, hex.row);
-            else
+                if (hex.column == 1 && hex.row == 0) {
+                    [[self infoBarView] setUnitName:@"Evans" originalStrength:1500];
+                    [[self view] setNeedsDisplay];
+                }
+            } else
                 NSLog(@"Touch at screen (%f,%f) isn't a legal hex!", p.x, p.y);
         }
     }
