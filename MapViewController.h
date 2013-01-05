@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @class HexMapCoordinateTransformer;
+@class InfoBarView;
 
 @interface MapViewController : UIViewController
 
 @property (nonatomic, strong) HexMapCoordinateTransformer* coordXformer;
-@property (nonatomic, weak)   IBOutlet UIImageView*        infoBox;
+@property (nonatomic, weak)   InfoBarView*                 infoBarView;
 
 @end

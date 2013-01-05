@@ -8,12 +8,9 @@
 
 #import "MapViewController.h"
 #import "HexMapCoordinateTransformer.h"
+#import "InfoBarView.h"
 
 #define DEGREES_TO_RADIANS(angle) (angle / 180.0 * M_PI)
-
-@interface MapViewController ()
-
-@end
 
 @implementation MapViewController
 
@@ -42,7 +39,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    if (!_infoBarView) {
+        NSArray* infoBarObjects = [[NSBundle mainBundle] loadNibNamed:@"InfoBarView" owner:self options:nil];
+        
+        InfoBarView* v = infoBarObjects[0];
+        
+        CGRect vFrame = [v frame];
+        vFrame.origin.x = [[self view] frame].size.height - [v frame].size.width;
+        [v setFrame:vFrame];
+        
+        [self setInfoBarView:v];
+        
+        [[self view] addSubview:v];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -53,7 +63,7 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     for (UITouch* t in touches) {
         CGPoint p = [t locationInView:[self view]];
-        if (CGRectContainsPoint([_infoBox frame], p)) {
+        if (CGRectContainsPoint([[self infoBarView] frame], p)) {
             NSLog(@"Touched InfoBox!");
         } else {
             Hex hex = [[self coordXformer] screenToHex:p];

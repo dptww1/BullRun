@@ -13,6 +13,8 @@
 		CC0CF37E1689184C006D902D /* HexMapGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0CF37D1689184C006D902D /* HexMapGeometry.m */; };
 		CC0CF381168A4E72006D902D /* README.textile in Resources */ = {isa = PBXBuildFile; fileRef = CC0CF380168A4E72006D902D /* README.textile */; };
 		CC0CF384168A527C006D902D /* Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0CF383168A527C006D902D /* Hex.m */; };
+		CC0CF3DF1697720F006D902D /* InfoBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC0CF3DE1697720F006D902D /* InfoBarView.xib */; };
+		CC0CF3E2169777C5006D902D /* InfoBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0CF3E1169777C5006D902D /* InfoBarView.m */; };
 		CC46B549167F6F1700A829DF /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = CC46B548167F6F1700A829DF /* map.png */; };
 		CC85854D167A72610054E60D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC85854C167A72610054E60D /* UIKit.framework */; };
 		CC85854F167A72610054E60D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC85854E167A72610054E60D /* Foundation.framework */; };
@@ -51,6 +53,9 @@
 		CC0CF380168A4E72006D902D /* README.textile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.textile; sourceTree = "<group>"; };
 		CC0CF382168A527C006D902D /* Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hex.h; sourceTree = "<group>"; };
 		CC0CF383168A527C006D902D /* Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Hex.m; sourceTree = "<group>"; };
+		CC0CF3DE1697720F006D902D /* InfoBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = InfoBarView.xib; path = ../InfoBarView.xib; sourceTree = "<group>"; };
+		CC0CF3E0169777C4006D902D /* InfoBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoBarView.h; sourceTree = "<group>"; };
+		CC0CF3E1169777C5006D902D /* InfoBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoBarView.m; sourceTree = "<group>"; };
 		CC46B548167F6F1700A829DF /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
 		CC858548167A72610054E60D /* Bull Run.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bull Run.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC85854C167A72610054E60D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -145,9 +150,12 @@
 		CC858552167A72610054E60D /* Bull Run */ = {
 			isa = PBXGroup;
 			children = (
-				CC0CF37F168A40B2006D902D /* HexMap */,
 				CC85855B167A72610054E60D /* BRAppDelegate.h */,
 				CC85855C167A72610054E60D /* BRAppDelegate.m */,
+				CC0CF37F168A40B2006D902D /* HexMap */,
+				CC0CF3E0169777C4006D902D /* InfoBarView.h */,
+				CC0CF3E1169777C5006D902D /* InfoBarView.m */,
+				CC0CF3DE1697720F006D902D /* InfoBarView.xib */,
 				CC0CF371168900B9006D902D /* MapViewController.h */,
 				CC0CF372168900B9006D902D /* MapViewController.m */,
 				CC0CF373168900B9006D902D /* MapViewController.xib */,
@@ -285,6 +293,7 @@
 				CC46B549167F6F1700A829DF /* map.png in Resources */,
 				CC0CF375168900B9006D902D /* MapViewController.xib in Resources */,
 				CC0CF381168A4E72006D902D /* README.textile in Resources */,
+				CC0CF3DF1697720F006D902D /* InfoBarView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,6 +334,7 @@
 				CC0CF37B1689177F006D902D /* HexMapCoordinateTransformer.m in Sources */,
 				CC0CF37E1689184C006D902D /* HexMapGeometry.m in Sources */,
 				CC0CF384168A527C006D902D /* Hex.m in Sources */,
+				CC0CF3E2169777C5006D902D /* InfoBarView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
