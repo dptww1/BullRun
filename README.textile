@@ -1,7 +1,24 @@
-Current State:
+h1. Current State
 
-Working on getting hex identification from taps working
+Unit lookup data is complete; you can tap on a square and the unit's name and original strength
+show up in the info box.
 
-Notes:
+h1. To Do
+
+h3. UI/Art
+* Real map
+
+h3. Functionality
+* Make info box draggable (or just shiftable from corner to corner?)
+* Make units visible
+* Hook up remaining Info box fields
+* Try animating Info box changes
+* Blank out info box when tapping on squares with no unit
+* Retain selected unit in MapViewController
+
+h3. Organization
+* Rearrange files
+
+h1. Notes
 
 MapViewController.xib looks odd in XCode, but works fine in the simulator, because a coordinate transform is being used.
