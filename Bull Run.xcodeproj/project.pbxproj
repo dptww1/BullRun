@@ -15,6 +15,8 @@
 		CC0CF384168A527C006D902D /* Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0CF383168A527C006D902D /* Hex.m */; };
 		CC0CF3DF1697720F006D902D /* InfoBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC0CF3DE1697720F006D902D /* InfoBarView.xib */; };
 		CC0CF3E2169777C5006D902D /* InfoBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0CF3E1169777C5006D902D /* InfoBarView.m */; };
+		CC0CF3E516989A3D006D902D /* Unit.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0CF3E416989A3C006D902D /* Unit.m */; };
+		CC0CF3E816989B52006D902D /* OrderOfBattle.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0CF3E716989B51006D902D /* OrderOfBattle.m */; };
 		CC46B549167F6F1700A829DF /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = CC46B548167F6F1700A829DF /* map.png */; };
 		CC85854D167A72610054E60D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC85854C167A72610054E60D /* UIKit.framework */; };
 		CC85854F167A72610054E60D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC85854E167A72610054E60D /* Foundation.framework */; };
@@ -56,6 +58,10 @@
 		CC0CF3DE1697720F006D902D /* InfoBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = InfoBarView.xib; path = ../InfoBarView.xib; sourceTree = "<group>"; };
 		CC0CF3E0169777C4006D902D /* InfoBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoBarView.h; sourceTree = "<group>"; };
 		CC0CF3E1169777C5006D902D /* InfoBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoBarView.m; sourceTree = "<group>"; };
+		CC0CF3E316989A3C006D902D /* Unit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Unit.h; sourceTree = "<group>"; };
+		CC0CF3E416989A3C006D902D /* Unit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Unit.m; sourceTree = "<group>"; };
+		CC0CF3E616989B50006D902D /* OrderOfBattle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderOfBattle.h; sourceTree = "<group>"; };
+		CC0CF3E716989B51006D902D /* OrderOfBattle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderOfBattle.m; sourceTree = "<group>"; };
 		CC46B548167F6F1700A829DF /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
 		CC858548167A72610054E60D /* Bull Run.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bull Run.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC85854C167A72610054E60D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -159,8 +165,12 @@
 				CC0CF371168900B9006D902D /* MapViewController.h */,
 				CC0CF372168900B9006D902D /* MapViewController.m */,
 				CC0CF373168900B9006D902D /* MapViewController.xib */,
+				CC0CF3E616989B50006D902D /* OrderOfBattle.h */,
+				CC0CF3E716989B51006D902D /* OrderOfBattle.m */,
 				CCE53B25167D4ED200A794B5 /* Resources */,
 				CC858553167A72610054E60D /* Supporting Files */,
+				CC0CF3E316989A3C006D902D /* Unit.h */,
+				CC0CF3E416989A3C006D902D /* Unit.m */,
 			);
 			path = "Bull Run";
 			sourceTree = "<group>";
@@ -335,6 +345,8 @@
 				CC0CF37E1689184C006D902D /* HexMapGeometry.m in Sources */,
 				CC0CF384168A527C006D902D /* Hex.m in Sources */,
 				CC0CF3E2169777C5006D902D /* InfoBarView.m in Sources */,
+				CC0CF3E516989A3D006D902D /* Unit.m in Sources */,
+				CC0CF3E816989B52006D902D /* OrderOfBattle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

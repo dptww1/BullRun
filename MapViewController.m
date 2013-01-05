@@ -9,6 +9,8 @@
 #import "MapViewController.h"
 #import "HexMapCoordinateTransformer.h"
 #import "InfoBarView.h"
+#import "OrderOfBattle.h"
+#import "Unit.h"
 
 #define DEGREES_TO_RADIANS(angle) (angle / 180.0 * M_PI)
 
@@ -31,6 +33,7 @@
         [self setCoordXformer:[[HexMapCoordinateTransformer alloc] initWithGeometry:geometry
                                                                              origin:CGPointMake(35, 42)
                                                                             hexSize:CGSizeMake(56, 56)]];
+        [self setOob:[[OrderOfBattle alloc] init]];
     }
     return self;
 }
@@ -69,8 +72,9 @@
             Hex hex = [[self coordXformer] screenToHex:p];
             if ([[[self coordXformer] geometry] legal:hex]) {
                 NSLog(@"Touch at screen (%f,%f) hex (%02d%02d)", p.x, p.y, hex.column, hex.row);
-                if (hex.column == 1 && hex.row == 0) {
-                    [[self infoBarView] setUnitName:@"Evans" originalStrength:1500];
+                Unit* unit = [[self oob] unitInHex:hex];
+                if (unit) {
+                    [[self infoBarView] setUnitName:[unit name] originalStrength:[unit originalStrength]];
                     [[self view] setNeedsDisplay];
                 }
             } else
