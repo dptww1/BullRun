@@ -10,10 +10,14 @@
 
 @implementation Unit
 
-- (id)initWithName:(NSString*)name strength:(int)strength location:(Hex)hex {
-    _name = name;
-    _originalStrength = _strength = strength;
-    _location = hex;
+- (id)initWithName:(NSString*)name side:(PlayerSide)side leadership:(int)leadership strength:(int)strength morale:(int)morale location:(Hex)hex {
+    _leadership       = leadership;
+    _location         = hex;
+    _morale           = morale;
+    _name             = name;
+    _originalStrength = strength;
+    _side             = side;
+    _strength         = strength;
     
     return self;
 }

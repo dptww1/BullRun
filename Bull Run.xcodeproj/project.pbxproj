@@ -62,6 +62,7 @@
 		CC0CF3E416989A3C006D902D /* Unit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Unit.m; sourceTree = "<group>"; };
 		CC0CF3E616989B50006D902D /* OrderOfBattle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderOfBattle.h; sourceTree = "<group>"; };
 		CC0CF3E716989B51006D902D /* OrderOfBattle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderOfBattle.m; sourceTree = "<group>"; };
+		CC0CF3E91698CB40006D902D /* BullRun.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BullRun.h; sourceTree = "<group>"; };
 		CC46B548167F6F1700A829DF /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
 		CC858548167A72610054E60D /* Bull Run.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bull Run.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC85854C167A72610054E60D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -158,6 +159,7 @@
 			children = (
 				CC85855B167A72610054E60D /* BRAppDelegate.h */,
 				CC85855C167A72610054E60D /* BRAppDelegate.m */,
+				CC0CF3E91698CB40006D902D /* BullRun.h */,
 				CC0CF37F168A40B2006D902D /* HexMap */,
 				CC0CF3E0169777C4006D902D /* InfoBarView.h */,
 				CC0CF3E1169777C5006D902D /* InfoBarView.m */,
