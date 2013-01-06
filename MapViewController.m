@@ -29,12 +29,12 @@
         
         HexMapGeometry* geometry = [[HexMapGeometry alloc] initWithLongGrain:NO
                                                            firstColumnIsLong:NO
-                                                                     numRows:12
+                                                                     numRows:13
                                                                   numColumns:17];
         
         [self setCoordXformer:[[HexMapCoordinateTransformer alloc] initWithGeometry:geometry
-                                                                             origin:CGPointMake(35, 42)
-                                                                            hexSize:CGSizeMake(55, 55)]];
+                                                                             origin:CGPointMake(66, 59)
+                                                                            hexSize:CGSizeMake(50, 51)]];
         [self setOob:[[OrderOfBattle alloc] init]];
         
         CGColorRef usaColor = [[UIColor colorWithRed:0.3 green:0.3 blue:0.7 alpha:1.0] CGColor];
@@ -45,9 +45,9 @@
             
             if ([geometry legal:[unit location]]) {
                 CGPoint xy = [_coordXformer hexToScreen:[unit location]];
-                xy.x += 22;
-                xy.y += 22;
-
+                xy.x += 25;
+                xy.y += 25;
+                
                 CALayer* unitLayer = [[CALayer alloc] init];
                 [unitLayer setBounds:CGRectMake(0.0, 0.0, 30.0, 30.0)];
                 [unitLayer setPosition:xy];
