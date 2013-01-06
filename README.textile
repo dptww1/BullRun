@@ -13,12 +13,12 @@ h3. Functionality
 * Make info box draggable (or just shiftable from corner to corner?)
 * Make units visible
 * Hook up remaining Info box fields
-* Try animating Info box changes
 * Retain selected unit in MapViewController so can drag out orders
-* Mode menu
+* Mode menu for units
 
 h3. Organization
 * Rearrange files
+* OOB should be read from configuration file instead of hard-wired
 
 h1. Notes
 

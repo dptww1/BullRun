@@ -31,7 +31,17 @@
 }
 
 - (CGPoint)hexToScreen:(Hex)hex {
-    return CGPointMake(0.0, 0.0);
+    float x = _origin.x;
+    float y = _origin.y;
+    
+    x += hex.column * _hexSize.width;
+    y += hex.row * _hexSize.height;
+    
+    if (hex.column & 1) {
+        y -= (_hexSize.height / 2.0);
+    }
+    
+    return CGPointMake(x, y);
 }
 
 - (Hex)screenToHex:(CGPoint)point {

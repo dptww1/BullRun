@@ -13,6 +13,8 @@
 
 @interface OrderOfBattle : NSObject
 
+@property (nonatomic, strong) NSArray* units;
+
 - (Unit*)unitInHex:(Hex) hex;
 
 @end

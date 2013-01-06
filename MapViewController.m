@@ -6,6 +6,8 @@
 //  Copyright (c) 2012 Dave Townsend. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
+#import "BullRun.h"
 #import "MapViewController.h"
 #import "HexMapCoordinateTransformer.h"
 #import "InfoBarView.h"
@@ -32,8 +34,28 @@
         
         [self setCoordXformer:[[HexMapCoordinateTransformer alloc] initWithGeometry:geometry
                                                                              origin:CGPointMake(35, 42)
-                                                                            hexSize:CGSizeMake(56, 56)]];
+                                                                            hexSize:CGSizeMake(55, 55)]];
         [self setOob:[[OrderOfBattle alloc] init]];
+        
+        CGColorRef usaColor = [[UIColor colorWithRed:0.3 green:0.3 blue:0.7 alpha:1.0] CGColor];
+        CGColorRef csaColor = [[UIColor colorWithRed:0.7 green:0.3 blue:0.3 alpha:1.0] CGColor];
+        
+        for (int i = 0; i < [[_oob units] count]; ++i) {
+            Unit* unit = [[_oob units] objectAtIndex:i];
+            
+            if ([geometry legal:[unit location]]) {
+                CGPoint xy = [_coordXformer hexToScreen:[unit location]];
+                xy.x += 22;
+                xy.y += 22;
+
+                CALayer* unitLayer = [[CALayer alloc] init];
+                [unitLayer setBounds:CGRectMake(0.0, 0.0, 30.0, 30.0)];
+                [unitLayer setPosition:xy];
+                [unitLayer setBackgroundColor:([unit side] == USA) ? usaColor : csaColor];
+            
+                [[[self view] layer] addSublayer:unitLayer];
+            }
+        }
     }
     return self;
 }
