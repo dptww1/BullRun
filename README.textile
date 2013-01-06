@@ -11,7 +11,6 @@ h3. UI/Art
 
 h3. Functionality
 * Make info box draggable (or just shiftable from corner to corner?)
-* Make units visible
 * Hook up remaining Info box fields
 * Retain selected unit in MapViewController so can drag out orders
 * Mode menu for units
