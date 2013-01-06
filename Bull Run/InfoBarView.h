@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class Unit;
+
 @interface InfoBarView : UIView {
     __weak IBOutlet UILabel*        originalStrength;
     __weak IBOutlet UIProgressView* currentStrength;
@@ -15,6 +17,6 @@
     __weak IBOutlet UILabel*        unitName;
 }
 
-- (void)setUnitName:(NSString*)name originalStrength:(int)ostr;
+- (void)showInfoForUnit:(Unit*)unit;
 
 @end

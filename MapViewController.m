@@ -73,10 +73,8 @@
             if ([[[self coordXformer] geometry] legal:hex]) {
                 NSLog(@"Touch at screen (%f,%f) hex (%02d%02d)", p.x, p.y, hex.column, hex.row);
                 Unit* unit = [[self oob] unitInHex:hex];
-                if (unit) {
-                    [[self infoBarView] setUnitName:[unit name] originalStrength:[unit originalStrength]];
-                    [[self view] setNeedsDisplay];
-                }
+                [[self infoBarView] showInfoForUnit:unit];
+                [[self view] setNeedsDisplay];
             } else
                 NSLog(@"Touch at screen (%f,%f) isn't a legal hex!", p.x, p.y);
         }

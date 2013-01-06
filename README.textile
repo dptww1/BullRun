@@ -7,14 +7,15 @@ h1. To Do
 
 h3. UI/Art
 * Real map
+* Portraits; what size?
 
 h3. Functionality
 * Make info box draggable (or just shiftable from corner to corner?)
 * Make units visible
 * Hook up remaining Info box fields
 * Try animating Info box changes
-* Blank out info box when tapping on squares with no unit
-* Retain selected unit in MapViewController
+* Retain selected unit in MapViewController so can drag out orders
+* Mode menu
 
 h3. Organization
 * Rearrange files
