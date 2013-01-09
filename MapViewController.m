@@ -92,6 +92,8 @@
             NSLog(@"Touched InfoBox!");
         } else {
             Hex hex = [[self coordXformer] screenToHex:p];
+            if (hex.column == 2 && hex.row == 2)
+                [[self oob] saveToFile:@"units.plist"];
             if ([[[self coordXformer] geometry] legal:hex]) {
                 NSLog(@"Touch at screen (%f,%f) hex (%02d%02d)", p.x, p.y, hex.column, hex.row);
                 Unit* unit = [[self oob] unitInHex:hex];

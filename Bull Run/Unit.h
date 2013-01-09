@@ -10,7 +10,7 @@
 #import "BullRun.h"
 #import "Hex.h"
 
-@interface Unit : NSObject
+@interface Unit : NSObject <NSCoding>
 
 #pragma mark - Read-only Properties
 

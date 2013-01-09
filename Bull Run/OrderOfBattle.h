@@ -15,6 +15,9 @@
 
 @property (nonatomic, strong) NSArray* units;
 
++ (OrderOfBattle*)loadFromFile:(NSString*)filename;
+
+- (BOOL)saveToFile:(NSString*)filename;
 - (Unit*)unitInHex:(Hex) hex;
 
 @end

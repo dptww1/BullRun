@@ -33,6 +33,7 @@
 		CC858573167A72610054E60D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC85854E167A72610054E60D /* Foundation.framework */; };
 		CC85857B167A72610054E60D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CC858579167A72610054E60D /* InfoPlist.strings */; };
 		CC85857E167A72610054E60D /* Bull_RunTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CC85857D167A72610054E60D /* Bull_RunTests.m */; };
+		CCD3D86B169B6EFF0019591C /* SysUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD3D86A169B6EFF0019591C /* SysUtil.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,8 @@
 		CC85857A167A72610054E60D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CC85857C167A72610054E60D /* Bull_RunTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bull_RunTests.h; sourceTree = "<group>"; };
 		CC85857D167A72610054E60D /* Bull_RunTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Bull_RunTests.m; sourceTree = "<group>"; };
+		CCD3D869169B6EFF0019591C /* SysUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SysUtil.h; path = "Bull Run/SysUtil.h"; sourceTree = "<group>"; };
+		CCD3D86A169B6EFF0019591C /* SysUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SysUtil.m; path = "Bull Run/SysUtil.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,12 +141,13 @@
 		CC85853D167A72600054E60D = {
 			isa = PBXGroup;
 			children = (
-				CC0CF3EE169916E2006D902D /* QuartzCore.framework */,
-				CC0CF380168A4E72006D902D /* README.textile */,
 				CC858552167A72610054E60D /* Bull Run */,
 				CC858576167A72610054E60D /* Bull RunTests */,
 				CC85854B167A72610054E60D /* Frameworks */,
 				CC858549167A72610054E60D /* Products */,
+				CC0CF380168A4E72006D902D /* README.textile */,
+				CCD3D869169B6EFF0019591C /* SysUtil.h */,
+				CCD3D86A169B6EFF0019591C /* SysUtil.m */,
 			);
 			sourceTree = "<group>";
 			wrapsLines = 0;
@@ -160,6 +164,7 @@
 		CC85854B167A72610054E60D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CC0CF3EE169916E2006D902D /* QuartzCore.framework */,
 				CC85854C167A72610054E60D /* UIKit.framework */,
 				CC85854E167A72610054E60D /* Foundation.framework */,
 				CC858550167A72610054E60D /* CoreGraphics.framework */,
@@ -362,6 +367,7 @@
 				CC0CF3E516989A3D006D902D /* Unit.m in Sources */,
 				CC0CF3E816989B52006D902D /* OrderOfBattle.m in Sources */,
 				CC0CF3ED1698DC3D006D902D /* BRAppDelegate.m in Sources */,
+				CCD3D86B169B6EFF0019591C /* SysUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

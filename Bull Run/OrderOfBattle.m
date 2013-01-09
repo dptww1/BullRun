@@ -9,6 +9,7 @@
 #import "OrderOfBattle.h"
 #import "Hex.h"
 #import "Unit.h"
+#import "SysUtil.h"
 
 @implementation OrderOfBattle
 
@@ -45,6 +46,41 @@
     
     return self;
 }
+
+#pragma mark - Persistence Methods
+
++ (OrderOfBattle*)loadFromFile:(NSString *)filename {
+    return nil;
+}
+
+- (BOOL)saveToFile:(NSString *)filename {
+    // Construct the pure Objective-C data structure to store
+    NSMutableArray* ocArray = [NSMutableArray arrayWithCapacity:[_units count]];
+    [_units enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL* stop) {
+        Unit* u = obj;
+        NSDictionary* d = [NSDictionary dictionaryWithObjectsAndKeys:
+                           [NSNumber numberWithInt:[u side]],             @"side",
+                           [NSNumber numberWithInt:[u leadership]],       @"leadership",
+                           [NSNumber numberWithInt:[u location].column],  @"location_col",
+                           [NSNumber numberWithInt:[u location].row],     @"location_row",
+                           [NSNumber numberWithInt:[u morale]],           @"morale",
+                                                   [u name],              @"name",
+                           [NSNumber numberWithInt:[u originalStrength]], @"original_strength",
+                           [NSNumber numberWithInt:[u strength]],         @"strength",
+                           nil];
+        [ocArray addObject:d];
+    }];
+    
+    // Now actually save that
+    NSString* path = [[SysUtil applicationFileDir] stringByAppendingPathComponent:filename];
+    BOOL success = [ocArray writeToFile:path atomically:YES];
+    
+    NSLog(@"Wrote file [%d] %@", success, path);
+    
+    return success;
+}
+
+#pragma mark - Behaviors
 
 - (Unit*)unitInHex:(Hex)hex {
     NSUInteger idx = [_units indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL* stop) {
