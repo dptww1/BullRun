@@ -20,7 +20,6 @@ h3. Functionality
 
 h3. Organization
 * Rearrange files
-* OOB should be read from configuration file instead of hard-wired
 * Map data should be read from configuration file
 
 h1. Notes
