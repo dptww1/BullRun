@@ -77,4 +77,8 @@
     return idx != NSNotFound ? [_units objectAtIndex:idx] : nil;
 }
 
+- (NSArray*)unitsForSide:(PlayerSide)side {
+    return nil;
+}
+
 @end

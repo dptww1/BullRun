@@ -17,6 +17,7 @@
     _name             = name;
     _originalStrength = strength;
     _side             = side;
+    _sighted          = NO;
     _strength         = strength;
     
     return self;

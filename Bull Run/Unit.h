@@ -24,6 +24,7 @@
 
 @property            int        strength;
 @property            Hex        location;
+@property            BOOL       sighted;           // if TRUE, is visible to the enemy
 
 - (id)initWithName:(NSString*)name side:(PlayerSide)side leadership:(int)leadership strength:(int)strength morale:(int)morale location:(Hex)hex;
 @end

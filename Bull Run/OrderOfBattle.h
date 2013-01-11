@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Hex.h"
+#import "BullRun.h"
 
 @class Unit;
 
@@ -19,5 +20,6 @@
 
 - (BOOL)saveToFile:(NSString*)filename;
 - (Unit*)unitInHex:(Hex) hex;
+- (NSArray*)unitsForSide:(PlayerSide)side;
 
 @end

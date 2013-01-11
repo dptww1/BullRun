@@ -3,9 +3,6 @@ h1. Current State
 Unit lookup data is complete; you can tap on a square and the unit's name and original strength
 show up in the info box.
 
-Tapping hex 0202 saves the units into "units.plist" (as a hack to bootstrap loading unit data instead of
-hardwiring it in the code).
-
 h1. To Do
 
 h3. UI/Art
@@ -17,9 +14,9 @@ h3. Functionality
 * Hook up remaining Info box fields
 * Retain selected unit in MapViewController so can drag out orders
 * Mode menu for units
+* Movement orders for units
 
 h3. Organization
-* Rearrange files
 * Map data should be read from configuration file
 
 h1. Notes
