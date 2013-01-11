@@ -11,6 +11,7 @@
 		CC0CF3E516989A3D006D902D /* Unit.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0CF3E416989A3C006D902D /* Unit.m */; };
 		CC0CF3E816989B52006D902D /* OrderOfBattle.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0CF3E716989B51006D902D /* OrderOfBattle.m */; };
 		CC0CF3EF169916E2006D902D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC0CF3EE169916E2006D902D /* QuartzCore.framework */; };
+		CC2E35A016A0D31400788D16 /* Board.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2E359F16A0D31400788D16 /* Board.m */; };
 		CC85854D167A72610054E60D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC85854C167A72610054E60D /* UIKit.framework */; };
 		CC85854F167A72610054E60D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC85854E167A72610054E60D /* Foundation.framework */; };
 		CC858551167A72610054E60D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC858550167A72610054E60D /* CoreGraphics.framework */; };
@@ -58,6 +59,8 @@
 		CC0CF3E716989B51006D902D /* OrderOfBattle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderOfBattle.m; sourceTree = "<group>"; };
 		CC0CF3E91698CB40006D902D /* BullRun.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BullRun.h; sourceTree = "<group>"; };
 		CC0CF3EE169916E2006D902D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		CC2E359E16A0D31400788D16 /* Board.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Board.h; sourceTree = "<group>"; };
+		CC2E359F16A0D31400788D16 /* Board.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Board.m; sourceTree = "<group>"; };
 		CC858548167A72610054E60D /* Bull Run.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bull Run.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC85854C167A72610054E60D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CC85854E167A72610054E60D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -167,6 +170,8 @@
 		CC858552167A72610054E60D /* Bull Run */ = {
 			isa = PBXGroup;
 			children = (
+				CC2E359E16A0D31400788D16 /* Board.h */,
+				CC2E359F16A0D31400788D16 /* Board.m */,
 				CC0CF3E91698CB40006D902D /* BullRun.h */,
 				CCDB60CE169FCA0F006668C2 /* Game.h */,
 				CCDB60CF169FCA0F006668C2 /* Game.m */,
@@ -426,6 +431,7 @@
 				CCDB60F416A04E43006668C2 /* HexMapCoordinateTransformer.m in Sources */,
 				CCDB60F516A04E43006668C2 /* HexMapGeometry.m in Sources */,
 				CCDB60F916A04E96006668C2 /* InfoBarView.m in Sources */,
+				CC2E35A016A0D31400788D16 /* Board.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

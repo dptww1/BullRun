@@ -8,12 +8,15 @@
 
 #import "BRAppDelegate.h"
 #import "MapViewController.h"
+#import "Game.h"
 
 @implementation BRAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    game = [[Game alloc] init];
     
     MapViewController* mapController = [[MapViewController alloc] initWithNibName:nil bundle:nil];
     UINavigationController* navController = [[UINavigationController alloc] initWithRootViewController:mapController];

@@ -16,6 +16,5 @@
 
 @property (nonatomic, strong) HexMapCoordinateTransformer* coordXformer;
 @property (nonatomic, weak)   InfoBarView*                 infoBarView;
-@property (nonatomic, strong) OrderOfBattle*               oob;
 
 @end

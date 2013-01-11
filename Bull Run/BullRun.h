@@ -11,4 +11,6 @@
 
 typedef enum { CSA, USA } PlayerSide;
 
+#define OtherPlayer(SIDE) ((SIDE) == CSA ? USA : CSA)
+
 #endif

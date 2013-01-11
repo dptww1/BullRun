@@ -8,11 +8,39 @@
 
 #import "Game.h"
 #import "BullRun.h"
+#import "OrderOfBattle.h"
+
+Game* game;
+
+@interface Game (Private)
+
+- (void)doSighting:(PlayerSide)side;
+
+@end
 
 @implementation Game
 
-// performs sighting from the POV of player `side'
-- (void)doSighting:(PlayerSide)side {
+#pragma mark - Init Methods
+
+- (id)init {
+    self = [super init];
     
+    if (self) {
+        _userSide = CSA;
+        _board = [[Board alloc] init];
+        _oob = [OrderOfBattle createFromFile:[[NSBundle mainBundle] pathForResource:@"units" ofType:@"plist"]];
+    }
+
+    return self;
 }
+
+#pragma mark - Private Methods
+
+// Performs sighting from the POV of player `side'. In practice will
+// most usually be called with side parameter == userSide attribute,
+// but doing it this way allows more convenient testing and debugging.
+- (void)doSighting:(PlayerSide)side {
+
+}
+
 @end

@@ -7,9 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Board.h"
+#import "BullRun.h"
+#import "Game.h"
+#import "OrderOfBattle.h"
 
 @interface Game : NSObject
 
-@property int playerSide;
+@property (readonly)         PlayerSide     userSide;
+@property (strong, readonly) Board*         board;
+@property (strong, readonly) OrderOfBattle* oob;
 
 @end
+
+// The single, publicly available global instance.
+extern Game* game;
+

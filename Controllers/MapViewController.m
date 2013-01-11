@@ -13,6 +13,8 @@
 #import "InfoBarView.h"
 #import "OrderOfBattle.h"
 #import "Unit.h"
+#import "Game.h"
+#import "Board.h"
 
 #define DEGREES_TO_RADIANS(angle) (angle / 180.0 * M_PI)
 
@@ -27,23 +29,18 @@
         // rather than the lower left corner with rotated axes.
         [[self view] setTransform:CGAffineTransformMakeRotation(DEGREES_TO_RADIANS(90.0))];
         
-        HexMapGeometry* geometry = [[HexMapGeometry alloc] initWithLongGrain:NO
-                                                           firstColumnIsLong:NO
-                                                                     numRows:13
-                                                                  numColumns:17];
         
-        [self setCoordXformer:[[HexMapCoordinateTransformer alloc] initWithGeometry:geometry
+        [self setCoordXformer:[[HexMapCoordinateTransformer alloc] initWithGeometry:[[game board] geometry]
                                                                              origin:CGPointMake(66, 59)
                                                                             hexSize:CGSizeMake(50, 51)]];
-        [self setOob:[OrderOfBattle createFromFile:[[NSBundle mainBundle] pathForResource:@"units" ofType:@"plist"]]];
 
         CGColorRef usaColor = [[UIColor colorWithRed:0.3 green:0.3 blue:0.7 alpha:1.0] CGColor];
         CGColorRef csaColor = [[UIColor colorWithRed:0.7 green:0.3 blue:0.3 alpha:1.0] CGColor];
         
-        for (int i = 0; i < [[_oob units] count]; ++i) {
-            Unit* unit = [[_oob units] objectAtIndex:i];
+        for (int i = 0; i < [[[game oob] units] count]; ++i) {
+            Unit* unit = [[[game oob] units] objectAtIndex:i];
             
-            if ([geometry legal:[unit location]]) {
+            if ([[[game board] geometry] legal:[unit location]]) {
                 CGPoint xy = [_coordXformer hexToScreen:[unit location]];
                 xy.x += 25;
                 xy.y += 25;
@@ -92,11 +89,9 @@
             NSLog(@"Touched InfoBox!");
         } else {
             Hex hex = [[self coordXformer] screenToHex:p];
-            if (hex.column == 2 && hex.row == 2)
-                [[self oob] saveToFile:@"units.plist"];
             if ([[[self coordXformer] geometry] legal:hex]) {
                 NSLog(@"Touch at screen (%f,%f) hex (%02d%02d)", p.x, p.y, hex.column, hex.row);
-                Unit* unit = [[self oob] unitInHex:hex];
+                Unit* unit = [[game oob] unitInHex:hex];
                 [[self infoBarView] showInfoForUnit:unit];
                 [[self view] setNeedsDisplay];
             } else
