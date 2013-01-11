@@ -32,9 +32,9 @@
 		CC858572167A72610054E60D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC85854C167A72610054E60D /* UIKit.framework */; };
 		CC858573167A72610054E60D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC85854E167A72610054E60D /* Foundation.framework */; };
 		CC85857B167A72610054E60D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CC858579167A72610054E60D /* InfoPlist.strings */; };
-		CC85857E167A72610054E60D /* Bull_RunTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CC85857D167A72610054E60D /* Bull_RunTests.m */; };
 		CCD3D86B169B6EFF0019591C /* SysUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CCD3D86A169B6EFF0019591C /* SysUtil.m */; };
 		CCDB60CA169D0FF7006668C2 /* units.plist in Resources */ = {isa = PBXBuildFile; fileRef = CCDB60C9169D0FF7006668C2 /* units.plist */; };
+		CCDB60CD169E0907006668C2 /* HexMapGeometryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB60CC169E0907006668C2 /* HexMapGeometryTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,11 +85,11 @@
 		CC858570167A72610054E60D /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		CC858578167A72610054E60D /* Bull RunTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bull RunTests-Info.plist"; sourceTree = "<group>"; };
 		CC85857A167A72610054E60D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		CC85857C167A72610054E60D /* Bull_RunTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bull_RunTests.h; sourceTree = "<group>"; };
-		CC85857D167A72610054E60D /* Bull_RunTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Bull_RunTests.m; sourceTree = "<group>"; };
 		CCD3D869169B6EFF0019591C /* SysUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SysUtil.h; path = "Bull Run/SysUtil.h"; sourceTree = "<group>"; };
 		CCD3D86A169B6EFF0019591C /* SysUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SysUtil.m; path = "Bull Run/SysUtil.m"; sourceTree = "<group>"; };
 		CCDB60C9169D0FF7006668C2 /* units.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = units.plist; sourceTree = "<group>"; };
+		CCDB60CB169E0907006668C2 /* HexMapGeometryTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HexMapGeometryTests.h; sourceTree = "<group>"; };
+		CCDB60CC169E0907006668C2 /* HexMapGeometryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HexMapGeometryTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,9 +214,9 @@
 		CC858576167A72610054E60D /* Bull RunTests */ = {
 			isa = PBXGroup;
 			children = (
-				CC85857C167A72610054E60D /* Bull_RunTests.h */,
-				CC85857D167A72610054E60D /* Bull_RunTests.m */,
 				CC858577167A72610054E60D /* Supporting Files */,
+				CCDB60CB169E0907006668C2 /* HexMapGeometryTests.h */,
+				CCDB60CC169E0907006668C2 /* HexMapGeometryTests.m */,
 			);
 			path = "Bull RunTests";
 			sourceTree = "<group>";
@@ -379,7 +379,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC85857E167A72610054E60D /* Bull_RunTests.m in Sources */,
+				CCDB60CD169E0907006668C2 /* HexMapGeometryTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

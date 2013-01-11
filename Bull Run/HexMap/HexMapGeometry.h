@@ -42,8 +42,6 @@
  * <li><tt>numRows</tt> is 3; the extra hex caused by the grain in the first, third, and fifth columns is ignored
  * <li><tt>numColumns</tt> is 5
  * </ol>
- *
- * <p>If the diagram were rotated 90 degrees in either direction,
  */
 @interface HexMapGeometry : NSObject
 
@@ -61,5 +59,10 @@
  * Determine if the given hex defines a legal location for this hexmap.
  */
 - (BOOL)legal:(Hex)hex;
+
+/**
+ * Determines the distance between two hexes.  If either or both are not legal, returns -1.
+ */
+- (int)distanceFrom:(Hex)hex to:(Hex)hex;
 
 @end
