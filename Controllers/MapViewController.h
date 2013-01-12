@@ -11,10 +11,14 @@
 @class HexMapCoordinateTransformer;
 @class InfoBarView;
 @class OrderOfBattle;
+@class Unit;
 
 @interface MapViewController : UIViewController
 
 @property (nonatomic, strong) HexMapCoordinateTransformer* coordXformer;
 @property (nonatomic, weak)   InfoBarView*                 infoBarView;
+
+- (void)unitNowSighted:(Unit*)unit;
+- (void)unitNowHidden:(Unit*)unit;
 
 @end

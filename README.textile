@@ -15,6 +15,7 @@ h3. Functionality
 * Retain selected unit in MapViewController so can drag out orders
 * Mode menu for units
 * Movement orders for units
+* add "friend" and "enemies" as methods in OrderOfBattle, use in Game#sighting
 
 h3. Organization
 * Map data should be read from configuration file

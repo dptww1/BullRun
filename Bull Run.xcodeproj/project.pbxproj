@@ -12,6 +12,7 @@
 		CC0CF3E816989B52006D902D /* OrderOfBattle.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0CF3E716989B51006D902D /* OrderOfBattle.m */; };
 		CC0CF3EF169916E2006D902D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC0CF3EE169916E2006D902D /* QuartzCore.framework */; };
 		CC2E35A016A0D31400788D16 /* Board.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2E359F16A0D31400788D16 /* Board.m */; };
+		CC2E35A216A1135B00788D16 /* CollectionUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB60DE16A04B86006668C2 /* CollectionUtil.m */; };
 		CC85854D167A72610054E60D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC85854C167A72610054E60D /* UIKit.framework */; };
 		CC85854F167A72610054E60D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC85854E167A72610054E60D /* Foundation.framework */; };
 		CC858551167A72610054E60D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC858550167A72610054E60D /* CoreGraphics.framework */; };
@@ -420,6 +421,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC2E35A216A1135B00788D16 /* CollectionUtil.m in Sources */,
 				CC0CF3E516989A3D006D902D /* Unit.m in Sources */,
 				CC0CF3E816989B52006D902D /* OrderOfBattle.m in Sources */,
 				CCDB60D0169FCA10006668C2 /* Game.m in Sources */,

@@ -14,9 +14,9 @@
     NSMutableArray* result = [NSMutableArray array];
     
     [self enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL* stop) {
-            if (condBlock(obj))
-                [result addObject:obj];
-        }];
+        if (condBlock(obj))
+            [result addObject:obj];
+     }];
     
     return result;
 }

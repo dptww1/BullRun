@@ -100,4 +100,13 @@
     }
 }
 
+#pragma mark - Battle@ Callbacks
+- (void)unitNowHidden:(Unit *)unit {
+    NSLog(@"MapViewController#unitNowHidden:%@, viewLoaded=%d", [unit name], [self isViewLoaded]);
+}
+
+- (void)unitNowSighted:(Unit *)unit {
+    NSLog(@"MapViewController#unitNowSighted:%@, viewLoaded=%d", [unit name], [self isViewLoaded]);
+}
+
 @end
