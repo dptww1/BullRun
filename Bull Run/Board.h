@@ -8,9 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "HexMapGeometry.h"
+#import "Hex.h"
+
 
 @interface Board : NSObject
 
 @property (readonly, strong) HexMapGeometry* geometry;
+
+- (BOOL)saveToFile:(NSString*)filename;
+- (int)terrainAt:(Hex)hex;
 
 @end

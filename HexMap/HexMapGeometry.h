@@ -43,7 +43,7 @@
  * <li><tt>numColumns</tt> is 5
  * </ol>
  */
-@interface HexMapGeometry : NSObject
+@interface HexMapGeometry : NSObject <NSCoding>
 
 @property (nonatomic) BOOL isLongGrain;
 @property (nonatomic) BOOL firstColumnIsLong;

@@ -40,17 +40,20 @@
         for (int i = 0; i < [[[game oob] units] count]; ++i) {
             Unit* unit = [[[game oob] units] objectAtIndex:i];
             
-            if ([[[game board] geometry] legal:[unit location]]) {
-                CGPoint xy = [_coordXformer hexToScreen:[unit location]];
-                xy.x += 25;
-                xy.y += 25;
-                
-                CALayer* unitLayer = [[CALayer alloc] init];
-                [unitLayer setBounds:CGRectMake(0.0, 0.0, 30.0, 30.0)];
-                [unitLayer setPosition:xy];
-                [unitLayer setBackgroundColor:([unit side] == USA) ? usaColor : csaColor];
+            if ([unit side] == [game userSide] || [unit sighted]) {
             
-                [[[self view] layer] addSublayer:unitLayer];
+                if ([[[game board] geometry] legal:[unit location]]) {
+                    CGPoint xy = [_coordXformer hexToScreen:[unit location]];
+                    xy.x += 25;
+                    xy.y += 25;
+                
+                    CALayer* unitLayer = [[CALayer alloc] init];
+                    [unitLayer setBounds:CGRectMake(0.0, 0.0, 30.0, 30.0)];
+                    [unitLayer setPosition:xy];
+                    [unitLayer setBackgroundColor:([unit side] == USA) ? usaColor : csaColor];
+
+                    [[[self view] layer] addSublayer:unitLayer];
+                }
             }
         }
     }
@@ -90,7 +93,14 @@
         } else {
             Hex hex = [[self coordXformer] screenToHex:p];
             if ([[[self coordXformer] geometry] legal:hex]) {
-                NSLog(@"Touch at screen (%f,%f) hex (%02d%02d)", p.x, p.y, hex.column, hex.row);
+                
+                // TODO: Remove this temp code once the map plist file is complete
+                if (hex.row == 2 && hex.column == 2) {
+                    [[game board] saveToFile:@"map.plist"];
+                }
+                
+                NSLog(@"Touch at screen (%f,%f) hex (%02d%02d) terrain 0x%02x", p.x, p.y, hex.column, hex.row, [[game board] terrainAt:hex]);
+                
                 Unit* unit = [[game oob] unitInHex:hex];
                 [[self infoBarView] showInfoForUnit:unit];
                 [[self view] setNeedsDisplay];

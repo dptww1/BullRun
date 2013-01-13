@@ -57,13 +57,11 @@ static MapViewController* mvController;
 #pragma mark - Battle@ Callbacks
 
 - (void)unitNowSighted:(Unit*)unit {
-    NSLog(@"BRAppDelegate#unitNowSighted:%@", [unit name]);
-    // TODO: send on to MapController for visuals
+    [mvController unitNowSighted:unit];
 }
 
 - (void)unitNowHidden:(Unit*)unit {
-    NSLog(@"BRAppDelegate#unitNowHidden:%@", [unit name]);
-    // TODO: send on to MapController for visuals
+    [mvController unitNowHidden:unit];
 }
 
 @end

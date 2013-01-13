@@ -13,6 +13,7 @@
 		CC0CF3EF169916E2006D902D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC0CF3EE169916E2006D902D /* QuartzCore.framework */; };
 		CC2E35A016A0D31400788D16 /* Board.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2E359F16A0D31400788D16 /* Board.m */; };
 		CC2E35A216A1135B00788D16 /* CollectionUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB60DE16A04B86006668C2 /* CollectionUtil.m */; };
+		CC2E35A516A25B5A00788D16 /* Terrain.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2E35A416A25B5A00788D16 /* Terrain.m */; };
 		CC85854D167A72610054E60D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC85854C167A72610054E60D /* UIKit.framework */; };
 		CC85854F167A72610054E60D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC85854E167A72610054E60D /* Foundation.framework */; };
 		CC858551167A72610054E60D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC858550167A72610054E60D /* CoreGraphics.framework */; };
@@ -62,6 +63,8 @@
 		CC0CF3EE169916E2006D902D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		CC2E359E16A0D31400788D16 /* Board.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Board.h; sourceTree = "<group>"; };
 		CC2E359F16A0D31400788D16 /* Board.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Board.m; sourceTree = "<group>"; };
+		CC2E35A316A25B5A00788D16 /* Terrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Terrain.h; sourceTree = "<group>"; };
+		CC2E35A416A25B5A00788D16 /* Terrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Terrain.m; sourceTree = "<group>"; };
 		CC858548167A72610054E60D /* Bull Run.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bull Run.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC85854C167A72610054E60D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CC85854E167A72610054E60D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -176,6 +179,8 @@
 				CC0CF3E91698CB40006D902D /* BullRun.h */,
 				CCDB60CE169FCA0F006668C2 /* Game.h */,
 				CCDB60CF169FCA0F006668C2 /* Game.m */,
+				CC2E35A316A25B5A00788D16 /* Terrain.h */,
+				CC2E35A416A25B5A00788D16 /* Terrain.m */,
 				CC0CF3E616989B50006D902D /* OrderOfBattle.h */,
 				CC0CF3E716989B51006D902D /* OrderOfBattle.m */,
 				CC858553167A72610054E60D /* Supporting Files */,
@@ -434,6 +439,7 @@
 				CCDB60F516A04E43006668C2 /* HexMapGeometry.m in Sources */,
 				CCDB60F916A04E96006668C2 /* InfoBarView.m in Sources */,
 				CC2E35A016A0D31400788D16 /* Board.m in Sources */,
+				CC2E35A516A25B5A00788D16 /* Terrain.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
