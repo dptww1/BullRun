@@ -8,6 +8,14 @@
 
 #import "Terrain.h"
 
+// Bit 0 =  1 => CSA
+// Bit 1 =  2 => USA
+// Bit 2 =  4 => Cub Run
+// Bit 3 =  8 => Woods
+// Bit 4 = 16 => Ford
+// Bit 5 = 32 => Town
+
+
 @implementation Terrain {
     int _val;
 }

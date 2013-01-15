@@ -28,8 +28,7 @@
         // Orient the view to the same alignment as the map, which expects (0,0) in the upper left corner
         // rather than the lower left corner with rotated axes.
         [[self view] setTransform:CGAffineTransformMakeRotation(DEGREES_TO_RADIANS(90.0))];
-        
-        
+
         [self setCoordXformer:[[HexMapCoordinateTransformer alloc] initWithGeometry:[[game board] geometry]
                                                                              origin:CGPointMake(66, 59)
                                                                             hexSize:CGSizeMake(50, 51)]];
@@ -117,6 +116,20 @@
 
 - (void)unitNowSighted:(Unit *)unit {
     NSLog(@"MapViewController#unitNowSighted:%@, viewLoaded=%d", [unit name], [self isViewLoaded]);
+}
+
+#pragma mark - Debugging
+
+- (IBAction)playerIsUsa:(id)sender {
+    NSLog(@"Now player is USA");
+    [game hackUserSide:USA];
+    [[self view] setNeedsDisplay];
+}
+
+- (IBAction)playerIsCsa:(id)sender {
+    NSLog(@"Now player is CSA");
+    [game hackUserSide:CSA];
+    [[self view] setNeedsDisplay];
 }
 
 @end

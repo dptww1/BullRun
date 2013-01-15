@@ -13,6 +13,7 @@
 #import "CollectionUtil.h"
 #import "Unit.h"
 #import "Terrain.h"
+#import "Board.h"
 
 Game* game;
 
@@ -31,13 +32,18 @@ Game* game;
     
     if (self) {
         _userSide = CSA;
-        _board = [[Board alloc] init];
+        _board = [Board createFromFile:[[NSBundle mainBundle] pathForResource:@"map" ofType:@"plist"]];
         _oob = [OrderOfBattle createFromFile:[[NSBundle mainBundle] pathForResource:@"units" ofType:@"plist"]];
         
         [self doSighting:_userSide];
     }
 
     return self;
+}
+
+- (void)hackUserSide:(PlayerSide)side {
+    _userSide = side;
+    [self doSighting:_userSide];
 }
 
 #pragma mark - Private Methods

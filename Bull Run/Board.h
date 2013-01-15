@@ -11,10 +11,12 @@
 #import "Hex.h"
 
 
-@interface Board : NSObject
+@interface Board : NSObject <NSCoding>
 
 @property (readonly, strong) HexMapGeometry* geometry;
+@property (readonly)         int*            mapData;
 
++ (Board*)createFromFile:(NSString*)filename;
 - (BOOL)saveToFile:(NSString*)filename;
 - (int)terrainAt:(Hex)hex;
 

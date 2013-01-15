@@ -3,6 +3,10 @@ h1. Current State
 Unit lookup data is complete; you can tap on a square and the unit's name and original strength
 show up in the info box.
 
+Units are configured in units.plist.
+
+Map geometry and terrain is read from map.plist.  Terrain can be verified only through the log window.
+
 h1. To Do
 
 h3. UI/Art
@@ -10,6 +14,7 @@ h3. UI/Art
 * Portraits; what size?
 
 h3. Functionality
+* Info box "Bull Run" label is off-kilter when no unit selected
 * Make info box draggable (or just shiftable from corner to corner?)
 * Hook up remaining Info box fields
 * Retain selected unit in MapViewController so can drag out orders
@@ -18,7 +23,6 @@ h3. Functionality
 * add "friend" and "enemies" as methods in OrderOfBattle, use in Game#sighting
 
 h3. Organization
-* Map data should be read from configuration file
 
 h1. Notes
 

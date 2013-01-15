@@ -14,6 +14,7 @@
 		CC2E35A016A0D31400788D16 /* Board.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2E359F16A0D31400788D16 /* Board.m */; };
 		CC2E35A216A1135B00788D16 /* CollectionUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB60DE16A04B86006668C2 /* CollectionUtil.m */; };
 		CC2E35A516A25B5A00788D16 /* Terrain.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2E35A416A25B5A00788D16 /* Terrain.m */; };
+		CC2E35A716A5CC2A00788D16 /* map.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC2E35A616A5CC2900788D16 /* map.plist */; };
 		CC85854D167A72610054E60D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC85854C167A72610054E60D /* UIKit.framework */; };
 		CC85854F167A72610054E60D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC85854E167A72610054E60D /* Foundation.framework */; };
 		CC858551167A72610054E60D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC858550167A72610054E60D /* CoreGraphics.framework */; };
@@ -65,6 +66,7 @@
 		CC2E359F16A0D31400788D16 /* Board.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Board.m; sourceTree = "<group>"; };
 		CC2E35A316A25B5A00788D16 /* Terrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Terrain.h; sourceTree = "<group>"; };
 		CC2E35A416A25B5A00788D16 /* Terrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Terrain.m; sourceTree = "<group>"; };
+		CC2E35A616A5CC2900788D16 /* map.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = map.plist; sourceTree = "<group>"; };
 		CC858548167A72610054E60D /* Bull Run.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bull Run.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC85854C167A72610054E60D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CC85854E167A72610054E60D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -278,6 +280,7 @@
 			isa = PBXGroup;
 			children = (
 				CCDB60FB16A04EF2006668C2 /* Images */,
+				CC2E35A616A5CC2900788D16 /* map.plist */,
 				CCDB60FF16A04EF2006668C2 /* units.plist */,
 				CCDB610016A04EF2006668C2 /* XIBs */,
 			);
@@ -392,6 +395,7 @@
 				CCDB610516A04EF2006668C2 /* units.plist in Resources */,
 				CCDB610616A04EF2006668C2 /* InfoBarView.xib in Resources */,
 				CCDB610716A04EF2006668C2 /* MapViewController.xib in Resources */,
+				CC2E35A716A5CC2A00788D16 /* map.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

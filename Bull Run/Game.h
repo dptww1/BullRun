@@ -14,9 +14,11 @@
 
 @interface Game : NSObject
 
-@property (readonly)         PlayerSide     userSide;
+@property                    PlayerSide     userSide;
 @property (strong, readonly) Board*         board;
 @property (strong, readonly) OrderOfBattle* oob;
+
+- (void)hackUserSide:(PlayerSide)newSide;
 
 @end
 

@@ -65,4 +65,9 @@
  */
 - (int)distanceFrom:(Hex)hex to:(Hex)hex;
 
+/**
+ * Returns the number of cells needed to represent the entire game map.
+ */
+- (int)numCells;
+
 @end

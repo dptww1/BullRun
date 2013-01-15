@@ -101,6 +101,10 @@
     return dx + dy;
 }
 
+- (int)numCells {
+    return (_numRows + 1) * _numColumns;
+}
+
 #pragma mark - NSCoding Implementation
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
@@ -114,8 +118,8 @@
     self = [super init];
     
     if (self) {
-        _isLongGrain       = [aDecoder decodeIntForKey:@"isLongGrain"];
-        _firstColumnIsLong = [aDecoder decodeIntForKey:@"firstColumnIsLong"];
+        _isLongGrain       = [aDecoder decodeBoolForKey:@"isLongGrain"];
+        _firstColumnIsLong = [aDecoder decodeBoolForKey:@"firstColumnIsLong"];
         _numRows           = [aDecoder decodeIntForKey:@"numRows"];
         _numColumns        = [aDecoder decodeIntForKey:@"numColumns"];
     }
