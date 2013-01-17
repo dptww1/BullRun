@@ -15,8 +15,21 @@
 #import "Unit.h"
 #import "Game.h"
 #import "Board.h"
+#import "MapView.h"
+#import "UnitView.h"
 
 #define DEGREES_TO_RADIANS(angle) (angle / 180.0 * M_PI)
+
+
+#pragma mark - Private Methods
+
+@implementation MapViewController (Private)
+
+- (MapView*)getMapView {
+    return (MapView*)[self view];
+}
+
+@end
 
 @implementation MapViewController
 
@@ -24,38 +37,13 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    
     if (self) {
-        // Orient the view to the same alignment as the map, which expects (0,0) in the upper left corner
-        // rather than the lower left corner with rotated axes.
-        [[self view] setTransform:CGAffineTransformMakeRotation(DEGREES_TO_RADIANS(90.0))];
-
-        [self setCoordXformer:[[HexMapCoordinateTransformer alloc] initWithGeometry:[[game board] geometry]
-                                                                             origin:CGPointMake(66, 59)
-                                                                            hexSize:CGSizeMake(50, 51)]];
-
-        CGColorRef usaColor = [[UIColor colorWithRed:0.3 green:0.3 blue:0.7 alpha:1.0] CGColor];
-        CGColorRef csaColor = [[UIColor colorWithRed:0.7 green:0.3 blue:0.3 alpha:1.0] CGColor];
-        
-        for (int i = 0; i < [[[game oob] units] count]; ++i) {
-            Unit* unit = [[[game oob] units] objectAtIndex:i];
-            
-            if ([unit side] == [game userSide] || [unit sighted]) {
-            
-                if ([[[game board] geometry] legal:[unit location]]) {
-                    CGPoint xy = [_coordXformer hexToScreen:[unit location]];
-                    xy.x += 25;
-                    xy.y += 25;
-                
-                    CALayer* unitLayer = [[CALayer alloc] init];
-                    [unitLayer setBounds:CGRectMake(0.0, 0.0, 30.0, 30.0)];
-                    [unitLayer setPosition:xy];
-                    [unitLayer setBackgroundColor:([unit side] == USA) ? usaColor : csaColor];
-
-                    [[[self view] layer] addSublayer:unitLayer];
-                }
-            }
-        }
+        _coordXformer = [[HexMapCoordinateTransformer alloc] initWithGeometry:[[game board] geometry]
+                                                                       origin:CGPointMake(66, 59)
+                                                                      hexSize:CGSizeMake(50, 51)];
     }
+    
     return self;
 }
 
@@ -86,23 +74,23 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     for (UITouch* t in touches) {
+        
         CGPoint p = [t locationInView:[self view]];
+        
         if (CGRectContainsPoint([[self infoBarView] frame], p)) {
             NSLog(@"Touched InfoBox!");
+            
         } else {
             Hex hex = [[self coordXformer] screenToHex:p];
-            if ([[[self coordXformer] geometry] legal:hex]) {
-                
-                // TODO: Remove this temp code once the map plist file is complete
-                if (hex.row == 2 && hex.column == 2) {
-                    [[game board] saveToFile:@"map.plist"];
-                }
+            
+            if ([[_coordXformer geometry] legal:hex]) {
                 
                 NSLog(@"Touch at screen (%f,%f) hex (%02d%02d) terrain 0x%02x", p.x, p.y, hex.column, hex.row, [[game board] terrainAt:hex]);
                 
                 Unit* unit = [[game oob] unitInHex:hex];
                 [[self infoBarView] showInfoForUnit:unit];
                 [[self view] setNeedsDisplay];
+                
             } else
                 NSLog(@"Touch at screen (%f,%f) isn't a legal hex!", p.x, p.y);
         }
@@ -110,12 +98,28 @@
 }
 
 #pragma mark - Battle@ Callbacks
+
 - (void)unitNowHidden:(Unit *)unit {
     NSLog(@"MapViewController#unitNowHidden:%@, viewLoaded=%d", [unit name], [self isViewLoaded]);
+    
+    CALayer* unitLayer = [UnitView createForUnit:unit];
+    [unitLayer removeFromSuperlayer];
+    
+    [[self view] setNeedsDisplay];
 }
 
 - (void)unitNowSighted:(Unit *)unit {
     NSLog(@"MapViewController#unitNowSighted:%@, viewLoaded=%d", [unit name], [self isViewLoaded]);
+    
+    CGPoint xy = [_coordXformer hexToScreen:[unit location]];
+    xy.x += 25;  // TODO: don't hardcode; should be hexSize / 2
+    xy.y += 25;
+    
+    CALayer* unitLayer = [UnitView createForUnit:unit];
+    [unitLayer setPosition:xy];
+    [[[self view] layer] addSublayer:unitLayer];
+
+    [[self view] setNeedsDisplay];
 }
 
 #pragma mark - Debugging

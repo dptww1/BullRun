@@ -15,6 +15,8 @@
 		CC2E35A216A1135B00788D16 /* CollectionUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB60DE16A04B86006668C2 /* CollectionUtil.m */; };
 		CC2E35A516A25B5A00788D16 /* Terrain.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2E35A416A25B5A00788D16 /* Terrain.m */; };
 		CC2E35A716A5CC2A00788D16 /* map.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC2E35A616A5CC2900788D16 /* map.plist */; };
+		CC2E35AA16A5E25800788D16 /* MapView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2E35A916A5E25800788D16 /* MapView.m */; };
+		CC35E67816A761BB00F9F0B1 /* UnitView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC35E67716A761BB00F9F0B1 /* UnitView.m */; };
 		CC85854D167A72610054E60D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC85854C167A72610054E60D /* UIKit.framework */; };
 		CC85854F167A72610054E60D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC85854E167A72610054E60D /* Foundation.framework */; };
 		CC858551167A72610054E60D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC858550167A72610054E60D /* CoreGraphics.framework */; };
@@ -67,6 +69,10 @@
 		CC2E35A316A25B5A00788D16 /* Terrain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Terrain.h; sourceTree = "<group>"; };
 		CC2E35A416A25B5A00788D16 /* Terrain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Terrain.m; sourceTree = "<group>"; };
 		CC2E35A616A5CC2900788D16 /* map.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = map.plist; sourceTree = "<group>"; };
+		CC2E35A816A5E25800788D16 /* MapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapView.h; sourceTree = "<group>"; };
+		CC2E35A916A5E25800788D16 /* MapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapView.m; sourceTree = "<group>"; };
+		CC35E67616A761BB00F9F0B1 /* UnitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnitView.h; sourceTree = "<group>"; };
+		CC35E67716A761BB00F9F0B1 /* UnitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnitView.m; sourceTree = "<group>"; };
 		CC858548167A72610054E60D /* Bull Run.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bull Run.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC85854C167A72610054E60D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CC85854E167A72610054E60D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -188,6 +194,10 @@
 				CC858553167A72610054E60D /* Supporting Files */,
 				CC0CF3E316989A3C006D902D /* Unit.h */,
 				CC0CF3E416989A3C006D902D /* Unit.m */,
+				CC35E67616A761BB00F9F0B1 /* UnitView.h */,
+				CC35E67716A761BB00F9F0B1 /* UnitView.m */,
+				CC2E35A816A5E25800788D16 /* MapView.h */,
+				CC2E35A916A5E25800788D16 /* MapView.m */,
 			);
 			path = "Bull Run";
 			sourceTree = "<group>";
@@ -444,6 +454,8 @@
 				CCDB60F916A04E96006668C2 /* InfoBarView.m in Sources */,
 				CC2E35A016A0D31400788D16 /* Board.m in Sources */,
 				CC2E35A516A25B5A00788D16 /* Terrain.m in Sources */,
+				CC2E35AA16A5E25800788D16 /* MapView.m in Sources */,
+				CC35E67816A761BB00F9F0B1 /* UnitView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

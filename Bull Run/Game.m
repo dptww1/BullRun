@@ -49,7 +49,7 @@ Game* game;
 #pragma mark - Private Methods
 
 // Performs sighting from the POV of player `side'. In practice will
-// most usually be called with side parameter == userSide attribute,
+// most usually be called with side parameter == _userSide attribute,
 // but doing it this way allows more convenient testing and debugging.
 - (void)doSighting:(PlayerSide)side {
 
@@ -57,6 +57,16 @@ Game* game;
 
     NSArray* friends = [[_oob units] grep:^BOOL(id u) { return [u side] != OtherPlayer(side); }];
     NSArray* enemies = [[_oob units] grep:^BOOL(id u) { return [u side] == OtherPlayer(side); }];
+    
+    [friends enumerateObjectsUsingBlock:^(id friend, NSUInteger idx, BOOL* stop) {
+        if ([[_board geometry] legal:[friend location]]) {
+            if (![friend sighted]) {
+                [friend setSighted:YES];
+                [(BRAppDelegate*)[[UIApplication sharedApplication] delegate] unitNowSighted:friend];
+            }
+        }
+        // doesn't handle case of on-board unit moving off-board
+     }];
 
     [enemies enumerateObjectsUsingBlock:^(id enemy, NSUInteger idx, BOOL* stop) {
         BOOL enemyNowSighted = NO;
@@ -86,6 +96,7 @@ Game* game;
                 [(BRAppDelegate*)[[UIApplication sharedApplication] delegate] unitNowSighted:enemy];
             }
         }
+        // Note that we're not handling the case of an on-board unit moving off-board.
     }];
 }
 
