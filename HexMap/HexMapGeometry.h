@@ -70,4 +70,20 @@
  */
 - (int)numCells;
 
+/**
+ * Returns the direction between two hexes.  Unlike distanceFrom:to:, the order of the parameters
+ * is important!  The directions are:
+ *
+ *     0
+ *  5 ---  1
+ *   /   \
+ *   \   /
+ *  4 ---  2
+ *     3
+ *
+ * where direction 0 points in the direction of the "top" of the map (i.e. row 0).
+ * If from == to direction is 0.
+ */
+- (int)directionFrom:(Hex)from to:(Hex)to;
+
 @end

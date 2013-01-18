@@ -50,6 +50,61 @@
     return YES;
 }
 
+- (int)directionFrom:(Hex)from to:(Hex)to {
+    // Fractions.  You're going to get fractions.  So use floats rather than ints.
+    double fromRow = from.row;
+    double fromCol = from.column;
+    double toRow   = to.row;
+    double toCol   = to.column;
+    
+    // Offset odd columns
+    if ((from.column & 1) && !_firstColumnIsLong)
+        fromRow -= 0.5;
+    
+    if ((to.column & 1) && !_firstColumnIsLong)
+        toRow -= 0.5;
+    
+    // The center of each hex side is at a 60 degree angle from its neighbors.
+    // So the hex spines between directions (0,5), (0,1), (3,4), and (3,2) are at
+    // 30-degree angles from the center.  So if the "to" hex is within 30 degrees
+    // of the y-axis centered on the "from" hex, we want to return a vertical direction
+    // (either 0 or 3 as appropriate).  The easiest way to check this seems to be
+    // by comparing our deltas to a 30-60-90 triangle, which have sides in the given
+    // proportions:
+    //
+    //           1
+    //         -----
+    //         |   /
+    // sqrt(3) |  / 2
+    //         | /
+    //         |/
+    //
+    // The dx value gives us the 1 side. The dy value gives us the sqrt(3) side, but
+    // we have to scale by sqrt(3) because of the geometry of the hexes so that the
+    // units are equivalent.  Side 2 is then just the distance between the two points.
+
+    float dx = toCol - fromCol;
+    float dy = (toRow - fromRow) * sqrt(3.0);
+    
+    float dist = sqrt(dx * dx + dy * dy);
+    
+    // First figure out whether we're going uppish or downish
+    if (dy <= 0) { // then we're going up, more or less
+        
+        if (dist >= 2 * abs(dx))
+            return 0;
+        
+        return dx < 0 ? 5 : 1;
+        
+    } else { // we're going down, more or less
+        
+        if (dist >= 2 * abs(dx))
+            return 3;
+        
+        return dx < 0 ? 4 : 2;
+    }
+}
+
 - (int)distanceFrom:(Hex)from to:(Hex)to {
     if (![self legal:from] || ![self legal:to])
         return -1;
