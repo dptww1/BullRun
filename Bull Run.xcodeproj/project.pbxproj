@@ -17,6 +17,8 @@
 		CC2E35A716A5CC2A00788D16 /* map.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC2E35A616A5CC2900788D16 /* map.plist */; };
 		CC2E35AA16A5E25800788D16 /* MapView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2E35A916A5E25800788D16 /* MapView.m */; };
 		CC35E67816A761BB00F9F0B1 /* UnitView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC35E67716A761BB00F9F0B1 /* UnitView.m */; };
+		CC35E67C16AA275500F9F0B1 /* MoveOrders.m in Sources */ = {isa = PBXBuildFile; fileRef = CC35E67B16AA275500F9F0B1 /* MoveOrders.m */; };
+		CC35E67F16AA35E300F9F0B1 /* MoveOrdersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CC35E67E16AA35E300F9F0B1 /* MoveOrdersTests.m */; };
 		CC85854D167A72610054E60D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC85854C167A72610054E60D /* UIKit.framework */; };
 		CC85854F167A72610054E60D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC85854E167A72610054E60D /* Foundation.framework */; };
 		CC858551167A72610054E60D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC858550167A72610054E60D /* CoreGraphics.framework */; };
@@ -73,6 +75,10 @@
 		CC2E35A916A5E25800788D16 /* MapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapView.m; sourceTree = "<group>"; };
 		CC35E67616A761BB00F9F0B1 /* UnitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnitView.h; sourceTree = "<group>"; };
 		CC35E67716A761BB00F9F0B1 /* UnitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnitView.m; sourceTree = "<group>"; };
+		CC35E67A16AA275500F9F0B1 /* MoveOrders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoveOrders.h; sourceTree = "<group>"; };
+		CC35E67B16AA275500F9F0B1 /* MoveOrders.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoveOrders.m; sourceTree = "<group>"; };
+		CC35E67D16AA35E300F9F0B1 /* MoveOrdersTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoveOrdersTests.h; sourceTree = "<group>"; };
+		CC35E67E16AA35E300F9F0B1 /* MoveOrdersTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoveOrdersTests.m; sourceTree = "<group>"; };
 		CC858548167A72610054E60D /* Bull Run.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bull Run.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC85854C167A72610054E60D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CC85854E167A72610054E60D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -187,17 +193,19 @@
 				CC0CF3E91698CB40006D902D /* BullRun.h */,
 				CCDB60CE169FCA0F006668C2 /* Game.h */,
 				CCDB60CF169FCA0F006668C2 /* Game.m */,
-				CC2E35A316A25B5A00788D16 /* Terrain.h */,
-				CC2E35A416A25B5A00788D16 /* Terrain.m */,
+				CC2E35A816A5E25800788D16 /* MapView.h */,
+				CC2E35A916A5E25800788D16 /* MapView.m */,
+				CC35E67A16AA275500F9F0B1 /* MoveOrders.h */,
+				CC35E67B16AA275500F9F0B1 /* MoveOrders.m */,
 				CC0CF3E616989B50006D902D /* OrderOfBattle.h */,
 				CC0CF3E716989B51006D902D /* OrderOfBattle.m */,
 				CC858553167A72610054E60D /* Supporting Files */,
+				CC2E35A316A25B5A00788D16 /* Terrain.h */,
+				CC2E35A416A25B5A00788D16 /* Terrain.m */,
 				CC0CF3E316989A3C006D902D /* Unit.h */,
 				CC0CF3E416989A3C006D902D /* Unit.m */,
 				CC35E67616A761BB00F9F0B1 /* UnitView.h */,
 				CC35E67716A761BB00F9F0B1 /* UnitView.m */,
-				CC2E35A816A5E25800788D16 /* MapView.h */,
-				CC2E35A916A5E25800788D16 /* MapView.m */,
 			);
 			path = "Bull Run";
 			sourceTree = "<group>";
@@ -221,6 +229,8 @@
 				CC858577167A72610054E60D /* Supporting Files */,
 				CCDB60CB169E0907006668C2 /* HexMapGeometryTests.h */,
 				CCDB60CC169E0907006668C2 /* HexMapGeometryTests.m */,
+				CC35E67D16AA35E300F9F0B1 /* MoveOrdersTests.h */,
+				CC35E67E16AA35E300F9F0B1 /* MoveOrdersTests.m */,
 			);
 			path = "Bull RunTests";
 			sourceTree = "<group>";
@@ -456,6 +466,7 @@
 				CC2E35A516A25B5A00788D16 /* Terrain.m in Sources */,
 				CC2E35AA16A5E25800788D16 /* MapView.m in Sources */,
 				CC35E67816A761BB00F9F0B1 /* UnitView.m in Sources */,
+				CC35E67C16AA275500F9F0B1 /* MoveOrders.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,6 +476,7 @@
 			files = (
 				CCDB60CD169E0907006668C2 /* HexMapGeometryTests.m in Sources */,
 				CCDB60DF16A04B86006668C2 /* CollectionUtil.m in Sources */,
+				CC35E67F16AA35E300F9F0B1 /* MoveOrdersTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,13 +7,17 @@
 //
 
 #import "Unit.h"
+#import "MoveOrders.h"
 
 @implementation Unit
+
+#pragma mark - Initializers
 
 - (id)initWithName:(NSString*)name side:(PlayerSide)side leadership:(int)leadership strength:(int)strength morale:(int)morale location:(Hex)hex {
     _leadership       = leadership;
     _location         = hex;
     _morale           = morale;
+    _moveOrders       = [[MoveOrders alloc] init];
     _name             = name;
     _originalStrength = strength;
     _side             = side;
