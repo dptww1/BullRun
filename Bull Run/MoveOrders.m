@@ -105,4 +105,12 @@
     return HexMake(-1, -1);
 }
 
+- (BOOL)isBacktrack:(Hex)hex {
+    return _count > 1 && HexEquals(hex, _list[_count - 2]) ? YES : NO;
+}
+
+- (void)backtrack {
+    _count -= 1;
+}
+
 @end

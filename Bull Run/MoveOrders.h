@@ -43,4 +43,11 @@
 // the most recently-added hex.
 - (Hex)hex:(int)idx;
 
+// Detects a backtrack situation, where the user chooses hex A, moves to hex B, then back
+// to hex A.  Returns YES if "hex" is the same as the penultimate hex in the orders.
+- (BOOL)isBacktrack:(Hex)hex;
+
+// Handles the situation described in isBacktrack by removing the last order in the list.
+- (void)backtrack;
+
 @end

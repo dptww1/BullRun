@@ -29,7 +29,5 @@
 
 - (void)unitNowSighted:(Unit*)unit;
 - (void)unitNowHidden:(Unit*)unit;
-- (void)addMoveOrderWayPoint:(CGPoint)pt;
-- (void)clearMoveOrderWayPoints;
 
 @end

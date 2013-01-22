@@ -30,6 +30,42 @@
     return (MapView*)[self view];
 }
 
+- (void)addMoveOrderWayPoint:(Hex)h {
+    CGPoint pt = [[self coordXformer] hexToScreen:h];
+    pt.x += [[self coordXformer] hexSize].width  / 2;
+    pt.y += [[self coordXformer] hexSize].height / 2;
+    NSLog(@"addMoveOrderWayPoint:(%d,%d)", (int)pt.x, (int)pt.y);
+    
+    [[self moveOrderWayPoints] addObject:[NSValue valueWithCGPoint:pt]];
+    [[self moveOrderLayer] setNeedsDisplay];
+}
+
+- (void)clearMoveOrderWayPoints {
+    NSLog(@"clearMoveOrderwayPoints");
+    [[self moveOrderWayPoints] removeAllObjects];
+    [[self moveOrderLayer] setNeedsDisplay];
+}
+
+- (void)backtrackMoveOrderWayPoints {
+    NSLog(@"backtrackMoveOrderwayPoints");
+    [[self moveOrderWayPoints] removeLastObject];
+    [[self moveOrderLayer] setNeedsDisplay];
+}
+
+- (void)initMoveOrderWayPoints {
+    [self clearMoveOrderWayPoints];
+    
+    MoveOrders* mos = [[self currentUnit] moveOrders];
+    
+    if ([mos numHexes] == 0)
+        return;
+    
+    [self addMoveOrderWayPoint:[[self currentUnit] location]];
+     
+    for (int i = 0; i < [mos numHexes]; ++i)
+     [self addMoveOrderWayPoint:[mos hex:i]];
+}
+
 @end
 
 @implementation MapViewController
@@ -75,18 +111,6 @@
     CGContextStrokePath(ctx);
     
     UIGraphicsPopContext();
-}
-- (void)addMoveOrderWayPoint:(CGPoint)pt {
-    NSLog(@"addMoveOrderWayPoint:(%d,%d)", (int)pt.x, (int)pt.y);
-    
-    [_moveOrderWayPoints addObject:[NSValue valueWithCGPoint:pt]];
-    [_moveOrderLayer setNeedsDisplay];
-}
-
-- (void)clearMoveOrderWayPoints {
-    NSLog(@"clearMoveOrderwayPoints");
-    [_moveOrderWayPoints removeAllObjects];
-    [_moveOrderLayer setNeedsDisplay];
 }
 
 #pragma mark - Callbacks
@@ -146,7 +170,7 @@
                 [[self view] setNeedsDisplay];
                 _givingNewOrders = NO;
                 
-                // TODO: show orders for current unit
+                [self initMoveOrderWayPoints];
                 
             } else
                 NSLog(@"Touch at screen (%f,%f) isn't a legal hex!", p.x, p.y);
@@ -180,18 +204,21 @@
                 [self clearMoveOrderWayPoints];
                 
                 _givingNewOrders = YES;
-                
-                CGPoint screenPt = [_coordXformer hexToScreen:[_currentUnit location]];
-                screenPt.x += 23;
-                screenPt.y += 23;
             
-                [self addMoveOrderWayPoint:screenPt];
+                [self addMoveOrderWayPoint:[_currentUnit location]];
             }
-                
-            // TODO: Account for backtracking, where h == moveOrders[-2]
-                
+            
+            // Account for backtracking, where h == moveOrders[-2]
+            if ([[_currentUnit moveOrders] isBacktrack:h] ||
+                ((HexEquals([_currentUnit location], h) && [_moveOrderWayPoints count] == 2))) {
+
+                NSLog(@"Orders for %@: BACKTRACK to %02d%02d", [_currentUnit name], h.column, h.row);
+                [[_currentUnit moveOrders] backtrack];
+                [self backtrackMoveOrderWayPoints];
+            }
+            
             // Add this hex on to the end of the list, unless it it's repeat of what's already there
-            if (HexEquals([[_currentUnit moveOrders] lastHex], h)) {
+            else if (HexEquals([[_currentUnit moveOrders] lastHex], h)) {
                 
                 // Don't keep putting on the same hex on the end of the queue
                     
@@ -199,12 +226,7 @@
                     
                 NSLog(@"Orders for %@: ADD %02d%02d", [_currentUnit name], h.column, h.row);
                 [[_currentUnit moveOrders] addHex:h];
-                
-                CGPoint screenPt = [_coordXformer hexToScreen:h];
-                screenPt.x += 23;
-                screenPt.y += 23;
-                
-                [self addMoveOrderWayPoint:screenPt];
+                [self addMoveOrderWayPoint:h];
             }
         }
     }
@@ -216,6 +238,8 @@
     
     NSLog(@"Orders for %@: END", [_currentUnit name]);
     _currentUnit = nil;
+    
+    [self clearMoveOrderWayPoints];
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {

@@ -9,6 +9,10 @@ Map geometry and terrain is read from map.plist.  Terrain can be verified only t
 
 You can click the [USA] and [CSA] buttons to switch sides, and the sighting works correctly
 
+You can drag out orders for units. Backing up works.
+
+Added drop shadows to the units.
+
 h1. To Do
 
 h3. UI/Art
@@ -16,19 +20,13 @@ h3. UI/Art
 * Portraits; what size?
 
 h3. Functionality
+* Info box is no longer in corner of window
 * Info box "Bull Run" label is off-kilter when no unit selected
 * Make info box draggable (or just shiftable from corner to corner?)
 * Hook up remaining Info box fields
 * Mode menu for units
 * Movement orders for units
-** Remember selected unit in MapViewController
-** touch and hold - show orders for unit (if any)
 ** doubleTap - cancel orders for unit
-** drag:
-*** if within unit's hex and no orders => no effect
-*** else compute hex of current screen coordinate:
-**** if same hex as last hex of unit's existing orders, no effect
-**** else add hex to unit's orders
 
 h3. Organization
 * Differentiate between BR-specific files (Terrain, BullRun.h) and Battle@ framework files (Board, Game, Unit)
