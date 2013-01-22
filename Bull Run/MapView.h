@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@class HexMapCoordinateTransformer;
-
 @interface MapView : UIView
 
 @end

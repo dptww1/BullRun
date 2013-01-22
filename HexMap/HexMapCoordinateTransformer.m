@@ -69,7 +69,7 @@
     int row = p.y / [self hexSize].height;
     
     Hex h = HexMake(col, row);
-    return [[self geometry] legal:h] ? h : HexMake(-1, -1);
+    return [_geometry legal:h] ? h : HexMake(-1, -1);
 }
 
 @end

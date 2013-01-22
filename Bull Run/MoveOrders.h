@@ -38,4 +38,9 @@
 // Gets first order in list, removing it if removeOrder == YES. Returns (-1,-1) if no orders.
 - (Hex)firstHexAndRemove:(BOOL)removeOrder;
 
+// Gets hex at given position, which must be in range (0..lastHex).  If outside that range,
+// returns (-1,-1).  Position 0 represents the oldest hex.  Position [lastHex] represents
+// the most recently-added hex.
+- (Hex)hex:(int)idx;
+
 @end

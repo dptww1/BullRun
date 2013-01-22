@@ -20,13 +20,15 @@ static MapViewController* mvController;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
+    game = [[Game alloc] init];
+    
     mvController = [[MapViewController alloc] initWithNibName:nil bundle:nil];
     UINavigationController* navController = [[UINavigationController alloc] initWithRootViewController:mvController];
     [navController setNavigationBarHidden:YES];
     [[self window] setRootViewController:navController];
     
-    game = [[Game alloc] init];
-    
+    [game doSighting:CSA];
+
     [self.window makeKeyAndVisible];
 
     return YES;

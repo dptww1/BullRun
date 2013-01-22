@@ -19,6 +19,7 @@
 @property (strong, readonly) OrderOfBattle* oob;
 
 - (void)hackUserSide:(PlayerSide)newSide;
+- (void)doSighting:(PlayerSide)side;
 
 @end
 

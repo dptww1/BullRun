@@ -34,8 +34,6 @@ Game* game;
         _userSide = CSA;
         _board = [Board createFromFile:[[NSBundle mainBundle] pathForResource:@"map" ofType:@"plist"]];
         _oob = [OrderOfBattle createFromFile:[[NSBundle mainBundle] pathForResource:@"units" ofType:@"plist"]];
-        
-        [self doSighting:_userSide];
     }
 
     return self;

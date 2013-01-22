@@ -17,8 +17,19 @@
 
 @property (nonatomic, strong) HexMapCoordinateTransformer* coordXformer;
 @property (nonatomic, weak)   InfoBarView*                 infoBarView;
+@property (nonatomic, weak)   Unit*                        currentUnit;
+@property (nonatomic, weak)   CALayer*                     moveOrderLayer;
+@property (nonatomic, strong) NSMutableArray*              moveOrderWayPoints;
+
+// If YES, then the user's touch has moved outside the current hex and
+// so we are setting new movement orders.  This means that new touches
+// (drags, really) into the current unit's original hex are treated like
+// any other hex.
+@property (nonatomic)         BOOL                         givingNewOrders;
 
 - (void)unitNowSighted:(Unit*)unit;
 - (void)unitNowHidden:(Unit*)unit;
+- (void)addMoveOrderWayPoint:(CGPoint)pt;
+- (void)clearMoveOrderWayPoints;
 
 @end

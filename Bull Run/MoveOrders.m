@@ -98,4 +98,11 @@
     return hex;
 }
 
+- (Hex)hex:(int)idx {
+    if (0 <= idx && idx < _count)
+        return _list[idx];
+    
+    return HexMake(-1, -1);
+}
+
 @end
