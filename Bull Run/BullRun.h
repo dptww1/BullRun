@@ -13,4 +13,6 @@ typedef enum { CSA, USA } PlayerSide;
 
 #define OtherPlayer(SIDE) ((SIDE) == CSA ? USA : CSA)
 
+typedef enum { CHARGE, ATTACK, SKIRMISH, DEFEND, WITHDRAW, ROUTED } Mode;
+
 #endif

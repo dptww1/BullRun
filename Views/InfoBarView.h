@@ -19,5 +19,7 @@
 }
 
 - (void)showInfoForUnit:(Unit*)unit;
+- (IBAction)changeMode:(id)sender;
+
 
 @end

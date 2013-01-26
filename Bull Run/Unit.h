@@ -28,6 +28,7 @@
 @property            Hex             location;
 @property            BOOL            sighted;           // if TRUE, is visible to the enemy
 @property (strong)   MoveOrders*     moveOrders;
+@property            Mode            mode;
 
 #pragma mark - Initializers
 

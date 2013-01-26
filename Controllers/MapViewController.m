@@ -77,8 +77,8 @@
     
     if (self) {
         _coordXformer = [[HexMapCoordinateTransformer alloc] initWithGeometry:[[game board] geometry]
-                                                                       origin:CGPointMake(66, 59)
-                                                                      hexSize:CGSizeMake(50, 51)];
+                                                                       origin:CGPointMake(67, 58)
+                                                                      hexSize:CGSizeMake(51, 49.25)];
         _currentUnit = nil;
         _moveOrderWayPoints = [NSMutableArray arrayWithCapacity:20];
     }
@@ -92,7 +92,7 @@
     
     UIGraphicsPushContext(ctx);
     
-    CGContextSetLineWidth(ctx, 3.0);
+    CGContextSetLineWidth(ctx, 7.0);
     CGContextSetLineCap(ctx, kCGLineCapRound);
     //    [[UIColor colorWithRed:0.2f green:0.2f blue:0.2f alpha:1.0f] set];
     [[UIColor blackColor] set];

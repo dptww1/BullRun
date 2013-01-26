@@ -16,6 +16,7 @@
 - (id)initWithName:(NSString*)name side:(PlayerSide)side leadership:(int)leadership strength:(int)strength morale:(int)morale location:(Hex)hex {
     _leadership       = leadership;
     _location         = hex;
+    _mode             = DEFEND;
     _morale           = morale;
     _moveOrders       = [[MoveOrders alloc] init];
     _name             = name;
