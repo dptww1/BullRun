@@ -22,11 +22,12 @@ h3. UI/Art
 * Portraits; what size?
 
 h3. Functionality
-* Info box is no completely in corner of window
+* Movement lines should be in red/blue color (and need arrow head?)
 * Make info box draggable (or just shiftable from corner to corner?)
 * Hook up Mode popup-menu
 * Movement orders for units
 ** doubleTap - cancel orders for unit
+* Touching outside hex area should show status bar
 
 h3. Organization
 * Differentiate between BR-specific files (Terrain, BullRun.h) and Battle@ framework files (Board, Game, Unit)

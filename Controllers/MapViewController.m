@@ -78,9 +78,10 @@
     if (self) {
         _coordXformer = [[HexMapCoordinateTransformer alloc] initWithGeometry:[[game board] geometry]
                                                                        origin:CGPointMake(67, 58)
-                                                                      hexSize:CGSizeMake(51, 49.25)];
+                                                                      hexSize:CGSizeMake(51, 51)];
         _currentUnit = nil;
         _moveOrderWayPoints = [NSMutableArray arrayWithCapacity:20];
+        [self setWantsFullScreenLayout:YES];
     }
     
     return self;
@@ -135,10 +136,11 @@
         
         InfoBarView* v = infoBarObjects[0];
         
-        CGRect vFrame = [v frame];
-        vFrame.origin.x = [[self view] frame].size.height - [v frame].size.width;
-        [v setFrame:vFrame];
+        CGSize vSize = [v bounds].size;
+        CGSize parentViewSize = [[self view] bounds].size;
         
+        [v setCenter:CGPointMake(parentViewSize.height - vSize.width / 2.0, vSize.height / 2.0)];
+
         [self setInfoBarView:v];
         
         [[self view] addSubview:v];

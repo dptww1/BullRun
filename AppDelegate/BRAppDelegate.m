@@ -25,6 +25,7 @@ static MapViewController* mvController;
     mvController = [[MapViewController alloc] initWithNibName:nil bundle:nil];
     UINavigationController* navController = [[UINavigationController alloc] initWithRootViewController:mvController];
     [navController setNavigationBarHidden:YES];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
     [[self window] setRootViewController:navController];
     
     [game doSighting:CSA];
