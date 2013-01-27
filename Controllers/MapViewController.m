@@ -109,6 +109,9 @@
         NSLog(@"            (%d,%d)", (int)p.x, (int)p.y);
     }
     
+    CGContextSetStrokeColorWithColor(ctx, [_currentUnit side] == CSA
+                                            ? [[UIColor colorWithRed:0.7f green:0.3f blue:0.3f alpha:1.0f] CGColor]
+                                            : [[UIColor colorWithRed:0.3f green:0.3f blue:0.7f alpha:1.0f] CGColor]);
     CGContextStrokePath(ctx);
     
     UIGraphicsPopContext();
