@@ -140,7 +140,7 @@
         CGSize parentViewSize = [[self view] bounds].size;
         
         [v setCenter:CGPointMake(parentViewSize.height - vSize.width / 2.0, vSize.height / 2.0)];
-
+        
         [self setInfoBarView:v];
         
         [[self view] addSubview:v];

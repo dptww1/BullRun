@@ -15,6 +15,8 @@ Added drop shadows to the units.
 
 Mode menu button shows up, but it still isn't hooked up yet.
 
+Info box can be swapped between upper right and lower left corners.
+
 h1. To Do
 
 h3. UI/Art
@@ -23,7 +25,6 @@ h3. UI/Art
 
 h3. Functionality
 * Movement lines should be in red/blue color (and need arrow head?)
-* Make info box draggable (or just shiftable from corner to corner?)
 * Hook up Mode popup-menu
 * Movement orders for units
 ** doubleTap - cancel orders for unit

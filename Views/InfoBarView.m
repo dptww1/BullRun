@@ -46,8 +46,29 @@ static BOOL modeLabelIsChoosable[] = {
     }
 }
 
+- (IBAction)moveToLowerLeftCorner:(id)sender {
+    CGSize parentSize = [[self superview] bounds].size;
+    CGSize mySize = [self bounds].size;
+    
+    CGPoint newCenter = CGPointMake(mySize.width / 2.0f, parentSize.height - mySize.height / 2.0f);
+    
+    [UIView animateWithDuration:0.5 animations:^{
+            [self setCenter:newCenter];
+        }];
+}
+
+- (IBAction)moveToUpperRight:(id)sender {
+    CGSize parentSize = [[self superview] bounds].size;
+    CGSize mySize = [self bounds].size;
+    
+    CGPoint newCenter = CGPointMake(parentSize.width - mySize.width / 2.0f, mySize.height / 2.0f);
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        [self setCenter:newCenter];
+    }];
+}
+
 - (IBAction)changeMode:(id)sender {
-    NSLog(@"changeMode!");
     UIActionSheet* menu = [[UIActionSheet alloc] initWithTitle:nil
                                                       delegate:nil
                                              cancelButtonTitle:nil
