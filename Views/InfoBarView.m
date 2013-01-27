@@ -7,6 +7,7 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
+#import <UIKit/UIKit.h>
 #import "InfoBarView.h"
 #import "Unit.h"
 
@@ -38,11 +39,15 @@ static BOOL modeLabelIsChoosable[] = {
         [unitMode setHidden:NO];
         [unitMode setTitle:modeLabelStrings[[unit mode]] forState:UIControlStateNormal];
         
+        currentUnit = unit;
+        
     } else { // no unit selected, just erase the info box
         [unitName setText:@""];
         [originalStrength setText:@""];
         [currentStrength setHidden:YES];
         [unitMode setHidden:YES];
+        
+        currentUnit = nil;
     }
 }
 
@@ -79,7 +84,16 @@ static BOOL modeLabelIsChoosable[] = {
         if (modeLabelIsChoosable[i])
             [menu addButtonWithTitle:modeLabelStrings[i]];
     
+    [menu setDelegate:self];
+    
     [menu showFromRect:[unitMode frame] inView:self animated:YES];
+}
+
+#pragma mark - UIActionSheetDelegate Implementation
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    [unitMode setTitle:modeLabelStrings[buttonIndex] forState:UIControlStateNormal];
+    [currentUnit setMode:(Mode)buttonIndex];
 }
 
 @end

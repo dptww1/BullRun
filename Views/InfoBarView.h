@@ -10,12 +10,14 @@
 
 @class Unit;
 
-@interface InfoBarView : UIView {
+@interface InfoBarView : UIView <UIActionSheetDelegate> {
     __weak IBOutlet UILabel*        originalStrength;
     __weak IBOutlet UIProgressView* currentStrength;
     __weak IBOutlet UIImageView*    unitImage;
     __weak IBOutlet UILabel*        unitName;
     __weak IBOutlet UIButton*       unitMode;
+    
+    Unit* currentUnit;
 }
 
 - (void)showInfoForUnit:(Unit*)unit;
