@@ -13,7 +13,9 @@
 
 #pragma mark - Initializers
 
-- (id)initWithName:(NSString*)name side:(PlayerSide)side leadership:(int)leadership strength:(int)strength morale:(int)morale location:(Hex)hex {
+- (id)initWithName:(NSString*)name side:(PlayerSide)side leadership:(int)leadership strength:(int)strength morale:(int)morale location:(Hex)hex imageX:(int)xidx imageY:(int)yidx {
+    _imageXIdx        = xidx;
+    _imageYIdx        = yidx;
     _leadership       = leadership;
     _location         = hex;
     _mode             = DEFEND;

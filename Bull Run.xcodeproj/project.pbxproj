@@ -19,6 +19,7 @@
 		CC35E67F16AA35E300F9F0B1 /* MoveOrdersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CC35E67E16AA35E300F9F0B1 /* MoveOrdersTests.m */; };
 		CC35E68416AF5EE700F9F0B1 /* MapView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC35E68116AF5EE700F9F0B1 /* MapView.m */; };
 		CC35E68516AF5EE700F9F0B1 /* UnitView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC35E68316AF5EE700F9F0B1 /* UnitView.m */; };
+		CC35E68716B5CE0A00F9F0B1 /* portraits.png in Resources */ = {isa = PBXBuildFile; fileRef = CC35E68616B5CE0A00F9F0B1 /* portraits.png */; };
 		CC85854D167A72610054E60D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC85854C167A72610054E60D /* UIKit.framework */; };
 		CC85854F167A72610054E60D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC85854E167A72610054E60D /* Foundation.framework */; };
 		CC858551167A72610054E60D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC858550167A72610054E60D /* CoreGraphics.framework */; };
@@ -79,6 +80,7 @@
 		CC35E68116AF5EE700F9F0B1 /* MapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapView.m; sourceTree = "<group>"; };
 		CC35E68216AF5EE700F9F0B1 /* UnitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnitView.h; sourceTree = "<group>"; };
 		CC35E68316AF5EE700F9F0B1 /* UnitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnitView.m; sourceTree = "<group>"; };
+		CC35E68616B5CE0A00F9F0B1 /* portraits.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = portraits.png; sourceTree = "<group>"; };
 		CC858548167A72610054E60D /* Bull Run.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bull Run.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC85854C167A72610054E60D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CC85854E167A72610054E60D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -310,6 +312,7 @@
 		CCDB60FB16A04EF2006668C2 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				CC35E68616B5CE0A00F9F0B1 /* portraits.png */,
 				CCDB60FC16A04EF2006668C2 /* map.png */,
 				CCDB60FD16A04EF2006668C2 /* src */,
 			);
@@ -416,6 +419,7 @@
 				CCDB610616A04EF2006668C2 /* InfoBarView.xib in Resources */,
 				CCDB610716A04EF2006668C2 /* MapViewController.xib in Resources */,
 				CC2E35A716A5CC2A00788D16 /* map.plist in Resources */,
+				CC35E68716B5CE0A00F9F0B1 /* portraits.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

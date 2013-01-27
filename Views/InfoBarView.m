@@ -32,12 +32,19 @@ static BOOL modeLabelIsChoosable[] = {
 
 - (void)showInfoForUnit:(Unit*)unit {
     if (unit) {
+        [currentStrength setHidden:NO];
+        [unitMode setHidden:NO];
+        [unitImage setHidden:NO];
+        
+        
         [unitName setText:[unit name]];
         [originalStrength setText:[[NSString alloc] initWithFormat:@"%d", [unit originalStrength]]];
         [currentStrength setProgress:(float)[unit strength] / (float)[unit originalStrength]];
-        [currentStrength setHidden:NO];
-        [unitMode setHidden:NO];
         [unitMode setTitle:modeLabelStrings[[unit mode]] forState:UIControlStateNormal];
+        
+        CGSize cellSize = CGSizeMake(54.0, 64.0);  // the size of one image cell in the source image
+        CGSize normalizedSize = CGSizeMake(cellSize.width / [unitImage bounds].size.width, cellSize.height / [unitImage bounds].size.height);
+        [[unitImage layer] setContentsRect:CGRectMake(54.0 * [unit imageXIdx]/702.0, 0, normalizedSize.width, normalizedSize.height)];
         
         currentUnit = unit;
         
@@ -46,6 +53,7 @@ static BOOL modeLabelIsChoosable[] = {
         [originalStrength setText:@""];
         [currentStrength setHidden:YES];
         [unitMode setHidden:YES];
+        [unitImage setHidden:YES];
         
         currentUnit = nil;
     }

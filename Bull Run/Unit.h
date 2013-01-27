@@ -21,6 +21,8 @@
 @property (readonly) int             originalStrength;
 @property (readonly) int             leadership;        // represents leadership, initiative, training; higher numbers are better
 @property (readonly) int             morale;            // percentage of casualties which wrecks a unit (so higher numbers are better)
+@property (readonly) int             imageXIdx;         // horizontal index (in cells, not pixels) of portrait image
+@property (readonly) int             imageYIdx;         // vertical index (in cells, not pixels) or portrait image
 
 #pragma mark - Modifiable Properties
 
@@ -32,5 +34,5 @@
 
 #pragma mark - Initializers
 
-- (id)initWithName:(NSString*)name side:(PlayerSide)side leadership:(int)leadership strength:(int)strength morale:(int)morale location:(Hex)hex;
+- (id)initWithName:(NSString*)name side:(PlayerSide)side leadership:(int)leadership strength:(int)strength morale:(int)morale location:(Hex)hex imageX:(int)xidx imageY:(int)yidx;
 @end

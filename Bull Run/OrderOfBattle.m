@@ -30,7 +30,9 @@
                                      leadership:[[d valueForKey:@"leadership"] intValue]
                                        strength:[[d valueForKey:@"strength"] intValue]
                                          morale:[[d valueForKey:@"morale"] intValue]
-                                        location:HexMake([[d valueForKey:@"location_col"] intValue], [[d valueForKey:@"location_row"] intValue])];
+                                        location:HexMake([[d valueForKey:@"location_col"] intValue], [[d valueForKey:@"location_row"] intValue])
+                                          imageX:[[d valueForKey:@"imageX"] intValue]
+                                          imageY:[[d valueForKey:@"imageY"] intValue]];
             
             [realUnitList addObject:u];
         }];
@@ -55,6 +57,8 @@
                                                    [u name],              @"name",
                            [NSNumber numberWithInt:[u originalStrength]], @"original_strength",
                            [NSNumber numberWithInt:[u strength]],         @"strength",
+                           [NSNumber numberWithInt:[u imageXIdx]],        @"imageX",
+                           [NSNumber numberWithInt:[u imageYIdx]],        @"imageY",
                            nil];
         [ocArray addObject:d];
     }];
