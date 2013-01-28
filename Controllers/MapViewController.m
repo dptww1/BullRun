@@ -92,11 +92,9 @@
         return;
     
     UIGraphicsPushContext(ctx);
-    
+
     CGContextSetLineWidth(ctx, 7.0);
     CGContextSetLineCap(ctx, kCGLineCapRound);
-    //    [[UIColor colorWithRed:0.2f green:0.2f blue:0.2f alpha:1.0f] set];
-    [[UIColor blackColor] set];
     
     CGPoint start = [(NSValue *)[_moveOrderWayPoints objectAtIndex:0] CGPointValue];
     CGContextMoveToPoint(ctx, start.x, start.y);
@@ -124,6 +122,12 @@
     
     if (!_moveOrderLayer) {
         CGRect bounds = [[self view] bounds];
+        
+        // The sub layer does not seem to inherit the orientation of the parent view, so we have to rotate the bounds,
+        // which is equivalent to just exchanging the height and the width;
+        float tmp = bounds.size.height;
+        bounds.size.height = bounds.size.width;
+        bounds.size.width = tmp;
         
         _moveOrderLayer = [CALayer layer];
         [_moveOrderLayer setBounds:bounds];

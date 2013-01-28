@@ -21,7 +21,7 @@ h1. To Do
 
 h3. UI/Art
 * Real map
-* Icons
+* Unit Icons
 * Attack animations (smoke?)
 
 h3. Functionality
@@ -29,7 +29,6 @@ h3. Functionality
 * Movement orders for units
 ** doubleTap - cancel orders for unit
 * Touching outside hex area should show status bar
-* Movement lines are cut off in the last three columns -- why?
 
 h3. Organization
 * Differentiate between BR-specific files (Terrain, BullRun.h) and Battle@ framework files (Board, Game, Unit)
