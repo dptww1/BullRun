@@ -1,11 +1,11 @@
 h1. Current State
 
-Unit lookup data is complete; you can tap on a square and the unit's name and original strength
-show up in the info box.
+Unit lookup data is complete; you can tap on a square and the unit's name, portrait, mode,
+and original strength show up in the info box.
 
 Units are configured in units.plist.
 
-Map geometry and terrain is read from map.plist.  Terrain can be verified only through the log window.
+Map geometry and terrain is read from map.plist.  (Terrain can be verified only through the log window.)
 
 You can click the [USA] and [CSA] buttons to switch sides, and the sighting works correctly.
 
@@ -21,13 +21,15 @@ h1. To Do
 
 h3. UI/Art
 * Real map
-* Portraits; what size?
+* Icons
+* Attack animations (smoke?)
 
 h3. Functionality
 * Movement lines need an arrow head
 * Movement orders for units
 ** doubleTap - cancel orders for unit
 * Touching outside hex area should show status bar
+* Movement lines are cut off in the last three columns -- why?
 
 h3. Organization
 * Differentiate between BR-specific files (Terrain, BullRun.h) and Battle@ framework files (Board, Game, Unit)

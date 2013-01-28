@@ -147,6 +147,8 @@
         [self setInfoBarView:v];
         
         [[self view] addSubview:v];
+        
+        [v showInfoForUnit:nil];
     }
 }
 

@@ -41,11 +41,11 @@ static BOOL modeLabelIsChoosable[] = {
         [originalStrength setText:[[NSString alloc] initWithFormat:@"%d", [unit originalStrength]]];
         [currentStrength setProgress:(float)[unit strength] / (float)[unit originalStrength]];
         [unitMode setTitle:modeLabelStrings[[unit mode]] forState:UIControlStateNormal];
-        
-        CGSize cellSize = CGSizeMake(54.0, 64.0);  // the size of one image cell in the source image
-        CGSize normalizedSize = CGSizeMake(cellSize.width / [unitImage bounds].size.width, cellSize.height / [unitImage bounds].size.height);
-        [[unitImage layer] setContentsRect:CGRectMake(54.0 * [unit imageXIdx]/702.0, 0, normalizedSize.width, normalizedSize.height)];
-        
+
+        // Cell size: 55w x 64h
+        [[unitImage layer] setContentsRect:CGRectMake(54.0 * [unit imageXIdx] / 702.0,  // TODO: get rid of constant; this is width of source image
+                                                      64.0 * [unit imageYIdx] / 128.0,  // TODO: get rid of constant; this is height of source image
+                                                      54.0 / 702.0, 0.5)];
         currentUnit = unit;
         
     } else { // no unit selected, just erase the info box
