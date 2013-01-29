@@ -43,7 +43,6 @@
 		CCDB60F516A04E43006668C2 /* HexMapGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB60F216A04E43006668C2 /* HexMapGeometry.m */; };
 		CCDB60F916A04E96006668C2 /* InfoBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB60F816A04E96006668C2 /* InfoBarView.m */; };
 		CCDB610316A04EF2006668C2 /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = CCDB60FC16A04EF2006668C2 /* map.png */; };
-		CCDB610416A04EF2006668C2 /* map.pspimage in Resources */ = {isa = PBXBuildFile; fileRef = CCDB60FE16A04EF2006668C2 /* map.pspimage */; };
 		CCDB610516A04EF2006668C2 /* units.plist in Resources */ = {isa = PBXBuildFile; fileRef = CCDB60FF16A04EF2006668C2 /* units.plist */; };
 		CCDB610616A04EF2006668C2 /* InfoBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCDB610116A04EF2006668C2 /* InfoBarView.xib */; };
 		CCDB610716A04EF2006668C2 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCDB610216A04EF2006668C2 /* MapViewController.xib */; };
@@ -117,7 +116,6 @@
 		CCDB60F716A04E96006668C2 /* InfoBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoBarView.h; sourceTree = "<group>"; };
 		CCDB60F816A04E96006668C2 /* InfoBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoBarView.m; sourceTree = "<group>"; };
 		CCDB60FC16A04EF2006668C2 /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
-		CCDB60FE16A04EF2006668C2 /* map.pspimage */ = {isa = PBXFileReference; lastKnownFileType = file; path = map.pspimage; sourceTree = "<group>"; };
 		CCDB60FF16A04EF2006668C2 /* units.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = units.plist; sourceTree = "<group>"; };
 		CCDB610116A04EF2006668C2 /* InfoBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoBarView.xib; sourceTree = "<group>"; };
 		CCDB610216A04EF2006668C2 /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
@@ -314,17 +312,8 @@
 			children = (
 				CC35E68616B5CE0A00F9F0B1 /* portraits.png */,
 				CCDB60FC16A04EF2006668C2 /* map.png */,
-				CCDB60FD16A04EF2006668C2 /* src */,
 			);
 			path = Images;
-			sourceTree = "<group>";
-		};
-		CCDB60FD16A04EF2006668C2 /* src */ = {
-			isa = PBXGroup;
-			children = (
-				CCDB60FE16A04EF2006668C2 /* map.pspimage */,
-			);
-			path = src;
 			sourceTree = "<group>";
 		};
 		CCDB610016A04EF2006668C2 /* XIBs */ = {
@@ -414,7 +403,6 @@
 				CC858563167A72610054E60D /* Default-568h@2x.png in Resources */,
 				CC0CF381168A4E72006D902D /* README.textile in Resources */,
 				CCDB610316A04EF2006668C2 /* map.png in Resources */,
-				CCDB610416A04EF2006668C2 /* map.pspimage in Resources */,
 				CCDB610516A04EF2006668C2 /* units.plist in Resources */,
 				CCDB610616A04EF2006668C2 /* InfoBarView.xib in Resources */,
 				CCDB610716A04EF2006668C2 /* MapViewController.xib in Resources */,
