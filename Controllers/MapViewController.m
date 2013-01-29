@@ -82,6 +82,11 @@
         _currentUnit = nil;
         _moveOrderWayPoints = [NSMutableArray arrayWithCapacity:20];
         [self setWantsFullScreenLayout:YES];
+        
+        UITapGestureRecognizer* tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
+        [tapRecognizer setNumberOfTapsRequired:2];
+        
+        [[self view] addGestureRecognizer:tapRecognizer];
     }
     
     return self;
@@ -145,9 +150,8 @@
         
         CGSize vSize = [v bounds].size;
         CGSize parentViewSize = [[self view] bounds].size;
-        
         [v setCenter:CGPointMake(parentViewSize.height - vSize.width / 2.0, vSize.height / 2.0)];
-        
+
         [self setInfoBarView:v];
         
         [[self view] addSubview:v];
@@ -159,6 +163,14 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)doubleTap:(UIGestureRecognizer*)gr {
+    NSLog(@"Double tap!");
+    if (_currentUnit) {
+        [self clearMoveOrderWayPoints];
+        [[_currentUnit moveOrders] clear];
+    }
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {

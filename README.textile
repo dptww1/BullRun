@@ -9,7 +9,8 @@ Map geometry and terrain is read from map.plist.  (Terrain can be verified only 
 
 You can click the [USA] and [CSA] buttons to switch sides, and the sighting works correctly.
 
-You can drag out orders for units; the line is in the unit's color. Backing up works.
+You can drag out orders for units; the line is in the unit's color. Backing up works.  Double tapping cancels
+current orders.
 
 Added drop shadows to the units.
 
@@ -26,9 +27,8 @@ h3. UI/Art
 
 h3. Functionality
 * Movement lines need an arrow head
-* Movement orders for units
-** doubleTap - cancel orders for unit
 * Touching outside hex area should show status bar
+* Must guard against user dragging fast enough that move orders end up with non-adjacent hexes
 
 h3. Organization
 * Differentiate between BR-specific files (Terrain, BullRun.h) and Battle@ framework files (Board, Game, Unit)
