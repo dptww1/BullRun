@@ -138,7 +138,7 @@
         [_moveOrderLayer setBounds:bounds];
         [_moveOrderLayer setPosition:CGPointMake(CGRectGetMidX(bounds), CGRectGetMidY(bounds))];
         [_moveOrderLayer setDelegate:self];
-        [_moveOrderLayer setZPosition:10.0f];
+        [_moveOrderLayer setZPosition:100.0f];
         
         [[[self view] layer] addSublayer:_moveOrderLayer];
     }

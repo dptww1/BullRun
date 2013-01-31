@@ -38,7 +38,7 @@ static BOOL modeLabelIsChoosable[] = {
         
         
         [unitName setText:[unit name]];
-        [originalStrength setText:[[NSString alloc] initWithFormat:@"%d", [unit originalStrength]]];
+        [originalStrength setText:[[NSString alloc] initWithFormat:@"%d men", [unit originalStrength]]];
         [currentStrength setProgress:(float)[unit strength] / (float)[unit originalStrength]];
         [unitMode setTitle:modeLabelStrings[[unit mode]] forState:UIControlStateNormal];
 

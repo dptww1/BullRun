@@ -22,6 +22,7 @@ h1. To Do
 
 h3. UI/Art
 * Real map
+* App Icons
 * Unit Icons
 * Attack animations (smoke?)
 
