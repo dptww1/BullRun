@@ -7,13 +7,14 @@
 //
 
 #import "BRAppDelegate.h"
-#import "Game.h"
-#import "BullRun.h"
-#import "OrderOfBattle.h"
-#import "CollectionUtil.h"
-#import "Unit.h"
-#import "Terrain.h"
 #import "Board.h"
+#import "BullRun.h"
+#import "CollectionUtil.h"
+#import "Game.h"
+#import "MoveOrders.h"
+#import "OrderOfBattle.h"
+#import "Terrain.h"
+#import "Unit.h"
 
 Game* game;
 
@@ -42,6 +43,52 @@ Game* game;
 - (void)hackUserSide:(PlayerSide)side {
     _userSide = side;
     [self doSighting:_userSide];
+}
+
+#pragma mark - Public Methods
+
+- (void)doNextTurn {
+    // TODO: call AI
+    
+    NSArray* sortedUnits = [self sortUnits];
+    
+    // All units get 5 new MPs
+    for (Unit* u in sortedUnits) {
+        [u setMps:[u mps] + 5];
+    }
+    
+    // Because lower-rated units can block higher-rated units, we have to keep processing until no moves were possible.
+    BOOL atLeastOneUnitMoved = YES;
+    while (atLeastOneUnitMoved) {
+        atLeastOneUnitMoved = NO;
+        
+        for (Unit* u in sortedUnits) {
+            if (![[_board geometry] legal:[u location]] || ![u hasOrders])
+                continue;
+            
+            Hex nextHex = [[u moveOrders] firstHexAndRemove:NO];
+            
+            // Is it occupied?
+            Unit* blocker = [_oob unitInHex:nextHex];
+            if (blocker) {
+                if ([u friends:blocker]) // friendly blocker
+                    ;// TODO
+                else // enemy blocker: combat!
+                    ;// TODO
+                
+            } else {  // destination hex is empty
+                
+                // TODO: terrain cost
+                // TODO: ZOC problem
+                
+                [(BRAppDelegate*)[[UIApplication sharedApplication] delegate] moveUnit:u to:nextHex];
+                [[u moveOrders] firstHexAndRemove:YES];
+                [u setLocation:nextHex];
+            }
+        }
+    }
+    
+    // TODO: compute whether game over
 }
 
 #pragma mark - Private Methods
@@ -123,6 +170,30 @@ Game* game;
     }];
     
     return sighted;
+}
+
+- (NSArray*)sortUnits {
+    return [[_oob units] sortedArrayWithOptions:NSSortStable
+                                usingComparator:^(id obj1, id obj2) {
+                                    Unit* u1 = obj1;
+                                    Unit* u2 = obj2;
+                                    
+                                    // Leftover MPs are the first ordering determinant
+                                    if ([u1 mps] > [u2 mps])
+                                        return NSOrderedAscending;
+                                    
+                                    else if ([u1 mps] < [u2 mps])
+                                        return NSOrderedDescending;
+                                    
+                                    // When MPs are equal, Leadership is the tiebreaker
+                                    if ([u1 leadership] > [u2 leadership])
+                                        return NSOrderedAscending;
+                                    
+                                    else if ([u1 leadership] < [u2 leadership])
+                                        return NSOrderedDescending;
+                                    
+                                    return NSOrderedSame;
+                                }];
 }
 
 @end

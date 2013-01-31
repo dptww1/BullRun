@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Hex.h"
 
 @class Unit;
 
@@ -16,4 +17,5 @@
 
 - (void)unitNowSighted:(Unit*)unit;
 - (void)unitNowHidden:(Unit*)unit;
+- (void)moveUnit:(Unit*)unit to:(Hex)hex;
 @end

@@ -67,4 +67,8 @@ static MapViewController* mvController;
     [mvController unitNowHidden:unit];
 }
 
+- (void)moveUnit:(Unit*)unit to:(Hex)hex {
+    [mvController moveUnit:unit to:hex];
+}
+
 @end

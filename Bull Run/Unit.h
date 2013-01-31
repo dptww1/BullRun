@@ -31,8 +31,18 @@
 @property            BOOL            sighted;           // if TRUE, is visible to the enemy
 @property (strong)   MoveOrders*     moveOrders;
 @property            Mode            mode;
+@property            int             mps;               // Movement points
 
 #pragma mark - Initializers
 
 - (id)initWithName:(NSString*)name side:(PlayerSide)side leadership:(int)leadership strength:(int)strength morale:(int)morale location:(Hex)hex imageX:(int)xidx imageY:(int)yidx;
+
+#pragma mark - Convenience Methods
+
+// Returns YES if the unit has at least one movement order
+- (BOOL)hasOrders;
+
+// Returns YES if the receiver is on the same side as 'other'
+- (BOOL)friends:(Unit*)other;
+
 @end

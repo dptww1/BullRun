@@ -82,7 +82,7 @@
 }
 
 - (NSArray*)unitsForSide:(PlayerSide)side {
-    return nil;
+    return nil; // TODO:
 }
 
 @end

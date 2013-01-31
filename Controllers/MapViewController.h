@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Hex.h"
 
 @class HexMapCoordinateTransformer;
 @class InfoBarView;
@@ -29,5 +30,6 @@
 
 - (void)unitNowSighted:(Unit*)unit;
 - (void)unitNowHidden:(Unit*)unit;
+- (void)moveUnit:(Unit*)unit to:(Hex)hex;
 
 @end

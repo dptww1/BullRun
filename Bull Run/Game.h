@@ -20,6 +20,7 @@
 
 - (void)hackUserSide:(PlayerSide)newSide;
 - (void)doSighting:(PlayerSide)side;
+- (void)doNextTurn;
 
 @end
 

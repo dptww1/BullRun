@@ -8,6 +8,7 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import <UIKit/UIKit.h>
+#import "Game.h"
 #import "InfoBarView.h"
 #import "Unit.h"
 
@@ -95,6 +96,10 @@ static BOOL modeLabelIsChoosable[] = {
     [menu setDelegate:self];
     
     [menu showFromRect:[unitMode frame] inView:self animated:YES];
+}
+
+- (IBAction)nextTurn:(id)sender {
+    [game doNextTurn];
 }
 
 #pragma mark - UIActionSheetDelegate Implementation

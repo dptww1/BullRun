@@ -294,6 +294,17 @@
     [[self view] setNeedsDisplay];
 }
 
+- (void)moveUnit:(Unit *)unit to:(Hex)hex {
+    NSLog(@"Moving %@ to %02d%02d", [unit name], hex.column, hex.row);
+    
+    CGPoint dest = [_coordXformer hexToScreen:hex];
+    dest.x += [_coordXformer hexSize].width / 2.0;
+    dest.y += [_coordXformer hexSize].height / 2.0;
+    
+    UnitView* v = [UnitView createForUnit:unit];
+    [v setPosition:dest];
+}
+
 #pragma mark - Debugging
 
 - (IBAction)playerIsUsa:(id)sender {

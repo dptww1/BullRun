@@ -21,13 +21,24 @@
     _mode             = DEFEND;
     _morale           = morale;
     _moveOrders       = [[MoveOrders alloc] init];
+    _mps              = 0;
     _name             = name;
     _originalStrength = strength;
     _side             = side;
     _sighted          = NO;
     _strength         = strength;
-    
+   
     return self;
+}
+
+#pragma mark - Convenience Methods
+
+- (BOOL)hasOrders {
+    return [_moveOrders count] > 0;
+}
+
+- (BOOL)friends:(Unit *)other {
+    return _side == [other side];
 }
 
 #pragma mark - NSCoding
