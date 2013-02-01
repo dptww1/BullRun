@@ -25,4 +25,7 @@
 
 - (BOOL)onSameSideOfRiver:(Terrain*)otherTerrain;
 
+// # of MPs to enter this terrain
+- (int)mpCost;
+
 @end

@@ -50,7 +50,8 @@ Game* game;
 - (void)doNextTurn {
     // TODO: call AI
     
-    NSArray* sortedUnits = [self sortUnits];
+    NSArray*      sortedUnits = [self sortUnits];                       // elements: Unit*
+    NSMutableSet* didntMove = [NSMutableSet setWithArray:sortedUnits];  // keys: Unit*; if present, this unit didn't move this turn
     
     // All units get 5 new MPs
     for (Unit* u in sortedUnits) {
@@ -63,35 +64,79 @@ Game* game;
         atLeastOneUnitMoved = NO;
         
         for (Unit* u in sortedUnits) {
+            // Offmap or not moving?
             if (![[_board geometry] legal:[u location]] || ![u hasOrders])
                 continue;
             
             Hex nextHex = [[u moveOrders] firstHexAndRemove:NO];
-            
+        
             // Is it occupied?
             Unit* blocker = [_oob unitInHex:nextHex];
             if (blocker) {
-                if ([u friends:blocker]) // friendly blocker
-                    ;// TODO
-                else // enemy blocker: combat!
-                    ;// TODO
+                if ([u friends:blocker]) { // friendly blocker; keep looping
+                    DEBUG_MOVEMENT(@"%@ can't move into %02d%02d because a friend (%@) is there", [u name], nextHex.column, nextHex.row, [blocker name]);
+                    continue;
+                
+                } else { // enemy blocker: combat!
+                    DEBUG_MOVEMENT(@"%@ can't move into %02d%02d because an enemy (%@) is there", [u name], nextHex.column, nextHex.row, [blocker name]);
+                    continue;
+                    ;// TODO: resolve combat; [didntmove delete:u]?
+                }
                 
             } else {  // destination hex is empty
                 
-                // TODO: terrain cost
-                // TODO: ZOC problem
-                
+                // ZOC problem?
+                if ([self is:u movingThruEnemyZocTo:nextHex]) {
+                    DEBUG_MOVEMENT(@"%@ can't move into %02d%02d because of a ZOC problem", [u name], nextHex.column, nextHex.row);
+                    continue;
+                }
+
+                // Check terrain cost
+                Terrain* terrain = [[Terrain alloc] initWithInt:[_board terrainAt:nextHex]];
+                if ([terrain mpCost] > [u mps]) {
+                    DEBUG_MOVEMENT(@"%@ can't move into %02d%02d because it costs %d MPs but unit has only %d MPs", [u name], nextHex.column, nextHex.row, [terrain mpCost], [u mps]);
+                    continue;
+                }
+
+                // No impediments, so make the move
                 [(BRAppDelegate*)[[UIApplication sharedApplication] delegate] moveUnit:u to:nextHex];
                 [[u moveOrders] firstHexAndRemove:YES];
                 [u setLocation:nextHex];
+                [u setMps:[u mps] - [terrain mpCost]];
+                
+                [didntMove removeObject:u];
+                
+                DEBUG_MOVEMENT(@"%@ moved into %02d%02d, deducted %d MPs, leaving %d", [u name], nextHex.column, nextHex.row, [terrain mpCost], [u mps]);
+               
+                // TODO: sighting
+              
+                atLeastOneUnitMoved = YES;
             }
         }
     }
+    
+    // Reset MPs of units unwilling or unable to move due to blocked destinations and/or ZOC problems
+    for (Unit* u in didntMove)
+        [u setMps:0];
     
     // TODO: compute whether game over
 }
 
 #pragma mark - Private Methods
+
+- (BOOL)is:(Unit*)unit movingThruEnemyZocTo:(Hex)hex {
+    HexMapGeometry* g = [_board geometry];
+    
+    int moveDir = [g directionFrom:[unit location] to:hex];
+    int cwDir   = [g rotateDirection:moveDir clockwise:YES];
+    int ccwDir  = [g rotateDirection:moveDir clockwise:NO];
+    
+    Unit* cwUnit  = [_oob unitInHex:[g hexAdjacentTo:[unit location] inDirection:cwDir]];
+    Unit* ccwUnit = [_oob unitInHex:[g hexAdjacentTo:[unit location] inDirection:ccwDir]];
+
+    return (cwUnit  && ![cwUnit  friends:unit])
+        || (ccwUnit && ![ccwUnit friends:unit]);
+}
 
 // Performs sighting from the POV of player `side'. In practice will
 // most usually be called with side parameter == _userSide attribute,
@@ -124,7 +169,7 @@ Game* game;
             // CSA north of river or USA south of river is always spotted (note that fords
             // are marked as on both sides of the river, so units on fords are always spotted).
             if ([terrain isEnemy:side]) {
-                NSLog(@"%@ is in enemy territory", [enemy name]);
+                DEBUG_SIGHTING(@"%@ is in enemy territory", [enemy name]);
                 enemyNowSighted = YES;
                 
             } else {
@@ -163,7 +208,7 @@ Game* game;
             Terrain* friendlyTerrain = [[Terrain alloc] initWithInt:[_board terrainAt:[friend location]]];
             
             if ([friendlyTerrain onSameSideOfRiver:terrain]) {
-                NSLog(@"%@ spots %@", [friend name], [enemy name]);
+                DEBUG_SIGHTING(@"%@ spots %@", [friend name], [enemy name]);
                 *stop = sighted = YES;
             }
         }

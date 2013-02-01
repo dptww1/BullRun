@@ -34,20 +34,20 @@
     CGPoint pt = [[self coordXformer] hexToScreen:h];
     pt.x += [[self coordXformer] hexSize].width  / 2;
     pt.y += [[self coordXformer] hexSize].height / 2;
-    NSLog(@"addMoveOrderWayPoint:(%d,%d)", (int)pt.x, (int)pt.y);
+    DEBUG_MOVEORDERS(@"addMoveOrderWayPoint:(%d,%d)", (int)pt.x, (int)pt.y);
     
     [[self moveOrderWayPoints] addObject:[NSValue valueWithCGPoint:pt]];
     [[self moveOrderLayer] setNeedsDisplay];
 }
 
 - (void)clearMoveOrderWayPoints {
-    NSLog(@"clearMoveOrderwayPoints");
+    DEBUG_MOVEORDERS(@"clearMoveOrderwayPoints");
     [[self moveOrderWayPoints] removeAllObjects];
     [[self moveOrderLayer] setNeedsDisplay];
 }
 
 - (void)backtrackMoveOrderWayPoints {
-    NSLog(@"backtrackMoveOrderwayPoints");
+    DEBUG_MOVEORDERS(@"backtrackMoveOrderwayPoints");
     [[self moveOrderWayPoints] removeLastObject];
     [[self moveOrderLayer] setNeedsDisplay];
 }
@@ -85,7 +85,7 @@
         
         UITapGestureRecognizer* tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
         [tapRecognizer setNumberOfTapsRequired:2];
-        
+
         [[self view] addGestureRecognizer:tapRecognizer];
     }
     
@@ -104,12 +104,12 @@
     CGPoint start = [(NSValue *)[_moveOrderWayPoints objectAtIndex:0] CGPointValue];
     CGContextMoveToPoint(ctx, start.x, start.y);
     
-    NSLog(@"drawRect(): (%d,%d)", (int)start.x, (int)start.y);
+    DEBUG_MOVEORDERS(@"drawRect(): (%d,%d)", (int)start.x, (int)start.y);
     
     for (int i = 1; i < [_moveOrderWayPoints count]; ++i) {
         CGPoint p = [(NSValue*)[_moveOrderWayPoints objectAtIndex:i] CGPointValue];
         CGContextAddLineToPoint(ctx, p.x, p.y);
-        NSLog(@"            (%d,%d)", (int)p.x, (int)p.y);
+        DEBUG_MOVEORDERS(@"            (%d,%d)", (int)p.x, (int)p.y);
     }
     
     CGContextSetStrokeColorWithColor(ctx, [_currentUnit side] == CSA
@@ -166,7 +166,7 @@
 }
 
 - (void)doubleTap:(UIGestureRecognizer*)gr {
-    NSLog(@"Double tap!");
+    DEBUG_MOVEORDERS(@"Double tap!");
     if (_currentUnit) {
         [self clearMoveOrderWayPoints];
         [[_currentUnit moveOrders] clear];
@@ -179,14 +179,14 @@
         CGPoint p = [t locationInView:[self view]];
         
         if (CGRectContainsPoint([[self infoBarView] frame], p)) {
-            NSLog(@"Touched InfoBox!");
+            // nothing to do
             
         } else {
             Hex hex = [[self coordXformer] screenToHex:p];
             
             if ([[_coordXformer geometry] legal:hex]) {
                 
-                NSLog(@"Touch at screen (%f,%f) hex (%02d%02d) terrain 0x%02x", p.x, p.y, hex.column, hex.row, [[game board] terrainAt:hex]);
+                //NSLog(@"Touch at screen (%f,%f) hex (%02d%02d) terrain 0x%02x", p.x, p.y, hex.column, hex.row, [[game board] terrainAt:hex]);
 
                 _currentUnit = [[game oob] unitInHex:hex];
                 [[self infoBarView] showInfoForUnit:_currentUnit];
@@ -195,8 +195,9 @@
                 
                 [self initMoveOrderWayPoints];
                 
-            } else
-                NSLog(@"Touch at screen (%f,%f) isn't a legal hex!", p.x, p.y);
+            } else {
+                //NSLog(@"Touch at screen (%f,%f) isn't a legal hex!", p.x, p.y);
+            }
         }
     }
 }
@@ -216,7 +217,7 @@
 
             // The user may wiggle a finger around in the unit's current hex,
             // in which case just keep showing the existing orders.
-            NSLog(@"Orders for %@: still in same hex", [_currentUnit name]);
+            DEBUG_MOVEORDERS(@"Orders for %@: still in same hex", [_currentUnit name]);
                 
         } else { // giving and/or continuing new orders
                 
@@ -235,7 +236,7 @@
             if ([[_currentUnit moveOrders] isBacktrack:h] ||
                 ((HexEquals([_currentUnit location], h) && [_moveOrderWayPoints count] == 2))) {
 
-                NSLog(@"Orders for %@: BACKTRACK to %02d%02d", [_currentUnit name], h.column, h.row);
+                DEBUG_MOVEORDERS(@"Orders for %@: BACKTRACK to %02d%02d", [_currentUnit name], h.column, h.row);
                 [[_currentUnit moveOrders] backtrack];
                 [self backtrackMoveOrderWayPoints];
             }
@@ -247,7 +248,7 @@
                     
             } else { // it's a new hex
                     
-                NSLog(@"Orders for %@: ADD %02d%02d", [_currentUnit name], h.column, h.row);
+                DEBUG_MOVEORDERS(@"Orders for %@: ADD %02d%02d", [_currentUnit name], h.column, h.row);
                 [[_currentUnit moveOrders] addHex:h];
                 [self addMoveOrderWayPoint:h];
             }
@@ -259,7 +260,7 @@
     if (!_currentUnit)
         return;
     
-    NSLog(@"Orders for %@: END", [_currentUnit name]);
+    DEBUG_MOVEORDERS(@"Orders for %@: END", [_currentUnit name]);
     _currentUnit = nil;
     
     [self clearMoveOrderWayPoints];
@@ -272,7 +273,7 @@
 #pragma mark - Battle@ Callbacks
 
 - (void)unitNowHidden:(Unit *)unit {
-    NSLog(@"MapViewController#unitNowHidden:%@, viewLoaded=%d", [unit name], [self isViewLoaded]);
+    DEBUG_SIGHTING(@"MapViewController#unitNowHidden:%@, viewLoaded=%d", [unit name], [self isViewLoaded]);
     
     CALayer* unitLayer = [UnitView createForUnit:unit];
     [unitLayer removeFromSuperlayer];
@@ -281,7 +282,7 @@
 }
 
 - (void)unitNowSighted:(Unit *)unit {
-    NSLog(@"MapViewController#unitNowSighted:%@, viewLoaded=%d", [unit name], [self isViewLoaded]);
+    DEBUG_SIGHTING(@"MapViewController#unitNowSighted:%@, viewLoaded=%d", [unit name], [self isViewLoaded]);
     
     CGPoint xy = [_coordXformer hexToScreen:[unit location]];
     xy.x += 25;  // TODO: don't hardcode; should be hexSize / 2
@@ -295,7 +296,7 @@
 }
 
 - (void)moveUnit:(Unit *)unit to:(Hex)hex {
-    NSLog(@"Moving %@ to %02d%02d", [unit name], hex.column, hex.row);
+    DEBUG_MOVEMENT(@"Moving %@ to %02d%02d", [unit name], hex.column, hex.row);
     
     CGPoint dest = [_coordXformer hexToScreen:hex];
     dest.x += [_coordXformer hexSize].width / 2.0;

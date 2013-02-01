@@ -160,6 +160,57 @@
     return (_numRows + 1) * _numColumns;
 }
 
+- (int)rotateDirection:(int)dir clockwise:(BOOL)cw {
+    return [self normalizeDirection:[self normalizeDirection:dir] + (cw ? 1 : -1)];
+}
+
+- (int)normalizeDirection:(int)dir {
+    if (0 <= dir && dir <= 5)
+        return dir;
+
+    while (dir < 0)
+        dir += 6;
+    
+    return dir % 6;
+}
+
+- (Hex)hexAdjacentTo:(Hex)start inDirection:(int)dir {
+    Hex newHex = start;
+    
+    switch ([self normalizeDirection:dir]) {
+    case 0:
+        newHex.row -= 1;
+        break;
+    
+    case 1:
+        newHex.row -= [self columnIsLong:start.column] ? 1 : 0;
+        newHex.column += 1;
+        break;
+            
+    case 2:
+        newHex.row += [self columnIsLong:start.column] ? 0 : 1;
+        newHex.column += 1;
+        break;
+    
+    case 3:
+        newHex.row += 1;
+        break;
+            
+    case 4:
+        newHex.row += [self columnIsLong:start.column] ? 0 : 1;
+        newHex.column -= 1;
+        break;
+            
+    
+    case 5:
+        newHex.row -= [self columnIsLong:start.column] ? 1 : 0;
+        newHex.column -= 1;
+        break;
+    }
+    
+    return newHex;
+}
+
 #pragma mark - NSCoding Implementation
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {

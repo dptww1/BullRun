@@ -86,4 +86,21 @@
  */
 - (int)directionFrom:(Hex)from to:(Hex)to;
 
+/**
+ * Returns the normalized direction next to the given direction in either the
+ * clockwise (cw == YES) or counterclockwise (cw == NO) direction.
+ */
+- (int)rotateDirection:(int)dir clockwise:(BOOL)cw;
+
+/**
+ * Normalizes the direction to be in the range (0..6).
+ */
+- (int)normalizeDirection:(int)dir;
+
+/**
+ * Returns next hex in given direction from starting hex. The return value is not
+ * guaranteed to be legal!
+ */
+- (Hex)hexAdjacentTo:(Hex)start inDirection:(int)dir;
+
 @end

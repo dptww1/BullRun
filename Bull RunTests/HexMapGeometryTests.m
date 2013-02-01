@@ -117,7 +117,26 @@ static HexMapGeometry* geometry;
     STAssertEquals([geometry directionFrom:hA to:hd], 1, nil);
     STAssertEquals([geometry directionFrom:hA to:he], 1, nil);
     STAssertEquals([geometry directionFrom:hS to:he], 1, nil);  // horizontal
+}
+
+- (void)test {
+    Hex hA = HexMake(2, 4); Hex hB = HexMake(2, 3); Hex hC = HexMake(3, 4); Hex hD = HexMake(3, 5);
+    Hex hE = HexMake(2, 5); Hex hF = HexMake(1, 5); Hex hG = HexMake(1, 4);
+    Hex hI = HexMake(3, 3); Hex hJ = HexMake(4, 3); Hex hK = HexMake(4, 4);
     
+    STAssertEquals([geometry hexAdjacentTo:hA inDirection:0], hB, nil);
+    STAssertEquals([geometry hexAdjacentTo:hA inDirection:1], hC, nil);
+    STAssertEquals([geometry hexAdjacentTo:hA inDirection:2], hD, nil);
+    STAssertEquals([geometry hexAdjacentTo:hA inDirection:3], hE, nil);
+    STAssertEquals([geometry hexAdjacentTo:hA inDirection:4], hF, nil);
+    STAssertEquals([geometry hexAdjacentTo:hA inDirection:5], hG, nil);
+    
+    STAssertEquals([geometry hexAdjacentTo:hC inDirection:0], hI, nil);
+    STAssertEquals([geometry hexAdjacentTo:hC inDirection:1], hJ, nil);
+    STAssertEquals([geometry hexAdjacentTo:hC inDirection:2], hK, nil);
+    STAssertEquals([geometry hexAdjacentTo:hC inDirection:3], hD, nil);
+    STAssertEquals([geometry hexAdjacentTo:hC inDirection:4], hA, nil);
+    STAssertEquals([geometry hexAdjacentTo:hC inDirection:5], hB, nil);
 }
 
 - (void)testDistance {

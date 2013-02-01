@@ -47,4 +47,17 @@
         || ([self isUsa] && [otherTerrain isUsa]);
 }
 
+- (int)mpCost {
+    if (_val == 0) // river?
+        return INT32_MAX;
+    
+    if (_val & 4 || _val & 8)  // Cub Run or woods?
+        return 5;
+    
+    if (_val & 16)  // ford?
+        return 8;
+    
+    return 4;
+}
+
 @end
