@@ -129,6 +129,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    for (Unit* unit in [[game oob] units]) {
+        UnitView* v = [UnitView createForUnit:unit];
+        if (![v superlayer]) {
+            [v setOpacity:0.0f];
+            [[[self view] layer] addSublayer:v];
+        }
+    }
+    
     if (!self.animationInfo)
         [self setAnimationInfo:[NSMutableDictionary dictionary]];
     
@@ -283,7 +291,8 @@
     DEBUG_SIGHTING(@"MapViewController#unitNowHidden:%@, viewLoaded=%d", [unit name], [self isViewLoaded]);
     
     CALayer* unitLayer = [UnitView createForUnit:unit];
-    [unitLayer removeFromSuperlayer];
+
+    [unitLayer setOpacity:0.0f];
     
     [[self view] setNeedsDisplay];
 }
@@ -291,11 +300,16 @@
 - (void)unitNowSighted:(Unit *)unit {
     DEBUG_SIGHTING(@"MapViewController#unitNowSighted:%@, viewLoaded=%d", [unit name], [self isViewLoaded]);
     
-    CGPoint xy = [self getHexCenterPoint:[unit location]];
-
     CALayer* unitLayer = [UnitView createForUnit:unit];
-    [unitLayer setPosition:xy];
-    [[[self view] layer] addSublayer:unitLayer];
+    
+    // Layer might be out of position because didn't begin on map, but disable animations
+    [CATransaction begin];
+    [CATransaction setDisableActions:YES];
+    [unitLayer setPosition:[self getHexCenterPoint:[unit location]]];
+    [CATransaction commit];
+
+    // But animate the opacity
+    [unitLayer setOpacity:1.0f];
 
     [[self view] setNeedsDisplay];
 }
