@@ -40,6 +40,10 @@ Game* game;
     return self;
 }
 
+- (BRAppDelegate*)app {
+    return (BRAppDelegate*)[[UIApplication sharedApplication] delegate];
+}
+
 - (void)hackUserSide:(PlayerSide)side {
     _userSide = side;
     [self doSighting:_userSide];
@@ -48,6 +52,8 @@ Game* game;
 #pragma mark - Public Methods
 
 - (void)doNextTurn {
+    [[self app] movePhaseWillBegin];
+    
     // TODO: call AI
     
     NSArray*      sortedUnits = [self sortUnits];                       // elements: Unit*
@@ -91,6 +97,10 @@ Game* game;
                     continue;
                 }
 
+                // At this point the unit made a good-faith effort to move, so don't reset MPs.  This allows units to
+                // enter fords, which cost more than an entire turn's supply of MPs.
+                [didntMove removeObject:u];
+                
                 // Check terrain cost
                 Terrain* terrain = [[Terrain alloc] initWithInt:[_board terrainAt:nextHex]];
                 if ([terrain mpCost] > [u mps]) {
@@ -99,16 +109,14 @@ Game* game;
                 }
 
                 // No impediments, so make the move
-                [(BRAppDelegate*)[[UIApplication sharedApplication] delegate] moveUnit:u to:nextHex];
+                [[self app] moveUnit:u to:nextHex];
                 [[u moveOrders] firstHexAndRemove:YES];
                 [u setLocation:nextHex];
                 [u setMps:[u mps] - [terrain mpCost]];
                 
-                [didntMove removeObject:u];
-                
                 DEBUG_MOVEMENT(@"%@ moved into %02d%02d, deducted %d MPs, leaving %d", [u name], nextHex.column, nextHex.row, [terrain mpCost], [u mps]);
                
-                // TODO: sighting
+                [self doSighting:[game userSide]];
               
                 atLeastOneUnitMoved = YES;
             }
@@ -119,10 +127,35 @@ Game* game;
     for (Unit* u in didntMove)
         [u setMps:0];
     
+    [[self app] movePhaseDidEnd];
     // TODO: compute whether game over
 }
 
 #pragma mark - Private Methods
+
+- (void)attackFrom:(Unit*)a to:(Unit*)d {
+    if ([a mps] < 4 || !IsOffensiveMode([a mode]))
+        return;
+    
+    
+}
+
+- (int)computeAttackerCasualtiesFor:(Unit*)a against:(Unit*)d {
+    static int modeCasualtyMatrix[NUM_MODES][NUM_MODES] = {
+     // CH AT SK DE WI RT  // Attacker mode
+        5, 4, 3, 0, 0, 0,  // Defender is CHARGE
+        4, 3, 2, 0, 0, 0,  // Defender is ATTACK
+        3, 2, 1, 0, 0, 0,  // Defender is SKIRMISH
+        2, 1, 1, 0, 0, 0,  // Defender is DEFEND
+        2, 1, 1, 0, 0, 0,  // Defender is WITHDRAW
+        0, 0, 0, 0, 0, 0   // Defender is ROUTED
+    };
+    
+    int c = [d strength] / 256 + rand() * [d strength];
+    c *= modeCasualtyMatrix[[d mode]][[a mode]];
+    
+    return c;
+}
 
 - (BOOL)is:(Unit*)unit movingThruEnemyZocTo:(Hex)hex {
     HexMapGeometry* g = [_board geometry];
@@ -152,7 +185,7 @@ Game* game;
         if ([[_board geometry] legal:[friend location]]) {
             if (![friend sighted]) {
                 [friend setSighted:YES];
-                [(BRAppDelegate*)[[UIApplication sharedApplication] delegate] unitNowSighted:friend];
+                [[self app] unitNowSighted:friend];
             }
         }
         // doesn't handle case of on-board unit moving off-board
@@ -179,11 +212,11 @@ Game* game;
             // if enemy is no longer sighted, but used to be, update it
             if (!enemyNowSighted && [enemy sighted]) {
                 [enemy setSighted:NO];
-                [(BRAppDelegate*)[[UIApplication sharedApplication] delegate] unitNowHidden:enemy];
+                [[self app] unitNowHidden:enemy];
                 
             } else if (enemyNowSighted && ![enemy sighted]) {
                 [enemy setSighted:YES];
-                [(BRAppDelegate*)[[UIApplication sharedApplication] delegate] unitNowSighted:enemy];
+                [[self app] unitNowSighted:enemy];
             }
         }
         // Note that we're not handling the case of an on-board unit moving off-board.

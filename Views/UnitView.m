@@ -31,6 +31,10 @@ static NSMutableDictionary* unitViewMap = nil;
     return uv;
 }
 
++ (UnitView*)findByName:(NSString *)unitName {
+    return [unitViewMap objectForKey:unitName];
+}
+
 #pragma mark - Init Methods
 
 // Client code shouldn't call this because it bypasses the cache

@@ -28,8 +28,14 @@
 // any other hex.
 @property (nonatomic)         BOOL                         givingNewOrders;
 
+// Key: NSString* (unit name)
+// Value: CAKeyframeAnimation
+@property (nonatomic, strong) NSMutableDictionary*         animationInfo;
+
 - (void)unitNowSighted:(Unit*)unit;
 - (void)unitNowHidden:(Unit*)unit;
 - (void)moveUnit:(Unit*)unit to:(Hex)hex;
+- (void)movePhaseWillBegin;
+- (void)movePhaseDidEnd;
 
 @end

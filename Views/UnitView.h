@@ -17,5 +17,6 @@
 @interface UnitView : CALayer
 
 + (UnitView*)createForUnit:(Unit*)unit;
++ (UnitView*)findByName:(NSString*)unitName;
 
 @end

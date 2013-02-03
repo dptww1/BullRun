@@ -21,7 +21,6 @@
 
 #define DEGREES_TO_RADIANS(angle) (angle / 180.0 * M_PI)
 
-
 #pragma mark - Private Methods
 
 @implementation MapViewController (Private)
@@ -30,10 +29,15 @@
     return (MapView*)[self view];
 }
 
-- (void)addMoveOrderWayPoint:(Hex)h {
+- (CGPoint)getHexCenterPoint:(Hex)h {
     CGPoint pt = [[self coordXformer] hexToScreen:h];
     pt.x += [[self coordXformer] hexSize].width  / 2;
     pt.y += [[self coordXformer] hexSize].height / 2;
+    return pt;
+}
+
+- (void)addMoveOrderWayPoint:(Hex)h {
+    CGPoint pt = [self getHexCenterPoint:h];
     DEBUG_MOVEORDERS(@"addMoveOrderWayPoint:(%d,%d)", (int)pt.x, (int)pt.y);
     
     [[self moveOrderWayPoints] addObject:[NSValue valueWithCGPoint:pt]];
@@ -124,6 +128,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    if (!self.animationInfo)
+        [self setAnimationInfo:[NSMutableDictionary dictionary]];
     
     if (!_moveOrderLayer) {
         CGRect bounds = [[self view] bounds];
@@ -284,10 +291,8 @@
 - (void)unitNowSighted:(Unit *)unit {
     DEBUG_SIGHTING(@"MapViewController#unitNowSighted:%@, viewLoaded=%d", [unit name], [self isViewLoaded]);
     
-    CGPoint xy = [_coordXformer hexToScreen:[unit location]];
-    xy.x += 25;  // TODO: don't hardcode; should be hexSize / 2
-    xy.y += 25;
-    
+    CGPoint xy = [self getHexCenterPoint:[unit location]];
+
     CALayer* unitLayer = [UnitView createForUnit:unit];
     [unitLayer setPosition:xy];
     [[[self view] layer] addSublayer:unitLayer];
@@ -298,12 +303,39 @@
 - (void)moveUnit:(Unit *)unit to:(Hex)hex {
     DEBUG_MOVEMENT(@"Moving %@ to %02d%02d", [unit name], hex.column, hex.row);
     
-    CGPoint dest = [_coordXformer hexToScreen:hex];
-    dest.x += [_coordXformer hexSize].width / 2.0;
-    dest.y += [_coordXformer hexSize].height / 2.0;
+    CAKeyframeAnimation* anim = [self.animationInfo objectForKey:[unit name]];
+    if (!anim) {  // first animation for this unit
+        anim = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+        NSMutableArray* positions = [NSMutableArray array];
+        [positions addObject:[NSValue valueWithCGPoint:[self getHexCenterPoint:[unit location]]]];
+        [anim setValues:positions];
+        [self.animationInfo setObject:anim forKey:[unit name]];
+    }
+    
+    NSMutableArray* positions = [NSMutableArray arrayWithArray:[anim values]];
+    [positions addObject:[NSValue valueWithCGPoint:[self getHexCenterPoint:hex]]];
+    [anim setValues:positions];
+
     
     UnitView* v = [UnitView createForUnit:unit];
+    CGPoint dest = [self getHexCenterPoint:hex];
     [v setPosition:dest];
+}
+
+- (void)movePhaseWillBegin {
+    self.animationInfo = [NSMutableDictionary dictionary];
+}
+
+- (void)movePhaseDidEnd {
+    // Since we want the time-per-hex rate to be constant, we have to scale the animation duration by the
+    // number of hexes that the unit is moving through.
+    for (NSString* unitName in [self.animationInfo keyEnumerator]) {
+        CAKeyframeAnimation* anim = [self.animationInfo objectForKey:unitName];
+        [anim setDuration:[[anim values] count] * 0.25];
+        [[UnitView findByName:unitName] addAnimation:anim forKey:unitName];
+    }
+    
+    [self.animationInfo removeAllObjects];
 }
 
 #pragma mark - Debugging

@@ -58,6 +58,13 @@ static MapViewController* mvController;
 }
 
 #pragma mark - Battle@ Callbacks
+- (void)movePhaseWillBegin {
+    [mvController movePhaseWillBegin];
+}
+
+- (void)movePhaseDidEnd {
+    [mvController movePhaseDidEnd];
+}
 
 - (void)unitNowSighted:(Unit*)unit {
     [mvController unitNowSighted:unit];

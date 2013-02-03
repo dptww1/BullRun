@@ -14,7 +14,10 @@ typedef enum { CSA, USA } PlayerSide;
 #define OtherPlayer(SIDE) ((SIDE) == CSA ? USA : CSA)
 
 typedef enum { CHARGE, ATTACK, SKIRMISH, DEFEND, WITHDRAW, ROUTED } Mode;
+#define NUM_MODES ROUTED+1
 
+#define IsOffensiveMode(mode) \
+    ((mode) == CHARGE || (mode) == ATTACK || (mode) == SKIRMISH)
 
 #define DEBUG_MOVEMENT(fmt, ...) NSLog(fmt, ## __VA_ARGS__)
 #define DEBUG_MOVEORDERS(fmt, ...) //NSLog(fmt, ## __VA_ARGS__)
