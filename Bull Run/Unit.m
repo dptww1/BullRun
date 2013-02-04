@@ -11,26 +11,6 @@
 
 @implementation Unit
 
-#pragma mark - Initializers
-
-- (id)initWithName:(NSString*)name side:(PlayerSide)side leadership:(int)leadership strength:(int)strength morale:(int)morale location:(Hex)hex imageX:(int)xidx imageY:(int)yidx {
-    _imageXIdx        = xidx;
-    _imageYIdx        = yidx;
-    _leadership       = leadership;
-    _location         = hex;
-    _mode             = DEFEND;
-    _morale           = morale;
-    _moveOrders       = [[MoveOrders alloc] init];
-    _mps              = 0;
-    _name             = name;
-    _originalStrength = strength;
-    _side             = side;
-    _sighted          = NO;
-    _strength         = strength;
-   
-    return self;
-}
-
 #pragma mark - Convenience Methods
 
 - (BOOL)hasOrders {
@@ -43,27 +23,33 @@
 
 #pragma mark - NSCoding
 
-// Untested since not current used, but seems silly to throw it away in case it's needed later
 - (void)encodeWithCoder:(NSCoder *)aCoder {
-    [aCoder encodeInt:_leadership       forKey:@"leadership"];
-    [aCoder encodeInt:_morale           forKey:@"morale"];
-    [aCoder encodeObject:_name          forKey:@"name"];
-    [aCoder encodeInt:_originalStrength forKey:@"originalStrength"];
-    [aCoder encodeInt:_side             forKey:@"side"];
-    [aCoder encodeInt:_strength         forKey:@"strength"];
+    [aCoder encodeInt:   [self imageXIdx]        forKey:@"imageXIdx"];
+    [aCoder encodeInt:   [self imageYIdx]        forKey:@"imageYIdx"];
+    [aCoder encodeInt:   [self leadership]       forKey:@"leadership"];
+    [aCoder encodeInt:   [self mode]             forKey:@"mode"];
+    [aCoder encodeInt:   [self morale]           forKey:@"morale"];
+    [aCoder encodeInt:   [self mps]              forKey:@"mps"];
+    [aCoder encodeObject:[self name]             forKey:@"name"];
+    [aCoder encodeInt:   [self originalStrength] forKey:@"originalStrength"];
+    [aCoder encodeInt:   [self side]             forKey:@"side"];
+    [aCoder encodeInt:   [self strength]         forKey:@"strength"];
     
     // _location is a structure, so needs special handling
-    [aCoder encodeInt:_location.column  forKey:@"location_column"];
-    [aCoder encodeInt:_location.row     forKey:@"location_row"];
+    [aCoder encodeInt:   [self location].column  forKey:@"location_column"];
+    [aCoder encodeInt:   [self location].row     forKey:@"location_row"];
 }
 
-// Untested since not current used, but seems silly to throw it away in case it's needed later
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
     
     if (self) {
+        _imageXIdx        = [aDecoder decodeIntForKey:@"imageXIdx"];
+        _imageYIdx        = [aDecoder decodeIntForKey:@"imageYIdx"];
         _leadership       = [aDecoder decodeIntForKey:@"leadership"];
+        _mode             = [aDecoder decodeIntForKey:@"mode"];
         _morale           = [aDecoder decodeIntForKey:@"morale"];
+        _mps              = [aDecoder decodeIntForKey:@"mps"];
         _name             = [aDecoder decodeObjectForKey:@"name"];
         _originalStrength = [aDecoder decodeIntForKey:@"originalStrength"];
         _side             = [aDecoder decodeIntForKey:@"side"];
@@ -73,6 +59,10 @@
         int col = [aDecoder decodeIntForKey:@"location_column"];
         int row = [aDecoder decodeIntForKey:@"location_row"];
         _location = HexMake(col, row);
+        
+        // Initialize non-persistent properties
+        _moveOrders = [[MoveOrders alloc] init];
+        _sighted    = NO;
     }
     
     return self;

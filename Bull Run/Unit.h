@@ -28,14 +28,10 @@
 
 @property            int             strength;
 @property            Hex             location;
-@property            BOOL            sighted;           // if TRUE, is visible to the enemy
-@property (strong)   MoveOrders*     moveOrders;
+@property            BOOL            sighted;           // non-persistent; if TRUE, is visible to the enemy
+@property (strong)   MoveOrders*     moveOrders;        // non-persistent
 @property            Mode            mode;
 @property            int             mps;               // Movement points
-
-#pragma mark - Initializers
-
-- (id)initWithName:(NSString*)name side:(PlayerSide)side leadership:(int)leadership strength:(int)strength morale:(int)morale location:(Hex)hex imageX:(int)xidx imageY:(int)yidx;
 
 #pragma mark - Convenience Methods
 
