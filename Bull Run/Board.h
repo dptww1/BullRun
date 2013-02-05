@@ -7,17 +7,23 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BullRun.h"   // TODO This is bad
 #import "HexMapGeometry.h"
 #import "Hex.h"
 
+@class Unit;
 
 @interface Board : NSObject <NSCoding>
 
-@property (readonly, strong) HexMapGeometry* geometry;
-@property (readonly)         int*            mapData;
+@property (readonly, strong, nonatomic) HexMapGeometry* geometry;
+@property (readonly, strong, nonatomic) NSArray*        terrainEffects;
+@property (readonly,         nonatomic) int*            mapData;
 
 + (Board*)createFromFile:(NSString*)filename;
+
 - (BOOL)saveToFile:(NSString*)filename;
-- (int)terrainAt:(Hex)hex;
+- (float)mpCostOf:(Hex)hex for:(Unit*)unit;
+- (BOOL)isEnemy:(Hex)hex of:(PlayerSide)side;  // TODO:BR-specific
+- (BOOL)is:(Hex)hex inSameZoneAs:(Hex)other;
 
 @end

@@ -13,7 +13,6 @@
 #import "Game.h"
 #import "MoveOrders.h"
 #import "OrderOfBattle.h"
-#import "Terrain.h"
 #import "Unit.h"
 
 Game* game;
@@ -102,8 +101,8 @@ Game* game;
                 [didntMove removeObject:u];
                 
                 // Check terrain cost
-                Terrain* terrain = [[Terrain alloc] initWithInt:[_board terrainAt:nextHex]];
-                if ([terrain mpCost] > [u mps]) {
+                int mpCost = (int) [[self board] mpCostOf:nextHex for:u];
+                if (mpCost > [u mps]) {
                     DEBUG_MOVEMENT(@"%@ can't move into %02d%02d because it costs %d MPs but unit has only %d MPs", [u name], nextHex.column, nextHex.row, [terrain mpCost], [u mps]);
                     continue;
                 }
@@ -112,7 +111,7 @@ Game* game;
                 [[self app] moveUnit:u to:nextHex];
                 [[u moveOrders] firstHexAndRemove:YES];
                 [u setLocation:nextHex];
-                [u setMps:[u mps] - [terrain mpCost]];
+                [u setMps:[u mps] - mpCost];
                 
                 DEBUG_MOVEMENT(@"%@ moved into %02d%02d, deducted %d MPs, leaving %d", [u name], nextHex.column, nextHex.row, [terrain mpCost], [u mps]);
                
@@ -197,16 +196,14 @@ Game* game;
         // Ignore units unless they are on the map
         if ([[_board geometry] legal:[enemy location]]) {
         
-            Terrain* terrain = [[Terrain alloc] initWithInt:[_board terrainAt:[enemy location]]];
-        
             // CSA north of river or USA south of river is always spotted (note that fords
             // are marked as on both sides of the river, so units on fords are always spotted).
-            if ([terrain isEnemy:side]) {
+            if ([self.board isEnemy:[enemy location] of:[enemy side]]) {
                 DEBUG_SIGHTING(@"%@ is in enemy territory", [enemy name]);
                 enemyNowSighted = YES;
                 
             } else {
-                enemyNowSighted = [self isUnit:enemy inTerrain:terrain sightedBy:friends];
+                enemyNowSighted = [self isUnit:enemy inHex:[enemy location] sightedBy:friends];
             }
 
             // if enemy is no longer sighted, but used to be, update it
@@ -224,7 +221,7 @@ Game* game;
 }
 
 // Returns YES if `enemy' situated in given terrain is sighted by any of `friends'.
-- (BOOL)isUnit:(Unit*)enemy inTerrain:(Terrain*)terrain sightedBy:(NSArray*)friends {
+- (BOOL)isUnit:(Unit*)enemy inHex:(Hex)hex sightedBy:(NSArray*)friends {
     
     // Innocent until proven guilty.
     __block BOOL sighted = NO;
@@ -237,10 +234,9 @@ Game* game;
         // Friendly units within three hexes sight enemies...
         if ([[_board geometry] distanceFrom:[friend location] to:[enemy location]] < 4) {
             
-            // ...as long as both units are on the same side of the river
-            Terrain* friendlyTerrain = [[Terrain alloc] initWithInt:[_board terrainAt:[friend location]]];
             
-            if ([friendlyTerrain onSameSideOfRiver:terrain]) {
+            // ...as long as both units are on the same side of the river
+            if ([self.board is:[friend location] inSameZoneAs:hex]) {
                 DEBUG_SIGHTING(@"%@ spots %@", [friend name], [enemy name]);
                 *stop = sighted = YES;
             }

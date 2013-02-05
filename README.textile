@@ -5,7 +5,7 @@ and original strength show up in the info box.
 
 Units are configured in units.plist.
 
-Map geometry and terrain is read from map.plist.  (Terrain can be verified only through the log window.)
+Map geometry, terrain data, and terrain effects are read from map.plist.  (Terrain can be verified only through the log window.)
 
 You can click the [USA] and [CSA] buttons to switch sides, and the sighting works correctly.
 
@@ -30,6 +30,9 @@ h3. Functionality
 * Movement lines need an arrow head
 * Touching outside hex area should show status bar
 * Must guard against user dragging fast enough that move orders end up with non-adjacent hexes
+* Board "Zones" would be useful (for free setup, for example).  Organize as NSArray of columns, each column is an NSArray
+of row ranges (1-3),(7-10).  Save/load as part of Board serialization.  Board will have NSDictionary of them; zone names
+are the keys.
 
 h3. Organization
 * Differentiate between BR-specific files (Terrain, BullRun.h) and Battle@ framework files (Board, Game, Unit)

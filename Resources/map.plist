@@ -11,17 +11,22 @@
 			<key>$0</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>4</integer>
+				<integer>19</integer>
 			</dict>
 			<key>$class</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>6</integer>
+				<integer>21</integer>
 			</dict>
 			<key>geometry</key>
 			<dict>
 				<key>CF$UID</key>
 				<integer>2</integer>
+			</dict>
+			<key>terrainEffects</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>4</integer>
 			</dict>
 		</dict>
 		<dict>
@@ -47,6 +52,160 @@
 			</array>
 			<key>$classname</key>
 			<string>HexMapGeometry</string>
+		</dict>
+		<dict>
+			<key>$class</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>18</integer>
+			</dict>
+			<key>NS.objects</key>
+			<array>
+				<dict>
+					<key>CF$UID</key>
+					<integer>5</integer>
+				</dict>
+				<dict>
+					<key>CF$UID</key>
+					<integer>8</integer>
+				</dict>
+				<dict>
+					<key>CF$UID</key>
+					<integer>10</integer>
+				</dict>
+				<dict>
+					<key>CF$UID</key>
+					<integer>12</integer>
+				</dict>
+				<dict>
+					<key>CF$UID</key>
+					<integer>14</integer>
+				</dict>
+				<dict>
+					<key>CF$UID</key>
+					<integer>16</integer>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>$class</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>7</integer>
+			</dict>
+			<key>bitNum</key>
+			<integer>0</integer>
+			<key>mpCost</key>
+			<real>4</real>
+			<key>name</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>6</integer>
+			</dict>
+		</dict>
+		<string>Clear, CSA</string>
+		<dict>
+			<key>$classes</key>
+			<array>
+				<string>TerrainEffect</string>
+				<string>NSObject</string>
+			</array>
+			<key>$classname</key>
+			<string>TerrainEffect</string>
+		</dict>
+		<dict>
+			<key>$class</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>7</integer>
+			</dict>
+			<key>bitNum</key>
+			<integer>1</integer>
+			<key>mpCost</key>
+			<real>4</real>
+			<key>name</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>9</integer>
+			</dict>
+		</dict>
+		<string>Clear, USA</string>
+		<dict>
+			<key>$class</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>7</integer>
+			</dict>
+			<key>bitNum</key>
+			<integer>2</integer>
+			<key>mpCost</key>
+			<real>5</real>
+			<key>name</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>11</integer>
+			</dict>
+		</dict>
+		<string>Minor river</string>
+		<dict>
+			<key>$class</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>7</integer>
+			</dict>
+			<key>bitNum</key>
+			<integer>3</integer>
+			<key>mpCost</key>
+			<real>5</real>
+			<key>name</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>13</integer>
+			</dict>
+		</dict>
+		<string>Woods</string>
+		<dict>
+			<key>$class</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>7</integer>
+			</dict>
+			<key>bitNum</key>
+			<integer>4</integer>
+			<key>mpCost</key>
+			<real>8</real>
+			<key>name</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>15</integer>
+			</dict>
+		</dict>
+		<string>Ford</string>
+		<dict>
+			<key>$class</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>7</integer>
+			</dict>
+			<key>bitNum</key>
+			<integer>5</integer>
+			<key>mpCost</key>
+			<real>4</real>
+			<key>name</key>
+			<dict>
+				<key>CF$UID</key>
+				<integer>17</integer>
+			</dict>
+		</dict>
+		<string>Town</string>
+		<dict>
+			<key>$classes</key>
+			<array>
+				<string>NSArray</string>
+				<string>NSObject</string>
+			</array>
+			<key>$classname</key>
+			<string>NSArray</string>
 		</dict>
 		<dict>
 			<key>$0</key>
@@ -528,7 +687,7 @@
 			<key>$class</key>
 			<dict>
 				<key>CF$UID</key>
-				<integer>5</integer>
+				<integer>20</integer>
 			</dict>
 			<key>NS.count</key>
 			<integer>238</integer>
