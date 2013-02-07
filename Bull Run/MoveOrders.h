@@ -9,13 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "Hex.h"
 
-// Tracks the list of hexes that a unit has been orders to move to.
+@class ResizableBuffer;
+
+// Tracks the list of hexes that a unit has been given orders to move to.
 
 @interface MoveOrders : NSObject <NSCopying>
 
-@property (nonatomic) Hex* list;     // TODO: privatize
-@property (nonatomic) int  capacity; // capacity of list
-@property (nonatomic) int  count;    // # of valid items in list
+@property (nonatomic, strong) ResizableBuffer* list;
 
 // Designated initializer.
 - (id)init;

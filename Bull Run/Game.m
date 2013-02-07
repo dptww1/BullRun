@@ -103,7 +103,7 @@ Game* game;
                 // Check terrain cost
                 int mpCost = (int) [[self board] mpCostOf:nextHex for:u];
                 if (mpCost > [u mps]) {
-                    DEBUG_MOVEMENT(@"%@ can't move into %02d%02d because it costs %d MPs but unit has only %d MPs", [u name], nextHex.column, nextHex.row, [terrain mpCost], [u mps]);
+                    DEBUG_MOVEMENT(@"%@ can't move into %02d%02d because it costs %d MPs but unit has only %d MPs", [u name], nextHex.column, nextHex.row, mpCost, [u mps]);
                     continue;
                 }
 
@@ -113,7 +113,7 @@ Game* game;
                 [u setLocation:nextHex];
                 [u setMps:[u mps] - mpCost];
                 
-                DEBUG_MOVEMENT(@"%@ moved into %02d%02d, deducted %d MPs, leaving %d", [u name], nextHex.column, nextHex.row, [terrain mpCost], [u mps]);
+                DEBUG_MOVEMENT(@"%@ moved into %02d%02d, deducted %d MPs, leaving %d", [u name], nextHex.column, nextHex.row, mpCost, [u mps]);
                
                 [self doSighting:[game userSide]];
               

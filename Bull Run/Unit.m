@@ -14,7 +14,7 @@
 #pragma mark - Convenience Methods
 
 - (BOOL)hasOrders {
-    return [_moveOrders count] > 0;
+    return ![self.moveOrders isEmpty];
 }
 
 - (BOOL)friends:(Unit *)other {

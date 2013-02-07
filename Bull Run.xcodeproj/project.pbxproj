@@ -21,6 +21,9 @@
 		CC65EB8C16BF3EE400C47BD0 /* units.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC65EB8B16BF3EE400C47BD0 /* units.plist */; };
 		CC65EB8F16C0888200C47BD0 /* TerrainEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = CC65EB8E16C0888200C47BD0 /* TerrainEffect.m */; };
 		CC65EB9116C0A1B300C47BD0 /* map.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC65EB9016C0A1B300C47BD0 /* map.plist */; };
+		CC65EB9416C1D16100C47BD0 /* MapZone.m in Sources */ = {isa = PBXBuildFile; fileRef = CC65EB9316C1D16100C47BD0 /* MapZone.m */; };
+		CC65EB9A16C1E97900C47BD0 /* ResizableBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = CC65EB9916C1E97900C47BD0 /* ResizableBuffer.m */; };
+		CC65EC3316C2C34600C47BD0 /* ResizableBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = CC65EB9916C1E97900C47BD0 /* ResizableBuffer.m */; };
 		CC85854D167A72610054E60D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC85854C167A72610054E60D /* UIKit.framework */; };
 		CC85854F167A72610054E60D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC85854E167A72610054E60D /* Foundation.framework */; };
 		CC858551167A72610054E60D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC858550167A72610054E60D /* CoreGraphics.framework */; };
@@ -81,6 +84,10 @@
 		CC65EB8D16C0888200C47BD0 /* TerrainEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TerrainEffect.h; sourceTree = "<group>"; };
 		CC65EB8E16C0888200C47BD0 /* TerrainEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TerrainEffect.m; sourceTree = "<group>"; };
 		CC65EB9016C0A1B300C47BD0 /* map.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = map.plist; sourceTree = "<group>"; };
+		CC65EB9216C1D16000C47BD0 /* MapZone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapZone.h; sourceTree = "<group>"; };
+		CC65EB9316C1D16100C47BD0 /* MapZone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapZone.m; sourceTree = "<group>"; };
+		CC65EB9816C1E97900C47BD0 /* ResizableBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResizableBuffer.h; sourceTree = "<group>"; };
+		CC65EB9916C1E97900C47BD0 /* ResizableBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResizableBuffer.m; sourceTree = "<group>"; };
 		CC858548167A72610054E60D /* Bull Run.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bull Run.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC85854C167A72610054E60D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		CC85854E167A72610054E60D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -190,16 +197,18 @@
 			children = (
 				CC2E359E16A0D31400788D16 /* Board.h */,
 				CC2E359F16A0D31400788D16 /* Board.m */,
-				CC65EB8D16C0888200C47BD0 /* TerrainEffect.h */,
-				CC65EB8E16C0888200C47BD0 /* TerrainEffect.m */,
 				CC0CF3E91698CB40006D902D /* BullRun.h */,
 				CCDB60CE169FCA0F006668C2 /* Game.h */,
 				CCDB60CF169FCA0F006668C2 /* Game.m */,
+				CC65EB9216C1D16000C47BD0 /* MapZone.h */,
+				CC65EB9316C1D16100C47BD0 /* MapZone.m */,
 				CC35E67A16AA275500F9F0B1 /* MoveOrders.h */,
 				CC35E67B16AA275500F9F0B1 /* MoveOrders.m */,
 				CC0CF3E616989B50006D902D /* OrderOfBattle.h */,
 				CC0CF3E716989B51006D902D /* OrderOfBattle.m */,
 				CC858553167A72610054E60D /* Supporting Files */,
+				CC65EB8D16C0888200C47BD0 /* TerrainEffect.h */,
+				CC65EB8E16C0888200C47BD0 /* TerrainEffect.m */,
 				CC0CF3E316989A3C006D902D /* Unit.h */,
 				CC0CF3E416989A3C006D902D /* Unit.m */,
 			);
@@ -243,6 +252,8 @@
 		CCDB60D916A04B30006668C2 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				CC65EB9816C1E97900C47BD0 /* ResizableBuffer.h */,
+				CC65EB9916C1E97900C47BD0 /* ResizableBuffer.m */,
 				CCDB60DD16A04B86006668C2 /* CollectionUtil.h */,
 				CCDB60DE16A04B86006668C2 /* CollectionUtil.m */,
 				CCDB60DA16A04B30006668C2 /* SysUtil.h */,
@@ -442,6 +453,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC65EC3316C2C34600C47BD0 /* ResizableBuffer.m in Sources */,
 				CC2E35A216A1135B00788D16 /* CollectionUtil.m in Sources */,
 				CC0CF3E516989A3D006D902D /* Unit.m in Sources */,
 				CC0CF3E816989B52006D902D /* OrderOfBattle.m in Sources */,
@@ -459,6 +471,7 @@
 				CC35E68416AF5EE700F9F0B1 /* MapView.m in Sources */,
 				CC35E68516AF5EE700F9F0B1 /* UnitView.m in Sources */,
 				CC65EB8F16C0888200C47BD0 /* TerrainEffect.m in Sources */,
+				CC65EB9416C1D16100C47BD0 /* MapZone.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,6 +482,7 @@
 				CCDB60CD169E0907006668C2 /* HexMapGeometryTests.m in Sources */,
 				CCDB60DF16A04B86006668C2 /* CollectionUtil.m in Sources */,
 				CC35E67F16AA35E300F9F0B1 /* MoveOrdersTests.m in Sources */,
+				CC65EB9A16C1E97900C47BD0 /* ResizableBuffer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -525,6 +539,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				New_Setting = "";
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -547,6 +562,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				New_Setting = "";
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
