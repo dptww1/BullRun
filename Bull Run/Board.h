@@ -17,6 +17,7 @@
 
 @property (readonly, strong, nonatomic) HexMapGeometry* geometry;
 @property (readonly, strong, nonatomic) NSArray*        terrainEffects;
+@property (strong, nonatomic) NSDictionary*   zones; // TODO: readonly
 @property (readonly,         nonatomic) int*            mapData;
 
 + (Board*)createFromFile:(NSString*)filename;
@@ -25,5 +26,6 @@
 - (float)mpCostOf:(Hex)hex for:(Unit*)unit;
 - (BOOL)isEnemy:(Hex)hex of:(PlayerSide)side;  // TODO:BR-specific
 - (BOOL)is:(Hex)hex inSameZoneAs:(Hex)other;
+- (BOOL)is:(Hex)hex inZone:(NSString*)zoneName;
 
 @end

@@ -202,6 +202,7 @@
             
             if ([[_coordXformer geometry] legal:hex]) {
                 
+                NSLog(@"Hex %02d%02d, zones:%@,%@", hex.column, hex.row, [[game board] is:hex inZone:@"csa"] ? @"CSA" : @"", [[game board] is:hex inZone:@"usa"] ? @"USA" : @"");
                 //NSLog(@"Touch at screen (%f,%f) hex (%02d%02d) terrain 0x%02x", p.x, p.y, hex.column, hex.row, [[game board] terrainAt:hex]);
 
                 _currentUnit = [[game oob] unitInHex:hex];
