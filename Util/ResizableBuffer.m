@@ -11,7 +11,8 @@
 @implementation ResizableBuffer (Private)
 
 - (const char*)serializationFmt {
-    return [[NSString stringWithFormat:@"[%dc]", [self capacity] * [self objectSize]] UTF8String];
+    NSLog(@"SerializationFmt:[%dc]/%s", self.objectSize, @encode(NSRange));
+    return [[NSString stringWithFormat:@"[%dc]", self.objectSize] UTF8String];
 }
 
 @end
@@ -21,7 +22,7 @@
 #pragma mark - Init Methods
 
 + (id)bufferWithCapacity:(int)capacity ofObjectSize:(int)objSize {
-    return [[ResizableBuffer alloc] initWithCapacity:capacity ofObjectSize:(int)objSize];
+    return [[ResizableBuffer alloc] initWithCapacity:capacity ofObjectSize:objSize];
 }
 
 - (id)initWithCapacity:(int)capacity ofObjectSize:(int)objSize {
@@ -34,6 +35,7 @@
         _objectSize = objSize;
     }
     return self;
+    
 }
 
 - (id)copyWithZone:(NSZone*)zone {
@@ -50,10 +52,10 @@
 #pragma mark - NSCopying Implementation
 
 - (void)encodeWithCoder:(NSCoder*)encoder {
-    [encoder encodeInt:self.capacity   forKey:@"capacity"];
-    [encoder encodeInt:self.count      forKey:@"count"];
-    [encoder encodeInt:self.objectSize forKey:@"objectSize"];
-    [encoder encodeArrayOfObjCType:[self serializationFmt] count:self.capacity at:self.buffer];
+    [encoder encodeInt:   self.capacity                      forKey:@"capacity"];
+    [encoder encodeInt:   self.count                         forKey:@"count"];
+    [encoder encodeInt:   self.objectSize                    forKey:@"objectSize"];
+    // TODO: Buffer -- never could get this working
 }
 
 - (id)initWithCoder:(NSCoder*)decoder {
@@ -65,7 +67,7 @@
         self.objectSize = [decoder decodeIntForKey:@"objectSize"];
         
         self.buffer     = malloc(self.capacity * self.objectSize);
-        [decoder decodeArrayOfObjCType:[self serializationFmt] count:self.capacity at:self.buffer];
+        // TODO: Buffer -- never could get this working
     }
     
     return self;

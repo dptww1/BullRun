@@ -8,11 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "Hex.h"
+#import "ResizableBuffer.h"
 
 @interface MapZone : NSObject <NSCoding>
 
-// Keys:Column Numbers (as NSNumber)  Values: ResizableBuffer of NSRanges
-@property (nonatomic, strong) NSDictionary* columnData;
+// Keys:Column Numbers (as NSNumber)  Values: NSArray of NSRanges
+@property (nonatomic, strong) NSDictionary* columns;
 
 // Designated Initializer
 - (id)init;

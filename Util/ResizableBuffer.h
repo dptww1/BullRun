@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class ResizableBuffer;
+
 @interface ResizableBuffer : NSObject <NSCopying>
 
 @property (nonatomic) void* buffer;     // Pointer to actual memory

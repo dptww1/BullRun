@@ -14,7 +14,7 @@
 @implementation MapZone (Private)
 
 - (NSMutableDictionary*)mutableDictionary {
-    return (NSMutableDictionary*)[self columnData];
+    return (NSMutableDictionary*)[self columns];
 }
 
 @end
@@ -27,7 +27,7 @@
     self = [super init];
     
     if (self) {
-        _columnData = [NSMutableDictionary dictionary];
+        _columns = [NSMutableDictionary dictionary];
     }
     
     return self;
@@ -36,14 +36,14 @@
 #pragma mark - Behaviors
 
 - (BOOL)containsHex:(Hex)hex {
-    NSNumber* column = [NSNumber numberWithInt:hex.column];
-    ResizableBuffer* ranges = [self.columnData objectForKey:column];
-    if (!ranges)
+    NSNumber* colKey = [NSNumber numberWithInt:hex.column];
+    NSArray* columnData = [self.columns objectForKey:colKey];
+    
+    if (!columnData)
         return NO;
     
-    for (int i = 0; i < [ranges count]; ++i) {
-        NSRange rng = *(NSRange*)[ranges getObjectAt:i];
-        if (NSLocationInRange(hex.row, rng))
+    for (NSValue* v in columnData) {
+        if (NSLocationInRange(hex.row, [v rangeValue]))
             return YES;
     }
     
@@ -54,14 +54,14 @@
 
 - (void)addRange:(NSRange)range forColumn:(int)column {
     NSNumber* colKey = [NSNumber numberWithInt:column];
-    ResizableBuffer* thisCol = [[self columnData] objectForKey:colKey];
+    NSMutableArray* columnData = [self.columns objectForKey:colKey];
     
-    if (!thisCol) {
-        thisCol = [ResizableBuffer bufferWithCapacity:DEFAULT_BUFFER_CAPACITY ofObjectSize:sizeof(NSRange)];
-        [[self mutableDictionary] setObject:thisCol forKey:colKey];
+    if (!columnData) {
+        columnData = [NSMutableArray array];
+        [[self mutableDictionary] setObject:columnData forKey:colKey];
     }
     
-    [thisCol add:&range];
+    [(NSMutableArray*)columnData addObject:[NSValue valueWithRange:range]];
 }
 
 
@@ -71,14 +71,14 @@
     self = [super init];
     
     if (self) {
-        self.columnData = [aDecoder decodeObjectForKey:@"columnData"];
+        self.columns = [aDecoder decodeObjectForKey:@"columnData"];
     }
     
     return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
-    [aCoder encodeObject:[self columnData] forKey:@"columnData"];
+    [aCoder encodeObject:[self columns] forKey:@"columnData"];
 }
 
 @end
