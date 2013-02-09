@@ -230,7 +230,11 @@
             }
             
             // Account for backtracking, where h == moveOrders[-2]
-            if ([[_currentUnit moveOrders] isBacktrack:h]) {
+            // However, moveOrders don't understand about the unit's current location,
+            // so we have to handle backtracking into the original hex as a special case.
+            if ([[_currentUnit moveOrders] isBacktrack:h] ||
+                ([[_currentUnit moveOrders] numHexes] == 1 && HexEquals([_currentUnit location], h))) {
+
                 DEBUG_MOVEORDERS(@"Orders for %@: BACKTRACK to %02d%02d", [_currentUnit name], h.column, h.row);
                 [[_currentUnit moveOrders] backtrack];
             }
