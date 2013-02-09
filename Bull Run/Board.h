@@ -10,6 +10,7 @@
 #import "BullRun.h"   // TODO This is bad
 #import "HexMapGeometry.h"
 #import "Hex.h"
+#import "TerrainEffect.h"
 
 @class Unit;
 
@@ -27,5 +28,6 @@
 - (BOOL)isEnemy:(Hex)hex of:(PlayerSide)side;  // TODO:BR-specific
 - (BOOL)is:(Hex)hex inSameZoneAs:(Hex)other;
 - (BOOL)is:(Hex)hex inZone:(NSString*)zoneName;
+- (TerrainEffect*)terrainAt:(Hex)hex;
 
 @end

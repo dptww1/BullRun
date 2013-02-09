@@ -8,15 +8,6 @@
 
 #import "ResizableBuffer.h"
 
-@implementation ResizableBuffer (Private)
-
-- (const char*)serializationFmt {
-    NSLog(@"SerializationFmt:[%dc]/%s", self.objectSize, @encode(NSRange));
-    return [[NSString stringWithFormat:@"[%dc]", self.objectSize] UTF8String];
-}
-
-@end
-
 @implementation ResizableBuffer
 
 #pragma mark - Init Methods

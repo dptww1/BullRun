@@ -78,30 +78,35 @@
     return success;
 }
 
-- (float)mpCostOf:(Hex)hex for:(Unit*)unit {
+- (TerrainEffect*)terrainAt:(Hex)hex {
     if (![_geometry legal:hex])
-        return 0;
-    
+        return nil;
+
     int rawData = [self rawDataAt:hex];
-    
+
     if (rawData == 0)
-        return 10000.0f;
-    
-    float cost = 0.0f;
+        return nil;
+
     int thisBit = 0;
-    
+
     // Loop through the bits LSB to MSB; done as soon as no bits left
+    TerrainEffect* result = nil;
     while (rawData > 0) {
         for (TerrainEffect* te in [self terrainEffects]) {
             if ([te bitNum] == thisBit)
-                cost = [te mpCost]; // TODO: this overwrites previous values; OK for Bull Run but not good in general
+                result = te; // TODO: this overwrites previous values; OK for Bull Run but not good in general
         }
-        
+
         thisBit += 1;
         rawData >>= 1;
     }
-    
-    return cost;
+
+    return result;
+}
+
+- (float)mpCostOf:(Hex)hex for:(Unit*)unit {
+    TerrainEffect* fx = [self terrainAt:hex];
+    return fx ? [fx mpCost] : 10000.0f;
 }
 
 - (BOOL)isCsa:(Hex)hex { // TODO: move to derived class

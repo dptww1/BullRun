@@ -187,16 +187,17 @@
             Hex hex = [[self coordXformer] screenToHex:p];
             
             if ([[_coordXformer geometry] legal:hex]) {
-                
-                NSLog(@"Hex %02d%02d, zones:%@,%@", hex.column, hex.row, [[game board] is:hex inZone:@"csa"] ? @"CSA" : @"", [[game board] is:hex inZone:@"usa"] ? @"USA" : @"");
-                //NSLog(@"Touch at screen (%f,%f) hex (%02d%02d) terrain 0x%02x", p.x, p.y, hex.column, hex.row, [[game board] terrainAt:hex]);
+
+                DEBUG_MAP(@"Hex %02d%02d, zones:%@,%@", hex.column, hex.row, [[game board] is:hex inZone:@"csa"] ? @"CSA" : @"", [[game board] is:hex inZone:@"usa"] ? @"USA" : @"");
+                TerrainEffect* fx = [[game board] terrainAt:hex];
+                DEBUG_MAP(@"   Terrain %@ cost %2.0f", fx ? [fx name] : @"None", fx ? [fx mpCost] : 0);
 
                 _currentUnit = [[game oob] unitInHex:hex];
                 [[self infoBarView] showInfoForUnit:_currentUnit];
                 [_moveOrderLayer setNeedsDisplay];
                 _givingNewOrders = NO;
             } else {
-                //NSLog(@"Touch at screen (%f,%f) isn't a legal hex!", p.x, p.y);
+                DEBUG_MAP(@"Touch at screen (%f,%f) isn't a legal hex!", p.x, p.y);
             }
         }
     }
