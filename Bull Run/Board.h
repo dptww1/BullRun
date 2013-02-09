@@ -17,7 +17,7 @@
 
 @property (readonly, strong, nonatomic) HexMapGeometry* geometry;
 @property (readonly, strong, nonatomic) NSArray*        terrainEffects;
-@property (strong, nonatomic) NSDictionary*   zones; // TODO: readonly
+@property (readonly, strong, nonatomic) NSDictionary*   zones;
 @property (readonly,         nonatomic) int*            mapData;
 
 + (Board*)createFromFile:(NSString*)filename;
