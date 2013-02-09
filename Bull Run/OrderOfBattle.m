@@ -6,10 +6,11 @@
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
-#import "OrderOfBattle.h"
+#import "CollectionUtil.h"
 #import "Hex.h"
-#import "Unit.h"
+#import "OrderOfBattle.h"
 #import "SysUtil.h"
+#import "Unit.h"
 
 @implementation OrderOfBattle
 
@@ -37,14 +38,14 @@
 #pragma mark - Behaviors
 
 - (Unit*)unitInHex:(Hex)hex {
-    NSUInteger idx = [_units indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL* stop) {
-                                                          return HexEquals(((Unit*) obj).location, hex);
+    NSUInteger idx = [self.units indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL* stop) {
+                                                              return HexEquals(((Unit*) obj).location, hex);
                                                       }];
-    return idx != NSNotFound ? [_units objectAtIndex:idx] : nil;
+    return idx != NSNotFound ? [self.units objectAtIndex:idx] : nil;
 }
 
 - (NSArray*)unitsForSide:(PlayerSide)side {
-    return nil; // TODO:
+    return [self.units grep:^BOOL(Unit* u) { return [u side] == side; }];
 }
 
 @end

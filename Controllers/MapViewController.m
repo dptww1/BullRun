@@ -36,40 +36,6 @@
     return pt;
 }
 
-- (void)addMoveOrderWayPoint:(Hex)h {
-    CGPoint pt = [self getHexCenterPoint:h];
-    DEBUG_MOVEORDERS(@"addMoveOrderWayPoint:(%d,%d)", (int)pt.x, (int)pt.y);
-    
-    [[self moveOrderWayPoints] addObject:[NSValue valueWithCGPoint:pt]];
-    [[self moveOrderLayer] setNeedsDisplay];
-}
-
-- (void)clearMoveOrderWayPoints {
-    DEBUG_MOVEORDERS(@"clearMoveOrderwayPoints");
-    [[self moveOrderWayPoints] removeAllObjects];
-    [[self moveOrderLayer] setNeedsDisplay];
-}
-
-- (void)backtrackMoveOrderWayPoints {
-    DEBUG_MOVEORDERS(@"backtrackMoveOrderwayPoints");
-    [[self moveOrderWayPoints] removeLastObject];
-    [[self moveOrderLayer] setNeedsDisplay];
-}
-
-- (void)initMoveOrderWayPoints {
-    [self clearMoveOrderWayPoints];
-    
-    MoveOrders* mos = [[self currentUnit] moveOrders];
-    
-    if ([mos numHexes] == 0)
-        return;
-    
-    [self addMoveOrderWayPoint:[[self currentUnit] location]];
-     
-    for (int i = 0; i < [mos numHexes]; ++i)
-     [self addMoveOrderWayPoint:[mos hex:i]];
-}
-
 @end
 
 @implementation MapViewController
@@ -84,7 +50,6 @@
                                                                        origin:CGPointMake(67, 58)
                                                                       hexSize:CGSizeMake(51, 51)];
         _currentUnit = nil;
-        _moveOrderWayPoints = [NSMutableArray arrayWithCapacity:20];
         [self setWantsFullScreenLayout:YES];
         
         UITapGestureRecognizer* tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
@@ -97,31 +62,52 @@
 }
 
 - (void)drawLayer:(CALayer *)theLayer inContext:(CGContextRef)ctx {
-    if (!_moveOrderWayPoints || [_moveOrderWayPoints count] == 0)
-        return;
+    DEBUG_MOVEORDERS(@"drawLayer:inContext:");
     
+    if (!_currentUnit)
+        return;
+
     UIGraphicsPushContext(ctx);
 
     CGContextSetLineWidth(ctx, 7.0);
     CGContextSetLineCap(ctx, kCGLineCapRound);
     
-    CGPoint start = [(NSValue *)[_moveOrderWayPoints objectAtIndex:0] CGPointValue];
-    CGContextMoveToPoint(ctx, start.x, start.y);
-    
-    DEBUG_MOVEORDERS(@"drawRect(): (%d,%d)", (int)start.x, (int)start.y);
-    
-    for (int i = 1; i < [_moveOrderWayPoints count]; ++i) {
-        CGPoint p = [(NSValue*)[_moveOrderWayPoints objectAtIndex:i] CGPointValue];
-        CGContextAddLineToPoint(ctx, p.x, p.y);
-        DEBUG_MOVEORDERS(@"            (%d,%d)", (int)p.x, (int)p.y);
+    // Draw orders all all friendly units other than the current unit
+    if (_currentUnit) {
+        UIColor* color = [_currentUnit side] == CSA
+                            ? [UIColor colorWithRed:0.7f green:0.3f blue:0.3f alpha:0.3f]
+                            : [UIColor colorWithRed:0.3f green:0.3f blue:0.7f alpha:0.3f];
+        
+        for (Unit* u in [[game oob] unitsForSide:[_currentUnit side]]) {
+            if (u != _currentUnit)
+                [self drawMoveOrdersForUnit:u withColor:color inContext:ctx];
+        }
     }
     
-    CGContextSetStrokeColorWithColor(ctx, [_currentUnit side] == CSA
-                                            ? [[UIColor colorWithRed:0.7f green:0.3f blue:0.3f alpha:1.0f] CGColor]
-                                            : [[UIColor colorWithRed:0.3f green:0.3f blue:0.7f alpha:1.0f] CGColor]);
-    CGContextStrokePath(ctx);
+    // Draw orders for current unit
+    UIColor* color = [_currentUnit side] == CSA
+                        ? [UIColor colorWithRed:0.7f green:0.3f blue:0.3f alpha:1.0f]
+                        : [UIColor colorWithRed:0.3f green:0.3f blue:0.7f alpha:1.0f];
+    [self drawMoveOrdersForUnit:_currentUnit withColor:color inContext:ctx];
     
     UIGraphicsPopContext();
+}
+
+- (void)drawMoveOrdersForUnit:(Unit*)unit withColor:(UIColor*)color inContext:(CGContextRef)ctx {
+    if (![unit hasOrders])
+        return;
+    
+    CGPoint start = [self getHexCenterPoint:[unit location]];
+    CGContextMoveToPoint(ctx, start.x, start.y);
+    
+    for (int i = 0; i < [[unit moveOrders] numHexes]; ++i) {
+        CGPoint p = [self getHexCenterPoint:[[unit moveOrders] hex:i]];
+        CGContextAddLineToPoint(ctx, p.x, p.y);
+        DEBUG_MOVEORDERS(@"Drawing line for %@ to (%d,%d)", [unit name], (int)p.x, (int)p.y);
+    }
+    
+    CGContextSetStrokeColorWithColor(ctx, [color CGColor]);
+    CGContextStrokePath(ctx);
 }
 
 #pragma mark - Callbacks
@@ -183,8 +169,8 @@
 - (void)doubleTap:(UIGestureRecognizer*)gr {
     DEBUG_MOVEORDERS(@"Double tap!");
     if (_currentUnit) {
-        [self clearMoveOrderWayPoints];
         [[_currentUnit moveOrders] clear];
+        [[self view] setNeedsDisplay];
     }
 }
 
@@ -207,11 +193,8 @@
 
                 _currentUnit = [[game oob] unitInHex:hex];
                 [[self infoBarView] showInfoForUnit:_currentUnit];
-                [[self view] setNeedsDisplay];
+                [_moveOrderLayer setNeedsDisplay];
                 _givingNewOrders = NO;
-                
-                [self initMoveOrderWayPoints];
-                
             } else {
                 //NSLog(@"Touch at screen (%f,%f) isn't a legal hex!", p.x, p.y);
             }
@@ -242,20 +225,14 @@
             // it's time to give new orders.
             if (!_givingNewOrders) {
                 [[_currentUnit moveOrders] clear];
-                [self clearMoveOrderWayPoints];
-                
+
                 _givingNewOrders = YES;
-            
-                [self addMoveOrderWayPoint:[_currentUnit location]];
             }
             
             // Account for backtracking, where h == moveOrders[-2]
-            if ([[_currentUnit moveOrders] isBacktrack:h] ||
-                ((HexEquals([_currentUnit location], h) && [_moveOrderWayPoints count] == 2))) {
-
+            if ([[_currentUnit moveOrders] isBacktrack:h]) {
                 DEBUG_MOVEORDERS(@"Orders for %@: BACKTRACK to %02d%02d", [_currentUnit name], h.column, h.row);
                 [[_currentUnit moveOrders] backtrack];
-                [self backtrackMoveOrderWayPoints];
             }
             
             // Add this hex on to the end of the list, unless it it's repeat of what's already there
@@ -267,8 +244,9 @@
                     
                 DEBUG_MOVEORDERS(@"Orders for %@: ADD %02d%02d", [_currentUnit name], h.column, h.row);
                 [[_currentUnit moveOrders] addHex:h];
-                [self addMoveOrderWayPoint:h];
             }
+
+            [_moveOrderLayer setNeedsDisplay];
         }
     }
 }
@@ -279,8 +257,7 @@
     
     DEBUG_MOVEORDERS(@"Orders for %@: END", [_currentUnit name]);
     _currentUnit = nil;
-    
-    [self clearMoveOrderWayPoints];
+    [_moveOrderLayer setNeedsDisplay];
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {

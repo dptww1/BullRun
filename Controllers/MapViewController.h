@@ -20,7 +20,6 @@
 @property (nonatomic, weak)   InfoBarView*                 infoBarView;
 @property (nonatomic, weak)   Unit*                        currentUnit;
 @property (nonatomic, strong) CALayer*                     moveOrderLayer;
-@property (nonatomic, strong) NSMutableArray*              moveOrderWayPoints;
 
 // If YES, then the user's touch has moved outside the current hex and
 // so we are setting new movement orders.  This means that new touches

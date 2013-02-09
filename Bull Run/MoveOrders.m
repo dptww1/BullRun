@@ -32,54 +32,54 @@
 }
 
 - (BOOL)isEmpty {
-    return [self.list isEmpty];
+    return [_list isEmpty];
 }
 
 - (void)clear {
-    [self.list clear];
+    [_list clear];
 }
 
 - (void)addHex:(Hex)hex {
-    [self.list add:&hex];
+    [_list add:&hex];
 }
 
 - (int)numHexes {
-    return [self.list count];
+    return [_list count];
 }
 
 - (Hex)lastHex {
-    return [self hex:[self.list count] - 1];
+    return [self hex:[_list count] - 1];
 }
 
 - (Hex)firstHexAndRemove:(BOOL)removeOrder {
-    if ([self.list count] == 0)
+    if ([_list count] == 0)
         return HexMake(-1, -1);
     
     Hex hex = [self hex:0];
     
     if (removeOrder)
-        [self.list remove:0];
+        [_list remove:0];
 
     return hex;
 }
 
 - (Hex)hex:(int)idx {
-    if (0 <= idx && idx < [self.list count])
-        return *((Hex*)[self.list getObjectAt:idx]);
+    if (0 <= idx && idx < [_list count])
+        return *((Hex*)[_list getObjectAt:idx]);
     
     return HexMake(-1, -1);
 }
 
 - (BOOL)isBacktrack:(Hex)hex {
-    if ([self.list count] < 2)
+    if ([_list count] < 2)
         return NO;
     
-    Hex penultimate = [self hex:[self.list count] - 2];
+    Hex penultimate = [self hex:[_list count] - 2];
     return HexEquals(hex, penultimate);
 }
 
 - (void)backtrack {
-    [self.list setCount:[self.list count] - 1];
+    [self.list setCount:[_list count] - 1];
 }
 
 @end

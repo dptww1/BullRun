@@ -10,7 +10,7 @@ Map geometry, terrain data, and terrain effects are read from map.plist.  (Terra
 You can click the [USA] and [CSA] buttons to switch sides, and the sighting works correctly.
 
 You can drag out orders for units; the line is in the unit's color. Backing up works.  Double tapping cancels
-current orders.
+current orders.  Orders for other units show up, dimmed.
 
 Added drop shadows to the units.
 
@@ -27,6 +27,7 @@ h3. UI/Art
 * App Icons
 * Unit Icons
 * Attack animations (smoke?)
+* Portraits for Militia + Volunteers
 
 h3. Functionality
 * Movement lines need an arrow head

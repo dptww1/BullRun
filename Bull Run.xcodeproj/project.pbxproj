@@ -48,7 +48,7 @@
 		CCDB610316A04EF2006668C2 /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = CCDB60FC16A04EF2006668C2 /* map.png */; };
 		CCDB610616A04EF2006668C2 /* InfoBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCDB610116A04EF2006668C2 /* InfoBarView.xib */; };
 		CCDB610716A04EF2006668C2 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCDB610216A04EF2006668C2 /* MapViewController.xib */; };
-		CCF61C9016C4B06900391025 /* map.plist in Resources */ = {isa = PBXBuildFile; fileRef = CCF61C8F16C4B06900391025 /* map.plist */; };
+		CCF61C9216C5EE3300391025 /* map.plist in Resources */ = {isa = PBXBuildFile; fileRef = CCF61C9116C5EE3300391025 /* map.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,7 +125,7 @@
 		CCDB60FC16A04EF2006668C2 /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
 		CCDB610116A04EF2006668C2 /* InfoBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoBarView.xib; sourceTree = "<group>"; };
 		CCDB610216A04EF2006668C2 /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
-		CCF61C8F16C4B06900391025 /* map.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = map.plist; sourceTree = "<group>"; };
+		CCF61C9116C5EE3300391025 /* map.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = map.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -310,7 +310,7 @@
 		CCDB60FA16A04EF2006668C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				CCF61C8F16C4B06900391025 /* map.plist */,
+				CCF61C9116C5EE3300391025 /* map.plist */,
 				CC65EB8B16BF3EE400C47BD0 /* units.plist */,
 				CCDB60FB16A04EF2006668C2 /* Images */,
 				CCDB610016A04EF2006668C2 /* XIBs */,
@@ -418,7 +418,7 @@
 				CCDB610716A04EF2006668C2 /* MapViewController.xib in Resources */,
 				CC35E68716B5CE0A00F9F0B1 /* portraits.png in Resources */,
 				CC65EB8C16BF3EE400C47BD0 /* units.plist in Resources */,
-				CCF61C9016C4B06900391025 /* map.plist in Resources */,
+				CCF61C9216C5EE3300391025 /* map.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -33,7 +33,6 @@
 #pragma - mark Init Methods
 + (Board*)createFromFile:(NSString*)filepath {
     Board* board = [NSKeyedUnarchiver unarchiveObjectWithFile:filepath];
-
     return board;
 }
 
@@ -105,23 +104,27 @@
     return cost;
 }
 
-- (BOOL)isCsa:(Hex)hex {
-    int rawData = [self rawDataAt:hex];
-    return rawData & 2;
+- (BOOL)isCsa:(Hex)hex { // TODO: move to derived class
+    return [self is:hex inZone:@"csa"];
 }
 
-- (BOOL)isUsa:(Hex)hex {
-    int rawData = [self rawDataAt:hex];
-    return rawData & 1;
+- (BOOL)isUsa:(Hex)hex { // TODO: move to derived class
+    return [self is:hex inZone:@"usa"];
+
 }
 
-- (BOOL)isEnemy:(Hex)hex of:(PlayerSide)side {
-    return (side == CSA && [self isCsa:hex])
-        || (side == USA && [self isUsa:hex]);
+- (BOOL)isEnemy:(Hex)hex of:(PlayerSide)side { // TODO: generalize or move to derived class
+    return (side == CSA && [self isUsa:hex])
+        || (side == USA && [self isCsa:hex]);
 }
 
 - (BOOL)is:(Hex)hex inSameZoneAs:(Hex)other {
-    return [self rawDataAt:hex] & [self rawDataAt:other] & 3;  // TODO: oh my, my, my, no....
+    for (NSString* zname in [self.zones keyEnumerator]) {
+        if ([self is:hex inZone:zname] && [self is:other inZone:zname])
+            return YES;
+    }
+    
+    return NO;
 }
 
 - (BOOL)is:(Hex)hex inZone:(NSString*)zoneName {
