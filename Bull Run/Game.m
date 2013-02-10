@@ -83,9 +83,20 @@ Game* game;
                     continue;
                 
                 } else { // enemy blocker: combat!
+
                     DEBUG_MOVEMENT(@"%@ can't move into %02d%02d because an enemy (%@) is there", [u name], nextHex.column, nextHex.row, [blocker name]);
-                    continue;
-                    ;// TODO: resolve combat; [didntmove delete:u]?
+
+                    // Must have enough MPs to attack, and be in an offensive mode
+                    if ([u mps] >= 4 && IsOffensiveMode([u mode])) { // TODO: IsOffensiveMode is BR-specific
+                        [self attackFrom:u to:blocker];
+
+                        // The units involved in combat can't do anything else this turn.
+                        [u setMps:0];
+                        [blocker setMps:0];
+
+                    } else {
+                        DEBUG_COMBAT(@"%@ can't attack %@ due to mode and/or MP cost", [u name], [blocker name]);
+                    }
                 }
                 
             } else {  // destination hex is empty
@@ -133,10 +144,35 @@ Game* game;
 #pragma mark - Private Methods
 
 - (void)attackFrom:(Unit*)a to:(Unit*)d {
-    if ([a mps] < 4 || !IsOffensiveMode([a mode]))
-        return;
-    
-    
+    DEBUG_COMBAT(@"COMBAT: %@ attacks %@", [a name], [d name]);
+
+    // Compute base casualties
+    int attCasualties = [self computeAttackerCasualtiesFor:a against:d];
+    int defCasualties = [self computeDefenderCasualtiesFor:d against:a];
+
+    // Adjust for terrain (TODO: BR-specific)
+    TerrainEffect* fx = [[game board] terrainAt:[d location]];
+    if ([[fx name] isEqualToString:@"Ford"]) {   // att + 100%, def - 50%
+        attCasualties *= 2;
+        defCasualties /= 2;
+        DEBUG_COMBAT(@"  Ford hex has attacker now at %d and defender at %d", attCasualties, defCasualties);
+    }
+
+    if ([[fx name] isEqualToString:@"Woods"]) {  // att + 25%, def - 25%
+        attCasualties += attCasualties / 4;
+        defCasualties = (defCasualties * 3) / 4;
+        DEBUG_COMBAT(@"  Woods hex has attacker now at %d and defender at %d", attCasualties, defCasualties);
+    }
+
+    [a setStrength:[a strength] - attCasualties];
+    [d setStrength:[d strength] - defCasualties];
+
+    int retreatProbability = ((5 - [a mode]) - (5 - [d mode])) * 25;
+    retreatProbability += ([a leadership] / 2) - ([d leadership] / 2);
+    if ([d mode] == WITHDRAW || (random() % 100) < retreatProbability) {
+        // The defender is supposed to retreat.
+        DEBUG_COMBAT(@"  defender must retreat, probability was %d", retreatProbability);
+    }
 }
 
 - (int)computeAttackerCasualtiesFor:(Unit*)a against:(Unit*)d {
@@ -145,14 +181,33 @@ Game* game;
         5, 4, 3, 0, 0, 0,  // Defender is CHARGE
         4, 3, 2, 0, 0, 0,  // Defender is ATTACK
         3, 2, 1, 0, 0, 0,  // Defender is SKIRMISH
-        2, 1, 1, 0, 0, 0,  // Defender is DEFEND
+        5, 4, 2, 0, 0, 0,  // Defender is DEFEND
         2, 1, 1, 0, 0, 0,  // Defender is WITHDRAW
         0, 0, 0, 0, 0, 0   // Defender is ROUTED
     };
     
-    int c = [d strength] / 256 + rand() * [d strength];
+    int c = ([d strength] / 256) + ((random() & 0xff) * ([d strength] / 256)) / 256;
+    DEBUG_COMBAT(@"  %@ base casualties: %d", [a name], c);
     c *= modeCasualtyMatrix[[d mode]][[a mode]];
-    
+    DEBUG_COMBAT(@"    adjusted by mode matrix to %d", c);
+    return c;
+}
+
+- (int)computeDefenderCasualtiesFor:(Unit*)d against:(Unit*)a {
+    static int modeCasualtyMatrix[NUM_MODES][NUM_MODES] = {
+     // CH AT SK DE WI RT  // Attacker mode
+        5, 4, 3, 0, 0, 0,  // Defender is CHARGE
+        4, 3, 2, 0, 0, 0,  // Defender is ATTACK
+        3, 2, 1, 0, 0, 0,  // Defender is SKIRMISH
+        2, 1, 1, 0, 0, 0,  // Defender is DEFEND
+        4, 3, 2, 0, 0, 0,  // Defender is WITHDRAW
+        0, 0, 0, 0, 0, 0   // Defender is ROUTED
+    };
+
+    int c = ([a strength] / 256) + ((random() & 0xff) * ([a strength] / 256)) / 256;
+    DEBUG_COMBAT(@"  %@ base casualties: %d", [d name], c);
+    c *= modeCasualtyMatrix[[d mode]][[a mode]];
+    DEBUG_COMBAT(@"    adjusted by mode matrix to %d", c);
     return c;
 }
 
@@ -177,8 +232,8 @@ Game* game;
 
     // TODO: friends and enemies should be methods on OOB
 
-    NSArray* friends = [[_oob units] grep:^BOOL(id u) { return [u side] != OtherPlayer(side); }];
-    NSArray* enemies = [[_oob units] grep:^BOOL(id u) { return [u side] == OtherPlayer(side); }];
+    NSArray* friends = [_oob unitsForSide:side];
+    NSArray* enemies = [_oob unitsForSide:OtherPlayer(side)];
     
     [friends enumerateObjectsUsingBlock:^(id friend, NSUInteger idx, BOOL* stop) {
         if ([[_board geometry] legal:[friend location]]) {
