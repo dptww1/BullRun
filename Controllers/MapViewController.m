@@ -96,18 +96,51 @@
 - (void)drawMoveOrdersForUnit:(Unit*)unit withColor:(UIColor*)color inContext:(CGContextRef)ctx {
     if (![unit hasOrders])
         return;
-    
+
+    MoveOrders* mos = [unit moveOrders];
+
+    // Draw orders line
     CGPoint start = [self getHexCenterPoint:[unit location]];
     CGContextMoveToPoint(ctx, start.x, start.y);
     
-    for (int i = 0; i < [[unit moveOrders] numHexes]; ++i) {
-        CGPoint p = [self getHexCenterPoint:[[unit moveOrders] hex:i]];
+    for (int i = 0; i < [mos numHexes]; ++i) {
+        CGPoint p = [self getHexCenterPoint:[mos hex:i]];
         CGContextAddLineToPoint(ctx, p.x, p.y);
         DEBUG_MOVEORDERS(@"Drawing line for %@ to (%d,%d)", [unit name], (int)p.x, (int)p.y);
     }
-    
+
     CGContextSetStrokeColorWithColor(ctx, [color CGColor]);
     CGContextStrokePath(ctx);
+
+    // Draw arrowhead at end of line
+    Hex endHex = [mos lastHex];
+    Hex penultimateHex = [mos numHexes] == 1 ? [unit location] : [mos hex:[mos numHexes] - 2];
+    int dir = [[_coordXformer geometry] directionFrom:penultimateHex to:endHex];
+
+    CGPoint end = [self getHexCenterPoint:endHex];
+
+    float b = 30.0f;                        // size of the sides of the equilateral triangle
+    float sqrt3 = 1.73f;                    // square root of three
+    float side2center = sqrt3 * b / 6.0f;   // distance from midpoint of a side to the triangle's center
+    float vertex2center = sqrt3 * b / 3.0f; // distance from vertex to the triangle's center
+
+    if (dir & 1) { // 1, 3, 5
+        CGContextMoveToPoint(   ctx, end.x,          end.y + vertex2center);
+        CGContextAddLineToPoint(ctx, end.x - b/2.0f, end.y - side2center);
+        CGContextAddLineToPoint(ctx, end.x + b/2.0f, end.y - side2center);
+
+    } else { // 0, 2, 4
+        CGContextMoveToPoint(   ctx, end.x,          end.y - vertex2center);
+        CGContextAddLineToPoint(ctx, end.x - b/2.0f, end.y + side2center);
+        CGContextAddLineToPoint(ctx, end.x + b/2.0f, end.y + side2center);
+    }
+
+    // Without this blend mode, the overlap between the triangle and the movement line
+    // is twice as dark when alpha < 1.0f.
+    CGContextSetBlendMode(ctx, kCGBlendModeCopy);
+    
+    CGContextSetFillColorWithColor(ctx, [color CGColor]);
+    CGContextFillPath(ctx);
 }
 
 #pragma mark - Callbacks
@@ -189,8 +222,9 @@
             if ([[_coordXformer geometry] legal:hex]) {
 
                 DEBUG_MAP(@"Hex %02d%02d, zones:%@,%@", hex.column, hex.row, [[game board] is:hex inZone:@"csa"] ? @"CSA" : @"", [[game board] is:hex inZone:@"usa"] ? @"USA" : @"");
-                TerrainEffect* fx = [[game board] terrainAt:hex];
-                DEBUG_MAP(@"   Terrain %@ cost %2.0f", fx ? [fx name] : @"None", fx ? [fx mpCost] : 0);
+                DEBUG_MAP(@"   Terrain %@ cost %2.0f",
+                          [[game board] terrainAt:hex] ? [[game board] terrainAt:hex name] : @"Impassible",
+                          [[game board] terrainAt:hex] ? [[game board] terrainAt:hex mpCost] : 0);
 
                 _currentUnit = [[game oob] unitInHex:hex];
                 [[self infoBarView] showInfoForUnit:_currentUnit];
