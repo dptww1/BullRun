@@ -41,7 +41,6 @@
 		CCDB60E516A04D71006668C2 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB60E416A04D71006668C2 /* MapViewController.m */; };
 		CCDB60EA16A04D8C006668C2 /* BRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB60E816A04D8C006668C2 /* BRAppDelegate.m */; };
 		CCDB60EB16A04D8C006668C2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB60E916A04D8C006668C2 /* main.m */; };
-		CCDB60F316A04E43006668C2 /* Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB60EE16A04E43006668C2 /* Hex.m */; };
 		CCDB60F416A04E43006668C2 /* HexMapCoordinateTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB60F016A04E43006668C2 /* HexMapCoordinateTransformer.m */; };
 		CCDB60F516A04E43006668C2 /* HexMapGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB60F216A04E43006668C2 /* HexMapGeometry.m */; };
 		CCDB60F916A04E96006668C2 /* InfoBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB60F816A04E96006668C2 /* InfoBarView.m */; };
@@ -115,7 +114,6 @@
 		CCDB60E816A04D8C006668C2 /* BRAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRAppDelegate.m; sourceTree = "<group>"; };
 		CCDB60E916A04D8C006668C2 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CCDB60ED16A04E43006668C2 /* Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hex.h; sourceTree = "<group>"; };
-		CCDB60EE16A04E43006668C2 /* Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Hex.m; sourceTree = "<group>"; };
 		CCDB60EF16A04E43006668C2 /* HexMapCoordinateTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HexMapCoordinateTransformer.h; sourceTree = "<group>"; };
 		CCDB60F016A04E43006668C2 /* HexMapCoordinateTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HexMapCoordinateTransformer.m; sourceTree = "<group>"; };
 		CCDB60F116A04E43006668C2 /* HexMapGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HexMapGeometry.h; sourceTree = "<group>"; };
@@ -285,7 +283,6 @@
 			isa = PBXGroup;
 			children = (
 				CCDB60ED16A04E43006668C2 /* Hex.h */,
-				CCDB60EE16A04E43006668C2 /* Hex.m */,
 				CCDB60EF16A04E43006668C2 /* HexMapCoordinateTransformer.h */,
 				CCDB60F016A04E43006668C2 /* HexMapCoordinateTransformer.m */,
 				CCDB60F116A04E43006668C2 /* HexMapGeometry.h */,
@@ -462,7 +459,6 @@
 				CCDB60E516A04D71006668C2 /* MapViewController.m in Sources */,
 				CCDB60EA16A04D8C006668C2 /* BRAppDelegate.m in Sources */,
 				CCDB60EB16A04D8C006668C2 /* main.m in Sources */,
-				CCDB60F316A04E43006668C2 /* Hex.m in Sources */,
 				CCDB60F416A04E43006668C2 /* HexMapCoordinateTransformer.m in Sources */,
 				CCDB60F516A04E43006668C2 /* HexMapGeometry.m in Sources */,
 				CCDB60F916A04E96006668C2 /* InfoBarView.m in Sources */,
