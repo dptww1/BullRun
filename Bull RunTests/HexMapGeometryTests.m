@@ -7,9 +7,9 @@
 //
 
 #import "HexMapGeometryTests.h"
-#import "HexMapGeometry.h"
+#import "HMGeometry.h"
 
-static HexMapGeometry* geometry;
+static HMGeometry* geometry;
 
 @implementation HexMapGeometryTests
 
@@ -37,7 +37,7 @@ static HexMapGeometry* geometry;
      *
      * (Yes, this was tedious to type up, but a picture is worth a thousand words, right?
      */
-    geometry = [[HexMapGeometry alloc] initWithLongGrain:NO firstColumnIsLong:NO numRows:7 numColumns:10];
+    geometry = [[HMGeometry alloc] initWithLongGrain:NO firstColumnIsLong:NO numRows:7 numColumns:10];
 }
 
 - (void)testLegal {
