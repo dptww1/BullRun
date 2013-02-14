@@ -11,7 +11,6 @@
 		CC0CF3E516989A3D006D902D /* Unit.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0CF3E416989A3C006D902D /* Unit.m */; };
 		CC0CF3E816989B52006D902D /* OrderOfBattle.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0CF3E716989B51006D902D /* OrderOfBattle.m */; };
 		CC0CF3EF169916E2006D902D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC0CF3EE169916E2006D902D /* QuartzCore.framework */; };
-		CC2E35A016A0D31400788D16 /* Board.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2E359F16A0D31400788D16 /* Board.m */; };
 		CC2E35A216A1135B00788D16 /* CollectionUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB60DE16A04B86006668C2 /* CollectionUtil.m */; };
 		CC35E67C16AA275500F9F0B1 /* MoveOrders.m in Sources */ = {isa = PBXBuildFile; fileRef = CC35E67B16AA275500F9F0B1 /* MoveOrders.m */; };
 		CC35E67F16AA35E300F9F0B1 /* MoveOrdersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CC35E67E16AA35E300F9F0B1 /* MoveOrdersTests.m */; };
@@ -36,6 +35,7 @@
 		CC85857B167A72610054E60D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CC858579167A72610054E60D /* InfoPlist.strings */; };
 		CCC71D5616CC6EE9003636E3 /* HMCoordinateTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC71D5516CC6EE9003636E3 /* HMCoordinateTransformer.m */; };
 		CCC71D5716CC6F0B003636E3 /* HMCoordinateTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC71D5516CC6EE9003636E3 /* HMCoordinateTransformer.m */; };
+		CCC71D5A16CC711E003636E3 /* HMMap.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC71D5916CC711E003636E3 /* HMMap.m */; };
 		CCDB60CD169E0907006668C2 /* HexMapGeometryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB60CC169E0907006668C2 /* HexMapGeometryTests.m */; };
 		CCDB60D0169FCA10006668C2 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB60CF169FCA0F006668C2 /* Game.m */; };
 		CCDB60DC16A04B30006668C2 /* SysUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB60DB16A04B30006668C2 /* SysUtil.m */; };
@@ -70,8 +70,6 @@
 		CC0CF3E716989B51006D902D /* OrderOfBattle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderOfBattle.m; sourceTree = "<group>"; };
 		CC0CF3E91698CB40006D902D /* BullRun.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BullRun.h; sourceTree = "<group>"; };
 		CC0CF3EE169916E2006D902D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		CC2E359E16A0D31400788D16 /* Board.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Board.h; sourceTree = "<group>"; };
-		CC2E359F16A0D31400788D16 /* Board.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Board.m; sourceTree = "<group>"; };
 		CC35E67A16AA275500F9F0B1 /* MoveOrders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoveOrders.h; sourceTree = "<group>"; };
 		CC35E67B16AA275500F9F0B1 /* MoveOrders.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoveOrders.m; sourceTree = "<group>"; };
 		CC35E67D16AA35E300F9F0B1 /* MoveOrdersTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoveOrdersTests.h; sourceTree = "<group>"; };
@@ -104,6 +102,8 @@
 		CC85857A167A72610054E60D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CCC71D5416CC6EE9003636E3 /* HMCoordinateTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMCoordinateTransformer.h; sourceTree = "<group>"; };
 		CCC71D5516CC6EE9003636E3 /* HMCoordinateTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMCoordinateTransformer.m; sourceTree = "<group>"; };
+		CCC71D5816CC711E003636E3 /* HMMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMap.h; sourceTree = "<group>"; };
+		CCC71D5916CC711E003636E3 /* HMMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMap.m; sourceTree = "<group>"; };
 		CCDB60CB169E0907006668C2 /* HexMapGeometryTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HexMapGeometryTests.h; sourceTree = "<group>"; };
 		CCDB60CC169E0907006668C2 /* HexMapGeometryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HexMapGeometryTests.m; sourceTree = "<group>"; };
 		CCDB60CE169FCA0F006668C2 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
@@ -195,8 +195,6 @@
 		CC858552167A72610054E60D /* Bull Run */ = {
 			isa = PBXGroup;
 			children = (
-				CC2E359E16A0D31400788D16 /* Board.h */,
-				CC2E359F16A0D31400788D16 /* Board.m */,
 				CC0CF3E91698CB40006D902D /* BullRun.h */,
 				CCDB60CE169FCA0F006668C2 /* Game.h */,
 				CCDB60CF169FCA0F006668C2 /* Game.m */,
@@ -284,6 +282,8 @@
 		CCDB60EC16A04E43006668C2 /* HexMap */ = {
 			isa = PBXGroup;
 			children = (
+				CCC71D5816CC711E003636E3 /* HMMap.h */,
+				CCC71D5916CC711E003636E3 /* HMMap.m */,
 				CCC71D5416CC6EE9003636E3 /* HMCoordinateTransformer.h */,
 				CCC71D5516CC6EE9003636E3 /* HMCoordinateTransformer.m */,
 				CCF61C9416CC63C900391025 /* HMGeometry.h */,
@@ -464,12 +464,12 @@
 				CCDB60EA16A04D8C006668C2 /* BRAppDelegate.m in Sources */,
 				CCDB60EB16A04D8C006668C2 /* main.m in Sources */,
 				CCDB60F916A04E96006668C2 /* InfoBarView.m in Sources */,
-				CC2E35A016A0D31400788D16 /* Board.m in Sources */,
 				CC35E67C16AA275500F9F0B1 /* MoveOrders.m in Sources */,
 				CC35E68416AF5EE700F9F0B1 /* MapView.m in Sources */,
 				CC35E68516AF5EE700F9F0B1 /* UnitView.m in Sources */,
 				CC65EB8F16C0888200C47BD0 /* TerrainEffect.m in Sources */,
 				CC65EB9416C1D16100C47BD0 /* MapZone.m in Sources */,
+				CCC71D5A16CC711E003636E3 /* HMMap.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

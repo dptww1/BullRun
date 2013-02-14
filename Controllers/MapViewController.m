@@ -8,16 +8,16 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import "BullRun.h"
-#import "MapViewController.h"
+#import "Game.h"
 #import "HMCoordinateTransformer.h"
+#import "HMMap.h"
 #import "InfoBarView.h"
+#import "MapView.h"
+#import "MapViewController.h"
+#import "MoveOrders.h"
 #import "OrderOfBattle.h"
 #import "Unit.h"
-#import "Game.h"
-#import "Board.h"
-#import "MapView.h"
 #import "UnitView.h"
-#import "MoveOrders.h"
 
 #define DEGREES_TO_RADIANS(angle) (angle / 180.0 * M_PI)
 

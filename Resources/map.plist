@@ -2280,11 +2280,11 @@
         <dict>
             <key>$classes</key>
             <array>
-                <string>Board</string>
+                <string>HMMap</string>
                 <string>NSObject</string>
             </array>
             <key>$classname</key>
-            <string>Board</string>
+            <string>HMMap</string>
         </dict>
     </array>
     <key>$top</key>

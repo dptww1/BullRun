@@ -1,5 +1,5 @@
 //
-//  Board.h
+//  HMMap.h
 //  Bull Run
 //
 //  Created by Dave Townsend on 1/11/13.
@@ -14,14 +14,14 @@
 
 @class Unit;
 
-@interface Board : NSObject <NSCoding>
+@interface HMMap : NSObject <NSCoding>
 
 @property (readonly, strong, nonatomic) HMGeometry*   geometry;
 @property (readonly, strong, nonatomic) NSArray*      terrainEffects;
 @property (readonly, strong, nonatomic) NSDictionary* zones;
 @property (readonly,         nonatomic) int*          mapData;
 
-+ (Board*)createFromFile:(NSString*)filename;
++ (HMMap*)createFromFile:(NSString*)filename;
 
 - (BOOL)saveToFile:(NSString*)filename;
 - (float)mpCostOf:(HMHex)hex for:(Unit*)unit;

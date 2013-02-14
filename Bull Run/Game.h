@@ -7,15 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Board.h"
 #import "BullRun.h"
 #import "Game.h"
+#import "HMMap.h"
 #import "OrderOfBattle.h"
 
 @interface Game : NSObject
 
 @property                    PlayerSide     userSide;
-@property (strong, readonly) Board*         board;
+@property (strong, readonly) HMMap*         board;
 @property (strong, readonly) OrderOfBattle* oob;
 
 - (void)hackUserSide:(PlayerSide)newSide;

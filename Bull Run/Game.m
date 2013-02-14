@@ -7,10 +7,10 @@
 //
 
 #import "BRAppDelegate.h"
-#import "Board.h"
 #import "BullRun.h"
 #import "CollectionUtil.h"
 #import "Game.h"
+#import "HMMap.h"
 #import "MoveOrders.h"
 #import "OrderOfBattle.h"
 #import "Unit.h"
@@ -32,7 +32,7 @@ Game* game;
     
     if (self) {
         _userSide = CSA;
-        _board = [Board createFromFile:[[NSBundle mainBundle] pathForResource:@"map" ofType:@"plist"]];
+        _board = [HMMap createFromFile:[[NSBundle mainBundle] pathForResource:@"map" ofType:@"plist"]];
         _oob = [OrderOfBattle createFromFile:[[NSBundle mainBundle] pathForResource:@"units" ofType:@"plist"]];
     }
 

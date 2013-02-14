@@ -1,12 +1,12 @@
 //
-//  Board.m
+//  HMMap.m
 //  Bull Run
 //
 //  Created by Dave Townsend on 1/11/13.
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
-#import "Board.h"
+#import "HMMap.h"
 #import "BullRun.h"  // TODO: this is bad; shouldn't import game-specific stuff in library file
 #import "HMGeometry.h"
 #import "HMHex.h"
@@ -14,7 +14,7 @@
 #import "SysUtil.h"
 #import "TerrainEffect.h"
 
-@implementation Board (Private)
+@implementation HMMap (Private)
 
 - (int)rawDataAt:(HMHex)hex {
     return [self mapData][(hex.row * [[self geometry] numColumns]) + hex.column];
@@ -22,7 +22,7 @@
 
 @end
 
-@implementation Board
+@implementation HMMap
 
 // Variable is read-only; this is declared here but not in header to keep it private(ish).
 - (void)setTerrainEffects:(NSArray*)a {
@@ -31,8 +31,8 @@
 
 
 #pragma - mark Init Methods
-+ (Board*)createFromFile:(NSString*)filepath {
-    Board* board = [NSKeyedUnarchiver unarchiveObjectWithFile:filepath];
++ (HMMap*)createFromFile:(NSString*)filepath {
+    HMMap* board = [NSKeyedUnarchiver unarchiveObjectWithFile:filepath];
     return board;
 }
 
