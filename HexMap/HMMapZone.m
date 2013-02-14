@@ -1,17 +1,17 @@
 //
-//  MapZone.m
+//  HMMapZone.m
 //  Bull Run
 //
 //  Created by Dave Townsend on 2/5/13.
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
-#import "MapZone.h"
+#import "HMMapZone.h"
 #import "ResizableBuffer.h"
 
 #define DEFAULT_BUFFER_CAPACITY  2 // this many ranges per column by default; I suspect a single range is most common
 
-@implementation MapZone (Private)
+@implementation HMMapZone (Private)
 
 - (NSMutableDictionary*)mutableDictionary {
     return (NSMutableDictionary*)[self columns];
@@ -19,7 +19,7 @@
 
 @end
 
-@implementation MapZone
+@implementation HMMapZone
 
 #pragma mark - Initialization
 

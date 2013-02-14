@@ -1,5 +1,5 @@
 //
-//  MapZone.h
+//  HMMapZone.h
 //  Bull Run
 //
 //  Created by Dave Townsend on 2/5/13.
@@ -10,7 +10,7 @@
 #import "HMHex.h"
 #import "ResizableBuffer.h"
 
-@interface MapZone : NSObject <NSCoding>
+@interface HMMapZone : NSObject <NSCoding>
 
 // Keys:Column Numbers (as NSNumber)  Values: NSArray of NSRanges
 @property (nonatomic, strong) NSDictionary* columns;

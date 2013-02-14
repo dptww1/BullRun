@@ -999,11 +999,11 @@
         <dict>
             <key>$classes</key>
             <array>
-                <string>MapZone</string>
+                <string>HMMapZone</string>
                 <string>NSObject</string>
             </array>
             <key>$classname</key>
-            <string>MapZone</string>
+            <string>HMMapZone</string>
         </dict>
         <dict>
             <key>$class</key>
