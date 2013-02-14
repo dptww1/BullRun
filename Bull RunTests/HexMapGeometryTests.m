@@ -78,8 +78,8 @@ static HMGeometry* geometry;
     HMHex hI = HexMake(3, 3); HMHex hJ = HexMake(4, 3); HMHex hK = HexMake(4, 4); HMHex hL = HexMake(4, 5);
     HMHex hM = HexMake(3, 6); HMHex hN = HexMake(2, 6); HMHex hO = HexMake(1, 6); HMHex hP = HexMake(0, 5);
     HMHex hQ = HexMake(0, 4); HMHex hR = HexMake(0, 3); HMHex hS = HexMake(1, 3);
-                                                    HMHex hW = HexMake(4, 0); HMHex hX = HexMake(5, 0);
-    HMHex hY = HexMake(6, 0);                         HMHex ha = HexMake(8, 0); HMHex hb = HexMake(9, 0);
+                                                        HMHex hW = HexMake(4, 0); HMHex hX = HexMake(5, 0);
+    HMHex hY = HexMake(6, 0);                           HMHex ha = HexMake(8, 0); HMHex hb = HexMake(9, 0);
     HMHex hc = HexMake(9, 1); HMHex hd = HexMake(9, 2); HMHex he = HexMake(9, 3);
 
     // Same hex
