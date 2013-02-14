@@ -11,8 +11,8 @@
 #import "HMGeometry.h"
 #import "HMHex.h"
 #import "HMMapZone.h"
+#import "HMTerrainEffect.h"
 #import "SysUtil.h"
-#import "TerrainEffect.h"
 
 @implementation HMMap (Private)
 
@@ -78,7 +78,7 @@
     return success;
 }
 
-- (TerrainEffect*)terrainAt:(HMHex)hex {
+- (HMTerrainEffect*)terrainAt:(HMHex)hex {
     if (![_geometry legal:hex])
         return nil;
 
@@ -90,9 +90,9 @@
     int thisBit = 0;
 
     // Loop through the bits LSB to MSB; done as soon as no bits left
-    TerrainEffect* result = nil;
+    HMTerrainEffect* result = nil;
     while (rawData > 0) {
-        for (TerrainEffect* te in [self terrainEffects]) {
+        for (HMTerrainEffect* te in [self terrainEffects]) {
             if ([te bitNum] == thisBit)
                 result = te; // TODO: this overwrites previous values; OK for Bull Run but not good in general
         }
@@ -105,7 +105,7 @@
 }
 
 - (float)mpCostOf:(HMHex)hex for:(Unit*)unit {
-    TerrainEffect* fx = [self terrainAt:hex];
+    HMTerrainEffect* fx = [self terrainAt:hex];
     return fx ? [fx mpCost] : 10000.0f;
 }
 

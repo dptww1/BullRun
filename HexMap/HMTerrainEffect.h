@@ -1,5 +1,5 @@
 //
-//  TerrainEffect.h
+//  HMTerrainEffect.h
 //  Bull Run
 //
 //  Created by Dave Townsend on 2/4/13.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TerrainEffect : NSObject <NSCoding>
+@interface HMTerrainEffect : NSObject <NSCoding>
 
 @property (nonatomic)         int       bitNum; // 0-31
 @property (strong, nonatomic) NSString* name;   // "Clear", "Forest", etc.

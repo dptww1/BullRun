@@ -1,14 +1,14 @@
 //
-//  TerrainEffect.m
+//  HMTerrainEffect.m
 //  Bull Run
 //
 //  Created by Dave Townsend on 2/4/13.
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
-#import "TerrainEffect.h"
+#import "HMTerrainEffect.h"
 
-@implementation TerrainEffect
+@implementation HMTerrainEffect
 
 #pragma mark - Init Method
 

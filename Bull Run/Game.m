@@ -151,7 +151,7 @@ Game* game;
     int defCasualties = [self computeDefenderCasualtiesFor:d against:a];
 
     // Adjust for terrain (TODO: BR-specific)
-    TerrainEffect* fx = [[game board] terrainAt:[d location]];
+    HMTerrainEffect* fx = [[game board] terrainAt:[d location]];
     if ([[fx name] isEqualToString:@"Ford"]) {   // att + 100%, def - 50%
         attCasualties *= 2;
         defCasualties /= 2;

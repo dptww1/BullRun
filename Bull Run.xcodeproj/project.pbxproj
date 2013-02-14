@@ -18,7 +18,6 @@
 		CC35E68516AF5EE700F9F0B1 /* UnitView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC35E68316AF5EE700F9F0B1 /* UnitView.m */; };
 		CC35E68716B5CE0A00F9F0B1 /* portraits.png in Resources */ = {isa = PBXBuildFile; fileRef = CC35E68616B5CE0A00F9F0B1 /* portraits.png */; };
 		CC65EB8C16BF3EE400C47BD0 /* units.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC65EB8B16BF3EE400C47BD0 /* units.plist */; };
-		CC65EB8F16C0888200C47BD0 /* TerrainEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = CC65EB8E16C0888200C47BD0 /* TerrainEffect.m */; };
 		CC65EB9A16C1E97900C47BD0 /* ResizableBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = CC65EB9916C1E97900C47BD0 /* ResizableBuffer.m */; };
 		CC65EC3316C2C34600C47BD0 /* ResizableBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = CC65EB9916C1E97900C47BD0 /* ResizableBuffer.m */; };
 		CC85854D167A72610054E60D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC85854C167A72610054E60D /* UIKit.framework */; };
@@ -36,6 +35,7 @@
 		CCC71D5716CC6F0B003636E3 /* HMCoordinateTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC71D5516CC6EE9003636E3 /* HMCoordinateTransformer.m */; };
 		CCC71D5A16CC711E003636E3 /* HMMap.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC71D5916CC711E003636E3 /* HMMap.m */; };
 		CCC71D5D16CC72FF003636E3 /* HMMapZone.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC71D5C16CC72FF003636E3 /* HMMapZone.m */; };
+		CCC71D6016CC747B003636E3 /* HMTerrainEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC71D5F16CC747B003636E3 /* HMTerrainEffect.m */; };
 		CCDB60CD169E0907006668C2 /* HexMapGeometryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB60CC169E0907006668C2 /* HexMapGeometryTests.m */; };
 		CCDB60D0169FCA10006668C2 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB60CF169FCA0F006668C2 /* Game.m */; };
 		CCDB60DC16A04B30006668C2 /* SysUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB60DB16A04B30006668C2 /* SysUtil.m */; };
@@ -80,8 +80,6 @@
 		CC35E68316AF5EE700F9F0B1 /* UnitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnitView.m; sourceTree = "<group>"; };
 		CC35E68616B5CE0A00F9F0B1 /* portraits.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = portraits.png; sourceTree = "<group>"; };
 		CC65EB8B16BF3EE400C47BD0 /* units.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = units.plist; sourceTree = "<group>"; };
-		CC65EB8D16C0888200C47BD0 /* TerrainEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TerrainEffect.h; sourceTree = "<group>"; };
-		CC65EB8E16C0888200C47BD0 /* TerrainEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TerrainEffect.m; sourceTree = "<group>"; };
 		CC65EB9816C1E97900C47BD0 /* ResizableBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResizableBuffer.h; sourceTree = "<group>"; };
 		CC65EB9916C1E97900C47BD0 /* ResizableBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResizableBuffer.m; sourceTree = "<group>"; };
 		CC858548167A72610054E60D /* Bull Run.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bull Run.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,6 +102,8 @@
 		CCC71D5916CC711E003636E3 /* HMMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMap.m; sourceTree = "<group>"; };
 		CCC71D5B16CC72FE003636E3 /* HMMapZone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMapZone.h; sourceTree = "<group>"; };
 		CCC71D5C16CC72FF003636E3 /* HMMapZone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMapZone.m; sourceTree = "<group>"; };
+		CCC71D5E16CC747B003636E3 /* HMTerrainEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMTerrainEffect.h; sourceTree = "<group>"; };
+		CCC71D5F16CC747B003636E3 /* HMTerrainEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMTerrainEffect.m; sourceTree = "<group>"; };
 		CCDB60CB169E0907006668C2 /* HexMapGeometryTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HexMapGeometryTests.h; sourceTree = "<group>"; };
 		CCDB60CC169E0907006668C2 /* HexMapGeometryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HexMapGeometryTests.m; sourceTree = "<group>"; };
 		CCDB60CE169FCA0F006668C2 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
@@ -203,8 +203,6 @@
 				CC0CF3E616989B50006D902D /* OrderOfBattle.h */,
 				CC0CF3E716989B51006D902D /* OrderOfBattle.m */,
 				CC858553167A72610054E60D /* Supporting Files */,
-				CC65EB8D16C0888200C47BD0 /* TerrainEffect.h */,
-				CC65EB8E16C0888200C47BD0 /* TerrainEffect.m */,
 				CC0CF3E316989A3C006D902D /* Unit.h */,
 				CC0CF3E416989A3C006D902D /* Unit.m */,
 			);
@@ -280,6 +278,8 @@
 		CCDB60EC16A04E43006668C2 /* HexMap */ = {
 			isa = PBXGroup;
 			children = (
+				CCC71D5E16CC747B003636E3 /* HMTerrainEffect.h */,
+				CCC71D5F16CC747B003636E3 /* HMTerrainEffect.m */,
 				CCC71D5B16CC72FE003636E3 /* HMMapZone.h */,
 				CCC71D5C16CC72FF003636E3 /* HMMapZone.m */,
 				CCC71D5816CC711E003636E3 /* HMMap.h */,
@@ -467,9 +467,9 @@
 				CC35E67C16AA275500F9F0B1 /* MoveOrders.m in Sources */,
 				CC35E68416AF5EE700F9F0B1 /* MapView.m in Sources */,
 				CC35E68516AF5EE700F9F0B1 /* UnitView.m in Sources */,
-				CC65EB8F16C0888200C47BD0 /* TerrainEffect.m in Sources */,
 				CCC71D5A16CC711E003636E3 /* HMMap.m in Sources */,
 				CCC71D5D16CC72FF003636E3 /* HMMapZone.m in Sources */,
+				CCC71D6016CC747B003636E3 /* HMTerrainEffect.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
