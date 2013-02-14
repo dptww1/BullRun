@@ -7,7 +7,7 @@
 //
 
 #import "CollectionUtil.h"
-#import "Hex.h"
+#import "HMHex.h"
 #import "OrderOfBattle.h"
 #import "SysUtil.h"
 #import "Unit.h"
@@ -37,7 +37,7 @@
 
 #pragma mark - Behaviors
 
-- (Unit*)unitInHex:(Hex)hex {
+- (Unit*)unitInHex:(HMHex)hex {
     NSUInteger idx = [self.units indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL* stop) {
                                                               return HexEquals(((Unit*) obj).location, hex);
                                                       }];

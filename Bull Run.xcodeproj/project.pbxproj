@@ -124,6 +124,7 @@
 		CCDB610116A04EF2006668C2 /* InfoBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoBarView.xib; sourceTree = "<group>"; };
 		CCDB610216A04EF2006668C2 /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
 		CCF61C9116C5EE3300391025 /* map.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = map.plist; sourceTree = "<group>"; };
+		CCF61C9316CC627400391025 /* HMHex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMHex.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -282,6 +283,7 @@
 		CCDB60EC16A04E43006668C2 /* HexMap */ = {
 			isa = PBXGroup;
 			children = (
+				CCF61C9316CC627400391025 /* HMHex.h */,
 				CCDB60ED16A04E43006668C2 /* Hex.h */,
 				CCDB60EF16A04E43006668C2 /* HexMapCoordinateTransformer.h */,
 				CCDB60F016A04E43006668C2 /* HexMapCoordinateTransformer.m */,

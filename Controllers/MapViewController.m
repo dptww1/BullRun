@@ -29,7 +29,7 @@
     return (MapView*)[self view];
 }
 
-- (CGPoint)getHexCenterPoint:(Hex)h {
+- (CGPoint)getHexCenterPoint:(HMHex)h {
     CGPoint pt = [[self coordXformer] hexToScreen:h];
     pt.x += [[self coordXformer] hexSize].width  / 2;
     pt.y += [[self coordXformer] hexSize].height / 2;
@@ -113,8 +113,8 @@
     CGContextStrokePath(ctx);
 
     // Draw arrowhead at end of line
-    Hex endHex = [mos lastHex];
-    Hex penultimateHex = [mos numHexes] == 1 ? [unit location] : [mos hex:[mos numHexes] - 2];
+    HMHex endHex = [mos lastHex];
+    HMHex penultimateHex = [mos numHexes] == 1 ? [unit location] : [mos hex:[mos numHexes] - 2];
     int dir = [[_coordXformer geometry] directionFrom:penultimateHex to:endHex];
 
     CGPoint end = [self getHexCenterPoint:endHex];
@@ -217,7 +217,7 @@
             // nothing to do
             
         } else {
-            Hex hex = [[self coordXformer] screenToHex:p];
+            HMHex hex = [[self coordXformer] screenToHex:p];
             
             if ([[_coordXformer geometry] legal:hex]) {
 
@@ -242,7 +242,7 @@
         return;
 
     for (UITouch* t in touches) {
-        Hex h = [_coordXformer screenToHex:[t locationInView:[self view]]];
+        HMHex h = [_coordXformer screenToHex:[t locationInView:[self view]]];
         
         // Just ignore illegal hexes
         if (![[_coordXformer geometry] legal:h])
@@ -332,7 +332,7 @@
     [[self view] setNeedsDisplay];
 }
 
-- (void)moveUnit:(Unit *)unit to:(Hex)hex {
+- (void)moveUnit:(Unit *)unit to:(HMHex)hex {
     DEBUG_MOVEMENT(@"Moving %@ to %02d%02d", [unit name], hex.column, hex.row);
     
     CAKeyframeAnimation* anim = [self.animationInfo objectForKey:[unit name]];

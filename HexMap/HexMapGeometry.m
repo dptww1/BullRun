@@ -31,7 +31,7 @@
 
 #pragma mark - Behaviors
 
-- (BOOL)legal:(Hex)hex {
+- (BOOL)legal:(HMHex)hex {
     if (hex.row < 0 || hex.column < 0)
         return NO;
     
@@ -50,7 +50,7 @@
     return YES;
 }
 
-- (int)directionFrom:(Hex)from to:(Hex)to {
+- (int)directionFrom:(HMHex)from to:(HMHex)to {
     // Fractions.  You're going to get fractions.  So use floats rather than ints.
     double fromRow = from.row;
     double fromCol = from.column;
@@ -105,7 +105,7 @@
     }
 }
 
-- (int)distanceFrom:(Hex)from to:(Hex)to {
+- (int)distanceFrom:(HMHex)from to:(HMHex)to {
     if (![self legal:from] || ![self legal:to])
         return -1;
     
@@ -114,7 +114,7 @@
     // calculations here a little easier if the "from" hex is to the left of the "to"
     // hex.  So swap them if need be.
     if (to.column < from.column) {
-        Hex tmp = HexMake(from.column, from.row);
+        HMHex tmp = HexMake(from.column, from.row);
         from = to;
         to = tmp;
     }
@@ -174,8 +174,8 @@
     return dir % 6;
 }
 
-- (Hex)hexAdjacentTo:(Hex)start inDirection:(int)dir {
-    Hex newHex = start;
+- (HMHex)hexAdjacentTo:(HMHex)start inDirection:(int)dir {
+    HMHex newHex = start;
     
     switch ([self normalizeDirection:dir]) {
     case 0:

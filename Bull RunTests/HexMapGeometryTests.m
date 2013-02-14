@@ -73,14 +73,14 @@ static HexMapGeometry* geometry;
 }
 
 - (void)testDirection {
-    Hex hA = HexMake(2, 4); Hex hB = HexMake(2, 3); Hex hC = HexMake(3, 4); Hex hD = HexMake(3, 5);
-    Hex hE = HexMake(2, 5); Hex hF = HexMake(1, 5); Hex hG = HexMake(1, 4); Hex hH = HexMake(2, 2);
-    Hex hI = HexMake(3, 3); Hex hJ = HexMake(4, 3); Hex hK = HexMake(4, 4); Hex hL = HexMake(4, 5);
-    Hex hM = HexMake(3, 6); Hex hN = HexMake(2, 6); Hex hO = HexMake(1, 6); Hex hP = HexMake(0, 5);
-    Hex hQ = HexMake(0, 4); Hex hR = HexMake(0, 3); Hex hS = HexMake(1, 3);
-                                                    Hex hW = HexMake(4, 0); Hex hX = HexMake(5, 0);
-    Hex hY = HexMake(6, 0);                         Hex ha = HexMake(8, 0); Hex hb = HexMake(9, 0);
-    Hex hc = HexMake(9, 1); Hex hd = HexMake(9, 2); Hex he = HexMake(9, 3);
+    HMHex hA = HexMake(2, 4); HMHex hB = HexMake(2, 3); HMHex hC = HexMake(3, 4); HMHex hD = HexMake(3, 5);
+    HMHex hE = HexMake(2, 5); HMHex hF = HexMake(1, 5); HMHex hG = HexMake(1, 4); HMHex hH = HexMake(2, 2);
+    HMHex hI = HexMake(3, 3); HMHex hJ = HexMake(4, 3); HMHex hK = HexMake(4, 4); HMHex hL = HexMake(4, 5);
+    HMHex hM = HexMake(3, 6); HMHex hN = HexMake(2, 6); HMHex hO = HexMake(1, 6); HMHex hP = HexMake(0, 5);
+    HMHex hQ = HexMake(0, 4); HMHex hR = HexMake(0, 3); HMHex hS = HexMake(1, 3);
+                                                    HMHex hW = HexMake(4, 0); HMHex hX = HexMake(5, 0);
+    HMHex hY = HexMake(6, 0);                         HMHex ha = HexMake(8, 0); HMHex hb = HexMake(9, 0);
+    HMHex hc = HexMake(9, 1); HMHex hd = HexMake(9, 2); HMHex he = HexMake(9, 3);
 
     // Same hex
     STAssertEquals([geometry directionFrom:hA to:hA], 0, nil);
@@ -120,9 +120,9 @@ static HexMapGeometry* geometry;
 }
 
 - (void)test {
-    Hex hA = HexMake(2, 4); Hex hB = HexMake(2, 3); Hex hC = HexMake(3, 4); Hex hD = HexMake(3, 5);
-    Hex hE = HexMake(2, 5); Hex hF = HexMake(1, 5); Hex hG = HexMake(1, 4);
-    Hex hI = HexMake(3, 3); Hex hJ = HexMake(4, 3); Hex hK = HexMake(4, 4);
+    HMHex hA = HexMake(2, 4); HMHex hB = HexMake(2, 3); HMHex hC = HexMake(3, 4); HMHex hD = HexMake(3, 5);
+    HMHex hE = HexMake(2, 5); HMHex hF = HexMake(1, 5); HMHex hG = HexMake(1, 4);
+    HMHex hI = HexMake(3, 3); HMHex hJ = HexMake(4, 3); HMHex hK = HexMake(4, 4);
     
     STAssertEquals([geometry hexAdjacentTo:hA inDirection:0], hB, nil);
     STAssertEquals([geometry hexAdjacentTo:hA inDirection:1], hC, nil);
@@ -140,14 +140,14 @@ static HexMapGeometry* geometry;
 }
 
 - (void)testDistance {
-    Hex hA = HexMake(2, 4); Hex hB = HexMake(2, 3); Hex hC = HexMake(3, 4); Hex hD = HexMake(3, 5);
-    Hex hE = HexMake(2, 5); Hex hF = HexMake(1, 5); Hex hG = HexMake(1, 4); Hex hH = HexMake(2, 2);
-    Hex hI = HexMake(3, 3); Hex hJ = HexMake(4, 3); Hex hK = HexMake(4, 4); Hex hL = HexMake(4, 5);
-    Hex hM = HexMake(3, 6); Hex hN = HexMake(2, 6); Hex hO = HexMake(1, 6); Hex hP = HexMake(0, 5);
-    Hex hQ = HexMake(0, 4); Hex hR = HexMake(0, 3); Hex hS = HexMake(1, 3); Hex hT = HexMake(2, 1);
-    Hex hU = HexMake(3, 1); Hex hV = HexMake(3, 0); Hex hW = HexMake(4, 0); Hex hX = HexMake(5, 0);
-    Hex hY = HexMake(6, 0); Hex hZ = HexMake(7, 0); Hex ha = HexMake(8, 0); Hex hb = HexMake(9, 0);
-    Hex hc = HexMake(9, 1); Hex hd = HexMake(9, 2); Hex he = HexMake(9, 3);
+    HMHex hA = HexMake(2, 4); HMHex hB = HexMake(2, 3); HMHex hC = HexMake(3, 4); HMHex hD = HexMake(3, 5);
+    HMHex hE = HexMake(2, 5); HMHex hF = HexMake(1, 5); HMHex hG = HexMake(1, 4); HMHex hH = HexMake(2, 2);
+    HMHex hI = HexMake(3, 3); HMHex hJ = HexMake(4, 3); HMHex hK = HexMake(4, 4); HMHex hL = HexMake(4, 5);
+    HMHex hM = HexMake(3, 6); HMHex hN = HexMake(2, 6); HMHex hO = HexMake(1, 6); HMHex hP = HexMake(0, 5);
+    HMHex hQ = HexMake(0, 4); HMHex hR = HexMake(0, 3); HMHex hS = HexMake(1, 3); HMHex hT = HexMake(2, 1);
+    HMHex hU = HexMake(3, 1); HMHex hV = HexMake(3, 0); HMHex hW = HexMake(4, 0); HMHex hX = HexMake(5, 0);
+    HMHex hY = HexMake(6, 0); HMHex hZ = HexMake(7, 0); HMHex ha = HexMake(8, 0); HMHex hb = HexMake(9, 0);
+    HMHex hc = HexMake(9, 1); HMHex hd = HexMake(9, 2); HMHex he = HexMake(9, 3);
     
     STAssertEquals([geometry distanceFrom:hA to:hA], 0, nil);
     

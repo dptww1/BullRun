@@ -8,7 +8,7 @@
 
 #import "Board.h"
 #import "BullRun.h"  // TODO: this is bad; shouldn't import game-specific stuff in library file
-#import "Hex.h"
+#import "HMHex.h"
 #import "HexMapGeometry.h"
 #import "MapZone.h"
 #import "SysUtil.h"
@@ -16,7 +16,7 @@
 
 @implementation Board (Private)
 
-- (int)rawDataAt:(Hex)hex {
+- (int)rawDataAt:(HMHex)hex {
     return [self mapData][(hex.row * [[self geometry] numColumns]) + hex.column];
 }
 
@@ -78,7 +78,7 @@
     return success;
 }
 
-- (TerrainEffect*)terrainAt:(Hex)hex {
+- (TerrainEffect*)terrainAt:(HMHex)hex {
     if (![_geometry legal:hex])
         return nil;
 
@@ -104,26 +104,26 @@
     return result;
 }
 
-- (float)mpCostOf:(Hex)hex for:(Unit*)unit {
+- (float)mpCostOf:(HMHex)hex for:(Unit*)unit {
     TerrainEffect* fx = [self terrainAt:hex];
     return fx ? [fx mpCost] : 10000.0f;
 }
 
-- (BOOL)isCsa:(Hex)hex { // TODO: move to derived class
+- (BOOL)isCsa:(HMHex)hex { // TODO: move to derived class
     return [self is:hex inZone:@"csa"];
 }
 
-- (BOOL)isUsa:(Hex)hex { // TODO: move to derived class
+- (BOOL)isUsa:(HMHex)hex { // TODO: move to derived class
     return [self is:hex inZone:@"usa"];
 
 }
 
-- (BOOL)isEnemy:(Hex)hex of:(PlayerSide)side { // TODO: generalize or move to derived class
+- (BOOL)isEnemy:(HMHex)hex of:(PlayerSide)side { // TODO: generalize or move to derived class
     return (side == CSA && [self isUsa:hex])
         || (side == USA && [self isCsa:hex]);
 }
 
-- (BOOL)is:(Hex)hex inSameZoneAs:(Hex)other {
+- (BOOL)is:(HMHex)hex inSameZoneAs:(HMHex)other {
     for (NSString* zname in [self.zones keyEnumerator]) {
         if ([self is:hex inZone:zname] && [self is:other inZone:zname])
             return YES;
@@ -132,7 +132,7 @@
     return NO;
 }
 
-- (BOOL)is:(Hex)hex inZone:(NSString*)zoneName {
+- (BOOL)is:(HMHex)hex inZone:(NSString*)zoneName {
     MapZone* zone = [self.zones objectForKey:zoneName];
     if (!zone)
         return NO;

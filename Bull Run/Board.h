@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "BullRun.h"   // TODO This is bad
 #import "HexMapGeometry.h"
-#import "Hex.h"
+#import "HMHex.h"
 #import "TerrainEffect.h"
 
 @class Unit;
@@ -24,10 +24,10 @@
 + (Board*)createFromFile:(NSString*)filename;
 
 - (BOOL)saveToFile:(NSString*)filename;
-- (float)mpCostOf:(Hex)hex for:(Unit*)unit;
-- (BOOL)isEnemy:(Hex)hex of:(PlayerSide)side;  // TODO:BR-specific
-- (BOOL)is:(Hex)hex inSameZoneAs:(Hex)other;
-- (BOOL)is:(Hex)hex inZone:(NSString*)zoneName;
-- (TerrainEffect*)terrainAt:(Hex)hex;
+- (float)mpCostOf:(HMHex)hex for:(Unit*)unit;
+- (BOOL)isEnemy:(HMHex)hex of:(PlayerSide)side;  // TODO:BR-specific
+- (BOOL)is:(HMHex)hex inSameZoneAs:(HMHex)other;
+- (BOOL)is:(HMHex)hex inZone:(NSString*)zoneName;
+- (TerrainEffect*)terrainAt:(HMHex)hex;
 
 @end

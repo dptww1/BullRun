@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Hex.h"
+#import "HMHex.h"
 #import "ResizableBuffer.h"
 
 @interface MapZone : NSObject <NSCoding>
@@ -18,7 +18,7 @@
 // Designated Initializer
 - (id)init;
 
-- (BOOL)containsHex:(Hex)hex;
+- (BOOL)containsHex:(HMHex)hex;
 
 - (void)addRange:(NSRange)range forColumn:(int)column;
 

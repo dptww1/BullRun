@@ -9,7 +9,7 @@
 #import "MoveOrders.h"
 #import "MoveOrdersTests.h"
 
-static BOOL compareHex(Hex h1, Hex h2) {
+static BOOL compareHex(HMHex h1, HMHex h2) {
     return h1.row == h2.row && h1.column == h2.column;
 }
 

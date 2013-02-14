@@ -35,7 +35,7 @@
 
 #pragma mark - Behaviors
 
-- (BOOL)containsHex:(Hex)hex {
+- (BOOL)containsHex:(HMHex)hex {
     NSNumber* colKey = [NSNumber numberWithInt:hex.column];
     NSArray* columnData = [self.columns objectForKey:colKey];
     

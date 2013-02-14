@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "BullRun.h"
-#import "Hex.h"
+#import "HMHex.h"
 
 @class MoveOrders;
 
@@ -27,7 +27,7 @@
 #pragma mark - Modifiable Properties
 
 @property            int             strength;
-@property            Hex             location;
+@property            HMHex             location;
 @property            BOOL            sighted;           // non-persistent; if TRUE, is visible to the enemy
 @property (strong)   MoveOrders*     moveOrders;        // non-persistent
 @property            Mode            mode;

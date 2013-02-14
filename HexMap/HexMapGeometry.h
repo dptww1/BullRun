@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Hex.h"
+#import "HMHex.h"
 
 /**
  * Structure defining the basic geometry of a hexmap, a two-dimensional array of hexagons. 
@@ -58,12 +58,12 @@
 /**
  * Determine if the given hex defines a legal location for this hexmap.
  */
-- (BOOL)legal:(Hex)hex;
+- (BOOL)legal:(HMHex)hex;
 
 /**
  * Determines the distance between two hexes.  If either or both are not legal, returns -1.
  */
-- (int)distanceFrom:(Hex)hex to:(Hex)hex;
+- (int)distanceFrom:(HMHex)hex to:(HMHex)hex;
 
 /**
  * Returns the number of cells needed to represent the entire game map.
@@ -84,7 +84,7 @@
  * where direction 0 points in the direction of the "top" of the map (i.e. row 0).
  * If from == to direction is 0.
  */
-- (int)directionFrom:(Hex)from to:(Hex)to;
+- (int)directionFrom:(HMHex)from to:(HMHex)to;
 
 /**
  * Returns the normalized direction next to the given direction in either the
@@ -101,6 +101,6 @@
  * Returns next hex in given direction from starting hex. The return value is not
  * guaranteed to be legal!
  */
-- (Hex)hexAdjacentTo:(Hex)start inDirection:(int)dir;
+- (HMHex)hexAdjacentTo:(HMHex)start inDirection:(int)dir;
 
 @end

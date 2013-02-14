@@ -73,7 +73,7 @@ Game* game;
             if (![[_board geometry] legal:[u location]] || ![u hasOrders])
                 continue;
             
-            Hex nextHex = [[u moveOrders] firstHexAndRemove:NO];
+            HMHex nextHex = [[u moveOrders] firstHexAndRemove:NO];
         
             // Is it occupied?
             Unit* blocker = [_oob unitInHex:nextHex];
@@ -211,7 +211,7 @@ Game* game;
     return c;
 }
 
-- (BOOL)is:(Unit*)unit movingThruEnemyZocTo:(Hex)hex {
+- (BOOL)is:(Unit*)unit movingThruEnemyZocTo:(HMHex)hex {
     HexMapGeometry* g = [_board geometry];
     
     int moveDir = [g directionFrom:[unit location] to:hex];
@@ -276,7 +276,7 @@ Game* game;
 }
 
 // Returns YES if `enemy' situated in given terrain is sighted by any of `friends'.
-- (BOOL)isUnit:(Unit*)enemy inHex:(Hex)hex sightedBy:(NSArray*)friends {
+- (BOOL)isUnit:(Unit*)enemy inHex:(HMHex)hex sightedBy:(NSArray*)friends {
     
     // Innocent until proven guilty.
     __block BOOL sighted = NO;

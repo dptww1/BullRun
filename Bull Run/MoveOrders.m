@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
-#import "Hex.h"
+#import "HMHex.h"
 #import "MoveOrders.h"
 #import "ResizableBuffer.h"
 
@@ -16,7 +16,7 @@
     self = [super init];
     
     if (self) {
-        _list = [ResizableBuffer bufferWithCapacity:20 ofObjectSize:sizeof(Hex)];
+        _list = [ResizableBuffer bufferWithCapacity:20 ofObjectSize:sizeof(HMHex)];
     }
     
     return self;
@@ -39,7 +39,7 @@
     [_list clear];
 }
 
-- (void)addHex:(Hex)hex {
+- (void)addHex:(HMHex)hex {
     [_list add:&hex];
 }
 
@@ -47,15 +47,15 @@
     return [_list count];
 }
 
-- (Hex)lastHex {
+- (HMHex)lastHex {
     return [self hex:[_list count] - 1];
 }
 
-- (Hex)firstHexAndRemove:(BOOL)removeOrder {
+- (HMHex)firstHexAndRemove:(BOOL)removeOrder {
     if ([_list count] == 0)
         return HexMake(-1, -1);
     
-    Hex hex = [self hex:0];
+    HMHex hex = [self hex:0];
     
     if (removeOrder)
         [_list remove:0];
@@ -63,18 +63,18 @@
     return hex;
 }
 
-- (Hex)hex:(int)idx {
+- (HMHex)hex:(int)idx {
     if (0 <= idx && idx < [_list count])
-        return *((Hex*)[_list getObjectAt:idx]);
+        return *((HMHex*)[_list getObjectAt:idx]);
     
     return HexMake(-1, -1);
 }
 
-- (BOOL)isBacktrack:(Hex)hex {
+- (BOOL)isBacktrack:(HMHex)hex {
     if ([_list count] < 2)
         return NO;
     
-    Hex penultimate = [self hex:[_list count] - 2];
+    HMHex penultimate = [self hex:[_list count] - 2];
     return HexEquals(hex, penultimate);
 }
 
