@@ -1,14 +1,14 @@
 //
-//  HexMapGeometry.m
+//  HMGeometry.m
 //  Bull Run
 //
 //  Created by Dave Townsend on 12/24/12.
 //  Copyright (c) 2012 Dave Townsend. All rights reserved.
 //
 
-#import "HexMapGeometry.h"
+#import "HMGeometry.h"
 
-@implementation HexMapGeometry
+@implementation HMGeometry
 
 #pragma mark - Initialization
 

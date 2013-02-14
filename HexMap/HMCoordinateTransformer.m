@@ -1,16 +1,16 @@
 //
-//  HexMapCoordinateTransformer.m
+//  HMCoordinateTransformer.m
 //  Bull Run
 //
 //  Created by Dave Townsend on 12/24/12.
 //  Copyright (c) 2012 Dave Townsend. All rights reserved.
 //
 
-#import "HexMapCoordinateTransformer.h"
-#import "HexMapGeometry.h"
+#import "HMCoordinateTransformer.h"
+#import "HMGeometry.h"
 
 
-@implementation HexMapCoordinateTransformer (Private)
+@implementation HMCoordinateTransformer (Private)
 
 - (CGPoint)offsetFromOrigin:(CGPoint)p {
     return CGPointMake(p.x - [self origin].x, p.y - [self origin].y);
@@ -18,9 +18,9 @@
 
 @end
 
-@implementation HexMapCoordinateTransformer
+@implementation HMCoordinateTransformer
 
-- (id)initWithGeometry:(HexMapGeometry *)geometry origin:(CGPoint)origin hexSize:(CGSize)hexSize {
+- (id)initWithGeometry:(HMGeometry *)geometry origin:(CGPoint)origin hexSize:(CGSize)hexSize {
     self = [super init];
     if (self) {
         [self setGeometry:geometry];

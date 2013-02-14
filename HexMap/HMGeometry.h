@@ -1,5 +1,5 @@
 //
-//  HexMapGeometry.h
+//  HMGeometry.h
 //  Bull Run
 //
 //  Created by Dave Townsend on 12/24/12.
@@ -43,7 +43,7 @@
  * <li><tt>numColumns</tt> is 5
  * </ol>
  */
-@interface HexMapGeometry : NSObject <NSCoding>
+@interface HMGeometry : NSObject <NSCoding>
 
 @property (nonatomic) BOOL isLongGrain;
 @property (nonatomic) BOOL firstColumnIsLong;

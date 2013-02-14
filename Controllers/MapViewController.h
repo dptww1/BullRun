@@ -9,27 +9,27 @@
 #import <UIKit/UIKit.h>
 #import "HMHex.h"
 
-@class HexMapCoordinateTransformer;
+@class HMCoordinateTransformer;
 @class InfoBarView;
 @class OrderOfBattle;
 @class Unit;
 
 @interface MapViewController : UIViewController
 
-@property (nonatomic, strong) HexMapCoordinateTransformer* coordXformer;
-@property (nonatomic, weak)   InfoBarView*                 infoBarView;
-@property (nonatomic, weak)   Unit*                        currentUnit;
-@property (nonatomic, strong) CALayer*                     moveOrderLayer;
+@property (nonatomic, strong) HMCoordinateTransformer* coordXformer;
+@property (nonatomic, weak)   InfoBarView*             infoBarView;
+@property (nonatomic, weak)   Unit*                    currentUnit;
+@property (nonatomic, strong) CALayer*                 moveOrderLayer;
 
 // If YES, then the user's touch has moved outside the current hex and
 // so we are setting new movement orders.  This means that new touches
 // (drags, really) into the current unit's original hex are treated like
 // any other hex.
-@property (nonatomic)         BOOL                         givingNewOrders;
+@property (nonatomic)         BOOL                     givingNewOrders;
 
 // Key: NSString* (unit name)
 // Value: CAKeyframeAnimation
-@property (nonatomic, strong) NSMutableDictionary*         animationInfo;
+@property (nonatomic, strong) NSMutableDictionary*     animationInfo;
 
 - (void)unitNowSighted:(Unit*)unit;
 - (void)unitNowHidden:(Unit*)unit;

@@ -212,7 +212,7 @@ Game* game;
 }
 
 - (BOOL)is:(Unit*)unit movingThruEnemyZocTo:(HMHex)hex {
-    HexMapGeometry* g = [_board geometry];
+    HMGeometry* g = [_board geometry];
     
     int moveDir = [g directionFrom:[unit location] to:hex];
     int cwDir   = [g rotateDirection:moveDir clockwise:YES];

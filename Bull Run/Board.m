@@ -8,8 +8,8 @@
 
 #import "Board.h"
 #import "BullRun.h"  // TODO: this is bad; shouldn't import game-specific stuff in library file
+#import "HMGeometry.h"
 #import "HMHex.h"
-#import "HexMapGeometry.h"
 #import "MapZone.h"
 #import "SysUtil.h"
 #import "TerrainEffect.h"

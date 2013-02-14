@@ -11,7 +11,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "Board.h"
 #import "Game.h"
-#import "HexMapCoordinateTransformer.h"
+#import "HMCoordinateTransformer.h"
 #import "MapView.h"
 #import "Unit.h"
 #import "UnitView.h"

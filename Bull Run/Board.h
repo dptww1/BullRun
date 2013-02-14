@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "BullRun.h"   // TODO This is bad
-#import "HexMapGeometry.h"
+#import "HMGeometry.h"
 #import "HMHex.h"
 #import "TerrainEffect.h"
 
@@ -16,10 +16,10 @@
 
 @interface Board : NSObject <NSCoding>
 
-@property (readonly, strong, nonatomic) HexMapGeometry* geometry;
-@property (readonly, strong, nonatomic) NSArray*        terrainEffects;
-@property (readonly, strong, nonatomic) NSDictionary*   zones;
-@property (readonly,         nonatomic) int*            mapData;
+@property (readonly, strong, nonatomic) HMGeometry*   geometry;
+@property (readonly, strong, nonatomic) NSArray*      terrainEffects;
+@property (readonly, strong, nonatomic) NSDictionary* zones;
+@property (readonly,         nonatomic) int*          mapData;
 
 + (Board*)createFromFile:(NSString*)filename;
 

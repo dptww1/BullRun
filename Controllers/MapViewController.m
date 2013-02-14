@@ -9,7 +9,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "BullRun.h"
 #import "MapViewController.h"
-#import "HexMapCoordinateTransformer.h"
+#import "HMCoordinateTransformer.h"
 #import "InfoBarView.h"
 #import "OrderOfBattle.h"
 #import "Unit.h"
@@ -46,9 +46,9 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
     if (self) {
-        _coordXformer = [[HexMapCoordinateTransformer alloc] initWithGeometry:[[game board] geometry]
-                                                                       origin:CGPointMake(67, 58)
-                                                                      hexSize:CGSizeMake(51, 51)];
+        _coordXformer = [[HMCoordinateTransformer alloc] initWithGeometry:[[game board] geometry]
+                                                                   origin:CGPointMake(67, 58)
+                                                                  hexSize:CGSizeMake(51, 51)];
         _currentUnit = nil;
         [self setWantsFullScreenLayout:YES];
         
