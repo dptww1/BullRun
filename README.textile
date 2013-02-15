@@ -30,6 +30,8 @@ h3. UI/Art
 h3. Functionality
 * Touching outside hex area should show status bar
 * OOB needs reinforcement information
+* Game#takeCasualties to reset attack mode when wrecked
+* Real attack/advance/retreat animations
 
 h3. Organization
 * Differentiate between BR-specific files (Terrain, BullRun.h) and Battle@ framework files (Board, Game, Unit)

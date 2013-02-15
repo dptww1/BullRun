@@ -36,5 +36,8 @@
 - (void)moveUnit:(Unit*)unit to:(HMHex)hex;
 - (void)movePhaseWillBegin;
 - (void)movePhaseDidEnd;
+- (void)unit:(Unit*)attacker willAttack:(HMHex)hex;
+- (void)unit:(Unit*)defender willRetreatTo:(HMHex)hex;
+- (void)unit:(Unit*)attacker willAdvanceTo:(HMHex)hex;
 
 @end

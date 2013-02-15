@@ -146,6 +146,8 @@ Game* game;
 - (void)attackFrom:(Unit*)a to:(Unit*)d {
     DEBUG_COMBAT(@"COMBAT: %@ attacks %@", [a name], [d name]);
 
+    [[self app] unit:a willAttack:[d location]];
+
     // Compute base casualties
     int attCasualties = [self computeAttackerCasualtiesFor:a against:d];
     int defCasualties = [self computeDefenderCasualtiesFor:d against:a];
@@ -164,15 +166,51 @@ Game* game;
         DEBUG_COMBAT(@"  Woods hex has attacker now at %d and defender at %d", attCasualties, defCasualties);
     }
 
-    [a setStrength:[a strength] - attCasualties];
-    [d setStrength:[d strength] - defCasualties];
-
     int retreatProbability = ((5 - [a mode]) - (5 - [d mode])) * 25;
     retreatProbability += ([a leadership] / 2) - ([d leadership] / 2);
     if ([d mode] == WITHDRAW || (random() % 100) < retreatProbability) {
         // The defender is supposed to retreat.
         DEBUG_COMBAT(@"  defender must retreat, probability was %d", retreatProbability);
+
+        int retreatDir = [self findRetreatDirFor:d attackedBy:a];
+        if (retreatDir == -1) { // then no retreat possible
+            defCasualties *= 2;
+            DEBUG_COMBAT(@"  no retreat possible, doubling casualties to %d", defCasualties);
+
+        } else { // defender retreats
+            DEBUG_COMBAT(@"  defender retreats in direction %d", retreatDir);
+
+            HMHex defenderOriginalHex = [d location];
+            HMHex retreatHex = [[[self board] geometry] hexAdjacentTo:[d location] inDirection:retreatDir];
+            [[self app] unit:d willRetreatTo:retreatHex];
+            [d setLocation:retreatHex];
+
+            if ([self doesAttackerAdvance:a]) {
+                [[self app] unit:a willAdvanceTo:defenderOriginalHex];
+                [a setLocation:defenderOriginalHex];
+            }
+
+            [self doSighting:[game userSide]];
+        }
     }
+
+    // TODO: takeCasualties; in addition to changing strength, set to
+    // Defend mode if in an attack mode and now wrecked.
+    [a setStrength:[a strength] - attCasualties];
+    [d setStrength:[d strength] - defCasualties];
+}
+
+- (BOOL)doesAttackerAdvance:(Unit*)a {
+    static int modeAdjustmentMatrix[NUM_MODES] = { 50, 25, 10, 0, 0, 0 };
+
+    int pctChance = modeAdjustmentMatrix[[a mode]] + [a leadership];
+
+    int d100 = random() % 100;
+
+    DEBUG_COMBAT(@"  %@ advance pct: %d, roll %d, so %s advance",
+                 [a name], pctChance, d100, d100 <= pctChance ? "will" : "wont");
+
+    return d100 <= pctChance;
 }
 
 - (int)computeAttackerCasualtiesFor:(Unit*)a against:(Unit*)d {
@@ -223,6 +261,36 @@ Game* game;
 
     return (cwUnit  && ![cwUnit  friends:unit])
         || (ccwUnit && ![ccwUnit friends:unit]);
+}
+
+// -1 == no retreat possible, else direction to retreat in
+- (int)findRetreatDirFor:(Unit*)d attackedBy:(Unit*)a {
+    HMGeometry* geometry = [[self board] geometry];
+
+    int attackDir = [geometry directionFrom:[a location] to:[d location]];
+    if ([self unit:d canRetreatInDirection:attackDir])
+        return attackDir;
+
+    int attackDirCW = [geometry rotateDirection:attackDir clockwise:YES];
+    if ([self unit:d canRetreatInDirection:attackDirCW])
+        return attackDirCW;
+
+    int attackDirCCW = [geometry rotateDirection:attackDir clockwise:NO];
+    if ([self unit:d canRetreatInDirection:attackDirCCW])
+        return attackDirCCW;
+
+    return -1;
+}
+
+- (BOOL)unit:(Unit*)u canRetreatInDirection:(int)dir {
+    HMGeometry* geometry = [[self board] geometry];
+
+    HMHex hex = [geometry hexAdjacentTo:[u location] inDirection:dir];
+
+    return [geometry legal:hex]
+        && ![[self oob] unitInHex:hex]
+        && ![[self board] is:hex prohibitedFor:u]
+        && ![self is:u movingThruEnemyZocTo:hex];
 }
 
 // Performs sighting from the POV of player `side'. In practice will

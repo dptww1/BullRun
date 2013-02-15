@@ -140,4 +140,8 @@
     return [zone containsHex:hex];
 }
 
+- (BOOL)is:(HMHex)hex prohibitedFor:(Unit*)unit {
+    return ![self terrainAt:hex];
+}
+
 @end

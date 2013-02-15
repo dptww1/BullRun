@@ -370,6 +370,21 @@
     [self.animationInfo removeAllObjects];
 }
 
+- (void)unit:(Unit*)attacker willAttack:(HMHex)hex {
+    DEBUG_COMBAT(@"MapViewController#unit:%@ willAttack:%02d%02d", [attacker name], hex.column, hex.row);
+    // TODO: nothing for now
+}
+
+- (void)unit:(Unit*)defender willRetreatTo:(HMHex)hex {
+    DEBUG_COMBAT(@"MapViewController#unit:%@ willRetreatTo:%02d%02d", [defender name], hex.column, hex.row);
+    [self moveUnit:defender to:hex];  // TODO: for now
+}
+
+- (void)unit:(Unit*)attacker willAdvanceTo:(HMHex)hex {
+    DEBUG_COMBAT(@"MapViewController#unit:%@ willAdvanceTo:%02d%02d", [attacker name], hex.column, hex.row);
+    [self moveUnit:attacker to:hex]; // TODO: for now
+}
+
 #pragma mark - Debugging
 
 - (IBAction)playerIsUsa:(id)sender {

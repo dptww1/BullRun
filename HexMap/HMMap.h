@@ -29,5 +29,6 @@
 - (BOOL)is:(HMHex)hex inSameZoneAs:(HMHex)other;
 - (BOOL)is:(HMHex)hex inZone:(NSString*)zoneName;
 - (HMTerrainEffect*)terrainAt:(HMHex)hex;
+- (BOOL)is:(HMHex)hex prohibitedFor:(Unit*)unit;
 
 @end

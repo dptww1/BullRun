@@ -78,4 +78,17 @@ static MapViewController* mvController;
     [mvController moveUnit:unit to:hex];
 }
 
+- (void)unit:(Unit*)attacker willAttack:(HMHex)hex {
+    [mvController unit:attacker willAttack:hex];
+}
+
+- (void)unit:(Unit*)defender willRetreatTo:(HMHex)hex {
+    [mvController unit:defender willRetreatTo:hex];
+}
+
+- (void)unit:(Unit*)attacker willAdvanceTo:(HMHex)hex {
+    [mvController unit:attacker willAdvanceTo:hex];
+}
+
+
 @end
