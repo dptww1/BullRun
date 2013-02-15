@@ -12,6 +12,8 @@
 #import "InfoBarView.h"
 #import "Unit.h"
 
+#define NUM_ELTS(ARRAY_NAME) (sizeof(ARRAY_NAME) / sizeof(ARRAY_NAME[0]))
+
 static NSString* modeLabelStrings[] = {
     @"Charge",
     @"Attack",
@@ -28,6 +30,16 @@ static BOOL modeLabelIsChoosable[] = {
     YES,  // Withdraw
     NO    // Routed
 };
+
+@implementation InfoBarView (Private)
+
+- (int)modeFromMenuIndex:(int)idx {
+    // 0 normally means |Charge|, and so on down the line, but
+    // if |Charge| is disabled then 0 means |Defend|.
+    return modeLabelIsChoosable[CHARGE] ? idx : DEFEND + idx;
+}
+
+@end
 
 @implementation InfoBarView
 
@@ -47,6 +59,12 @@ static BOOL modeLabelIsChoosable[] = {
         [[unitImage layer] setContentsRect:CGRectMake(54.0 * [unit imageXIdx] / 702.0,  // TODO: get rid of constant; this is width of source image
                                                       64.0 * [unit imageYIdx] / 128.0,  // TODO: get rid of constant; this is height of source image
                                                       54.0 / 702.0, 0.5)];
+
+        BOOL isWrecked = [unit isWrecked];
+        for (int i = 0; i < NUM_ELTS(modeLabelStrings); ++i)
+            if (IsOffensiveMode(i))
+                modeLabelIsChoosable[i] = isWrecked ? NO : YES;
+
         currentUnit = unit;
         
     } else { // no unit selected, just erase the info box
@@ -76,7 +94,7 @@ static BOOL modeLabelIsChoosable[] = {
     CGSize mySize = [self bounds].size;
     
     CGPoint newCenter = CGPointMake(parentSize.width - mySize.width / 2.0f, mySize.height / 2.0f);
-    
+
     [UIView animateWithDuration:0.5 animations:^{
         [self setCenter:newCenter];
     }];
@@ -89,7 +107,7 @@ static BOOL modeLabelIsChoosable[] = {
                                         destructiveButtonTitle:nil
                                              otherButtonTitles:nil, nil];
     
-    for (int i = 0; i < sizeof(modeLabelStrings) / sizeof(NSString*); ++i)
+    for (int i = 0; i < NUM_ELTS(modeLabelStrings); ++i)
         if (modeLabelIsChoosable[i])
             [menu addButtonWithTitle:modeLabelStrings[i]];
     
@@ -104,9 +122,12 @@ static BOOL modeLabelIsChoosable[] = {
 
 #pragma mark - UIActionSheetDelegate Implementation
 
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    [unitMode setTitle:modeLabelStrings[buttonIndex] forState:UIControlStateNormal];
-    [currentUnit setMode:(Mode)buttonIndex];
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIdx {
+    if (0 <= buttonIdx && buttonIdx < NUM_ELTS(modeLabelStrings)) {
+        int newMode = [self modeFromMenuIndex:buttonIdx];
+        [unitMode setTitle:modeLabelStrings[newMode] forState:UIControlStateNormal];
+        [currentUnit setMode:(Mode)newMode];
+    }
 }
 
 @end

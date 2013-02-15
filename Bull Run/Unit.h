@@ -27,7 +27,7 @@
 #pragma mark - Modifiable Properties
 
 @property            int             strength;
-@property            HMHex             location;
+@property            HMHex           location;
 @property            BOOL            sighted;           // non-persistent; if TRUE, is visible to the enemy
 @property (strong)   MoveOrders*     moveOrders;        // non-persistent
 @property            Mode            mode;
@@ -41,4 +41,6 @@
 // Returns YES if the receiver is on the same side as 'other'
 - (BOOL)friends:(Unit*)other;
 
+// Returns YES if casualties are greater than the |morale| percentage.
+- (BOOL)isWrecked;
 @end

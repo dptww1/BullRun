@@ -21,6 +21,16 @@
     return _side == [other side];
 }
 
+- (BOOL)isWrecked {
+    // How could this happen? Still, guard against division-by-zero errors
+    if (self.originalStrength == 0)
+        return NO;
+
+    int pctCasualties = 100 - (self.strength * 100 / self.originalStrength);
+
+    return pctCasualties > self.morale;
+}
+
 #pragma mark - NSCoding
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
