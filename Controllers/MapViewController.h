@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BAGameObserving.h"
 #import "HMHex.h"
 
 @class HMCoordinateTransformer;
@@ -14,7 +15,7 @@
 @class OrderOfBattle;
 @class Unit;
 
-@interface MapViewController : UIViewController
+@interface MapViewController : UIViewController <BAGameObserving>
 
 @property (nonatomic, strong) HMCoordinateTransformer* coordXformer;
 @property (nonatomic, weak)   InfoBarView*             infoBarView;
@@ -31,13 +32,15 @@
 // Value: CAKeyframeAnimation
 @property (nonatomic, strong) NSMutableDictionary*     animationInfo;
 
+#pragma mark - GameObserving Implementation
+
 - (void)unitNowSighted:(Unit*)unit;
 - (void)unitNowHidden:(Unit*)unit;
-- (void)moveUnit:(Unit*)unit to:(HMHex)hex;
+
 - (void)movePhaseWillBegin;
 - (void)movePhaseDidEnd;
-- (void)unit:(Unit*)attacker willAttack:(HMHex)hex;
-- (void)unit:(Unit*)defender willRetreatTo:(HMHex)hex;
-- (void)unit:(Unit*)attacker willAdvanceTo:(HMHex)hex;
+
+- (void)moveUnit:(Unit*)unit to:(HMHex)hex;
+- (void)showAttack:(BABattleReport*)report;
 
 @end

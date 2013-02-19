@@ -7,6 +7,7 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
+#import "BABattleReport.h"
 #import "BullRun.h"
 #import "Game.h"
 #import "HMCoordinateTransformer.h"
@@ -223,8 +224,8 @@
 
                 DEBUG_MAP(@"Hex %02d%02d, zones:%@,%@", hex.column, hex.row, [[game board] is:hex inZone:@"csa"] ? @"CSA" : @"", [[game board] is:hex inZone:@"usa"] ? @"USA" : @"");
                 DEBUG_MAP(@"   Terrain %@ cost %2.0f",
-                          [[game board] terrainAt:hex] ? [[game board] terrainAt:hex name] : @"Impassible",
-                          [[game board] terrainAt:hex] ? [[game board] terrainAt:hex mpCost] : 0);
+                          [[game board] terrainAt:hex] ? [[[game board] terrainAt:hex] name] : @"Impassible",
+                          [[game board] terrainAt:hex] ? [[[game board] terrainAt:hex] mpCost] : 0);
 
                 _currentUnit = [[game oob] unitInHex:hex];
                 [[self infoBarView] showInfoForUnit:_currentUnit];
@@ -370,19 +371,25 @@
     [self.animationInfo removeAllObjects];
 }
 
-- (void)unit:(Unit*)attacker willAttack:(HMHex)hex {
-    DEBUG_COMBAT(@"MapViewController#unit:%@ willAttack:%02d%02d", [attacker name], hex.column, hex.row);
-    // TODO: nothing for now
-}
+- (void)showAttack:(BABattleReport *)report {
+    DEBUG_COMBAT(@"MapViewController#unit:%@ attacks %@",
+                 [[report attacker] name], [[report defender] name]);
 
-- (void)unit:(Unit*)defender willRetreatTo:(HMHex)hex {
-    DEBUG_COMBAT(@"MapViewController#unit:%@ willRetreatTo:%02d%02d", [defender name], hex.column, hex.row);
-    [self moveUnit:defender to:hex];  // TODO: for now
-}
+    if ([[[game board] geometry] legal:[report retreatHex]]) {
+        DEBUG_COMBAT(@"MapViewController#unit:%@ willRetreatTo:%02d%02d",
+                     [[report defender] name],
+                     [report retreatHex].column,
+                     [report retreatHex].row);
+        [self moveUnit:[report defender] to:[report retreatHex]];  // TODO: for now
+    }
 
-- (void)unit:(Unit*)attacker willAdvanceTo:(HMHex)hex {
-    DEBUG_COMBAT(@"MapViewController#unit:%@ willAdvanceTo:%02d%02d", [attacker name], hex.column, hex.row);
-    [self moveUnit:attacker to:hex]; // TODO: for now
+    if ([[[game board] geometry] legal:[report advanceHex]]) {
+        DEBUG_COMBAT(@"MapViewController#unit:%@ willAdvanceTo:%02d%02d",
+                     [[report attacker] name],
+                     [report advanceHex].column,
+                     [report advanceHex].row);
+        [self moveUnit:[report attacker] to:[report advanceHex]]; // TODO: for now
+    }
 }
 
 #pragma mark - Debugging

@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
+#import "BABattleReport.h"
+#import "BAGameObserving.h"
 #import "BRAppDelegate.h"
 #import "BullRun.h"
 #import "CollectionUtil.h"
@@ -34,6 +36,7 @@ Game* game;
         _userSide = CSA;
         _board = [HMMap createFromFile:[[NSBundle mainBundle] pathForResource:@"map" ofType:@"plist"]];
         _oob = [OrderOfBattle createFromFile:[[NSBundle mainBundle] pathForResource:@"units" ofType:@"plist"]];
+        _observers = [NSMutableArray array];
     }
 
     return self;
@@ -50,9 +53,13 @@ Game* game;
 
 #pragma mark - Public Methods
 
+- (void)addObserver:(id<BAGameObserving>)object {
+    [[self observers] addObject:object];
+}
+
 - (void)doNextTurn {
-    [[self app] movePhaseWillBegin];
-    
+    [self notifyObserversWithSelector:@selector(movePhaseWillBegin:)];
+
     // TODO: call AI
     
     NSArray*      sortedUnits = [self sortUnits];                       // elements: Unit*
@@ -119,7 +126,8 @@ Game* game;
                 }
 
                 // No impediments, so make the move
-                [[self app] moveUnit:u to:nextHex];
+                [self notifyObserversUnit:u willMoveToHex:nextHex];
+
                 [[u moveOrders] firstHexAndRemove:YES];
                 [u setLocation:nextHex];
                 [u setMps:[u mps] - mpCost];
@@ -136,17 +144,45 @@ Game* game;
     // Reset MPs of units unwilling or unable to move due to blocked destinations and/or ZOC problems
     for (Unit* u in didntMove)
         [u setMps:0];
-    
-    [[self app] movePhaseDidEnd];
+
+    [self notifyObserversWithSelector:@selector(movePhaseDidEnd:)];
+
     // TODO: compute whether game over
 }
 
 #pragma mark - Private Methods
 
+- (void)notifyObserversWithSelector:(SEL)selector {
+    for (id<BAGameObserving> observer in [self observers]) {
+        if ([observer respondsToSelector:selector])
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+            [observer performSelector:selector];
+#pragma clang diagnostic pop
+    }
+}
+
+- (void)notifyObserversWithSelector:(SEL)selector andObject:(id)object {
+    for (id<BAGameObserving> observer in [self observers]) {
+        if ([observer respondsToSelector:selector])
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+            [observer performSelector:selector withObject:object];
+#pragma clang diagnostic pop
+    }
+}
+
+- (void) notifyObserversUnit:(Unit*)unit willMoveToHex:(HMHex)hex {
+    for (id<BAGameObserving> observer in [self observers]) {
+        [observer moveUnit:unit to:hex];
+    }
+}
+
 - (void)attackFrom:(Unit*)a to:(Unit*)d {
     DEBUG_COMBAT(@"COMBAT: %@ attacks %@", [a name], [d name]);
 
-    [[self app] unit:a willAttack:[d location]];
+    BABattleReport* report = [BABattleReport battleReportWithAttacker:a
+                                                          andDefender:d];
 
     // Compute base casualties
     int attCasualties = [self computeAttackerCasualtiesFor:a against:d];
@@ -182,22 +218,33 @@ Game* game;
 
             HMHex defenderOriginalHex = [d location];
             HMHex retreatHex = [[[self board] geometry] hexAdjacentTo:[d location] inDirection:retreatDir];
-            [[self app] unit:d willRetreatTo:retreatHex];
-            [d setLocation:retreatHex];
+            [report setRetreatHex:retreatHex];
 
-            if ([self doesAttackerAdvance:a]) {
-                [[self app] unit:a willAdvanceTo:defenderOriginalHex];
-                [a setLocation:defenderOriginalHex];
-            }
+            if ([self doesAttackerAdvance:a])
+                [report setAdvanceHex:defenderOriginalHex];
 
             [self doSighting:[game userSide]];
         }
     }
 
+    [report setAttackerCasualties:attCasualties];
+    [report setDefenderCasualties:defCasualties];
+
+    // Let observers know what's going to happen
+    [self notifyObserversWithSelector:@selector(showAttack:) andObject:report];
+
+    // Now implement the results
+
     // TODO: takeCasualties; in addition to changing strength, set to
     // Defend mode if in an attack mode and now wrecked.
     [a setStrength:[a strength] - attCasualties];
     [d setStrength:[d strength] - defCasualties];
+
+    if ([[[self board] geometry] legal:[report retreatHex]])
+        [d setLocation:[report retreatHex]];
+
+    if ([[[self board] geometry] legal:[report advanceHex]])
+        [a setLocation:[report advanceHex]];
 }
 
 - (BOOL)doesAttackerAdvance:(Unit*)a {
@@ -307,7 +354,7 @@ Game* game;
         if ([[_board geometry] legal:[friend location]]) {
             if (![friend sighted]) {
                 [friend setSighted:YES];
-                [[self app] unitNowSighted:friend];
+                [self notifyObserversWithSelector:@selector(unitNowSighted:) andObject:friend];
             }
         }
         // doesn't handle case of on-board unit moving off-board
@@ -332,11 +379,11 @@ Game* game;
             // if enemy is no longer sighted, but used to be, update it
             if (!enemyNowSighted && [enemy sighted]) {
                 [enemy setSighted:NO];
-                [[self app] unitNowHidden:enemy];
-                
+                [self notifyObserversWithSelector:@selector(unitNowHidden:) andObject:enemy];
+
             } else if (enemyNowSighted && ![enemy sighted]) {
                 [enemy setSighted:YES];
-                [[self app] unitNowSighted:enemy];
+                [self notifyObserversWithSelector:@selector(unitNowSighted:) andObject:enemy];
             }
         }
         // Note that we're not handling the case of an on-board unit moving off-board.

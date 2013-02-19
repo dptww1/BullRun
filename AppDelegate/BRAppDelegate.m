@@ -27,6 +27,8 @@ static MapViewController* mvController;
     [navController setNavigationBarHidden:YES];
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
     [[self window] setRootViewController:navController];
+
+    [game addObserver:mvController];
     
     [game doSighting:CSA];
 
@@ -56,39 +58,5 @@ static MapViewController* mvController;
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
-
-#pragma mark - Battle@ Callbacks
-- (void)movePhaseWillBegin {
-    [mvController movePhaseWillBegin];
-}
-
-- (void)movePhaseDidEnd {
-    [mvController movePhaseDidEnd];
-}
-
-- (void)unitNowSighted:(Unit*)unit {
-    [mvController unitNowSighted:unit];
-}
-
-- (void)unitNowHidden:(Unit*)unit {
-    [mvController unitNowHidden:unit];
-}
-
-- (void)moveUnit:(Unit*)unit to:(HMHex)hex {
-    [mvController moveUnit:unit to:hex];
-}
-
-- (void)unit:(Unit*)attacker willAttack:(HMHex)hex {
-    [mvController unit:attacker willAttack:hex];
-}
-
-- (void)unit:(Unit*)defender willRetreatTo:(HMHex)hex {
-    [mvController unit:defender willRetreatTo:hex];
-}
-
-- (void)unit:(Unit*)attacker willAdvanceTo:(HMHex)hex {
-    [mvController unit:attacker willAdvanceTo:hex];
-}
-
 
 @end

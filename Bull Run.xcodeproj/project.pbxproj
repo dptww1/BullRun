@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC0805A916D3085000CB8C79 /* BABattleReport.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0805A816D3085000CB8C79 /* BABattleReport.m */; };
 		CC0CF381168A4E72006D902D /* README.textile in Resources */ = {isa = PBXBuildFile; fileRef = CC0CF380168A4E72006D902D /* README.textile */; };
 		CC0CF3E516989A3D006D902D /* Unit.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0CF3E416989A3C006D902D /* Unit.m */; };
 		CC0CF3E816989B52006D902D /* OrderOfBattle.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0CF3E716989B51006D902D /* OrderOfBattle.m */; };
@@ -63,6 +64,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CC0805A716D3085000CB8C79 /* BABattleReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BABattleReport.h; sourceTree = "<group>"; };
+		CC0805A816D3085000CB8C79 /* BABattleReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BABattleReport.m; sourceTree = "<group>"; };
+		CC0805AA16D3165D00CB8C79 /* BAGameObserving.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAGameObserving.h; sourceTree = "<group>"; };
 		CC0CF380168A4E72006D902D /* README.textile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.textile; sourceTree = "<group>"; };
 		CC0CF3E316989A3C006D902D /* Unit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Unit.h; sourceTree = "<group>"; };
 		CC0CF3E416989A3C006D902D /* Unit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Unit.m; sourceTree = "<group>"; };
@@ -153,10 +157,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CC0805A516D2F87300CB8C79 /* BattleAt */ = {
+			isa = PBXGroup;
+			children = (
+				CC0805AA16D3165D00CB8C79 /* BAGameObserving.h */,
+				CC0805A716D3085000CB8C79 /* BABattleReport.h */,
+				CC0805A816D3085000CB8C79 /* BABattleReport.m */,
+			);
+			path = BattleAt;
+			sourceTree = "<group>";
+		};
 		CC85853D167A72600054E60D = {
 			isa = PBXGroup;
 			children = (
 				CCDB60E616A04D8C006668C2 /* AppDelegate */,
+				CC0805A516D2F87300CB8C79 /* BattleAt */,
 				CC858552167A72610054E60D /* Bull Run */,
 				CC858576167A72610054E60D /* Bull RunTests */,
 				CCDB60E216A04D71006668C2 /* Controllers */,
@@ -470,6 +485,7 @@
 				CCC71D5A16CC711E003636E3 /* HMMap.m in Sources */,
 				CCC71D5D16CC72FF003636E3 /* HMMapZone.m in Sources */,
 				CCC71D6016CC747B003636E3 /* HMTerrainEffect.m in Sources */,
+				CC0805A916D3085000CB8C79 /* BABattleReport.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

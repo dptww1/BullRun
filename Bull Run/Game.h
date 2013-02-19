@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BAGameObserving.h"
 #import "BullRun.h"
 #import "Game.h"
 #import "HMMap.h"
@@ -14,11 +15,14 @@
 
 @interface Game : NSObject
 
-@property                    PlayerSide     userSide;
-@property (strong, readonly) HMMap*         board;
-@property (strong, readonly) OrderOfBattle* oob;
+@property                    PlayerSide      userSide;
+@property (strong, readonly) HMMap*          board;
+@property (strong, readonly) OrderOfBattle*  oob;
+@property (strong, readonly) NSMutableArray* observers;
 
 - (void)hackUserSide:(PlayerSide)newSide;
+
+- (void)addObserver:(id<BAGameObserving>) observer;
 - (void)doSighting:(PlayerSide)side;
 - (void)doNextTurn;
 
