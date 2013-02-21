@@ -33,10 +33,11 @@ BAGame* game;
     self = [super init];
     
     if (self) {
-        _userSide = CSA;
-        _board = [HMMap createFromFile:[[NSBundle mainBundle] pathForResource:@"map" ofType:@"plist"]];
-        _oob = [BAOrderOfBattle createFromFile:[[NSBundle mainBundle] pathForResource:@"units" ofType:@"plist"]];
+        _board     = [HMMap createFromFile:[[NSBundle mainBundle] pathForResource:@"map" ofType:@"plist"]];
+        _oob       = [BAOrderOfBattle createFromFile:[[NSBundle mainBundle] pathForResource:@"units" ofType:@"plist"]];
         _observers = [NSMutableArray array];
+        _turn      = 1;
+        _userSide  = CSA;
     }
 
     return self;
@@ -65,7 +66,7 @@ BAGame* game;
     return idx != NSNotFound ? [units objectAtIndex:idx] : nil;
 }
 
-- (void)doNextTurn {
+- (void)processTurn {
     [self notifyObserversWithSelector:@selector(movePhaseWillBegin:)];
 
     // TODO: call AI
@@ -153,7 +154,9 @@ BAGame* game;
     for (BAUnit* u in didntMove)
         [u setMps:0];
 
-    [self notifyObserversWithSelector:@selector(movePhaseDidEnd:)];
+    [self setTurn:[self turn] + 1];
+    
+    [self notifyObserversWithSelector:@selector(movePhaseDidEnd)];
 
     // TODO: compute whether game over
 }

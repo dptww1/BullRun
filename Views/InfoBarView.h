@@ -17,13 +17,15 @@
     __weak IBOutlet UILabel*        unitName;
     __weak IBOutlet UIButton*       unitMode;
     __weak IBOutlet UIButton*       nextTurn;
-    
-    BAUnit* currentUnit;
+    __weak IBOutlet UILabel*        currentTime;
+
+    __weak BAUnit* currentUnit;
 }
 
 - (void)showInfoForUnit:(BAUnit*)unit;
 - (IBAction)changeMode:(id)sender;
 - (IBAction)nextTurn:(id)sender;
+- (void)updateCurrentTimeForTurn:(int)turn;
 
 
 @end

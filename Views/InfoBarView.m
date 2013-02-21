@@ -117,7 +117,28 @@ static BOOL modeLabelIsChoosable[] = {
 }
 
 - (IBAction)nextTurn:(id)sender {
-    [game doNextTurn];
+    [game processTurn];
+}
+
+- (void)updateCurrentTimeForTurn:(int)turn {
+    // Turns begin at 6:30 AM, increment by 30 minutes per turn
+    // Turn 1 => 6:30 AM
+    // Turn 2 => 7:00 AM
+    // Turn 3 => 7:30 AM
+    // ...
+
+    const char* amPm = "AM";
+    int hour = (turn / 2) + 6;
+    if (hour >= 12) {
+        amPm = "PM";
+        if (hour > 12)
+            hour -= 12;
+    }
+
+    [currentTime setText:[NSString stringWithFormat:@"%d:%02d %s",
+                          hour,
+                          turn & 1 ? 30 : 0,
+                          amPm]];
 }
 
 #pragma mark - UIActionSheetDelegate Implementation

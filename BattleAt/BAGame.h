@@ -16,16 +16,17 @@
 
 @interface BAGame : NSObject
 
-@property                    PlayerSide       userSide;
-@property (strong, readonly) HMMap*           board;
-@property (strong, readonly) BAOrderOfBattle* oob;
-@property (strong, readonly) NSMutableArray*  observers;
+@property (nonatomic)                   PlayerSide       userSide;
+@property (nonatomic, strong, readonly) HMMap*           board;
+@property (nonatomic, strong, readonly) BAOrderOfBattle* oob;
+@property (nonatomic, strong, readonly) NSMutableArray*  observers;
+@property (nonatomic)                   int              turn;
 
 - (void)hackUserSide:(PlayerSide)newSide;
 
 - (void)addObserver:(id<BAGameObserving>) observer;
 - (void)doSighting:(PlayerSide)side;
-- (void)doNextTurn;
+- (void)processTurn;
 - (BAUnit*)unitInHex:(HMHex)hex;
 
 @end

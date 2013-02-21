@@ -368,6 +368,8 @@
     }
     
     [self.animationInfo removeAllObjects];
+
+    [[self infoBarView] updateCurrentTimeForTurn:[game turn]];
 }
 
 - (void)showAttack:(BABattleReport *)report {
