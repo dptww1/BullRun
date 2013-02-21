@@ -8,8 +8,8 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import <UIKit/UIKit.h>
+#import "BAGame.h"
 #import "BAUnit.h"
-#import "Game.h"
 #import "InfoBarView.h"
 
 #define NUM_ELTS(ARRAY_NAME) (sizeof(ARRAY_NAME) / sizeof(ARRAY_NAME[0]))

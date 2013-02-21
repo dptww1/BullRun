@@ -8,9 +8,9 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import "BABattleReport.h"
+#import "BAGame.h"
 #import "BAUnit.h"
 #import "BullRun.h"
-#import "Game.h"
 #import "HMCoordinateTransformer.h"
 #import "HMMap.h"
 #import "InfoBarView.h"

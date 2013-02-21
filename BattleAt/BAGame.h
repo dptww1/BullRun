@@ -1,5 +1,5 @@
 //
-//  Game.h
+//  BAGame.h
 //  Bull Run
 //
 //  Created by Dave Townsend on 1/10/13.
@@ -10,12 +10,11 @@
 #import "BAGameObserving.h"
 #import "BAOrderOfBattle.h"
 #import "BullRun.h"
-#import "Game.h"
 #import "HMMap.h"
 
 @class BAUnit;
 
-@interface Game : NSObject
+@interface BAGame : NSObject
 
 @property                    PlayerSide       userSide;
 @property (strong, readonly) HMMap*           board;
@@ -32,5 +31,5 @@
 @end
 
 // The single, publicly available global instance.
-extern Game* game;
+extern BAGame* game;
 

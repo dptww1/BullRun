@@ -1,5 +1,5 @@
 //
-//  Game.m
+//  BAGame.m
 //  Bull Run
 //
 //  Created by Dave Townsend on 1/10/13.
@@ -7,25 +7,25 @@
 //
 
 #import "BABattleReport.h"
+#import "BAGame.h"
 #import "BAGameObserving.h"
 #import "BAOrderOfBattle.h"
 #import "BAUnit.h"
 #import "BRAppDelegate.h"
 #import "BullRun.h"
 #import "CollectionUtil.h"
-#import "Game.h"
 #import "HMMap.h"
 #import "MoveOrders.h"
 
-Game* game;
+BAGame* game;
 
-@interface Game (Private)
+@interface BAGame (Private)
 
 - (void)doSighting:(PlayerSide)side;
 
 @end
 
-@implementation Game
+@implementation BAGame
 
 #pragma mark - Init Methods
 

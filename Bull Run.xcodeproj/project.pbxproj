@@ -19,6 +19,7 @@
 		CC35E68716B5CE0A00F9F0B1 /* portraits.png in Resources */ = {isa = PBXBuildFile; fileRef = CC35E68616B5CE0A00F9F0B1 /* portraits.png */; };
 		CC392E3C16D5A6BE00160B82 /* BAOrderOfBattle.m in Sources */ = {isa = PBXBuildFile; fileRef = CC392E3B16D5A6BE00160B82 /* BAOrderOfBattle.m */; };
 		CC392E3F16D5A84500160B82 /* BAUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = CC392E3E16D5A84500160B82 /* BAUnit.m */; };
+		CC392E4216D5ACEC00160B82 /* BAGame.m in Sources */ = {isa = PBXBuildFile; fileRef = CC392E4116D5ACEB00160B82 /* BAGame.m */; };
 		CC65EB8C16BF3EE400C47BD0 /* units.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC65EB8B16BF3EE400C47BD0 /* units.plist */; };
 		CC65EB9A16C1E97900C47BD0 /* ResizableBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = CC65EB9916C1E97900C47BD0 /* ResizableBuffer.m */; };
 		CC65EC3316C2C34600C47BD0 /* ResizableBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = CC65EB9916C1E97900C47BD0 /* ResizableBuffer.m */; };
@@ -39,7 +40,6 @@
 		CCC71D5D16CC72FF003636E3 /* HMMapZone.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC71D5C16CC72FF003636E3 /* HMMapZone.m */; };
 		CCC71D6016CC747B003636E3 /* HMTerrainEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC71D5F16CC747B003636E3 /* HMTerrainEffect.m */; };
 		CCDB60CD169E0907006668C2 /* HexMapGeometryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB60CC169E0907006668C2 /* HexMapGeometryTests.m */; };
-		CCDB60D0169FCA10006668C2 /* Game.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB60CF169FCA0F006668C2 /* Game.m */; };
 		CCDB60DC16A04B30006668C2 /* SysUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB60DB16A04B30006668C2 /* SysUtil.m */; };
 		CCDB60DF16A04B86006668C2 /* CollectionUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB60DE16A04B86006668C2 /* CollectionUtil.m */; };
 		CCDB60E516A04D71006668C2 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB60E416A04D71006668C2 /* MapViewController.m */; };
@@ -86,6 +86,8 @@
 		CC392E3B16D5A6BE00160B82 /* BAOrderOfBattle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAOrderOfBattle.m; sourceTree = "<group>"; };
 		CC392E3D16D5A84500160B82 /* BAUnit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAUnit.h; sourceTree = "<group>"; };
 		CC392E3E16D5A84500160B82 /* BAUnit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAUnit.m; sourceTree = "<group>"; };
+		CC392E4016D5ACEB00160B82 /* BAGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAGame.h; sourceTree = "<group>"; };
+		CC392E4116D5ACEB00160B82 /* BAGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAGame.m; sourceTree = "<group>"; };
 		CC65EB8B16BF3EE400C47BD0 /* units.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = units.plist; sourceTree = "<group>"; };
 		CC65EB9816C1E97900C47BD0 /* ResizableBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResizableBuffer.h; sourceTree = "<group>"; };
 		CC65EB9916C1E97900C47BD0 /* ResizableBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResizableBuffer.m; sourceTree = "<group>"; };
@@ -113,8 +115,6 @@
 		CCC71D5F16CC747B003636E3 /* HMTerrainEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMTerrainEffect.m; sourceTree = "<group>"; };
 		CCDB60CB169E0907006668C2 /* HexMapGeometryTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HexMapGeometryTests.h; sourceTree = "<group>"; };
 		CCDB60CC169E0907006668C2 /* HexMapGeometryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HexMapGeometryTests.m; sourceTree = "<group>"; };
-		CCDB60CE169FCA0F006668C2 /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
-		CCDB60CF169FCA0F006668C2 /* Game.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Game.m; sourceTree = "<group>"; };
 		CCDB60DA16A04B30006668C2 /* SysUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SysUtil.h; sourceTree = "<group>"; };
 		CCDB60DB16A04B30006668C2 /* SysUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SysUtil.m; sourceTree = "<group>"; };
 		CCDB60DD16A04B86006668C2 /* CollectionUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionUtil.h; sourceTree = "<group>"; };
@@ -165,6 +165,8 @@
 			children = (
 				CC0805A716D3085000CB8C79 /* BABattleReport.h */,
 				CC0805A816D3085000CB8C79 /* BABattleReport.m */,
+				CC392E4016D5ACEB00160B82 /* BAGame.h */,
+				CC392E4116D5ACEB00160B82 /* BAGame.m */,
 				CC0805AA16D3165D00CB8C79 /* BAGameObserving.h */,
 				CC392E3A16D5A6BE00160B82 /* BAOrderOfBattle.h */,
 				CC392E3B16D5A6BE00160B82 /* BAOrderOfBattle.m */,
@@ -220,8 +222,6 @@
 			isa = PBXGroup;
 			children = (
 				CC0CF3E91698CB40006D902D /* BullRun.h */,
-				CCDB60CE169FCA0F006668C2 /* Game.h */,
-				CCDB60CF169FCA0F006668C2 /* Game.m */,
 				CC35E67A16AA275500F9F0B1 /* MoveOrders.h */,
 				CC35E67B16AA275500F9F0B1 /* MoveOrders.m */,
 				CC858553167A72610054E60D /* Supporting Files */,
@@ -476,7 +476,6 @@
 				CCF61C9716CC6E2900391025 /* HMGeometry.m in Sources */,
 				CC65EC3316C2C34600C47BD0 /* ResizableBuffer.m in Sources */,
 				CC2E35A216A1135B00788D16 /* CollectionUtil.m in Sources */,
-				CCDB60D0169FCA10006668C2 /* Game.m in Sources */,
 				CCDB60DC16A04B30006668C2 /* SysUtil.m in Sources */,
 				CCDB60E516A04D71006668C2 /* MapViewController.m in Sources */,
 				CCDB60EA16A04D8C006668C2 /* BRAppDelegate.m in Sources */,
@@ -492,6 +491,7 @@
 				CC0805AD16D5869E00CB8C79 /* BAReinforcementInfo.m in Sources */,
 				CC392E3C16D5A6BE00160B82 /* BAOrderOfBattle.m in Sources */,
 				CC392E3F16D5A84500160B82 /* BAUnit.m in Sources */,
+				CC392E4216D5ACEC00160B82 /* BAGame.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
