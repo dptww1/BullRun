@@ -16,7 +16,6 @@
 #import "MapView.h"
 #import "MapViewController.h"
 #import "MoveOrders.h"
-#import "OrderOfBattle.h"
 #import "Unit.h"
 #import "UnitView.h"
 

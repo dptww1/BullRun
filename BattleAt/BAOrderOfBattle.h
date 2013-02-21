@@ -11,9 +11,8 @@
 #import "HMHex.h"
 
 @class BAReinforcementInfo;
-@class Unit;
 
-@interface OrderOfBattle : NSObject
+@interface BAOrderOfBattle : NSObject
 
 // Array of Unit*
 @property (nonatomic, strong) NSArray* units;
@@ -21,7 +20,7 @@
 // Array of BAReinforcementInfo*
 @property (nonatomic, strong) NSMutableArray* reinforcements;
 
-+ (OrderOfBattle*)createFromFile:(NSString*)filepath;
++ (BAOrderOfBattle*)createFromFile:(NSString*)filepath;
 
 - (BOOL)saveToFile:(NSString*)filename;
 - (NSArray*)unitsForSide:(PlayerSide)side;

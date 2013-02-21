@@ -8,13 +8,13 @@
 
 #import "BABattleReport.h"
 #import "BAGameObserving.h"
+#import "BAOrderOfBattle.h"
 #import "BRAppDelegate.h"
 #import "BullRun.h"
 #import "CollectionUtil.h"
 #import "Game.h"
 #import "HMMap.h"
 #import "MoveOrders.h"
-#import "OrderOfBattle.h"
 #import "Unit.h"
 
 Game* game;
@@ -35,7 +35,7 @@ Game* game;
     if (self) {
         _userSide = CSA;
         _board = [HMMap createFromFile:[[NSBundle mainBundle] pathForResource:@"map" ofType:@"plist"]];
-        _oob = [OrderOfBattle createFromFile:[[NSBundle mainBundle] pathForResource:@"units" ofType:@"plist"]];
+        _oob = [BAOrderOfBattle createFromFile:[[NSBundle mainBundle] pathForResource:@"units" ofType:@"plist"]];
         _observers = [NSMutableArray array];
     }
 

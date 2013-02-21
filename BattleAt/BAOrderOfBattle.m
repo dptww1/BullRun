@@ -6,14 +6,14 @@
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
+#import "BAOrderOfBattle.h"
 #import "BAReinforcementInfo.h"
 #import "CollectionUtil.h"
 #import "HMHex.h"
-#import "OrderOfBattle.h"
 #import "SysUtil.h"
 #import "Unit.h"
 
-@implementation OrderOfBattle
+@implementation BAOrderOfBattle
 
 #pragma mark - Init Methods
 
@@ -29,8 +29,8 @@
 
 #pragma mark - Persistence Methods
 
-+ (OrderOfBattle*)createFromFile:(NSString *)filepath {
-    OrderOfBattle* oob = [[OrderOfBattle alloc] init];
++ (BAOrderOfBattle*)createFromFile:(NSString *)filepath {
+    BAOrderOfBattle* oob = [[BAOrderOfBattle alloc] init];
 
     if (oob) {
         [oob setUnits:[NSKeyedUnarchiver unarchiveObjectWithFile:filepath]];

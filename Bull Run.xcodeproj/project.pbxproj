@@ -11,7 +11,6 @@
 		CC0805AD16D5869E00CB8C79 /* BAReinforcementInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0805AC16D5869E00CB8C79 /* BAReinforcementInfo.m */; };
 		CC0CF381168A4E72006D902D /* README.textile in Resources */ = {isa = PBXBuildFile; fileRef = CC0CF380168A4E72006D902D /* README.textile */; };
 		CC0CF3E516989A3D006D902D /* Unit.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0CF3E416989A3C006D902D /* Unit.m */; };
-		CC0CF3E816989B52006D902D /* OrderOfBattle.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0CF3E716989B51006D902D /* OrderOfBattle.m */; };
 		CC0CF3EF169916E2006D902D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC0CF3EE169916E2006D902D /* QuartzCore.framework */; };
 		CC2E35A216A1135B00788D16 /* CollectionUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB60DE16A04B86006668C2 /* CollectionUtil.m */; };
 		CC35E67C16AA275500F9F0B1 /* MoveOrders.m in Sources */ = {isa = PBXBuildFile; fileRef = CC35E67B16AA275500F9F0B1 /* MoveOrders.m */; };
@@ -19,6 +18,7 @@
 		CC35E68416AF5EE700F9F0B1 /* MapView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC35E68116AF5EE700F9F0B1 /* MapView.m */; };
 		CC35E68516AF5EE700F9F0B1 /* UnitView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC35E68316AF5EE700F9F0B1 /* UnitView.m */; };
 		CC35E68716B5CE0A00F9F0B1 /* portraits.png in Resources */ = {isa = PBXBuildFile; fileRef = CC35E68616B5CE0A00F9F0B1 /* portraits.png */; };
+		CC392E3C16D5A6BE00160B82 /* BAOrderOfBattle.m in Sources */ = {isa = PBXBuildFile; fileRef = CC392E3B16D5A6BE00160B82 /* BAOrderOfBattle.m */; };
 		CC65EB8C16BF3EE400C47BD0 /* units.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC65EB8B16BF3EE400C47BD0 /* units.plist */; };
 		CC65EB9A16C1E97900C47BD0 /* ResizableBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = CC65EB9916C1E97900C47BD0 /* ResizableBuffer.m */; };
 		CC65EC3316C2C34600C47BD0 /* ResizableBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = CC65EB9916C1E97900C47BD0 /* ResizableBuffer.m */; };
@@ -73,8 +73,6 @@
 		CC0CF380168A4E72006D902D /* README.textile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.textile; sourceTree = "<group>"; };
 		CC0CF3E316989A3C006D902D /* Unit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Unit.h; sourceTree = "<group>"; };
 		CC0CF3E416989A3C006D902D /* Unit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Unit.m; sourceTree = "<group>"; };
-		CC0CF3E616989B50006D902D /* OrderOfBattle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderOfBattle.h; sourceTree = "<group>"; };
-		CC0CF3E716989B51006D902D /* OrderOfBattle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderOfBattle.m; sourceTree = "<group>"; };
 		CC0CF3E91698CB40006D902D /* BullRun.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BullRun.h; sourceTree = "<group>"; };
 		CC0CF3EE169916E2006D902D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		CC35E67A16AA275500F9F0B1 /* MoveOrders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoveOrders.h; sourceTree = "<group>"; };
@@ -86,6 +84,8 @@
 		CC35E68216AF5EE700F9F0B1 /* UnitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnitView.h; sourceTree = "<group>"; };
 		CC35E68316AF5EE700F9F0B1 /* UnitView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnitView.m; sourceTree = "<group>"; };
 		CC35E68616B5CE0A00F9F0B1 /* portraits.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = portraits.png; sourceTree = "<group>"; };
+		CC392E3A16D5A6BE00160B82 /* BAOrderOfBattle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAOrderOfBattle.h; sourceTree = "<group>"; };
+		CC392E3B16D5A6BE00160B82 /* BAOrderOfBattle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAOrderOfBattle.m; sourceTree = "<group>"; };
 		CC65EB8B16BF3EE400C47BD0 /* units.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = units.plist; sourceTree = "<group>"; };
 		CC65EB9816C1E97900C47BD0 /* ResizableBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResizableBuffer.h; sourceTree = "<group>"; };
 		CC65EB9916C1E97900C47BD0 /* ResizableBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResizableBuffer.m; sourceTree = "<group>"; };
@@ -163,6 +163,8 @@
 		CC0805A516D2F87300CB8C79 /* BattleAt */ = {
 			isa = PBXGroup;
 			children = (
+				CC392E3A16D5A6BE00160B82 /* BAOrderOfBattle.h */,
+				CC392E3B16D5A6BE00160B82 /* BAOrderOfBattle.m */,
 				CC0805AB16D5869E00CB8C79 /* BAReinforcementInfo.h */,
 				CC0805AC16D5869E00CB8C79 /* BAReinforcementInfo.m */,
 				CC0805AA16D3165D00CB8C79 /* BAGameObserving.h */,
@@ -220,8 +222,6 @@
 				CCDB60CF169FCA0F006668C2 /* Game.m */,
 				CC35E67A16AA275500F9F0B1 /* MoveOrders.h */,
 				CC35E67B16AA275500F9F0B1 /* MoveOrders.m */,
-				CC0CF3E616989B50006D902D /* OrderOfBattle.h */,
-				CC0CF3E716989B51006D902D /* OrderOfBattle.m */,
 				CC858553167A72610054E60D /* Supporting Files */,
 				CC0CF3E316989A3C006D902D /* Unit.h */,
 				CC0CF3E416989A3C006D902D /* Unit.m */,
@@ -477,7 +477,6 @@
 				CC65EC3316C2C34600C47BD0 /* ResizableBuffer.m in Sources */,
 				CC2E35A216A1135B00788D16 /* CollectionUtil.m in Sources */,
 				CC0CF3E516989A3D006D902D /* Unit.m in Sources */,
-				CC0CF3E816989B52006D902D /* OrderOfBattle.m in Sources */,
 				CCDB60D0169FCA10006668C2 /* Game.m in Sources */,
 				CCDB60DC16A04B30006668C2 /* SysUtil.m in Sources */,
 				CCDB60E516A04D71006668C2 /* MapViewController.m in Sources */,
@@ -492,6 +491,7 @@
 				CCC71D6016CC747B003636E3 /* HMTerrainEffect.m in Sources */,
 				CC0805A916D3085000CB8C79 /* BABattleReport.m in Sources */,
 				CC0805AD16D5869E00CB8C79 /* BAReinforcementInfo.m in Sources */,
+				CC392E3C16D5A6BE00160B82 /* BAOrderOfBattle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
