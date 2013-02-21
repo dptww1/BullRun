@@ -8,6 +8,7 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import "BABattleReport.h"
+#import "BAUnit.h"
 #import "BullRun.h"
 #import "Game.h"
 #import "HMCoordinateTransformer.h"
@@ -16,7 +17,6 @@
 #import "MapView.h"
 #import "MapViewController.h"
 #import "MoveOrders.h"
-#import "Unit.h"
 #import "UnitView.h"
 
 #define DEGREES_TO_RADIANS(angle) (angle / 180.0 * M_PI)
@@ -78,7 +78,7 @@
                             ? [UIColor colorWithRed:0.7f green:0.3f blue:0.3f alpha:0.3f]
                             : [UIColor colorWithRed:0.3f green:0.3f blue:0.7f alpha:0.3f];
         
-        for (Unit* u in [[game oob] unitsForSide:[_currentUnit side]]) {
+        for (BAUnit* u in [[game oob] unitsForSide:[_currentUnit side]]) {
             if (u != _currentUnit)
                 [self drawMoveOrdersForUnit:u withColor:color inContext:ctx];
         }
@@ -93,7 +93,7 @@
     UIGraphicsPopContext();
 }
 
-- (void)drawMoveOrdersForUnit:(Unit*)unit withColor:(UIColor*)color inContext:(CGContextRef)ctx {
+- (void)drawMoveOrdersForUnit:(BAUnit*)unit withColor:(UIColor*)color inContext:(CGContextRef)ctx {
     if (![unit hasOrders])
         return;
 
@@ -148,7 +148,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    for (Unit* unit in [[game oob] units]) {
+    for (BAUnit* unit in [[game oob] units]) {
         UnitView* v = [UnitView createForUnit:unit];
         if (![v superlayer]) {
             [v setOpacity:0.0f];
@@ -305,7 +305,7 @@
 
 #pragma mark - Battle@ Callbacks
 
-- (void)unitNowHidden:(Unit *)unit {
+- (void)unitNowHidden:(BAUnit*)unit {
     DEBUG_SIGHTING(@"MapViewController#unitNowHidden:%@, viewLoaded=%d", [unit name], [self isViewLoaded]);
     
     CALayer* unitLayer = [UnitView createForUnit:unit];
@@ -315,7 +315,7 @@
     [[self view] setNeedsDisplay];
 }
 
-- (void)unitNowSighted:(Unit *)unit {
+- (void)unitNowSighted:(BAUnit*)unit {
     DEBUG_SIGHTING(@"MapViewController#unitNowSighted:%@, viewLoaded=%d", [unit name], [self isViewLoaded]);
     
     CALayer* unitLayer = [UnitView createForUnit:unit];
@@ -332,7 +332,7 @@
     [[self view] setNeedsDisplay];
 }
 
-- (void)moveUnit:(Unit *)unit to:(HMHex)hex {
+- (void)moveUnit:(BAUnit*)unit to:(HMHex)hex {
     DEBUG_MOVEMENT(@"Moving %@ to %02d%02d", [unit name], hex.column, hex.row);
     
     CAKeyframeAnimation* anim = [self.animationInfo objectForKey:[unit name]];

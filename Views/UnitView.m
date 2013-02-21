@@ -6,17 +6,17 @@
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
+#import "BAUnit.h"
 #import "UnitView.h"
-#import "Unit.h"
 
-// Key: Unit*  Value: UnitView*
+// Key: BAUnit*  Value: UnitView*
 static NSMutableDictionary* unitViewMap = nil;
 
 @implementation UnitView
 
 #pragma mark - Class Methods
 
-+ (UnitView*)createForUnit:(Unit *)unit {
++ (UnitView*)createForUnit:(BAUnit*)unit {
     if (!unitViewMap)
         unitViewMap = [NSMutableDictionary dictionary];
     
@@ -31,14 +31,14 @@ static NSMutableDictionary* unitViewMap = nil;
     return uv;
 }
 
-+ (UnitView*)findByName:(NSString *)unitName {
++ (UnitView*)findByName:(NSString*)unitName {
     return [unitViewMap objectForKey:unitName];
 }
 
 #pragma mark - Init Methods
 
 // Client code shouldn't call this because it bypasses the cache
-- (UnitView*)initForUnit:(Unit*)unit {
+- (UnitView*)initForUnit:(BAUnit*)unit {
     self = [super init];
     
     if (self) {

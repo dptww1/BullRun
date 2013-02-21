@@ -13,7 +13,7 @@
 #import "Game.h"
 #import "HMMap.h"
 
-@class Unit;
+@class BAUnit;
 
 @interface Game : NSObject
 
@@ -27,7 +27,7 @@
 - (void)addObserver:(id<BAGameObserving>) observer;
 - (void)doSighting:(PlayerSide)side;
 - (void)doNextTurn;
-- (Unit*)unitInHex:(HMHex)hex;
+- (BAUnit*)unitInHex:(HMHex)hex;
 
 @end
 

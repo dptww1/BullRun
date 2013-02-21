@@ -12,7 +12,7 @@
 #import "HMHex.h"
 #import "HMTerrainEffect.h"
 
-@class Unit;
+@class BAUnit;
 
 @interface HMMap : NSObject <NSCoding>
 
@@ -24,11 +24,11 @@
 + (HMMap*)createFromFile:(NSString*)filename;
 
 - (BOOL)saveToFile:(NSString*)filename;
-- (float)mpCostOf:(HMHex)hex for:(Unit*)unit;
+- (float)mpCostOf:(HMHex)hex for:(BAUnit*)unit;
 - (BOOL)isEnemy:(HMHex)hex of:(PlayerSide)side;  // TODO:BR-specific
 - (BOOL)is:(HMHex)hex inSameZoneAs:(HMHex)other;
 - (BOOL)is:(HMHex)hex inZone:(NSString*)zoneName;
 - (HMTerrainEffect*)terrainAt:(HMHex)hex;
-- (BOOL)is:(HMHex)hex prohibitedFor:(Unit*)unit;
+- (BOOL)is:(HMHex)hex prohibitedFor:(BAUnit*)unit;
 
 @end

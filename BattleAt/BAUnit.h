@@ -1,5 +1,5 @@
 //
-//  Unit.h
+//  BAUnit.h
 //  Bull Run
 //
 //  Created by Dave Townsend on 1/5/13.
@@ -12,7 +12,7 @@
 
 @class MoveOrders;
 
-@interface Unit : NSObject <NSCoding>
+@interface BAUnit : NSObject <NSCoding>
 
 #pragma mark - Read-only Properties
 
@@ -39,7 +39,7 @@
 - (BOOL)hasOrders;
 
 // Returns YES if the receiver is on the same side as 'other'
-- (BOOL)friends:(Unit*)other;
+- (BOOL)friends:(BAUnit*)other;
 
 // Returns YES if casualties are greater than the |morale| percentage.
 - (BOOL)isWrecked;

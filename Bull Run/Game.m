@@ -9,13 +9,13 @@
 #import "BABattleReport.h"
 #import "BAGameObserving.h"
 #import "BAOrderOfBattle.h"
+#import "BAUnit.h"
 #import "BRAppDelegate.h"
 #import "BullRun.h"
 #import "CollectionUtil.h"
 #import "Game.h"
 #import "HMMap.h"
 #import "MoveOrders.h"
-#import "Unit.h"
 
 Game* game;
 
@@ -57,10 +57,10 @@ Game* game;
     [[self observers] addObject:object];
 }
 
-- (Unit*)unitInHex:(HMHex)hex {
+- (BAUnit*)unitInHex:(HMHex)hex {
     NSArray* units = [[self oob] units];
     NSUInteger idx = [units indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL* stop) {
-        return HMHexEquals(((Unit*) obj).location, hex);
+        return HMHexEquals(((BAUnit*) obj).location, hex);
     }];
     return idx != NSNotFound ? [units objectAtIndex:idx] : nil;
 }
@@ -74,7 +74,7 @@ Game* game;
     NSMutableSet* didntMove = [NSMutableSet setWithArray:sortedUnits];  // keys: Unit*; if present, this unit didn't move this turn
     
     // All units get 5 new MPs
-    for (Unit* u in sortedUnits) {
+    for (BAUnit* u in sortedUnits) {
         [u setMps:[u mps] + 5];
     }
     
@@ -83,7 +83,7 @@ Game* game;
     while (atLeastOneUnitMoved) {
         atLeastOneUnitMoved = NO;
         
-        for (Unit* u in sortedUnits) {
+        for (BAUnit* u in sortedUnits) {
             // Offmap or not moving?
             if (![[_board geometry] legal:[u location]] || ![u hasOrders])
                 continue;
@@ -91,7 +91,7 @@ Game* game;
             HMHex nextHex = [[u moveOrders] firstHexAndRemove:NO];
         
             // Is it occupied?
-            Unit* blocker = [self unitInHex:nextHex];
+            BAUnit* blocker = [self unitInHex:nextHex];
             if (blocker) {
                 if ([u friends:blocker]) { // friendly blocker; keep looping
                     DEBUG_MOVEMENT(@"%@ can't move into %02d%02d because a friend (%@) is there", [u name], nextHex.column, nextHex.row, [blocker name]);
@@ -150,7 +150,7 @@ Game* game;
     }
     
     // Reset MPs of units unwilling or unable to move due to blocked destinations and/or ZOC problems
-    for (Unit* u in didntMove)
+    for (BAUnit* u in didntMove)
         [u setMps:0];
 
     [self notifyObserversWithSelector:@selector(movePhaseDidEnd:)];
@@ -180,13 +180,13 @@ Game* game;
     }
 }
 
-- (void) notifyObserversUnit:(Unit*)unit willMoveToHex:(HMHex)hex {
+- (void) notifyObserversUnit:(BAUnit*)unit willMoveToHex:(HMHex)hex {
     for (id<BAGameObserving> observer in [self observers]) {
         [observer moveUnit:unit to:hex];
     }
 }
 
-- (void)attackFrom:(Unit*)a to:(Unit*)d {
+- (void)attackFrom:(BAUnit*)a to:(BAUnit*)d {
     DEBUG_COMBAT(@"COMBAT: %@ attacks %@", [a name], [d name]);
 
     BABattleReport* report = [BABattleReport battleReportWithAttacker:a
@@ -255,7 +255,7 @@ Game* game;
         [a setLocation:[report advanceHex]];
 }
 
-- (BOOL)doesAttackerAdvance:(Unit*)a {
+- (BOOL)doesAttackerAdvance:(BAUnit*)a {
     static int modeAdjustmentMatrix[NUM_MODES] = { 50, 25, 10, 0, 0, 0 };
 
     int pctChance = modeAdjustmentMatrix[[a mode]] + [a leadership];
@@ -268,7 +268,7 @@ Game* game;
     return d100 <= pctChance;
 }
 
-- (int)computeAttackerCasualtiesFor:(Unit*)a against:(Unit*)d {
+- (int)computeAttackerCasualtiesFor:(BAUnit*)a against:(BAUnit*)d {
     static int modeCasualtyMatrix[NUM_MODES][NUM_MODES] = {
      // CH AT SK DE WI RT  // Attacker mode
         5, 4, 3, 0, 0, 0,  // Defender is CHARGE
@@ -286,7 +286,7 @@ Game* game;
     return c;
 }
 
-- (int)computeDefenderCasualtiesFor:(Unit*)d against:(Unit*)a {
+- (int)computeDefenderCasualtiesFor:(BAUnit*)d against:(BAUnit*)a {
     static int modeCasualtyMatrix[NUM_MODES][NUM_MODES] = {
      // CH AT SK DE WI RT  // Attacker mode
         5, 4, 3, 0, 0, 0,  // Defender is CHARGE
@@ -304,22 +304,22 @@ Game* game;
     return c;
 }
 
-- (BOOL)is:(Unit*)unit movingThruEnemyZocTo:(HMHex)hex {
+- (BOOL)is:(BAUnit*)unit movingThruEnemyZocTo:(HMHex)hex {
     HMGeometry* g = [_board geometry];
     
     int moveDir = [g directionFrom:[unit location] to:hex];
     int cwDir   = [g rotateDirection:moveDir clockwise:YES];
     int ccwDir  = [g rotateDirection:moveDir clockwise:NO];
     
-    Unit* cwUnit  = [self unitInHex:[g hexAdjacentTo:[unit location] inDirection:cwDir]];
-    Unit* ccwUnit = [self unitInHex:[g hexAdjacentTo:[unit location] inDirection:ccwDir]];
+    BAUnit* cwUnit  = [self unitInHex:[g hexAdjacentTo:[unit location] inDirection:cwDir]];
+    BAUnit* ccwUnit = [self unitInHex:[g hexAdjacentTo:[unit location] inDirection:ccwDir]];
 
     return (cwUnit  && ![cwUnit  friends:unit])
         || (ccwUnit && ![ccwUnit friends:unit]);
 }
 
 // -1 == no retreat possible, else direction to retreat in
-- (int)findRetreatDirFor:(Unit*)d attackedBy:(Unit*)a {
+- (int)findRetreatDirFor:(BAUnit*)d attackedBy:(BAUnit*)a {
     HMGeometry* geometry = [[self board] geometry];
 
     int attackDir = [geometry directionFrom:[a location] to:[d location]];
@@ -337,7 +337,7 @@ Game* game;
     return -1;
 }
 
-- (BOOL)unit:(Unit*)u canRetreatInDirection:(int)dir {
+- (BOOL)unit:(BAUnit*)u canRetreatInDirection:(int)dir {
     HMGeometry* geometry = [[self board] geometry];
 
     HMHex hex = [geometry hexAdjacentTo:[u location] inDirection:dir];
@@ -399,7 +399,7 @@ Game* game;
 }
 
 // Returns YES if `enemy' situated in given terrain is sighted by any of `friends'.
-- (BOOL)isUnit:(Unit*)enemy inHex:(HMHex)hex sightedBy:(NSArray*)friends {
+- (BOOL)isUnit:(BAUnit*)enemy inHex:(HMHex)hex sightedBy:(NSArray*)friends {
     
     // Innocent until proven guilty.
     __block BOOL sighted = NO;
@@ -411,7 +411,6 @@ Game* game;
         
         // Friendly units within three hexes sight enemies...
         if ([[_board geometry] distanceFrom:[friend location] to:[enemy location]] < 4) {
-            
             
             // ...as long as both units are on the same side of the river
             if ([self.board is:[friend location] inSameZoneAs:hex]) {
@@ -427,8 +426,8 @@ Game* game;
 - (NSArray*)sortUnits {
     return [[_oob units] sortedArrayWithOptions:NSSortStable
                                 usingComparator:^(id obj1, id obj2) {
-                                    Unit* u1 = obj1;
-                                    Unit* u2 = obj2;
+                                    BAUnit* u1 = obj1;
+                                    BAUnit* u2 = obj2;
                                     
                                     // Leftover MPs are the first ordering determinant
                                     if ([u1 mps] > [u2 mps])

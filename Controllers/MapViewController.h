@@ -10,16 +10,16 @@
 #import "BAGameObserving.h"
 #import "HMHex.h"
 
+@class BAUnit;
 @class HMCoordinateTransformer;
 @class InfoBarView;
 @class OrderOfBattle;
-@class Unit;
 
 @interface MapViewController : UIViewController <BAGameObserving>
 
 @property (nonatomic, strong) HMCoordinateTransformer* coordXformer;
 @property (nonatomic, weak)   InfoBarView*             infoBarView;
-@property (nonatomic, weak)   Unit*                    currentUnit;
+@property (nonatomic, weak)   BAUnit*                    currentUnit;
 @property (nonatomic, strong) CALayer*                 moveOrderLayer;
 
 // If YES, then the user's touch has moved outside the current hex and
@@ -34,13 +34,13 @@
 
 #pragma mark - GameObserving Implementation
 
-- (void)unitNowSighted:(Unit*)unit;
-- (void)unitNowHidden:(Unit*)unit;
+- (void)unitNowSighted:(BAUnit*)unit;
+- (void)unitNowHidden:(BAUnit*)unit;
 
 - (void)movePhaseWillBegin;
 - (void)movePhaseDidEnd;
 
-- (void)moveUnit:(Unit*)unit to:(HMHex)hex;
+- (void)moveUnit:(BAUnit*)unit to:(HMHex)hex;
 - (void)showAttack:(BABattleReport*)report;
 
 @end

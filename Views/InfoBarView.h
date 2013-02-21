@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class Unit;
+@class BAUnit;
 
 @interface InfoBarView : UIView <UIActionSheetDelegate> {
     __weak IBOutlet UILabel*        originalStrength;
@@ -18,10 +18,10 @@
     __weak IBOutlet UIButton*       unitMode;
     __weak IBOutlet UIButton*       nextTurn;
     
-    Unit* currentUnit;
+    BAUnit* currentUnit;
 }
 
-- (void)showInfoForUnit:(Unit*)unit;
+- (void)showInfoForUnit:(BAUnit*)unit;
 - (IBAction)changeMode:(id)sender;
 - (IBAction)nextTurn:(id)sender;
 

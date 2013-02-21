@@ -1,5 +1,5 @@
 //
-//  OrderOfBattle.m
+//  BAOrderOfBattle.m
 //  Bull Run
 //
 //  Created by Dave Townsend on 1/5/13.
@@ -8,10 +8,10 @@
 
 #import "BAOrderOfBattle.h"
 #import "BAReinforcementInfo.h"
+#import "BAUnit.h"
 #import "CollectionUtil.h"
 #import "HMHex.h"
 #import "SysUtil.h"
-#import "Unit.h"
 
 @implementation BAOrderOfBattle
 
@@ -56,7 +56,7 @@
 #pragma mark - Behaviors
 
 - (NSArray*)unitsForSide:(PlayerSide)side {
-    return [self.units grep:^BOOL(Unit* u) { return [u side] == side; }];
+    return [self.units grep:^BOOL(BAUnit* u) { return [u side] == side; }];
 }
 
 - (void)addReinforcementInfo:(BAReinforcementInfo*)reinforcementInfo {

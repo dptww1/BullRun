@@ -8,9 +8,9 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import <UIKit/UIKit.h>
+#import "BAUnit.h"
 #import "Game.h"
 #import "InfoBarView.h"
-#import "Unit.h"
 
 #define NUM_ELTS(ARRAY_NAME) (sizeof(ARRAY_NAME) / sizeof(ARRAY_NAME[0]))
 
@@ -43,7 +43,7 @@ static BOOL modeLabelIsChoosable[] = {
 
 @implementation InfoBarView
 
-- (void)showInfoForUnit:(Unit*)unit {
+- (void)showInfoForUnit:(BAUnit*)unit {
     if (unit) {
         [currentStrength setHidden:NO];
         [unitMode setHidden:NO];

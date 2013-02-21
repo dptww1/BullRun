@@ -10,12 +10,12 @@
 
 @implementation BABattleReport
 
-+ (id)battleReportWithAttacker:(Unit *)attacker andDefender:(Unit *)defender {
++ (id)battleReportWithAttacker:(BAUnit*)attacker andDefender:(BAUnit*)defender {
     return [[BABattleReport alloc] initWithAttacker:attacker
                                         andDefender:defender];
 }
 
-- (id)initWithAttacker:(Unit *)attacker andDefender:(Unit *)defender {
+- (id)initWithAttacker:(BAUnit*)attacker andDefender:(BAUnit*)defender {
     self = [super init];
 
     if (self) {

@@ -104,7 +104,7 @@
     return result;
 }
 
-- (float)mpCostOf:(HMHex)hex for:(Unit*)unit {
+- (float)mpCostOf:(HMHex)hex for:(BAUnit*)unit {
     HMTerrainEffect* fx = [self terrainAt:hex];
     return fx ? [fx mpCost] : 10000.0f;
 }
@@ -140,7 +140,7 @@
     return [zone containsHex:hex];
 }
 
-- (BOOL)is:(HMHex)hex prohibitedFor:(Unit*)unit {
+- (BOOL)is:(HMHex)hex prohibitedFor:(BAUnit*)unit {
     return ![self terrainAt:hex];
 }
 

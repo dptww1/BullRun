@@ -6,15 +6,8 @@
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
-//#define DEGREES_TO_RADIANS(angle) ((angle) / 180.0 * M_PI)
-
 #import <QuartzCore/QuartzCore.h>
-#import "Game.h"
-#import "HMCoordinateTransformer.h"
-#import "HMMap.h"
 #import "MapView.h"
-#import "Unit.h"
-#import "UnitView.h"
 
 @implementation MapView
 

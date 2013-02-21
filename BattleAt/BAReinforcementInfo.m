@@ -7,18 +7,18 @@
 //
 
 #import "BAReinforcementInfo.h"
+#import "BAUnit.h"
 #import "HMHex.h"
-#import "Unit.h"
 
 @implementation BAReinforcementInfo
 
 #pragma mark - Initialization
 
-+ (BAReinforcementInfo*)createWithUnit:(Unit*)unit onTurn:(int)turn atHex:(HMHex)hex {
++ (BAReinforcementInfo*)createWithUnit:(BAUnit*)unit onTurn:(int)turn atHex:(HMHex)hex {
     return [[BAReinforcementInfo alloc] initWithUnit:unit onTurn:turn atHex:hex];
 }
 
-- (BAReinforcementInfo*)initWithUnit:(Unit*)unit onTurn:(int)turn atHex:(HMHex)hex {
+- (BAReinforcementInfo*)initWithUnit:(BAUnit*)unit onTurn:(int)turn atHex:(HMHex)hex {
     self = [super init];
 
     if (self) {

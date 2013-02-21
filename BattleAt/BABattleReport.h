@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "HMHex.h"
 
-@class Unit;
+@class BAUnit;
 
 /**
  * Encapsulates all the information relevant to single attack.
@@ -18,15 +18,15 @@
  */
 @interface BABattleReport : NSObject
 
-@property (strong, nonatomic, readonly) Unit* attacker;
-@property (strong, nonatomic, readonly) Unit* defender;
-@property                               int   attackerCasualties;
-@property                               int   defenderCasualties;
-@property                               HMHex retreatHex;
-@property                               HMHex advanceHex;
+@property (strong, nonatomic, readonly) BAUnit* attacker;
+@property (strong, nonatomic, readonly) BAUnit* defender;
+@property                               int     attackerCasualties;
+@property                               int     defenderCasualties;
+@property                               HMHex   retreatHex;
+@property                               HMHex   advanceHex;
 
-+ (id)battleReportWithAttacker:(Unit*)attacker andDefender:(Unit*)defender;
++ (id)battleReportWithAttacker:(BAUnit*)attacker andDefender:(BAUnit*)defender;
 
-- (id)initWithAttacker:(Unit*)attacker andDefender:(Unit*)defender;
+- (id)initWithAttacker:(BAUnit*)attacker andDefender:(BAUnit*)defender;
 
 @end

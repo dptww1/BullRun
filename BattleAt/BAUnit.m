@@ -1,15 +1,15 @@
 //
-//  Unit.m
+//  BAUnit.m
 //  Bull Run
 //
 //  Created by Dave Townsend on 1/5/13.
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
-#import "Unit.h"
+#import "BAUnit.h"
 #import "MoveOrders.h"
 
-@implementation Unit
+@implementation BAUnit
 
 #pragma mark - Convenience Methods
 
@@ -17,7 +17,7 @@
     return ![self.moveOrders isEmpty];
 }
 
-- (BOOL)friends:(Unit *)other {
+- (BOOL)friends:(BAUnit*)other {
     return _side == [other side];
 }
 

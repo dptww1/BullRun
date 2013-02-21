@@ -5,19 +5,19 @@
 #import "HMHex.h"
 
 @class BABattleReport;
-@class Unit;
+@class BAUnit;
 
 @protocol BAGameObserving <NSObject>
 
 @optional
 
-- (void)unitNowSighted:(Unit*)unit;
-- (void)unitNowHidden:(Unit*)unit;
+- (void)unitNowSighted:(BAUnit*)unit;
+- (void)unitNowHidden:(BAUnit*)unit;
 
 - (void)movePhaseWillBegin;
 - (void)movePhaseDidEnd;
 
-- (void)moveUnit:(Unit*)unit to:(HMHex)hex;
+- (void)moveUnit:(BAUnit*)unit to:(HMHex)hex;
 - (void)showAttack:(BABattleReport*)battleReport;
 
 @end

@@ -1,5 +1,5 @@
 //
-//  OrderOfBattle.h
+//  BAOrderOfBattle.h
 //  Bull Run
 //
 //  Created by Dave Townsend on 1/5/13.

@@ -12,11 +12,11 @@
 // NB: Not really a "View" in the UIKit sense of the word.  Maybe UnitGfx would be better?
 // (Or UnitGEL as a nod to the Amiga....)
 
-@class Unit;
+@class BAUnit;
 
 @interface UnitView : CALayer
 
-+ (UnitView*)createForUnit:(Unit*)unit;
++ (UnitView*)createForUnit:(BAUnit*)unit;
 + (UnitView*)findByName:(NSString*)unitName;
 
 @end
