@@ -249,7 +249,7 @@
         if (![[_coordXformer geometry] legal:h])
             return;
             
-        if (!_givingNewOrders && HexEquals([_currentUnit location], h)) {
+        if (!_givingNewOrders && HMHexEquals([_currentUnit location], h)) {
 
             // The user may wiggle a finger around in the unit's current hex,
             // in which case just keep showing the existing orders.
@@ -269,14 +269,14 @@
             // However, moveOrders don't understand about the unit's current location,
             // so we have to handle backtracking into the original hex as a special case.
             if ([[_currentUnit moveOrders] isBacktrack:h] ||
-                ([[_currentUnit moveOrders] numHexes] == 1 && HexEquals([_currentUnit location], h))) {
+                ([[_currentUnit moveOrders] numHexes] == 1 && HMHexEquals([_currentUnit location], h))) {
 
                 DEBUG_MOVEORDERS(@"Orders for %@: BACKTRACK to %02d%02d", [_currentUnit name], h.column, h.row);
                 [[_currentUnit moveOrders] backtrack];
             }
             
             // Add this hex on to the end of the list, unless it it's repeat of what's already there
-            else if (HexEquals([[_currentUnit moveOrders] lastHex], h)) {
+            else if (HMHexEquals([[_currentUnit moveOrders] lastHex], h)) {
                 
                 // Don't keep putting on the same hex on the end of the queue
                     

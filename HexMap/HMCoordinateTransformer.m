@@ -64,12 +64,12 @@
     }
     
     if (p.x < 0.0 || p.y < 0.0)
-        return HexMake(-1, -1);
+        return HMHexMake(-1, -1);
     
     int row = p.y / [self hexSize].height;
     
-    HMHex h = HexMake(col, row);
-    return [_geometry legal:h] ? h : HexMake(-1, -1);
+    HMHex h = HMHexMake(col, row);
+    return [_geometry legal:h] ? h : HMHexMake(-1, -1);
 }
 
 @end

@@ -42,45 +42,45 @@ static HMGeometry* geometry;
 
 - (void)testLegal {
     // Obviouly wrong, as both coordinates are illegal
-    STAssertFalse( [geometry legal:HexMake(-1, -1)], nil );
-    STAssertFalse( [geometry legal:HexMake(10, 10)], nil );
+    STAssertFalse( [geometry legal:HMHexMake(-1, -1)], nil );
+    STAssertFalse( [geometry legal:HMHexMake(10, 10)], nil );
     
     // Obviously wrong as one coordinate is illegal
-    STAssertFalse( [geometry legal:HexMake(-1,  4)], nil );
-    STAssertFalse( [geometry legal:HexMake( 4, -1)], nil );
-    STAssertFalse( [geometry legal:HexMake(10,  4)], nil );
-    STAssertFalse( [geometry legal:HexMake( 4, 10)], nil );
+    STAssertFalse( [geometry legal:HMHexMake(-1,  4)], nil );
+    STAssertFalse( [geometry legal:HMHexMake( 4, -1)], nil );
+    STAssertFalse( [geometry legal:HMHexMake(10,  4)], nil );
+    STAssertFalse( [geometry legal:HMHexMake( 4, 10)], nil );
     
     // Check the top, bottom, and one past the bottom of the first column
-    STAssertTrue(  [geometry legal:HexMake( 0,  0)], nil );
-    STAssertTrue(  [geometry legal:HexMake( 0,  6)], nil );
-    STAssertFalse( [geometry legal:HexMake( 0,  7)], nil );  // would be true if firstColumnIsLong:YES
+    STAssertTrue(  [geometry legal:HMHexMake( 0,  0)], nil );
+    STAssertTrue(  [geometry legal:HMHexMake( 0,  6)], nil );
+    STAssertFalse( [geometry legal:HMHexMake( 0,  7)], nil );  // would be true if firstColumnIsLong:YES
     
     // Check the extra row and one past the extra row at the bottom of the second column
-    STAssertTrue(  [geometry legal:HexMake( 1,  6)], nil );
-    STAssertTrue(  [geometry legal:HexMake( 1,  7)], nil );  // because firstColumnIsLong:NO, so second column is long
-    STAssertFalse( [geometry legal:HexMake( 1,  8)], nil );
+    STAssertTrue(  [geometry legal:HMHexMake( 1,  6)], nil );
+    STAssertTrue(  [geometry legal:HMHexMake( 1,  7)], nil );  // because firstColumnIsLong:NO, so second column is long
+    STAssertFalse( [geometry legal:HMHexMake( 1,  8)], nil );
     
     // Check the top, bottom, and one past the bottom of the penultimate column
-    STAssertTrue(  [geometry legal:HexMake( 8,  0)], nil );
-    STAssertTrue(  [geometry legal:HexMake( 8,  6)], nil );
-    STAssertFalse( [geometry legal:HexMake( 8,  7)], nil );  // would be true if firstColumnIsLong:YES
+    STAssertTrue(  [geometry legal:HMHexMake( 8,  0)], nil );
+    STAssertTrue(  [geometry legal:HMHexMake( 8,  6)], nil );
+    STAssertFalse( [geometry legal:HMHexMake( 8,  7)], nil );  // would be true if firstColumnIsLong:YES
     
     // Check the top and bottom of the last column
-    STAssertTrue(  [geometry legal:HexMake( 9,  0)], nil );
-    STAssertTrue(  [geometry legal:HexMake( 9,  7)], nil );
-    STAssertFalse( [geometry legal:HexMake( 9,  8)], nil );
+    STAssertTrue(  [geometry legal:HMHexMake( 9,  0)], nil );
+    STAssertTrue(  [geometry legal:HMHexMake( 9,  7)], nil );
+    STAssertFalse( [geometry legal:HMHexMake( 9,  8)], nil );
 }
 
 - (void)testDirection {
-    HMHex hA = HexMake(2, 4); HMHex hB = HexMake(2, 3); HMHex hC = HexMake(3, 4); HMHex hD = HexMake(3, 5);
-    HMHex hE = HexMake(2, 5); HMHex hF = HexMake(1, 5); HMHex hG = HexMake(1, 4); HMHex hH = HexMake(2, 2);
-    HMHex hI = HexMake(3, 3); HMHex hJ = HexMake(4, 3); HMHex hK = HexMake(4, 4); HMHex hL = HexMake(4, 5);
-    HMHex hM = HexMake(3, 6); HMHex hN = HexMake(2, 6); HMHex hO = HexMake(1, 6); HMHex hP = HexMake(0, 5);
-    HMHex hQ = HexMake(0, 4); HMHex hR = HexMake(0, 3); HMHex hS = HexMake(1, 3);
-                                                        HMHex hW = HexMake(4, 0); HMHex hX = HexMake(5, 0);
-    HMHex hY = HexMake(6, 0);                           HMHex ha = HexMake(8, 0); HMHex hb = HexMake(9, 0);
-    HMHex hc = HexMake(9, 1); HMHex hd = HexMake(9, 2); HMHex he = HexMake(9, 3);
+    HMHex hA= HMHexMake(2, 4); HMHex hB= HMHexMake(2, 3); HMHex hC= HMHexMake(3, 4); HMHex hD= HMHexMake(3, 5);
+    HMHex hE= HMHexMake(2, 5); HMHex hF= HMHexMake(1, 5); HMHex hG= HMHexMake(1, 4); HMHex hH= HMHexMake(2, 2);
+    HMHex hI= HMHexMake(3, 3); HMHex hJ= HMHexMake(4, 3); HMHex hK= HMHexMake(4, 4); HMHex hL= HMHexMake(4, 5);
+    HMHex hM= HMHexMake(3, 6); HMHex hN= HMHexMake(2, 6); HMHex hO= HMHexMake(1, 6); HMHex hP= HMHexMake(0, 5);
+    HMHex hQ= HMHexMake(0, 4); HMHex hR= HMHexMake(0, 3); HMHex hS= HMHexMake(1, 3);
+                                                          HMHex hW= HMHexMake(4, 0); HMHex hX= HMHexMake(5, 0);
+    HMHex hY= HMHexMake(6, 0);                            HMHex ha= HMHexMake(8, 0); HMHex hb= HMHexMake(9, 0);
+    HMHex hc= HMHexMake(9, 1); HMHex hd= HMHexMake(9, 2); HMHex he= HMHexMake(9, 3);
 
     // Same hex
     STAssertEquals([geometry directionFrom:hA to:hA], 0, nil);
@@ -120,9 +120,9 @@ static HMGeometry* geometry;
 }
 
 - (void)test {
-    HMHex hA = HexMake(2, 4); HMHex hB = HexMake(2, 3); HMHex hC = HexMake(3, 4); HMHex hD = HexMake(3, 5);
-    HMHex hE = HexMake(2, 5); HMHex hF = HexMake(1, 5); HMHex hG = HexMake(1, 4);
-    HMHex hI = HexMake(3, 3); HMHex hJ = HexMake(4, 3); HMHex hK = HexMake(4, 4);
+    HMHex hA= HMHexMake(2, 4); HMHex hB= HMHexMake(2, 3); HMHex hC= HMHexMake(3, 4); HMHex hD= HMHexMake(3, 5);
+    HMHex hE= HMHexMake(2, 5); HMHex hF= HMHexMake(1, 5); HMHex hG= HMHexMake(1, 4);
+    HMHex hI= HMHexMake(3, 3); HMHex hJ= HMHexMake(4, 3); HMHex hK= HMHexMake(4, 4);
     
     STAssertEquals([geometry hexAdjacentTo:hA inDirection:0], hB, nil);
     STAssertEquals([geometry hexAdjacentTo:hA inDirection:1], hC, nil);
@@ -140,14 +140,14 @@ static HMGeometry* geometry;
 }
 
 - (void)testDistance {
-    HMHex hA = HexMake(2, 4); HMHex hB = HexMake(2, 3); HMHex hC = HexMake(3, 4); HMHex hD = HexMake(3, 5);
-    HMHex hE = HexMake(2, 5); HMHex hF = HexMake(1, 5); HMHex hG = HexMake(1, 4); HMHex hH = HexMake(2, 2);
-    HMHex hI = HexMake(3, 3); HMHex hJ = HexMake(4, 3); HMHex hK = HexMake(4, 4); HMHex hL = HexMake(4, 5);
-    HMHex hM = HexMake(3, 6); HMHex hN = HexMake(2, 6); HMHex hO = HexMake(1, 6); HMHex hP = HexMake(0, 5);
-    HMHex hQ = HexMake(0, 4); HMHex hR = HexMake(0, 3); HMHex hS = HexMake(1, 3); HMHex hT = HexMake(2, 1);
-    HMHex hU = HexMake(3, 1); HMHex hV = HexMake(3, 0); HMHex hW = HexMake(4, 0); HMHex hX = HexMake(5, 0);
-    HMHex hY = HexMake(6, 0); HMHex hZ = HexMake(7, 0); HMHex ha = HexMake(8, 0); HMHex hb = HexMake(9, 0);
-    HMHex hc = HexMake(9, 1); HMHex hd = HexMake(9, 2); HMHex he = HexMake(9, 3);
+    HMHex hA= HMHexMake(2, 4); HMHex hB= HMHexMake(2, 3); HMHex hC= HMHexMake(3, 4); HMHex hD= HMHexMake(3, 5);
+    HMHex hE= HMHexMake(2, 5); HMHex hF= HMHexMake(1, 5); HMHex hG= HMHexMake(1, 4); HMHex hH= HMHexMake(2, 2);
+    HMHex hI= HMHexMake(3, 3); HMHex hJ= HMHexMake(4, 3); HMHex hK= HMHexMake(4, 4); HMHex hL= HMHexMake(4, 5);
+    HMHex hM= HMHexMake(3, 6); HMHex hN= HMHexMake(2, 6); HMHex hO= HMHexMake(1, 6); HMHex hP= HMHexMake(0, 5);
+    HMHex hQ= HMHexMake(0, 4); HMHex hR= HMHexMake(0, 3); HMHex hS= HMHexMake(1, 3); HMHex hT= HMHexMake(2, 1);
+    HMHex hU= HMHexMake(3, 1); HMHex hV= HMHexMake(3, 0); HMHex hW= HMHexMake(4, 0); HMHex hX= HMHexMake(5, 0);
+    HMHex hY= HMHexMake(6, 0); HMHex hZ= HMHexMake(7, 0); HMHex ha= HMHexMake(8, 0); HMHex hb= HMHexMake(9, 0);
+    HMHex hc= HMHexMake(9, 1); HMHex hd= HMHexMake(9, 2); HMHex he= HMHexMake(9, 3);
     
     STAssertEquals([geometry distanceFrom:hA to:hA], 0, nil);
     

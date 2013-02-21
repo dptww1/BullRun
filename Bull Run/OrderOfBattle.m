@@ -39,7 +39,7 @@
 
 - (Unit*)unitInHex:(HMHex)hex {
     NSUInteger idx = [self.units indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL* stop) {
-                                                              return HexEquals(((Unit*) obj).location, hex);
+                                                              return HMHexEquals(((Unit*) obj).location, hex);
                                                       }];
     return idx != NSNotFound ? [self.units objectAtIndex:idx] : nil;
 }

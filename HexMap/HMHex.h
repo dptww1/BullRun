@@ -11,5 +11,5 @@ typedef struct {
     int row;
 } HMHex;
 
-#define HexMake(col, row) ((HMHex){ (col), (row) })
-#define HexEquals(h1, h2) ((h1).row == (h2).row && (h1).column == (h2).column)
+#define HMHexMake(col, row) ((HMHex){ (col), (row) })
+#define HMHexEquals(h1, h2) ((h1).row == (h2).row && (h1).column == (h2).column)

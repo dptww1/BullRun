@@ -53,7 +53,7 @@
 
 - (HMHex)firstHexAndRemove:(BOOL)removeOrder {
     if ([_list count] == 0)
-        return HexMake(-1, -1);
+        return HMHexMake(-1, -1);
     
     HMHex hex = [self hex:0];
     
@@ -66,8 +66,8 @@
 - (HMHex)hex:(int)idx {
     if (0 <= idx && idx < [_list count])
         return *((HMHex*)[_list getObjectAt:idx]);
-    
-    return HexMake(-1, -1);
+
+    return HMHexMake(-1, -1);
 }
 
 - (BOOL)isBacktrack:(HMHex)hex {
@@ -75,7 +75,7 @@
         return NO;
     
     HMHex penultimate = [self hex:[_list count] - 2];
-    return HexEquals(hex, penultimate);
+    return HMHexEquals(hex, penultimate);
 }
 
 - (void)backtrack {

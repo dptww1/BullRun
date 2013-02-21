@@ -114,7 +114,7 @@
     // calculations here a little easier if the "from" hex is to the left of the "to"
     // hex.  So swap them if need be.
     if (to.column < from.column) {
-        HMHex tmp = HexMake(from.column, from.row);
+        HMHex tmp = HMHexMake(from.column, from.row);
         from = to;
         to = tmp;
     }

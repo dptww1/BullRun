@@ -23,22 +23,22 @@ static BOOL compareHex(HMHex h1, HMHex h2) {
 - (void)testAddHex {
     MoveOrders* mo = [[MoveOrders alloc] init];
     
-    [mo addHex:HexMake(2, 3)];
+    [mo addHex:HMHexMake(2, 3)];
     STAssertTrue([mo numHexes] == 1, nil);
-    STAssertTrue(compareHex([mo lastHex], HexMake(2, 3)), nil);
+    STAssertTrue(compareHex([mo lastHex], HMHexMake(2, 3)), nil);
     
-    [mo addHex:HexMake(3, 4)];
+    [mo addHex:HMHexMake(3, 4)];
     STAssertTrue([mo numHexes] == 2, nil);
-    STAssertTrue(compareHex([mo lastHex], HexMake(3, 4)), nil);
+    STAssertTrue(compareHex([mo lastHex], HMHexMake(3, 4)), nil);
 }
 
 - (void)testAddHexForceRealloc {
     MoveOrders* mo = [[MoveOrders alloc] init];
     
     for (int i = 0; i < 100; ++i) {
-        [mo addHex:HexMake(i, i + 2)];
+        [mo addHex:HMHexMake(i, i + 2)];
         STAssertTrue([mo numHexes] == i + 1, nil);
-        STAssertTrue(compareHex([mo lastHex], HexMake(i, i + 2)), nil);
+        STAssertTrue(compareHex([mo lastHex], HMHexMake(i, i + 2)), nil);
     }
     
     STAssertEquals([mo numHexes], 100, nil);
@@ -47,52 +47,52 @@ static BOOL compareHex(HMHex h1, HMHex h2) {
 - (void)testClear {
     MoveOrders* mo = [[MoveOrders alloc] init];
     
-    [mo addHex:HexMake(7, 3)];
-    [mo addHex:HexMake(8, 2)];
+    [mo addHex:HMHexMake(7, 3)];
+    [mo addHex:HMHexMake(8, 2)];
     STAssertFalse([mo isEmpty], nil);
     
     [mo clear];
     STAssertTrue([mo isEmpty], nil);
     STAssertEquals([mo numHexes], 0, nil);
-    STAssertTrue(compareHex([mo lastHex], HexMake(-1, -1)), nil);
-    STAssertTrue(compareHex([mo firstHexAndRemove:NO], HexMake(-1, -1)), nil);
+    STAssertTrue(compareHex([mo lastHex], HMHexMake(-1, -1)), nil);
+    STAssertTrue(compareHex([mo firstHexAndRemove:NO], HMHexMake(-1, -1)), nil);
 }
 
 - (void)testFirstHexNoRemove {
     MoveOrders* mo = [[MoveOrders alloc] init];
     
-    [mo addHex:HexMake(7, 3)];
-    [mo addHex:HexMake(8, 2)];
-    STAssertTrue(compareHex([mo firstHexAndRemove:NO], HexMake(7, 3)), nil);
-    STAssertTrue(compareHex([mo firstHexAndRemove:NO], HexMake(7, 3)), nil);
-    STAssertTrue(compareHex([mo firstHexAndRemove:NO], HexMake(7, 3)), nil);
+    [mo addHex:HMHexMake(7, 3)];
+    [mo addHex:HMHexMake(8, 2)];
+    STAssertTrue(compareHex([mo firstHexAndRemove:NO], HMHexMake(7, 3)), nil);
+    STAssertTrue(compareHex([mo firstHexAndRemove:NO], HMHexMake(7, 3)), nil);
+    STAssertTrue(compareHex([mo firstHexAndRemove:NO], HMHexMake(7, 3)), nil);
     STAssertEquals([mo numHexes], 2, nil);
 }
 
 - (void)testFirstHexRemove {
     MoveOrders* mo = [[MoveOrders alloc] init];
     
-    [mo addHex:HexMake(7, 3)];
-    [mo addHex:HexMake(8, 2)];
-    [mo addHex:HexMake(9, 5)];
+    [mo addHex:HMHexMake(7, 3)];
+    [mo addHex:HMHexMake(8, 2)];
+    [mo addHex:HMHexMake(9, 5)];
     
-    STAssertTrue(compareHex([mo firstHexAndRemove:YES], HexMake(7, 3)), nil);
+    STAssertTrue(compareHex([mo firstHexAndRemove:YES], HMHexMake(7, 3)), nil);
     STAssertEquals([mo numHexes], 2, nil);
-    STAssertTrue(compareHex([mo firstHexAndRemove:NO], HexMake(8, 2)), nil);
-    STAssertTrue(compareHex([mo lastHex], HexMake(9, 5)), nil);
+    STAssertTrue(compareHex([mo firstHexAndRemove:NO], HMHexMake(8, 2)), nil);
+    STAssertTrue(compareHex([mo lastHex], HMHexMake(9, 5)), nil);
     
-    STAssertTrue(compareHex([mo firstHexAndRemove:YES], HexMake(8, 2)), nil);
+    STAssertTrue(compareHex([mo firstHexAndRemove:YES], HMHexMake(8, 2)), nil);
     STAssertEquals([mo numHexes], 1, nil);
-    STAssertTrue(compareHex([mo firstHexAndRemove:NO], HexMake(9, 5)), nil);
-    STAssertTrue(compareHex([mo lastHex], HexMake(9, 5)), nil);
+    STAssertTrue(compareHex([mo firstHexAndRemove:NO], HMHexMake(9, 5)), nil);
+    STAssertTrue(compareHex([mo lastHex], HMHexMake(9, 5)), nil);
 }
 
 - (void)testCopy {
     MoveOrders* mo = [[MoveOrders alloc] init];
     
-    [mo addHex:HexMake(7, 5)];
-    [mo addHex:HexMake(8, 2)];
-    [mo addHex:HexMake(9, 1)];
+    [mo addHex:HMHexMake(7, 5)];
+    [mo addHex:HMHexMake(8, 2)];
+    [mo addHex:HMHexMake(9, 1)];
     
     MoveOrders* copy = [mo copy];
     STAssertEquals([copy numHexes], 3, nil);
@@ -102,9 +102,9 @@ static BOOL compareHex(HMHex h1, HMHex h2) {
     STAssertEquals([copy numHexes], 3, nil);
     
     // Verify contents of copy
-    STAssertTrue(compareHex([copy firstHexAndRemove:YES], HexMake(7, 5)), nil);
-    STAssertTrue(compareHex([copy firstHexAndRemove:YES], HexMake(8, 2)), nil);
-    STAssertTrue(compareHex([copy firstHexAndRemove:YES], HexMake(9, 1)), nil);
+    STAssertTrue(compareHex([copy firstHexAndRemove:YES], HMHexMake(7, 5)), nil);
+    STAssertTrue(compareHex([copy firstHexAndRemove:YES], HMHexMake(8, 2)), nil);
+    STAssertTrue(compareHex([copy firstHexAndRemove:YES], HMHexMake(9, 1)), nil);
     STAssertTrue([copy isEmpty], nil);
     
     // Removing from copy shouldn't affect source
