@@ -13,6 +13,8 @@
 #import "HMMap.h"
 #import "OrderOfBattle.h"
 
+@class Unit;
+
 @interface Game : NSObject
 
 @property                    PlayerSide      userSide;
@@ -25,6 +27,7 @@
 - (void)addObserver:(id<BAGameObserving>) observer;
 - (void)doSighting:(PlayerSide)side;
 - (void)doNextTurn;
+- (Unit*)unitInHex:(HMHex)hex;
 
 @end
 

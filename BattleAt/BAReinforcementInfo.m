@@ -12,6 +12,24 @@
 
 @implementation BAReinforcementInfo
 
+#pragma mark - Initialization
+
++ (BAReinforcementInfo*)createWithUnit:(Unit*)unit onTurn:(int)turn atHex:(HMHex)hex {
+    return [[BAReinforcementInfo alloc] initWithUnit:unit onTurn:turn atHex:hex];
+}
+
+- (BAReinforcementInfo*)initWithUnit:(Unit*)unit onTurn:(int)turn atHex:(HMHex)hex {
+    self = [super init];
+
+    if (self) {
+        _entryLocation = hex;
+        _entryTurn     = turn;
+        _unitName      = [unit name];
+    }
+
+    return self;
+}
+
 #pragma mark - NSCoding Implementation
 
 - (void)encodeWithCoder:(NSCoder *)coder {

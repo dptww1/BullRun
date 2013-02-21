@@ -227,7 +227,7 @@
                           [[game board] terrainAt:hex] ? [[[game board] terrainAt:hex] name] : @"Impassible",
                           [[game board] terrainAt:hex] ? [[[game board] terrainAt:hex] mpCost] : 0);
 
-                _currentUnit = [[game oob] unitInHex:hex];
+                _currentUnit = [game unitInHex:hex];
                 [[self infoBarView] showInfoForUnit:_currentUnit];
                 [_moveOrderLayer setNeedsDisplay];
                 _givingNewOrders = NO;

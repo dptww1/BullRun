@@ -57,6 +57,14 @@ Game* game;
     [[self observers] addObject:object];
 }
 
+- (Unit*)unitInHex:(HMHex)hex {
+    NSArray* units = [[self oob] units];
+    NSUInteger idx = [units indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL* stop) {
+        return HMHexEquals(((Unit*) obj).location, hex);
+    }];
+    return idx != NSNotFound ? [units objectAtIndex:idx] : nil;
+}
+
 - (void)doNextTurn {
     [self notifyObserversWithSelector:@selector(movePhaseWillBegin:)];
 
@@ -83,7 +91,7 @@ Game* game;
             HMHex nextHex = [[u moveOrders] firstHexAndRemove:NO];
         
             // Is it occupied?
-            Unit* blocker = [_oob unitInHex:nextHex];
+            Unit* blocker = [self unitInHex:nextHex];
             if (blocker) {
                 if ([u friends:blocker]) { // friendly blocker; keep looping
                     DEBUG_MOVEMENT(@"%@ can't move into %02d%02d because a friend (%@) is there", [u name], nextHex.column, nextHex.row, [blocker name]);
@@ -303,8 +311,8 @@ Game* game;
     int cwDir   = [g rotateDirection:moveDir clockwise:YES];
     int ccwDir  = [g rotateDirection:moveDir clockwise:NO];
     
-    Unit* cwUnit  = [_oob unitInHex:[g hexAdjacentTo:[unit location] inDirection:cwDir]];
-    Unit* ccwUnit = [_oob unitInHex:[g hexAdjacentTo:[unit location] inDirection:ccwDir]];
+    Unit* cwUnit  = [self unitInHex:[g hexAdjacentTo:[unit location] inDirection:cwDir]];
+    Unit* ccwUnit = [self unitInHex:[g hexAdjacentTo:[unit location] inDirection:ccwDir]];
 
     return (cwUnit  && ![cwUnit  friends:unit])
         || (ccwUnit && ![ccwUnit friends:unit]);
@@ -335,7 +343,7 @@ Game* game;
     HMHex hex = [geometry hexAdjacentTo:[u location] inDirection:dir];
 
     return [geometry legal:hex]
-        && ![[self oob] unitInHex:hex]
+        && ![self unitInHex:hex]
         && ![[self board] is:hex prohibitedFor:u]
         && ![self is:u movingThruEnemyZocTo:hex];
 }

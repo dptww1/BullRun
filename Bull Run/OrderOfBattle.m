@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
+#import "BAReinforcementInfo.h"
 #import "CollectionUtil.h"
 #import "HMHex.h"
 #import "OrderOfBattle.h"
@@ -13,6 +14,18 @@
 #import "Unit.h"
 
 @implementation OrderOfBattle
+
+#pragma mark - Init Methods
+
+- (id)init {
+    self = [super init];
+
+    if (self) {
+        _reinforcements = [NSMutableArray array];
+    }
+
+    return self;
+}
 
 #pragma mark - Persistence Methods
 
@@ -28,6 +41,11 @@
 
 - (BOOL)saveToFile:(NSString *)filename {
     NSString* path = [[SysUtil applicationFileDir] stringByAppendingPathComponent:filename];
+
+    //    NSMutableDictionary* oob = [NSMutableDictionary dictionary];
+    //    [oob setObject:units forKey:@"units"];
+
+
     BOOL success = [NSKeyedArchiver archiveRootObject:[self units] toFile:path];
     
     NSLog(@"Wrote file [%d] %@", success, path);
@@ -37,15 +55,12 @@
 
 #pragma mark - Behaviors
 
-- (Unit*)unitInHex:(HMHex)hex {
-    NSUInteger idx = [self.units indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL* stop) {
-                                                              return HMHexEquals(((Unit*) obj).location, hex);
-                                                      }];
-    return idx != NSNotFound ? [self.units objectAtIndex:idx] : nil;
-}
-
 - (NSArray*)unitsForSide:(PlayerSide)side {
     return [self.units grep:^BOOL(Unit* u) { return [u side] == side; }];
+}
+
+- (void)addReinforcementInfo:(BAReinforcementInfo*)reinforcementInfo {
+    [[self reinforcements] addObject:reinforcementInfo];
 }
 
 @end

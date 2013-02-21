@@ -10,16 +10,20 @@
 #import "BullRun.h"
 #import "HMHex.h"
 
+@class BAReinforcementInfo;
 @class Unit;
 
 @interface OrderOfBattle : NSObject
 
+// Array of Unit*
 @property (nonatomic, strong) NSArray* units;
+
+// Array of BAReinforcementInfo*
+@property (nonatomic, strong) NSMutableArray* reinforcements;
 
 + (OrderOfBattle*)createFromFile:(NSString*)filepath;
 
 - (BOOL)saveToFile:(NSString*)filename;
-- (Unit*)unitInHex:(HMHex) hex;
 - (NSArray*)unitsForSide:(PlayerSide)side;
-
+- (void)addReinforcementInfo:(BAReinforcementInfo*)reinforcementInfo;
 @end
