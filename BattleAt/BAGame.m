@@ -9,13 +9,13 @@
 #import "BABattleReport.h"
 #import "BAGame.h"
 #import "BAGameObserving.h"
+#import "BAMoveOrders.h"
 #import "BAOrderOfBattle.h"
 #import "BAUnit.h"
 #import "BRAppDelegate.h"
 #import "BullRun.h"
 #import "CollectionUtil.h"
 #import "HMMap.h"
-#import "MoveOrders.h"
 
 BAGame* game;
 

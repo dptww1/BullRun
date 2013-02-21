@@ -7,10 +7,10 @@
 //
 
 #import "HMHex.h"
-#import "MoveOrders.h"
+#import "BAMoveOrders.h"
 #import "ResizableBuffer.h"
 
-@implementation MoveOrders
+@implementation BAMoveOrders
 
 - (id)init {
     self = [super init];
@@ -23,7 +23,7 @@
 }
 
 - (id)copyWithZone:(NSZone*)zone {
-    MoveOrders* newObj = [[MoveOrders alloc] init];
+    BAMoveOrders* newObj = [[BAMoveOrders alloc] init];
     
     if (newObj)
         [newObj setList:[self.list copyWithZone:zone]];

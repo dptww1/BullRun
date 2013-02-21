@@ -9,6 +9,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "BABattleReport.h"
 #import "BAGame.h"
+#import "BAMoveOrders.h"
 #import "BAUnit.h"
 #import "BullRun.h"
 #import "HMCoordinateTransformer.h"
@@ -16,7 +17,6 @@
 #import "InfoBarView.h"
 #import "MapView.h"
 #import "MapViewController.h"
-#import "MoveOrders.h"
 #import "UnitView.h"
 
 #define DEGREES_TO_RADIANS(angle) (angle / 180.0 * M_PI)
@@ -97,7 +97,7 @@
     if (![unit hasOrders])
         return;
 
-    MoveOrders* mos = [unit moveOrders];
+    BAMoveOrders* mos = [unit moveOrders];
 
     // Draw orders line
     CGPoint start = [self getHexCenterPoint:[unit location]];

@@ -1,17 +1,17 @@
 //
-//  HexMapGeometryTests.m
+//  HMHexMapGeometryTests.m
 //  Bull Run
 //
 //  Created by Dave Townsend on 1/9/13.
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
-#import "HexMapGeometryTests.h"
+#import "HMHexMapGeometryTests.h"
 #import "HMGeometry.h"
 
 static HMGeometry* geometry;
 
-@implementation HexMapGeometryTests
+@implementation HMHexMapGeometryTests
 
 - (void)setUp {
     [super setUp];

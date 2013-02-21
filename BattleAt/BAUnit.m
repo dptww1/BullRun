@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
+#import "BAMoveOrders.h"
 #import "BAUnit.h"
-#import "MoveOrders.h"
 
 @implementation BAUnit
 
@@ -71,7 +71,7 @@
         _location = HMHexMake(col, row);
         
         // Initialize non-persistent properties
-        _moveOrders = [[MoveOrders alloc] init];
+        _moveOrders = [[BAMoveOrders alloc] init];
         _sighted    = NO;
     }
     

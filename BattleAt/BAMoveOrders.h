@@ -1,5 +1,5 @@
 //
-//  MoveOrders.h
+//  BAMoveOrders.h
 //  Bull Run
 //
 //  Created by Dave Townsend on 1/18/13.
@@ -13,7 +13,7 @@
 
 // Tracks the list of hexes that a unit has been given orders to move to.
 
-@interface MoveOrders : NSObject <NSCopying>
+@interface BAMoveOrders : NSObject <NSCopying>
 
 @property (nonatomic, strong) ResizableBuffer* list;
 

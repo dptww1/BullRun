@@ -10,7 +10,7 @@
 #import "BullRun.h"
 #import "HMHex.h"
 
-@class MoveOrders;
+@class BAMoveOrders;
 
 @interface BAUnit : NSObject <NSCoding>
 
@@ -29,7 +29,7 @@
 @property            int             strength;
 @property            HMHex           location;
 @property            BOOL            sighted;           // non-persistent; if TRUE, is visible to the enemy
-@property (strong)   MoveOrders*     moveOrders;        // non-persistent
+@property (strong)   BAMoveOrders*   moveOrders;        // non-persistent
 @property            Mode            mode;
 @property            int             mps;               // Movement points
 

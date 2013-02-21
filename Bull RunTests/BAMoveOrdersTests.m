@@ -1,27 +1,27 @@
 //
-//  MoveOrdersTests.m
+//  BAMoveOrdersTests.m
 //  Bull Run
 //
 //  Created by Dave Townsend on 1/18/13.
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
-#import "MoveOrders.h"
-#import "MoveOrdersTests.h"
+#import "BAMoveOrders.h"
+#import "BAMoveOrdersTests.h"
 
 static BOOL compareHex(HMHex h1, HMHex h2) {
     return h1.row == h2.row && h1.column == h2.column;
 }
 
-@implementation MoveOrdersTests
+@implementation BAMoveOrdersTests
 
 - (void)testInit {
-    MoveOrders* mo = [[MoveOrders alloc] init];
+    BAMoveOrders* mo = [[BAMoveOrders alloc] init];
     STAssertNotNil(mo, nil);
 }
 
 - (void)testAddHex {
-    MoveOrders* mo = [[MoveOrders alloc] init];
+    BAMoveOrders* mo = [[BAMoveOrders alloc] init];
     
     [mo addHex:HMHexMake(2, 3)];
     STAssertTrue([mo numHexes] == 1, nil);
@@ -33,7 +33,7 @@ static BOOL compareHex(HMHex h1, HMHex h2) {
 }
 
 - (void)testAddHexForceRealloc {
-    MoveOrders* mo = [[MoveOrders alloc] init];
+    BAMoveOrders* mo = [[BAMoveOrders alloc] init];
     
     for (int i = 0; i < 100; ++i) {
         [mo addHex:HMHexMake(i, i + 2)];
@@ -45,7 +45,7 @@ static BOOL compareHex(HMHex h1, HMHex h2) {
 }
 
 - (void)testClear {
-    MoveOrders* mo = [[MoveOrders alloc] init];
+    BAMoveOrders* mo = [[BAMoveOrders alloc] init];
     
     [mo addHex:HMHexMake(7, 3)];
     [mo addHex:HMHexMake(8, 2)];
@@ -59,7 +59,7 @@ static BOOL compareHex(HMHex h1, HMHex h2) {
 }
 
 - (void)testFirstHexNoRemove {
-    MoveOrders* mo = [[MoveOrders alloc] init];
+    BAMoveOrders* mo = [[BAMoveOrders alloc] init];
     
     [mo addHex:HMHexMake(7, 3)];
     [mo addHex:HMHexMake(8, 2)];
@@ -70,7 +70,7 @@ static BOOL compareHex(HMHex h1, HMHex h2) {
 }
 
 - (void)testFirstHexRemove {
-    MoveOrders* mo = [[MoveOrders alloc] init];
+    BAMoveOrders* mo = [[BAMoveOrders alloc] init];
     
     [mo addHex:HMHexMake(7, 3)];
     [mo addHex:HMHexMake(8, 2)];
@@ -88,13 +88,13 @@ static BOOL compareHex(HMHex h1, HMHex h2) {
 }
 
 - (void)testCopy {
-    MoveOrders* mo = [[MoveOrders alloc] init];
+    BAMoveOrders* mo = [[BAMoveOrders alloc] init];
     
     [mo addHex:HMHexMake(7, 5)];
     [mo addHex:HMHexMake(8, 2)];
     [mo addHex:HMHexMake(9, 1)];
     
-    MoveOrders* copy = [mo copy];
+    BAMoveOrders* copy = [mo copy];
     STAssertEquals([copy numHexes], 3, nil);
     
     // Removing from source shouldn't affect copy
