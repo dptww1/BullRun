@@ -67,7 +67,7 @@ BAGame* game;
 }
 
 - (void)processTurn {
-    [self notifyObserversWithSelector:@selector(movePhaseWillBegin:)];
+    [self notifyObserversWithSelector:@selector(movePhaseWillBegin)];
 
     // TODO: call AI
     

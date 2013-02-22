@@ -356,6 +356,14 @@
 
 - (void)movePhaseWillBegin {
     self.animationInfo = [NSMutableDictionary dictionary];
+    [CATransaction begin];
+
+    // After all animations which we going to run are finished, it's time
+    // to update the turn.
+    [CATransaction setCompletionBlock:^{
+        [[self infoBarView] updateCurrentTimeForTurn:[game turn]];
+    }];
+
 }
 
 - (void)movePhaseDidEnd {
@@ -367,9 +375,7 @@
         [[UnitView findByName:unitName] addAnimation:anim forKey:unitName];
     }
     
-    [self.animationInfo removeAllObjects];
-
-    [[self infoBarView] updateCurrentTimeForTurn:[game turn]];
+    [CATransaction commit];
 }
 
 - (void)showAttack:(BABattleReport *)report {
