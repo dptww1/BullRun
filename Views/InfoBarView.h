@@ -11,13 +11,14 @@
 @class BAUnit;
 
 @interface InfoBarView : UIView <UIActionSheetDelegate> {
-    __weak IBOutlet UILabel*        originalStrength;
-    __weak IBOutlet UIProgressView* currentStrength;
-    __weak IBOutlet UIImageView*    unitImage;
-    __weak IBOutlet UILabel*        unitName;
-    __weak IBOutlet UIButton*       unitMode;
-    __weak IBOutlet UIButton*       nextTurn;
-    __weak IBOutlet UILabel*        currentTime;
+    __weak IBOutlet UILabel*                 originalStrength;
+    __weak IBOutlet UIProgressView*          currentStrength;
+    __weak IBOutlet UIImageView*             unitImage;
+    __weak IBOutlet UILabel*                 unitName;
+    __weak IBOutlet UIButton*                unitMode;
+    __weak IBOutlet UIButton*                nextTurn;
+    __weak IBOutlet UILabel*                 currentTime;
+    __weak IBOutlet UIActivityIndicatorView *processingTurn;
 
     __weak BAUnit* currentUnit;
 }

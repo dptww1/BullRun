@@ -17,9 +17,8 @@
 #import "InfoBarView.h"
 #import "MapView.h"
 #import "MapViewController.h"
+#import "SysUtil.h"
 #import "UnitView.h"
-
-#define DEGREES_TO_RADIANS(angle) (angle / 180.0 * M_PI)
 
 #pragma mark - Private Methods
 

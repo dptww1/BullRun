@@ -11,6 +11,7 @@
 #import "BAGame.h"
 #import "BAUnit.h"
 #import "InfoBarView.h"
+#import "SysUtil.h"
 
 #define NUM_ELTS(ARRAY_NAME) (sizeof(ARRAY_NAME) / sizeof(ARRAY_NAME[0]))
 
@@ -39,16 +40,24 @@ static BOOL modeLabelIsChoosable[] = {
     return modeLabelIsChoosable[CHARGE] ? idx : DEFEND + idx;
 }
 
+- (NSArray*)unitControls {
+    return [NSArray arrayWithObjects:
+            originalStrength,
+            currentStrength,
+            unitImage,
+            unitName,
+            unitMode,
+            nil];
+}
+
 @end
 
 @implementation InfoBarView
 
 - (void)showInfoForUnit:(BAUnit*)unit {
     if (unit) {
-        [currentStrength setHidden:NO];
-        [unitMode setHidden:NO];
-        [unitImage setHidden:NO];
-        
+        for (UIView* ctl in [self unitControls])
+            [ctl setHidden:NO];
         
         [unitName setText:[unit name]];
         [originalStrength setText:[[NSString alloc] initWithFormat:@"%d men", [unit originalStrength]]];
@@ -68,12 +77,9 @@ static BOOL modeLabelIsChoosable[] = {
         currentUnit = unit;
         
     } else { // no unit selected, just erase the info box
-        [unitName setText:@""];
-        [originalStrength setText:@""];
-        [currentStrength setHidden:YES];
-        [unitMode setHidden:YES];
-        [unitImage setHidden:YES];
-        
+        for (UIView* ctl in [self unitControls])
+            [ctl setHidden:YES];
+
         currentUnit = nil;
     }
 }
@@ -117,6 +123,11 @@ static BOOL modeLabelIsChoosable[] = {
 }
 
 - (IBAction)nextTurn:(id)sender {
+    for (UIView* ctl in [self unitControls])
+        [ctl setHidden:YES];
+
+    [processingTurn startAnimating];
+
     [game processTurn];
 }
 
@@ -135,10 +146,23 @@ static BOOL modeLabelIsChoosable[] = {
             hour -= 12;
     }
 
-    [currentTime setText:[NSString stringWithFormat:@"%d:%02d %s",
-                          hour,
-                          turn & 1 ? 30 : 0,
-                          amPm]];
+    [UIView animateWithDuration:0.5
+                     animations:^{
+                         [currentTime layer].transform = CATransform3DRotate(CATransform3DIdentity, DEGREES_TO_RADIANS(90), 1, 0, 0);
+
+                     }
+                     completion:^(BOOL finished){
+                         [currentTime setText:[NSString stringWithFormat:@"%d:%02d %s",
+                                               hour,
+                                               turn & 1 ? 30 : 0,
+                                               amPm]];
+                         [UIView animateWithDuration:0.5
+                                          animations:^{
+                                              [currentTime layer].transform = CATransform3DRotate([currentTime layer].transform, DEGREES_TO_RADIANS(-90), 1, 0, 0);
+                                          }];
+                     }];
+
+    [processingTurn stopAnimating];
 }
 
 #pragma mark - UIActionSheetDelegate Implementation
