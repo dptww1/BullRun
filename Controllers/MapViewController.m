@@ -7,6 +7,7 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
+#import "BAAGunfire.h"
 #import "BABattleReport.h"
 #import "BAGame.h"
 #import "BAMoveOrders.h"
@@ -378,23 +379,34 @@
 }
 
 - (void)showAttack:(BABattleReport *)report {
-    DEBUG_COMBAT(@"MapViewController#unit:%@ attacks %@",
-                 [[report attacker] name], [[report defender] name]);
+    BAUnit* a = [report attacker];
+    BAUnit* d = [report defender];
+
+    DEBUG_COMBAT(@"MapViewController#unit:%@ attacks %@", [a name], [d name]);
+
+    int dirAToD = [[[game board] geometry] directionFrom:[a location]
+                                                      to:[d location]];
+    // 0 degrees longitude is straight to the right, but direction 0 in
+    // HMHexMap terms is straight to the top.  So subtract 90 degrees from
+    // the game logic angle to get the animation logic angle.
+    CGFloat angleAToD = DEGREES_TO_RADIANS((dirAToD * 60) - 90);
+    UnitView* view = [UnitView findByName:[a name]];
+    [BAAGunfire gunfireFrom:view withAzimuth:angleAToD];
 
     if ([[[game board] geometry] legal:[report retreatHex]]) {
         DEBUG_COMBAT(@"MapViewController#unit:%@ willRetreatTo:%02d%02d",
-                     [[report defender] name],
+                     [d name],
                      [report retreatHex].column,
                      [report retreatHex].row);
-        [self moveUnit:[report defender] to:[report retreatHex]];  // TODO: for now
+        [self moveUnit:d to:[report retreatHex]];  // TODO: for now
     }
 
     if ([[[game board] geometry] legal:[report advanceHex]]) {
         DEBUG_COMBAT(@"MapViewController#unit:%@ willAdvanceTo:%02d%02d",
-                     [[report attacker] name],
+                     [a name],
                      [report advanceHex].column,
                      [report advanceHex].row);
-        [self moveUnit:[report attacker] to:[report advanceHex]]; // TODO: for now
+        [self moveUnit:a to:[report advanceHex]]; // TODO: for now
     }
 }
 

@@ -11,6 +11,9 @@
 		CC0805AD16D5869E00CB8C79 /* BAReinforcementInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0805AC16D5869E00CB8C79 /* BAReinforcementInfo.m */; };
 		CC0CF381168A4E72006D902D /* README.textile in Resources */ = {isa = PBXBuildFile; fileRef = CC0CF380168A4E72006D902D /* README.textile */; };
 		CC0CF3EF169916E2006D902D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC0CF3EE169916E2006D902D /* QuartzCore.framework */; };
+		CC1B671C16DC4B9F0078B20B /* bullet.png in Resources */ = {isa = PBXBuildFile; fileRef = CC1B671B16DC4B9F0078B20B /* bullet.png */; };
+		CC1B672016DEF19A0078B20B /* BAABullet.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1B671F16DEF19A0078B20B /* BAABullet.m */; };
+		CC1B672316DEF9310078B20B /* BAAGunfire.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1B672216DEF9310078B20B /* BAAGunfire.m */; };
 		CC2E35A216A1135B00788D16 /* CollectionUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB60DE16A04B86006668C2 /* CollectionUtil.m */; };
 		CC35E68416AF5EE700F9F0B1 /* MapView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC35E68116AF5EE700F9F0B1 /* MapView.m */; };
 		CC35E68516AF5EE700F9F0B1 /* UnitView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC35E68316AF5EE700F9F0B1 /* UnitView.m */; };
@@ -73,6 +76,11 @@
 		CC0CF380168A4E72006D902D /* README.textile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.textile; sourceTree = "<group>"; };
 		CC0CF3E91698CB40006D902D /* BullRun.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BullRun.h; sourceTree = "<group>"; };
 		CC0CF3EE169916E2006D902D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		CC1B671B16DC4B9F0078B20B /* bullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullet.png; sourceTree = "<group>"; };
+		CC1B671E16DEF19A0078B20B /* BAABullet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAABullet.h; sourceTree = "<group>"; };
+		CC1B671F16DEF19A0078B20B /* BAABullet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAABullet.m; sourceTree = "<group>"; };
+		CC1B672116DEF9310078B20B /* BAAGunfire.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAAGunfire.h; sourceTree = "<group>"; };
+		CC1B672216DEF9310078B20B /* BAAGunfire.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAAGunfire.m; sourceTree = "<group>"; };
 		CC35E68016AF5EE700F9F0B1 /* MapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapView.h; sourceTree = "<group>"; };
 		CC35E68116AF5EE700F9F0B1 /* MapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapView.m; sourceTree = "<group>"; };
 		CC35E68216AF5EE700F9F0B1 /* UnitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnitView.h; sourceTree = "<group>"; };
@@ -163,6 +171,7 @@
 		CC0805A516D2F87300CB8C79 /* BattleAt */ = {
 			isa = PBXGroup;
 			children = (
+				CC1B671D16DEF0CF0078B20B /* Animations */,
 				CC392E4316D5AE4C00160B82 /* BAMoveOrders.h */,
 				CC392E4416D5AE4C00160B82 /* BAMoveOrders.m */,
 				CC0805A716D3085000CB8C79 /* BABattleReport.h */,
@@ -178,6 +187,17 @@
 				CC392E3E16D5A84500160B82 /* BAUnit.m */,
 			);
 			path = BattleAt;
+			sourceTree = "<group>";
+		};
+		CC1B671D16DEF0CF0078B20B /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				CC1B671E16DEF19A0078B20B /* BAABullet.h */,
+				CC1B671F16DEF19A0078B20B /* BAABullet.m */,
+				CC1B672116DEF9310078B20B /* BAAGunfire.h */,
+				CC1B672216DEF9310078B20B /* BAAGunfire.m */,
+			);
+			name = Animations;
 			sourceTree = "<group>";
 		};
 		CC85853D167A72600054E60D = {
@@ -340,6 +360,7 @@
 		CCDB60FB16A04EF2006668C2 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				CC1B671B16DC4B9F0078B20B /* bullet.png */,
 				CC35E68616B5CE0A00F9F0B1 /* portraits.png */,
 				CCDB60FC16A04EF2006668C2 /* map.png */,
 			);
@@ -438,6 +459,7 @@
 				CC35E68716B5CE0A00F9F0B1 /* portraits.png in Resources */,
 				CC65EB8C16BF3EE400C47BD0 /* units.plist in Resources */,
 				CCF61C9216C5EE3300391025 /* map.plist in Resources */,
+				CC1B671C16DC4B9F0078B20B /* bullet.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,6 +514,8 @@
 				CC392E3F16D5A84500160B82 /* BAUnit.m in Sources */,
 				CC392E4216D5ACEC00160B82 /* BAGame.m in Sources */,
 				CC392E4516D5AE4C00160B82 /* BAMoveOrders.m in Sources */,
+				CC1B672016DEF19A0078B20B /* BAABullet.m in Sources */,
+				CC1B672316DEF9310078B20B /* BAAGunfire.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

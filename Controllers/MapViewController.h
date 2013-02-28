@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 #import "BAGameObserving.h"
 #import "HMHex.h"
 
@@ -19,7 +20,7 @@
 
 @property (nonatomic, strong) HMCoordinateTransformer* coordXformer;
 @property (nonatomic, weak)   InfoBarView*             infoBarView;
-@property (nonatomic, weak)   BAUnit*                    currentUnit;
+@property (nonatomic, weak)   BAUnit*                  currentUnit;
 @property (nonatomic, strong) CALayer*                 moveOrderLayer;
 
 // If YES, then the user's touch has moved outside the current hex and
