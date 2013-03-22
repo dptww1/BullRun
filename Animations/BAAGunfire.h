@@ -10,8 +10,15 @@
 
 @class UnitView;
 
-@interface BAAGunfire : CAEmitterLayer
+// It would be nice to inherit from CAEmitterLayer, since this is a
+// specialization of that class, but doing that apparently doesn't work.
+@interface BAAGunfire : NSObject
+
+@property (nonatomic, strong) CAEmitterLayer* gun;
 
 + (id)gunfireFrom:(UnitView*)unitView withAzimuth:(float) azimuth;
+
+- (id)initFrom:(UnitView*)unitView withAzimuth:(float)azimuth;
+- (void)stop;
 
 @end

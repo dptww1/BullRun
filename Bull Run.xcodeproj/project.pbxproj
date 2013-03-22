@@ -12,7 +12,6 @@
 		CC0CF381168A4E72006D902D /* README.textile in Resources */ = {isa = PBXBuildFile; fileRef = CC0CF380168A4E72006D902D /* README.textile */; };
 		CC0CF3EF169916E2006D902D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC0CF3EE169916E2006D902D /* QuartzCore.framework */; };
 		CC1B671C16DC4B9F0078B20B /* bullet.png in Resources */ = {isa = PBXBuildFile; fileRef = CC1B671B16DC4B9F0078B20B /* bullet.png */; };
-		CC1B672916DFA5C00078B20B /* BAABullet.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1B672616DFA5C00078B20B /* BAABullet.m */; };
 		CC1B672A16DFA5C00078B20B /* BAAGunfire.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1B672816DFA5C00078B20B /* BAAGunfire.m */; };
 		CC2E35A216A1135B00788D16 /* CollectionUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB60DE16A04B86006668C2 /* CollectionUtil.m */; };
 		CC35E68416AF5EE700F9F0B1 /* MapView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC35E68116AF5EE700F9F0B1 /* MapView.m */; };
@@ -77,8 +76,6 @@
 		CC0CF3E91698CB40006D902D /* BullRun.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BullRun.h; sourceTree = "<group>"; };
 		CC0CF3EE169916E2006D902D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		CC1B671B16DC4B9F0078B20B /* bullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullet.png; sourceTree = "<group>"; };
-		CC1B672516DFA5C00078B20B /* BAABullet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAABullet.h; sourceTree = "<group>"; };
-		CC1B672616DFA5C00078B20B /* BAABullet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAABullet.m; sourceTree = "<group>"; };
 		CC1B672716DFA5C00078B20B /* BAAGunfire.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAAGunfire.h; sourceTree = "<group>"; };
 		CC1B672816DFA5C00078B20B /* BAAGunfire.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAAGunfire.m; sourceTree = "<group>"; };
 		CC35E68016AF5EE700F9F0B1 /* MapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapView.h; sourceTree = "<group>"; };
@@ -191,8 +188,6 @@
 		CC1B672416DFA5C00078B20B /* Animations */ = {
 			isa = PBXGroup;
 			children = (
-				CC1B672516DFA5C00078B20B /* BAABullet.h */,
-				CC1B672616DFA5C00078B20B /* BAABullet.m */,
 				CC1B672716DFA5C00078B20B /* BAAGunfire.h */,
 				CC1B672816DFA5C00078B20B /* BAAGunfire.m */,
 			);
@@ -514,7 +509,6 @@
 				CC392E3F16D5A84500160B82 /* BAUnit.m in Sources */,
 				CC392E4216D5ACEC00160B82 /* BAGame.m in Sources */,
 				CC392E4516D5AE4C00160B82 /* BAMoveOrders.m in Sources */,
-				CC1B672916DFA5C00078B20B /* BAABullet.m in Sources */,
 				CC1B672A16DFA5C00078B20B /* BAAGunfire.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
