@@ -30,6 +30,13 @@
     return self;
 }
 
+- (CGPoint)hexCenterToScreen:(HMHex)h {
+    CGPoint pt = [self hexToScreen:h];
+    pt.x += [self hexSize].width  / 2;
+    pt.y += [self hexSize].height / 2;
+    return pt;
+}
+
 - (CGPoint)hexToScreen:(HMHex)hex {
     float x = _origin.x;
     float y = _origin.y;

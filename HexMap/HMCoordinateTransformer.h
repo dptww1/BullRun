@@ -17,6 +17,7 @@
 
 - (id)initWithGeometry:(HMGeometry*)geometry origin:(CGPoint)origin hexSize:(CGSize)hexSize;
 - (CGPoint)hexToScreen:(HMHex)hex;
+- (CGPoint)hexCenterToScreen:(HMHex)hex;
 - (HMHex)screenToHex:(CGPoint)point;
 
 @end

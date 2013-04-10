@@ -7,6 +7,8 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
+#import "BAAAnimationList.h"
+#import "BAAAnimationListItem.h"
 #import "BAAGunfire.h"
 #import "BABattleReport.h"
 #import "BAGame.h"
@@ -27,13 +29,6 @@
 
 - (MapView*)getMapView {
     return (MapView*)[self view];
-}
-
-- (CGPoint)getHexCenterPoint:(HMHex)h {
-    CGPoint pt = [[self coordXformer] hexToScreen:h];
-    pt.x += [[self coordXformer] hexSize].width  / 2;
-    pt.y += [[self coordXformer] hexSize].height / 2;
-    return pt;
 }
 
 @end
@@ -100,11 +95,11 @@
     BAMoveOrders* mos = [unit moveOrders];
 
     // Draw orders line
-    CGPoint start = [self getHexCenterPoint:[unit location]];
+    CGPoint start = [[self coordXformer] hexCenterToScreen:[unit location]];
     CGContextMoveToPoint(ctx, start.x, start.y);
     
     for (int i = 0; i < [mos numHexes]; ++i) {
-        CGPoint p = [self getHexCenterPoint:[mos hex:i]];
+        CGPoint p = [[self coordXformer] hexCenterToScreen:[mos hex:i]];
         CGContextAddLineToPoint(ctx, p.x, p.y);
         DEBUG_MOVEORDERS(@"Drawing line for %@ to (%d,%d)", [unit name], (int)p.x, (int)p.y);
     }
@@ -117,7 +112,7 @@
     HMHex penultimateHex = [mos numHexes] == 1 ? [unit location] : [mos hex:[mos numHexes] - 2];
     int dir = [[_coordXformer geometry] directionFrom:penultimateHex to:endHex];
 
-    CGPoint end = [self getHexCenterPoint:endHex];
+    CGPoint end = [[self coordXformer] hexCenterToScreen:endHex];
 
     float b = 30.0f;                        // size of the sides of the equilateral triangle
     float sqrt3 = 1.73f;                    // square root of three
@@ -158,6 +153,9 @@
     
     if (!self.animationInfo)
         [self setAnimationInfo:[NSMutableDictionary dictionary]];
+
+    if (!self.animationList)
+        [self setAnimationList:[BAAAnimationList listWithCoordXFormer:[self coordXformer]]];
     
     if (!_moveOrderLayer) {
         CGRect bounds = [[self view] bounds];
@@ -323,7 +321,7 @@
     // Layer might be out of position because didn't begin on map, but disable animations
     [CATransaction begin];
     [CATransaction setDisableActions:YES];
-    [unitLayer setPosition:[self getHexCenterPoint:[unit location]]];
+    [unitLayer setPosition:[[self coordXformer] hexCenterToScreen:[unit location]]];
     [CATransaction commit];
 
     // But animate the opacity
@@ -334,23 +332,26 @@
 
 - (void)moveUnit:(BAUnit*)unit to:(HMHex)hex {
     DEBUG_MOVEMENT(@"Moving %@ to %02d%02d", [unit name], hex.column, hex.row);
+    [[self animationList] addItem:[BAAAnimationListItem itemMoving:unit toHex:hex]];
+
+    HMCoordinateTransformer* xformer = [self coordXformer];
     
     CAKeyframeAnimation* anim = [self.animationInfo objectForKey:[unit name]];
     if (!anim) {  // first animation for this unit
         anim = [CAKeyframeAnimation animationWithKeyPath:@"position"];
         NSMutableArray* positions = [NSMutableArray array];
-        [positions addObject:[NSValue valueWithCGPoint:[self getHexCenterPoint:[unit location]]]];
+        [positions addObject:[NSValue valueWithCGPoint:[xformer hexCenterToScreen:[unit location]]]];
         [anim setValues:positions];
         [self.animationInfo setObject:anim forKey:[unit name]];
     }
     
     NSMutableArray* positions = [NSMutableArray arrayWithArray:[anim values]];
-    [positions addObject:[NSValue valueWithCGPoint:[self getHexCenterPoint:hex]]];
+    [positions addObject:[NSValue valueWithCGPoint:[xformer hexCenterToScreen:hex]]];
     [anim setValues:positions];
 
     
     UnitView* v = [UnitView createForUnit:unit];
-    CGPoint dest = [self getHexCenterPoint:hex];
+    CGPoint dest = [xformer hexCenterToScreen:hex];
     [v setPosition:dest];
 }
 
@@ -364,6 +365,7 @@
         [[self infoBarView] updateCurrentTimeForTurn:[game turn]];
     }];
 
+    [[self animationList] reset];
 }
 
 - (void)movePhaseDidEnd {
@@ -376,6 +378,8 @@
     }
     
     [CATransaction commit];
+
+    [[self animationList] run:nil]; // TODO: put real completion block here
 }
 
 - (void)showAttack:(BABattleReport *)report {

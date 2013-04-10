@@ -12,6 +12,7 @@
 #import "HMHex.h"
 
 @class BAUnit;
+@class BAAAnimationList;
 @class HMCoordinateTransformer;
 @class InfoBarView;
 @class OrderOfBattle;
@@ -32,6 +33,8 @@
 // Key: NSString* (unit name)
 // Value: CAKeyframeAnimation
 @property (nonatomic, strong) NSMutableDictionary*     animationInfo;
+
+@property (nonatomic, strong) BAAAnimationList*        animationList;
 
 #pragma mark - GameObserving Implementation
 
