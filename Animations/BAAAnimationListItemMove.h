@@ -1,5 +1,5 @@
 //
-//  BAAAnimationListItem.h
+//  BAAAnimationListItemMove.h
 //  Bull Run
 //
 //  Created by Dave Townsend on 4/8/13.
@@ -12,16 +12,11 @@
 @class BAUnit;
 @class BAAAnimationList;
 
-typedef enum {
-    LIT_MOVE,
-    LIT_ATTACK
-} BAAAnimationListItemType;
+@interface BAAAnimationListItemMove : NSObject
 
-@interface BAAAnimationListItem : NSObject
-
-@property (nonatomic)         BAAAnimationListItemType type;
 @property (nonatomic, strong) BAUnit*                  actor;
-@property (nonatomic)         HMHex                    destination;
+@property (nonatomic)         HMHex                    startHex;
+@property (nonatomic)         HMHex                    endHex;
 
 + (id)itemMoving:(BAUnit*)unit toHex:(HMHex)hex;
 

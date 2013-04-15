@@ -7,7 +7,8 @@
 //
 
 #import "BAAAnimationList.h"
-#import "BAAAnimationListItem.h"
+#import "BAAAnimationListItemCombat.h"
+#import "BAAAnimationListItemMove.h"
 #import "BullRun.h"
 
 @implementation BAAAnimationList
@@ -34,14 +35,17 @@
 }
 
 - (void)run:(void (^)(void))completionBlock {
+    if (completionBlock)
+        [self setCompletionBlock:completionBlock];
+
     if ([self nextItemIdx] == -1)
         DEBUG_ANIMATION(@"BAAAnimationList run() BEGIN");
 
     // Are we done?
     if ([self nextItemIdx] >= (int)([[self items] count] - 1)) {
         DEBUG_ANIMATION(@"BAAAnimationList run() END, calling completion block");
-        if (completionBlock)
-            completionBlock();
+        if ([self completionBlock])
+            [self completionBlock]();
         return;
     }
 

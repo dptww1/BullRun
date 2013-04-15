@@ -8,7 +8,8 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import "BAAAnimationList.h"
-#import "BAAAnimationListItem.h"
+#import "BAAAnimationListItemMove.h"
+#import "BAAAnimationListItemCombat.h"
 #import "BAAGunfire.h"
 #import "BABattleReport.h"
 #import "BAGame.h"
@@ -332,8 +333,9 @@
 
 - (void)moveUnit:(BAUnit*)unit to:(HMHex)hex {
     DEBUG_MOVEMENT(@"Moving %@ to %02d%02d", [unit name], hex.column, hex.row);
-    [[self animationList] addItem:[BAAAnimationListItem itemMoving:unit toHex:hex]];
+    [[self animationList] addItem:[BAAAnimationListItemMove itemMoving:unit toHex:hex]];
 
+#if 0
     HMCoordinateTransformer* xformer = [self coordXformer];
     
     CAKeyframeAnimation* anim = [self.animationInfo objectForKey:[unit name]];
@@ -349,13 +351,14 @@
     [positions addObject:[NSValue valueWithCGPoint:[xformer hexCenterToScreen:hex]]];
     [anim setValues:positions];
 
-    
     UnitView* v = [UnitView createForUnit:unit];
     CGPoint dest = [xformer hexCenterToScreen:hex];
     [v setPosition:dest];
+#endif
 }
 
 - (void)movePhaseWillBegin {
+#if 0
     self.animationInfo = [NSMutableDictionary dictionary];
     [CATransaction begin];
 
@@ -364,11 +367,12 @@
     [CATransaction setCompletionBlock:^{
         [[self infoBarView] updateCurrentTimeForTurn:[game turn]];
     }];
-
+#endif
     [[self animationList] reset];
 }
 
 - (void)movePhaseDidEnd {
+#if 0
     // Since we want the time-per-hex rate to be constant, we have to scale the animation duration by the
     // number of hexes that the unit is moving through.
     for (NSString* unitName in [self.animationInfo keyEnumerator]) {
@@ -378,14 +382,19 @@
     }
     
     [CATransaction commit];
-
-    [[self animationList] run:nil]; // TODO: put real completion block here
+#endif
+    [[self animationList] run:^{
+        [[self infoBarView] updateCurrentTimeForTurn:[game turn]];
+     }];
 }
 
 - (void)showAttack:(BABattleReport *)report {
-    BAUnit* a = [report attacker];
-    BAUnit* d = [report defender];
-
+    [[self animationList]
+     addItem:[BAAAnimationListItemCombat itemWithAttacker:[report attacker]
+                                                 defender:[report defender]
+                                                retreatTo:[report retreatHex]
+                                                  advance:NO]];
+#if 0
     DEBUG_COMBAT(@"MapViewController#unit:%@ attacks %@", [a name], [d name]);
 
     int dirAToD = [[[game board] geometry] directionFrom:[a location]
@@ -412,6 +421,7 @@
                      [report advanceHex].row);
         [self moveUnit:a to:[report advanceHex]]; // TODO: for now
     }
+#endif
 }
 
 #pragma mark - Debugging

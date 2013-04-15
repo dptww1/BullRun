@@ -16,6 +16,7 @@
 @property (strong,nonatomic) NSMutableArray*          items;
 @property (nonatomic)        int                      nextItemIdx;
 @property (weak,nonatomic)   HMCoordinateTransformer* xformer;
+@property (copy)             void                    (^completionBlock)(void);
 
 + (BAAAnimationList*) listWithCoordXFormer:(HMCoordinateTransformer*)xformer;
 
