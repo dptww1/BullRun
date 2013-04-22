@@ -13,8 +13,6 @@
 #import "HMCoordinateTransformer.h"
 #import "UnitView.h"
 
-#define SECONDS_PER_HEX_MOVE 0.75f
-
 @implementation BAAAnimationListItemMove
 
 + (id)itemMoving:(BAUnit*)unit toHex:(HMHex)hex {
@@ -42,11 +40,11 @@
             [list run:nil];
         } ];
 
-    CABasicAnimation* anim = [CABasicAnimation animationWithKeyPath:@"position"];
-    [anim setFromValue:[NSValue valueWithCGPoint:[xformer hexCenterToScreen:[self startHex]]]];
-    [anim setToValue:[NSValue valueWithCGPoint:endPoint]];
-    [anim setDuration:SECONDS_PER_HEX_MOVE];
-    
+    CAAnimation* anim = [self createMoveAnimationFor:[self actor]
+                                          movingFrom:[self startHex]
+                                                  to:[self endHex]
+                                          usingXform:xformer];
+
     [v setPosition:endPoint];
     [v addAnimation:anim forKey:@"position"]; //[[self actor] name]];
 

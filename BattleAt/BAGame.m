@@ -17,13 +17,14 @@
 #import "CollectionUtil.h"
 #import "HMMap.h"
 
-BAGame* game;
+BAGame* game; // the global game instance
 
 @interface BAGame (Private)
 
 - (void)doSighting:(PlayerSide)side;
 
 @end
+
 
 @implementation BAGame
 
@@ -106,10 +107,6 @@ BAGame* game;
                     if ([u mps] >= 4 && IsOffensiveMode([u mode])) { // TODO: IsOffensiveMode is BR-specific
                         [self attackFrom:u to:blocker];
 
-                        // The units involved in combat can't do anything else this turn.
-                        [u setMps:0];
-                        [blocker setMps:0];
-
                     } else {
                         DEBUG_COMBAT(@"%@ can't attack %@ due to mode and/or MP cost", [u name], [blocker name]);
                     }
@@ -189,6 +186,7 @@ BAGame* game;
     }
 }
 
+// Returns one or more of the COMBAT_MOVEMENT_XXXX constants
 - (void)attackFrom:(BAUnit*)a to:(BAUnit*)d {
     DEBUG_COMBAT(@"COMBAT: %@ attacks %@", [a name], [d name]);
 
@@ -233,8 +231,6 @@ BAGame* game;
 
             if ([self doesAttackerAdvance:a])
                 [report setAdvanceHex:defenderOriginalHex];
-
-            [self doSighting:[game userSide]];
         }
     }
 
@@ -251,11 +247,19 @@ BAGame* game;
     [a setStrength:[a strength] - attCasualties];
     [d setStrength:[d strength] - defCasualties];
 
-    if ([[[self board] geometry] legal:[report retreatHex]])
+    if ([[[self board] geometry] legal:[report retreatHex]]) {
         [d setLocation:[report retreatHex]];
+        [self doSighting:[d side]];
+    }
 
-    if ([[[self board] geometry] legal:[report advanceHex]])
+    if ([[[self board] geometry] legal:[report advanceHex]]) {
         [a setLocation:[report advanceHex]];
+        [self doSighting:[a side]];
+    }
+
+    // The units involved in combat can't do anything else this turn.
+    [a setMps:0];
+    [d setMps:0];
 }
 
 - (BOOL)doesAttackerAdvance:(BAUnit*)a {

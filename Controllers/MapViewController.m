@@ -334,55 +334,13 @@
 - (void)moveUnit:(BAUnit*)unit to:(HMHex)hex {
     DEBUG_MOVEMENT(@"Moving %@ to %02d%02d", [unit name], hex.column, hex.row);
     [[self animationList] addItem:[BAAAnimationListItemMove itemMoving:unit toHex:hex]];
-
-#if 0
-    HMCoordinateTransformer* xformer = [self coordXformer];
-    
-    CAKeyframeAnimation* anim = [self.animationInfo objectForKey:[unit name]];
-    if (!anim) {  // first animation for this unit
-        anim = [CAKeyframeAnimation animationWithKeyPath:@"position"];
-        NSMutableArray* positions = [NSMutableArray array];
-        [positions addObject:[NSValue valueWithCGPoint:[xformer hexCenterToScreen:[unit location]]]];
-        [anim setValues:positions];
-        [self.animationInfo setObject:anim forKey:[unit name]];
-    }
-    
-    NSMutableArray* positions = [NSMutableArray arrayWithArray:[anim values]];
-    [positions addObject:[NSValue valueWithCGPoint:[xformer hexCenterToScreen:hex]]];
-    [anim setValues:positions];
-
-    UnitView* v = [UnitView createForUnit:unit];
-    CGPoint dest = [xformer hexCenterToScreen:hex];
-    [v setPosition:dest];
-#endif
 }
 
 - (void)movePhaseWillBegin {
-#if 0
-    self.animationInfo = [NSMutableDictionary dictionary];
-    [CATransaction begin];
-
-    // After all animations which we going to run are finished, it's time
-    // to update the turn.
-    [CATransaction setCompletionBlock:^{
-        [[self infoBarView] updateCurrentTimeForTurn:[game turn]];
-    }];
-#endif
     [[self animationList] reset];
 }
 
 - (void)movePhaseDidEnd {
-#if 0
-    // Since we want the time-per-hex rate to be constant, we have to scale the animation duration by the
-    // number of hexes that the unit is moving through.
-    for (NSString* unitName in [self.animationInfo keyEnumerator]) {
-        CAKeyframeAnimation* anim = [self.animationInfo objectForKey:unitName];
-        [anim setDuration:[[anim values] count] * 0.25];
-        [[UnitView findByName:unitName] addAnimation:anim forKey:unitName];
-    }
-    
-    [CATransaction commit];
-#endif
     [[self animationList] run:^{
         [[self infoBarView] updateCurrentTimeForTurn:[game turn]];
      }];
@@ -393,35 +351,7 @@
      addItem:[BAAAnimationListItemCombat itemWithAttacker:[report attacker]
                                                  defender:[report defender]
                                                 retreatTo:[report retreatHex]
-                                                  advance:NO]];
-#if 0
-    DEBUG_COMBAT(@"MapViewController#unit:%@ attacks %@", [a name], [d name]);
-
-    int dirAToD = [[[game board] geometry] directionFrom:[a location]
-                                                      to:[d location]];
-    // 0 degrees longitude is straight to the right, but direction 0 in
-    // HMHexMap terms is straight to the top.  So subtract 90 degrees from
-    // the game logic angle to get the animation logic angle.
-    CGFloat angleAToD = DEGREES_TO_RADIANS((dirAToD * 60) - 90);
-    UnitView* view = [UnitView findByName:[a name]];
-    [BAAGunfire gunfireFrom:view withAzimuth:angleAToD];
-
-    if ([[[game board] geometry] legal:[report retreatHex]]) {
-        DEBUG_COMBAT(@"MapViewController#unit:%@ willRetreatTo:%02d%02d",
-                     [d name],
-                     [report retreatHex].column,
-                     [report retreatHex].row);
-        [self moveUnit:d to:[report retreatHex]];  // TODO: for now
-    }
-
-    if ([[[game board] geometry] legal:[report advanceHex]]) {
-        DEBUG_COMBAT(@"MapViewController#unit:%@ willAdvanceTo:%02d%02d",
-                     [a name],
-                     [report advanceHex].column,
-                     [report advanceHex].row);
-        [self moveUnit:a to:[report advanceHex]]; // TODO: for now
-    }
-#endif
+                                                advanceTo:[report advanceHex]]];
 }
 
 #pragma mark - Debugging

@@ -7,19 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BAAAnimationListItem.h"
 #import "HMHex.h"
 
 @class BAUnit;
 @class BAAAnimationList;
+@class BAAGunfire;
 
-@interface BAAAnimationListItemCombat : NSObject
+@interface BAAAnimationListItemCombat : BAAAnimationListItem
 
-@property (nonatomic, strong) BAUnit* attacker;
-@property (nonatomic, strong) BAUnit* defender;
-@property (nonatomic)         HMHex   retreatHex;
-@property (nonatomic)         BOOL    advance;
-
-+ (id)itemWithAttacker:(BAUnit*)attacker defender:(BAUnit*)defender retreatTo:(HMHex)retreatHex advance:(BOOL)advance;
++ (id)itemWithAttacker:(BAUnit*)attacker
+              defender:(BAUnit*)defender
+             retreatTo:(HMHex)retreatHex
+             advanceTo:(HMHex)advanceHex;
 
 - (void)runWithParent:(BAAAnimationList*)list;
 

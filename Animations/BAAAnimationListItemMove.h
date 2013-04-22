@@ -7,12 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BAAAnimationListItem.h"
 #import "HMHex.h"
 
 @class BAUnit;
 @class BAAAnimationList;
 
-@interface BAAAnimationListItemMove : NSObject
+@interface BAAAnimationListItemMove : BAAAnimationListItem
 
 @property (nonatomic, strong) BAUnit*                  actor;
 @property (nonatomic)         HMHex                    startHex;
