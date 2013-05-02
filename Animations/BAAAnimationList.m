@@ -9,6 +9,7 @@
 #import "BAAAnimationList.h"
 #import "BAAAnimationListItemCombat.h"
 #import "BAAAnimationListItemMove.h"
+#import "BAGame.h"
 #import "BullRun.h"
 
 @implementation BAAAnimationList
@@ -37,6 +38,8 @@
 - (void)run:(void (^)(void))completionBlock {
     if (completionBlock)
         [self setCompletionBlock:completionBlock];
+    else
+        [game doSighting:[game userSide]];
 
     if ([self nextItemIdx] == -1)
         DEBUG_ANIMATION(@"BAAAnimationList run() BEGIN");

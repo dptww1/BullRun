@@ -17,13 +17,8 @@
 #import "CollectionUtil.h"
 #import "HMMap.h"
 
+
 BAGame* game; // the global game instance
-
-@interface BAGame (Private)
-
-- (void)doSighting:(PlayerSide)side;
-
-@end
 
 
 @implementation BAGame
@@ -140,8 +135,6 @@ BAGame* game; // the global game instance
                 
                 DEBUG_MOVEMENT(@"%@ moved into %02d%02d, deducted %d MPs, leaving %d", [u name], nextHex.column, nextHex.row, mpCost, [u mps]);
                
-                [self doSighting:[game userSide]];
-              
                 atLeastOneUnitMoved = YES;
             }
         }
@@ -249,12 +242,10 @@ BAGame* game; // the global game instance
 
     if ([[[self board] geometry] legal:[report retreatHex]]) {
         [d setLocation:[report retreatHex]];
-        [self doSighting:[d side]];
     }
 
     if ([[[self board] geometry] legal:[report advanceHex]]) {
         [a setLocation:[report advanceHex]];
-        [self doSighting:[a side]];
     }
 
     // The units involved in combat can't do anything else this turn.

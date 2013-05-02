@@ -52,6 +52,9 @@ static CGPoint shiftPoint(CGPoint pt, float dx, float dy) { // TODO: move to glo
         [CATransaction begin];
 
         [CATransaction setAnimationDuration:SECONDS_PER_HEX_MOVE];
+        [CATransaction setCompletionBlock:^{
+                [self endCombat:list];
+            } ];
 
         HMCoordinateTransformer* xformer = [list xformer];
 
@@ -75,9 +78,6 @@ static CGPoint shiftPoint(CGPoint pt, float dx, float dy) { // TODO: move to glo
             [av addAnimation:aAnim forKey:@"position"];
         }
 
-        [CATransaction setCompletionBlock:^{
-                [self endCombat:list];
-            } ];
         [CATransaction commit];
 
     } else {

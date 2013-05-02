@@ -34,8 +34,7 @@ h3. Functionality
 * Game#takeCasualties to reset attack mode when wrecked
 * Real attack/advance/retreat animations
 * May need to differentiate between a unit being "sighted" (i.e. enemy can see) vs "visible" (i.e. user can see)
-* Sighting calculations happen when an animation begins, instead of when it ends.  Need to move sighting calculation
-  into animation completion methods, which implies a new public method in BAGame.
+* Units can retreat into EZOC
 
 h3. Organization
 * Differentiate between BR-specific files (Terrain, BullRun.h) and Battle@ framework files (Board, Game, Unit)
