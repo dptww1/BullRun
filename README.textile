@@ -19,6 +19,8 @@ Info box can be swapped between upper right and lower left corners.
 Moving into an enemy hex in an attack mode launches an attack, with a primitive animation.  Casualties are assigned and show up
 in the Info box. Retreats and advances work.
 
+Reinforcements show up; infrastructure is there to support arbitrary OOB manipulations based on user options.
+
 h1. To Do
 
 h3. UI/Art
@@ -29,7 +31,7 @@ h3. UI/Art
 * Portraits for Militia + Volunteers
 
 h3. Functionality
-* Touching outside hex area should show status bar
+* Touching outside hex area should show iOS status bar
 * OOB needs reinforcement information
 * Game#takeCasualties to reset attack mode when wrecked
 * Real attack/advance/retreat animations

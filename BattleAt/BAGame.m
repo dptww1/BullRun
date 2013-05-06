@@ -11,10 +11,12 @@
 #import "BAGameObserving.h"
 #import "BAMoveOrders.h"
 #import "BAOrderOfBattle.h"
+#import "BAReinforcementInfo.h"
 #import "BAUnit.h"
 #import "BRAppDelegate.h"
 #import "BullRun.h"
 #import "CollectionUtil.h"
+#import "HMHex.h"
 #import "HMMap.h"
 
 
@@ -34,6 +36,12 @@ BAGame* game; // the global game instance
         _observers = [NSMutableArray array];
         _turn      = 1;
         _userSide  = CSA;
+
+        DEBUG_REINFORCEMENTS(@"Init OOB: Smith shows turn 5 @0912");
+        [_oob addReinforcementInfo:
+         [BAReinforcementInfo createWithUnit:[_oob unitByName:@"Smith"]
+                                      onTurn:5
+                                       atHex:HMHexMake(9, 12)]];
     }
 
     return self;
@@ -60,6 +68,56 @@ BAGame* game; // the global game instance
         return HMHexEquals(((BAUnit*) obj).location, hex);
     }];
     return idx != NSNotFound ? [units objectAtIndex:idx] : nil;
+}
+
+// Performs sighting from the POV of player `side'. In practice will
+// most usually be called with side parameter == _userSide attribute,
+// but doing it this way allows more convenient testing and debugging.
+- (void)doSighting:(PlayerSide)side {
+
+    // TODO: friends and enemies should be methods on OOB
+
+    NSArray* friends = [_oob unitsForSide:side];
+    NSArray* enemies = [_oob unitsForSide:OtherPlayer(side)];
+
+    [friends enumerateObjectsUsingBlock:^(id friend, NSUInteger idx, BOOL* stop) {
+        if ([[_board geometry] legal:[friend location]]) {
+            if (![friend sighted]) {
+                [friend setSighted:YES];
+                [self notifyObserversWithSelector:@selector(unitNowSighted:) andObject:friend];
+            }
+        }
+        // doesn't handle case of on-board unit moving off-board
+    }];
+
+    [enemies enumerateObjectsUsingBlock:^(id enemy, NSUInteger idx, BOOL* stop) {
+        BOOL enemyNowSighted = NO;
+
+        // Ignore units unless they are on the map
+        if ([[_board geometry] legal:[enemy location]]) {
+
+            // CSA north of river or USA south of river is always spotted (note that fords
+            // are marked as on both sides of the river, so units on fords are always spotted).
+            if ([self.board isEnemy:[enemy location] of:[enemy side]]) {
+                DEBUG_SIGHTING(@"%@ is in enemy territory", [enemy name]);
+                enemyNowSighted = YES;
+
+            } else {
+                enemyNowSighted = [self isUnit:enemy inHex:[enemy location] sightedBy:friends];
+            }
+
+            // if enemy is no longer sighted, but used to be, update it
+            if (!enemyNowSighted && [enemy sighted]) {
+                [enemy setSighted:NO];
+                [self notifyObserversWithSelector:@selector(unitNowHidden:) andObject:enemy];
+
+            } else if (enemyNowSighted && ![enemy sighted]) {
+                [enemy setSighted:YES];
+                [self notifyObserversWithSelector:@selector(unitNowSighted:) andObject:enemy];
+            }
+        }
+        // Note that we're not handling the case of an on-board unit moving off-board.
+    }];
 }
 
 - (void)processTurn {
@@ -148,6 +206,8 @@ BAGame* game; // the global game instance
     
     [self notifyObserversWithSelector:@selector(movePhaseDidEnd)];
 
+    [self processReinforcements];
+
     // TODO: compute whether game over
 }
 
@@ -177,6 +237,42 @@ BAGame* game; // the global game instance
     for (id<BAGameObserving> observer in [self observers]) {
         [observer moveUnit:unit to:hex];
     }
+}
+
+- (void)processReinforcements {
+    BOOL anyReinforcementsAppeared = NO;
+
+    BAOrderOfBattle* oob = [self oob];
+
+    for (int i = 0; i < [[oob reinforcements] count]; ++i) {
+        BAReinforcementInfo* rInfo = [[oob reinforcements] objectAtIndex:i];
+
+        if ([self turn] >= [rInfo entryTurn]) {
+            if ([[[self board] geometry] legal:[rInfo entryLocation]]) {
+
+                BAUnit* unit = [oob unitByName:[rInfo unitName]];
+                [unit setLocation:[rInfo entryLocation]];
+
+                DEBUG_REINFORCEMENTS(@"%@ appears at %02d%02d",
+                                     [unit name],
+                                     [rInfo entryLocation].column,
+                                     [rInfo entryLocation].row);
+
+                [[oob reinforcements] removeObjectAtIndex:i];
+
+                // Since we've removed the reinforcement node, the index of
+                // the next node will actually be the same index as the current
+                // node.  Since the loop increments the index, we have to
+                // decrement it here to keep thinks aligned.
+                --i;
+
+                anyReinforcementsAppeared = YES;
+            }
+        }
+    }
+
+    if (anyReinforcementsAppeared)
+        [self doSighting:[self userSide]];
 }
 
 // Returns one or more of the COMBAT_MOVEMENT_XXXX constants
@@ -344,56 +440,6 @@ BAGame* game; // the global game instance
         && ![self unitInHex:hex]
         && ![[self board] is:hex prohibitedFor:u]
         && ![self is:u movingThruEnemyZocTo:hex];
-}
-
-// Performs sighting from the POV of player `side'. In practice will
-// most usually be called with side parameter == _userSide attribute,
-// but doing it this way allows more convenient testing and debugging.
-- (void)doSighting:(PlayerSide)side {
-
-    // TODO: friends and enemies should be methods on OOB
-
-    NSArray* friends = [_oob unitsForSide:side];
-    NSArray* enemies = [_oob unitsForSide:OtherPlayer(side)];
-    
-    [friends enumerateObjectsUsingBlock:^(id friend, NSUInteger idx, BOOL* stop) {
-        if ([[_board geometry] legal:[friend location]]) {
-            if (![friend sighted]) {
-                [friend setSighted:YES];
-                [self notifyObserversWithSelector:@selector(unitNowSighted:) andObject:friend];
-            }
-        }
-        // doesn't handle case of on-board unit moving off-board
-     }];
-
-    [enemies enumerateObjectsUsingBlock:^(id enemy, NSUInteger idx, BOOL* stop) {
-        BOOL enemyNowSighted = NO;
-        
-        // Ignore units unless they are on the map
-        if ([[_board geometry] legal:[enemy location]]) {
-        
-            // CSA north of river or USA south of river is always spotted (note that fords
-            // are marked as on both sides of the river, so units on fords are always spotted).
-            if ([self.board isEnemy:[enemy location] of:[enemy side]]) {
-                DEBUG_SIGHTING(@"%@ is in enemy territory", [enemy name]);
-                enemyNowSighted = YES;
-                
-            } else {
-                enemyNowSighted = [self isUnit:enemy inHex:[enemy location] sightedBy:friends];
-            }
-
-            // if enemy is no longer sighted, but used to be, update it
-            if (!enemyNowSighted && [enemy sighted]) {
-                [enemy setSighted:NO];
-                [self notifyObserversWithSelector:@selector(unitNowHidden:) andObject:enemy];
-
-            } else if (enemyNowSighted && ![enemy sighted]) {
-                [enemy setSighted:YES];
-                [self notifyObserversWithSelector:@selector(unitNowSighted:) andObject:enemy];
-            }
-        }
-        // Note that we're not handling the case of an on-board unit moving off-board.
-    }];
 }
 
 // Returns YES if `enemy' situated in given terrain is sighted by any of `friends'.

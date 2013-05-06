@@ -10,6 +10,19 @@
 
 @implementation NSArray (CollectionUtil)
 
+- (id)find:(BOOL (^)(id o))condBlock {
+    __block id foundObj = nil;
+
+    [self enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL* stop) {
+        if (condBlock(obj)) {
+            foundObj = obj;
+            *stop = YES;
+        }
+     }];
+
+    return foundObj;
+}
+
 - (NSArray*)grep:(BOOL (^)(id o))condBlock {
     NSMutableArray* result = [NSMutableArray array];
     

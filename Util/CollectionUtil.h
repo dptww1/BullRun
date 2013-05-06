@@ -10,6 +10,7 @@
 
 @interface NSArray (CollectionUtil)
 
+- (NSArray*)find:(BOOL (^)(id o))condBlock;
 - (NSArray*)grep:(BOOL (^)(id o))condBlock;
 
 @end

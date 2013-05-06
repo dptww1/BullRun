@@ -29,6 +29,7 @@
 - (void)processTurn;
 - (BAUnit*)unitInHex:(HMHex)hex;
 
+
 @end
 
 // The single, publicly available global instance.

@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
+#import "BAGame.h"
 #import "BAOrderOfBattle.h"
 #import "BAReinforcementInfo.h"
 #import "BAUnit.h"
@@ -45,7 +46,6 @@
     //    NSMutableDictionary* oob = [NSMutableDictionary dictionary];
     //    [oob setObject:units forKey:@"units"];
 
-
     BOOL success = [NSKeyedArchiver archiveRootObject:[self units] toFile:path];
     
     NSLog(@"Wrote file [%d] %@", success, path);
@@ -55,6 +55,13 @@
 
 #pragma mark - Behaviors
 
+- (BAUnit*)unitByName:(NSString*)name {
+    return (BAUnit*)
+        [self.units find:^BOOL(BAUnit* u) {
+                             return [[u name] isEqualToString:name];
+                         }];
+}
+
 - (NSArray*)unitsForSide:(PlayerSide)side {
     return [self.units grep:^BOOL(BAUnit* u) { return [u side] == side; }];
 }
@@ -62,5 +69,6 @@
 - (void)addReinforcementInfo:(BAReinforcementInfo*)reinforcementInfo {
     [[self reinforcements] addObject:reinforcementInfo];
 }
+
 
 @end

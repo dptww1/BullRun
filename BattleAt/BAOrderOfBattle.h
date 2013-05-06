@@ -11,6 +11,7 @@
 #import "HMHex.h"
 
 @class BAReinforcementInfo;
+@class BAUnit;
 
 @interface BAOrderOfBattle : NSObject
 
@@ -23,6 +24,10 @@
 + (BAOrderOfBattle*)createFromFile:(NSString*)filepath;
 
 - (BOOL)saveToFile:(NSString*)filename;
+
+- (BAUnit*)unitByName:(NSString*)name;
 - (NSArray*)unitsForSide:(PlayerSide)side;
+
 - (void)addReinforcementInfo:(BAReinforcementInfo*)reinforcementInfo;
+
 @end
