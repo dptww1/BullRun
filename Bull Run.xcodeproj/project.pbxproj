@@ -23,6 +23,8 @@
 		CC392E4516D5AE4C00160B82 /* BAMoveOrders.m in Sources */ = {isa = PBXBuildFile; fileRef = CC392E4416D5AE4C00160B82 /* BAMoveOrders.m */; };
 		CC392E4B16D5AFD400160B82 /* HMHexMapGeometryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CC392E4A16D5AFD400160B82 /* HMHexMapGeometryTests.m */; };
 		CC392E4E16D5B04F00160B82 /* BAMoveOrdersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CC392E4D16D5B04F00160B82 /* BAMoveOrdersTests.m */; };
+		CC523555173A7F1700CDBDC5 /* McDowell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC523554173A7F1700CDBDC5 /* McDowell.m */; };
+		CC523558173A9BA700CDBDC5 /* Beauregard.m in Sources */ = {isa = PBXBuildFile; fileRef = CC523557173A9BA700CDBDC5 /* Beauregard.m */; };
 		CC65EB8C16BF3EE400C47BD0 /* units.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC65EB8B16BF3EE400C47BD0 /* units.plist */; };
 		CC65EB9A16C1E97900C47BD0 /* ResizableBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = CC65EB9916C1E97900C47BD0 /* ResizableBuffer.m */; };
 		CC65EC3316C2C34600C47BD0 /* ResizableBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = CC65EB9916C1E97900C47BD0 /* ResizableBuffer.m */; };
@@ -99,6 +101,11 @@
 		CC392E4A16D5AFD400160B82 /* HMHexMapGeometryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMHexMapGeometryTests.m; sourceTree = "<group>"; };
 		CC392E4C16D5B04F00160B82 /* BAMoveOrdersTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAMoveOrdersTests.h; sourceTree = "<group>"; };
 		CC392E4D16D5B04F00160B82 /* BAMoveOrdersTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAMoveOrdersTests.m; sourceTree = "<group>"; };
+		CC523550173A7DB600CDBDC5 /* BAAIProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BAAIProtocol.h; sourceTree = "<group>"; };
+		CC523553173A7F1700CDBDC5 /* McDowell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = McDowell.h; sourceTree = "<group>"; };
+		CC523554173A7F1700CDBDC5 /* McDowell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = McDowell.m; sourceTree = "<group>"; };
+		CC523556173A9BA700CDBDC5 /* Beauregard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Beauregard.h; sourceTree = "<group>"; };
+		CC523557173A9BA700CDBDC5 /* Beauregard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Beauregard.m; sourceTree = "<group>"; };
 		CC65EB8B16BF3EE400C47BD0 /* units.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = units.plist; sourceTree = "<group>"; };
 		CC65EB9816C1E97900C47BD0 /* ResizableBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResizableBuffer.h; sourceTree = "<group>"; };
 		CC65EB9916C1E97900C47BD0 /* ResizableBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResizableBuffer.m; sourceTree = "<group>"; };
@@ -180,13 +187,14 @@
 		CC0805A516D2F87300CB8C79 /* BattleAt */ = {
 			isa = PBXGroup;
 			children = (
-				CC392E4316D5AE4C00160B82 /* BAMoveOrders.h */,
-				CC392E4416D5AE4C00160B82 /* BAMoveOrders.m */,
+				CC523550173A7DB600CDBDC5 /* BAAIProtocol.h */,
 				CC0805A716D3085000CB8C79 /* BABattleReport.h */,
 				CC0805A816D3085000CB8C79 /* BABattleReport.m */,
 				CC392E4016D5ACEB00160B82 /* BAGame.h */,
 				CC392E4116D5ACEB00160B82 /* BAGame.m */,
 				CC0805AA16D3165D00CB8C79 /* BAGameObserving.h */,
+				CC392E4316D5AE4C00160B82 /* BAMoveOrders.h */,
+				CC392E4416D5AE4C00160B82 /* BAMoveOrders.m */,
 				CC392E3A16D5A6BE00160B82 /* BAOrderOfBattle.h */,
 				CC392E3B16D5A6BE00160B82 /* BAOrderOfBattle.m */,
 				CC0805AB16D5869E00CB8C79 /* BAReinforcementInfo.h */,
@@ -214,9 +222,21 @@
 			path = Animations;
 			sourceTree = "<group>";
 		};
+		CC523552173A7EF200CDBDC5 /* AIs */ = {
+			isa = PBXGroup;
+			children = (
+				CC523556173A9BA700CDBDC5 /* Beauregard.h */,
+				CC523557173A9BA700CDBDC5 /* Beauregard.m */,
+				CC523553173A7F1700CDBDC5 /* McDowell.h */,
+				CC523554173A7F1700CDBDC5 /* McDowell.m */,
+			);
+			path = AIs;
+			sourceTree = "<group>";
+		};
 		CC85853D167A72600054E60D = {
 			isa = PBXGroup;
 			children = (
+				CC523552173A7EF200CDBDC5 /* AIs */,
 				CC1B672416DFA5C00078B20B /* Animations */,
 				CCDB60E616A04D8C006668C2 /* AppDelegate */,
 				CC0805A516D2F87300CB8C79 /* BattleAt */,
@@ -534,6 +554,8 @@
 				CCE03F6517162FE100C5A217 /* BAAAnimationListItemCombat.m in Sources */,
 				CCE03F6B171BA62100C5A217 /* BAAAnimationListItemMove.m in Sources */,
 				CCE03F6E171E278E00C5A217 /* BAAAnimationListItem.m in Sources */,
+				CC523555173A7F1700CDBDC5 /* McDowell.m in Sources */,
+				CC523558173A9BA700CDBDC5 /* Beauregard.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
