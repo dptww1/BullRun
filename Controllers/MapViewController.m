@@ -236,6 +236,25 @@
     }
 }
 
+- (void) addOrdersFor:(BAUnit*)unit movingTo:(HMHex)hex {
+    // There's some complication here because the user can drag so quickly
+    // in the UI that when we convert to hexes we'll end up with non-adjacent
+    // hexes, which would be a Bad Thing.
+
+    DEBUG_MOVEORDERS(@"Orders for %@: ADD %02d%02d", [unit name], hex.column, hex.row);
+
+    HMGeometry* geometry = [[game board] geometry];
+    HMHex lastHex = [[unit moveOrders] isEmpty] ? [unit location]
+                                                : [[unit moveOrders] lastHex];
+
+    while (!HMHexEquals(lastHex, hex)) {
+        int d = [geometry directionFrom:lastHex to:hex];
+        HMHex h = [geometry hexAdjacentTo:lastHex inDirection:d];
+        [[unit moveOrders] addHex:h];
+        lastHex = h;
+    }
+}
+
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
     if (!_currentUnit)
         return;
@@ -279,9 +298,8 @@
                 // Don't keep putting on the same hex on the end of the queue
                     
             } else { // it's a new hex
-                    
-                DEBUG_MOVEORDERS(@"Orders for %@: ADD %02d%02d", [_currentUnit name], h.column, h.row);
-                [[_currentUnit moveOrders] addHex:h];
+
+                [self addOrdersFor:[self currentUnit] movingTo:h];
             }
 
             [_moveOrderLayer setNeedsDisplay];

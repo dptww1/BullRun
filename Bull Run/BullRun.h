@@ -24,7 +24,7 @@ typedef enum { CHARGE, ATTACK, SKIRMISH, DEFEND, WITHDRAW, ROUTED } Mode;
 #define DEBUG_MAP(fmt, ...)            //NSLog(fmt, ## __VA_ARGS__)
 #define DEBUG_MOVEMENT(fmt, ...)       //NSLog(fmt, ## __VA_ARGS__)
 #define DEBUG_MOVEORDERS(fmt, ...)     //NSLog(fmt, ## __VA_ARGS__)
-#define DEBUG_REINFORCEMENTS(fmt, ...) NSLog(fmt, ## __VA_ARGS__)
+#define DEBUG_REINFORCEMENTS(fmt, ...) //NSLog(fmt, ## __VA_ARGS__)
 #define DEBUG_SIGHTING(fmt, ...)       //NSLog(fmt, ## __VA_ARGS__)
 
 #endif

@@ -45,7 +45,6 @@ h3. Organization
 * Util files needs prefix; BA? WFB? DPT?
 
 h3. Bugs
-* Must guard against user dragging fast enough that move orders end up with non-adjacent hexes
 * Trying to enter an impossible hex lets unit accumulate a crazy number of MPs
 
 h3. Tools
