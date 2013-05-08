@@ -1,5 +1,5 @@
 //
-// GameObserving.h
+// BAGameObserving.h
 //
 
 #import "HMHex.h"
