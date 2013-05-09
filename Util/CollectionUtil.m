@@ -10,7 +10,7 @@
 
 @implementation NSArray (CollectionUtil)
 
-- (id)find:(BOOL (^)(id o))condBlock {
+- (id)find:(CUFilter)condBlock {
     __block id foundObj = nil;
 
     [self enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL* stop) {
@@ -23,7 +23,7 @@
     return foundObj;
 }
 
-- (NSArray*)grep:(BOOL (^)(id o))condBlock {
+- (NSArray*)grep:(CUFilter)condBlock {
     NSMutableArray* result = [NSMutableArray array];
     
     [self enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL* stop) {
