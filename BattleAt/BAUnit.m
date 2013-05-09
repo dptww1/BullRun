@@ -31,6 +31,11 @@
     return pctCasualties > self.morale;
 }
 
+- (BOOL)isOffMap {
+    return [self location].column < 0
+        || [self location].row    < 0;
+}
+
 #pragma mark - NSCoding
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {

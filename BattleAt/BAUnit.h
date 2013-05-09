@@ -43,4 +43,7 @@
 
 // Returns YES if casualties are greater than the |morale| percentage.
 - (BOOL)isWrecked;
+
+// Returns YES is location has a negative coordinate
+- (BOOL)isOffMap;
 @end
