@@ -18,6 +18,7 @@
 #import "CollectionUtil.h"
 #import "HMHex.h"
 #import "HMMap.h"
+#import "McDowell.h"   // TODO: move to derived class
 
 
 BAGame* game; // the global game instance
@@ -31,6 +32,7 @@ BAGame* game; // the global game instance
     self = [super init];
     
     if (self) {
+        _ai        = [[McDowell alloc] init];  // TODO: move to derived class
         _board     = [HMMap createFromFile:[[NSBundle mainBundle] pathForResource:@"map" ofType:@"plist"]];
         _oob       = [BAOrderOfBattle createFromFile:[[NSBundle mainBundle] pathForResource:@"units" ofType:@"plist"]];
         _observers = [NSMutableArray array];
@@ -42,6 +44,7 @@ BAGame* game; // the global game instance
          [BAReinforcementInfo createWithUnit:[_oob unitByName:@"Smith"]
                                       onTurn:5
                                        atHex:HMHexMake(9, 12)]];
+
     }
 
     return self;
@@ -123,7 +126,7 @@ BAGame* game; // the global game instance
 - (void)processTurn {
     [self notifyObserversWithSelector:@selector(movePhaseWillBegin)];
 
-    // TODO: call AI
+    [[self ai] giveOrders:self];
     
     NSArray*      sortedUnits = [self sortUnits];                       // elements: Unit*
     NSMutableSet* didntMove = [NSMutableSet setWithArray:sortedUnits];  // keys: Unit*; if present, this unit didn't move this turn

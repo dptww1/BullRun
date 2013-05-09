@@ -39,6 +39,7 @@ h3. Functionality
 * Units can retreat into EZOC
 
 h3. Organization
+* Many of the HMGeometry methods really should be part of HMHexMap instead
 * Differentiate between BR-specific files (Terrain, BullRun.h) and Battle@ framework files (Board, Game, Unit)
 * add "friend" and "enemies" as methods in OrderOfBattle, use in Game#sighting
 * probably should have a controller for InfoBarView

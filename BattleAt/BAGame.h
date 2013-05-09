@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BAAIProtocol.h"
 #import "BAGameObserving.h"
 #import "BAOrderOfBattle.h"
 #import "BullRun.h"
@@ -16,6 +17,7 @@
 
 @interface BAGame : NSObject
 
+@property (nonatomic, strong)           id<BAAIProtocol> ai;
 @property (nonatomic)                   PlayerSide       userSide;
 @property (nonatomic, strong, readonly) HMMap*           board;
 @property (nonatomic, strong, readonly) BAOrderOfBattle* oob;
