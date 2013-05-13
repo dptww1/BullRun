@@ -44,7 +44,6 @@ BAGame* game; // the global game instance
          [BAReinforcementInfo createWithUnit:[_oob unitByName:@"Smith"]
                                       onTurn:5
                                        atHex:HMHexMake(9, 12)]];
-
     }
 
     return self;
@@ -98,16 +97,7 @@ BAGame* game; // the global game instance
 
         // Ignore units unless they are on the map
         if ([[_board geometry] legal:[enemy location]]) {
-
-            // CSA north of river or USA south of river is always spotted (note that fords
-            // are marked as on both sides of the river, so units on fords are always spotted).
-            if ([self.board isEnemy:[enemy location] of:[enemy side]]) {
-                DEBUG_SIGHTING(@"%@ is in enemy territory", [enemy name]);
-                enemyNowSighted = YES;
-
-            } else {
-                enemyNowSighted = [self isUnit:enemy inHex:[enemy location] sightedBy:friends];
-            }
+            enemyNowSighted = [self isUnit:enemy inHex:[enemy location] sightedBy:friends];
 
             // if enemy is no longer sighted, but used to be, update it
             if (!enemyNowSighted && [enemy sighted]) {
@@ -447,27 +437,7 @@ BAGame* game; // the global game instance
 
 // Returns YES if `enemy' situated in given terrain is sighted by any of `friends'.
 - (BOOL)isUnit:(BAUnit*)enemy inHex:(HMHex)hex sightedBy:(NSArray*)friends {
-    
-    // Innocent until proven guilty.
-    __block BOOL sighted = NO;
-    
-    [friends enumerateObjectsUsingBlock:^(id friend, NSUInteger idx, BOOL* stop) {
-        // Friends which are offboard can't spot.
-        if (![[_board geometry] legal:[friend location]])
-            return;
-        
-        // Friendly units within three hexes sight enemies...
-        if ([[_board geometry] distanceFrom:[friend location] to:[enemy location]] < 4) {
-            
-            // ...as long as both units are on the same side of the river
-            if ([self.board is:[friend location] inSameZoneAs:hex]) {
-                DEBUG_SIGHTING(@"%@ spots %@", [friend name], [enemy name]);
-                *stop = sighted = YES;
-            }
-        }
-    }];
-    
-    return sighted;
+    return YES;
 }
 
 - (NSArray*)sortUnits {

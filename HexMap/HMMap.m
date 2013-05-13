@@ -7,7 +7,6 @@
 //
 
 #import "HMMap.h"
-#import "BullRun.h"  // TODO: this is bad; shouldn't import game-specific stuff in library file
 #import "HMGeometry.h"
 #import "HMHex.h"
 #import "HMMapZone.h"
@@ -107,20 +106,6 @@
 - (float)mpCostOf:(HMHex)hex for:(BAUnit*)unit {
     HMTerrainEffect* fx = [self terrainAt:hex];
     return fx ? [fx mpCost] : 10000.0f;
-}
-
-- (BOOL)isCsa:(HMHex)hex { // TODO: move to derived class
-    return [self is:hex inZone:@"csa"];
-}
-
-- (BOOL)isUsa:(HMHex)hex { // TODO: move to derived class
-    return [self is:hex inZone:@"usa"];
-
-}
-
-- (BOOL)isEnemy:(HMHex)hex of:(PlayerSide)side { // TODO: generalize or move to derived class
-    return (side == CSA && [self isUsa:hex])
-        || (side == USA && [self isCsa:hex]);
 }
 
 - (BOOL)is:(HMHex)hex inSameZoneAs:(HMHex)other {

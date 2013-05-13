@@ -32,11 +32,11 @@ h3. UI/Art
 
 h3. Functionality
 * Touching outside hex area should show iOS status bar
-* OOB needs reinforcement information
+* BAOrderOfBattle needs reinforcement information
 * Game#takeCasualties to reset attack mode when wrecked
 * Real attack/advance/retreat animations
 * May need to differentiate between a unit being "sighted" (i.e. enemy can see) vs "visible" (i.e. user can see)
-* Units can retreat into EZOC
+* Units can retreat into EZOC (but shouldn't be able to)
 
 h3. Organization
 * Many of the HMGeometry methods really should be part of HMHexMap instead
@@ -47,6 +47,8 @@ h3. Organization
 
 h3. Bugs
 * Trying to enter an impossible hex lets unit accumulate a crazy number of MPs
+* Deploying reinforcement nonreproducibly gets Access Violation
+* Time widget sometimes shifts upwards a bit
 
 h3. Tools
 * Map ASCII => plist compiler

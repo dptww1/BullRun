@@ -6,8 +6,8 @@
 //  Copyright (c) 2012 Dave Townsend. All rights reserved.
 //
 
-#import "BAGame.h"
 #import "BRAppDelegate.h"
+#import "BRGame.h"
 #import "MapViewController.h"
 
 @implementation BRAppDelegate
@@ -19,7 +19,7 @@ static MapViewController* mvController;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    game = [[BAGame alloc] init];
+    game = [[BRGame alloc] init];
     
     mvController = [[MapViewController alloc] initWithNibName:nil bundle:nil];
     UINavigationController* navController = [[UINavigationController alloc] initWithRootViewController:mvController];

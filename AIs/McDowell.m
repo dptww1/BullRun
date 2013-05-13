@@ -77,6 +77,25 @@ enum UnitRole {
              grep:[self isUsaUnitDefending]] count];
 }
 
+- (void)changeOneDefenderToAttacker {
+    // Find the defending unit nearest a ford
+
+#if 0
+    BAUnit* minUnit = nil;  // current closest unit
+    int     minDist = 1000; // current closest distance
+
+    NSArray* usaUnits = [[game oob] unitsForSide:[self side]];
+    [usaUnits enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL* stop) {
+        BAUnit* curUnit = obj;
+        // TODO: calculate closest fod
+        }];
+#endif
+}
+
+- (void)convertNonDefenderToDefender { // TODO:
+
+}
+
 @end
 
 @implementation McDowell
@@ -117,6 +136,16 @@ enum UnitRole {
     DEBUG_AI(@"Strategic situation: %d CSA attackers vs %d USA defenders",
              numCsaAttacking,
              numUsaDefending);
+
+    int surplus = numUsaDefending - numCsaAttacking;
+
+    if (surplus > 0)
+        for (int i = 0; i < surplus; ++i)
+            [self changeOneDefenderToAttacker];
+
+    else if (surplus < 0)
+        for (int i = 0; i < -surplus; ++i)
+            [self convertNonDefenderToDefender];
 }
 
 @end

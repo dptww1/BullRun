@@ -25,6 +25,8 @@
 		CC392E4E16D5B04F00160B82 /* BAMoveOrdersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CC392E4D16D5B04F00160B82 /* BAMoveOrdersTests.m */; };
 		CC523555173A7F1700CDBDC5 /* McDowell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC523554173A7F1700CDBDC5 /* McDowell.m */; };
 		CC523558173A9BA700CDBDC5 /* Beauregard.m in Sources */ = {isa = PBXBuildFile; fileRef = CC523557173A9BA700CDBDC5 /* Beauregard.m */; };
+		CC52355B173D97E500CDBDC5 /* BRMap.m in Sources */ = {isa = PBXBuildFile; fileRef = CC52355A173D97E500CDBDC5 /* BRMap.m */; };
+		CC52355E173DD36200CDBDC5 /* BRGame.m in Sources */ = {isa = PBXBuildFile; fileRef = CC52355D173DD36200CDBDC5 /* BRGame.m */; };
 		CC65EB8C16BF3EE400C47BD0 /* units.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC65EB8B16BF3EE400C47BD0 /* units.plist */; };
 		CC65EB9A16C1E97900C47BD0 /* ResizableBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = CC65EB9916C1E97900C47BD0 /* ResizableBuffer.m */; };
 		CC65EC3316C2C34600C47BD0 /* ResizableBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = CC65EB9916C1E97900C47BD0 /* ResizableBuffer.m */; };
@@ -106,6 +108,10 @@
 		CC523554173A7F1700CDBDC5 /* McDowell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = McDowell.m; sourceTree = "<group>"; };
 		CC523556173A9BA700CDBDC5 /* Beauregard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Beauregard.h; sourceTree = "<group>"; };
 		CC523557173A9BA700CDBDC5 /* Beauregard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Beauregard.m; sourceTree = "<group>"; };
+		CC523559173D97E500CDBDC5 /* BRMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMap.h; sourceTree = "<group>"; };
+		CC52355A173D97E500CDBDC5 /* BRMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMap.m; sourceTree = "<group>"; };
+		CC52355C173DD36200CDBDC5 /* BRGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRGame.h; sourceTree = "<group>"; };
+		CC52355D173DD36200CDBDC5 /* BRGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRGame.m; sourceTree = "<group>"; };
 		CC65EB8B16BF3EE400C47BD0 /* units.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = units.plist; sourceTree = "<group>"; };
 		CC65EB9816C1E97900C47BD0 /* ResizableBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResizableBuffer.h; sourceTree = "<group>"; };
 		CC65EB9916C1E97900C47BD0 /* ResizableBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResizableBuffer.m; sourceTree = "<group>"; };
@@ -278,6 +284,10 @@
 		CC858552167A72610054E60D /* Bull Run */ = {
 			isa = PBXGroup;
 			children = (
+				CC52355C173DD36200CDBDC5 /* BRGame.h */,
+				CC52355D173DD36200CDBDC5 /* BRGame.m */,
+				CC523559173D97E500CDBDC5 /* BRMap.h */,
+				CC52355A173D97E500CDBDC5 /* BRMap.m */,
 				CC0CF3E91698CB40006D902D /* BullRun.h */,
 				CC858553167A72610054E60D /* Supporting Files */,
 			);
@@ -556,6 +566,8 @@
 				CCE03F6E171E278E00C5A217 /* BAAAnimationListItem.m in Sources */,
 				CC523555173A7F1700CDBDC5 /* McDowell.m in Sources */,
 				CC523558173A9BA700CDBDC5 /* Beauregard.m in Sources */,
+				CC52355B173D97E500CDBDC5 /* BRMap.m in Sources */,
+				CC52355E173DD36200CDBDC5 /* BRGame.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
