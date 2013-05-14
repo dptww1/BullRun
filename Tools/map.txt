@@ -1,0 +1,22 @@
+# Source data for map.plist; compile with mkmap
+
+className = BRMap
+
+- geometry
+
+firstColumnIsLong = false
+isLongGrain = false
+numColumns = 17
+numRows = 13
+
+- terrainEffects
+
+bit:0 mpCost:4 Clear, CSA
+bit:1 mpCost:4 Clear, USA
+bit:2 mpCost:5 Minor river
+bit:3 mpCost:5 Woods
+bit:4 mpCost:8 Ford
+bit:5 mpCost:4 Town
+
+- zones
+- data

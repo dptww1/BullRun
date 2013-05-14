@@ -1,0 +1,141 @@
+#!/usr/bin/ruby
+#
+#
+
+require 'plist'
+
+
+@debug = true
+
+
+@class_name = "HMMap"
+@cur_state = :global
+@geometry = { }
+@terrain_effects = {
+  "$class" => { "CF$UID" => -1 },
+  "NS.objects" => []
+}
+@terrain_effect_classname_cfuid = nil
+
+
+@objs = [
+        "$null",
+         {}
+        # { #1
+        #   "$0"             => { "CF$UID" => 120 },   # TODO: real offset
+        #   "$class"         => { "CF$UID" => 122 },  # TODO: real offset
+        #   "geometry"       => { "CF$UID" => 2 },   # TODO: real offset
+        #   "terrainEffects" => { "CF$UID" => 4 },   # TODO: real offset
+        #   "zones"          => { "CF$UID" => 19 }   # TODO: real offset
+        # },
+       ];
+
+root = {
+  "$archiver" => "NSKeyedArchiver",
+  "$objects"  => @objs,
+  "$top"      => { "root" => { "CF$UID" => 1 } },
+  "$version"  => 100000
+}
+
+def infer_typed_data(str)
+  return str.to_i if str =~ /^\d+$/
+  return true     if str =~ /^true$/
+  return false    if str =~ /^false$/
+  str
+end
+
+def push_classnames(*args)
+  @objs.push({
+    "$className" => args[0],
+    "$classes" => args
+  })
+end
+
+def do_global(line)
+  if line =~ /^- geometry/
+    @cur_state = :geometry
+
+  elsif line =~ /^className\s*=\s*(.*)$/
+    @class_name = $1
+    puts "className = `#{@class_name}'" if @debug
+
+  else
+    puts "bad line in global section: #{line}"
+  end
+end
+
+def do_geometry(line)
+  if line =~ /^- terrainEffects/
+
+    geometry_cfuid = @objs.size
+
+    @objs[1]["geometry"] = { "CF$UID" => geometry_cfuid }
+    @objs.push({
+      "$class" => { "CF$UID" => geometry_cfuid + 1 }
+    }.merge @geometry)
+
+    push_classnames("HMGeometry", "NSObject")
+
+    @cur_state = :terrain_effects
+    @objs.push(@terrain_effects)
+    puts "GEOMETRY: #{@geometry.inspect}" if @debug
+
+  elsif line =~ /^(\S+)\s*=\s*(\S+)/
+    @geometry[$1] = infer_typed_data($2)
+  end
+end
+
+def do_terrain_effects(line)
+  if line =~ /^- zones/
+    @terrain_effects["$class"]["CF$UID"] = @objs.size
+    push_classnames "NSArray", "NSObject"
+    @cur_state = :zones
+
+  elsif line =~ /^bit:(\d+)\s+mpCost:(\d+)\s+(.*)$/
+    bit, cost, name = $1, $2, $3
+    puts "TERRAIN: #{bit} #{cost} #{name}" if @debug
+
+    base_cfuid = @objs.size
+
+    @terrain_effects["NS.objects"].push({ "CF$UID" => base_cfuid })
+
+    @terrain_effect_classname_cfuid ||= base_cfuid + 2
+
+    @objs.push({
+                 "$class" => { "CF$UID" => @terrain_effect_classname_cfuid },
+                 "bitNum" => bit.to_i,
+                 "mpCost" => cost.to_f,
+                 "name"   => { "CF$UID" => base_cfuid + 1 }
+               })
+    @objs.push name
+    push_classnames "HMTerrainEffect", "NSObject" if @terrain_effect_classname_cfuid == base_cfuid + 2
+  end
+end
+
+def do_zones(line)
+end
+
+def do_data(line)
+end
+
+IO.foreach("map.txt") do |line|
+  # remove comments
+  line.sub!(/#.*$/, "")
+
+  # strip leading and trailing whitespace
+  line.sub!(/^\s*(.*\S)\s*$/, "\\1")
+
+  # ignore blank lines
+  next if line =~ /^\s*$/
+
+  case @cur_state
+  when :global          then do_global(line)
+  when :geometry        then do_geometry(line)
+  when :terrain_effects then do_terrain_effects(line)
+  when :zones           then do_zones(line)
+  when :data            then do_data(line)
+  else throw "unknown state #{@cur_state}"
+  end
+end
+
+puts root.to_plist
