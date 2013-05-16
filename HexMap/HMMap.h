@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "BullRun.h"   // TODO This is bad
 #import "HMGeometry.h"
 #import "HMHex.h"
 #import "HMTerrainEffect.h"

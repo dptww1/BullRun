@@ -7,9 +7,10 @@
 //
 
 #import "HMMap.h"
+#import "BullRun.h"
 
 @interface BRMap : HMMap
 
-- (BOOL)isEnemy:(HMHex)hex of:(PlayerSide)side;  // TODO:BR-specific
+- (BOOL)isEnemy:(HMHex)hex of:(PlayerSide)side;
 
 @end
