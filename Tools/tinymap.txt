@@ -1,0 +1,23 @@
+# Tiny test map
+
+- geometry
+
+firstColumnIsLong = false
+isLongGrain = false
+numColumns = 3
+numRows = 2
+
+- terrainEffects
+
+impassible symbol:/
+bit:0 mpCost:4 symbol:- Clear
+
+- zones
+
+- data
+
+# 0     1     2
+
+  :-    :-    :-
+  :-    :/    :/
+        :-

@@ -1,34 +1,42 @@
 #!/usr/bin/ruby
 #
-#
+# BattleAt map compiler.
 
 require 'plist'
 
 
-@debug = true
+@debug = false
 
 
-@class_name = "HMMap"
+@class_names = "HMMap"
 @cur_state = :global
-@geometry = { }
+@geometry = { "$class" => { "CF$UID" => -1 } }
+@symbol_map = { }   # key: terrain symbol  value: corresponding int value (not bit number)
 @terrain_effects = {
   "$class" => { "CF$UID" => -1 },
   "NS.objects" => []
 }
-@terrain_effect_classname_cfuid = nil
+@zones = {
+  "$class" => { "CF$UID" => -1 },
+  "NS.keys" => [],
+  "NS.objects" => [],
+}
+@zone_map = []   # entry: zone symbol
 
+@data = [];  # each elt is a row; each row is an array of cells, one per column
 
 @objs = [
         "$null",
-         {}
-        # { #1
-        #   "$0"             => { "CF$UID" => 120 },   # TODO: real offset
-        #   "$class"         => { "CF$UID" => 122 },  # TODO: real offset
-        #   "geometry"       => { "CF$UID" => 2 },   # TODO: real offset
-        #   "terrainEffects" => { "CF$UID" => 4 },   # TODO: real offset
-        #   "zones"          => { "CF$UID" => 19 }   # TODO: real offset
-        # },
+        {
+           "$0"             => { "CF$UID" => -1 },
+           "$class"         => { "CF$UID" => -1 },
+           "geometry"       => { "CF$UID" => -1 },
+           "terrainEffects" => { "CF$UID" => -1 },
+           "zones"          => { "CF$UID" => -1 }
+        },
        ];
+
+@cfuid_map = { }  # key: type/value name ("NSArray", "1", etc)  value: index in @objs of that key
 
 root = {
   "$archiver" => "NSKeyedArchiver",
@@ -37,6 +45,7 @@ root = {
   "$version"  => 100000
 }
 
+#========================================================================
 def infer_typed_data(str)
   return str.to_i if str =~ /^\d+$/
   return true     if str =~ /^true$/
@@ -44,39 +53,58 @@ def infer_typed_data(str)
   str
 end
 
-def push_classnames(*args)
-  @objs.push({
-    "$className" => args[0],
-    "$classes" => args
-  })
+#========================================================================
+def push_int(n)
+  unless @cfuid_map[n.to_s]
+    @cfuid_map[n.to_s] = @objs.size
+    @objs.push(n)
+  end
+
+  @cfuid_map[n.to_s]
 end
 
+#========================================================================
+def push_classnames(*args)
+  unless @cfuid_map[args[0]]
+    @cfuid_map[args[0]] = @objs.size
+
+    @objs.push({
+                 "$classname" => args[0],
+                 "$classes" => args
+               })
+  end
+
+  @cfuid_map[args[0]]
+end
+
+#========================================================================
 def do_global(line)
   if line =~ /^- geometry/
     @cur_state = :geometry
 
   elsif line =~ /^className\s*=\s*(.*)$/
-    @class_name = $1
-    puts "className = `#{@class_name}'" if @debug
+    @class_names = [$1, "HMMap"]
+    puts "className = `#{@class_names[0]}'" if @debug
 
   else
     puts "bad line in global section: #{line}"
   end
 end
 
+#========================================================================
 def do_geometry(line)
   if line =~ /^- terrainEffects/
 
-    geometry_cfuid = @objs.size
+    @objs[1]["geometry"]["CF$UID"] = @objs.size
 
-    @objs[1]["geometry"] = { "CF$UID" => geometry_cfuid }
-    @objs.push({
-      "$class" => { "CF$UID" => geometry_cfuid + 1 }
-    }.merge @geometry)
+    @objs.push @geometry
 
-    push_classnames("HMGeometry", "NSObject")
+    cfuid = push_classnames("HMGeometry", "NSObject")
+
+    @geometry["$class"]["CF$UID"] = cfuid
 
     @cur_state = :terrain_effects
+    @objs[1]["terrainEffects"]["CF$UID"] = @objs.size
     @objs.push(@terrain_effects)
     puts "GEOMETRY: #{@geometry.inspect}" if @debug
 
@@ -85,40 +113,248 @@ def do_geometry(line)
   end
 end
 
+#========================================================================
 def do_terrain_effects(line)
   if line =~ /^- zones/
-    @terrain_effects["$class"]["CF$UID"] = @objs.size
-    push_classnames "NSArray", "NSObject"
+    cfuid = push_classnames "NSArray", "NSObject"
+    @terrain_effects["$class"]["CF$UID"] = cfuid
+    @objs[1]["zones"]["CF$UID"] = @objs.size
+    @objs.push @zones
     @cur_state = :zones
 
-  elsif line =~ /^bit:(\d+)\s+mpCost:(\d+)\s+(.*)$/
-    bit, cost, name = $1, $2, $3
-    puts "TERRAIN: #{bit} #{cost} #{name}" if @debug
+  elsif line =~ /^bit:(\d+)\s+mpCost:(\d+)\s+symbol:(\S+)\s+(.*)$/
+    bit, cost, symbol, name = $1, $2, $3, $4
+    puts "TERRAIN: #{bit} #{cost} #{symbol} #{name}" if @debug
+    @symbol_map[symbol] = 1 << bit.to_i
 
-    base_cfuid = @objs.size
+    @terrain_effects["NS.objects"].push({ "CF$UID" => @objs.size })
 
-    @terrain_effects["NS.objects"].push({ "CF$UID" => base_cfuid })
+    terrain_hash = {
+      "$class" => { "CF$UID" => -1 },
+      "bitNum" => bit.to_i,
+      "mpCost" => cost.to_f,
+      "name"   => { "CF$UID" => @objs.size + 1 }
+    }
 
-    @terrain_effect_classname_cfuid ||= base_cfuid + 2
-
-    @objs.push({
-                 "$class" => { "CF$UID" => @terrain_effect_classname_cfuid },
-                 "bitNum" => bit.to_i,
-                 "mpCost" => cost.to_f,
-                 "name"   => { "CF$UID" => base_cfuid + 1 }
-               })
+    @objs.push terrain_hash
     @objs.push name
-    push_classnames "HMTerrainEffect", "NSObject" if @terrain_effect_classname_cfuid == base_cfuid + 2
+
+    cfuid = push_classnames "HMTerrainEffect", "NSObject"
+
+    terrain_hash["$class"]["CF$UID"] = cfuid
+
+  elsif line =~ /^impassible\s+symbol:(\S)$/
+    symbol = $1
+    @symbol_map[symbol] = 0
+  else
+    throw "unrecognized terrain effects line: #{line}"
   end
 end
 
+#========================================================================
 def do_zones(line)
+  if line =~ /^- data/
+    @cur_state = :data
+
+  elsif line =~ /^(\S+)\s+symbol:(\S)$/
+    name, symbol = $1, $2
+    @zones["NS.keys"].push( { "CF$UID" => @objs.size } )
+    @objs.push name
+
+    @zone_map.push symbol
+
+    puts "ZONE: #{name} (#{symbol})" if @debug
+
+  else
+    throw "unrecognized zones line: #{line}"
+  end
 end
 
+#========================================================================
+def explode_cel(c)
+  (zones, terrain) = c.split /\s*:\s*/
+  {
+    :zones => zones.split(""),
+    :terrain => terrain
+  }
+end
+
+#========================================================================
 def do_data(line)
+  expected_rows = @geometry["numRows"]
+  expected_cols = @geometry["numColumns"]
+
+  throw "too many rows (expected #{expected_rows + 1})" if @data.size == expected_rows + 1
+
+  cels = line.split(/\s+/)
+
+  if @data.size < expected_rows
+    throw "wrong # of cells, expected #{@expected_cols} but saw #{cels.size}" unless cels.size == expected_cols
+
+    @data.push(cels.map { |c| explode_cel(c) })
+
+  else # @data.size == expected_rows; this is the wonky row with only half the data
+    throw "wrong # of cells, expected #{@expected_cols / 2} but saw #{cels.size}" unless cels.size == expected_cols / 2
+
+    mapped_cels = cels.map { |c| explode_cel(c) }
+
+    row = Array.new(expected_cols)
+    @data.push(row)
+
+    i = @geometry["firstColumnIsLong"] ? 0 : 1
+
+    mapped_cels.each { |c| row[i] = c; i += 2; }
+  end
 end
 
-IO.foreach("map.txt") do |line|
+#========================================================================
+def analyze_zones
+  z = {}
+  @zone_map.each do |letter|
+    z[letter] = Array.new(@geometry["numColumns"])
+    (0...@geometry["numColumns"]).each do |col_num|
+      ranges = []
+
+      cur_range = []
+
+      (0..@geometry["numRows"]).each do |row_num|
+        if @data[row_num][col_num] && @data[row_num][col_num][:zones].include?(letter)
+          if cur_range.empty?
+            cur_range = [row_num, 1]
+          else
+            cur_range[1] += 1
+          end
+        else
+          unless cur_range.empty?
+            ranges.push cur_range
+            cur_range = []
+          end
+        end
+      end
+
+      ranges.push cur_range unless cur_range.empty?
+
+      z[letter][col_num] = ranges
+    end
+  end
+
+  z
+end
+
+#========================================================================
+def create_zones
+  @raw_zone_data = analyze_zones
+
+  @zone_map.each do |letter|
+    @zones["NS.objects"].push({ "CF$UID" => @objs.size })
+
+    zone_info = {
+      "$class" => { "CF$UID" => -1 },
+      "columnData" => { "CF$UID" => @objs.size + 1 }
+    }
+
+    @objs.push zone_info
+
+    zone_data = {
+      "$class" => { "CF$UID" => -1 },
+      "NS.keys" => [],
+      "NS.objects" => []
+    }
+
+    @objs.push zone_data
+
+    @raw_zone_data[letter].each_with_index do |column_data, idx|
+      next if @raw_zone_data[letter][idx].empty?
+
+      puts "Processing zone #{letter} column #{idx} data #{@raw_zone_data[letter][idx].inspect}" if @debug
+
+      zone_data["NS.keys"].push({ "CF$UID" => push_int(idx) })
+    end
+
+    @raw_zone_data[letter].each_with_index do |column_data, idx|
+      next if @raw_zone_data[letter][idx].empty?
+
+      zone_data["NS.objects"].push({ "CF$UID" => @objs.size })
+
+      ranges = {
+        "$class" => { "CF$UID" => -1 },
+        "NS.objects" => [ ]
+      }
+
+      @objs.push(ranges)
+
+      column_data.each do |range|
+        ranges["NS.objects"].push({ "CF$UID" => @objs.size })
+
+        range_hash = {
+                     "$class"               => { "CF$UID" => -1 },
+                     "NS.rangeval.location" => { "CF$UID" => -1 },
+                     "NS.rangeval.length"   => { "CF$UID" => -1 },
+                     "NS.special"           => 4   # not sure what this is, but appears to be a constant
+                   }
+
+        @objs.push(range_hash)
+
+        range_hash["$class"]["CF$UID"]               = push_classnames "NSValue", "NSObject"
+        range_hash["NS.rangeval.location"]["CF$UID"] = push_int(range[0])
+        range_hash["NS.rangeval.length"  ]["CF$UID"] = push_int(range[1])
+      end
+
+      ranges["$class"]["CF$UID"] = push_classnames "NSMutableArray", "NSArray", "NSObject"
+    end
+
+    zone_data["$class"]["CF$UID"] = push_classnames "NSMutableDictionary", "NSDictionary", "NSObject"
+
+    zone_info["$class"]["CF$UID"] = push_classnames "HMMapZone", "NSObject"
+  end
+
+  @zones["$class"]["CF$UID"] = push_classnames "NSMutableDictionary", "MSDictionary", "NSObject"
+end
+
+#========================================================================
+def terrain_at(row, col)
+  # might get nils for last row on shorter columns
+  return 0 unless @data[row][col]
+
+  n = @symbol_map[@data[row][col][:terrain]]
+  throw "ugh! #{n} row #{row} col #{col} data #{@data[row][col].inspect}" unless n
+  n
+end
+
+#========================================================================
+def create_data
+  data = {
+    "$class"   => { "CF$UID" => -1 },
+    "NS.count" => (@geometry["numRows"] + 1) * @geometry["numColumns"],
+    "NS.size"  => 4,                                                   # apparently sizeof(int)
+    "NS.type"  => 105                                                  # apparently constant
+  }
+
+  @objs[1]["$0"]["CF$UID"] = @objs.size
+
+  num_cols = @geometry["numColumns"]
+  (0..@geometry["numRows"]).each do |row|       # NB: Two dots, so inclusive, to account for extra row
+    (0...num_cols).each do |col|                # NB: Three dots, so exclusive
+      terrain = terrain_at(row, col)
+      data["$#{row * num_cols + col}"] = terrain if terrain
+    end
+  end
+
+  @objs.push(data)
+  data["$class"]["CF$UID"] = push_classnames "_NSKeyedCoderOldStyleArray", "NSObject"
+end
+
+
+#========================================================================
+# MAIN PROGRAM
+#------------------------------------------------------------------------
+
+unless ARGV.size == 1
+  puts "usage: ./mkmap <filename>"
+  exit 1
+end
+
+IO.foreach(ARGV[0]) do |line|
   # remove comments
   line.sub!(/#.*$/, "")
 
@@ -138,4 +374,9 @@ IO.foreach("map.txt") do |line|
   end
 end
 
+create_zones
+create_data
+ @objs[1]["$class"]["CF$UID"] = push_classnames(*@class_names)
+
+#puts @data.inspect
 puts root.to_plist
