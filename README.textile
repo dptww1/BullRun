@@ -26,11 +26,19 @@ Map and Unit compilers are implemented in Tools dir.
 h1. To Do
 
 h3. UI/Art
-* Real map
-* App Icons
-* Unit Icons
+* App Icon (+ x2)
+* Loading Screen (+ x2)
+* Real map (+ x2)
+* Info box (+ x2)
+** move-to-other-corner control (+ x2)
+** end turn control (+ x2)
+* Unit Icons (based on mode?) (+ x2)
 * Attack animations (smoke?)
-* Portraits for Militia + Volunteers
+* x2 unit portraits
+* Militia, Volunteers portraits (+ x2)
+* Begin Game dialog (+ x2)
+* Game Options dialog (+ x2)
+* End Game dialog (+ x2)
 
 h3. Functionality
 * Touching outside hex area should show iOS status bar
