@@ -1,0 +1,105 @@
+#!/usr/bin/ruby
+#
+# BattleAt units compiler.
+
+require 'plist'
+
+@cfuid_map = { }  # key: type/value name ("NSArray", "1", etc)  value: index in @objs of that key
+@fields = []
+
+@class_names = ["BAUnit", "NSObject"]
+@objs = [
+         "$null",
+         {
+           "$class"     => { "CF$UID" => -1 },
+           "NS.objects" => []
+         }
+        ];
+@root = {
+  "$archiver" => "NSKeyedArchiver",
+  "$objects"  => @objs,
+  "$top"      => { "root" => { "CF$UID" => 1 } },
+  "$version"  => 100000
+}
+
+#========================================================================
+def infer_typed_data(str)
+  return str.to_i if str =~ /^\d+$/
+  return true     if str =~ /^true$/
+  return false    if str =~ /^false$/
+  str
+end
+
+#========================================================================
+def push_classnames(*args)
+  unless @cfuid_map[args[0]]
+    @cfuid_map[args[0]] = @objs.size
+
+    @objs.push({
+                 "$classname" => args[0],
+                 "$classes" => args
+               })
+  end
+
+  @cfuid_map[args[0]]
+end
+
+#========================================================================
+# MAIN PROGRAM
+#------------------------------------------------------------------------
+
+unless ARGV.size == 1
+  puts "usage: ./munits <filename>"
+  exit 1
+end
+
+IO.foreach(ARGV[0]) do |line|
+  # remove comments
+  line.sub!(/#.*$/, "")
+
+  # strip leading and trailing whitespace
+  line.sub!(/^\s*(.*\S)\s*$/, "\\1")
+
+  # ignore blank lines
+  next if line =~ /^\s*$/
+
+  if line =~ /^className\s*=\s*(\S+)/
+    @class_names.unshift($1)
+
+  elsif @fields.empty?  # then this is the header line
+    @fields = line.split(/\s+/)
+
+  else # then this is a data line
+    data = line.split(/\s+/).map { |x| infer_typed_data(x) }
+
+    throw "expected #{@fields.size} fields, but line has only #{data.size}: #{line}" unless data.size == @fields.size
+
+    # Add entry for the unit we're about to push
+    @objs[1]["NS.objects"].push({ "CF$UID" => @objs.size })
+
+    # Create the unit data. We need a hash with '@fields' as the keys and the corresponding 'data' as values.
+    # Look how easy Ruby makes this:
+    h = Hash[@fields.zip(data)].merge({ "$class" => { "CF$UID" => -1 } })
+
+    @objs.push h
+
+    # String field values need to be treated specially (so that they can be reused?)
+    string_fields = {}
+    @fields.each_with_index do |f,i|
+      if data[i].is_a? String
+        string_fields[f] = data[i]
+      end
+    end
+
+    string_fields.keys.each do |k|
+      h[k] = { "CF$UID" => @objs.size }
+      @objs.push string_fields[k]
+    end
+
+    h["$class"]["CF$UID"] = push_classnames(*@class_names)
+  end
+end
+
+@objs[1]["$class"]["CF$UID"] = push_classnames "NSMutableArray", "NSArray", "NSObject"
+
+puts @root.to_plist

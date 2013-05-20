@@ -21,6 +21,8 @@ in the Info box. Retreats and advances work.
 
 Reinforcements show up; infrastructure is there to support arbitrary OOB manipulations based on user options.
 
+Map and Unit compilers are implemented in Tools dir.
+
 h1. To Do
 
 h3. UI/Art
@@ -49,7 +51,3 @@ h3. Bugs
 * Trying to enter an impossible hex lets unit accumulate a crazy number of MPs
 * Deploying reinforcement nonreproducibly gets Access Violation
 * Time widget sometimes shifts upwards a bit
-
-h3. Tools
-* Map ASCII => plist compiler
-* Unit ASCII => plist compiler
