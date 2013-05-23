@@ -98,7 +98,7 @@
 - (int)normalizeDirection:(int)dir;
 
 /**
- * Returns next hex in given direction from starting hex. The return value is not
+ * Returns next hex in given direction from starting hex. The return value is not
  * guaranteed to be legal!
  */
 - (HMHex)hexAdjacentTo:(HMHex)start inDirection:(int)dir;
