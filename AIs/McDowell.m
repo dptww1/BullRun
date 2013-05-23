@@ -9,7 +9,10 @@
 #import "McDowell.h"
 #import "BAGame.h"
 #import "BAUnit.h"
+#import "BRMap.h"
 #import "CollectionUtil.h"
+#import "HMGeometry.h"
+#import "HMHex.h"
 
 #define DO_SANITY_CHECK 1
 
@@ -80,20 +83,68 @@ enum UnitRole {
 - (void)changeOneDefenderToAttacker {
     // Find the defending unit nearest a ford
 
-#if 0
-    BAUnit* minUnit = nil;  // current closest unit
-    int     minDist = 1000; // current closest distance
+    __block BAUnit* minUnit = nil;  // current closest unit
+    __block int     minDist = 1000; // current closest distance
 
     NSArray* usaUnits = [[game oob] unitsForSide:[self side]];
     [usaUnits enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL* stop) {
         BAUnit* curUnit = obj;
-        // TODO: calculate closest fod
-        }];
-#endif
+        if ([self isUsaUnitDefending](curUnit)) {
+            HMHexAndDistance hexd = [[BRMap map] closestFordTo:[curUnit location]];
+
+            if (hexd.distance < minDist) {
+                minUnit = curUnit;
+                minDist = hexd.distance;
+            }
+        }
+     }];
+
+    if (minUnit) {
+        DEBUG_AI(@"Switching %@'s role to ATTACK", [minUnit name]);
+        [self switch:minUnit roleTo:ROLE_ATTACK];
+    } else
+        DEBUG_AI(@"No unit is available for attack!");
 }
 
-- (void)convertNonDefenderToDefender { // TODO:
+- (void)convertNonDefenderToDefender {
+    // Find the non-defending unit nearest home base
+    __block BAUnit* minUnit = nil;
+    __block int     minDist = 1000;
 
+    NSArray* bases = [[BRMap map] basesForSide:[self side]];
+    NSArray* usaUnits = [[game oob] unitsForSide:[self side]];
+    HMGeometry* geometry = [[BRMap map] geometry];
+
+    [bases enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL* stop) {
+        HMHex base;
+        [obj getValue:&base];
+
+        [usaUnits enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL* stop) {
+            BAUnit* curUnit = obj;
+
+            if (![self isUsaUnitDefending](curUnit) && ![curUnit isOffMap]) {
+                int dist = [geometry distanceFrom:[curUnit location] to:base];
+                if (dist < minDist) {
+                    minUnit = curUnit;
+                    minDist = dist;
+                }
+            }
+        }];
+    }];
+
+    if (minUnit) {
+        DEBUG_AI(@"Switching %@'s role to DEFEND", [minUnit name]);
+        [self switch:minUnit roleTo:ROLE_DEFEND];
+
+    } else {
+        DEBUG_AI(@"No unit is available for defense!");
+    }
+}
+
+- (void)switch:(BAUnit*)unit roleTo:(int)newRole {
+    [[self unitRoles]
+     setObject:[NSNumber numberWithInt:newRole]
+     forKey:[unit name]];
 }
 
 @end

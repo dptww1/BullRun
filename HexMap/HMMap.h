@@ -29,4 +29,9 @@
 - (HMTerrainEffect*)terrainAt:(HMHex)hex;
 - (BOOL)is:(HMHex)hex prohibitedFor:(BAUnit*)unit;
 
+- (HMTerrainEffect*)findTerrainByName:(NSString*)name;
+
+// Return value: array of NSValue-wrapped HMHexes
+- (NSArray*)findHexesOfType:(NSString*)terrainName;
+
 @end

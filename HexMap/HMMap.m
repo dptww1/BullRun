@@ -6,12 +6,18 @@
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
+#import "CollectionUtil.h"
 #import "HMMap.h"
 #import "HMGeometry.h"
 #import "HMHex.h"
 #import "HMMapZone.h"
 #import "HMTerrainEffect.h"
 #import "SysUtil.h"
+
+
+// Default capacity for findHexesOfType:
+#define DEFAULT_CAPACITY 12
+
 
 @implementation HMMap (Private)
 
@@ -127,6 +133,36 @@
 
 - (BOOL)is:(HMHex)hex prohibitedFor:(BAUnit*)unit {
     return ![self terrainAt:hex];
+}
+
+- (HMTerrainEffect*)findTerrainByName:(NSString *)name {
+    return (HMTerrainEffect*)
+           [[self terrainEffects]
+            find:^BOOL(HMTerrainEffect* o) {
+                return [[o name] isEqualToString:name];
+            }];
+}
+
+- (NSArray*)findHexesOfType:(NSString *)terrainName {
+    NSMutableArray* list = [NSMutableArray arrayWithCapacity:DEFAULT_CAPACITY];
+
+    HMTerrainEffect* fx = [self findTerrainByName:terrainName];
+    HMGeometry* geometry = [self geometry];
+
+    if (fx) {
+        int bitMask = 1 << [fx bitNum];
+
+        for (int row = 0; row < [geometry numRows] + 1; ++row) {
+            for (int col = 0; col < [geometry numColumns]; ++col) {
+                HMHex hex = HMHexMake(col, row);
+                if ([geometry legal:hex] && [self rawDataAt:hex] & bitMask) {
+                    [list addObject:[NSValue value:&hex withObjCType:@encode(HMHex)]];
+                }
+            }
+        }
+    }
+
+    return list;
 }
 
 @end
