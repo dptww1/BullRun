@@ -8,12 +8,76 @@
 
 #import "McDowell.h"
 #import "McDowell+Strategy.h"
+#import "BAAIInfluenceMap.h"
 #import "BAGame.h"
 #import "BAUnit.h"
 #import "BRMap.h"
 #import "CollectionUtil.h"
 #import "HMGeometry.h"
 #import "HMHex.h"
+#import "HMMap.h"
+
+@implementation McDowell (Private)
+
+- (BAAIInfluenceMap*)createInfluenceMap:(BAGame*)game {
+    BRMap* map = [BRMap map];
+    NSArray* bases = [map basesForSide:[self side]];
+    HMGeometry* geometry = [map geometry];
+
+    BAAIInfluenceMap* imap = [BAAIInfluenceMap mapFrom:map];
+
+    NSArray* csaUnits = [[game oob] unitsForSide:OtherPlayer([self side])];
+    [csaUnits enumerateObjectsUsingBlock:^(BAUnit* unit, NSUInteger idx, BOOL* stop){
+        HMHex hex = [unit location];
+
+        // Is unit on map, north of river, and not on a ford?
+        if (![unit isOffMap] && [map is:hex inZone:@"usa"] && ![map is:hex inZone:@"csa"]) {
+            [bases enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                HMHex base;
+                [obj getValue:&base];
+
+                HMHex location = [unit location];
+
+                int dist = [geometry distanceFrom:location to:hex];
+                if (dist > 10)
+                    dist = 10;
+
+                int dir = [geometry directionFrom:location to:hex];
+
+                float value = (float)(1 << (10 - dist));
+
+                // Plant values in each hex adjacent to the unit's location
+                for (int i = 0; i < 6; ++i) {
+                    HMHex curHex = [geometry hexAdjacentTo:location inDirection:i];
+                    float curValue = value;
+
+                    // Beware of moving offmap, or into CSA territory
+                    if (![geometry legal:curHex] || [map is:curHex inZone:@"csa"])
+                        continue;
+
+                    // Reduce the value by half if it's not directly towards the base
+                    if (i != dir) {
+                        curValue /= 2.0;
+
+                        // If it's not a direction towards the base, halve it again
+                        if (i != [geometry rotateDirection:dir clockwise:YES] &&
+                            i != [geometry rotateDirection:dir clockwise:NO])
+                            curValue /= 2.0;
+                    }
+
+                    if ([imap valueAt:curHex] < curValue)
+                        [imap setValue:[imap valueAt:curHex] / 2.0 + curValue atHex:curHex];
+                    else
+                        [imap addValue:1.0f atHex:curHex];
+                }
+            }];
+        }
+    }];
+
+    return imap;
+}
+
+@end
 
 @implementation McDowell
 
@@ -44,6 +108,8 @@
 
 - (void)giveOrders:(BAGame*)game {
     [self strategize:game];
+    BAAIInfluenceMap* imap = [self createInfluenceMap:game];
+    [imap dump];
 }
 
 @end

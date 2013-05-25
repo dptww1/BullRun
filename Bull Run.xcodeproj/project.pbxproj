@@ -60,6 +60,7 @@
 		CCE03F6B171BA62100C5A217 /* BAAAnimationListItemMove.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE03F6A171BA62100C5A217 /* BAAAnimationListItemMove.m */; };
 		CCE03F6E171E278E00C5A217 /* BAAAnimationListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE03F6D171E278E00C5A217 /* BAAAnimationListItem.m */; };
 		CCF01A9A174D9705003A1C77 /* McDowell+Strategy.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF01A99174D9705003A1C77 /* McDowell+Strategy.m */; };
+		CCF01AA0174FFECA003A1C77 /* BAAIInfluenceMap.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF01A9F174FFECA003A1C77 /* BAAIInfluenceMap.m */; };
 		CCF61C9216C5EE3300391025 /* map.plist in Resources */ = {isa = PBXBuildFile; fileRef = CCF61C9116C5EE3300391025 /* map.plist */; };
 		CCF61C9616CC63C900391025 /* HMGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF61C9516CC63C900391025 /* HMGeometry.m */; };
 		CCF61C9716CC6E2900391025 /* HMGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF61C9516CC63C900391025 /* HMGeometry.m */; };
@@ -162,6 +163,8 @@
 		CCE03F6D171E278E00C5A217 /* BAAAnimationListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAAAnimationListItem.m; sourceTree = "<group>"; };
 		CCF01A99174D9705003A1C77 /* McDowell+Strategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "McDowell+Strategy.m"; sourceTree = "<group>"; };
 		CCF01A9D174D9861003A1C77 /* McDowell+Strategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "McDowell+Strategy.h"; sourceTree = "<group>"; };
+		CCF01A9E174FFECA003A1C77 /* BAAIInfluenceMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAAIInfluenceMap.h; sourceTree = "<group>"; };
+		CCF01A9F174FFECA003A1C77 /* BAAIInfluenceMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAAIInfluenceMap.m; sourceTree = "<group>"; };
 		CCF61C9116C5EE3300391025 /* map.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = map.plist; sourceTree = "<group>"; };
 		CCF61C9316CC627400391025 /* HMHex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMHex.h; sourceTree = "<group>"; };
 		CCF61C9416CC63C900391025 /* HMGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMGeometry.h; sourceTree = "<group>"; };
@@ -196,6 +199,8 @@
 		CC0805A516D2F87300CB8C79 /* BattleAt */ = {
 			isa = PBXGroup;
 			children = (
+				CCF01A9E174FFECA003A1C77 /* BAAIInfluenceMap.h */,
+				CCF01A9F174FFECA003A1C77 /* BAAIInfluenceMap.m */,
 				CC523550173A7DB600CDBDC5 /* BAAIProtocol.h */,
 				CC0805A716D3085000CB8C79 /* BABattleReport.h */,
 				CC0805A816D3085000CB8C79 /* BABattleReport.m */,
@@ -574,6 +579,7 @@
 				CC52355B173D97E500CDBDC5 /* BRMap.m in Sources */,
 				CC52355E173DD36200CDBDC5 /* BRGame.m in Sources */,
 				CCF01A9A174D9705003A1C77 /* McDowell+Strategy.m in Sources */,
+				CCF01AA0174FFECA003A1C77 /* BAAIInfluenceMap.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
