@@ -12,12 +12,11 @@ numRows = 13
 - terrainEffects
 
 impassible symbol:/
-bit:0 mpCost:4 symbol:- Clear, CSA
-bit:1 mpCost:4 symbol:+ Clear, USA
-bit:2 mpCost:5 symbol:| Minor river
-bit:3 mpCost:5 symbol:& Woods
-bit:4 mpCost:8 symbol:= Ford
-bit:5 mpCost:4 symbol:@ Town
+bit:0 mpCost:4 symbol:- Clear
+bit:1 mpCost:5 symbol:| Minor river
+bit:2 mpCost:5 symbol:& Woods
+bit:3 mpCost:8 symbol:= Ford
+bit:4 mpCost:4 symbol:@ Town
 
 - zones
 
@@ -28,17 +27,17 @@ usa symbol:u
 
 # 0     1     2     3     4     5     6     7     8     9    10    11    12    13    14    15    16
 
- u:+   u:+   u:+   u:+   u:+   u:+   u:+   u:+   u:+   u:+   u:+   u:+   u:+   u:+   u:+   u:+   u:+
- u:+   u:+    :/   u:+   u:+   u:+   u:+   u:+   u:+   u:+   u:|   u:+   u:+   u:+   u:+   u:+   u:+
-  :/    :/   c:-  cu:=    :/   u:+   u:+   u:+   u:&   u:&   u:&   u:&   u:+   u:+   u:+   u:+   u:+
- c:&   c:-   c:-   c:-   c:&  cu:=   u:+   u:+   u:&   u:+   u:|   u:+   u:+   u:@   u:+   u:+   u:+
- c:&   c:&   c:&   c:-   c:-    :/  cu:=   u:+   u:+   u:|   u:+   u:&   u:+   u:+   u:&   u:+   u:&
- c:-   c:-   c:-   c:-   c:-   c:-  cu:=   u:+   u:+   u:|   u:&   u:&   u:&   u:&   u:&   u:&   u:&
- c:-   c:&   c:-   c:-   c:&   c:&   c:-  cu:=   u:+   u:&   u:&   u:&   u:+   u:&   u:+   u:+   u:&
- c:-   c:-   c:-   c:-   c:@   c:-   c:-    :/    :/    :/  cu:=   u:+   u:+   u:&   u:+   u:+   u:&
- c:&   c:-   c:-   c:&   c:-   c:-   c:-   c:-   c:-   c:-   c:-  cu:=  cu:=   u:+   u:+   u:&   u:+
- c:&   c:&   c:-   c:&   c:&   c:-   c:-   c:&   c:&   c:-   c:-   c:&   c:-  cu:=   u:&   u:+   u:+
+ u:-   u:-   u:-   u:-   u:-   u:-   u:-   u:-   u:-   u:-   u:-   u:-   u:-   u:-   u:-   u:-   u:-
+ u:-   u:-    :/   u:-   u:-   u:-   u:-   u:-   u:-   u:-   u:|   u:-   u:-   u:-   u:-   u:-   u:-
+  :/    :/   c:-  cu:=    :/   u:-   u:-   u:-   u:&   u:&   u:&   u:&   u:-   u:-   u:-   u:-   u:-
+ c:&   c:-   c:-   c:-   c:&  cu:=   u:-   u:-   u:&   u:-   u:|   u:-   u:-   u:@   u:-   u:-   u:-
+ c:&   c:&   c:&   c:-   c:-    :/  cu:=   u:-   u:-   u:|   u:-   u:&   u:-   u:-   u:&   u:-   u:&
+ c:-   c:-   c:-   c:-   c:-   c:-  cu:=   u:-   u:-   u:|   u:&   u:&   u:&   u:&   u:&   u:&   u:&
+ c:-   c:&   c:-   c:-   c:&   c:&   c:-  cu:=   u:-   u:&   u:&   u:&   u:-   u:&   u:-   u:-   u:&
+ c:-   c:-   c:-   c:-   c:@   c:-   c:-    :/    :/    :/  cu:=   u:-   u:-   u:&   u:-   u:-   u:&
+ c:&   c:-   c:-   c:&   c:-   c:-   c:-   c:-   c:-   c:-   c:-  cu:=  cu:=   u:-   u:-   u:&   u:-
+ c:&   c:&   c:-   c:&   c:&   c:-   c:-   c:&   c:&   c:-   c:-   c:&   c:-  cu:=   u:&   u:-   u:-
  c:-   c:-   c:-   c:-   c:-   c:-   c:&   c:&   c:&   c:&   c:-   c:-   c:-    :/    :/   u:&   u:&
- c:-   c:-   c:&   c:-   c:-   c:-   c:-   c:-   c:&   c:&   c:-   c:-   c:-   c:-  cu:=   u:+   u:+
- c:-   c:-   c:&   c:&   c:-   c:&   c:-   c:-   c:-   c:@   c:-   c:-   c:-  cu:=   u:&   u:+   u:+
-       c:-         c:-         c:-         c:-         c:-         c:-          :/         u:+
+ c:-   c:-   c:&   c:-   c:-   c:-   c:-   c:-   c:&   c:&   c:-   c:-   c:-   c:-  cu:=   u:-   u:-
+ c:-   c:-   c:&   c:&   c:-   c:&   c:-   c:-   c:-   c:@   c:-   c:-   c:-  cu:=   u:&   u:-   u:-
+       c:-         c:-         c:-         c:-         c:-         c:-          :/         u:-

@@ -92,21 +92,13 @@
     if (rawData == 0)
         return nil;
 
-    int thisBit = 0;
-
-    // Loop through the bits LSB to MSB; done as soon as no bits left
-    HMTerrainEffect* result = nil;
-    while (rawData > 0) {
-        for (HMTerrainEffect* te in [self terrainEffects]) {
-            if ([te bitNum] == thisBit)
-                result = te; // TODO: this overwrites previous values; OK for Bull Run but not good in general
-        }
-
-        thisBit += 1;
-        rawData >>= 1;
+    // Loop through the bits LSB to MSB
+    for (HMTerrainEffect* te in [self terrainEffects]) {
+        if (rawData & (1 << [te bitNum]))
+            return te;
     }
 
-    return result;
+    return nil;
 }
 
 - (float)mpCostOf:(HMHex)hex for:(BAUnit*)unit {
