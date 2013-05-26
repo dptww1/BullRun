@@ -212,7 +212,6 @@
         CGPoint p = [t locationInView:[self view]];
         
         if (CGRectContainsPoint([[self infoBarView] frame], p)) {
-            [[game board] saveToFile:@"map.plist"]; // TODO: REMOVE
             // nothing to do
             
         } else {
