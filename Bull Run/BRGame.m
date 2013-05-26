@@ -9,8 +9,19 @@
 #import "BAUnit.h"
 #import "BRGame.h"
 #import "BRMap.h"
+#import "McDowell.h"
 
 @implementation BRGame
+
+- (id)init {
+    self = [super init];
+
+    if (self) {
+        [self setAi:[[McDowell alloc] init]];
+    }
+
+    return self;
+}
 
 - (BRMap*)map {
     return (BRMap*)[self board];

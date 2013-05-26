@@ -18,7 +18,6 @@
 #import "CollectionUtil.h"
 #import "HMHex.h"
 #import "HMMap.h"
-#import "McDowell.h"   // TODO: move to derived class
 
 
 BAGame* game; // the global game instance
@@ -32,7 +31,7 @@ BAGame* game; // the global game instance
     self = [super init];
     
     if (self) {
-        _ai        = [[McDowell alloc] init];  // TODO: move to derived class
+        // _ai must be set by derived classes
         _board     = [HMMap createFromFile:[[NSBundle mainBundle] pathForResource:@"map" ofType:@"plist"]];
         _oob       = [BAOrderOfBattle createFromFile:[[NSBundle mainBundle] pathForResource:@"units" ofType:@"plist"]];
         _observers = [NSMutableArray array];
