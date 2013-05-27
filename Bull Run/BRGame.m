@@ -42,11 +42,11 @@
 
     [friends enumerateObjectsUsingBlock:^(id friend, NSUInteger idx, BOOL* stop) {
         // Friends which are offboard can't spot.
-        if (![[[self board] geometry] legal:[friend location]])
+        if (![[self board] legal:[friend location]])
             return;
 
         // Friendly units within three hexes sight enemies...
-        if ([[[self board] geometry] distanceFrom:[friend location] to:[enemy location]] < 4) {
+        if ([[self board] distanceFrom:[friend location] to:[enemy location]] < 4) {
 
             // ...as long as both units are on the same side of the river
             if ([self.board is:[friend location] inSameZoneAs:hex]) {

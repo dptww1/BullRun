@@ -20,12 +20,12 @@
 
 @implementation HMCoordinateTransformer
 
-- (id)initWithGeometry:(HMGeometry *)geometry origin:(CGPoint)origin hexSize:(CGSize)hexSize {
+- (id)initWithMap:(HMMap*)map origin:(CGPoint)origin hexSize:(CGSize)hexSize {
     self = [super init];
     if (self) {
-        [self setGeometry:geometry];
-        [self setOrigin:origin];
-        [self setHexSize:hexSize];
+        _map     = map;
+        _origin  = origin;
+        _hexSize = hexSize;
     }
     return self;
 }
@@ -63,7 +63,7 @@
     if (col & 1) {
         int halfHexOffset = [self hexSize].height / 2.0;
         
-        if ([[self geometry] firstColumnIsLong]) // then the second column is short
+        if ([[[self map] geometry] firstColumnIsLong]) // then the second column is short
             p.y -= halfHexOffset;
         
         else // the first column is short
@@ -76,7 +76,7 @@
     int row = p.y / [self hexSize].height;
     
     HMHex h = HMHexMake(col, row);
-    return [_geometry legal:h] ? h : HMHexMake(-1, -1);
+    return [[self map] legal:h] ? h : HMHexMake(-1, -1);
 }
 
 @end

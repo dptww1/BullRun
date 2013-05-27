@@ -48,7 +48,7 @@ static CGPoint shiftPoint(CGPoint pt, float dx, float dy) { // TODO: move to glo
     [[self attackerGunfire] stop];
     [self setAttackerGunfire:nil];
 
-    if ([[[game board] geometry] legal:[self retreatHex]]) {
+    if ([[game board] legal:[self retreatHex]]) {
         [CATransaction begin];
 
         [CATransaction setAnimationDuration:SECONDS_PER_HEX_MOVE];
@@ -67,7 +67,7 @@ static CGPoint shiftPoint(CGPoint pt, float dx, float dy) { // TODO: move to glo
         [dv setPosition:[xformer hexCenterToScreen:[self retreatHex]]];
         [dv addAnimation:dAnim forKey:@"position"];
 
-        if ([[[game board] geometry] legal:[self advanceHex]]) {
+        if ([[game board] legal:[self advanceHex]]) {
             CAAnimation* aAnim = [self createMoveAnimationFor:[self attacker]
                                                    movingFrom:[self attackerHex]
                                                            to:[self defenderHex]
@@ -146,8 +146,8 @@ static CGPoint shiftPoint(CGPoint pt, float dx, float dy) { // TODO: move to glo
 
     [CATransaction commit];
 
-    int dirAToD = [[[game board] geometry] directionFrom:[self attackerHex]
-                                                      to:[self defenderHex]];
+    int dirAToD = [[game board] directionFrom:[self attackerHex]
+                                           to:[self defenderHex]];
     // 0 degrees longitude is straight to the right, but direction 0 in
     // HMHexMap terms is straight to the top.  So subtract 90 degrees from
     // the game logic angle to get the animation logic angle.

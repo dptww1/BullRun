@@ -39,7 +39,7 @@
          HMHex fordHex;
          [obj getValue:&fordHex];
 
-         int dist = [[self geometry] distanceFrom:hex to:fordHex];
+         int dist = [self distanceFrom:hex to:fordHex];
 
          if (dist < hexd.distance) {
              hexd.hex = fordHex;

@@ -99,7 +99,6 @@
 
     NSArray* bases = [[BRMap map] basesForSide:[self side]];
     NSArray* usaUnits = [[game oob] unitsForSide:[self side]];
-    HMGeometry* geometry = [[BRMap map] geometry];
 
     [bases enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL* stop) {
         HMHex base;
@@ -109,7 +108,7 @@
             BAUnit* curUnit = obj;
 
             if (![self isUsaUnitDefending](curUnit) && ![curUnit isOffMap]) {
-                int dist = [geometry distanceFrom:[curUnit location] to:base];
+                int dist = [[BRMap map] distanceFrom:[curUnit location] to:base];
                 if (dist < minDist) {
                     minUnit = curUnit;
                     minDist = dist;

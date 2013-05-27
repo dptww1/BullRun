@@ -7,15 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "HMGeometry.h"
+#import "HMMap.h"
 
 @interface HMCoordinateTransformer : NSObject
 
-@property (nonatomic, strong) HMGeometry* geometry;
-@property (nonatomic)         CGPoint     origin;
-@property (nonatomic)         CGSize      hexSize;
+@property (nonatomic, strong) HMMap*  map;
+@property (nonatomic)         CGPoint origin;
+@property (nonatomic)         CGSize  hexSize;
 
-- (id)initWithGeometry:(HMGeometry*)geometry origin:(CGPoint)origin hexSize:(CGSize)hexSize;
+- (id)initWithMap:(HMMap*)map origin:(CGPoint)origin hexSize:(CGSize)hexSize;
 - (CGPoint)hexToScreen:(HMHex)hex;
 - (CGPoint)hexCenterToScreen:(HMHex)hex;
 - (HMHex)screenToHex:(CGPoint)point;

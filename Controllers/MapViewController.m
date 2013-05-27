@@ -42,9 +42,10 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
     if (self) {
-        _coordXformer = [[HMCoordinateTransformer alloc] initWithGeometry:[[game board] geometry]
-                                                                   origin:CGPointMake(67, 58)
-                                                                  hexSize:CGSizeMake(51, 51)];
+        _coordXformer = [[HMCoordinateTransformer alloc]
+                         initWithMap:[game board]
+                              origin:CGPointMake(67, 58)
+                             hexSize:CGSizeMake(51, 51)];
         _currentUnit = nil;
         [self setWantsFullScreenLayout:YES];
         
@@ -111,7 +112,7 @@
     // Draw arrowhead at end of line
     HMHex endHex = [mos lastHex];
     HMHex penultimateHex = [mos numHexes] == 1 ? [unit location] : [mos hex:[mos numHexes] - 2];
-    int dir = [[_coordXformer geometry] directionFrom:penultimateHex to:endHex];
+    int dir = [[game board] directionFrom:penultimateHex to:endHex];
 
     CGPoint end = [[self coordXformer] hexCenterToScreen:endHex];
 
@@ -217,7 +218,7 @@
         } else {
             HMHex hex = [[self coordXformer] screenToHex:p];
             
-            if ([[_coordXformer geometry] legal:hex]) {
+            if ([[game board] legal:hex]) {
 
                 DEBUG_MAP(@"Hex %02d%02d, zones:%@,%@", hex.column, hex.row, [[game board] is:hex inZone:@"csa"] ? @"CSA" : @"", [[game board] is:hex inZone:@"usa"] ? @"USA" : @"");
                 DEBUG_MAP(@"   Terrain %@ cost %2.0f",
@@ -242,13 +243,12 @@
 
     DEBUG_MOVEORDERS(@"Orders for %@: ADD %02d%02d", [unit name], hex.column, hex.row);
 
-    HMGeometry* geometry = [[game board] geometry];
     HMHex lastHex = [[unit moveOrders] isEmpty] ? [unit location]
                                                 : [[unit moveOrders] lastHex];
 
     while (!HMHexEquals(lastHex, hex)) {
-        int d = [geometry directionFrom:lastHex to:hex];
-        HMHex h = [geometry hexAdjacentTo:lastHex inDirection:d];
+        int d = [[game board] directionFrom:lastHex to:hex];
+        HMHex h = [[game board] hexAdjacentTo:lastHex inDirection:d];
         [[unit moveOrders] addHex:h];
         lastHex = h;
     }
@@ -262,7 +262,7 @@
         HMHex h = [_coordXformer screenToHex:[t locationInView:[self view]]];
         
         // Just ignore illegal hexes
-        if (![[_coordXformer geometry] legal:h])
+        if (![[game board] legal:h])
             return;
             
         if (!_givingNewOrders && HMHexEquals([_currentUnit location], h)) {

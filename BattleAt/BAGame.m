@@ -82,7 +82,7 @@ BAGame* game; // the global game instance
     NSArray* enemies = [_oob unitsForSide:OtherPlayer(side)];
 
     [friends enumerateObjectsUsingBlock:^(id friend, NSUInteger idx, BOOL* stop) {
-        if ([[_board geometry] legal:[friend location]]) {
+        if ([[self board] legal:[friend location]]) {
             if (![friend sighted]) {
                 [friend setSighted:YES];
                 [self notifyObserversWithSelector:@selector(unitNowSighted:) andObject:friend];
@@ -95,7 +95,7 @@ BAGame* game; // the global game instance
         BOOL enemyNowSighted = NO;
 
         // Ignore units unless they are on the map
-        if ([[_board geometry] legal:[enemy location]]) {
+        if ([[self board] legal:[enemy location]]) {
             enemyNowSighted = [self isUnit:enemy inHex:[enemy location] sightedBy:friends];
 
             // if enemy is no longer sighted, but used to be, update it
@@ -132,7 +132,7 @@ BAGame* game; // the global game instance
         
         for (BAUnit* u in sortedUnits) {
             // Offmap or not moving?
-            if (![[_board geometry] legal:[u location]] || ![u hasOrders])
+            if (![[self board] legal:[u location]] || ![u hasOrders])
                 continue;
             
             HMHex nextHex = [[u moveOrders] firstHexAndRemove:NO];
@@ -240,7 +240,7 @@ BAGame* game; // the global game instance
         BAReinforcementInfo* rInfo = [[oob reinforcements] objectAtIndex:i];
 
         if ([self turn] >= [rInfo entryTurn]) {
-            if ([[[self board] geometry] legal:[rInfo entryLocation]]) {
+            if ([[self board] legal:[rInfo entryLocation]]) {
 
                 BAUnit* unit = [oob unitByName:[rInfo unitName]];
                 [unit setLocation:[rInfo entryLocation]];
@@ -307,7 +307,7 @@ BAGame* game; // the global game instance
             DEBUG_COMBAT(@"  defender retreats in direction %d", retreatDir);
 
             HMHex defenderOriginalHex = [d location];
-            HMHex retreatHex = [[[self board] geometry] hexAdjacentTo:[d location] inDirection:retreatDir];
+            HMHex retreatHex = [[self board] hexAdjacentTo:[d location] inDirection:retreatDir];
             [report setRetreatHex:retreatHex];
 
             if ([self doesAttackerAdvance:a])
@@ -328,11 +328,11 @@ BAGame* game; // the global game instance
     [a setStrength:[a strength] - attCasualties];
     [d setStrength:[d strength] - defCasualties];
 
-    if ([[[self board] geometry] legal:[report retreatHex]]) {
+    if ([[self board] legal:[report retreatHex]]) {
         [d setLocation:[report retreatHex]];
     }
 
-    if ([[[self board] geometry] legal:[report advanceHex]]) {
+    if ([[self board] legal:[report advanceHex]]) {
         [a setLocation:[report advanceHex]];
     }
 
@@ -391,14 +391,14 @@ BAGame* game; // the global game instance
 }
 
 - (BOOL)is:(BAUnit*)unit movingThruEnemyZocTo:(HMHex)hex {
-    HMGeometry* g = [_board geometry];
+    HMMap* map = [self board];
     
-    int moveDir = [g directionFrom:[unit location] to:hex];
-    int cwDir   = [g rotateDirection:moveDir clockwise:YES];
-    int ccwDir  = [g rotateDirection:moveDir clockwise:NO];
+    int moveDir = [map directionFrom:[unit location] to:hex];
+    int cwDir   = [map rotateDirection:moveDir clockwise:YES];
+    int ccwDir  = [map rotateDirection:moveDir clockwise:NO];
     
-    BAUnit* cwUnit  = [self unitInHex:[g hexAdjacentTo:[unit location] inDirection:cwDir]];
-    BAUnit* ccwUnit = [self unitInHex:[g hexAdjacentTo:[unit location] inDirection:ccwDir]];
+    BAUnit* cwUnit  = [self unitInHex:[map hexAdjacentTo:[unit location] inDirection:cwDir]];
+    BAUnit* ccwUnit = [self unitInHex:[map hexAdjacentTo:[unit location] inDirection:ccwDir]];
 
     return (cwUnit  && ![cwUnit  friends:unit])
         || (ccwUnit && ![ccwUnit friends:unit]);
@@ -406,17 +406,17 @@ BAGame* game; // the global game instance
 
 // -1 == no retreat possible, else direction to retreat in
 - (int)findRetreatDirFor:(BAUnit*)d attackedBy:(BAUnit*)a {
-    HMGeometry* geometry = [[self board] geometry];
+    HMMap* map = [self board];
 
-    int attackDir = [geometry directionFrom:[a location] to:[d location]];
+    int attackDir = [map directionFrom:[a location] to:[d location]];
     if ([self unit:d canRetreatInDirection:attackDir])
         return attackDir;
 
-    int attackDirCW = [geometry rotateDirection:attackDir clockwise:YES];
+    int attackDirCW = [map rotateDirection:attackDir clockwise:YES];
     if ([self unit:d canRetreatInDirection:attackDirCW])
         return attackDirCW;
 
-    int attackDirCCW = [geometry rotateDirection:attackDir clockwise:NO];
+    int attackDirCCW = [map rotateDirection:attackDir clockwise:NO];
     if ([self unit:d canRetreatInDirection:attackDirCCW])
         return attackDirCCW;
 
@@ -424,11 +424,11 @@ BAGame* game; // the global game instance
 }
 
 - (BOOL)unit:(BAUnit*)u canRetreatInDirection:(int)dir {
-    HMGeometry* geometry = [[self board] geometry];
+    HMMap* map = [self board];
 
-    HMHex hex = [geometry hexAdjacentTo:[u location] inDirection:dir];
+    HMHex hex = [map hexAdjacentTo:[u location] inDirection:dir];
 
-    return [geometry legal:hex]
+    return [map legal:hex]
         && ![self unitInHex:hex]
         && ![[self board] is:hex prohibitedFor:u]
         && ![self is:u movingThruEnemyZocTo:hex];

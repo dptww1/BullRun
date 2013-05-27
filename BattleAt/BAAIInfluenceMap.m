@@ -11,11 +11,18 @@
 
 @interface BAAIInfluenceMap ()
 
-@property (nonatomic)        float*      mapData;
-@property (nonatomic,strong) HMGeometry* geometry;
+@property (nonatomic)        float* mapData;
+@property (nonatomic,strong) HMMap* srcMap;
 
 @end
 
+@implementation BAAIInfluenceMap (Private)
+
+- (int)offsetForHex:(HMHex)hex {
+    return hex.row * [[[self srcMap] geometry] numColumns] + hex.column;
+}
+
+@end
 
 @implementation BAAIInfluenceMap
 
@@ -23,10 +30,8 @@
     BAAIInfluenceMap* map = [[BAAIInfluenceMap alloc] init];
 
     if (map) {
-        HMGeometry* geometry = [board geometry];
-
-        [map setGeometry:geometry];
-        [map setMapData:malloc(sizeof(float) * [geometry numCells])];
+        [map setSrcMap:board];
+        [map setMapData:malloc(sizeof(float) * [board numCells])];
         [map zeroOut];
     }
 
@@ -35,27 +40,27 @@
 
 - (void)zeroOut {
     float* p = [self mapData];
-    for (int i = 0; i < [[self geometry] numCells]; ++i)
+    for (int i = 0; i < [[self srcMap] numCells]; ++i)
         *p++ = 0.0f;
 }
 
 - (void)addValue:(float)value atHex:(HMHex)hex {
-    [self mapData][hex.row * [[self geometry] numColumns] + hex.column] += value;
+    [self mapData][[self offsetForHex:hex]] += value;
 }
 
 - (void)setValue:(float)value atHex:(HMHex)hex {
-    [self mapData][hex.row * [[self geometry] numColumns] + hex.column] = value;
+    [self mapData][[self offsetForHex:hex]] = value;
 }
 
 - (float)valueAt:(HMHex)hex {
-    return [self mapData][hex.row * [[self geometry] numColumns] + hex.column];
+    return [self mapData][[self offsetForHex:hex]];
 }
 
 - (void)dump {
     NSLog(@"Influence map:");
-    for (int row = 0; row < [[self geometry] numRows]; ++row) {
-        for (int col = 0; col < [[self geometry] numColumns]; ++col) {
-            printf("%3d ", (int)[self mapData][row * [[self geometry] numColumns] + col]);
+    for (int row = 0; row < [[[self srcMap] geometry] numRows]; ++row) {
+        for (int col = 0; col < [[[self srcMap] geometry] numColumns]; ++col) {
+            printf("%3d ", (int)[self mapData][row * [[[self srcMap] geometry] numColumns] + col]);
         }
         printf("\n");
     }

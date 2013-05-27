@@ -22,7 +22,6 @@
 - (BAAIInfluenceMap*)createInfluenceMap:(BAGame*)game {
     BRMap* map = [BRMap map];
     NSArray* bases = [map basesForSide:[self side]];
-    HMGeometry* geometry = [map geometry];
 
     BAAIInfluenceMap* imap = [BAAIInfluenceMap mapFrom:map];
 
@@ -38,21 +37,21 @@
 
                 HMHex location = [unit location];
 
-                int dist = [geometry distanceFrom:location to:hex];
+                int dist = [map distanceFrom:location to:hex];
                 if (dist > 10)
                     dist = 10;
 
-                int dir = [geometry directionFrom:location to:hex];
+                int dir = [map directionFrom:location to:hex];
 
                 float value = (float)(1 << (10 - dist));
 
                 // Plant values in each hex adjacent to the unit's location
                 for (int i = 0; i < 6; ++i) {
-                    HMHex curHex = [geometry hexAdjacentTo:location inDirection:i];
+                    HMHex curHex = [map hexAdjacentTo:location inDirection:i];
                     float curValue = value;
 
                     // Beware of moving offmap, or into CSA territory
-                    if (![geometry legal:curHex] || [map is:curHex inZone:@"csa"])
+                    if (![map legal:curHex] || [map is:curHex inZone:@"csa"])
                         continue;
 
                     // Reduce the value by half if it's not directly towards the base
@@ -60,8 +59,8 @@
                         curValue /= 2.0;
 
                         // If it's not a direction towards the base, halve it again
-                        if (i != [geometry rotateDirection:dir clockwise:YES] &&
-                            i != [geometry rotateDirection:dir clockwise:NO])
+                        if (i != [map rotateDirection:dir clockwise:YES] &&
+                            i != [map rotateDirection:dir clockwise:NO])
                             curValue /= 2.0;
                     }
 
