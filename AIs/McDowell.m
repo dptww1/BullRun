@@ -28,21 +28,19 @@
 
     NSArray* csaUnits = [[game oob] unitsForSide:OtherPlayer([self side])];
     [csaUnits enumerateObjectsUsingBlock:^(BAUnit* unit, NSUInteger idx, BOOL* stop){
-        HMHex hex = [unit location];
+        __block HMHex location = [unit location];
 
         // Is unit on map, north of river, and not on a ford?
-        if (![unit isOffMap] && [map is:hex inZone:@"usa"] && ![map is:hex inZone:@"csa"]) {
+        if (![unit isOffMap] && [map is:location inZone:@"usa"] && ![map is:location inZone:@"csa"]) {
             [bases enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                 HMHex base;
                 [obj getValue:&base];
 
-                HMHex location = [unit location];
-
-                int dist = [map distanceFrom:location to:hex];
+                int dist = [map distanceFrom:location to:base];
                 if (dist > 10)
                     dist = 10;
 
-                int dir = [map directionFrom:location to:hex];
+                int dir = [map directionFrom:location to:base];
 
                 float value = (float)(1 << (10 - dist));
 
