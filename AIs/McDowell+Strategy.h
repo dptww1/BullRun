@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "BAAIProtocol.h"
 #import "BullRun.h"
+#import "CollectionUtil.h"
 #import "McDowell.h"
 
 
@@ -32,5 +33,6 @@ enum UnitRole {
 @interface McDowell (Strategy)
 
 - (void)strategize:(BAGame*)game;
+- (CUFilter)isUsaUnitDefending;
 
 @end

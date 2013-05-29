@@ -15,3 +15,10 @@
 - (void)giveOrders:(BAGame*)game;
 
 @end
+
+@interface McDowell ()
+
+@property (nonatomic,strong) NSMutableSet* orderedThisTurn;
+
+@end
+

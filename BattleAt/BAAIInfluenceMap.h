@@ -15,10 +15,14 @@
 
 + (BAAIInfluenceMap*)mapFrom:(HMMap*)board;
 
-- (void)addValue:(float)value atHex:(HMHex)hex;
-- (void)dump;
-- (void)setValue:(float)value atHex:(HMHex)hex;
+- (HMHexAndDistance)largestValue;
 - (float)valueAt:(HMHex)hex;
+
+- (void)addValue:(float)value atHex:(HMHex)hex;
+- (void)setValue:(float)value atHex:(HMHex)hex;
+- (float)divideBy:(float)value atHex:(HMHex)hex;
 - (void)zeroOut;
+
+- (void)dump;
 
 @end

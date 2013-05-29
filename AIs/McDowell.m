@@ -8,6 +8,7 @@
 
 #import "McDowell.h"
 #import "McDowell+Strategy.h"
+#import "McDowell+Tactics.h"
 #import "BAAIInfluenceMap.h"
 #import "BAGame.h"
 #import "BAUnit.h"
@@ -84,6 +85,8 @@
     if (self) {
         _side = USA;
 
+        _orderedThisTurn = [NSMutableSet set];
+
         _unitRoles = [NSMutableDictionary dictionary];
         [_unitRoles setObject:[NSNumber numberWithInt:ROLE_DEFEND] forKey:@"Blenker"];
         [_unitRoles setObject:[NSNumber numberWithInt:ROLE_FLANK]  forKey:@"Burnside"];
@@ -107,8 +110,14 @@
 
 - (void)giveOrders:(BAGame*)game {
     [self strategize:game];
+
     BAAIInfluenceMap* imap = [self createInfluenceMap:game];
     [imap dump];
+
+    [[self orderedThisTurn] removeAllObjects];
+
+    while ([self assignDefender:imap])
+        ;
 }
 
 @end
