@@ -52,6 +52,12 @@
 @implementation McDowell (Tactics)
 
 - (BOOL)assignAttacker {
+    // Find USA unit marked as attacker, not shattered, not offmap
+
+    // If in CSA zone, move to nearest base
+
+    // else north of river -- move to attack ford
+
     return NO;
 }
 
@@ -94,10 +100,16 @@
 }
 
 - (BOOL)assignFlanker {
+    // Find USA unit marked as attacker, not shattered, not offmap
+
+    // If in CSA zone, move to nearest base
+
+    // else north of river -- move to flank ford
+
     return NO;
 }
 
-- (BOOL)reRoute {
+- (BOOL)reRoute {  // TODO: might not need this if we make assignXXX methods smarter
     return NO;
 }
 
