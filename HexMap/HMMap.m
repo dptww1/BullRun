@@ -12,6 +12,7 @@
 #import "HMHex.h"
 #import "HMMapZone.h"
 #import "HMTerrainEffect.h"
+#import "NSValue+HMHex.h"
 #import "SysUtil.h"
 
 
@@ -333,7 +334,7 @@
             for (int col = 0; col < [geometry numColumns]; ++col) {
                 HMHex hex = HMHexMake(col, row);
                 if ([self legal:hex] && [self rawDataAt:hex] & bitMask) {
-                    [list addObject:[NSValue value:&hex withObjCType:@encode(HMHex)]];
+                    [list addObject:[NSValue valueWithHex:hex]];
                 }
             }
         }

@@ -8,6 +8,7 @@
 
 #import "BAGame.h"
 #import "BRMap.h"
+#import "NSValue+HMHex.h"
 
 @implementation BRMap
 
@@ -59,7 +60,7 @@
         [obj getValue:&townHex];
 
         if (![self isEnemy:townHex of:side])
-            [bases addObject:[NSValue value:&townHex withObjCType:@encode(HMHex)]];
+            [bases addObject:[NSValue valueWithHex:townHex]];
      }];
 
     return bases;
