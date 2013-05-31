@@ -42,6 +42,17 @@
     return board;
 }
 
+- (HMMap*)initWithGeometry:(HMGeometry *)geometry {
+    self = [super init];
+
+    if (self) {
+        _geometry = geometry;
+        // other fields are nil, which is why this method is really only
+        // suitable for unit testing....
+    }
+    return self;
+}
+
 #pragma mark - Coding Implementation
 
 - (void)encodeWithCoder:(NSCoder *)coder {

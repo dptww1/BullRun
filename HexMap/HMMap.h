@@ -22,6 +22,9 @@
 
 + (HMMap*)createFromFile:(NSString*)filename;
 
+// for unit tests only!
+- (HMMap*)initWithGeometry:(HMGeometry*)geometry;
+
 - (BOOL)saveToFile:(NSString*)filename;
 - (float)mpCostOf:(HMHex)hex for:(BAUnit*)unit;    // TODO: no BA allowed in HM!
 - (BOOL)is:(HMHex)hex inSameZoneAs:(HMHex)other;
