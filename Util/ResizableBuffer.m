@@ -115,6 +115,8 @@
     }
     
     self.count -= 1;
+
+    free(copy);
 }
 
 @end
