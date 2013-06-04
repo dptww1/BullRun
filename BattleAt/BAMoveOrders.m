@@ -6,9 +6,9 @@
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
+#import "DPTResizableBuffer.h"
 #import "HMHex.h"
 #import "BAMoveOrders.h"
-#import "ResizableBuffer.h"
 
 @implementation BAMoveOrders
 
@@ -16,7 +16,7 @@
     self = [super init];
     
     if (self) {
-        _list = [ResizableBuffer bufferWithCapacity:20 ofObjectSize:sizeof(HMHex)];
+        _list = [DPTResizableBuffer bufferWithCapacity:20 ofObjectSize:sizeof(HMHex)];
     }
     
     return self;

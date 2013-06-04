@@ -12,8 +12,8 @@
 #import "BAAGunfire.h"
 #import "BAGame.h"
 #import "BAUnit.h"
+#import "DPTSysUtil.h"
 #import "HMCoordinateTransformer.h"
-#import "SysUtil.h"
 #import "UnitView.h"
 
 static CGPoint shiftPoint(CGPoint pt, float dx, float dy) { // TODO: move to global location

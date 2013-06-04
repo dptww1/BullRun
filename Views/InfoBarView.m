@@ -10,8 +10,8 @@
 #import <UIKit/UIKit.h>
 #import "BAGame.h"
 #import "BAUnit.h"
+#import "DPTSysUtil.h"
 #import "InfoBarView.h"
-#import "SysUtil.h"
 
 #define NUM_ELTS(ARRAY_NAME) (sizeof(ARRAY_NAME) / sizeof(ARRAY_NAME[0]))
 

@@ -7,7 +7,6 @@
 //
 
 #import "HMMapZone.h"
-#import "ResizableBuffer.h"
 
 #define DEFAULT_BUFFER_CAPACITY  2 // this many ranges per column by default; I suspect a single range is most common
 

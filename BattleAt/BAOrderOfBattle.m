@@ -10,9 +10,9 @@
 #import "BAOrderOfBattle.h"
 #import "BAReinforcementInfo.h"
 #import "BAUnit.h"
-#import "CollectionUtil.h"
+#import "DPTSysUtil.h"
 #import "HMHex.h"
-#import "SysUtil.h"
+#import "NSArray+DPTUtil.h"
 
 @implementation BAOrderOfBattle
 
@@ -41,7 +41,7 @@
 }
 
 - (BOOL)saveToFile:(NSString *)filename {
-    NSString* path = [[SysUtil applicationFileDir] stringByAppendingPathComponent:filename];
+    NSString* path = [[DPTSysUtil applicationFileDir] stringByAppendingPathComponent:filename];
 
     //    NSMutableDictionary* oob = [NSMutableDictionary dictionary];
     //    [oob setObject:units forKey:@"units"];
@@ -57,13 +57,13 @@
 
 - (BAUnit*)unitByName:(NSString*)name {
     return (BAUnit*)
-        [self.units find:^BOOL(BAUnit* u) {
+        [self.units dpt_find:^BOOL(BAUnit* u) {
                              return [[u name] isEqualToString:name];
                          }];
 }
 
 - (NSArray*)unitsForSide:(PlayerSide)side {
-    return [self.units grep:^BOOL(BAUnit* u) { return [u side] == side; }];
+    return [self.units dpt_grep:^BOOL(BAUnit* u) { return [u side] == side; }];
 }
 
 - (void)addReinforcementInfo:(BAReinforcementInfo*)reinforcementInfo {

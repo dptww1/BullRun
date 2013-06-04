@@ -11,9 +11,9 @@
 #import "BAGame.h"
 #import "BAUnit.h"
 #import "BRMap.h"
-#import "CollectionUtil.h"
 #import "HMGeometry.h"
 #import "HMHex.h"
+#import "NSArray+DPTUtil.h"
 
 #define DO_SANITY_CHECK 1
 
@@ -37,7 +37,7 @@
 }
 #endif
 
-- (CUFilter)isCsaUnitAttacking {
+- (DPTUtilFilter)isCsaUnitAttacking {
     return ^BOOL(BAUnit* unit) {
         HMHex hex = [unit location];
         return [unit sighted]
@@ -49,10 +49,10 @@
 
 - (int)countCsaAttacking:(BAGame*)game {
     NSArray* units = [[game oob] unitsForSide:OtherPlayer([self side])];
-    return [[units grep:[self isCsaUnitAttacking]] count];
+    return [[units dpt_grep:[self isCsaUnitAttacking]] count];
 }
 
-- (CUFilter)isUsaUnitDefending {
+- (DPTUtilFilter)isUsaUnitDefending {
     return ^BOOL(BAUnit* unit) {
         NSNumber* role = [[self unitRoles] objectForKey:[unit name]];
         return role
@@ -63,7 +63,7 @@
 
 - (int)countUsaDefending:(BAGame*)game {
     return [[[[game oob] unitsForSide:[self side]]
-             grep:[self isUsaUnitDefending]] count];
+             dpt_grep:[self isUsaUnitDefending]] count];
 }
 
 - (void)changeOneDefenderToAttacker {

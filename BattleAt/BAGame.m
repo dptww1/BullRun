@@ -15,9 +15,9 @@
 #import "BAUnit.h"
 #import "BRAppDelegate.h"
 #import "BullRun.h"
-#import "CollectionUtil.h"
 #import "HMHex.h"
 #import "HMMap.h"
+#import "NSArray+DPTUtil.h"
 
 
 BAGame* game; // the global game instance

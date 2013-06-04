@@ -9,13 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "HMHex.h"
 
-@class ResizableBuffer;
+@class DPTResizableBuffer;
 
 // Tracks the list of hexes that a unit has been given orders to move to.
 
 @interface BAMoveOrders : NSObject <NSCopying>
 
-@property (nonatomic, strong) ResizableBuffer* list;
+@property (nonatomic, strong) DPTResizableBuffer* list;
 
 // Designated initializer.
 - (id)init;

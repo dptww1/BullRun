@@ -21,7 +21,6 @@
 #import "InfoBarView.h"
 #import "MapView.h"
 #import "MapViewController.h"
-#import "SysUtil.h"
 #import "UnitView.h"
 
 #pragma mark - Private Methods

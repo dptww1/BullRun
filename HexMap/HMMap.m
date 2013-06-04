@@ -6,14 +6,14 @@
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
-#import "CollectionUtil.h"
+#import "DPTSysUtil.h"
 #import "HMMap.h"
 #import "HMGeometry.h"
 #import "HMHex.h"
 #import "HMMapZone.h"
 #import "HMTerrainEffect.h"
+#import "NSArray+DPTUtil.h"
 #import "NSValue+HMHex.h"
-#import "SysUtil.h"
 
 
 // Default capacity for findHexesOfType:
@@ -271,7 +271,7 @@
 }
 
 - (BOOL)saveToFile:(NSString *)filename {
-    NSString* path = [[SysUtil applicationFileDir] stringByAppendingPathComponent:filename];
+    NSString* path = [[DPTSysUtil applicationFileDir] stringByAppendingPathComponent:filename];
     
     BOOL success = [NSKeyedArchiver archiveRootObject:self toFile:path];
     
@@ -327,7 +327,7 @@
 - (HMTerrainEffect*)findTerrainByName:(NSString *)name {
     return (HMTerrainEffect*)
            [[self terrainEffects]
-            find:^BOOL(HMTerrainEffect* o) {
+            dpt_find:^BOOL(HMTerrainEffect* o) {
                 return [[o name] isEqualToString:name];
             }];
 }

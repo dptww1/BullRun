@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "HMHex.h"
-#import "ResizableBuffer.h"
 
 @interface HMMapZone : NSObject <NSCoding>
 
