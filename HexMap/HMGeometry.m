@@ -15,10 +15,10 @@
 - (id)initWithLongGrain:(BOOL)longGrain firstColumnIsLong:(BOOL)firstColumnIsLong numRows:(int)rows numColumns:(int)columns {
     self = [super init];
     if (self) {
-        [self setIsLongGrain:longGrain];
-        [self setFirstColumnIsLong:firstColumnIsLong];
-        [self setNumRows:rows];
-        [self setNumColumns:columns];
+        _isLongGrain       = longGrain;
+        _firstColumnIsLong = firstColumnIsLong;
+        _numRows           = rows;
+        _numColumns        = columns;
     }
     return self;
 }

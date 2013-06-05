@@ -17,18 +17,25 @@
 
 
 // Default capacity for findHexesOfType:
-#define DEFAULT_CAPACITY 12
+static const int DEFAULT_CAPACITY = 12;
 
 
-@implementation HMMap (Private)
+//==============================================================================
+@interface HMMap ()
 
-- (int)rawDataAt:(HMHex)hex {
-    return [self mapData][(hex.row * [[self geometry] numColumns]) + hex.column];
-}
+@property (nonatomic)        int*          mapData;
+@property (nonatomic,strong) NSArray*      terrainEffects;
+@property (nonatomic,strong) NSDictionary* zones;
 
 @end
 
+
+//==============================================================================
 @implementation HMMap
+
+- (int)rawDataAt:(HMHex)hex {
+    return _mapData[(hex.row * [_geometry numColumns]) + hex.column];
+}
 
 // Variable is read-only; this is declared here but not in header to keep it private(ish).
 - (void)setTerrainEffects:(NSArray*)a {
@@ -85,7 +92,7 @@
 #pragma mark - Private Utilities
 
 - (BOOL)columnIsLong:(int)column {
-    return ((column & 1) == 0) == [[self geometry] firstColumnIsLong];
+    return ((column & 1) == 0) == [_geometry firstColumnIsLong];
 }
 
 #pragma mark - Behaviors
@@ -94,11 +101,11 @@
     if (hex.row < 0 || hex.column < 0)
         return NO;
 
-    if (hex.column >= [[self geometry] numColumns])
+    if (hex.column >= [_geometry numColumns])
         return NO;
 
     // Remember that there's an extra hex in either the even or the odd columns
-    int computedNumRows = [[self geometry] numRows];
+    int computedNumRows = [_geometry numRows];
 
     if ([self columnIsLong:hex.column])
         computedNumRows += 1;
@@ -117,10 +124,10 @@
     double toCol   = to.column;
 
     // Offset odd columns
-    if ((from.column & 1) && ![[self geometry] firstColumnIsLong])
+    if ((from.column & 1) && ![_geometry firstColumnIsLong])
         fromRow -= 0.5;
 
-    if ((to.column & 1) && ![[self geometry] firstColumnIsLong])
+    if ((to.column & 1) && ![_geometry firstColumnIsLong])
         toRow -= 0.5;
 
     // The center of each hex side is at a 60 degree angle from its neighbors.
@@ -216,7 +223,7 @@
 }
 
 - (int)numCells {
-    return ([[self geometry] numRows] + 1) * [[self geometry] numColumns];
+    return ([_geometry numRows] + 1) * [_geometry numColumns];
 }
 
 - (int)rotateDirection:(int)dir clockwise:(BOOL)cw {
@@ -304,7 +311,7 @@
 }
 
 - (BOOL)is:(HMHex)hex inSameZoneAs:(HMHex)other {
-    for (NSString* zname in [self.zones keyEnumerator]) {
+    for (NSString* zname in [_zones keyEnumerator]) {
         if ([self is:hex inZone:zname] && [self is:other inZone:zname])
             return YES;
     }
@@ -313,7 +320,7 @@
 }
 
 - (BOOL)is:(HMHex)hex inZone:(NSString*)zoneName {
-    HMMapZone* zone = [self.zones objectForKey:zoneName];
+    HMMapZone* zone = [_zones objectForKey:zoneName];
     if (!zone)
         return NO;
     
@@ -326,23 +333,21 @@
 
 - (HMTerrainEffect*)findTerrainByName:(NSString *)name {
     return (HMTerrainEffect*)
-           [[self terrainEffects]
-            dpt_find:^BOOL(HMTerrainEffect* o) {
-                return [[o name] isEqualToString:name];
-            }];
+           [_terrainEffects dpt_find:^BOOL(HMTerrainEffect* o) {
+               return [[o name] isEqualToString:name];
+           }];
 }
 
 - (NSArray*)findHexesOfType:(NSString *)terrainName {
     NSMutableArray* list = [NSMutableArray arrayWithCapacity:DEFAULT_CAPACITY];
 
     HMTerrainEffect* fx = [self findTerrainByName:terrainName];
-    HMGeometry* geometry = [self geometry];
 
     if (fx) {
         int bitMask = 1 << [fx bitNum];
 
-        for (int row = 0; row < [geometry numRows] + 1; ++row) {
-            for (int col = 0; col < [geometry numColumns]; ++col) {
+        for (int row = 0; row < [_geometry numRows] + 1; ++row) {
+            for (int col = 0; col < [_geometry numColumns]; ++col) {
                 HMHex hex = HMHexMake(col, row);
                 if ([self legal:hex] && [self rawDataAt:hex] & bitMask) {
                     [list addObject:[NSValue valueWithHex:hex]];

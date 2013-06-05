@@ -10,6 +10,7 @@
 #import "HMGeometry.h"
 
 
+//==============================================================================
 @implementation HMCoordinateTransformer (Private)
 
 - (CGPoint)offsetFromOrigin:(CGPoint)p {
@@ -18,6 +19,8 @@
 
 @end
 
+
+//==============================================================================
 @implementation HMCoordinateTransformer
 
 - (id)initWithMap:(HMMap*)map origin:(CGPoint)origin hexSize:(CGSize)hexSize {
@@ -32,8 +35,8 @@
 
 - (CGPoint)hexCenterToScreen:(HMHex)h {
     CGPoint pt = [self hexToScreen:h];
-    pt.x += [self hexSize].width  / 2;
-    pt.y += [self hexSize].height / 2;
+    pt.x += _hexSize.width  / 2;
+    pt.y += _hexSize.height / 2;
     return pt;
 }
 
@@ -54,16 +57,14 @@
 - (HMHex)screenToHex:(CGPoint)point {
     CGPoint p = [self offsetFromOrigin:point];
     
-    // Hardwired for Bull Run's geometry for now.... :^(
-    
-    int col = p.x / [self hexSize].width;
+    int col = p.x / _hexSize.width;
     
     // The second, fourth, etc. columns are skewed by half a hex relative to their first, third, fifth, etc.
     // column siblings.  So we have to offset the passed-in y-coordinate accordingly to find the corresponding hex.
     if (col & 1) {
-        int halfHexOffset = [self hexSize].height / 2.0;
+        int halfHexOffset = _hexSize.height / 2.0;
         
-        if ([[[self map] geometry] firstColumnIsLong]) // then the second column is short
+        if ([[_map geometry] firstColumnIsLong]) // then the second column is short
             p.y -= halfHexOffset;
         
         else // the first column is short
@@ -76,7 +77,7 @@
     int row = p.y / [self hexSize].height;
     
     HMHex h = HMHexMake(col, row);
-    return [[self map] legal:h] ? h : HMHexMake(-1, -1);
+    return [_map legal:h] ? h : HMHexMake(-1, -1);
 }
 
 @end

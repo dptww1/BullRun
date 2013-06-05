@@ -25,7 +25,7 @@
  * </ul>
  *
  * <p>Here's a typical hexmap:
- * <tt>
+ * @code
  *    __    __    __
  *   /  \__/  \__/  \
  *   \__/  \__/  \__/
@@ -35,27 +35,43 @@
  *   \__/  \__/  \__/
  *   /  \__/  \__/  \
  *   \__/  \__/  \__/
- * </tt>
+ * @endcode
  *
  * <p>In terms of the initialization arguments, this would be
  * <ol>
- * <li><tt>isLongGrain</tt> is <tt>FALSE</tt>, because this is a short-grain map (sides face the top, not vertices)
- * <li><tt>firstColumnIsLong</tt> is <tt>TRUE</tt>, because the first column has one more hex than the second column
- * <li><tt>numRows</tt> is 3; the extra hex caused by the grain in the first, third, and fifth columns is ignored
+ * <li><tt>isLongGrain</tt> is <tt>FALSE</tt>, because this is a short-grain map
+ *     (sides face the top, not vertices)
+ * <li><tt>firstColumnIsLong</tt> is <tt>TRUE</tt>, because the first column has
+ *     one more hex than the second column
+ * <li><tt>numRows</tt> is 3; the extra hex caused by the grain in the first, 
+ *     third, and fifth columns is ignored
  * <li><tt>numColumns</tt> is 5
  * </ol>
+ *
+ * Hexes within the hexmap are always zero-indexed, so (0,0) is the upper left 
+ * corner.
  */
 @interface HMGeometry : NSObject <NSCoding>
 
-@property (nonatomic) BOOL isLongGrain;
-@property (nonatomic) BOOL firstColumnIsLong;
-@property (nonatomic) int  numRows;
-@property (nonatomic) int  numColumns;
+@property (nonatomic,readonly) BOOL isLongGrain;
+@property (nonatomic,readonly) BOOL firstColumnIsLong;
+@property (nonatomic,readonly) int  numRows;
+@property (nonatomic,readonly) int  numColumns;
 
 /**
  * Designated initializer.
+ *
+ * @param longGrain the grainedness of the hex map
+ * @param firstColumnIsLong `YES` if the first (third, fifth...) column is long,
+ *                          `NO` if the second (fourth, sixth...) column is long
+ * @param rows the number of rows in all columns; the "long" columns will
+ *             have an extra row
+ * @param columns the number of columns in the map
  */
-- (id)initWithLongGrain:(BOOL)longGrain firstColumnIsLong:(BOOL)firstColumnIsLong numRows:(int)rows numColumns:(int)columns;
+- (id)initWithLongGrain:(BOOL)longGrain
+      firstColumnIsLong:(BOOL)firstColumnIsLong
+                numRows:(int)rows
+             numColumns:(int)columns;
 
 
 @end

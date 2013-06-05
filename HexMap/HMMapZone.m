@@ -8,16 +8,20 @@
 
 #import "HMMapZone.h"
 
-#define DEFAULT_BUFFER_CAPACITY  2 // this many ranges per column by default; I suspect a single range is most common
+// # default ranges per column I suspect a single range is most common case
+static const int DEFAULT_BUFFER_CAPACITY = 2;
 
-@implementation HMMapZone (Private)
 
-- (NSMutableDictionary*)mutableDictionary {
-    return (NSMutableDictionary*)[self columns];
-}
+//==============================================================================
+@interface HMMapZone ()
+
+// Keys:Column Numbers (as NSNumber)  Values: NSArray of NSRanges
+@property (nonatomic,strong) NSMutableDictionary* columns;
 
 @end
 
+
+//==============================================================================
 @implementation HMMapZone
 
 #pragma mark - Initialization
@@ -57,10 +61,10 @@
     
     if (!columnData) {
         columnData = [NSMutableArray array];
-        [[self mutableDictionary] setObject:columnData forKey:colKey];
+        [_columns setObject:columnData forKey:colKey];
     }
     
-    [(NSMutableArray*)columnData addObject:[NSValue valueWithRange:range]];
+    [columnData addObject:[NSValue valueWithRange:range]];
 }
 
 

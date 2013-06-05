@@ -26,17 +26,13 @@
 
 #pragma mark - NSCoding
 
-// int bitNum
-// NSString name
-// float mpCost
-
-- (void)encodeWithCoder:(NSCoder *)aCoder {
+- (void)encodeWithCoder:(NSCoder*)aCoder {
     [aCoder encodeInt:   [self bitNum] forKey:@"bitNum"];
     [aCoder encodeObject:[self name]   forKey:@"name"];
     [aCoder encodeFloat: [self mpCost] forKey:@"mpCost"];
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder {
+- (id)initWithCoder:(NSCoder*)aDecoder {
     self = [super init];
     
     if (self) {

@@ -8,12 +8,23 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ * Collects the information related to a single type of terrain.
+ */
 @interface HMTerrainEffect : NSObject <NSCoding>
 
-@property (nonatomic)         int       bitNum; // 0-31
-@property (strong, nonatomic) NSString* name;   // "Clear", "Forest", etc.
-@property (nonatomic)         float     mpCost;
+/** The bit number (0-31) used by this terrain type in the map data. */
+@property (nonatomic,assign) int bitNum;
 
+/** The name of this terrain type: "Clear", "Forest", etc. */
+@property (nonatomic,strong) NSString* name;
+
+/** The number of movement points required to enter a hex of this type. */
+@property (nonatomic,assign) float mpCost;
+
+/**
+ * Designated initializer.
+ */
 - (id)initWithBitNum:(int)bitNum name:(NSString*)name mpCost:(float)cost;
 
 @end
