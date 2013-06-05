@@ -16,7 +16,7 @@ static NSMutableDictionary* unitViewMap = nil;
 
 #pragma mark - Class Methods
 
-+ (UnitView*)createForUnit:(BAUnit*)unit {
++ (UnitView*)viewForUnit:(BAUnit*)unit {
     if (!unitViewMap)
         unitViewMap = [NSMutableDictionary dictionary];
     

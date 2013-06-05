@@ -53,9 +53,16 @@
  */
 @interface HMGeometry : NSObject <NSCoding>
 
+/** `YES` if this is a long grain map, `NO` if it's short-grain. */
 @property (nonatomic,readonly) BOOL isLongGrain;
+
+/** `YES` if the first column is long, `NO` if the second column is long. */
 @property (nonatomic,readonly) BOOL firstColumnIsLong;
+
+/** Number of rows in the map, not including the extra row in long columns. */
 @property (nonatomic,readonly) int  numRows;
+
+/** Number of columns in the map. */
 @property (nonatomic,readonly) int  numColumns;
 
 /**

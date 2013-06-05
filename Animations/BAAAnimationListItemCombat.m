@@ -63,7 +63,7 @@ static CGPoint shiftPoint(CGPoint pt, float dx, float dy) { // TODO: move to glo
                                                        to:[self retreatHex]
                                                usingXform:xformer];
 
-        UnitView* dv = [UnitView createForUnit:[self defender]];
+        UnitView* dv = [UnitView viewForUnit:[self defender]];
         [dv setPosition:[xformer hexCenterToScreen:[self retreatHex]]];
         [dv addAnimation:dAnim forKey:@"position"];
 
@@ -73,7 +73,7 @@ static CGPoint shiftPoint(CGPoint pt, float dx, float dy) { // TODO: move to glo
                                                            to:[self defenderHex]
                                                    usingXform:xformer];
 
-            UnitView* av = [UnitView createForUnit:[self attacker]];
+            UnitView* av = [UnitView viewForUnit:[self attacker]];
             [av setPosition:[xformer hexCenterToScreen:[self defenderHex]]];
             [av addAnimation:aAnim forKey:@"position"];
         }
@@ -141,7 +141,7 @@ static CGPoint shiftPoint(CGPoint pt, float dx, float dy) { // TODO: move to glo
     [anim setKeyTimes:@[ @0.0f, @0.2f, @0.6f, @0.8f, @1.0f ]];
     [anim setDuration:SECONDS_PER_HEX_MOVE];
 
-    UnitView* v = [UnitView createForUnit:[self attacker]];
+    UnitView* v = [UnitView viewForUnit:[self attacker]];
     [v addAnimation:anim forKey:[[self attacker] name]];
 
     [CATransaction commit];

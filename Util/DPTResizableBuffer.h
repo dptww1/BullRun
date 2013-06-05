@@ -39,7 +39,7 @@
  * Convenience class initializer.
  *
  * @param capacity the # of items which the buffer can hold without resizing
- * @objSize the size of items to be stored in the buffer
+ * @param objSize the size of items to be stored in the buffer
  *
  * @return an empty buffer
  */
@@ -49,7 +49,7 @@
  * Designated initializer.
  *
  * @param capacity the # of items which the buffer can hold without resizing
- * @objSize the size of items to be stored in the buffer
+ * @param objSize the size of items to be stored in the buffer
  *
  * @return an empty buffer
  */
@@ -72,7 +72,7 @@
  * responsibility to ensure that the object is the same size as passed to
  * the designated initializer.
  *
- * @param the object to copy into the buffer
+ * @param object the object to copy into the buffer
  */
 - (void)add:(void*)object;
 

@@ -145,18 +145,15 @@
     [super viewDidLoad];
     
     for (BAUnit* unit in [[game oob] units]) {
-        UnitView* v = [UnitView createForUnit:unit];
+        UnitView* v = [UnitView viewForUnit:unit];
         if (![v superlayer]) {
             [v setOpacity:0.0f];
             [[[self view] layer] addSublayer:v];
         }
     }
     
-    if (!self.animationInfo)
-        [self setAnimationInfo:[NSMutableDictionary dictionary]];
-
-    if (!self.animationList)
-        [self setAnimationList:[BAAAnimationList listWithCoordXFormer:[self coordXformer]]];
+    if (!_animationList)
+        [self setAnimationList:[BAAAnimationList listWithCoordXFormer:_coordXformer]];
     
     if (!_moveOrderLayer) {
         CGRect bounds = [[self view] bounds];
@@ -225,7 +222,7 @@
                           [[game board] terrainAt:hex] ? [[[game board] terrainAt:hex] mpCost] : 0);
 
                 _currentUnit = [game unitInHex:hex];
-                [[self infoBarView] showInfoForUnit:_currentUnit];
+                [_infoBarView showInfoForUnit:_currentUnit];
                 [_moveOrderLayer setNeedsDisplay];
                 _givingNewOrders = NO;
             } else {
@@ -297,7 +294,7 @@
                     
             } else { // it's a new hex
 
-                [self addOrdersFor:[self currentUnit] movingTo:h];
+                [self addOrdersFor:_currentUnit movingTo:h];
             }
 
             [_moveOrderLayer setNeedsDisplay];
@@ -323,7 +320,7 @@
 - (void)unitNowHidden:(BAUnit*)unit {
     DEBUG_SIGHTING(@"MapViewController#unitNowHidden:%@, viewLoaded=%d", [unit name], [self isViewLoaded]);
     
-    CALayer* unitLayer = [UnitView createForUnit:unit];
+    CALayer* unitLayer = [UnitView viewForUnit:unit];
 
     [unitLayer setOpacity:0.0f];
     
@@ -333,12 +330,12 @@
 - (void)unitNowSighted:(BAUnit*)unit {
     DEBUG_SIGHTING(@"MapViewController#unitNowSighted:%@, viewLoaded=%d", [unit name], [self isViewLoaded]);
     
-    CALayer* unitLayer = [UnitView createForUnit:unit];
+    CALayer* unitLayer = [UnitView viewForUnit:unit];
     
     // Layer might be out of position because didn't begin on map, but disable animations
     [CATransaction begin];
     [CATransaction setDisableActions:YES];
-    [unitLayer setPosition:[[self coordXformer] hexCenterToScreen:[unit location]]];
+    [unitLayer setPosition:[_coordXformer hexCenterToScreen:[unit location]]];
     [CATransaction commit];
 
     // But animate the opacity
@@ -349,21 +346,21 @@
 
 - (void)moveUnit:(BAUnit*)unit to:(HMHex)hex {
     DEBUG_MOVEMENT(@"Moving %@ to %02d%02d", [unit name], hex.column, hex.row);
-    [[self animationList] addItem:[BAAAnimationListItemMove itemMoving:unit toHex:hex]];
+    [_animationList addItem:[BAAAnimationListItemMove itemMoving:unit toHex:hex]];
 }
 
 - (void)movePhaseWillBegin {
-    [[self animationList] reset];
+    [_animationList reset];
 }
 
 - (void)movePhaseDidEnd {
-    [[self animationList] run:^{
-        [[self infoBarView] updateCurrentTimeForTurn:[game turn]];
-     }];
+    [_animationList run:^{
+        [_infoBarView updateCurrentTimeForTurn:[game turn]];
+    }];
 }
 
 - (void)showAttack:(BABattleReport *)report {
-    [[self animationList]
+    [_animationList
      addItem:[BAAAnimationListItemCombat itemWithAttacker:[report attacker]
                                                  defender:[report defender]
                                                 retreatTo:[report retreatHex]

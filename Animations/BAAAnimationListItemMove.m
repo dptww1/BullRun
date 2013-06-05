@@ -31,7 +31,7 @@
     DEBUG_ANIMATION(@"running animation %@", self);
 
     HMCoordinateTransformer* xformer = [list xformer];
-    UnitView* v = [UnitView createForUnit:[self actor]];
+    UnitView* v = [UnitView viewForUnit:[self actor]];
     CGPoint endPoint = [xformer hexCenterToScreen:[self endHex]];
 
     [CATransaction begin];
