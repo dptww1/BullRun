@@ -7,12 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "HMHex.h"
 
-@class Unit;
-
+/** The Bull Run-specific application delegate. */
 @interface BRAppDelegate : UIResponder <UIApplicationDelegate>
 
+/** The application window. */
 @property (strong, nonatomic) UIWindow *window;
 
 @end

@@ -12,6 +12,17 @@
 #import "BAGame.h"
 #import "BullRun.h"
 
+//==============================================================================
+@interface BAAAnimationList ()
+
+@property (nonatomic, strong) NSMutableArray* items;
+@property (nonatomic, assign) int             nextItemIdx;
+@property (nonatomic, copy)   void            (^completionBlock)(void);
+@property (nonatomic, weak, readwrite)        HMCoordinateTransformer* xformer;
+
+@end
+
+//==============================================================================
 @implementation BAAAnimationList
 
 + (BAAAnimationList*) listWithCoordXFormer:(HMCoordinateTransformer *)xformer {

@@ -13,6 +13,16 @@
 #import "HMCoordinateTransformer.h"
 #import "UnitView.h"
 
+//==============================================================================
+@interface BAAAnimationListItemMove ()
+
+@property (nonatomic, strong) BAUnit*                  actor;
+@property (nonatomic)         HMHex                    startHex;
+@property (nonatomic)         HMHex                    endHex;
+
+@end
+
+//==============================================================================
 @implementation BAAAnimationListItemMove
 
 + (id)itemMoving:(BAUnit*)unit toHex:(HMHex)hex {

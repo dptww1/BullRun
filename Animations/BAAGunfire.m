@@ -9,6 +9,12 @@
 #import "BAAGunfire.h"
 #import "UnitView.h"
 
+@interface BAAGunfire ()
+
+@property (nonatomic, strong) CAEmitterLayer* gun;
+
+@end
+
 @implementation BAAGunfire (Private)
 
 + (NSArray*)createEmittersWithAzimuth:(float)azimuth {
@@ -38,8 +44,8 @@
     self = [super init];
 
     if (self) {
-
         _gun = [CAEmitterLayer layer];
+
         [_gun setEmitterPosition:CGPointMake(25.0f, 25.0f)]; // TODO: base on UnitView
         [_gun setEmitterSize:CGSizeMake(30.0f, 30.0f)]; // TODO: base on UnitView
         [_gun setEmitterCells:[BAAGunfire createEmittersWithAzimuth:azimuth]];
@@ -53,8 +59,8 @@
 }
 
 - (void)stop {
-    [[self gun] setBirthRate:0.0f];
-    [[self gun] removeFromSuperlayer];
+    [_gun setBirthRate:0.0f];
+    [_gun removeFromSuperlayer];
 }
 
 @end

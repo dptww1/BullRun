@@ -8,6 +8,9 @@
 
 #import "BAGame.h"
 
+/**
+ * Bull Run-specific game class, for overriding `BAGame` methods.
+ */
 @interface BRGame : BAGame
 
 @end

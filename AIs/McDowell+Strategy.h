@@ -20,19 +20,31 @@ enum UnitRole {
 };
 
 
+/**
+ * McDowell's private properties.
+ */
 @interface McDowell ()
 
+/** The USA game side. */
 @property (nonatomic) PlayerSide side;
 
-// key: (NSString)unitName  value: UnitRole enum value
+/** 
+ * The strategic role assigned to each USA unit.
+ * key: (NSString)unitName  
+ * value: UnitRole enum value
+ */
 @property (nonatomic, strong) NSMutableDictionary* unitRoles;
 
 @end
 
 
+/** USA AI Strategic thinking. */
 @interface McDowell (Strategy)
 
+/** BAAIProtocol implementation. */
 - (void)strategize:(BAGame*)game;
+
+/** BAAIProtocol implementation. */
 - (DPTUtilFilter)isUsaUnitDefending;
 
 @end

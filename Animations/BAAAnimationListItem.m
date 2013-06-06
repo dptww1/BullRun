@@ -10,6 +10,8 @@
 #import "BAUnit.h"
 #import "HMCoordinateTransformer.h"
 
+float SECONDS_PER_HEX_MOVE = 0.75f;
+
 @implementation BAAAnimationListItem
 
 - (CAAnimation*)createMoveAnimationFor:(BAUnit*)unit
@@ -21,6 +23,10 @@
     [anim setFromValue:[NSValue valueWithCGPoint:[xform hexCenterToScreen:startHex]]];
     [anim setToValue:[NSValue valueWithCGPoint:[xform hexCenterToScreen:endHex]]];
     return anim;
+}
+
+- (void)runWithParent:(BAAAnimationList*)list {
+    // does nothing by default
 }
 
 @end

@@ -10,11 +10,33 @@
 
 @class BAAIInfluenceMap;
 
+/** USA AI tactical thinking. */
 @interface McDowell (Tactics)
 
+/**
+ * Assigns an attacker to the "attack" ford target, then a CSA base.
+ *
+ * @return `YES` if a unit was assigned, `NO` if no unit was assigned
+ */
 - (BOOL)assignAttacker;
+
+/**
+ * Assigns a defender to counter a CSA attack across the river.
+ *
+ * @param imap a filled-in influence map
+ *
+ * @return `YES` if a unit was assigned, `NO` if no unit was assigned
+ */
 - (BOOL)assignDefender:(BAAIInfluenceMap*)imap;
+
+/**
+ * Assigns a flanker to the "flank" ford target, then a CSA base.
+ *
+ * @return `YES` if a unit was assigned, `NO` if no unit was assigned
+ */
 - (BOOL)assignFlanker;
+
+/** Placeholder. Probably obsolete. */
 - (BOOL)reRoute;
 
 @end

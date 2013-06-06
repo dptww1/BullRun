@@ -25,13 +25,13 @@ static MapViewController* mvController;
     UINavigationController* navController = [[UINavigationController alloc] initWithRootViewController:mvController];
     [navController setNavigationBarHidden:YES];
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
-    [[self window] setRootViewController:navController];
+    [_window setRootViewController:navController];
 
     [game addObserver:mvController];
     
-    [game doSighting:CSA];
+    [game doSighting:CSA]; // TODO: get rid of this once game setup works
 
-    [self.window makeKeyAndVisible];
+    [_window makeKeyAndVisible];
 
     return YES;
 }

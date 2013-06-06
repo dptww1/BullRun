@@ -13,14 +13,20 @@
 @class BAUnit;
 @class BAAAnimationList;
 
+/**
+ * Animation item showing a unit moving from its current location
+ * to a new hex.
+ */
 @interface BAAAnimationListItemMove : BAAAnimationListItem
 
-@property (nonatomic, strong) BAUnit*                  actor;
-@property (nonatomic)         HMHex                    startHex;
-@property (nonatomic)         HMHex                    endHex;
-
+/**
+ * Designated class initializer.
+ *
+ * @param unit the moving unit
+ * @param hex the unit's movement destination
+ *
+ * @return the initialized animation item
+ */
 + (id)itemMoving:(BAUnit*)unit toHex:(HMHex)hex;
-
-- (void)runWithParent:(BAAAnimationList*)list;
 
 @end

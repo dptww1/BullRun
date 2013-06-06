@@ -9,9 +9,13 @@
 #import <Foundation/Foundation.h>
 #import "BAAIProtocol.h"
 
+/** CSA AI */
 @interface Beauregard : NSObject <BAAIProtocol>
 
+/** BAAIProtocol implementation. */
 - (void)freeSetup:(BAGame*)game;
+
+/** BAAIProtocol implementation. */
 - (void)giveOrders:(BAGame*)game;
 
 @end
