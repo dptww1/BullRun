@@ -33,10 +33,10 @@
 #pragma mark - NSCoding Implementation
 
 - (void)encodeWithCoder:(NSCoder *)coder {
-    [coder encodeObject:[self unitName] forKey:@"unitName"];
-    [coder encodeInt:[self entryLocation].column forKey:@"column"];
-    [coder encodeInt:[self entryLocation].row forKey:@"row"];
-    [coder encodeInt:[self entryTurn] forKey:@"turn"];
+    [coder encodeObject:_unitName forKey:@"unitName"];
+    [coder encodeInt:_entryLocation.column forKey:@"column"];
+    [coder encodeInt:_entryLocation.row forKey:@"row"];
+    [coder encodeInt:_entryTurn forKey:@"turn"];
 }
 
 - (id)initWithCoder:(NSCoder *)coder {

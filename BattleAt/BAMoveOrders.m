@@ -10,13 +10,23 @@
 #import "HMHex.h"
 #import "BAMoveOrders.h"
 
+//==============================================================================
+@interface BAMoveOrders ()
+
+@property (nonatomic, strong) DPTResizableBuffer* list;
+
+@end
+
+
+//==============================================================================
 @implementation BAMoveOrders
 
 - (id)init {
     self = [super init];
     
     if (self) {
-        _list = [DPTResizableBuffer bufferWithCapacity:20 ofObjectSize:sizeof(HMHex)];
+        _list = [DPTResizableBuffer bufferWithCapacity:20
+                                          ofObjectSize:sizeof(HMHex)];
     }
     
     return self;
@@ -26,7 +36,7 @@
     BAMoveOrders* newObj = [[BAMoveOrders alloc] init];
     
     if (newObj)
-        [newObj setList:[self.list copyWithZone:zone]];
+        [newObj setList:[_list copyWithZone:zone]];
     
     return newObj;
 }

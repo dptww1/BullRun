@@ -43,9 +43,6 @@
 - (BOOL)saveToFile:(NSString *)filename {
     NSString* path = [[DPTSysUtil applicationFileDir] stringByAppendingPathComponent:filename];
 
-    //    NSMutableDictionary* oob = [NSMutableDictionary dictionary];
-    //    [oob setObject:units forKey:@"units"];
-
     BOOL success = [NSKeyedArchiver archiveRootObject:[self units] toFile:path];
     
     NSLog(@"Wrote file [%d] %@", success, path);
@@ -57,17 +54,17 @@
 
 - (BAUnit*)unitByName:(NSString*)name {
     return (BAUnit*)
-        [self.units dpt_find:^BOOL(BAUnit* u) {
-                             return [[u name] isEqualToString:name];
-                         }];
+        [_units dpt_find:^BOOL(BAUnit* u) {
+            return [[u name] isEqualToString:name];
+        }];
 }
 
 - (NSArray*)unitsForSide:(PlayerSide)side {
-    return [self.units dpt_grep:^BOOL(BAUnit* u) { return [u side] == side; }];
+    return [_units dpt_grep:^BOOL(BAUnit* u) { return [u side] == side; }];
 }
 
 - (void)addReinforcementInfo:(BAReinforcementInfo*)reinforcementInfo {
-    [[self reinforcements] addObject:reinforcementInfo];
+    [_reinforcements addObject:reinforcementInfo];
 }
 
 

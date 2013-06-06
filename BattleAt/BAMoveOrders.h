@@ -11,43 +11,92 @@
 
 @class DPTResizableBuffer;
 
-// Tracks the list of hexes that a unit has been given orders to move to.
-
+/**
+ * Tracks the list of hexes that a unit has been given orders to move to. This
+ * just manages the list; it's up to the caller to ensure that only legal hexes
+ * are added.
+ */
 @interface BAMoveOrders : NSObject <NSCopying>
 
-@property (nonatomic, strong) DPTResizableBuffer* list;
-
-// Designated initializer.
+/**
+ * Designated initializer.
+ *
+ * @return new empty move orders
+ */
 - (id)init;
 
-// Returns YES if there are no orders
+/**
+ * Determine if this set of move orders is empty
+ *
+ * @return `YES` if there are no orders, or `NO` if there is at least one order
+ */
 - (BOOL)isEmpty;
 
-// Clears all movement orders
+/**
+ * Clears out all move orders from this list.
+ */
 - (void)clear;
 
-// Adds a hex to the end of the list
+/**
+ * Appends a hex to the end of this list.
+ *
+ * @param hex the hex to add
+ */
 - (void)addHex:(HMHex)hex;
 
-// Returns number of hexes in list
+/**
+ * Returns number of hexes in this list.
+ *
+ * @return the number of hexes, possibly zero
+ */
 - (int)numHexes;
 
-// Gets most recently-added hex in the list.  Returns (-1,-1) if no orders.
+/**
+ * Gets most recently-added hex in the list.  
+ *
+ * @return the last hex, or (-1,-1) if there is none because the list is empty
+ */
+//
 - (HMHex)lastHex;
 
-// Gets first order in list, removing it if removeOrder == YES. Returns (-1,-1) if no orders.
+/**
+ * Gets first order in list, removing it if removeOrder == `YES`.
+ *
+ * @param removeOrder if `YES`, this is a pop operation; if `NO`, it's a peek
+ *
+ * @return the first hex in the list, or (-1,-1) if the list is empty
+ */
+//
 - (HMHex)firstHexAndRemove:(BOOL)removeOrder;
 
-// Gets hex at given position, which must be in range (0..lastHex).  If outside that range,
-// returns (-1,-1).  Position 0 represents the oldest hex.  Position [lastHex] represents
-// the most recently-added hex.
+/**
+ * Gets hex at given position, which must be in range (0..`lastHex:`).
+ * Position 0 represents the oldest hex.  Position `lastHex:` represents
+ * the most recently-added hex.
+ *
+ * The hex is not removed from the list.
+ *
+ * @param idx the index of the hex to retrieve.
+ *
+ * @return the corresponding hex, or (-1,-1) if `idx` is bad
+ */
 - (HMHex)hex:(int)idx;
 
-// Detects a backtrack situation, where the user chooses hex A, moves to hex B, then back
-// to hex A.  Returns YES if "hex" is the same as the penultimate hex in the orders.
+/**
+ * Detects a backtrack where the user selects a unit in hex A, orders it to 
+ * adjacent hex B, then orders it back to hex A.
+ *
+ * @param hex the hex under consideration 
+ *
+ * @return `YES` if "hex" is the same as the penultimate hex in the orders,
+ *         else `NO`
+ */
 - (BOOL)isBacktrack:(HMHex)hex;
 
-// Handles the situation described in isBacktrack by removing the last order in the list.
+/**
+ * Handles the situation described in `isBacktrack:` by removing the last order
+ * in the list.
+ */
 - (void)backtrack;
 
 @end

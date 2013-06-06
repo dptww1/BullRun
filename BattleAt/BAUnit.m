@@ -14,7 +14,7 @@
 #pragma mark - Convenience Methods
 
 - (BOOL)hasOrders {
-    return ![self.moveOrders isEmpty];
+    return ![_moveOrders isEmpty];
 }
 
 - (BOOL)friends:(BAUnit*)other {
@@ -23,36 +23,36 @@
 
 - (BOOL)isWrecked {
     // How could this happen? Still, guard against division-by-zero errors
-    if (self.originalStrength == 0)
+    if (_originalStrength == 0)
         return NO;
 
-    int pctCasualties = 100 - (self.strength * 100 / self.originalStrength);
+    int pctCasualties = 100 - (_strength * 100 / _originalStrength);
 
-    return pctCasualties > self.morale;
+    return pctCasualties > _morale;
 }
 
 - (BOOL)isOffMap {
-    return [self location].column < 0
-        || [self location].row    < 0;
+    return _location.column < 0
+        || _location.row    < 0;
 }
 
 #pragma mark - NSCoding
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
-    [aCoder encodeInt:   [self imageXIdx]        forKey:@"imageXIdx"];
-    [aCoder encodeInt:   [self imageYIdx]        forKey:@"imageYIdx"];
-    [aCoder encodeInt:   [self leadership]       forKey:@"leadership"];
-    [aCoder encodeInt:   [self mode]             forKey:@"mode"];
-    [aCoder encodeInt:   [self morale]           forKey:@"morale"];
-    [aCoder encodeInt:   [self mps]              forKey:@"mps"];
-    [aCoder encodeObject:[self name]             forKey:@"name"];
-    [aCoder encodeInt:   [self originalStrength] forKey:@"originalStrength"];
-    [aCoder encodeInt:   [self side]             forKey:@"side"];
-    [aCoder encodeInt:   [self strength]         forKey:@"strength"];
+    [aCoder encodeInt:   _imageXIdx        forKey:@"imageXIdx"];
+    [aCoder encodeInt:   _imageYIdx        forKey:@"imageYIdx"];
+    [aCoder encodeInt:   _leadership       forKey:@"leadership"];
+    [aCoder encodeInt:   _mode             forKey:@"mode"];
+    [aCoder encodeInt:   _morale           forKey:@"morale"];
+    [aCoder encodeInt:   _mps              forKey:@"mps"];
+    [aCoder encodeObject:_name             forKey:@"name"];
+    [aCoder encodeInt:   _originalStrength forKey:@"originalStrength"];
+    [aCoder encodeInt:   _side             forKey:@"side"];
+    [aCoder encodeInt:   _strength         forKey:@"strength"];
     
     // _location is a structure, so needs special handling
-    [aCoder encodeInt:   [self location].column  forKey:@"location_column"];
-    [aCoder encodeInt:   [self location].row     forKey:@"location_row"];
+    [aCoder encodeInt:   _location.column  forKey:@"location_column"];
+    [aCoder encodeInt:   _location.row     forKey:@"location_row"];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {

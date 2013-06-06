@@ -20,10 +20,10 @@
 - (void)devalueInfluenceMap:(BAAIInfluenceMap*)imap atHex:(HMHex)hex {
     HMMap* map = [game board];
 
-    [imap divideBy:4.0f atHex:hex];
+    [imap multiplyBy:0.25f atHex:hex];
 
     for (int dir = 0; dir < 6; ++dir)
-        [imap divideBy:2.0f atHex:[map hexAdjacentTo:hex inDirection:dir]];
+        [imap multiplyBy:0.5f atHex:[map hexAdjacentTo:hex inDirection:dir]];
 }
 
 // TODO: Really needs to use A* algorithm, and respect things like not trying to
