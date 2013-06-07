@@ -11,8 +11,6 @@
 #import "HMHex.h"
 #import "HMTerrainEffect.h"
 
-@class BAUnit;
-
 /**
  * A hex map, based on what is needed to support a (war)game.
  */
@@ -31,8 +29,23 @@
  */
 + (HMMap*)createFromFile:(NSString*)filename;
 
-- (float)mpCostOf:(HMHex)hex for:(BAUnit*)unit;    // TODO: no BA allowed in HM!
-- (BOOL)is:(HMHex)hex prohibitedFor:(BAUnit*)unit; // TODO: no BA allowed in HM!
+/**
+ * Gets movement cost (in MPs) of given hex.
+ *
+ * @param hex to get movement cost of
+ *
+ * @return movement cost
+ */
+- (float)mpCostOf:(HMHex)hex;
+
+/**
+ * Determines if the given hex is prohibited for movement.
+ *
+ * @param hex to get movement cost of
+ *
+ * @return `YES` if the hex is prohibited, `NO` if it isn't
+ */
+- (BOOL)isProhibited:(HMHex)hex;
 
 /**
  * @privatesection

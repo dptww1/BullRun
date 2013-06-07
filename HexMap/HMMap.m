@@ -305,7 +305,7 @@ static const int DEFAULT_CAPACITY = 12;
     return nil;
 }
 
-- (float)mpCostOf:(HMHex)hex for:(BAUnit*)unit {
+- (float)mpCostOf:(HMHex)hex {
     HMTerrainEffect* fx = [self terrainAt:hex];
     return fx ? [fx mpCost] : 10000.0f;
 }
@@ -327,7 +327,7 @@ static const int DEFAULT_CAPACITY = 12;
     return [zone containsHex:hex];
 }
 
-- (BOOL)is:(HMHex)hex prohibitedFor:(BAUnit*)unit {
+- (BOOL)isProhibited:(HMHex)hex {
     return ![self terrainAt:hex];
 }
 

@@ -178,7 +178,7 @@ BAGame* game; // the global game instance
                 [didntMove removeObject:u];
                 
                 // Check terrain cost
-                int mpCost = (int) [_board mpCostOf:nextHex for:u];
+                int mpCost = (int) [_board mpCostOf:nextHex];
                 if (mpCost > [u mps]) {
                     DEBUG_MOVEMENT(@"%@ can't move into %02d%02d because it costs %d MPs but unit has only %d MPs", [u name], nextHex.column, nextHex.row, mpCost, [u mps]);
                     continue;
@@ -430,7 +430,7 @@ BAGame* game; // the global game instance
 
     return [_board legal:hex]
         && ![self unitInHex:hex]
-        && ![[self board] is:hex prohibitedFor:u]
+        && ![[self board] isProhibited:hex]
         && ![self is:u movingThruEnemyZocTo:hex];
 }
 
