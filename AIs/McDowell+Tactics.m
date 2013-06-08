@@ -27,7 +27,7 @@
     __block HMHex  minHex  = HMHexMake(-1, -1);
     __block int    minDist = INT_MAX;
 
-    NSArray* bases = [map basesForSide:[self side]];
+    NSArray* bases = [map basesForSide:OtherPlayer([self side])];
     [bases
      enumerateObjectsUsingBlock:^(NSValue* val, NSUInteger idx, BOOL* stop) {
          HMHex curHex  = [val hexValue];
@@ -164,7 +164,7 @@
         return NO;
 
     // If in CSA zone or a ford, move to nearest base
-    if (![map is:[u location] inZone:@"usa"]) {
+    if ([map is:[u location] inZone:@"csa"]) {
         HMHex closestBase = [self closestCsaBaseTo:[u location]];
         DEBUG_AI(@"Assigning Flanker %@ to base %02d%02d", [u name], closestBase.column, closestBase.row);
         [self routeUnit:u toDestination:closestBase];
