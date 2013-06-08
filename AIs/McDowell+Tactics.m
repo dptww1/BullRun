@@ -9,13 +9,37 @@
 #import "BAAIInfluenceMap.h"
 #import "BAGame.h"
 #import "BAMoveOrders.h"
+#import "BAOrderOfBattle.h"
 #import "BAUnit.h"
+#import "BRMap.h"
 #import "HMHex.h"
 #import "McDowell.h"
 #import "McDowell+Strategy.h"
 #import "McDowell+Tactics.h"
+#import "NSArray+DPTUtil.h"
+#import "NSValue+HMHex.h"
+
 
 @implementation McDowell (Private)
+
+- (HMHex)closestCsaBaseTo:(HMHex)hex {
+    BRMap*         map     = [BRMap map];
+    __block HMHex  minHex  = HMHexMake(-1, -1);
+    __block int    minDist = INT_MAX;
+
+    NSArray* bases = [map basesForSide:[self side]];
+    [bases
+     enumerateObjectsUsingBlock:^(NSValue* val, NSUInteger idx, BOOL* stop) {
+         HMHex curHex  = [val hexValue];
+         int   curDist = [map distanceFrom:hex to:curHex];
+         if (curDist < minDist) {
+             minDist = curDist;
+             minHex  = curHex;
+         }
+     }];
+
+    return minHex;
+}
 
 - (void)devalueInfluenceMap:(BAAIInfluenceMap*)imap atHex:(HMHex)hex {
     HMMap* map = [game board];
@@ -24,6 +48,31 @@
 
     for (int dir = 0; dir < 6; ++dir)
         [imap multiplyBy:0.5f atHex:[map hexAdjacentTo:hex inDirection:dir]];
+}
+
+// Find combat-worthy unit having matching role, possibly nil
+// "Combat-Worthy" means 1) on-map, 2) not wrecked, 3) not already assigned
+// returned unit will be marked as ordered for this turn
+- (BAUnit*)findCombatWorthyUnitWithRole:(UnitRole)requiredRole {
+    NSArray* usaUnits = [[game oob] unitsForSide:[self side]];
+    return [usaUnits dpt_find:^BOOL(BAUnit* unit) {
+        if ([[self orderedThisTurn] containsObject:[unit name]])
+            return NO;
+
+        if ([unit isOffMap])
+            return NO;
+
+        if ([unit isWrecked])
+            return NO;
+
+        NSNumber* role = [[self unitRoles] valueForKey:[unit name]];
+        BOOL ok = [role isEqualToNumber:[NSNumber numberWithInt:requiredRole]];
+
+        if (ok)
+            [[self orderedThisTurn] addObject:[unit name]];
+
+        return ok;
+    }];
 }
 
 // TODO: Really needs to use A* algorithm, and respect things like not trying to
@@ -52,13 +101,21 @@
 @implementation McDowell (Tactics)
 
 - (BOOL)assignAttacker {
-    // Find USA unit marked as attacker, not shattered, not offmap
+    HMMap* map = [game board];
+
+    BAUnit* u = [self findCombatWorthyUnitWithRole:ROLE_ATTACK];
+    if (!u)
+        return NO;
 
     // If in CSA zone, move to nearest base
+    if ([map is:[u location] inZone:@"csa"]) {
+        [self routeUnit:u toDestination:[self closestCsaBaseTo:[u location]]];
 
-    // else north of river -- move to attack ford
+    } else { // else north of river -- move to attack ford
+        [self routeUnit:u toDestination:[self attackFord]];
+    }
 
-    return NO;
+    return YES;
 }
 
 - (BOOL)assignDefender:(BAAIInfluenceMap*)imap {
@@ -100,13 +157,24 @@
 }
 
 - (BOOL)assignFlanker {
-    // Find USA unit marked as attacker, not shattered, not offmap
+    HMMap* map = [game board];
 
-    // If in CSA zone, move to nearest base
+    BAUnit* u = [self findCombatWorthyUnitWithRole:ROLE_FLANK];
+    if (!u)
+        return NO;
 
-    // else north of river -- move to flank ford
+    // If in CSA zone or a ford, move to nearest base
+    if (![map is:[u location] inZone:@"usa"]) {
+        HMHex closestBase = [self closestCsaBaseTo:[u location]];
+        DEBUG_AI(@"Assigning Flanker %@ to base %02d%02d", [u name], closestBase.column, closestBase.row);
+        [self routeUnit:u toDestination:closestBase];
 
-    return NO;
+    } else { // else north of river -- move to attack ford
+        DEBUG_AI(@"Assigning Flanker %@ to ford %02d%02d", [u name], [self flankFord].column, [self flankFord].row);
+        [self routeUnit:u toDestination:[self flankFord]];
+    }
+
+    return YES;
 }
 
 - (BOOL)reRoute {  // TODO: might not need this if we make assignXXX methods smarter

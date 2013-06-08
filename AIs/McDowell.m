@@ -84,8 +84,9 @@
         _side = USA;
 
         _orderedThisTurn = [NSMutableSet set];
-
         _unitRoles = [NSMutableDictionary dictionary];
+        
+        // Set the data for the historical setup.
         [_unitRoles setObject:[NSNumber numberWithInt:ROLE_DEFEND] forKey:@"Blenker"];
         [_unitRoles setObject:[NSNumber numberWithInt:ROLE_FLANK]  forKey:@"Burnside"];
         [_unitRoles setObject:[NSNumber numberWithInt:ROLE_DEFEND] forKey:@"Davies"];
@@ -99,6 +100,9 @@
         [_unitRoles setObject:[NSNumber numberWithInt:ROLE_ATTACK] forKey:@"Sherman"];
         [_unitRoles setObject:[NSNumber numberWithInt:ROLE_DEFEND] forKey:@"Volunteers"];
         [_unitRoles setObject:[NSNumber numberWithInt:ROLE_FLANK]  forKey:@"Willcox"];
+
+        _flankFord = HMHexMake(3,2);
+        _attackFord = HMHexMake(6,4);
     }
 
     return self;
@@ -115,6 +119,12 @@
     [[self orderedThisTurn] removeAllObjects];
 
     while ([self assignDefender:imap])
+        ;
+
+    while ([self assignAttacker])
+        ;
+
+    while ([self assignFlanker])
         ;
 }
 
