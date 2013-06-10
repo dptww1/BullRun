@@ -41,13 +41,11 @@ static BOOL modeLabelIsChoosable[] = {
 }
 
 - (NSArray*)unitControls {
-    return [NSArray arrayWithObjects:
-            originalStrength,
-            currentStrength,
-            unitImage,
-            unitName,
-            unitMode,
-            nil];
+    return @[originalStrength,
+             currentStrength,
+             unitImage,
+             unitName,
+             unitMode];
 }
 
 @end

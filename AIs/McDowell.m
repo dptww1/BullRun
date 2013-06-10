@@ -80,6 +80,8 @@
 @implementation McDowell
 
 - (id)init {
+    self = [super init];
+    
     if (self) {
         _side = USA;
 
@@ -87,19 +89,19 @@
         _unitRoles = [NSMutableDictionary dictionary];
         
         // Set the data for the historical setup.
-        [_unitRoles setObject:[NSNumber numberWithInt:ROLE_DEFEND] forKey:@"Blenker"];
-        [_unitRoles setObject:[NSNumber numberWithInt:ROLE_FLANK]  forKey:@"Burnside"];
-        [_unitRoles setObject:[NSNumber numberWithInt:ROLE_DEFEND] forKey:@"Davies"];
-        [_unitRoles setObject:[NSNumber numberWithInt:ROLE_FLANK]  forKey:@"Franklin"];
-        [_unitRoles setObject:[NSNumber numberWithInt:ROLE_FLANK]  forKey:@"Howard"];
-        [_unitRoles setObject:[NSNumber numberWithInt:ROLE_ATTACK] forKey:@"Keyes"];
-        [_unitRoles setObject:[NSNumber numberWithInt:ROLE_DEFEND] forKey:@"Militia"];
-        [_unitRoles setObject:[NSNumber numberWithInt:ROLE_FLANK]  forKey:@"Porter"];
-        [_unitRoles setObject:[NSNumber numberWithInt:ROLE_DEFEND] forKey:@"Richardson"];
-        [_unitRoles setObject:[NSNumber numberWithInt:ROLE_ATTACK] forKey:@"Schenck"];
-        [_unitRoles setObject:[NSNumber numberWithInt:ROLE_ATTACK] forKey:@"Sherman"];
-        [_unitRoles setObject:[NSNumber numberWithInt:ROLE_DEFEND] forKey:@"Volunteers"];
-        [_unitRoles setObject:[NSNumber numberWithInt:ROLE_FLANK]  forKey:@"Willcox"];
+        _unitRoles[@"Blenker"]    = @(ROLE_DEFEND);
+        _unitRoles[@"Burnside"]   = @(ROLE_FLANK);
+        _unitRoles[@"Davies"]     = @(ROLE_DEFEND);
+        _unitRoles[@"Franklin"]   = @(ROLE_FLANK);
+        _unitRoles[@"Howard"]     = @(ROLE_FLANK);
+        _unitRoles[@"Keyes"]      = @(ROLE_ATTACK);
+        _unitRoles[@"Militia"]    = @(ROLE_DEFEND);
+        _unitRoles[@"Porter"]     = @(ROLE_FLANK);
+        _unitRoles[@"Richardson"] = @(ROLE_DEFEND);
+        _unitRoles[@"Schenck"]    = @(ROLE_ATTACK);
+        _unitRoles[@"Sherman"]    = @(ROLE_ATTACK);
+        _unitRoles[@"Volunteers"] = @(ROLE_DEFEND);
+        _unitRoles[@"Willcox"]    = @(ROLE_FLANK);
 
         _flankFord = HMHexMake(3,2);
         _attackFord = HMHexMake(6,4);

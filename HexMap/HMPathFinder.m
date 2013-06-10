@@ -111,10 +111,10 @@
     if ([_nodes count] == 0)
         return nil;
 
-    HMPathNode* lowestNode = [_nodes objectAtIndex:0];
+    HMPathNode* lowestNode = _nodes[0];
 
     for (int i = 1; i < [_nodes count]; ++i) {
-        HMPathNode* node = [_nodes objectAtIndex:i];
+        HMPathNode* node = _nodes[1];
         if ([node fCost] < [lowestNode fCost])
             lowestNode = node;
     }

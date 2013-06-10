@@ -20,19 +20,19 @@ static NSMutableDictionary* unitViewMap = nil;
     if (!unitViewMap)
         unitViewMap = [NSMutableDictionary dictionary];
     
-    UnitView* uv = [unitViewMap objectForKey:[unit name]];
+    UnitView* uv = unitViewMap[[unit name]];
     
     if (!uv) {
         uv = [[UnitView alloc] initForUnit:unit];
         
-        [unitViewMap setObject:uv forKey:[unit name]];
+        unitViewMap[[unit name]] = uv;
     }
     
     return uv;
 }
 
 + (UnitView*)findByName:(NSString*)unitName {
-    return [unitViewMap objectForKey:unitName];
+    return unitViewMap[unitName];
 }
 
 #pragma mark - Init Methods

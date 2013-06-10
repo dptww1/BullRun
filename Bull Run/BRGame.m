@@ -9,6 +9,7 @@
 #import "BAUnit.h"
 #import "BRGame.h"
 #import "BRMap.h"
+#import "Beauregard.h"
 #import "McDowell.h"
 
 @implementation BRGame

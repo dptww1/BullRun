@@ -28,7 +28,7 @@
 
     [units enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         BAUnit* unit = obj;
-        if (![[self unitRoles] objectForKey:[unit name]])
+        if (![self unitRoles][[unit name]])
             DEBUG_AI(@"Unit %@ has no roles entry", [unit name]);
     }];
 
@@ -54,9 +54,9 @@
 
 - (DPTUtilFilter)isUsaUnitDefending {
     return ^BOOL(BAUnit* unit) {
-        NSNumber* role = [[self unitRoles] objectForKey:[unit name]];
+        NSNumber* role = [self unitRoles][[unit name]];
         return role
-            && [role isEqualToNumber:[NSNumber numberWithInt:ROLE_DEFEND]]
+            && [role isEqualToNumber:@(ROLE_DEFEND)]
             && ![unit isOffMap];
     };
 }
@@ -127,9 +127,7 @@
 }
 
 - (void)switch:(BAUnit*)unit roleTo:(int)newRole {
-    [[self unitRoles]
-     setObject:[NSNumber numberWithInt:newRole]
-     forKey:[unit name]];
+    [self unitRoles][[unit name]] = @(newRole);
 }
 
 - (void)strategize:(BAGame*)game {

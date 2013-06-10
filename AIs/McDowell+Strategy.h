@@ -15,10 +15,19 @@
 /** USA AI Strategic thinking. */
 @interface McDowell (Strategy)
 
-/** BAAIProtocol implementation. */
+/** 
+ * Do strategic thinking to determine the broad roles units should take
+ * for this turn.
+ *
+ * @param game the current game situation
+ */
 - (void)strategize:(BAGame*)game;
 
-/** BAAIProtocol implementation. */
+/**
+ * Returns a block which evaluates whether or not a given USA unit is defending.
+ *
+ * @return the block
+ */
 - (DPTUtilFilter)isUsaUnitDefending;
 
 @end
