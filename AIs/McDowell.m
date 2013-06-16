@@ -113,12 +113,12 @@
 - (void)freeSetup:(BAGame*)game { }
 
 - (void)giveOrders:(BAGame*)game {
+    [_orderedThisTurn removeAllObjects];
+
     [self strategize:game];
 
     BAAIInfluenceMap* imap = [self createInfluenceMap:game];
     [imap dump];
-
-    [[self orderedThisTurn] removeAllObjects];
 
     while ([self assignDefender:imap])
         ;
