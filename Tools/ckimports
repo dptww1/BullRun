@@ -1,0 +1,41 @@
+#!/usr/bin/ruby
+#
+# Checks #import statements for unneeded imports
+
+require 'find'
+
+Find.find(".") do |path|
+  Find.prune if FileTest.directory?(path) && path =~ %r{^\.\.}
+
+  if path =~ /\.(h|m)$/
+
+    imports = {}
+    in_comment = false
+
+    IO.readlines(path).each do |line|
+      if in_comment
+        continue unless line =~ %r{^.*\*/(.*)$} # still in comment until we see "*/"
+        line = $1                               # we saw "*/", but only care about after that
+      end
+
+      if line =~ %r{/\*/}    # multi-line comment
+        if line =~ %r{^(.*)/\*.*\*/(.*)$}
+          line = $1 + $2
+        else
+          in_comment = true
+          continue
+        end
+      end
+
+      if line =~ /^#import\s+"(.*)\.h"/
+        imports[$1] = 0
+      else
+        line.split(/\W/).each do |word|
+          imports[word] += 1 if imports.has_key? word
+        end
+      end
+    end
+
+    imports.keys.each { |key| puts "#{path}: questionable import #{key}" if imports[key] == 0 }
+  end
+end
