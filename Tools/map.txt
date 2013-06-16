@@ -20,24 +20,26 @@ bit:4 mpCost:4 symbol:@ Town
 
 - zones
 
-csa symbol:c
-usa symbol:u
+csa         symbol:c
+usa         symbol:u
+manassas    symbol:m
+gainesville symbol:g
 
 - data
 
-# 0     1     2     3     4     5     6     7     8     9    10    11    12    13    14    15    16
+# 0      1      2      3      4      5      6      7      8      9     10     11     12     13     14     15     16
 
- u:-   u:-   u:-   u:-   u:-   u:-   u:-   u:-   u:-   u:-   u:-   u:-   u:-   u:-   u:-   u:-   u:-
- u:-   u:-    :/   u:-   u:-   u:-   u:-   u:-   u:-   u:-   u:|   u:-   u:-   u:-   u:-   u:-   u:-
-  :/    :/   c:-  cu:=    :/   u:-   u:-   u:-   u:&   u:&   u:&   u:&   u:-   u:-   u:-   u:-   u:-
- c:&   c:-   c:-   c:-   c:&  cu:=   u:-   u:-   u:&   u:-   u:|   u:-   u:-   u:@   u:-   u:-   u:-
- c:&   c:&   c:&   c:-   c:-    :/  cu:=   u:-   u:-   u:|   u:-   u:&   u:-   u:-   u:&   u:-   u:&
- c:-   c:-   c:-   c:-   c:-   c:-  cu:=   u:-   u:-   u:|   u:&   u:&   u:&   u:&   u:&   u:&   u:&
- c:-   c:&   c:-   c:-   c:&   c:&   c:-  cu:=   u:-   u:&   u:&   u:&   u:-   u:&   u:-   u:-   u:&
- c:-   c:-   c:-   c:-   c:@   c:-   c:-    :/    :/    :/  cu:=   u:-   u:-   u:&   u:-   u:-   u:&
- c:&   c:-   c:-   c:&   c:-   c:-   c:-   c:-   c:-   c:-   c:-  cu:=  cu:=   u:-   u:-   u:&   u:-
- c:&   c:&   c:-   c:&   c:&   c:-   c:-   c:&   c:&   c:-   c:-   c:&   c:-  cu:=   u:&   u:-   u:-
- c:-   c:-   c:-   c:-   c:-   c:-   c:&   c:&   c:&   c:&   c:-   c:-   c:-    :/    :/   u:&   u:&
- c:-   c:-   c:&   c:-   c:-   c:-   c:-   c:-   c:&   c:&   c:-   c:-   c:-   c:-  cu:=   u:-   u:-
- c:-   c:-   c:&   c:&   c:-   c:&   c:-   c:-   c:-   c:@   c:-   c:-   c:-  cu:=   u:&   u:-   u:-
-       c:-         c:-         c:-         c:-         c:-         c:-          :/         u:-
+gu:-   gu:-   gu:-   gu:-   gu:-   gu:-   gu:-   gu:-   gu:-   gu:-   gu:-   gu:-   gu:-   gu:-   gu:-   gu:-   gu:-
+gu:-   gu:-     :/   gu:-   gu:-   gu:-   gu:-   gu:-   gu:-   gu:-   gu:|   gu:-   gu:-   gu:-   gu:-   gu:-   gu:-
+  :/     :/   gc:-  gcu:=     :/   gu:-   gu:-   gu:-   gu:&   gu:&   gu:&   gu:&   gu:-   gu:-   gu:-   gu:-   gu:-
+gc:&   gc:-   gc:-   gc:-   gc:&  gcu:=   gu:-   gu:-   gu:&   gu:-   gu:|   gu:-   gu:-   gu:@   gu:-   gu:-   mu:-
+gc:&   gc:&   gc:&   gc:-   gc:-     :/  gcu:=   gu:-   gu:-   gu:|   gu:-   gu:&   gu:-   gu:-   mu:&   mu:-   mu:&
+gc:-   gc:-   gc:-   gc:-   gc:-   gc:-  gcu:=   gu:-   gu:-   gu:|   gu:&   mu:&   mu:&   mu:&   mu:&   mu:&   mu:&
+gc:-   gc:&   gc:-   gc:-   gc:&   gc:&   gc:-  gcu:=   gu:-   gu:&   mu:&   mu:&   mu:-   mu:&   mu:-   mu:-   mu:&
+gc:-   gc:-   gc:-   gc:-   gc:@   gc:-   gc:-     :/     :/     :/  mcu:=   mu:-   mu:-   mu:&   mu:-   mu:-   mu:&
+gc:&   gc:-   gc:-   gc:&   gc:-   gc:-   gc:-   gc:-   mc:-   mc:-   mc:-  mcu:=  mcu:=   mu:-   mu:-   mu:&   mu:-
+gc:&   gc:&   gc:-   gc:&   gc:&   gc:-   gc:-   gc:&   mc:&   mc:-   mc:-   mc:&   mc:-  mcu:=   mu:&   mu:-   mu:-
+gc:-   gc:-   gc:-   gc:-   gc:-   gc:-   mc:&   mc:&   mc:&   mc:&   mc:-   mc:-   mc:-     :/     :/   mu:&   mu:&
+gc:-   gc:-   gc:&   gc:-   gc:-   gc:-   mc:-   mc:-   mc:&   mc:&   mc:-   mc:-   mc:-   mc:-  mcu:=   mu:-   mu:-
+gc:-   gc:-   gc:&   gc:&   mc:-   mc:&   mc:-   mc:-   mc:-   mc:@   mc:-   mc:-   mc:-  mcu:=   mu:&   mu:-   mu:-
+       gc:-          gc:-          mc:-          mc:-          mc:-          mc:-           :/          mu:-
