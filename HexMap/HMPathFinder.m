@@ -197,7 +197,7 @@
         HMPathNode* curNode = [open getLowestFCostNode];
         HMHex curHex = [curNode hex];
 
-        NSLog(@"curHex %02d%02d fcost %f gcost %f", curHex.column, curHex.row, [curNode fCost], [curNode gCost]);
+        //NSLog(@"curHex %02d%02d fcost %f gcost %f", curHex.column, curHex.row, [curNode fCost], [curNode gCost]);
 
         if (HMHexEquals(curHex, end))
             return [self buildPathIntoArray:[NSMutableArray array] fromNode:curNode];
