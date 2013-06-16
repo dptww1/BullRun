@@ -14,29 +14,41 @@
 #import "Beauregard.h"
 #import "Beauregard+Strategy.h"
 #import "HMMap.h"
+#import "HMPathFinder.h"
 #import "HMTerrainEffect.h"
+#import "NSValue+HMHex.h"
 
 @implementation Beauregard (Private)
 
 // TODO: Really needs to use A* algorithm, and respect things like not trying to
 // move unit through ZOC.
 - (void)routeUnit:(BAUnit*)unit toDestination:(HMHex)destination {
-    [[unit moveOrders] clear];
-
     HMMap* map = [game board];
     HMHex curHex = [unit location];
 
+    HMPathFinder* pf = [HMPathFinder pathFinderOnMap:map withMinCost:4.0f];
+
+    NSArray* path = [pf findPathFrom:curHex
+                                  to:destination
+                               using:^float(HMHex from, HMHex to) {
+        HMTerrainEffect* fx = [map terrainAt:to];
+
+        if (!fx) // impassible
+            return -1.0f;
+
+        // TODO: ZOC/occupancy checks
+
+        return [fx mpCost];
+    }];
+
+    [[unit moveOrders] clear];
+
     // There's no point in planning out more than two hexes, because
     // we recalculate orders every turn and no unit moves more than
-    // two hexes per turn.
-    for (int i = 0; i < 2 && !HMHexEquals(curHex, destination); ++i) {
-        int dir = [map directionFrom:curHex to:destination];
-        HMHex nextHex = [map hexAdjacentTo:curHex inDirection:dir];
-
-        [[unit moveOrders] addHex:nextHex];
-
-        curHex = nextHex;
-    }
+    // two hexes per turn.  Remember that the path finder returns the
+    // starting hex in path[0], so the new hexes begin at path[1].
+    for (int i = 1; i < 3 && i < [path count]; ++i)
+        [[unit moveOrders] addHex:[path[i] hexValue]];
 }
 
 - (BOOL)unitInCorrectTheater:(BAUnit*)unit {

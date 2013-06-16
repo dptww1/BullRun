@@ -53,6 +53,9 @@ h3. Organization
 * add "friend" and "enemies" as methods in OrderOfBattle, use in Game#sighting
 * probably should have a controller for InfoBarView
 
+h3. API
+* HMPathFinder doesn't need "minCost" parameter, since it can be inferred from the "map" parameter
+
 h3. Bugs
 * Trying to enter an impossible hex lets unit accumulate a crazy number of MPs
 * Deploying reinforcement nonreproducibly gets Access Violation
