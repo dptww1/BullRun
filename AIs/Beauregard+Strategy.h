@@ -8,7 +8,10 @@
 
 #import "Beauregard.h"
 
+
 @class BAGame;
+@class BAUnit;
+
 
 @interface Beauregard (Strategy)
 
@@ -17,5 +20,7 @@
 - (BRAICSATheater)computeTheaterOf:(BAUnit*)unit;
 
 - (void)conductStrategicMovement;
+
+- (void)routeUnit:(BAUnit*)unit toDestination:(HMHex)destination;
 
 @end
