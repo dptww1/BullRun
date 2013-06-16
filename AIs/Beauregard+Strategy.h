@@ -8,6 +8,14 @@
 
 #import "Beauregard.h"
 
+@class BAGame;
+
 @interface Beauregard (Strategy)
+
+- (void)strategize:(BAGame*)game;
+
+- (BRAICSATheater)computeTheaterOf:(BAUnit*)unit;
+
+- (void)conductStrategicMovement;
 
 @end

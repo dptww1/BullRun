@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 Dave Townsend. All rights reserved.
 //
 
+#import "Beauregard.h"
 #import "BRAppDelegate.h"
 #import "BRGame.h"
 #import "MapViewController.h"
@@ -20,6 +21,9 @@ static MapViewController* mvController;
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     game = [[BRGame alloc] init];
+
+    // Easiest to do this after `game` is assigned, so AI can use it
+    [game setAi:[[Beauregard alloc] init]];
     
     mvController = [[MapViewController alloc] initWithNibName:nil bundle:nil];
     UINavigationController* navController = [[UINavigationController alloc] initWithRootViewController:mvController];

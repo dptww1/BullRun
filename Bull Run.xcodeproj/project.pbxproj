@@ -13,6 +13,7 @@
 		CC0CF3EF169916E2006D902D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC0CF3EE169916E2006D902D /* QuartzCore.framework */; };
 		CC1B671C16DC4B9F0078B20B /* bullet.png in Resources */ = {isa = PBXBuildFile; fileRef = CC1B671B16DC4B9F0078B20B /* bullet.png */; };
 		CC1B672A16DFA5C00078B20B /* BAAGunfire.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1B672816DFA5C00078B20B /* BAAGunfire.m */; };
+		CC25F47D1765748F00F104BE /* Beauregard+Strategy.m in Sources */ = {isa = PBXBuildFile; fileRef = CC25F47C1765748F00F104BE /* Beauregard+Strategy.m */; };
 		CC35E68416AF5EE700F9F0B1 /* MapView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC35E68116AF5EE700F9F0B1 /* MapView.m */; };
 		CC35E68516AF5EE700F9F0B1 /* UnitView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC35E68316AF5EE700F9F0B1 /* UnitView.m */; };
 		CC35E68716B5CE0A00F9F0B1 /* portraits.png in Resources */ = {isa = PBXBuildFile; fileRef = CC35E68616B5CE0A00F9F0B1 /* portraits.png */; };
@@ -90,6 +91,9 @@
 		CC1B671B16DC4B9F0078B20B /* bullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullet.png; sourceTree = "<group>"; };
 		CC1B672716DFA5C00078B20B /* BAAGunfire.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAAGunfire.h; sourceTree = "<group>"; };
 		CC1B672816DFA5C00078B20B /* BAAGunfire.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAAGunfire.m; sourceTree = "<group>"; };
+		CC25F47B1765748F00F104BE /* Beauregard+Strategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Beauregard+Strategy.h"; sourceTree = "<group>"; };
+		CC25F47C1765748F00F104BE /* Beauregard+Strategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Beauregard+Strategy.m"; sourceTree = "<group>"; };
+		CC25F47E17666AAE00F104BE /* DPTMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPTMath.h; sourceTree = "<group>"; };
 		CC35E68016AF5EE700F9F0B1 /* MapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapView.h; sourceTree = "<group>"; };
 		CC35E68116AF5EE700F9F0B1 /* MapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapView.m; sourceTree = "<group>"; };
 		CC35E68216AF5EE700F9F0B1 /* UnitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnitView.h; sourceTree = "<group>"; };
@@ -249,6 +253,8 @@
 		CC523552173A7EF200CDBDC5 /* AIs */ = {
 			isa = PBXGroup;
 			children = (
+				CC25F47B1765748F00F104BE /* Beauregard+Strategy.h */,
+				CC25F47C1765748F00F104BE /* Beauregard+Strategy.m */,
 				CC523556173A9BA700CDBDC5 /* Beauregard.h */,
 				CC523557173A9BA700CDBDC5 /* Beauregard.m */,
 				CCF01A9D174D9861003A1C77 /* McDowell+Strategy.h */,
@@ -355,6 +361,7 @@
 		CCDB60D916A04B30006668C2 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				CC25F47E17666AAE00F104BE /* DPTMath.h */,
 				CCF01AB3175E70EF003A1C77 /* DPTResizableBuffer.h */,
 				CCF01AB4175E70F0003A1C77 /* DPTResizableBuffer.m */,
 				CCF01AB6175E7190003A1C77 /* DPTSysUtil.h */,
@@ -601,6 +608,7 @@
 				CCF01AB5175E70F0003A1C77 /* DPTResizableBuffer.m in Sources */,
 				CCF01AB8175E7190003A1C77 /* DPTSysUtil.m in Sources */,
 				CCF01ABB175E72AC003A1C77 /* NSArray+DPTUtil.m in Sources */,
+				CC25F47D1765748F00F104BE /* Beauregard+Strategy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
