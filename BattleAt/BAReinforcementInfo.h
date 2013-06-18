@@ -24,17 +24,14 @@
 @property (nonatomic, assign)         int       entryTurn;
 
 /**
- * Convenience class method using designated initializer.
+ * Convenience class method.  The reinforcement turn in slurped from
+ * `[unit turn]`, and the reinforcement hex from `[unit location]`.
  *
  * @param unit the reinforcing unit
- * @param turn turn of entry
- * @param hex location of reinforcement
  *
  * @return the new reinforcement object
  */
-+ (BAReinforcementInfo*)createWithUnit:(BAUnit*)unit
-                                onTurn:(int)turn
-                                 atHex:(HMHex)hex;
++ (BAReinforcementInfo*)createWithUnit:(BAUnit*)unit;
 
 /**
  * Designated initializer.

@@ -49,6 +49,7 @@
     [aCoder encodeInt:   _originalStrength forKey:@"originalStrength"];
     [aCoder encodeInt:   _side             forKey:@"side"];
     [aCoder encodeInt:   _strength         forKey:@"strength"];
+    [aCoder encodeInt:   _turn             forKey:@"turn"];
     
     // _location is a structure, so needs special handling
     [aCoder encodeInt:   _location.column  forKey:@"location_column"];
@@ -69,6 +70,7 @@
         _originalStrength = [aDecoder decodeIntForKey:@"originalStrength"];
         _side             = [aDecoder decodeIntForKey:@"side"];
         _strength         = [aDecoder decodeIntForKey:@"strength"];
+        _turn             = [aDecoder decodeIntForKey:@"turn"];
         
         // _location is a structure
         int col = [aDecoder decodeIntForKey:@"location_column"];

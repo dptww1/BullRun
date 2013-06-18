@@ -10,6 +10,7 @@
 #import "BAOrderOfBattle.h"
 #import "BAReinforcementInfo.h"
 #import "BAUnit.h"
+#import "BullRun.h"
 #import "DPTSysUtil.h"
 #import "HMHex.h"
 #import "NSArray+DPTUtil.h"
@@ -35,6 +36,22 @@
 
     if (oob) {
         [oob setUnits:[NSKeyedUnarchiver unarchiveObjectWithFile:filepath]];
+
+        // Handle reinforcements
+        [[oob units] enumerateObjectsUsingBlock:^(BAUnit* unit, NSUInteger idx, BOOL* stop) {
+            // Nothing to do if unit starts on map
+            if ([unit turn] == 0)
+                return;
+
+            BAReinforcementInfo* ri = [BAReinforcementInfo createWithUnit:unit];
+            DEBUG_REINFORCEMENTS(@"Reinforcement: %@ arrives at %02d%02d on turn %d",
+                                 [ri unitName],
+                                 [ri entryLocation].column,
+                                 [ri entryLocation].row,
+                                 [ri entryTurn]);
+            [oob addReinforcementInfo:ri];
+            [unit setLocation:HMHexMake(-1, -1)];
+        }];
     }
 
     return oob;

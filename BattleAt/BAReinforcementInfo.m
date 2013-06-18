@@ -14,8 +14,10 @@
 
 #pragma mark - Initialization
 
-+ (BAReinforcementInfo*)createWithUnit:(BAUnit*)unit onTurn:(int)turn atHex:(HMHex)hex {
-    return [[BAReinforcementInfo alloc] initWithUnit:unit onTurn:turn atHex:hex];
++ (BAReinforcementInfo*)createWithUnit:(BAUnit*)unit {
+    return [[BAReinforcementInfo alloc] initWithUnit:unit
+                                              onTurn:[unit turn]
+                                               atHex:[unit location]];
 }
 
 - (BAReinforcementInfo*)initWithUnit:(BAUnit*)unit onTurn:(int)turn atHex:(HMHex)hex {

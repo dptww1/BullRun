@@ -61,6 +61,12 @@
 /** The unit's movement points.  Sorry, "mps" was just too convenient. */
 @property (nonatomic, assign)           int             mps;
 
+/** 
+ * The turn that the unit will appear; 0 means it starts on map.
+ * Not truly public; entirely for the use the order of battle class.
+ */
+@property (nonatomic, assign)           int             turn;
+
 #pragma mark - Convenience Methods
 
 /**

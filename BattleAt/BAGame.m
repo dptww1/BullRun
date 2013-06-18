@@ -45,12 +45,6 @@ BAGame* game; // the global game instance
         _observers = [NSMutableArray array];
         _turn      = 1;
         _userSide  = CSA;
-
-        DEBUG_REINFORCEMENTS(@"Init OOB: Smith shows turn 5 @0912");
-        [_oob addReinforcementInfo:
-         [BAReinforcementInfo createWithUnit:[_oob unitByName:@"Smith"]
-                                      onTurn:5
-                                       atHex:HMHexMake(9, 12)]];
     }
 
     return self;
