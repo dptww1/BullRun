@@ -42,11 +42,13 @@ h3. UI/Art
 
 h3. Functionality
 * Touching outside hex area should show iOS status bar
-* BAOrderOfBattle needs reinforcement information
 * Game#takeCasualties to reset attack mode when wrecked
 * Real attack/advance/retreat animations
 * May need to differentiate between a unit being "sighted" (i.e. enemy can see) vs "visible" (i.e. user can see)
 * Units can retreat into EZOC (but shouldn't be able to)
+* CSA AI
+** Attacking subroutines
+** Defenders cross the river -- why?
 
 h3. Organization
 * Differentiate between BR-specific files (Terrain, BullRun.h) and Battle@ framework files (Board, Game, Unit)
@@ -55,6 +57,7 @@ h3. Organization
 
 h3. API
 * HMPathFinder doesn't need "minCost" parameter, since it can be inferred from the "map" parameter
+* BAGame (and BRGame?) needs a "startGame" method (and can't use "initialize"!) so can restart after ending game
 
 h3. Bugs
 * Trying to enter an impossible hex lets unit accumulate a crazy number of MPs
