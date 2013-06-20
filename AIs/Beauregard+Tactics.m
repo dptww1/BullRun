@@ -11,6 +11,7 @@
 #import "BAUnit.h"
 #import "Beauregard+Strategy.h"
 #import "Beauregard+Tactics.h"
+#import "BRMap.h"
 
 //==============================================================================
 @implementation Beauregard (Private)
@@ -35,7 +36,7 @@
 }
 
 - (BOOL)assignDefender:(BAAIInfluenceMap*)imap {
-    HMMap* map = [game board];
+    BRMap* map = [BRMap map];
     HMHexAndDistance hexd = [imap largestValue];
     if (hexd.distance < 1)
         return NO;
@@ -57,7 +58,14 @@
 
     if (bestUnit) {
         DEBUG_AI(@"assignDefender %@ to %02d%02d", [bestUnit name], hexd.hex.column, hexd.hex.row);
-        [self routeUnit:bestUnit toDestination:hexd.hex];
+
+        if ([map is:[bestUnit location] inZone:@"usa"]) {
+            HMHexAndDistance fordLoc = [map closestFordTo:[bestUnit location]];
+            [self routeUnit:bestUnit toDestination:fordLoc.hex];
+        } else {
+            [self routeUnit:bestUnit toDestination:hexd.hex];
+        }
+
         [[self orderedThisTurn] addObject:[bestUnit name]];
         [self devalueInfluenceMap:imap atHex:hexd.hex];
     } else

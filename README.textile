@@ -46,9 +46,7 @@ h3. Functionality
 * Real attack/advance/retreat animations
 * May need to differentiate between a unit being "sighted" (i.e. enemy can see) vs "visible" (i.e. user can see)
 * Units can retreat into EZOC (but shouldn't be able to)
-* CSA AI
-** Attacking subroutines
-** Defenders cross the river -- why?
+* CSA AI attack subroutine
 
 h3. Organization
 * Differentiate between BR-specific files (Terrain, BullRun.h) and Battle@ framework files (Board, Game, Unit)
