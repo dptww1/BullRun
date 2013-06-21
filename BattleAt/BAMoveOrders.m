@@ -7,7 +7,7 @@
 //
 
 #import "DPTResizableBuffer.h"
-#import "HMHex.h"
+#import "HXMHex.h"
 #import "BAMoveOrders.h"
 
 //==============================================================================
@@ -26,7 +26,7 @@
     
     if (self) {
         _list = [DPTResizableBuffer bufferWithCapacity:20
-                                          ofObjectSize:sizeof(HMHex)];
+                                          ofObjectSize:sizeof(HXMHex)];
     }
     
     return self;
@@ -49,7 +49,7 @@
     [_list clear];
 }
 
-- (void)addHex:(HMHex)hex {
+- (void)addHex:(HXMHex)hex {
     [_list add:&hex];
 }
 
@@ -57,15 +57,15 @@
     return [_list count];
 }
 
-- (HMHex)lastHex {
+- (HXMHex)lastHex {
     return [self hex:[_list count] - 1];
 }
 
-- (HMHex)firstHexAndRemove:(BOOL)removeOrder {
+- (HXMHex)firstHexAndRemove:(BOOL)removeOrder {
     if ([_list count] == 0)
-        return HMHexMake(-1, -1);
+        return HXMHexMake(-1, -1);
     
-    HMHex hex = [self hex:0];
+    HXMHex hex = [self hex:0];
     
     if (removeOrder)
         [_list remove:0];
@@ -73,19 +73,19 @@
     return hex;
 }
 
-- (HMHex)hex:(int)idx {
+- (HXMHex)hex:(int)idx {
     if (0 <= idx && idx < [_list count])
-        return *((HMHex*)[_list getObjectAt:idx]);
+        return *((HXMHex*)[_list getObjectAt:idx]);
 
-    return HMHexMake(-1, -1);
+    return HXMHexMake(-1, -1);
 }
 
-- (BOOL)isBacktrack:(HMHex)hex {
+- (BOOL)isBacktrack:(HXMHex)hex {
     if ([_list count] < 2)
         return NO;
     
-    HMHex penultimate = [self hex:[_list count] - 2];
-    return HMHexEquals(hex, penultimate);
+    HXMHex penultimate = [self hex:[_list count] - 2];
+    return HXMHexEquals(hex, penultimate);
 }
 
 - (void)backtrack {

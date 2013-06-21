@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "BullRun.h"
-#import "HMHex.h"
+#import "HXMHex.h"
 
 @class BAReinforcementInfo;
 @class BAUnit;

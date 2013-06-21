@@ -17,15 +17,15 @@
 @interface BAAAnimationListItemMove ()
 
 @property (nonatomic, strong) BAUnit*                  actor;
-@property (nonatomic)         HMHex                    startHex;
-@property (nonatomic)         HMHex                    endHex;
+@property (nonatomic)         HXMHex                   startHex;
+@property (nonatomic)         HXMHex                   endHex;
 
 @end
 
 //==============================================================================
 @implementation BAAAnimationListItemMove
 
-+ (id)itemMoving:(BAUnit*)unit toHex:(HMHex)hex {
++ (id)itemMoving:(BAUnit*)unit toHex:(HXMHex)hex {
     BAAAnimationListItemMove* o = [[BAAAnimationListItemMove alloc] init];
 
     if (o) {

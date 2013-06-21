@@ -1,6 +1,6 @@
-/*! @file HMHex.h */
+/*! @file HXMHex.h */
 //
-//  HMHex.h
+//  HXMHex.h
 //  Bull Run
 //
 //  Created by Dave Townsend on 12/25/12.
@@ -9,31 +9,31 @@
 
 /**
  * Coordinates of a single hex location.
- * @see HMHexMake, HMHexEquals
+ * @see HXMHexMake, HXMHexEquals
  */
 typedef struct {
     int column;   /**< the hex column */
     int row;      /**< the hex row */
-} HMHex;
+} HXMHex;
 
 /**
  * A hex plus an extra integer field, for when functions need to return
  * information about a hex plus the hex itself.
  */
 typedef struct {
-    HMHex hex;         /**< the hex */
-    int   distance;    /**< the extra information */
-} HMHexAndDistance;
+    HXMHex hex;         /**< the hex */
+    int    distance;    /**< the extra information */
+} HXMHexAndDistance;
 
 /**
- * Constructs a new `HMHex` from the given coordinates.
+ * Constructs a new `HXMHex` from the given coordinates.
  * 
  * @param col the hex column
  * @param row the hex row
  *
  * @return the new hex
  */
-#define HMHexMake(col, row) ((HMHex){ (col), (row) })
+#define HXMHexMake(col, row) ((HXMHex){ (col), (row) })
 
 /**
  * Compares two hexes for equality. As with many macros, this may 
@@ -44,4 +44,4 @@ typedef struct {
  *
  * @return non-zero if the hexes are the same, zero if they differ
  */
-#define HMHexEquals(h1, h2) ((h1).row == (h2).row && (h1).column == (h2).column)
+#define HXMHexEquals(h1, h2) ((h1).row == (h2).row && (h1).column == (h2).column)

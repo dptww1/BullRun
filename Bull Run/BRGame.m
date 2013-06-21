@@ -17,7 +17,7 @@
 }
 
 // Returns YES if `enemy' situated in given terrain is sighted by any of `friends'.
-- (BOOL)isUnit:(BAUnit*)enemy inHex:(HMHex)hex sightedBy:(NSArray*)friends {
+- (BOOL)isUnit:(BAUnit*)enemy inHex:(HXMHex)hex sightedBy:(NSArray*)friends {
 
     // CSA north of river or USA south of river is always spotted (note that fords
     // are marked as on both sides of the river, so units on fords are always spotted).

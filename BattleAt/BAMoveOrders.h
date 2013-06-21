@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "HMHex.h"
+#import "HXMHex.h"
 
 @class DPTResizableBuffer;
 
@@ -42,7 +42,7 @@
  *
  * @param hex the hex to add
  */
-- (void)addHex:(HMHex)hex;
+- (void)addHex:(HXMHex)hex;
 
 /**
  * Returns number of hexes in this list.
@@ -57,7 +57,7 @@
  * @return the last hex, or (-1,-1) if there is none because the list is empty
  */
 //
-- (HMHex)lastHex;
+- (HXMHex)lastHex;
 
 /**
  * Gets first order in list, removing it if removeOrder == `YES`.
@@ -67,7 +67,7 @@
  * @return the first hex in the list, or (-1,-1) if the list is empty
  */
 //
-- (HMHex)firstHexAndRemove:(BOOL)removeOrder;
+- (HXMHex)firstHexAndRemove:(BOOL)removeOrder;
 
 /**
  * Gets hex at given position, which must be in range (0..`lastHex:`).
@@ -80,7 +80,7 @@
  *
  * @return the corresponding hex, or (-1,-1) if `idx` is bad
  */
-- (HMHex)hex:(int)idx;
+- (HXMHex)hex:(int)idx;
 
 /**
  * Detects a backtrack where the user selects a unit in hex A, orders it to 
@@ -91,7 +91,7 @@
  * @return `YES` if "hex" is the same as the penultimate hex in the orders,
  *         else `NO`
  */
-- (BOOL)isBacktrack:(HMHex)hex;
+- (BOOL)isBacktrack:(HXMHex)hex;
 
 /**
  * Handles the situation described in `isBacktrack:` by removing the last order

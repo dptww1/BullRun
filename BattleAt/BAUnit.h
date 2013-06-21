@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "BullRun.h"
-#import "HMHex.h"
+#import "HXMHex.h"
 
 @class BAMoveOrders;
 
@@ -47,7 +47,7 @@
 @property (nonatomic, assign)           int             strength;
 
 /** The current hex location of the unit. */
-@property (nonatomic, assign)           HMHex           location;
+@property (nonatomic, assign)           HXMHex          location;
 
 /** If `YES`, the unit is visible to the enemy. */
 @property (nonatomic, assign)           BOOL            sighted;

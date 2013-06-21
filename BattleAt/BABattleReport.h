@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "HMHex.h"
+#import "HXMHex.h"
 
 @class BAUnit;
 
@@ -34,10 +34,10 @@
 @property (nonatomic, assign)           int     defenderCasualties;
 
 /** The hex the defender is retreating to; (-1,-1) means no retreat. */
-@property (nonatomic, assign)           HMHex   retreatHex;
+@property (nonatomic, assign)           HXMHex  retreatHex;
 
 /** The hex the attacker is advancing into; (-1,-1) means no advance. */
-@property (nonatomic, assign)           HMHex   advanceHex;
+@property (nonatomic, assign)           HXMHex  advanceHex;
 
 /**
  * Convenience static initializer.

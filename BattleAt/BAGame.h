@@ -78,7 +78,7 @@
  * 
  * @return the unit in the given hex, or `nil` if none
  */
-- (BAUnit*)unitInHex:(HMHex)hex;
+- (BAUnit*)unitInHex:(HXMHex)hex;
 
 @end
 

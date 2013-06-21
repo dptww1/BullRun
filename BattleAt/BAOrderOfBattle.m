@@ -12,7 +12,7 @@
 #import "BAUnit.h"
 #import "BullRun.h"
 #import "DPTSysUtil.h"
-#import "HMHex.h"
+#import "HXMHex.h"
 #import "NSArray+DPTUtil.h"
 
 @implementation BAOrderOfBattle
@@ -50,7 +50,7 @@
                                  [ri entryLocation].row,
                                  [ri entryTurn]);
             [oob addReinforcementInfo:ri];
-            [unit setLocation:HMHexMake(-1, -1)];
+            [unit setLocation:HXMHexMake(-1, -1)];
         }];
     }
 

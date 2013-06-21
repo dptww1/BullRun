@@ -12,7 +12,7 @@
 #import "BAUnit.h"
 #import "BRMap.h"
 #import "HMGeometry.h"
-#import "HMHex.h"
+#import "HXMHex.h"
 #import "NSArray+DPTUtil.h"
 
 #define DO_SANITY_CHECK 1
@@ -39,7 +39,7 @@
 
 - (DPTUtilFilter)isCsaUnitAttacking {
     return ^BOOL(BAUnit* unit) {
-        HMHex hex = [unit location];
+        HXMHex hex = [unit location];
         return [unit sighted]
             && [[game board] is:hex inZone:@"usa"]
             && ![[game board] is:hex inZone:@"csa"];
@@ -76,7 +76,7 @@
     [usaUnits enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL* stop) {
         BAUnit* curUnit = obj;
         if ([self isUsaUnitDefending](curUnit)) {
-            HMHexAndDistance hexd = [[BRMap map] closestFordTo:[curUnit location]];
+            HXMHexAndDistance hexd = [[BRMap map] closestFordTo:[curUnit location]];
 
             if (hexd.distance < minDist) {
                 minUnit = curUnit;
@@ -101,7 +101,7 @@
     NSArray* usaUnits = [[game oob] unitsForSide:[self side]];
 
     [bases enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL* stop) {
-        HMHex base;
+        HXMHex base;
         [obj getValue:&base];
 
         [usaUnits enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL* stop) {

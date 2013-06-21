@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "HMHex.h"
+#import "HXMHex.h"
 
 /**
  * Encapsulates a map zone.  A "zone" is named collection of hexes (not
@@ -31,7 +31,7 @@
  *
  * @return `YES` if the hex is in this zone, `NO` if it isn't
  */
-- (BOOL)containsHex:(HMHex)hex;
+- (BOOL)containsHex:(HXMHex)hex;
 
 /**
  * Adds a given range to a column in this zone. This is useful for building up

@@ -41,7 +41,7 @@
  *
  * @return the upper left corner of the hex in pixels
  */
-- (CGPoint)hexToScreen:(HMHex)hex;
+- (CGPoint)hexToScreen:(HXMHex)hex;
 
 /**
  * Converts the given hex coordinate to screen coordinates.
@@ -50,7 +50,7 @@
  *
  * @return the center of the hex in pixels
  */
-- (CGPoint)hexCenterToScreen:(HMHex)hex;
+- (CGPoint)hexCenterToScreen:(HXMHex)hex;
 
 /**
  * Converts the given screen coordinate to the corresponding hex coordinate.
@@ -59,6 +59,6 @@
  *
  * @return the corresponding hex location, or (-1,-1) if no such hex
  */
-- (HMHex)screenToHex:(CGPoint)point;
+- (HXMHex)screenToHex:(CGPoint)point;
 
 @end

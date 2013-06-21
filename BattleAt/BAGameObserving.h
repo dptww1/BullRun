@@ -2,7 +2,7 @@
 // BAGameObserving.h
 //
 
-#import "HMHex.h"
+#import "HXMHex.h"
 
 @class BABattleReport;
 @class BAUnit;
@@ -45,7 +45,7 @@
  * @param unit the unit which is moving
  * @param hex the hex that the unit is moving to
  */
-- (void)moveUnit:(BAUnit*)unit to:(HMHex)hex;
+- (void)moveUnit:(BAUnit*)unit to:(HXMHex)hex;
 
 /**
  * Callback when an attack occurs.

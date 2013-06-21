@@ -8,7 +8,7 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import <Foundation/Foundation.h>
-#import "HMHex.h"
+#import "HXMHex.h"
 
 /** The speed of movement animations. */
 extern float SECONDS_PER_HEX_MOVE;
@@ -27,8 +27,8 @@ extern float SECONDS_PER_HEX_MOVE;
  * sibling class.  This might be too cute.
  */
 - (CAAnimation*)createMoveAnimationFor:(BAUnit*)unit
-                            movingFrom:(HMHex)startHex
-                                    to:(HMHex)endHex
+                            movingFrom:(HXMHex)startHex
+                                    to:(HXMHex)endHex
                             usingXform:(HMCoordinateTransformer*)transformer;
 
 /**

@@ -8,7 +8,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "HMHex.h"
+#import "HXMHex.h"
 
 @class HMMap;
 
@@ -18,7 +18,7 @@
  *
  * @see HMPathFinder#findPathFrom:to:using:
  */
-typedef float (^HMPathFinderCostFn)(HMHex from, HMHex to);
+typedef float (^HMPathFinderCostFn)(HXMHex from, HXMHex to);
 
 /**
  * Utility class for finding a path between two hexes on a given map.
@@ -69,6 +69,6 @@ typedef float (^HMPathFinderCostFn)(HMHex from, HMHex to);
  *          of the array being the end hex.  If no path is possible, the array
  *          will be empty.
  */
-- (NSArray*)findPathFrom:(HMHex)start to:(HMHex)end using:(HMPathFinderCostFn)fn;
+- (NSArray*)findPathFrom:(HXMHex)start to:(HXMHex)end using:(HMPathFinderCostFn)fn;
 
 @end

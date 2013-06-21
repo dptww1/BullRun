@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "BAAAnimationListItem.h"
-#import "HMHex.h"
+#import "HXMHex.h"
 
 @class BAUnit;
 @class BAAAnimationList;
@@ -27,6 +27,6 @@
  *
  * @return the initialized animation item
  */
-+ (id)itemMoving:(BAUnit*)unit toHex:(HMHex)hex;
++ (id)itemMoving:(BAUnit*)unit toHex:(HXMHex)hex;
 
 @end

@@ -9,11 +9,11 @@
 #import "DPTSysUtil.h"
 #import "HMMap.h"
 #import "HMGeometry.h"
-#import "HMHex.h"
+#import "HXMHex.h"
 #import "HMMapZone.h"
 #import "HMTerrainEffect.h"
 #import "NSArray+DPTUtil.h"
-#import "NSValue+HMHex.h"
+#import "NSValue+HXMHex.h"
 
 
 // Default capacity for findHexesOfType:
@@ -33,7 +33,7 @@ static const int DEFAULT_CAPACITY = 12;
 //==============================================================================
 @implementation HMMap
 
-- (int)rawDataAt:(HMHex)hex {
+- (int)rawDataAt:(HXMHex)hex {
     return _mapData[(hex.row * [_geometry numColumns]) + hex.column];
 }
 
@@ -97,7 +97,7 @@ static const int DEFAULT_CAPACITY = 12;
 
 #pragma mark - Behaviors
 
-- (BOOL)legal:(HMHex)hex {
+- (BOOL)legal:(HXMHex)hex {
     if (hex.row < 0 || hex.column < 0)
         return NO;
 
@@ -116,7 +116,7 @@ static const int DEFAULT_CAPACITY = 12;
     return YES;
 }
 
-- (int)directionFrom:(HMHex)from to:(HMHex)to {
+- (int)directionFrom:(HXMHex)from to:(HXMHex)to {
     // Fractions.  You're going to get fractions.  So use floats rather than ints.
     double fromRow = from.row;
     double fromCol = from.column;
@@ -171,7 +171,7 @@ static const int DEFAULT_CAPACITY = 12;
     }
 }
 
-- (int)distanceFrom:(HMHex)from to:(HMHex)to {
+- (int)distanceFrom:(HXMHex)from to:(HXMHex)to {
     if (![self legal:from] || ![self legal:to])
         return -1;
 
@@ -180,7 +180,7 @@ static const int DEFAULT_CAPACITY = 12;
     // calculations here a little easier if the "from" hex is to the left of the "to"
     // hex.  So swap them if need be.
     if (to.column < from.column) {
-        HMHex tmp = HMHexMake(from.column, from.row);
+        HXMHex tmp = HXMHexMake(from.column, from.row);
         from = to;
         to = tmp;
     }
@@ -240,8 +240,8 @@ static const int DEFAULT_CAPACITY = 12;
     return dir % 6;
 }
 
-- (HMHex)hexAdjacentTo:(HMHex)start inDirection:(int)dir {
-    HMHex newHex = start;
+- (HXMHex)hexAdjacentTo:(HXMHex)start inDirection:(int)dir {
+    HXMHex newHex = start;
 
     switch ([self normalizeDirection:dir]) {
         case 0:
@@ -287,7 +287,7 @@ static const int DEFAULT_CAPACITY = 12;
     return success;
 }
 
-- (HMTerrainEffect*)terrainAt:(HMHex)hex {
+- (HMTerrainEffect*)terrainAt:(HXMHex)hex {
     if (![self legal:hex])
         return nil;
 
@@ -305,12 +305,12 @@ static const int DEFAULT_CAPACITY = 12;
     return nil;
 }
 
-- (float)mpCostOf:(HMHex)hex {
+- (float)mpCostOf:(HXMHex)hex {
     HMTerrainEffect* fx = [self terrainAt:hex];
     return fx ? [fx mpCost] : 10000.0f;
 }
 
-- (BOOL)is:(HMHex)hex inSameZoneAs:(HMHex)other {
+- (BOOL)is:(HXMHex)hex inSameZoneAs:(HXMHex)other {
     for (NSString* zname in [_zones keyEnumerator]) {
         if ([self is:hex inZone:zname] && [self is:other inZone:zname])
             return YES;
@@ -319,7 +319,7 @@ static const int DEFAULT_CAPACITY = 12;
     return NO;
 }
 
-- (BOOL)is:(HMHex)hex inZone:(NSString*)zoneName {
+- (BOOL)is:(HXMHex)hex inZone:(NSString*)zoneName {
     HMMapZone* zone = [_zones objectForKey:zoneName];
     if (!zone)
         return NO;
@@ -327,7 +327,7 @@ static const int DEFAULT_CAPACITY = 12;
     return [zone containsHex:hex];
 }
 
-- (BOOL)isProhibited:(HMHex)hex {
+- (BOOL)isProhibited:(HXMHex)hex {
     return ![self terrainAt:hex];
 }
 
@@ -348,7 +348,7 @@ static const int DEFAULT_CAPACITY = 12;
 
         for (int row = 0; row < [_geometry numRows] + 1; ++row) {
             for (int col = 0; col < [_geometry numColumns]; ++col) {
-                HMHex hex = HMHexMake(col, row);
+                HXMHex hex = HXMHexMake(col, row);
                 if ([self legal:hex] && [self rawDataAt:hex] & bitMask) {
                     [list addObject:[NSValue valueWithHex:hex]];
                 }

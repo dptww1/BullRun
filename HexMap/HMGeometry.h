@@ -9,7 +9,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "HMHex.h"
+#import "HXMHex.h"
 
 /**
  * Structure defining the basic geometry of a hexmap, a two-dimensional array of hexagons. 

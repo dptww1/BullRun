@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "BAAIProtocol.h"
 #import "BullRun.h"
-#import "HMHex.h"
+#import "HXMHex.h"
 
 /** The possible types of roles which the strategy module might assign. */
 typedef enum UnitRole {
@@ -34,10 +34,10 @@ typedef enum UnitRole {
 @property (nonatomic,strong) NSMutableSet* orderedThisTurn;
 
 /** The ford which the attack force will work through. */
-@property (nonatomic,assign) HMHex         attackFord;
+@property (nonatomic,assign) HXMHex        attackFord;
 
 /** The ford which the flanking force will use. */
-@property (nonatomic,assign) HMHex         flankFord;
+@property (nonatomic,assign) HXMHex        flankFord;
 
 /** The USA game side. */
 @property (nonatomic) PlayerSide side;

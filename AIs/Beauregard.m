@@ -26,9 +26,9 @@
         if ([unit isOffMap] || ![unit sighted])
             return;
 
-        HMHex location = [unit location];
+        HXMHex location = [unit location];
         BRAICSATheater theater = [self computeTheaterOf:unit];
-        HMHex baseHex = [self baseHexForTheater:theater];
+        HXMHex baseHex = [self baseHexForTheater:theater];
 
         int dist = [map distanceFrom:location to:baseHex];
         if (dist > 10)
@@ -39,7 +39,7 @@
         float value = (float)(1 << (10 - dist));
 
         for (int i = 0; i < 6; ++i) {
-            HMHex curHex = [map hexAdjacentTo:location inDirection:i];
+            HXMHex curHex = [map hexAdjacentTo:location inDirection:i];
             float curValue = value;
 
             if (![map legal:curHex])
@@ -119,9 +119,9 @@
         ;
 }
 
-- (HMHex)baseHexForTheater:(BRAICSATheater)theater {
-    return theater == BRAICSATheaterEast ? HMHexMake(9, 12)
-                                         : HMHexMake(4, 7);
+- (HXMHex)baseHexForTheater:(BRAICSATheater)theater {
+    return theater == BRAICSATheaterEast ? HXMHexMake(9, 12)
+                                         : HXMHexMake(4, 7);
 }
 
 @end

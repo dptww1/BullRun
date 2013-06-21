@@ -14,7 +14,7 @@
 #import "BAUnit.h"
 #import "BRMap.h"
 #import "HMGeometry.h"
-#import "HMHex.h"
+#import "HXMHex.h"
 #import "HMMap.h"
 #import "NSArray+DPTUtil.h"
 
@@ -28,12 +28,12 @@
 
     NSArray* csaUnits = [[game oob] unitsForSide:OtherPlayer([self side])];
     [csaUnits enumerateObjectsUsingBlock:^(BAUnit* unit, NSUInteger idx, BOOL* stop){
-        __block HMHex location = [unit location];
+        __block HXMHex location = [unit location];
 
         // Is unit on map, north of river, and not on a ford?
         if (![unit isOffMap] && [map is:location inZone:@"usa"] && ![map is:location inZone:@"csa"]) {
             [bases enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                HMHex base;
+                HXMHex base;
                 [obj getValue:&base];
 
                 int dist = [map distanceFrom:location to:base];
@@ -46,7 +46,7 @@
 
                 // Plant values in each hex adjacent to the unit's location
                 for (int i = 0; i < 6; ++i) {
-                    HMHex curHex = [map hexAdjacentTo:location inDirection:i];
+                    HXMHex curHex = [map hexAdjacentTo:location inDirection:i];
                     float curValue = value;
 
                     // Beware of moving offmap, or into CSA territory
@@ -103,8 +103,8 @@
         _unitRoles[@"Volunteers"] = @(ROLE_DEFEND);
         _unitRoles[@"Willcox"]    = @(ROLE_FLANK);
 
-        _flankFord = HMHexMake(3,2);
-        _attackFord = HMHexMake(6,4);
+        _flankFord = HXMHexMake(3,2);
+        _attackFord = HXMHexMake(6,4);
     }
 
     return self;

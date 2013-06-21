@@ -109,8 +109,8 @@
     CGContextStrokePath(ctx);
 
     // Draw arrowhead at end of line
-    HMHex endHex = [mos lastHex];
-    HMHex penultimateHex = [mos numHexes] == 1 ? [unit location] : [mos hex:[mos numHexes] - 2];
+    HXMHex endHex = [mos lastHex];
+    HXMHex penultimateHex = [mos numHexes] == 1 ? [unit location] : [mos hex:[mos numHexes] - 2];
     int dir = [[game board] directionFrom:penultimateHex to:endHex];
 
     CGPoint end = [[self coordXformer] hexCenterToScreen:endHex];
@@ -212,7 +212,7 @@
             // nothing to do
             
         } else {
-            HMHex hex = [[self coordXformer] screenToHex:p];
+            HXMHex hex = [[self coordXformer] screenToHex:p];
             
             if ([[game board] legal:hex]) {
 
@@ -232,19 +232,19 @@
     }
 }
 
-- (void) addOrdersFor:(BAUnit*)unit movingTo:(HMHex)hex {
+- (void) addOrdersFor:(BAUnit*)unit movingTo:(HXMHex)hex {
     // There's some complication here because the user can drag so quickly
     // in the UI that when we convert to hexes we'll end up with non-adjacent
     // hexes, which would be a Bad Thing.
 
     DEBUG_MOVEORDERS(@"Orders for %@: ADD %02d%02d", [unit name], hex.column, hex.row);
 
-    HMHex lastHex = [[unit moveOrders] isEmpty] ? [unit location]
-                                                : [[unit moveOrders] lastHex];
+    HXMHex lastHex = [[unit moveOrders] isEmpty] ? [unit location]
+                                                 : [[unit moveOrders] lastHex];
 
-    while (!HMHexEquals(lastHex, hex)) {
+    while (!HXMHexEquals(lastHex, hex)) {
         int d = [[game board] directionFrom:lastHex to:hex];
-        HMHex h = [[game board] hexAdjacentTo:lastHex inDirection:d];
+        HXMHex h = [[game board] hexAdjacentTo:lastHex inDirection:d];
         [[unit moveOrders] addHex:h];
         lastHex = h;
     }
@@ -255,13 +255,13 @@
         return;
 
     for (UITouch* t in touches) {
-        HMHex h = [_coordXformer screenToHex:[t locationInView:[self view]]];
+        HXMHex h = [_coordXformer screenToHex:[t locationInView:[self view]]];
         
         // Just ignore illegal hexes
         if (![[game board] legal:h])
             return;
             
-        if (!_givingNewOrders && HMHexEquals([_currentUnit location], h)) {
+        if (!_givingNewOrders && HXMHexEquals([_currentUnit location], h)) {
 
             // The user may wiggle a finger around in the unit's current hex,
             // in which case just keep showing the existing orders.
@@ -281,14 +281,14 @@
             // However, moveOrders don't understand about the unit's current location,
             // so we have to handle backtracking into the original hex as a special case.
             if ([[_currentUnit moveOrders] isBacktrack:h] ||
-                ([[_currentUnit moveOrders] numHexes] == 1 && HMHexEquals([_currentUnit location], h))) {
+                ([[_currentUnit moveOrders] numHexes] == 1 && HXMHexEquals([_currentUnit location], h))) {
 
                 DEBUG_MOVEORDERS(@"Orders for %@: BACKTRACK to %02d%02d", [_currentUnit name], h.column, h.row);
                 [[_currentUnit moveOrders] backtrack];
             }
             
             // Add this hex on to the end of the list, unless it it's repeat of what's already there
-            else if (HMHexEquals([[_currentUnit moveOrders] lastHex], h)) {
+            else if (HXMHexEquals([[_currentUnit moveOrders] lastHex], h)) {
                 
                 // Don't keep putting on the same hex on the end of the queue
                     
@@ -344,7 +344,7 @@
     [[self view] setNeedsDisplay];
 }
 
-- (void)moveUnit:(BAUnit*)unit to:(HMHex)hex {
+- (void)moveUnit:(BAUnit*)unit to:(HXMHex)hex {
     DEBUG_MOVEMENT(@"Moving %@ to %02d%02d", [unit name], hex.column, hex.row);
     [_animationList addItem:[BAAAnimationListItemMove itemMoving:unit toHex:hex]];
 }

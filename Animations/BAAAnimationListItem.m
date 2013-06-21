@@ -15,8 +15,8 @@ float SECONDS_PER_HEX_MOVE = 0.75f;
 @implementation BAAAnimationListItem
 
 - (CAAnimation*)createMoveAnimationFor:(BAUnit*)unit
-                            movingFrom:(HMHex)startHex
-                                    to:(HMHex)endHex
+                            movingFrom:(HXMHex)startHex
+                                    to:(HXMHex)endHex
                             usingXform:(HMCoordinateTransformer*)xform {
     CABasicAnimation* anim = [CABasicAnimation animationWithKeyPath:@"position"];
     [anim setDuration:SECONDS_PER_HEX_MOVE];

@@ -31,7 +31,7 @@
  *
  * @return `YES` if the hex is in enemy territory, `NO` if it isn't
  */
-- (BOOL)isEnemy:(HMHex)hex of:(PlayerSide)side;
+- (BOOL)isEnemy:(HXMHex)hex of:(PlayerSide)side;
 
 /**
  * Finds the closes ford to the given hex
@@ -40,7 +40,7 @@
  *
  * @return the closest ford, and the distance to it
  */
-- (HMHexAndDistance)closestFordTo:(HMHex)hex;
+- (HXMHexAndDistance)closestFordTo:(HXMHex)hex;
 
 /**
  * Finds the base(s) for the given side.

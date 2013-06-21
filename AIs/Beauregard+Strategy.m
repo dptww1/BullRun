@@ -16,7 +16,7 @@
 #import "HMMap.h"
 #import "HMPathFinder.h"
 #import "HMTerrainEffect.h"
-#import "NSValue+HMHex.h"
+#import "NSValue+HXMHex.h"
 
 @implementation Beauregard (Private)
 
@@ -71,7 +71,7 @@
     BRAICSATheater srcTheater = OtherTheater(theater);
 
     __block BAUnit* bestUnit = nil;
-    __block HMHex   bestHex  = HMHexMake(1000, -1000);
+    __block HXMHex  bestHex  = HXMHexMake(1000, -1000);
 
     NSArray* csaUnits = [[game oob] unitsForSide:[self side]];
     [csaUnits enumerateObjectsUsingBlock:^(BAUnit* unit, NSUInteger idx, BOOL* stop) {
@@ -84,7 +84,7 @@
         if ([[terrain name] isEqualToString:@"Ford"])
             return;
 
-        HMHex curHex = [unit location];
+        HXMHex curHex = [unit location];
 
         if (curHex.column < bestHex.column
             || (curHex.column == bestHex.column && curHex.row > bestHex.row)) {
@@ -115,7 +115,7 @@
             return;
 
         if (![self unitInCorrectTheater:unit]) {
-            HMHex baseHex = [self baseHexForTheater:[[self unitRoles][[unit name]] integerValue]];
+            HXMHex baseHex = [self baseHexForTheater:[[self unitRoles][[unit name]] integerValue]];
 
             [self routeUnit:unit toDestination:baseHex];
 
@@ -165,15 +165,15 @@
         [self transferUnitTo:needyTheater];
 }
 
-- (void)routeUnit:(BAUnit*)unit toDestination:(HMHex)destination {
+- (void)routeUnit:(BAUnit*)unit toDestination:(HXMHex)destination {
     HMMap* map = [game board];
-    HMHex curHex = [unit location];
+    HXMHex curHex = [unit location];
 
     HMPathFinder* pf = [HMPathFinder pathFinderOnMap:map withMinCost:4.0f];
 
     NSArray* path = [pf findPathFrom:curHex
                                   to:destination
-                               using:^float(HMHex from, HMHex to) {
+                               using:^float(HXMHex from, HXMHex to) {
                                    HMTerrainEffect* fx = [map terrainAt:to];
 
                                    if (!fx) // impassible

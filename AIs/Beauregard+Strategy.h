@@ -50,6 +50,6 @@
  *
  * TODO: probably belongs in Tactics, actually
  */
-- (void)routeUnit:(BAUnit*)unit toDestination:(HMHex)destination;
+- (void)routeUnit:(BAUnit*)unit toDestination:(HXMHex)destination;
 
 @end

@@ -15,7 +15,7 @@
 #import "BAUnit.h"
 #import "BRAppDelegate.h"
 #import "BullRun.h"
-#import "HMHex.h"
+#import "HXMHex.h"
 #import "HMMap.h"
 #import "NSArray+DPTUtil.h"
 
@@ -65,10 +65,10 @@ BAGame* game; // the global game instance
     [_observers addObject:object];
 }
 
-- (BAUnit*)unitInHex:(HMHex)hex {  // TODO: rewrite using dpt_find
+- (BAUnit*)unitInHex:(HXMHex)hex {  // TODO: rewrite using dpt_find
     NSArray* units = [_oob units];
     NSUInteger idx = [units indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL* stop) {
-        return HMHexEquals(((BAUnit*) obj).location, hex);
+        return HXMHexEquals(((BAUnit*) obj).location, hex);
     }];
     return idx != NSNotFound ? [units objectAtIndex:idx] : nil;
 }
@@ -137,7 +137,7 @@ BAGame* game; // the global game instance
             if (![_board legal:[u location]] || ![u hasOrders])
                 continue;
             
-            HMHex nextHex = [[u moveOrders] firstHexAndRemove:NO];
+            HXMHex nextHex = [[u moveOrders] firstHexAndRemove:NO];
         
             // Is it occupied?
             BAUnit* blocker = [self unitInHex:nextHex];
@@ -227,7 +227,7 @@ BAGame* game; // the global game instance
     }
 }
 
-- (void) notifyObserversUnit:(BAUnit*)unit willMoveToHex:(HMHex)hex {
+- (void) notifyObserversUnit:(BAUnit*)unit willMoveToHex:(HXMHex)hex {
     for (id<BAGameObserving> observer in [self observers]) {
         [observer moveUnit:unit to:hex];
     }
@@ -306,8 +306,8 @@ BAGame* game; // the global game instance
         } else { // defender retreats
             DEBUG_COMBAT(@"  defender retreats in direction %d", retreatDir);
 
-            HMHex defenderOriginalHex = [d location];
-            HMHex retreatHex = [_board hexAdjacentTo:[d location] inDirection:retreatDir];
+            HXMHex defenderOriginalHex = [d location];
+            HXMHex retreatHex = [_board hexAdjacentTo:[d location] inDirection:retreatDir];
             [report setRetreatHex:retreatHex];
 
             if ([self doesAttackerAdvance:a])
@@ -390,7 +390,7 @@ BAGame* game; // the global game instance
     return c;
 }
 
-- (BOOL)is:(BAUnit*)unit movingThruEnemyZocTo:(HMHex)hex {
+- (BOOL)is:(BAUnit*)unit movingThruEnemyZocTo:(HXMHex)hex {
     int moveDir = [_board directionFrom:[unit location] to:hex];
     int cwDir   = [_board rotateDirection:moveDir clockwise:YES];
     int ccwDir  = [_board rotateDirection:moveDir clockwise:NO];
@@ -420,7 +420,7 @@ BAGame* game; // the global game instance
 }
 
 - (BOOL)unit:(BAUnit*)u canRetreatInDirection:(int)dir {
-    HMHex hex = [_board hexAdjacentTo:[u location] inDirection:dir];
+    HXMHex hex = [_board hexAdjacentTo:[u location] inDirection:dir];
 
     return [_board legal:hex]
         && ![self unitInHex:hex]
@@ -429,7 +429,7 @@ BAGame* game; // the global game instance
 }
 
 // Returns YES if `enemy' situated in given terrain is sighted by any of `friends'.
-- (BOOL)isUnit:(BAUnit*)enemy inHex:(HMHex)hex sightedBy:(NSArray*)friends {
+- (BOOL)isUnit:(BAUnit*)enemy inHex:(HXMHex)hex sightedBy:(NSArray*)friends {
     return YES;  // TODO: Huh?
 }
 

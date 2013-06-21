@@ -33,14 +33,14 @@
     return self;
 }
 
-- (CGPoint)hexCenterToScreen:(HMHex)h {
+- (CGPoint)hexCenterToScreen:(HXMHex)h {
     CGPoint pt = [self hexToScreen:h];
     pt.x += _hexSize.width  / 2;
     pt.y += _hexSize.height / 2;
     return pt;
 }
 
-- (CGPoint)hexToScreen:(HMHex)hex {
+- (CGPoint)hexToScreen:(HXMHex)hex {
     float x = _origin.x;
     float y = _origin.y;
     
@@ -54,7 +54,7 @@
     return CGPointMake(x, y);
 }
 
-- (HMHex)screenToHex:(CGPoint)point {
+- (HXMHex)screenToHex:(CGPoint)point {
     CGPoint p = [self offsetFromOrigin:point];
     
     int col = p.x / _hexSize.width;
@@ -72,12 +72,12 @@
     }
     
     if (p.x < 0.0 || p.y < 0.0)
-        return HMHexMake(-1, -1);
+        return HXMHexMake(-1, -1);
     
     int row = p.y / [self hexSize].height;
     
-    HMHex h = HMHexMake(col, row);
-    return [_map legal:h] ? h : HMHexMake(-1, -1);
+    HXMHex h = HXMHexMake(col, row);
+    return [_map legal:h] ? h : HXMHexMake(-1, -1);
 }
 
 @end

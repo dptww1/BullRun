@@ -75,7 +75,7 @@
         // _location is a structure
         int col = [aDecoder decodeIntForKey:@"location_column"];
         int row = [aDecoder decodeIntForKey:@"location_row"];
-        _location = HMHexMake(col, row);
+        _location = HXMHexMake(col, row);
         
         // Initialize non-persistent properties
         _moveOrders = [[BAMoveOrders alloc] init];

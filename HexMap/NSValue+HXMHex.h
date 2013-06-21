@@ -1,5 +1,5 @@
 //
-//  NSValue+HMHex.h
+//  NSValue+HXMHex.h
 //  Bull Run
 //
 //  Created by Dave Townsend on 5/29/13.
@@ -7,26 +7,26 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "HMHex.h"
+#import "HXMHex.h"
 
 /** 
  * NSValue wrapping support for HMHex structures, which allow
  * hexes to be put into the iOS collections.
  */
-@interface NSValue (HMHex)
+@interface NSValue (HXMHex)
 
 /**
  * Returns a `NSValue` for the given hex.
  * 
  * @param hex the hex to wrap
  */
-+ (id)valueWithHex:(HMHex)hex;
++ (id)valueWithHex:(HXMHex)hex;
 
 /**
  * Returns the hex that this object wraps.
  *
  * @return the hex value
  */
-- (HMHex)hexValue;
+- (HXMHex)hexValue;
 
 @end

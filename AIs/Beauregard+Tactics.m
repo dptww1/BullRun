@@ -16,7 +16,7 @@
 //==============================================================================
 @implementation Beauregard (Private)
 
-- (void)devalueInfluenceMap:(BAAIInfluenceMap*)imap atHex:(HMHex)hex {
+- (void)devalueInfluenceMap:(BAAIInfluenceMap*)imap atHex:(HXMHex)hex {
     HMMap* map = [game board];
 
     [imap multiplyBy:0.25f atHex:hex];
@@ -37,7 +37,7 @@
 
 - (BOOL)assignDefender:(BAAIInfluenceMap*)imap {
     BRMap* map = [BRMap map];
-    HMHexAndDistance hexd = [imap largestValue];
+    HXMHexAndDistance hexd = [imap largestValue];
     if (hexd.distance < 1)
         return NO;
 
@@ -60,7 +60,7 @@
         DEBUG_AI(@"assignDefender %@ to %02d%02d", [bestUnit name], hexd.hex.column, hexd.hex.row);
 
         if ([map is:[bestUnit location] inZone:@"usa"]) {
-            HMHexAndDistance fordLoc = [map closestFordTo:[bestUnit location]];
+            HXMHexAndDistance fordLoc = [map closestFordTo:[bestUnit location]];
             [self routeUnit:bestUnit toDestination:fordLoc.hex];
         } else {
             [self routeUnit:bestUnit toDestination:hexd.hex];

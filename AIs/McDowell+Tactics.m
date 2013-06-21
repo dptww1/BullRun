@@ -12,26 +12,26 @@
 #import "BAOrderOfBattle.h"
 #import "BAUnit.h"
 #import "BRMap.h"
-#import "HMHex.h"
+#import "HXMHex.h"
 #import "McDowell.h"
 #import "McDowell+Strategy.h"
 #import "McDowell+Tactics.h"
 #import "NSArray+DPTUtil.h"
-#import "NSValue+HMHex.h"
+#import "NSValue+HXMHex.h"
 
 
 @implementation McDowell (Private)
 
-- (HMHex)closestCsaBaseTo:(HMHex)hex {
+- (HXMHex)closestCsaBaseTo:(HXMHex)hex {
     BRMap*         map     = [BRMap map];
-    __block HMHex  minHex  = HMHexMake(-1, -1);
+    __block HXMHex minHex  = HXMHexMake(-1, -1);
     __block int    minDist = INT_MAX;
 
     NSArray* bases = [map basesForSide:OtherPlayer([self side])];
     [bases
      enumerateObjectsUsingBlock:^(NSValue* val, NSUInteger idx, BOOL* stop) {
-         HMHex curHex  = [val hexValue];
-         int   curDist = [map distanceFrom:hex to:curHex];
+         HXMHex curHex  = [val hexValue];
+         int    curDist = [map distanceFrom:hex to:curHex];
          if (curDist < minDist) {
              minDist = curDist;
              minHex  = curHex;
@@ -41,7 +41,7 @@
     return minHex;
 }
 
-- (void)devalueInfluenceMap:(BAAIInfluenceMap*)imap atHex:(HMHex)hex {
+- (void)devalueInfluenceMap:(BAAIInfluenceMap*)imap atHex:(HXMHex)hex {
     HMMap* map = [game board];
 
     [imap multiplyBy:0.25f atHex:hex];
@@ -77,18 +77,18 @@
 
 // TODO: Really needs to use A* algorithm, and respect things like not trying to
 // move unit through ZOC.
-- (void)routeUnit:(BAUnit*)unit toDestination:(HMHex)destination {
+- (void)routeUnit:(BAUnit*)unit toDestination:(HXMHex)destination {
     [[unit moveOrders] clear];
 
     HMMap* map = [game board];
-    HMHex curHex = [unit location];
+    HXMHex curHex = [unit location];
 
     // There's no point in planning out more than two hexes, because
     // we recalculate orders every turn and no unit moves more than
     // two hexes per turn.
-    for (int i = 0; i < 2 && !HMHexEquals(curHex, destination); ++i) {
+    for (int i = 0; i < 2 && !HXMHexEquals(curHex, destination); ++i) {
         int dir = [map directionFrom:curHex to:destination];
-        HMHex nextHex = [map hexAdjacentTo:curHex inDirection:dir];
+        HXMHex nextHex = [map hexAdjacentTo:curHex inDirection:dir];
 
         [[unit moveOrders] addHex:nextHex];
 
@@ -119,7 +119,7 @@
 }
 
 - (BOOL)assignDefender:(BAAIInfluenceMap*)imap {
-    HMHexAndDistance hexd = [imap largestValue];
+    HXMHexAndDistance hexd = [imap largestValue];
     if (hexd.distance < 1)
         return NO;
 
@@ -165,7 +165,7 @@
 
     // If in CSA zone or a ford, move to nearest base
     if ([map is:[u location] inZone:@"csa"]) {
-        HMHex closestBase = [self closestCsaBaseTo:[u location]];
+        HXMHex closestBase = [self closestCsaBaseTo:[u location]];
         DEBUG_AI(@"Assigning Flanker %@ to base %02d%02d", [u name], closestBase.column, closestBase.row);
         [self routeUnit:u toDestination:closestBase];
 

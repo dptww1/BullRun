@@ -15,6 +15,7 @@
 		CC1B672A16DFA5C00078B20B /* BAAGunfire.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1B672816DFA5C00078B20B /* BAAGunfire.m */; };
 		CC25F47D1765748F00F104BE /* Beauregard+Strategy.m in Sources */ = {isa = PBXBuildFile; fileRef = CC25F47C1765748F00F104BE /* Beauregard+Strategy.m */; };
 		CC25F481176E455E00F104BE /* Beauregard+Tactics.m in Sources */ = {isa = PBXBuildFile; fileRef = CC25F480176E455E00F104BE /* Beauregard+Tactics.m */; };
+		CC25F4B31774C92900F104BE /* NSValue+HXMHex.m in Sources */ = {isa = PBXBuildFile; fileRef = CC25F4B21774C92600F104BE /* NSValue+HXMHex.m */; };
 		CC35E68416AF5EE700F9F0B1 /* MapView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC35E68116AF5EE700F9F0B1 /* MapView.m */; };
 		CC35E68516AF5EE700F9F0B1 /* UnitView.m in Sources */ = {isa = PBXBuildFile; fileRef = CC35E68316AF5EE700F9F0B1 /* UnitView.m */; };
 		CC35E68716B5CE0A00F9F0B1 /* portraits.png in Resources */ = {isa = PBXBuildFile; fileRef = CC35E68616B5CE0A00F9F0B1 /* portraits.png */; };
@@ -59,7 +60,6 @@
 		CCF01A9A174D9705003A1C77 /* McDowell+Strategy.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF01A99174D9705003A1C77 /* McDowell+Strategy.m */; };
 		CCF01AA0174FFECA003A1C77 /* BAAIInfluenceMap.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF01A9F174FFECA003A1C77 /* BAAIInfluenceMap.m */; };
 		CCF01AA317510DB2003A1C77 /* McDowell+Tactics.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF01AA217510DB2003A1C77 /* McDowell+Tactics.m */; };
-		CCF01AA6175643DF003A1C77 /* NSValue+HMHex.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF01AA5175643DE003A1C77 /* NSValue+HMHex.m */; };
 		CCF01AA917568767003A1C77 /* HMPathFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF01AA817568767003A1C77 /* HMPathFinder.m */; };
 		CCF01AB21758EC7C003A1C77 /* HMPathFinderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF01AB11758EC7C003A1C77 /* HMPathFinderTests.m */; };
 		CCF01AB5175E70F0003A1C77 /* DPTResizableBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF01AB4175E70F0003A1C77 /* DPTResizableBuffer.m */; };
@@ -97,6 +97,8 @@
 		CC25F47E17666AAE00F104BE /* DPTMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPTMath.h; sourceTree = "<group>"; };
 		CC25F47F176E455E00F104BE /* Beauregard+Tactics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Beauregard+Tactics.h"; sourceTree = "<group>"; };
 		CC25F480176E455E00F104BE /* Beauregard+Tactics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Beauregard+Tactics.m"; sourceTree = "<group>"; };
+		CC25F4B11774C92400F104BE /* NSValue+HXMHex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValue+HXMHex.h"; sourceTree = "<group>"; };
+		CC25F4B21774C92600F104BE /* NSValue+HXMHex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSValue+HXMHex.m"; sourceTree = "<group>"; };
 		CC35E68016AF5EE700F9F0B1 /* MapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapView.h; sourceTree = "<group>"; };
 		CC35E68116AF5EE700F9F0B1 /* MapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapView.m; sourceTree = "<group>"; };
 		CC35E68216AF5EE700F9F0B1 /* UnitView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnitView.h; sourceTree = "<group>"; };
@@ -170,8 +172,6 @@
 		CCF01A9F174FFECA003A1C77 /* BAAIInfluenceMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAAIInfluenceMap.m; sourceTree = "<group>"; };
 		CCF01AA117510DB2003A1C77 /* McDowell+Tactics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "McDowell+Tactics.h"; sourceTree = "<group>"; };
 		CCF01AA217510DB2003A1C77 /* McDowell+Tactics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "McDowell+Tactics.m"; sourceTree = "<group>"; };
-		CCF01AA4175643DE003A1C77 /* NSValue+HMHex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValue+HMHex.h"; sourceTree = "<group>"; };
-		CCF01AA5175643DE003A1C77 /* NSValue+HMHex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSValue+HMHex.m"; sourceTree = "<group>"; };
 		CCF01AA717568767003A1C77 /* HMPathFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMPathFinder.h; sourceTree = "<group>"; };
 		CCF01AA817568767003A1C77 /* HMPathFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMPathFinder.m; sourceTree = "<group>"; };
 		CCF01AB01758EC7C003A1C77 /* HMPathFinderTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMPathFinderTests.h; sourceTree = "<group>"; };
@@ -183,7 +183,7 @@
 		CCF01AB9175E72AC003A1C77 /* NSArray+DPTUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+DPTUtil.h"; sourceTree = "<group>"; };
 		CCF01ABA175E72AC003A1C77 /* NSArray+DPTUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+DPTUtil.m"; sourceTree = "<group>"; };
 		CCF61C9116C5EE3300391025 /* map.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = map.plist; sourceTree = "<group>"; };
-		CCF61C9316CC627400391025 /* HMHex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMHex.h; sourceTree = "<group>"; };
+		CCF61C9316CC627400391025 /* HXMHex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXMHex.h; sourceTree = "<group>"; };
 		CCF61C9416CC63C900391025 /* HMGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMGeometry.h; sourceTree = "<group>"; };
 		CCF61C9516CC63C900391025 /* HMGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMGeometry.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -403,7 +403,6 @@
 				CCC71D5516CC6EE9003636E3 /* HMCoordinateTransformer.m */,
 				CCF61C9416CC63C900391025 /* HMGeometry.h */,
 				CCF61C9516CC63C900391025 /* HMGeometry.m */,
-				CCF61C9316CC627400391025 /* HMHex.h */,
 				CCC71D5816CC711E003636E3 /* HMMap.h */,
 				CCC71D5916CC711E003636E3 /* HMMap.m */,
 				CCC71D5B16CC72FE003636E3 /* HMMapZone.h */,
@@ -412,8 +411,9 @@
 				CCF01AA817568767003A1C77 /* HMPathFinder.m */,
 				CCC71D5E16CC747B003636E3 /* HMTerrainEffect.h */,
 				CCC71D5F16CC747B003636E3 /* HMTerrainEffect.m */,
-				CCF01AA4175643DE003A1C77 /* NSValue+HMHex.h */,
-				CCF01AA5175643DE003A1C77 /* NSValue+HMHex.m */,
+				CCF61C9316CC627400391025 /* HXMHex.h */,
+				CC25F4B11774C92400F104BE /* NSValue+HXMHex.h */,
+				CC25F4B21774C92600F104BE /* NSValue+HXMHex.m */,
 			);
 			path = HexMap;
 			sourceTree = "<group>";
@@ -608,13 +608,13 @@
 				CCF01A9A174D9705003A1C77 /* McDowell+Strategy.m in Sources */,
 				CCF01AA0174FFECA003A1C77 /* BAAIInfluenceMap.m in Sources */,
 				CCF01AA317510DB2003A1C77 /* McDowell+Tactics.m in Sources */,
-				CCF01AA6175643DF003A1C77 /* NSValue+HMHex.m in Sources */,
 				CCF01AA917568767003A1C77 /* HMPathFinder.m in Sources */,
 				CCF01AB5175E70F0003A1C77 /* DPTResizableBuffer.m in Sources */,
 				CCF01AB8175E7190003A1C77 /* DPTSysUtil.m in Sources */,
 				CCF01ABB175E72AC003A1C77 /* NSArray+DPTUtil.m in Sources */,
 				CC25F47D1765748F00F104BE /* Beauregard+Strategy.m in Sources */,
 				CC25F481176E455E00F104BE /* Beauregard+Tactics.m in Sources */,
+				CC25F4B31774C92900F104BE /* NSValue+HXMHex.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

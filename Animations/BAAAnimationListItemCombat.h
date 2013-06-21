@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "BAAAnimationListItem.h"
-#import "HMHex.h"
+#import "HXMHex.h"
 
 @class BAUnit;
 @class BAAAnimationList;
@@ -27,7 +27,7 @@
  */
 + (id)itemWithAttacker:(BAUnit*)attacker
               defender:(BAUnit*)defender
-             retreatTo:(HMHex)retreatHex
-             advanceTo:(HMHex)advanceHex;
+             retreatTo:(HXMHex)retreatHex
+             advanceTo:(HXMHex)advanceHex;
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "HMHex.h"
+#import "HXMHex.h"
 
 @class BAUnit;
 
@@ -18,7 +18,7 @@
 @property (nonatomic, readonly, copy) NSString* unitName;
 
 /** Where the reinforcement appears. */
-@property (nonatomic, assign)         HMHex     entryLocation;
+@property (nonatomic, assign)         HXMHex    entryLocation;
 
 /** When the reinforcement appears. */
 @property (nonatomic, assign)         int       entryTurn;
@@ -44,6 +44,6 @@
  */
 - (BAReinforcementInfo*)initWithUnit:(BAUnit*)unit
                               onTurn:(int)turn
-                               atHex:(HMHex)hex;
+                               atHex:(HXMHex)hex;
 
 @end

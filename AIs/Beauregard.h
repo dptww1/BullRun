@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "BAAIProtocol.h"
 #import "BullRun.h"
-#import "HMHex.h"
+#import "HXMHex.h"
 
 
 /** Enum defining what strategic role a unit should fulfill. */
@@ -73,6 +73,6 @@ typedef enum {
  *
  * @param theater to get base of
  */
-- (HMHex)baseHexForTheater:(BRAICSATheater)theater;
+- (HXMHex)baseHexForTheater:(BRAICSATheater)theater;
 
 @end

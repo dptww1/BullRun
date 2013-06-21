@@ -7,7 +7,7 @@
 //
 
 #import "BAAIInfluenceMap.h"
-#import "HMHex.h"
+#import "HXMHex.h"
 #import "HMMap.h"
 
 @interface BAAIInfluenceMap ()
@@ -19,7 +19,7 @@
 
 @implementation BAAIInfluenceMap (Private)
 
-- (int)offsetForHex:(HMHex)hex {
+- (int)offsetForHex:(HXMHex)hex {
     return hex.row * [[[self srcMap] geometry] numColumns] + hex.column;
 }
 
@@ -45,24 +45,24 @@
         *p++ = 0.0f;
 }
 
-- (void)addValue:(float)value atHex:(HMHex)hex {
+- (void)addValue:(float)value atHex:(HXMHex)hex {
     if ([_srcMap legal:hex])
         _mapData[[self offsetForHex:hex]] += value;
 }
 
-- (void)setValue:(float)value atHex:(HMHex)hex {
+- (void)setValue:(float)value atHex:(HXMHex)hex {
     if ([_srcMap legal:hex])
         _mapData[[self offsetForHex:hex]] = value;
 }
 
-- (float)valueAt:(HMHex)hex {
+- (float)valueAt:(HXMHex)hex {
     if ([[self srcMap] legal:hex])
         return _mapData[[self offsetForHex:hex]];
 
     return 0.0f;
 }
 
-- (float)multiplyBy:(float)value atHex:(HMHex)hex {
+- (float)multiplyBy:(float)value atHex:(HXMHex)hex {
     if ([_srcMap legal:hex]) {
         int offset = [self offsetForHex:hex];
         _mapData[offset] *= 4.0f;
@@ -72,14 +72,14 @@
     return 0.0f;
 }
 
-- (HMHexAndDistance)largestValue {
-    HMHexAndDistance hexd;
-    hexd.hex = HMHexMake(-1, -1);
+- (HXMHexAndDistance)largestValue {
+    HXMHexAndDistance hexd;
+    hexd.hex = HXMHexMake(-1, -1);
     hexd.distance = 0;
 
     for (int row = 0; row < [[_srcMap geometry] numRows]; ++row) {
         for (int col = 0; col < [[_srcMap geometry] numColumns]; ++col) {
-            HMHex curHex = HMHexMake(col, row);
+            HXMHex curHex = HXMHexMake(col, row);
             float curVal = [self valueAt:curHex];
             if ((int)curVal > hexd.distance) {
                 hexd.hex = curHex;

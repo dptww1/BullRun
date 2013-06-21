@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "HMGeometry.h"
-#import "HMHex.h"
+#import "HXMHex.h"
 #import "HMTerrainEffect.h"
 
 /**
@@ -36,7 +36,7 @@
  *
  * @return movement cost
  */
-- (float)mpCostOf:(HMHex)hex;
+- (float)mpCostOf:(HXMHex)hex;
 
 /**
  * Determines if the given hex is prohibited for movement.
@@ -45,7 +45,7 @@
  *
  * @return `YES` if the hex is prohibited, `NO` if it isn't
  */
-- (BOOL)isProhibited:(HMHex)hex;
+- (BOOL)isProhibited:(HXMHex)hex;
 
 /**
  * @privatesection
@@ -70,7 +70,7 @@
  *
  * @return `YES` if the hexes are in the same zone, `NO` if they aren't
  */
-- (BOOL)is:(HMHex)hex inSameZoneAs:(HMHex)other;
+- (BOOL)is:(HXMHex)hex inSameZoneAs:(HXMHex)other;
 
 /**
  * Determine if a hex is in the given zone.
@@ -81,7 +81,7 @@
  * @return `YES` if the hex is in the zone, `NO` if it isn't or the zone
  *         doesn't exist
  */
-- (BOOL)is:(HMHex)hex inZone:(NSString*)zoneName;
+- (BOOL)is:(HXMHex)hex inZone:(NSString*)zoneName;
 
 /**
  * Gets the terrain information for the given hex.
@@ -91,7 +91,7 @@
  * @return the relevant terrain effect, or `nil` if the hex is offmap
  *         or impassable
  */
-- (HMTerrainEffect*)terrainAt:(HMHex)hex;
+- (HMTerrainEffect*)terrainAt:(HXMHex)hex;
 
 /**
  * Gets the terrain information by name.
@@ -121,7 +121,7 @@
  *
  * return `YES` if the hex is legal, `NO` if it isn't
  */
-- (BOOL)legal:(HMHex)hex;  // TODO: rename to isOnMap
+- (BOOL)legal:(HXMHex)hex;  // TODO: rename to isOnMap
 
 /**
  * Determines the distance (in hexes) between two hexes.
@@ -131,7 +131,7 @@
  * 
  * @return the distance in hexes, or -1 if either/both hexes are off map
  */
-- (int)distanceFrom:(HMHex)from to:(HMHex)to;
+- (int)distanceFrom:(HXMHex)from to:(HXMHex)to;
 
 /**
  * Returns the number of cells needed to represent the entire game map, 
@@ -160,7 +160,7 @@
  *
  * @return the direction, 0-5
  */
-- (int)directionFrom:(HMHex)from to:(HMHex)to;
+- (int)directionFrom:(HXMHex)from to:(HXMHex)to;
 
 /**
  * Returns the normalized direction next to the given direction.
@@ -191,6 +191,6 @@
  *
  * @return the adjacent hex
  */
-- (HMHex)hexAdjacentTo:(HMHex)start inDirection:(int)dir;
+- (HXMHex)hexAdjacentTo:(HXMHex)start inDirection:(int)dir;
 
 @end

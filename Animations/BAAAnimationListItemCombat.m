@@ -29,13 +29,13 @@ static CGPoint shiftPoint(CGPoint pt, float dx, float dy) { // TODO: move to glo
 // Copies of class init method parameters
 @property (nonatomic, strong) BAUnit*     attacker;
 @property (nonatomic, strong) BAUnit*     defender;
-@property (nonatomic)         HMHex       retreatHex;
-@property (nonatomic)         HMHex       advanceHex;
+@property (nonatomic)         HXMHex      retreatHex;
+@property (nonatomic)         HXMHex      advanceHex;
 
 // Convenience parameters
 @property (nonatomic, strong) BAAGunfire* attackerGunfire;
-@property (nonatomic)         HMHex       attackerHex;
-@property (nonatomic)         HMHex       defenderHex;
+@property (nonatomic)         HXMHex      attackerHex;
+@property (nonatomic)         HXMHex      defenderHex;
 
 @end
 
@@ -97,8 +97,8 @@ static CGPoint shiftPoint(CGPoint pt, float dx, float dy) { // TODO: move to glo
 
 + (id)itemWithAttacker:(BAUnit*)attacker
               defender:(BAUnit*)defender
-             retreatTo:(HMHex)retreatHex
-             advanceTo:(HMHex)advanceHex {
+             retreatTo:(HXMHex)retreatHex
+             advanceTo:(HXMHex)advanceHex {
     BAAAnimationListItemCombat* o = [[BAAAnimationListItemCombat alloc] init];
 
     if (o) {

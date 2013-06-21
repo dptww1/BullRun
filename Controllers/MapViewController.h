@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 #import "BAGameObserving.h"
-#import "HMHex.h"
+#import "HXMHex.h"
 
 @class BAUnit;
 @class BAAAnimationList;
@@ -61,7 +61,7 @@
 - (void)movePhaseDidEnd;
 
 /** GameObserving method implementation. */
-- (void)moveUnit:(BAUnit*)unit to:(HMHex)hex;
+- (void)moveUnit:(BAUnit*)unit to:(HXMHex)hex;
 
 /** GameObserving method implementation. */
 - (void)showAttack:(BABattleReport*)report;

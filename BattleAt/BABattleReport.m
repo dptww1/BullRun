@@ -23,8 +23,8 @@
         _defender           = defender;
         _attackerCasualties = 0;
         _defenderCasualties = 0;
-        _retreatHex         = HMHexMake(-1, -1);
-        _advanceHex         = HMHexMake(-1, -1);
+        _retreatHex         = HXMHexMake(-1, -1);
+        _advanceHex         = HXMHexMake(-1, -1);
     }
 
     return self;

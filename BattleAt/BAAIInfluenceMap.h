@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "HMHex.h"
+#import "HXMHex.h"
 
 @class HMMap;
 
@@ -30,7 +30,7 @@
  * 
  * @return the largest-valuehex and the value
  */
-- (HMHexAndDistance)largestValue;
+- (HXMHexAndDistance)largestValue;
 
 /**
  * Returns the value associated with the given hex.
@@ -39,7 +39,7 @@
  *
  * @return the associated value for the hex, or 0f if the hex isn't legal
  */
-- (float)valueAt:(HMHex)hex;
+- (float)valueAt:(HXMHex)hex;
 
 /**
  * Adds the given value to the current value for the given hex.
@@ -47,7 +47,7 @@
  * @param value the value to add
  * @param hex the hex for the value
  */
-- (void)addValue:(float)value atHex:(HMHex)hex;
+- (void)addValue:(float)value atHex:(HXMHex)hex;
 
 /**
  * Sets the value for the given hex (overwriting any old value).
@@ -55,7 +55,7 @@
  * @param value to the value to set
  * @param hex the hex for the value
  */
-- (void)setValue:(float)value atHex:(HMHex)hex;
+- (void)setValue:(float)value atHex:(HXMHex)hex;
 
 /**
  * Multiplies the existing value for a hex by a given factor.
@@ -63,7 +63,7 @@
  * @param value the factor to multiply the existing value by
  * @param hex the hex for the value
  */
-- (float)multiplyBy:(float)value atHex:(HMHex)hex;
+- (float)multiplyBy:(float)value atHex:(HXMHex)hex;
 
 /** Resets all the values in the influence map to zero. */
 - (void)zeroOut;

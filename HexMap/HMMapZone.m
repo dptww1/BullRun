@@ -38,7 +38,7 @@ static const int DEFAULT_BUFFER_CAPACITY = 2;
 
 #pragma mark - Behaviors
 
-- (BOOL)containsHex:(HMHex)hex {
+- (BOOL)containsHex:(HXMHex)hex {
     NSNumber* colKey = [NSNumber numberWithInt:hex.column];
     NSArray* columnData = [self.columns objectForKey:colKey];
     

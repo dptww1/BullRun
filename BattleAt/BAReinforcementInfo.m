@@ -8,7 +8,7 @@
 
 #import "BAReinforcementInfo.h"
 #import "BAUnit.h"
-#import "HMHex.h"
+#import "HXMHex.h"
 
 @implementation BAReinforcementInfo
 
@@ -20,7 +20,7 @@
                                                atHex:[unit location]];
 }
 
-- (BAReinforcementInfo*)initWithUnit:(BAUnit*)unit onTurn:(int)turn atHex:(HMHex)hex {
+- (BAReinforcementInfo*)initWithUnit:(BAUnit*)unit onTurn:(int)turn atHex:(HXMHex)hex {
     self = [super init];
 
     if (self) {
@@ -48,7 +48,7 @@
         int col = [coder decodeIntForKey:@"column"];
         int row = [coder decodeIntForKey:@"row"];
 
-        _entryLocation = HMHexMake(col, row);
+        _entryLocation = HXMHexMake(col, row);
         _entryTurn = [coder decodeIntForKey:@"turn"];
         _unitName  = [coder decodeObjectForKey:@"unitName"];
     }
