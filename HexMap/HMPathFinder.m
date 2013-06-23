@@ -26,6 +26,20 @@
 //==============================================================================
 @implementation HMPathNode
 
+- (NSString*)description {
+    return [NSString stringWithFormat:@"HMPathNode (%02d%02d) fCost %.1f gCost %.1f",
+            _hex.column, _hex.row, _fCost, _gCost];
+}
+
+- (BOOL)isEqual:(id)object {
+    return [object isKindOfClass:[self class]]
+        && [self hash] == [object hash];
+}
+
+- (NSUInteger)hash {
+    return _hex.column * 10000 + _hex.row;
+}
+
 + (HMPathNode*)nodeWithHex:(HXMHex)hex {
     return [HMPathNode nodeWithHex:hex fCost:0.0f gCost:0.0f parent:nil];
 }
@@ -53,7 +67,6 @@
 + (HMPathFinderClosedSet*)closedSet;
 - (HMPathNode*)findHex:(HXMHex)hex;
 - (void)addNode:(HMPathNode*)node;
-- (void)removeNode:(HMPathNode*)node;
 
 @end
 
@@ -78,10 +91,6 @@
     [_nodes addObject:node];
 }
 
-- (void)removeNode:(HMPathNode*)node {
-    [_nodes removeObject:node];
-}
-
 @end
 
 //==============================================================================
@@ -93,7 +102,6 @@
 - (HMPathNode*)getLowestFCostNode;
 - (HMPathNode*)findHex:(HXMHex)hex;
 - (void)addNode:(HMPathNode*)node;
-- (void)removeNode:(HMPathNode*)node;
 - (BOOL)isEmpty;
 
 @end
@@ -111,15 +119,18 @@
     if ([_nodes count] == 0)
         return nil;
 
+    int         lowestIdx  = 0;
     HMPathNode* lowestNode = _nodes[0];
 
     for (int i = 1; i < [_nodes count]; ++i) {
-        HMPathNode* node = _nodes[1];
-        if ([node fCost] < [lowestNode fCost])
+        HMPathNode* node = _nodes[i];
+        if ([node fCost] < [lowestNode fCost]) {
             lowestNode = node;
+            lowestIdx = i;
+        }
     }
 
-    [self removeNode:lowestNode];
+    [_nodes removeObjectAtIndex:lowestIdx];
 
     return lowestNode;
 }
@@ -134,10 +145,6 @@
 
 - (void)addNode:(HMPathNode*)node {
     [_nodes addObject:node];
-}
-
-- (void)removeNode:(HMPathNode*)node {
-    [_nodes removeObject:node];
 }
 
 - (BOOL)isEmpty {

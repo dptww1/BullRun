@@ -23,7 +23,7 @@
 		CC392E3F16D5A84500160B82 /* BAUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = CC392E3E16D5A84500160B82 /* BAUnit.m */; };
 		CC392E4216D5ACEC00160B82 /* BAGame.m in Sources */ = {isa = PBXBuildFile; fileRef = CC392E4116D5ACEB00160B82 /* BAGame.m */; };
 		CC392E4516D5AE4C00160B82 /* BAMoveOrders.m in Sources */ = {isa = PBXBuildFile; fileRef = CC392E4416D5AE4C00160B82 /* BAMoveOrders.m */; };
-		CC392E4B16D5AFD400160B82 /* HMHexMapGeometryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CC392E4A16D5AFD400160B82 /* HMHexMapGeometryTests.m */; };
+		CC392E4B16D5AFD400160B82 /* HXMHexMapGeometryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CC392E4A16D5AFD400160B82 /* HXMHexMapGeometryTests.m */; };
 		CC392E4E16D5B04F00160B82 /* BAMoveOrdersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CC392E4D16D5B04F00160B82 /* BAMoveOrdersTests.m */; };
 		CC523555173A7F1700CDBDC5 /* McDowell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC523554173A7F1700CDBDC5 /* McDowell.m */; };
 		CC523558173A9BA700CDBDC5 /* Beauregard.m in Sources */ = {isa = PBXBuildFile; fileRef = CC523557173A9BA700CDBDC5 /* Beauregard.m */; };
@@ -66,8 +66,8 @@
 		CCF01AB8175E7190003A1C77 /* DPTSysUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF01AB7175E7190003A1C77 /* DPTSysUtil.m */; };
 		CCF01ABB175E72AC003A1C77 /* NSArray+DPTUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF01ABA175E72AC003A1C77 /* NSArray+DPTUtil.m */; };
 		CCF61C9216C5EE3300391025 /* map.plist in Resources */ = {isa = PBXBuildFile; fileRef = CCF61C9116C5EE3300391025 /* map.plist */; };
-		CCF61C9616CC63C900391025 /* HMGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF61C9516CC63C900391025 /* HMGeometry.m */; };
-		CCF61C9716CC6E2900391025 /* HMGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF61C9516CC63C900391025 /* HMGeometry.m */; };
+		CCF61C9616CC63C900391025 /* HXMGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF61C9516CC63C900391025 /* HXMGeometry.m */; };
+		CCF61C9716CC6E2900391025 /* HXMGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF61C9516CC63C900391025 /* HXMGeometry.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,8 +112,8 @@
 		CC392E4116D5ACEB00160B82 /* BAGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAGame.m; sourceTree = "<group>"; };
 		CC392E4316D5AE4C00160B82 /* BAMoveOrders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAMoveOrders.h; sourceTree = "<group>"; };
 		CC392E4416D5AE4C00160B82 /* BAMoveOrders.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAMoveOrders.m; sourceTree = "<group>"; };
-		CC392E4916D5AFD400160B82 /* HMHexMapGeometryTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMHexMapGeometryTests.h; sourceTree = "<group>"; };
-		CC392E4A16D5AFD400160B82 /* HMHexMapGeometryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMHexMapGeometryTests.m; sourceTree = "<group>"; };
+		CC392E4916D5AFD400160B82 /* HXMHexMapGeometryTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXMHexMapGeometryTests.h; sourceTree = "<group>"; };
+		CC392E4A16D5AFD400160B82 /* HXMHexMapGeometryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXMHexMapGeometryTests.m; sourceTree = "<group>"; };
 		CC392E4C16D5B04F00160B82 /* BAMoveOrdersTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAMoveOrdersTests.h; sourceTree = "<group>"; };
 		CC392E4D16D5B04F00160B82 /* BAMoveOrdersTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAMoveOrdersTests.m; sourceTree = "<group>"; };
 		CC523550173A7DB600CDBDC5 /* BAAIProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BAAIProtocol.h; sourceTree = "<group>"; };
@@ -184,8 +184,8 @@
 		CCF01ABA175E72AC003A1C77 /* NSArray+DPTUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+DPTUtil.m"; sourceTree = "<group>"; };
 		CCF61C9116C5EE3300391025 /* map.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = map.plist; sourceTree = "<group>"; };
 		CCF61C9316CC627400391025 /* HXMHex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXMHex.h; sourceTree = "<group>"; };
-		CCF61C9416CC63C900391025 /* HMGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMGeometry.h; sourceTree = "<group>"; };
-		CCF61C9516CC63C900391025 /* HMGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMGeometry.m; sourceTree = "<group>"; };
+		CCF61C9416CC63C900391025 /* HXMGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXMGeometry.h; sourceTree = "<group>"; };
+		CCF61C9516CC63C900391025 /* HXMGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXMGeometry.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -345,8 +345,8 @@
 			children = (
 				CC392E4C16D5B04F00160B82 /* BAMoveOrdersTests.h */,
 				CC392E4D16D5B04F00160B82 /* BAMoveOrdersTests.m */,
-				CC392E4916D5AFD400160B82 /* HMHexMapGeometryTests.h */,
-				CC392E4A16D5AFD400160B82 /* HMHexMapGeometryTests.m */,
+				CC392E4916D5AFD400160B82 /* HXMHexMapGeometryTests.h */,
+				CC392E4A16D5AFD400160B82 /* HXMHexMapGeometryTests.m */,
 				CCF01AB01758EC7C003A1C77 /* HMPathFinderTests.h */,
 				CCF01AB11758EC7C003A1C77 /* HMPathFinderTests.m */,
 				CC858577167A72610054E60D /* Supporting Files */,
@@ -401,8 +401,8 @@
 			children = (
 				CCC71D5416CC6EE9003636E3 /* HMCoordinateTransformer.h */,
 				CCC71D5516CC6EE9003636E3 /* HMCoordinateTransformer.m */,
-				CCF61C9416CC63C900391025 /* HMGeometry.h */,
-				CCF61C9516CC63C900391025 /* HMGeometry.m */,
+				CCF61C9416CC63C900391025 /* HXMGeometry.h */,
+				CCF61C9516CC63C900391025 /* HXMGeometry.m */,
 				CCC71D5816CC711E003636E3 /* HMMap.h */,
 				CCC71D5916CC711E003636E3 /* HMMap.m */,
 				CCC71D5B16CC72FE003636E3 /* HMMapZone.h */,
@@ -581,7 +581,7 @@
 			files = (
 				CCE03F611713A3C600C5A217 /* BAAAnimationList.m in Sources */,
 				CCC71D5716CC6F0B003636E3 /* HMCoordinateTransformer.m in Sources */,
-				CCF61C9716CC6E2900391025 /* HMGeometry.m in Sources */,
+				CCF61C9716CC6E2900391025 /* HXMGeometry.m in Sources */,
 				CCDB60E516A04D71006668C2 /* MapViewController.m in Sources */,
 				CCDB60EA16A04D8C006668C2 /* BRAppDelegate.m in Sources */,
 				CCDB60EB16A04D8C006668C2 /* main.m in Sources */,
@@ -622,9 +622,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CCF61C9616CC63C900391025 /* HMGeometry.m in Sources */,
+				CCF61C9616CC63C900391025 /* HXMGeometry.m in Sources */,
 				CCC71D5616CC6EE9003636E3 /* HMCoordinateTransformer.m in Sources */,
-				CC392E4B16D5AFD400160B82 /* HMHexMapGeometryTests.m in Sources */,
+				CC392E4B16D5AFD400160B82 /* HXMHexMapGeometryTests.m in Sources */,
 				CC392E4E16D5B04F00160B82 /* BAMoveOrdersTests.m in Sources */,
 				CCF01AB21758EC7C003A1C77 /* HMPathFinderTests.m in Sources */,
 			);

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "HMGeometry.h"
+#import "HXMGeometry.h"
 #import "HXMHex.h"
 #import "HMTerrainEffect.h"
 
@@ -17,7 +17,7 @@
 @interface HMMap : NSObject <NSCoding>
 
 /** The size and geometry of the map. */
-@property (readonly,strong,nonatomic) HMGeometry* geometry;
+@property (readonly,strong,nonatomic) HXMGeometry* geometry;
 
 /**
  * Creates a map based on the data in the file, which must have been created 
@@ -51,7 +51,7 @@
  * @privatesection
  * For unit tests only!
  */
-- (HMMap*)initWithGeometry:(HMGeometry*)geometry;
+- (HMMap*)initWithGeometry:(HXMGeometry*)geometry;
 
 /**
  * Saves this map in the given file.

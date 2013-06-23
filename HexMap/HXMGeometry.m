@@ -1,14 +1,14 @@
 //
-//  HMGeometry.m
+//  HXMGeometry.m
 //  Bull Run
 //
 //  Created by Dave Townsend on 12/24/12.
 //  Copyright (c) 2012 Dave Townsend. All rights reserved.
 //
 
-#import "HMGeometry.h"
+#import "HXMGeometry.h"
 
-@implementation HMGeometry
+@implementation HXMGeometry
 
 #pragma mark - Initialization
 

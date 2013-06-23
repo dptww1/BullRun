@@ -11,7 +11,6 @@
 #import "BAGame.h"
 #import "BAUnit.h"
 #import "BRMap.h"
-#import "HMGeometry.h"
 #import "HXMHex.h"
 #import "NSArray+DPTUtil.h"
 

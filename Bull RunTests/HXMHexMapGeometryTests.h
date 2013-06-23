@@ -1,5 +1,5 @@
 //
-//  HMHexMapGeometryTests.h
+//  HXMHexMapGeometryTests.h
 //  Bull Run
 //
 //  Created by Dave Townsend on 1/9/13.
@@ -8,6 +8,6 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 
-@interface HMHexMapGeometryTests : SenTestCase
+@interface HXMHexMapGeometryTests : SenTestCase
 
 @end

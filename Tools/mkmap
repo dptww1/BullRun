@@ -99,7 +99,7 @@ def do_geometry(line)
 
     @objs.push @geometry
 
-    cfuid = push_classnames("HMGeometry", "NSObject")
+    cfuid = push_classnames("HXMGeometry", "NSObject")
 
     @geometry["$class"]["CF$UID"] = cfuid
 

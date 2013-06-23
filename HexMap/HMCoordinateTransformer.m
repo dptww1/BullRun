@@ -7,7 +7,6 @@
 //
 
 #import "HMCoordinateTransformer.h"
-#import "HMGeometry.h"
 
 
 //==============================================================================

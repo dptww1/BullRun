@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
-#import "HMGeometry.h"
+#import "HXMGeometry.h"
 #import "HXMHex.h"
 #import "HMMap.h"
 #import "HMPathFinder.h"
@@ -89,10 +89,10 @@
 
 - (void)setUp {
     [super setUp];
-    HMGeometry* g = [[HMGeometry alloc] initWithLongGrain:NO
-                                        firstColumnIsLong:NO
-                                                  numRows:10
-                                               numColumns:9];
+    HXMGeometry* g = [[HXMGeometry alloc] initWithLongGrain:NO
+                                          firstColumnIsLong:NO
+                                                    numRows:10
+                                                 numColumns:9];
     _map = [[HMMap alloc] initWithGeometry:g];
 }
 

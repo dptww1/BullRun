@@ -8,7 +8,7 @@
 
 #import "DPTSysUtil.h"
 #import "HMMap.h"
-#import "HMGeometry.h"
+#import "HXMGeometry.h"
 #import "HXMHex.h"
 #import "HMMapZone.h"
 #import "HMTerrainEffect.h"
@@ -49,7 +49,7 @@ static const int DEFAULT_CAPACITY = 12;
     return board;
 }
 
-- (HMMap*)initWithGeometry:(HMGeometry *)geometry {
+- (HMMap*)initWithGeometry:(HXMGeometry *)geometry {
     self = [super init];
 
     if (self) {

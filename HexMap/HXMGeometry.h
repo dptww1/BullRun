@@ -1,7 +1,5 @@
-
-
 //
-//  HMGeometry.h
+//  HXMGeometry.h
 //  Bull Run
 //
 //  Created by Dave Townsend on 12/24/12.
@@ -51,7 +49,7 @@
  * Hexes within the hexmap are always zero-indexed, so (0,0) is the upper left 
  * corner.
  */
-@interface HMGeometry : NSObject <NSCoding>
+@interface HXMGeometry : NSObject <NSCoding>
 
 /** `YES` if this is a long grain map, `NO` if it's short-grain. */
 @property (nonatomic,readonly) BOOL isLongGrain;

@@ -13,7 +13,7 @@
 #import "BAGame.h"
 #import "BAUnit.h"
 #import "BRMap.h"
-#import "HMGeometry.h"
+#import "HXMGeometry.h"
 #import "HXMHex.h"
 #import "HMMap.h"
 #import "NSArray+DPTUtil.h"

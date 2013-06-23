@@ -52,11 +52,11 @@
 		<dict>
 			<key>$classes</key>
 			<array>
-				<string>HMGeometry</string>
+				<string>HXMGeometry</string>
 				<string>NSObject</string>
 			</array>
 			<key>$classname</key>
-			<string>HMGeometry</string>
+			<string>HXMGeometry</string>
 		</dict>
 		<dict>
 			<key>$class</key>
