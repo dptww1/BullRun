@@ -60,8 +60,8 @@
 		CCF01A9A174D9705003A1C77 /* McDowell+Strategy.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF01A99174D9705003A1C77 /* McDowell+Strategy.m */; };
 		CCF01AA0174FFECA003A1C77 /* BAAIInfluenceMap.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF01A9F174FFECA003A1C77 /* BAAIInfluenceMap.m */; };
 		CCF01AA317510DB2003A1C77 /* McDowell+Tactics.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF01AA217510DB2003A1C77 /* McDowell+Tactics.m */; };
-		CCF01AA917568767003A1C77 /* HMPathFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF01AA817568767003A1C77 /* HMPathFinder.m */; };
-		CCF01AB21758EC7C003A1C77 /* HMPathFinderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF01AB11758EC7C003A1C77 /* HMPathFinderTests.m */; };
+		CCF01AA917568767003A1C77 /* HXMPathFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF01AA817568767003A1C77 /* HXMPathFinder.m */; };
+		CCF01AB21758EC7C003A1C77 /* HXMPathFinderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF01AB11758EC7C003A1C77 /* HXMPathFinderTests.m */; };
 		CCF01AB5175E70F0003A1C77 /* DPTResizableBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF01AB4175E70F0003A1C77 /* DPTResizableBuffer.m */; };
 		CCF01AB8175E7190003A1C77 /* DPTSysUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF01AB7175E7190003A1C77 /* DPTSysUtil.m */; };
 		CCF01ABB175E72AC003A1C77 /* NSArray+DPTUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF01ABA175E72AC003A1C77 /* NSArray+DPTUtil.m */; };
@@ -172,10 +172,10 @@
 		CCF01A9F174FFECA003A1C77 /* BAAIInfluenceMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAAIInfluenceMap.m; sourceTree = "<group>"; };
 		CCF01AA117510DB2003A1C77 /* McDowell+Tactics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "McDowell+Tactics.h"; sourceTree = "<group>"; };
 		CCF01AA217510DB2003A1C77 /* McDowell+Tactics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "McDowell+Tactics.m"; sourceTree = "<group>"; };
-		CCF01AA717568767003A1C77 /* HMPathFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMPathFinder.h; sourceTree = "<group>"; };
-		CCF01AA817568767003A1C77 /* HMPathFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMPathFinder.m; sourceTree = "<group>"; };
-		CCF01AB01758EC7C003A1C77 /* HMPathFinderTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMPathFinderTests.h; sourceTree = "<group>"; };
-		CCF01AB11758EC7C003A1C77 /* HMPathFinderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMPathFinderTests.m; sourceTree = "<group>"; };
+		CCF01AA717568767003A1C77 /* HXMPathFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXMPathFinder.h; sourceTree = "<group>"; };
+		CCF01AA817568767003A1C77 /* HXMPathFinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXMPathFinder.m; sourceTree = "<group>"; };
+		CCF01AB01758EC7C003A1C77 /* HXMPathFinderTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXMPathFinderTests.h; sourceTree = "<group>"; };
+		CCF01AB11758EC7C003A1C77 /* HXMPathFinderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXMPathFinderTests.m; sourceTree = "<group>"; };
 		CCF01AB3175E70EF003A1C77 /* DPTResizableBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPTResizableBuffer.h; sourceTree = "<group>"; };
 		CCF01AB4175E70F0003A1C77 /* DPTResizableBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DPTResizableBuffer.m; sourceTree = "<group>"; };
 		CCF01AB6175E7190003A1C77 /* DPTSysUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPTSysUtil.h; sourceTree = "<group>"; };
@@ -347,8 +347,8 @@
 				CC392E4D16D5B04F00160B82 /* BAMoveOrdersTests.m */,
 				CC392E4916D5AFD400160B82 /* HXMHexMapGeometryTests.h */,
 				CC392E4A16D5AFD400160B82 /* HXMHexMapGeometryTests.m */,
-				CCF01AB01758EC7C003A1C77 /* HMPathFinderTests.h */,
-				CCF01AB11758EC7C003A1C77 /* HMPathFinderTests.m */,
+				CCF01AB01758EC7C003A1C77 /* HXMPathFinderTests.h */,
+				CCF01AB11758EC7C003A1C77 /* HXMPathFinderTests.m */,
 				CC858577167A72610054E60D /* Supporting Files */,
 			);
 			path = "Bull RunTests";
@@ -399,18 +399,18 @@
 		CCDB60EC16A04E43006668C2 /* HexMap */ = {
 			isa = PBXGroup;
 			children = (
-				CCC71D5416CC6EE9003636E3 /* HXMCoordinateTransformer.h */,
-				CCC71D5516CC6EE9003636E3 /* HXMCoordinateTransformer.m */,
-				CCF61C9416CC63C900391025 /* HXMGeometry.h */,
-				CCF61C9516CC63C900391025 /* HXMGeometry.m */,
 				CCC71D5816CC711E003636E3 /* HMMap.h */,
 				CCC71D5916CC711E003636E3 /* HMMap.m */,
 				CCC71D5B16CC72FE003636E3 /* HMMapZone.h */,
 				CCC71D5C16CC72FF003636E3 /* HMMapZone.m */,
-				CCF01AA717568767003A1C77 /* HMPathFinder.h */,
-				CCF01AA817568767003A1C77 /* HMPathFinder.m */,
+				CCF01AA717568767003A1C77 /* HXMPathFinder.h */,
+				CCF01AA817568767003A1C77 /* HXMPathFinder.m */,
 				CCC71D5E16CC747B003636E3 /* HMTerrainEffect.h */,
 				CCC71D5F16CC747B003636E3 /* HMTerrainEffect.m */,
+				CCC71D5416CC6EE9003636E3 /* HXMCoordinateTransformer.h */,
+				CCC71D5516CC6EE9003636E3 /* HXMCoordinateTransformer.m */,
+				CCF61C9416CC63C900391025 /* HXMGeometry.h */,
+				CCF61C9516CC63C900391025 /* HXMGeometry.m */,
 				CCF61C9316CC627400391025 /* HXMHex.h */,
 				CC25F4B11774C92400F104BE /* NSValue+HXMHex.h */,
 				CC25F4B21774C92600F104BE /* NSValue+HXMHex.m */,
@@ -608,7 +608,7 @@
 				CCF01A9A174D9705003A1C77 /* McDowell+Strategy.m in Sources */,
 				CCF01AA0174FFECA003A1C77 /* BAAIInfluenceMap.m in Sources */,
 				CCF01AA317510DB2003A1C77 /* McDowell+Tactics.m in Sources */,
-				CCF01AA917568767003A1C77 /* HMPathFinder.m in Sources */,
+				CCF01AA917568767003A1C77 /* HXMPathFinder.m in Sources */,
 				CCF01AB5175E70F0003A1C77 /* DPTResizableBuffer.m in Sources */,
 				CCF01AB8175E7190003A1C77 /* DPTSysUtil.m in Sources */,
 				CCF01ABB175E72AC003A1C77 /* NSArray+DPTUtil.m in Sources */,
@@ -626,7 +626,7 @@
 				CCC71D5616CC6EE9003636E3 /* HXMCoordinateTransformer.m in Sources */,
 				CC392E4B16D5AFD400160B82 /* HXMHexMapGeometryTests.m in Sources */,
 				CC392E4E16D5B04F00160B82 /* BAMoveOrdersTests.m in Sources */,
-				CCF01AB21758EC7C003A1C77 /* HMPathFinderTests.m in Sources */,
+				CCF01AB21758EC7C003A1C77 /* HXMPathFinderTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

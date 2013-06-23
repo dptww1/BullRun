@@ -1,6 +1,6 @@
 /** @file */
 //
-//  HMPathFinder.h
+//  HXMPathFinder.h
 //  Bull Run
 //
 //  Created by Dave Townsend on 5/29/13.
@@ -18,12 +18,12 @@
  *
  * @see HMPathFinder#findPathFrom:to:using:
  */
-typedef float (^HMPathFinderCostFn)(HXMHex from, HXMHex to);
+typedef float (^HXMPathFinderCostFn)(HXMHex from, HXMHex to);
 
 /**
  * Utility class for finding a path between two hexes on a given map.
  */
-@interface HMPathFinder : NSObject
+@interface HXMPathFinder : NSObject
 
 /**
  * Convenience class initializer.
@@ -35,7 +35,7 @@ typedef float (^HMPathFinderCostFn)(HXMHex from, HXMHex to);
  *
  * @see #initForMap:withMinCost:
  */
-+ (HMPathFinder*)pathFinderOnMap:(HMMap*)map withMinCost:(float)minCost;
++ (HXMPathFinder*)pathFinderOnMap:(HMMap*)map withMinCost:(float)minCost;
 
 /** 
  * Designated Initializer.  
@@ -52,7 +52,7 @@ typedef float (^HMPathFinderCostFn)(HXMHex from, HXMHex to);
  *
  * @return an initialized HMPathFinder
  */
-- (HMPathFinder*)initForMap:(HMMap*)map withMinCost:(float)minCost;
+- (HXMPathFinder*)initForMap:(HMMap*)map withMinCost:(float)minCost;
 
 /**
  * Finds an optimal path between two hexes, using a user-supplied cost block.
@@ -69,6 +69,6 @@ typedef float (^HMPathFinderCostFn)(HXMHex from, HXMHex to);
  *          of the array being the end hex.  If no path is possible, the array
  *          will be empty.
  */
-- (NSArray*)findPathFrom:(HXMHex)start to:(HXMHex)end using:(HMPathFinderCostFn)fn;
+- (NSArray*)findPathFrom:(HXMHex)start to:(HXMHex)end using:(HXMPathFinderCostFn)fn;
 
 @end

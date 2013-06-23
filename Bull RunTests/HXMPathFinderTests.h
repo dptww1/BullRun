@@ -1,5 +1,5 @@
 //
-//  HMPathFinderTests.h
+//  HXMPathFinderTests.h
 //  Bull Run
 //
 //  Created by Dave Townsend on 5/31/13.
@@ -8,6 +8,6 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 
-@interface HMPathFinderTests : SenTestCase
+@interface HXMPathFinderTests : SenTestCase
 
 @end

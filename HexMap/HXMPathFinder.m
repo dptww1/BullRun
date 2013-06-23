@@ -1,5 +1,5 @@
 //
-//  HMPathFinder.m
+//  HXMPathFinder.m
 //  Bull Run
 //
 //  Created by Dave Townsend on 5/29/13.
@@ -7,27 +7,27 @@
 //
 
 #import "HMMap.h"
-#import "HMPathFinder.h"
+#import "HXMPathFinder.h"
 #import "NSValue+HXMHex.h"
 
 //==============================================================================
-@interface HMPathNode : NSObject
+@interface HXMPathNode : NSObject
 
-@property (nonatomic)      HXMHex      hex;
-@property (nonatomic)      float       fCost;
-@property (nonatomic)      float       gCost;
-@property (nonatomic,weak) HMPathNode* parent;
+@property (nonatomic)      HXMHex       hex;
+@property (nonatomic)      float        fCost;
+@property (nonatomic)      float        gCost;
+@property (nonatomic,weak) HXMPathNode* parent;
 
-+ (HMPathNode*)nodeWithHex:(HXMHex)hex;
-+ (HMPathNode*)nodeWithHex:(HXMHex)hex fCost:(float)fCost gCost:(float)gCost parent:(HMPathNode*)parent;
++ (HXMPathNode*)nodeWithHex:(HXMHex)hex;
++ (HXMPathNode*)nodeWithHex:(HXMHex)hex fCost:(float)fCost gCost:(float)gCost parent:(HXMPathNode*)parent;
 
 @end
 
 //==============================================================================
-@implementation HMPathNode
+@implementation HXMPathNode
 
 - (NSString*)description {
-    return [NSString stringWithFormat:@"HMPathNode (%02d%02d) fCost %.1f gCost %.1f",
+    return [NSString stringWithFormat:@"HXMPathNode (%02d%02d) fCost %.1f gCost %.1f",
             _hex.column, _hex.row, _fCost, _gCost];
 }
 
@@ -40,12 +40,12 @@
     return _hex.column * 10000 + _hex.row;
 }
 
-+ (HMPathNode*)nodeWithHex:(HXMHex)hex {
-    return [HMPathNode nodeWithHex:hex fCost:0.0f gCost:0.0f parent:nil];
++ (HXMPathNode*)nodeWithHex:(HXMHex)hex {
+    return [HXMPathNode nodeWithHex:hex fCost:0.0f gCost:0.0f parent:nil];
 }
 
-+ (HMPathNode*)nodeWithHex:(HXMHex)hex fCost:(float)fCost gCost:(float)gCost parent:(HMPathNode*)parent {
-    HMPathNode* n = [[HMPathNode alloc] init];
++ (HXMPathNode*)nodeWithHex:(HXMHex)hex fCost:(float)fCost gCost:(float)gCost parent:(HXMPathNode*)parent {
+    HXMPathNode* n = [[HXMPathNode alloc] init];
 
     if (n) {
         [n setHex:hex];
@@ -60,70 +60,70 @@
 @end
 
 //==============================================================================
-@interface HMPathFinderClosedSet : NSObject
+@interface HXMPathFinderClosedSet : NSObject
 
 @property (nonatomic,strong) NSMutableArray* nodes;
 
-+ (HMPathFinderClosedSet*)closedSet;
-- (HMPathNode*)findHex:(HXMHex)hex;
-- (void)addNode:(HMPathNode*)node;
++ (HXMPathFinderClosedSet*)closedSet;
+- (HXMPathNode*)findHex:(HXMHex)hex;
+- (void)addNode:(HXMPathNode*)node;
 
 @end
 
 //==============================================================================
-@implementation HMPathFinderClosedSet
+@implementation HXMPathFinderClosedSet
 
-+ (HMPathFinderClosedSet*)closedSet {
-    HMPathFinderClosedSet* set = [[HMPathFinderClosedSet alloc] init];
++ (HXMPathFinderClosedSet*)closedSet {
+    HXMPathFinderClosedSet* set = [[HXMPathFinderClosedSet alloc] init];
     [set setNodes:[NSMutableArray array]];
     return set;
 }
 
-- (HMPathNode*)findHex:(HXMHex)hex {
-    for (HMPathNode* node in _nodes)
+- (HXMPathNode*)findHex:(HXMHex)hex {
+    for (HXMPathNode* node in _nodes)
         if (HXMHexEquals([node hex], hex))
             return node;
 
     return nil;
 }
 
-- (void)addNode:(HMPathNode*)node {
+- (void)addNode:(HXMPathNode*)node {
     [_nodes addObject:node];
 }
 
 @end
 
 //==============================================================================
-@interface HMPathFinderOpenSet : NSObject
+@interface HXMPathFinderOpenSet : NSObject
 
 @property (nonatomic,strong) NSMutableArray* nodes;
 
-+ (HMPathFinderOpenSet*)openSetWithNode:(HMPathNode*)node;
-- (HMPathNode*)getLowestFCostNode;
-- (HMPathNode*)findHex:(HXMHex)hex;
-- (void)addNode:(HMPathNode*)node;
++ (HXMPathFinderOpenSet*)openSetWithNode:(HXMPathNode*)node;
+- (HXMPathNode*)getLowestFCostNode;
+- (HXMPathNode*)findHex:(HXMHex)hex;
+- (void)addNode:(HXMPathNode*)node;
 - (BOOL)isEmpty;
 
 @end
 
 //==============================================================================
-@implementation HMPathFinderOpenSet
+@implementation HXMPathFinderOpenSet
 
-+ (HMPathFinderOpenSet*)openSetWithNode:(HMPathNode *)node {
-    HMPathFinderOpenSet* set = [[HMPathFinderOpenSet alloc] init];
++ (HXMPathFinderOpenSet*)openSetWithNode:(HXMPathNode *)node {
+    HXMPathFinderOpenSet* set = [[HXMPathFinderOpenSet alloc] init];
     [set setNodes:[NSMutableArray arrayWithObject:node]];
     return set;
 }
 
-- (HMPathNode*)getLowestFCostNode {
+- (HXMPathNode*)getLowestFCostNode {
     if ([_nodes count] == 0)
         return nil;
 
-    int         lowestIdx  = 0;
-    HMPathNode* lowestNode = _nodes[0];
+    int          lowestIdx  = 0;
+    HXMPathNode* lowestNode = _nodes[0];
 
     for (int i = 1; i < [_nodes count]; ++i) {
-        HMPathNode* node = _nodes[i];
+        HXMPathNode* node = _nodes[i];
         if ([node fCost] < [lowestNode fCost]) {
             lowestNode = node;
             lowestIdx = i;
@@ -135,15 +135,15 @@
     return lowestNode;
 }
 
-- (HMPathNode*)findHex:(HXMHex)hex {
-    for (HMPathNode* node in _nodes)
+- (HXMPathNode*)findHex:(HXMHex)hex {
+    for (HXMPathNode* node in _nodes)
         if (HXMHexEquals([node hex], hex))
             return node;
 
     return nil;
 }
 
-- (void)addNode:(HMPathNode*)node {
+- (void)addNode:(HXMPathNode*)node {
     [_nodes addObject:node];
 }
 
@@ -154,7 +154,7 @@
 
 
 //==============================================================================
-@interface HMPathFinder ()
+@interface HXMPathFinder ()
 
 @property (nonatomic,strong) HMMap* map;
 @property (nonatomic,assign) float  minCost;
@@ -163,9 +163,9 @@
 
 
 //==============================================================================
-@implementation HMPathFinder (Private)
+@implementation HXMPathFinder (Private)
 
-- (NSMutableArray*)buildPathIntoArray:(NSMutableArray*)array fromNode:(HMPathNode*)node {
+- (NSMutableArray*)buildPathIntoArray:(NSMutableArray*)array fromNode:(HXMPathNode*)node {
     if (node) {
         [self buildPathIntoArray:array fromNode:[node parent]];
         [array addObject:[NSValue valueWithHex:[node hex]]];
@@ -177,13 +177,13 @@
 @end
 
 //==============================================================================
-@implementation HMPathFinder
+@implementation HXMPathFinder
 
-+ (HMPathFinder*)pathFinderOnMap:(HMMap *)map withMinCost:(float)minCost {
-    return [[HMPathFinder alloc] initForMap:map withMinCost:minCost];
++ (HXMPathFinder*)pathFinderOnMap:(HMMap *)map withMinCost:(float)minCost {
+    return [[HXMPathFinder alloc] initForMap:map withMinCost:minCost];
 }
 
-- (HMPathFinder*)initForMap:(HMMap*)map withMinCost:(float)minCost {
+- (HXMPathFinder*)initForMap:(HMMap*)map withMinCost:(float)minCost {
     self = [super init];
 
     if (self) {
@@ -194,14 +194,14 @@
     return self;
 }
 
-- (NSArray*)findPathFrom:(HXMHex)start to:(HXMHex)end using:(HMPathFinderCostFn)fn {
-    HMPathNode* startNode = [HMPathNode nodeWithHex:start];
+- (NSArray*)findPathFrom:(HXMHex)start to:(HXMHex)end using:(HXMPathFinderCostFn)fn {
+    HXMPathNode* startNode = [HXMPathNode nodeWithHex:start];
 
-    HMPathFinderOpenSet* open = [HMPathFinderOpenSet openSetWithNode:startNode];
-    HMPathFinderClosedSet* closed = [HMPathFinderClosedSet closedSet];
+    HXMPathFinderOpenSet* open = [HXMPathFinderOpenSet openSetWithNode:startNode];
+    HXMPathFinderClosedSet* closed = [HXMPathFinderClosedSet closedSet];
 
     while (![open isEmpty]) {
-        HMPathNode* curNode = [open getLowestFCostNode];
+        HXMPathNode* curNode = [open getLowestFCostNode];
         HXMHex curHex = [curNode hex];
 
         //NSLog(@"curHex %02d%02d fcost %f gcost %f", curHex.column, curHex.row, [curNode fCost], [curNode gCost]);
@@ -227,17 +227,17 @@
             float gCost = cost + [curNode gCost];
             float fCost = gCost + [_map distanceFrom:neighbor to:end];
 
-            HMPathNode* closedNeighbor = [closed findHex:neighbor];
+            HXMPathNode* closedNeighbor = [closed findHex:neighbor];
             if (closedNeighbor && gCost >= [closedNeighbor gCost])
                 continue;
 
-            HMPathNode* openNeighbor = [open findHex:neighbor];
+            HXMPathNode* openNeighbor = [open findHex:neighbor];
 
             if (!openNeighbor) {
-                openNeighbor = [HMPathNode nodeWithHex:neighbor
-                                                 fCost:fCost
-                                                 gCost:gCost
-                                                parent:curNode];
+                openNeighbor = [HXMPathNode nodeWithHex:neighbor
+                                                  fCost:fCost
+                                                  gCost:gCost
+                                                 parent:curNode];
                 [open addNode:openNeighbor];
             }
 

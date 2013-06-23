@@ -14,7 +14,7 @@
 #import "Beauregard.h"
 #import "Beauregard+Strategy.h"
 #import "HMMap.h"
-#import "HMPathFinder.h"
+#import "HXMPathFinder.h"
 #import "HMTerrainEffect.h"
 #import "NSValue+HXMHex.h"
 
@@ -169,7 +169,7 @@
     HMMap* map = [game board];
     HXMHex curHex = [unit location];
 
-    HMPathFinder* pf = [HMPathFinder pathFinderOnMap:map withMinCost:4.0f];
+    HXMPathFinder* pf = [HXMPathFinder pathFinderOnMap:map withMinCost:4.0f];
 
     NSArray* path = [pf findPathFrom:curHex
                                   to:destination

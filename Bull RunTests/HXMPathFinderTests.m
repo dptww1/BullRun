@@ -9,19 +9,19 @@
 #import "HXMGeometry.h"
 #import "HXMHex.h"
 #import "HMMap.h"
-#import "HMPathFinder.h"
-#import "HMPathFinderTests.h"
+#import "HXMPathFinder.h"
+#import "HXMPathFinderTests.h"
 #import "NSValue+HXMHex.h"
 
 //==============================================================================
-@interface HMPathFinderTests ()
+@interface HXMPathFinderTests ()
 
 @property (nonatomic,strong) HMMap* map;
 
 @end
 
 //==============================================================================
-@implementation HMPathFinderTests (Private)
+@implementation HXMPathFinderTests (Private)
 
 - (BOOL)hexIn:(NSArray*)array at:(int)idx is:(HXMHex)hex {
     if (idx >= [array count])
@@ -34,25 +34,25 @@
 @end
 
 //==============================================================================
-@implementation HMPathFinderTests (CostFns)
+@implementation HXMPathFinderTests (CostFns)
 
-- (HMPathFinderCostFn)trivialCostFn {
+- (HXMPathFinderCostFn)trivialCostFn {
     return ^(HXMHex from, HXMHex to) { return 1.0f; };
 }
 
-- (HMPathFinderCostFn)barrier0604CostFn {
+- (HXMPathFinderCostFn)barrier0604CostFn {
     return ^(HXMHex from, HXMHex to) {
         return HXMHexEquals(to, HXMHexMake(6, 4)) ? 10.0f : 1.0f;
     };
 }
 
-- (HMPathFinderCostFn)blockedCostFn {
+- (HXMPathFinderCostFn)blockedCostFn {
     return ^(HXMHex from, HXMHex to) {
         return to.row == 4 ? -1.0f : 1.0f;
     };
 }
 
-- (HMPathFinderCostFn)shortcutCostFn {
+- (HXMPathFinderCostFn)shortcutCostFn {
     return ^(HXMHex from, HXMHex to) {
         if (   (HXMHexEquals(HXMHexMake(1,2), from) && HXMHexEquals(HXMHexMake(1,1), to))
             || (HXMHexEquals(HXMHexMake(1,1), from) && HXMHexEquals(HXMHexMake(2,0), to))
@@ -75,7 +75,7 @@
     };
 }
 
-- (HMPathFinderCostFn)scaledShortcutCostFn {
+- (HXMPathFinderCostFn)scaledShortcutCostFn {
     return ^(HXMHex from, HXMHex to) {
         return [self shortcutCostFn](from, to) / 2.0f;
     };
@@ -85,7 +85,7 @@
 
 
 //==============================================================================
-@implementation HMPathFinderTests
+@implementation HXMPathFinderTests
 
 - (void)setUp {
     [super setUp];
@@ -99,7 +99,7 @@
 //------------------------------------------------------------------------------
 // start == end
 - (void)testCoincidentHexes {
-    HMPathFinder* pf = [HMPathFinder pathFinderOnMap:_map withMinCost:1.0f];
+    HXMPathFinder* pf = [HXMPathFinder pathFinderOnMap:_map withMinCost:1.0f];
     NSArray* path = [pf findPathFrom:HXMHexMake(3,3) to:HXMHexMake(3,3) using:nil];
     STAssertEquals([path count], 1u, nil);
     STAssertTrue([self hexIn:path at:0 is:HXMHexMake(3,3)], nil);
@@ -108,7 +108,7 @@
 //------------------------------------------------------------------------------
 // start is next to end
 - (void)testAdjacent {
-    HMPathFinder* pf = [HMPathFinder pathFinderOnMap:_map withMinCost:1.0f];
+    HXMPathFinder* pf = [HXMPathFinder pathFinderOnMap:_map withMinCost:1.0f];
     NSArray* path = [pf findPathFrom:HXMHexMake(3,3) to:HXMHexMake(4,2) using:[self trivialCostFn]];
     STAssertEquals([path count], 2u, nil);
     STAssertTrue([self hexIn:path at:0 is:HXMHexMake(3,3)], nil);
@@ -118,7 +118,7 @@
 //------------------------------------------------------------------------------
 // end is 4 hexes away from start in direction 2
 - (void)testStraightLine {
-    HMPathFinder* pf = [HMPathFinder pathFinderOnMap:_map withMinCost:1.0f];
+    HXMPathFinder* pf = [HXMPathFinder pathFinderOnMap:_map withMinCost:1.0f];
     NSArray* path = [pf findPathFrom:HXMHexMake(3,3) to:HXMHexMake(7,5) using:[self trivialCostFn]];
     STAssertEquals([path count], 5u, nil);
     STAssertTrue([self hexIn:path at:0 is:HXMHexMake(3,3)], nil);
@@ -132,7 +132,7 @@
 // end is 4 hexes away from start in direction 2, but a hex in the direct path
 // has a prohibitive cost, so the optimal path routes around it
 - (void)testCrooked {
-    HMPathFinder* pf = [HMPathFinder pathFinderOnMap:_map withMinCost:1.0f];
+    HXMPathFinder* pf = [HXMPathFinder pathFinderOnMap:_map withMinCost:1.0f];
     NSArray* path = [pf findPathFrom:HXMHexMake(3,3) to:HXMHexMake(7,5) using:[self barrier0604CostFn]];
     STAssertEquals([path count], 6u, nil);
     STAssertTrue([self hexIn:path at:0 is:HXMHexMake(3,3)], nil);
@@ -171,7 +171,7 @@
 // default cost has to be pretty high relative to the optimal cost to prevent
 // the algorithm from shortcutting directly from 5 -> 14.
 - (void)testShortcut {
-    HMPathFinder* pf = [HMPathFinder pathFinderOnMap:_map withMinCost:1.0f];
+    HXMPathFinder* pf = [HXMPathFinder pathFinderOnMap:_map withMinCost:1.0f];
     NSArray* path = [pf findPathFrom:HXMHexMake(1,2) to:HXMHexMake(5,4) using:[self shortcutCostFn]];
     STAssertEquals([path count], 15u, nil);
     STAssertTrue([self hexIn:path at:0 is:HXMHexMake(1,2)], nil);
@@ -194,7 +194,7 @@
 //------------------------------------------------------------------------------
 // Same as testShortcut, but using a different scaling
 - (void)testShortcutWithScaling {
-    HMPathFinder* pf = [HMPathFinder pathFinderOnMap:_map withMinCost:0.5f];
+    HXMPathFinder* pf = [HXMPathFinder pathFinderOnMap:_map withMinCost:0.5f];
     NSArray* path = [pf findPathFrom:HXMHexMake(1,2) to:HXMHexMake(5,4) using:[self scaledShortcutCostFn]];
     STAssertEquals([path count], 15u, nil);
     STAssertTrue([self hexIn:path at:0 is:HXMHexMake(1,2)], nil);
@@ -217,7 +217,7 @@
 //------------------------------------------------------------------------------
 // No path is possible because impassable hexes block any possible row
 - (void)testNoPathPossibleBarrier {
-    HMPathFinder* pf = [HMPathFinder pathFinderOnMap:_map withMinCost:1.0f];
+    HXMPathFinder* pf = [HXMPathFinder pathFinderOnMap:_map withMinCost:1.0f];
     NSArray* path = [pf findPathFrom:HXMHexMake(1,1) to:HXMHexMake(7,5) using:[self blockedCostFn]];
     STAssertEquals([path count], 0u, nil);
 }
@@ -225,7 +225,7 @@
 //------------------------------------------------------------------------------
 // No path possible because destination hex isn't on grid.
 - (void)testNoPathPossibleIllegalHex {
-    HMPathFinder* pf = [HMPathFinder pathFinderOnMap:_map withMinCost:1.0f];
+    HXMPathFinder* pf = [HXMPathFinder pathFinderOnMap:_map withMinCost:1.0f];
     NSArray* path = [pf findPathFrom:HXMHexMake(1,1) to:HXMHexMake(100,100) using:[self trivialCostFn]];
     STAssertEquals([path count], 0u, nil);
 }
