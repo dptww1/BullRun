@@ -10,7 +10,7 @@
 #import "HMMap.h"
 #import "HXMGeometry.h"
 #import "HXMHex.h"
-#import "HMMapZone.h"
+#import "HXMMapZone.h"
 #import "HXMTerrainEffect.h"
 #import "NSArray+DPTUtil.h"
 #import "NSValue+HXMHex.h"
@@ -320,7 +320,7 @@ static const int DEFAULT_CAPACITY = 12;
 }
 
 - (BOOL)is:(HXMHex)hex inZone:(NSString*)zoneName {
-    HMMapZone* zone = [_zones objectForKey:zoneName];
+    HXMMapZone* zone = [_zones objectForKey:zoneName];
     if (!zone)
         return NO;
     

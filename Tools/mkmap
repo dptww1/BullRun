@@ -305,7 +305,7 @@ def create_zones
 
     zone_data["$class"]["CF$UID"] = push_classnames "NSMutableDictionary", "NSDictionary", "NSObject"
 
-    zone_info["$class"]["CF$UID"] = push_classnames "HMMapZone", "NSObject"
+    zone_info["$class"]["CF$UID"] = push_classnames "HXMMapZone", "NSObject"
   end
 
   @zones["$class"]["CF$UID"] = push_classnames "NSMutableDictionary", "MSDictionary", "NSObject"

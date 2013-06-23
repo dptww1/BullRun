@@ -1,6 +1,5 @@
 //
-//  HMMapZone.h
-//  Bull Run
+//  HXMMapZone.h
 //
 //  Created by Dave Townsend on 2/5/13.
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
@@ -15,7 +14,7 @@
  * uses include defining setup areas, victory point locations, or reinforcement
  * locations.
  */
-@interface HMMapZone : NSObject <NSCoding>
+@interface HXMMapZone : NSObject <NSCoding>
 
 /**
  * Designated initializer.

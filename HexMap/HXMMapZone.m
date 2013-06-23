@@ -1,19 +1,18 @@
 //
-//  HMMapZone.m
-//  Bull Run
+//  HXMMapZone.m
 //
 //  Created by Dave Townsend on 2/5/13.
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
-#import "HMMapZone.h"
+#import "HXMMapZone.h"
 
 // # default ranges per column I suspect a single range is most common case
 static const int DEFAULT_BUFFER_CAPACITY = 2;
 
 
 //==============================================================================
-@interface HMMapZone ()
+@interface HXMMapZone ()
 
 // Keys:Column Numbers (as NSNumber)  Values: NSArray of NSRanges
 @property (nonatomic,strong) NSMutableDictionary* columns;
@@ -22,7 +21,7 @@ static const int DEFAULT_BUFFER_CAPACITY = 2;
 
 
 //==============================================================================
-@implementation HMMapZone
+@implementation HXMMapZone
 
 #pragma mark - Initialization
 
