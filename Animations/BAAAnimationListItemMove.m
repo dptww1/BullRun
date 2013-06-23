@@ -10,7 +10,7 @@
 #import "BAAAnimationList.h"
 #import "BAAAnimationListItemMove.h"
 #import "BAUnit.h"
-#import "HMCoordinateTransformer.h"
+#import "HXMCoordinateTransformer.h"
 #import "UnitView.h"
 
 //==============================================================================
@@ -40,7 +40,7 @@
 - (void)runWithParent:(BAAAnimationList*)list {
     DEBUG_ANIMATION(@"running animation %@", self);
 
-    HMCoordinateTransformer* xformer = [list xformer];
+    HXMCoordinateTransformer* xformer = [list xformer];
     UnitView* v = [UnitView viewForUnit:[self actor]];
     CGPoint endPoint = [xformer hexCenterToScreen:[self endHex]];
 

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class BAAAnimationListItem;
-@class HMCoordinateTransformer;
+@class HXMCoordinateTransformer;
 
 /**
  * Manages a sequential list of animations.
@@ -17,7 +17,7 @@
 @interface BAAAnimationList : NSObject
 
 /** The coordinate transformer that this object was created with. */
-@property (nonatomic, weak, readonly)   HMCoordinateTransformer* xformer;
+@property (nonatomic, weak, readonly)   HXMCoordinateTransformer* xformer;
 
 /**
  * Designated class initializer.
@@ -26,7 +26,7 @@
  *
  * @return the initialized animation list
  */
-+ (BAAAnimationList*)listWithCoordXFormer:(HMCoordinateTransformer*)xformer;
++ (BAAAnimationList*)listWithCoordXFormer:(HXMCoordinateTransformer*)xformer;
 
 /**
  * Adds a new animation item to the end of the current list.

@@ -18,14 +18,14 @@
 @property (nonatomic, strong) NSMutableArray* items;
 @property (nonatomic, assign) int             nextItemIdx;
 @property (nonatomic, copy)   void            (^completionBlock)(void);
-@property (nonatomic, weak, readwrite)        HMCoordinateTransformer* xformer;
+@property (nonatomic, weak, readwrite)        HXMCoordinateTransformer* xformer;
 
 @end
 
 //==============================================================================
 @implementation BAAAnimationList
 
-+ (BAAAnimationList*) listWithCoordXFormer:(HMCoordinateTransformer *)xformer {
++ (BAAAnimationList*) listWithCoordXFormer:(HXMCoordinateTransformer *)xformer {
     BAAAnimationList* o = [[BAAAnimationList alloc] init];
 
     if (o) {

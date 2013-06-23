@@ -13,7 +13,7 @@
 
 @class BAUnit;
 @class BAAAnimationList;
-@class HMCoordinateTransformer;
+@class HXMCoordinateTransformer;
 @class InfoBarView;
 @class OrderOfBattle;
 
@@ -23,16 +23,16 @@
 @interface MapViewController : UIViewController <BAGameObserving>
 
 /** The coordinate transformer for this view. */
-@property (nonatomic, strong) HMCoordinateTransformer* coordXformer;
+@property (nonatomic, strong) HXMCoordinateTransformer* coordXformer;
 
 /** The Info subview of this view. */
-@property (nonatomic, weak)   InfoBarView*             infoBarView;
+@property (nonatomic, weak)   InfoBarView*              infoBarView;
 
 /** The currently-selected unit, possibly `nil`. */
-@property (nonatomic, weak)   BAUnit*                  currentUnit;
+@property (nonatomic, weak)   BAUnit*                   currentUnit;
 
 /** The layer for movement orders. */
-@property (nonatomic, strong) CALayer*                 moveOrderLayer;
+@property (nonatomic, strong) CALayer*                  moveOrderLayer;
 
 /**
  * Tracks if the user's touch has moved outside the current hex. If `YES`,
@@ -41,10 +41,10 @@
  * If `NO`, then the user has never dragged outside the current hex, so the
  * unit's current orders still obtain.
  */
-@property (nonatomic)         BOOL                     givingNewOrders;
+@property (nonatomic)         BOOL                      givingNewOrders;
 
 /** List of animations to show for the current turn. */
-@property (nonatomic, strong) BAAAnimationList*        animationList;
+@property (nonatomic, strong) BAAAnimationList*         animationList;
 
 #pragma mark - GameObserving Implementation
 

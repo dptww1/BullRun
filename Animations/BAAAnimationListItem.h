@@ -15,7 +15,7 @@ extern float SECONDS_PER_HEX_MOVE;
 
 @class BAAAnimationList;
 @class BAUnit;
-@class HMCoordinateTransformer;
+@class HXMCoordinateTransformer;
 
 /**
  * Item suitable for including in a `BAAAnimationList`.
@@ -29,7 +29,7 @@ extern float SECONDS_PER_HEX_MOVE;
 - (CAAnimation*)createMoveAnimationFor:(BAUnit*)unit
                             movingFrom:(HXMHex)startHex
                                     to:(HXMHex)endHex
-                            usingXform:(HMCoordinateTransformer*)transformer;
+                            usingXform:(HXMCoordinateTransformer*)transformer;
 
 /**
  * Method called by the animation list when it is this item's turn to run.

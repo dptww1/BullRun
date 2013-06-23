@@ -13,7 +13,7 @@
 #import "BAGame.h"
 #import "BAUnit.h"
 #import "DPTSysUtil.h"
-#import "HMCoordinateTransformer.h"
+#import "HXMCoordinateTransformer.h"
 #import "UnitView.h"
 
 static CGPoint shiftPoint(CGPoint pt, float dx, float dy) { // TODO: move to global location
@@ -56,7 +56,7 @@ static CGPoint shiftPoint(CGPoint pt, float dx, float dy) { // TODO: move to glo
                 [self endCombat:list];
             } ];
 
-        HMCoordinateTransformer* xformer = [list xformer];
+        HXMCoordinateTransformer* xformer = [list xformer];
 
         CAAnimation* dAnim = [self createMoveAnimationFor:[self defender]
                                                movingFrom:[self defenderHex]
@@ -118,7 +118,7 @@ static CGPoint shiftPoint(CGPoint pt, float dx, float dy) { // TODO: move to glo
 - (void)runWithParent:(BAAAnimationList*)list {
     DEBUG_ANIMATION(@"running animation %@ (gunfire)", self);
 
-    HMCoordinateTransformer* xformer = [list xformer];
+    HXMCoordinateTransformer* xformer = [list xformer];
 
     [CATransaction begin];
 

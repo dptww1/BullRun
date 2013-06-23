@@ -1,5 +1,5 @@
 //
-//  HMCoordinateTransformer.h
+//  HXMCoordinateTransformer.h
 //  Bull Run
 //
 //  Created by Dave Townsend on 12/24/12.
@@ -12,7 +12,7 @@
 /**
  * Manages the conversion between screen coordinates and hex coordinates.
  */
-@interface HMCoordinateTransformer : NSObject
+@interface HXMCoordinateTransformer : NSObject
 
 /** The map model to translate. */
 @property (nonatomic,strong,readonly) HMMap*  map;

@@ -8,7 +8,7 @@
 
 #import "BAAAnimationListItem.h"
 #import "BAUnit.h"
-#import "HMCoordinateTransformer.h"
+#import "HXMCoordinateTransformer.h"
 
 float SECONDS_PER_HEX_MOVE = 0.75f;
 
@@ -17,7 +17,7 @@ float SECONDS_PER_HEX_MOVE = 0.75f;
 - (CAAnimation*)createMoveAnimationFor:(BAUnit*)unit
                             movingFrom:(HXMHex)startHex
                                     to:(HXMHex)endHex
-                            usingXform:(HMCoordinateTransformer*)xform {
+                            usingXform:(HXMCoordinateTransformer*)xform {
     CABasicAnimation* anim = [CABasicAnimation animationWithKeyPath:@"position"];
     [anim setDuration:SECONDS_PER_HEX_MOVE];
     [anim setFromValue:[NSValue valueWithCGPoint:[xform hexCenterToScreen:startHex]]];

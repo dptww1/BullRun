@@ -16,7 +16,7 @@
 #import "BAMoveOrders.h"
 #import "BAUnit.h"
 #import "BullRun.h"
-#import "HMCoordinateTransformer.h"
+#import "HXMCoordinateTransformer.h"
 #import "HMMap.h"
 #import "InfoBarView.h"
 #import "MapView.h"
@@ -41,7 +41,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
     if (self) {
-        _coordXformer = [[HMCoordinateTransformer alloc]
+        _coordXformer = [[HXMCoordinateTransformer alloc]
                          initWithMap:[game board]
                               origin:CGPointMake(67, 58)
                              hexSize:CGSizeMake(51, 51)];
