@@ -43,7 +43,7 @@
 		CC85857B167A72610054E60D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CC858579167A72610054E60D /* InfoPlist.strings */; };
 		CCC71D5616CC6EE9003636E3 /* HXMCoordinateTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC71D5516CC6EE9003636E3 /* HXMCoordinateTransformer.m */; };
 		CCC71D5716CC6F0B003636E3 /* HXMCoordinateTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC71D5516CC6EE9003636E3 /* HXMCoordinateTransformer.m */; };
-		CCC71D5A16CC711E003636E3 /* HMMap.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC71D5916CC711E003636E3 /* HMMap.m */; };
+		CCC71D5A16CC711E003636E3 /* HXMMap.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC71D5916CC711E003636E3 /* HXMMap.m */; };
 		CCC71D5D16CC72FF003636E3 /* HXMMapZone.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC71D5C16CC72FF003636E3 /* HXMMapZone.m */; };
 		CCC71D6016CC747B003636E3 /* HXMTerrainEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC71D5F16CC747B003636E3 /* HXMTerrainEffect.m */; };
 		CCDB60E516A04D71006668C2 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB60E416A04D71006668C2 /* MapViewController.m */; };
@@ -142,8 +142,8 @@
 		CC85857A167A72610054E60D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CCC71D5416CC6EE9003636E3 /* HXMCoordinateTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXMCoordinateTransformer.h; sourceTree = "<group>"; };
 		CCC71D5516CC6EE9003636E3 /* HXMCoordinateTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXMCoordinateTransformer.m; sourceTree = "<group>"; };
-		CCC71D5816CC711E003636E3 /* HMMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HMMap.h; sourceTree = "<group>"; };
-		CCC71D5916CC711E003636E3 /* HMMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HMMap.m; sourceTree = "<group>"; };
+		CCC71D5816CC711E003636E3 /* HXMMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXMMap.h; sourceTree = "<group>"; };
+		CCC71D5916CC711E003636E3 /* HXMMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXMMap.m; sourceTree = "<group>"; };
 		CCC71D5B16CC72FE003636E3 /* HXMMapZone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXMMapZone.h; sourceTree = "<group>"; };
 		CCC71D5C16CC72FF003636E3 /* HXMMapZone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXMMapZone.m; sourceTree = "<group>"; };
 		CCC71D5E16CC747B003636E3 /* HXMTerrainEffect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXMTerrainEffect.h; sourceTree = "<group>"; };
@@ -399,15 +399,15 @@
 		CCDB60EC16A04E43006668C2 /* HexMap */ = {
 			isa = PBXGroup;
 			children = (
-				CCC71D5816CC711E003636E3 /* HMMap.h */,
-				CCC71D5916CC711E003636E3 /* HMMap.m */,
-				CCC71D5B16CC72FE003636E3 /* HXMMapZone.h */,
-				CCC71D5C16CC72FF003636E3 /* HXMMapZone.m */,
 				CCC71D5416CC6EE9003636E3 /* HXMCoordinateTransformer.h */,
 				CCC71D5516CC6EE9003636E3 /* HXMCoordinateTransformer.m */,
 				CCF61C9416CC63C900391025 /* HXMGeometry.h */,
 				CCF61C9516CC63C900391025 /* HXMGeometry.m */,
 				CCF61C9316CC627400391025 /* HXMHex.h */,
+				CCC71D5816CC711E003636E3 /* HXMMap.h */,
+				CCC71D5916CC711E003636E3 /* HXMMap.m */,
+				CCC71D5B16CC72FE003636E3 /* HXMMapZone.h */,
+				CCC71D5C16CC72FF003636E3 /* HXMMapZone.m */,
 				CCF01AA717568767003A1C77 /* HXMPathFinder.h */,
 				CCF01AA817568767003A1C77 /* HXMPathFinder.m */,
 				CCC71D5E16CC747B003636E3 /* HXMTerrainEffect.h */,
@@ -588,7 +588,7 @@
 				CCDB60F916A04E96006668C2 /* InfoBarView.m in Sources */,
 				CC35E68416AF5EE700F9F0B1 /* MapView.m in Sources */,
 				CC35E68516AF5EE700F9F0B1 /* UnitView.m in Sources */,
-				CCC71D5A16CC711E003636E3 /* HMMap.m in Sources */,
+				CCC71D5A16CC711E003636E3 /* HXMMap.m in Sources */,
 				CCC71D5D16CC72FF003636E3 /* HXMMapZone.m in Sources */,
 				CCC71D6016CC747B003636E3 /* HXMTerrainEffect.m in Sources */,
 				CC0805A916D3085000CB8C79 /* BABattleReport.m in Sources */,

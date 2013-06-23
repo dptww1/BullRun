@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
-#import "HMMap.h"
+#import "HXMMap.h"
 #import "HXMPathFinder.h"
 #import "NSValue+HXMHex.h"
 
@@ -156,7 +156,7 @@
 //==============================================================================
 @interface HXMPathFinder ()
 
-@property (nonatomic,strong) HMMap* map;
+@property (nonatomic,strong) HXMMap* map;
 @property (nonatomic,assign) float  minCost;
 
 @end
@@ -179,11 +179,11 @@
 //==============================================================================
 @implementation HXMPathFinder
 
-+ (HXMPathFinder*)pathFinderOnMap:(HMMap *)map withMinCost:(float)minCost {
++ (HXMPathFinder*)pathFinderOnMap:(HXMMap *)map withMinCost:(float)minCost {
     return [[HXMPathFinder alloc] initForMap:map withMinCost:minCost];
 }
 
-- (HXMPathFinder*)initForMap:(HMMap*)map withMinCost:(float)minCost {
+- (HXMPathFinder*)initForMap:(HXMMap*)map withMinCost:(float)minCost {
     self = [super init];
 
     if (self) {

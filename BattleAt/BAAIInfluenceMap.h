@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "HXMHex.h"
 
-@class HMMap;
+@class HXMMap;
 
 /**
  * A map of abstract values for use by the AI routines.  There is a single
@@ -22,7 +22,7 @@
  *
  * @param board the board that the influence map should represent
  */
-+ (BAAIInfluenceMap*)mapFrom:(HMMap*)board;
++ (BAAIInfluenceMap*)mapFrom:(HXMMap*)board;
 
 /**
  * Returns the hex coordinate and actual value of the hex with the 

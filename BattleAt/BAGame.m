@@ -16,7 +16,7 @@
 #import "BRAppDelegate.h"
 #import "BullRun.h"
 #import "HXMHex.h"
-#import "HMMap.h"
+#import "HXMMap.h"
 #import "HXMTerrainEffect.h"
 #import "NSArray+DPTUtil.h"
 
@@ -41,7 +41,7 @@ BAGame* game; // the global game instance
     
     if (self) {
         // _ai must be set by derived classes
-        _board     = [HMMap createFromFile:[[NSBundle mainBundle] pathForResource:@"map" ofType:@"plist"]];
+        _board     = [HXMMap createFromFile:[[NSBundle mainBundle] pathForResource:@"map" ofType:@"plist"]];
         _oob       = [BAOrderOfBattle createFromFile:[[NSBundle mainBundle] pathForResource:@"units" ofType:@"plist"]];
         _observers = [NSMutableArray array];
         _turn      = 1;

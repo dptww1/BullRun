@@ -42,7 +42,7 @@
 }
 
 - (void)devalueInfluenceMap:(BAAIInfluenceMap*)imap atHex:(HXMHex)hex {
-    HMMap* map = [game board];
+    HXMMap* map = [game board];
 
     [imap multiplyBy:0.25f atHex:hex];
 
@@ -80,7 +80,7 @@
 - (void)routeUnit:(BAUnit*)unit toDestination:(HXMHex)destination {
     [[unit moveOrders] clear];
 
-    HMMap* map = [game board];
+    HXMMap* map = [game board];
     HXMHex curHex = [unit location];
 
     // There's no point in planning out more than two hexes, because
@@ -101,7 +101,7 @@
 @implementation McDowell (Tactics)
 
 - (BOOL)assignAttacker {
-    HMMap* map = [game board];
+    HXMMap* map = [game board];
 
     BAUnit* u = [self findCombatWorthyUnitWithRole:ROLE_ATTACK];
     if (!u)
@@ -157,7 +157,7 @@
 }
 
 - (BOOL)assignFlanker {
-    HMMap* map = [game board];
+    HXMMap* map = [game board];
 
     BAUnit* u = [self findCombatWorthyUnitWithRole:ROLE_FLANK];
     if (!u)

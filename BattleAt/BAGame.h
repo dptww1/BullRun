@@ -11,7 +11,7 @@
 #import "BAGameObserving.h"
 #import "BAOrderOfBattle.h"
 #import "BullRun.h"
-#import "HMMap.h"
+#import "HXMMap.h"
 
 @class BAUnit;
 
@@ -33,7 +33,7 @@
 @property (nonatomic)                   PlayerSide       userSide;
 
 /** The mapboard used by this game. */
-@property (nonatomic, strong, readonly) HMMap*           board;
+@property (nonatomic, strong, readonly) HXMMap*          board;
 
 /** The order of battle used by this game. */
 @property (nonatomic, strong, readonly) BAOrderOfBattle* oob;

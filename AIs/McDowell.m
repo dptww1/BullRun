@@ -15,7 +15,7 @@
 #import "BRMap.h"
 #import "HXMGeometry.h"
 #import "HXMHex.h"
-#import "HMMap.h"
+#import "HXMMap.h"
 #import "NSArray+DPTUtil.h"
 
 @implementation McDowell (Private)

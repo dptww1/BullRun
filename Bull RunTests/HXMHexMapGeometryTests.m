@@ -1,17 +1,16 @@
 //
 //  HXMHexMapGeometryTests.m
-//  Bull Run
 //
 //  Created by Dave Townsend on 1/9/13.
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
 #import "HXMGeometry.h"
-#import "HMMap.h"
+#import "HXMMap.h"
 #import "HXMHexMapGeometryTests.h"
 
 static HXMGeometry* geometry;
-static HMMap*       map;
+static HXMMap*      map;
 
 @implementation HXMHexMapGeometryTests
 
@@ -40,7 +39,7 @@ static HMMap*       map;
      * (Yes, this was tedious to type up, but a picture is worth a thousand words, right?
      */
     geometry = [[HXMGeometry alloc] initWithLongGrain:NO firstColumnIsLong:NO numRows:7 numColumns:10];
-    map = [[HMMap alloc] initWithGeometry:geometry];
+    map = [[HXMMap alloc] initWithGeometry:geometry];
 }
 
 - (void)testLegal {

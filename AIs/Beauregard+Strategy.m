@@ -13,7 +13,7 @@
 #import "BRGame.h"
 #import "Beauregard.h"
 #import "Beauregard+Strategy.h"
-#import "HMMap.h"
+#import "HXMMap.h"
 #import "HXMPathFinder.h"
 #import "HXMTerrainEffect.h"
 #import "NSValue+HXMHex.h"
@@ -21,7 +21,7 @@
 @implementation Beauregard (Private)
 
 - (BOOL)unitInCorrectTheater:(BAUnit*)unit {
-    HMMap* map = [game board];
+    HXMMap* map = [game board];
 
     BRAICSATheater assignedTheater = [[self unitRoles][[unit name]] integerValue];
     BRAICSATheater actualTheater = [map is:[unit location] inZone:@"manassas"]
@@ -128,7 +128,7 @@
 }
 
 - (BRAICSATheater)computeTheaterOf:(BAUnit*)unit {
-    HMMap* map = [game board];
+    HXMMap* map = [game board];
 
     return [map is:[unit location] inZone:@"manassas"]
            ? BRAICSATheaterEast
@@ -166,7 +166,7 @@
 }
 
 - (void)routeUnit:(BAUnit*)unit toDestination:(HXMHex)destination {
-    HMMap* map = [game board];
+    HXMMap* map = [game board];
     HXMHex curHex = [unit location];
 
     HXMPathFinder* pf = [HXMPathFinder pathFinderOnMap:map withMinCost:4.0f];

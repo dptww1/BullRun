@@ -6,6 +6,7 @@
 //
 
 #import "HXMCoordinateTransformer.h"
+#import "HXMMap.h"
 
 
 //==============================================================================
@@ -21,7 +22,7 @@
 //==============================================================================
 @implementation HXMCoordinateTransformer
 
-- (id)initWithMap:(HMMap*)map origin:(CGPoint)origin hexSize:(CGSize)hexSize {
+- (id)initWithMap:(HXMMap*)map origin:(CGPoint)origin hexSize:(CGSize)hexSize {
     self = [super init];
     if (self) {
         _map     = map;

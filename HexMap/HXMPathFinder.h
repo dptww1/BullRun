@@ -10,7 +10,7 @@
 #import <Foundation/Foundation.h>
 #import "HXMHex.h"
 
-@class HMMap;
+@class HXMMap;
 
 /**
  * A user-supplied function which determines the cost of 
@@ -35,7 +35,7 @@ typedef float (^HXMPathFinderCostFn)(HXMHex from, HXMHex to);
  *
  * @see #initForMap:withMinCost:
  */
-+ (HXMPathFinder*)pathFinderOnMap:(HMMap*)map withMinCost:(float)minCost;
++ (HXMPathFinder*)pathFinderOnMap:(HXMMap*)map withMinCost:(float)minCost;
 
 /** 
  * Designated Initializer.  
@@ -52,7 +52,7 @@ typedef float (^HXMPathFinderCostFn)(HXMHex from, HXMHex to);
  *
  * @return an initialized HMPathFinder
  */
-- (HXMPathFinder*)initForMap:(HMMap*)map withMinCost:(float)minCost;
+- (HXMPathFinder*)initForMap:(HXMMap*)map withMinCost:(float)minCost;
 
 /**
  * Finds an optimal path between two hexes, using a user-supplied cost block.

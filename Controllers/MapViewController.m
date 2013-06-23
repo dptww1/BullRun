@@ -17,7 +17,7 @@
 #import "BAUnit.h"
 #import "BullRun.h"
 #import "HXMCoordinateTransformer.h"
-#import "HMMap.h"
+#import "HXMMap.h"
 #import "InfoBarView.h"
 #import "MapView.h"
 #import "MapViewController.h"

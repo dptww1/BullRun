@@ -17,7 +17,7 @@
 @implementation Beauregard (Private)
 
 - (void)devalueInfluenceMap:(BAAIInfluenceMap*)imap atHex:(HXMHex)hex {
-    HMMap* map = [game board];
+    HXMMap* map = [game board];
 
     [imap multiplyBy:0.25f atHex:hex];
 

@@ -8,12 +8,12 @@
 
 #import "BAAIInfluenceMap.h"
 #import "HXMHex.h"
-#import "HMMap.h"
+#import "HXMMap.h"
 
 @interface BAAIInfluenceMap ()
 
-@property (nonatomic)        float* mapData;
-@property (nonatomic,strong) HMMap* srcMap;
+@property (nonatomic)        float*  mapData;
+@property (nonatomic,strong) HXMMap* srcMap;
 
 @end
 
@@ -27,7 +27,7 @@
 
 @implementation BAAIInfluenceMap
 
-+ (BAAIInfluenceMap*)mapFrom:(HMMap*)board {
++ (BAAIInfluenceMap*)mapFrom:(HXMMap*)board {
     BAAIInfluenceMap* map = [[BAAIInfluenceMap alloc] init];
 
     if (map) {

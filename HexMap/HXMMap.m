@@ -1,13 +1,12 @@
 //
-//  HMMap.m
-//  Bull Run
+//  HXMMap.m
 //
 //  Created by Dave Townsend on 1/11/13.
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
 #import "DPTSysUtil.h"
-#import "HMMap.h"
+#import "HXMMap.h"
 #import "HXMGeometry.h"
 #import "HXMHex.h"
 #import "HXMMapZone.h"
@@ -21,7 +20,7 @@ static const int DEFAULT_CAPACITY = 12;
 
 
 //==============================================================================
-@interface HMMap ()
+@interface HXMMap ()
 
 @property (nonatomic)        int*          mapData;
 @property (nonatomic,strong) NSArray*      terrainEffects;
@@ -31,7 +30,7 @@ static const int DEFAULT_CAPACITY = 12;
 
 
 //==============================================================================
-@implementation HMMap
+@implementation HXMMap
 
 - (int)rawDataAt:(HXMHex)hex {
     return _mapData[(hex.row * [_geometry numColumns]) + hex.column];
@@ -44,12 +43,12 @@ static const int DEFAULT_CAPACITY = 12;
 
 
 #pragma - mark Init Methods
-+ (HMMap*)createFromFile:(NSString*)filepath {
-    HMMap* board = [NSKeyedUnarchiver unarchiveObjectWithFile:filepath];
++ (HXMMap*)createFromFile:(NSString*)filepath {
+    HXMMap* board = [NSKeyedUnarchiver unarchiveObjectWithFile:filepath];
     return board;
 }
 
-- (HMMap*)initWithGeometry:(HXMGeometry *)geometry {
+- (HXMMap*)initWithGeometry:(HXMGeometry *)geometry {
     self = [super init];
 
     if (self) {

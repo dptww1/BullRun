@@ -1,6 +1,5 @@
 //
-//  HMMap.h
-//  Bull Run
+//  HXMMap.h
 //
 //  Created by Dave Townsend on 1/11/13.
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
@@ -17,7 +16,7 @@
 /**
  * A hex map, based on what is needed to support a (war)game.
  */
-@interface HMMap : NSObject <NSCoding>
+@interface HXMMap : NSObject <NSCoding>
 
 /** The size and geometry of the map. */
 @property (readonly,strong,nonatomic) HXMGeometry* geometry;
@@ -30,7 +29,7 @@
  *
  * @return the map
  */
-+ (HMMap*)createFromFile:(NSString*)filename;
++ (HXMMap*)createFromFile:(NSString*)filename;
 
 /**
  * Gets movement cost (in MPs) of given hex.
@@ -54,7 +53,7 @@
  * @privatesection
  * For unit tests only!
  */
-- (HMMap*)initWithGeometry:(HXMGeometry*)geometry;
+- (HXMMap*)initWithGeometry:(HXMGeometry*)geometry;
 
 /**
  * Saves this map in the given file.

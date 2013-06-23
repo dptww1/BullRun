@@ -3738,7 +3738,7 @@
 			<key>$classes</key>
 			<array>
 				<string>BRMap</string>
-				<string>HMMap</string>
+				<string>HXMMap</string>
 			</array>
 			<key>$classname</key>
 			<string>BRMap</string>

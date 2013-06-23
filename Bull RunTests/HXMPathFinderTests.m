@@ -8,7 +8,7 @@
 
 #import "HXMGeometry.h"
 #import "HXMHex.h"
-#import "HMMap.h"
+#import "HXMMap.h"
 #import "HXMPathFinder.h"
 #import "HXMPathFinderTests.h"
 #import "NSValue+HXMHex.h"
@@ -16,7 +16,7 @@
 //==============================================================================
 @interface HXMPathFinderTests ()
 
-@property (nonatomic,strong) HMMap* map;
+@property (nonatomic,strong) HXMMap* map;
 
 @end
 
@@ -93,7 +93,7 @@
                                           firstColumnIsLong:NO
                                                     numRows:10
                                                  numColumns:9];
-    _map = [[HMMap alloc] initWithGeometry:g];
+    _map = [[HXMMap alloc] initWithGeometry:g];
 }
 
 //------------------------------------------------------------------------------

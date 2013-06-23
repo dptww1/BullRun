@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
-#import "HMMap.h"
+#import "HXMMap.h"
 #import "BullRun.h"
 
 /**
@@ -14,7 +14,7 @@
  * encapsulate some `HMMap` extensions that aren't general enough to
  * belong in `BRGame`.
  */
-@interface BRMap : HMMap
+@interface BRMap : HXMMap
 
 /** 
  * Gets the global map instance, cast to the correct type. 

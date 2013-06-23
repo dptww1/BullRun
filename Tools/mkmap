@@ -8,7 +8,7 @@ require 'plist'
 @debug = false
 
 
-@class_names = "HMMap"
+@class_names = "HXMMap"
 @cur_state = :global
 @geometry = { "$class" => { "CF$UID" => -1 } }
 @symbol_map = { }   # key: terrain symbol  value: corresponding int value (not bit number)
@@ -83,7 +83,7 @@ def do_global(line)
     @cur_state = :geometry
 
   elsif line =~ /^className\s*=\s*(.*)$/
-    @class_names = [$1, "HMMap"]
+    @class_names = [$1, "HXMMap"]
     puts "className = `#{@class_names[0]}'" if @debug
 
   else

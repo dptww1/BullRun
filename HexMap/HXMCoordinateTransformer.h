@@ -6,7 +6,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "HMMap.h"
+#import "HXMHex.h"
+
+
+@class HXMMap;
+
 
 /**
  * Manages the conversion between screen coordinates and hex coordinates.
@@ -14,13 +18,13 @@
 @interface HXMCoordinateTransformer : NSObject
 
 /** The map model to translate. */
-@property (nonatomic,strong,readonly) HMMap*  map;
+@property (nonatomic, strong, readonly) HXMMap* map;
 
 /** The screen pixel coordinate of the upper left corner of hex (0,0). */
-@property (nonatomic,assign,readonly) CGPoint origin;
+@property (nonatomic, assign, readonly) CGPoint origin;
 
 /** The pixel size of a hex. */
-@property (nonatomic,assign,readonly) CGSize  hexSize;
+@property (nonatomic, assign, readonly) CGSize  hexSize;
 
 /**
  * Designated initializer.
@@ -31,7 +35,7 @@
  *
  * @return the initialized object
  */
-- (id)initWithMap:(HMMap*)map origin:(CGPoint)origin hexSize:(CGSize)hexSize;
+- (id)initWithMap:(HXMMap*)map origin:(CGPoint)origin hexSize:(CGSize)hexSize;
 
 /**
  * Converts the given hex coordinate to screen coordinates.
