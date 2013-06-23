@@ -11,7 +11,7 @@
 #import "HXMGeometry.h"
 #import "HXMHex.h"
 #import "HMMapZone.h"
-#import "HMTerrainEffect.h"
+#import "HXMTerrainEffect.h"
 #import "NSArray+DPTUtil.h"
 #import "NSValue+HXMHex.h"
 
@@ -287,7 +287,7 @@ static const int DEFAULT_CAPACITY = 12;
     return success;
 }
 
-- (HMTerrainEffect*)terrainAt:(HXMHex)hex {
+- (HXMTerrainEffect*)terrainAt:(HXMHex)hex {
     if (![self legal:hex])
         return nil;
 
@@ -297,7 +297,7 @@ static const int DEFAULT_CAPACITY = 12;
         return nil;
 
     // Loop through the bits LSB to MSB
-    for (HMTerrainEffect* te in [self terrainEffects]) {
+    for (HXMTerrainEffect* te in [self terrainEffects]) {
         if (rawData & (1 << [te bitNum]))
             return te;
     }
@@ -306,7 +306,7 @@ static const int DEFAULT_CAPACITY = 12;
 }
 
 - (float)mpCostOf:(HXMHex)hex {
-    HMTerrainEffect* fx = [self terrainAt:hex];
+    HXMTerrainEffect* fx = [self terrainAt:hex];
     return fx ? [fx mpCost] : 10000.0f;
 }
 
@@ -331,9 +331,9 @@ static const int DEFAULT_CAPACITY = 12;
     return ![self terrainAt:hex];
 }
 
-- (HMTerrainEffect*)findTerrainByName:(NSString *)name {
-    return (HMTerrainEffect*)
-           [_terrainEffects dpt_find:^BOOL(HMTerrainEffect* o) {
+- (HXMTerrainEffect*)findTerrainByName:(NSString *)name {
+    return (HXMTerrainEffect*)
+           [_terrainEffects dpt_find:^BOOL(HXMTerrainEffect* o) {
                return [[o name] isEqualToString:name];
            }];
 }
@@ -341,7 +341,7 @@ static const int DEFAULT_CAPACITY = 12;
 - (NSArray*)findHexesOfType:(NSString *)terrainName {
     NSMutableArray* list = [NSMutableArray arrayWithCapacity:DEFAULT_CAPACITY];
 
-    HMTerrainEffect* fx = [self findTerrainByName:terrainName];
+    HXMTerrainEffect* fx = [self findTerrainByName:terrainName];
 
     if (fx) {
         int bitMask = 1 << [fx bitNum];

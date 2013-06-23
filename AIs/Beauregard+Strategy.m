@@ -15,7 +15,7 @@
 #import "Beauregard+Strategy.h"
 #import "HMMap.h"
 #import "HXMPathFinder.h"
-#import "HMTerrainEffect.h"
+#import "HXMTerrainEffect.h"
 #import "NSValue+HXMHex.h"
 
 @implementation Beauregard (Private)
@@ -80,7 +80,7 @@
             return;
 
         // Candidate unit must not be on a ford
-        HMTerrainEffect* terrain = [[game board] terrainAt:[unit location]];
+        HXMTerrainEffect* terrain = [[game board] terrainAt:[unit location]];
         if ([[terrain name] isEqualToString:@"Ford"])
             return;
 
@@ -174,7 +174,7 @@
     NSArray* path = [pf findPathFrom:curHex
                                   to:destination
                                using:^float(HXMHex from, HXMHex to) {
-                                   HMTerrainEffect* fx = [map terrainAt:to];
+                                   HXMTerrainEffect* fx = [map terrainAt:to];
 
                                    if (!fx) // impassible
                                        return -1.0f;

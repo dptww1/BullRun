@@ -9,7 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "HXMGeometry.h"
 #import "HXMHex.h"
-#import "HMTerrainEffect.h"
+
+
+@class HXMTerrainEffect;
+
 
 /**
  * A hex map, based on what is needed to support a (war)game.
@@ -91,7 +94,7 @@
  * @return the relevant terrain effect, or `nil` if the hex is offmap
  *         or impassable
  */
-- (HMTerrainEffect*)terrainAt:(HXMHex)hex;
+- (HXMTerrainEffect*)terrainAt:(HXMHex)hex;
 
 /**
  * Gets the terrain information by name.
@@ -100,7 +103,7 @@
  *
  * @return the corresponding terrain effect, or `nil` if none
  */
-- (HMTerrainEffect*)findTerrainByName:(NSString*)name;
+- (HXMTerrainEffect*)findTerrainByName:(NSString*)name;
 
 /**
  * Returns the hexes matching a given terrain type.

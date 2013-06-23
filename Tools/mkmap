@@ -139,7 +139,7 @@ def do_terrain_effects(line)
     @objs.push terrain_hash
     @objs.push name
 
-    cfuid = push_classnames "HMTerrainEffect", "NSObject"
+    cfuid = push_classnames "HXMTerrainEffect", "NSObject"
 
     terrain_hash["$class"]["CF$UID"] = cfuid
 

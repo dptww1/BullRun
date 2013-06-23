@@ -1,6 +1,5 @@
 //
-//  HMTerrainEffect.h
-//  Bull Run
+//  HXMTerrainEffect.h
 //
 //  Created by Dave Townsend on 2/4/13.
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
@@ -11,7 +10,7 @@
 /**
  * Collects the information related to a single type of terrain.
  */
-@interface HMTerrainEffect : NSObject <NSCoding>
+@interface HXMTerrainEffect : NSObject <NSCoding>
 
 /** The bit number (0-31) used by this terrain type in the map data. */
 @property (nonatomic,assign) int bitNum;

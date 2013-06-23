@@ -108,11 +108,11 @@
 		<dict>
 			<key>$classes</key>
 			<array>
-				<string>HMTerrainEffect</string>
+				<string>HXMTerrainEffect</string>
 				<string>NSObject</string>
 			</array>
 			<key>$classname</key>
-			<string>HMTerrainEffect</string>
+			<string>HXMTerrainEffect</string>
 		</dict>
 		<dict>
 			<key>$class</key>

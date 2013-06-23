@@ -17,6 +17,7 @@
 #import "BullRun.h"
 #import "HXMHex.h"
 #import "HMMap.h"
+#import "HXMTerrainEffect.h"
 #import "NSArray+DPTUtil.h"
 
 
@@ -279,7 +280,7 @@ BAGame* game; // the global game instance
     int defCasualties = [self computeDefenderCasualtiesFor:d against:a];
 
     // Adjust for terrain (TODO: BR-specific)
-    HMTerrainEffect* fx = [[game board] terrainAt:[d location]];
+    HXMTerrainEffect* fx = [[game board] terrainAt:[d location]];
     if ([[fx name] isEqualToString:@"Ford"]) {   // att + 100%, def - 50%
         attCasualties *= 2;
         defCasualties /= 2;
