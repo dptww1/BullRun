@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC058F6117787ADE00FD165C /* BATAIMoveTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = CC058F6017787ADE00FD165C /* BATAIMoveTracker.m */; };
+		CC058F691778960D00FD165C /* BATAIMoveTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CC058F681778960D00FD165C /* BATAIMoveTrackerTests.m */; };
 		CC0805A916D3085000CB8C79 /* BABattleReport.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0805A816D3085000CB8C79 /* BABattleReport.m */; };
 		CC0805AD16D5869E00CB8C79 /* BAReinforcementInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0805AC16D5869E00CB8C79 /* BAReinforcementInfo.m */; };
 		CC0CF381168A4E72006D902D /* README.textile in Resources */ = {isa = PBXBuildFile; fileRef = CC0CF380168A4E72006D902D /* README.textile */; };
@@ -81,6 +83,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CC058F5F17787ADE00FD165C /* BATAIMoveTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BATAIMoveTracker.h; sourceTree = "<group>"; };
+		CC058F6017787ADE00FD165C /* BATAIMoveTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BATAIMoveTracker.m; sourceTree = "<group>"; };
+		CC058F671778960D00FD165C /* BATAIMoveTrackerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BATAIMoveTrackerTests.h; sourceTree = "<group>"; };
+		CC058F681778960D00FD165C /* BATAIMoveTrackerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BATAIMoveTrackerTests.m; sourceTree = "<group>"; };
 		CC0805A716D3085000CB8C79 /* BABattleReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BABattleReport.h; sourceTree = "<group>"; };
 		CC0805A816D3085000CB8C79 /* BABattleReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BABattleReport.m; sourceTree = "<group>"; };
 		CC0805AA16D3165D00CB8C79 /* BAGameObserving.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAGameObserving.h; sourceTree = "<group>"; };
@@ -213,6 +219,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CC058F661778960D00FD165C /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				CC058F671778960D00FD165C /* BATAIMoveTrackerTests.h */,
+				CC058F681778960D00FD165C /* BATAIMoveTrackerTests.m */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
 		CC0805A516D2F87300CB8C79 /* BattleAt */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,8 +245,11 @@
 				CC392E3B16D5A6BE00160B82 /* BAOrderOfBattle.m */,
 				CC0805AB16D5869E00CB8C79 /* BAReinforcementInfo.h */,
 				CC0805AC16D5869E00CB8C79 /* BAReinforcementInfo.m */,
+				CC058F5F17787ADE00FD165C /* BATAIMoveTracker.h */,
+				CC058F6017787ADE00FD165C /* BATAIMoveTracker.m */,
 				CC392E3D16D5A84500160B82 /* BAUnit.h */,
 				CC392E3E16D5A84500160B82 /* BAUnit.m */,
+				CC058F661778960D00FD165C /* Tests */,
 			);
 			path = BattleAt;
 			sourceTree = "<group>";
@@ -615,6 +633,7 @@
 				CC25F47D1765748F00F104BE /* Beauregard+Strategy.m in Sources */,
 				CC25F481176E455E00F104BE /* Beauregard+Tactics.m in Sources */,
 				CC25F4B31774C92900F104BE /* NSValue+HXMHex.m in Sources */,
+				CC058F6117787ADE00FD165C /* BATAIMoveTracker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -627,6 +646,7 @@
 				CC392E4B16D5AFD400160B82 /* HXMHexMapGeometryTests.m in Sources */,
 				CC392E4E16D5B04F00160B82 /* BAMoveOrdersTests.m in Sources */,
 				CCF01AB21758EC7C003A1C77 /* HXMPathFinderTests.m in Sources */,
+				CC058F691778960D00FD165C /* BATAIMoveTrackerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
