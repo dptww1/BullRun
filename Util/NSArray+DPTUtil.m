@@ -34,7 +34,17 @@
     return result;
 }
 
-- (int)dpt_min_idx:(DPTNumericFilter)evalBlock {
+- (NSArray*)dpt_map:(DPTMapBlock)mapBlock {
+    NSMutableArray* result = [NSMutableArray array];
+
+    [self enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL* stop) {
+        [result addObject:mapBlock(obj)];
+    }];
+
+    return result;
+}
+
+- (int)dpt_min_idx:(DPTNumericBlock)evalBlock {
     __block int       minIdx = -1;
     __block NSNumber* minVal = nil;
 
@@ -50,7 +60,7 @@
     return minIdx;
 }
 
-- (int)dpt_max_idx:(DPTNumericFilter)evalBlock {
+- (int)dpt_max_idx:(DPTNumericBlock)evalBlock {
     __block int       maxIdx = -1;
     __block NSNumber* maxVal = nil;
 

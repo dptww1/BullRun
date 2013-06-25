@@ -8,16 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
-/**
- * Block type for use in the filtering methods in this category.
- */
+/** Block type used by the filtering methods in this category. */
 typedef BOOL (^DPTUtilFilter)(id o);
 
-typedef NSNumber* (^DPTNumericFilter)(id o);
+/** Block type used by the numeric methods in this category. */
+typedef NSNumber* (^DPTNumericBlock)(id o);
 
-/**
- * Functional programming extensions for `NSArray`.
- */
+/** Block type used by the mapping methods in this category. */
+typedef id (^DPTMapBlock)(id o);
+
+/** Functional programming extensions for `NSArray`. */
 @interface NSArray (DPTUtil)
 
 /**
@@ -41,6 +41,16 @@ typedef NSNumber* (^DPTNumericFilter)(id o);
 - (NSArray*)dpt_grep:(DPTUtilFilter)condBlock;
 
 /**
+ * Returns a copy of this array with each element being the corresponding
+ * source element as processed by `mapBlock`.
+ *
+ * @param mapBlock the mapping logic
+ *
+ * @returns the mapped array
+ */
+- (NSArray*)dpt_map:(DPTMapBlock)mapBlock;
+
+/**
  * Runs `evalBlock` on each element of this array and returns the index
  * of the element having the smallest resulting value. If multiple
  * elements return the same value, the index of the first element
@@ -50,7 +60,7 @@ typedef NSNumber* (^DPTNumericFilter)(id o);
  * 
  * @return the index of the smallest element, or -1 if the array is empty
  */
-- (int)dpt_min_idx:(DPTNumericFilter)evalBlock;
+- (int)dpt_min_idx:(DPTNumericBlock)evalBlock;
 
 /**
  * Runs `evalBlock` on each element of this array and returns the index
@@ -62,6 +72,6 @@ typedef NSNumber* (^DPTNumericFilter)(id o);
  *
  * @return the index of the largest element, or -1 if the array is empty
  */
-- (int)dpt_max_idx:(DPTNumericFilter)evalBlock;
+- (int)dpt_max_idx:(DPTNumericBlock)evalBlock;
 
 @end

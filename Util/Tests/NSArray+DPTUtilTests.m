@@ -70,5 +70,16 @@
     STAssertEquals(maxVal, 0, nil);
 }
 
+- (void)testMap {
+    NSArray* start  = @[ @1, @2, @3,  @4 ];
+    NSArray* target = @[ @1, @4, @9, @16 ];
+
+    NSArray* actual = [start dpt_map:^id(NSNumber* o) {
+        return [NSNumber numberWithInt:[o intValue] * [o intValue]];
+    }];
+
+    STAssertEqualObjects(actual, target, nil);
+}
+
 @end
 
