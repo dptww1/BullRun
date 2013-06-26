@@ -40,6 +40,12 @@
     STAssertEquals(minVal, 1, nil);
 }
 
+- (void)testMinNoBlock {
+    NSArray* a = @[ @30, @20, @10, @1, @90];
+    int minVal = [a dpt_min_idx];
+    STAssertEquals(minVal, 3, nil);
+}
+
 - (void)testMaxEmpty {
     NSArray* a = @[];
     int maxVal = [a dpt_max_idx:nil];
@@ -69,6 +75,13 @@
     }];
     STAssertEquals(maxVal, 0, nil);
 }
+
+- (void)testMaxNoBlock {
+    NSArray* a = @[ @30, @200, @10, @1, @90];
+    int maxVal = [a dpt_max_idx];
+    STAssertEquals(maxVal, 1, nil);
+}
+
 
 - (void)testMap {
     NSArray* start  = @[ @1, @2, @3,  @4 ];

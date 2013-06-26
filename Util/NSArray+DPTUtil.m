@@ -60,6 +60,10 @@
     return minIdx;
 }
 
+- (int)dpt_min_idx {
+    return [self dpt_min_idx:^NSNumber*(NSNumber* n) { return n; } ];
+}
+
 - (int)dpt_max_idx:(DPTNumericBlock)evalBlock {
     __block int       maxIdx = -1;
     __block NSNumber* maxVal = nil;
@@ -75,4 +79,9 @@
 
     return maxIdx;
 }
+
+- (int)dpt_max_idx {
+    return [self dpt_max_idx:^NSNumber*(NSNumber* n) { return n; } ];
+}
+
 @end

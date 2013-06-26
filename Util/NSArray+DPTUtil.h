@@ -63,6 +63,16 @@ typedef id (^DPTMapBlock)(id o);
 - (int)dpt_min_idx:(DPTNumericBlock)evalBlock;
 
 /**
+ * Returns the index of the element having the smallest value. The
+ * array elements are assumed to be `NSNumber`s.  If multiple elements
+ * have the same value, the index of the first element encountered
+ * is returned.
+ *
+ * @return the index of the smallest element, or -1 if the array is empty
+ */
+- (int)dpt_min_idx;
+
+/**
  * Runs `evalBlock` on each element of this array and returns the index
  * of the element having the largest resulting value. If multiple
  * elements return the same value, the index of the first element
@@ -73,5 +83,15 @@ typedef id (^DPTMapBlock)(id o);
  * @return the index of the largest element, or -1 if the array is empty
  */
 - (int)dpt_max_idx:(DPTNumericBlock)evalBlock;
+
+/**
+ * Returns the index of the element having the largest value. The
+ * array elements are assumed to be `NSNumber`s.  If multiple elements
+ * have the same value, the index of the first element encountered
+ * is returned.
+ *
+ * @return the index of the largest element, or -1 if the array is empty
+ */
+- (int)dpt_max_idx;
 
 @end
