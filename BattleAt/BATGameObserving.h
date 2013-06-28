@@ -1,5 +1,5 @@
 //
-// BAGameObserving.h
+// BATGameObserving.h
 //
 
 #import "HXMHex.h"
@@ -11,7 +11,7 @@
  * Protocol for objects which wish to be informed about game events.
  * All the methods here are optional.
  */
-@protocol BAGameObserving <NSObject>
+@protocol BATGameObserving <NSObject>
 
 @optional
 

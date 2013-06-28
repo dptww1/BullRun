@@ -9,7 +9,7 @@
 #import "BattleAt.h"
 #import "BABattleReport.h"
 #import "BAGame.h"
-#import "BAGameObserving.h"
+#import "BATGameObserving.h"
 #import "BAMoveOrders.h"
 #import "BAOrderOfBattle.h"
 #import "BATReinforcementInfo.h"
@@ -57,7 +57,7 @@ BAGame* game; // the global game instance
 
 #pragma mark - Public Methods
 
-- (void)addObserver:(id<BAGameObserving>)object {
+- (void)addObserver:(id<BATGameObserving>)object {
     [_observers addObject:object];
 }
 
@@ -238,7 +238,7 @@ BAGame* game; // the global game instance
 #pragma mark - Private Methods
 
 - (void)notifyObserversWithSelector:(SEL)selector {
-    for (id<BAGameObserving> observer in [self observers]) {
+    for (id<BATGameObserving> observer in [self observers]) {
         if ([observer respondsToSelector:selector])
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
@@ -248,7 +248,7 @@ BAGame* game; // the global game instance
 }
 
 - (void)notifyObserversWithSelector:(SEL)selector andObject:(id)object {
-    for (id<BAGameObserving> observer in [self observers]) {
+    for (id<BATGameObserving> observer in [self observers]) {
         if ([observer respondsToSelector:selector])
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
@@ -258,7 +258,7 @@ BAGame* game; // the global game instance
 }
 
 - (void) notifyObserversUnit:(BAUnit*)unit willMoveToHex:(HXMHex)hex {
-    for (id<BAGameObserving> observer in [self observers]) {
+    for (id<BATGameObserving> observer in [self observers]) {
         [observer moveUnit:unit to:hex];
     }
 }

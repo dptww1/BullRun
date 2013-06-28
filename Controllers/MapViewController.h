@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
-#import "BAGameObserving.h"
+#import "BATGameObserving.h"
 #import "HXMHex.h"
 
 @class BAUnit;
@@ -20,7 +20,7 @@
 /**
  * Main game view (which is the map) controller.
  */
-@interface MapViewController : UIViewController <BAGameObserving>
+@interface MapViewController : UIViewController <BATGameObserving>
 
 /** The coordinate transformer for this view. */
 @property (nonatomic, strong) HXMCoordinateTransformer* coordXformer;

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "BattleAt.h"
 #import "BATAIDelegate.h"
-#import "BAGameObserving.h"
+#import "BATGameObserving.h"
 #import "BAOrderOfBattle.h"
 #import "HXMMap.h"
 
@@ -53,7 +53,7 @@
  *
  * @param observer the observer to add
  */
-- (void)addObserver:(id<BAGameObserving>)observer;
+- (void)addObserver:(id<BATGameObserving>)observer;
 
 /**
  * Performs sighting from the point of view of player `side`. Ordinarily this
