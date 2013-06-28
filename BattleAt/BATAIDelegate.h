@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@class BAGame;
+@class BATGame;
 
 /** Protocol which all AI classes should implement. */
 @protocol BATAIDelegate <NSObject>
@@ -20,7 +20,7 @@
  *
  * @param game the game instance
  */
-- (void)freeSetup:(BAGame*)game;
+- (void)freeSetup:(BATGame*)game;
 
 /**
  * Called at the beginning of each turn so the AI can give orders to its
@@ -30,6 +30,6 @@
  *
  * @param game the game instance
  */
-- (void)giveOrders:(BAGame*)game;
+- (void)giveOrders:(BATGame*)game;
 
 @end

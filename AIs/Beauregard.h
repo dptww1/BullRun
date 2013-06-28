@@ -59,14 +59,14 @@ typedef enum {
  *
  * @param game the game to run free setup on
  */
-- (void)freeSetup:(BAGame*)game;
+- (void)freeSetup:(BATGame*)game;
 
 /**
  * BAAIProtocol implementation.
  *
  * @param game the game instance to give orders to
  */
-- (void)giveOrders:(BAGame*)game;
+- (void)giveOrders:(BATGame*)game;
 
 /**
  * Returns the hex of the base in the given theater

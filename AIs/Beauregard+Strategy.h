@@ -9,7 +9,7 @@
 #import "Beauregard.h"
 
 
-@class BAGame;
+@class BATGame;
 @class BAUnit;
 
 
@@ -23,7 +23,7 @@
  *
  * @param game the game to analyze
  */
-- (void)strategize:(BAGame*)game;
+- (void)strategize:(BATGame*)game;
 
 /**
  * Figures out which theater a given unit is in.

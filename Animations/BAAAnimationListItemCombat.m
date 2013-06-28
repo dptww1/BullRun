@@ -10,7 +10,7 @@
 #import "BAAAnimationListItemCombat.h"
 #import "BAAAnimationList.h"
 #import "BAAGunfire.h"
-#import "BAGame.h"
+#import "BATGame.h"
 #import "BAUnit.h"
 #import "DPTSysUtil.h"
 #import "HXMCoordinateTransformer.h"

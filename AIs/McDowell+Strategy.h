@@ -20,7 +20,7 @@
  *
  * @param game the current game situation
  */
-- (void)strategize:(BAGame*)game;
+- (void)strategize:(BATGame*)game;
 
 /**
  * Returns a block which evaluates whether or not a given USA unit is defending.

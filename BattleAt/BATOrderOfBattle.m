@@ -5,7 +5,7 @@
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
-#import "BAGame.h"
+#import "BATGame.h"
 #import "BATOrderOfBattle.h"
 #import "BATReinforcementInfo.h"
 #import "BAUnit.h"

@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
-#import "BAGame.h"
+#import "BATGame.h"
 #import "BRMap.h"
 #import "NSValue+HXMHex.h"
 

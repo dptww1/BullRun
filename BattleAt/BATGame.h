@@ -1,6 +1,5 @@
 //
-//  BAGame.h
-//  Bull Run
+//  BATGame.h
 //
 //  Created by Dave Townsend on 1/10/13.
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
@@ -23,7 +22,7 @@
  *
  * Designed to be used as a base class for a battle-specific derived class.
  */
-@interface BAGame : NSObject
+@interface BATGame : NSObject
 
 /** 
  * The current AI that the human player is playing against. Since this is
@@ -95,5 +94,5 @@
 @end
 
 /** The single, publicly available global instance. */
-extern BAGame* game;
+extern BATGame* game;
 

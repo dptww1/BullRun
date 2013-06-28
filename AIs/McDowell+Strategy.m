@@ -8,7 +8,7 @@
 
 #import "McDowell.h"
 #import "McDowell+Strategy.h"
-#import "BAGame.h"
+#import "BATGame.h"
 #import "BATOrderOfBattle.h"
 #import "BAUnit.h"
 #import "BRMap.h"
@@ -20,7 +20,7 @@
 @implementation McDowell (Strategy)
 
 #ifdef DO_SANITY_CHECK
-- (void)checkSanity:(BAGame*)game {
+- (void)checkSanity:(BATGame*)game {
     NSArray* units = [[game oob] unitsForSide:[self side]];
     if ([units count] != [[self unitRoles] count])
         DEBUG_AI(@"# USA units = %d but # units assigned to roles = %d",
@@ -47,7 +47,7 @@
 }
 
 
-- (int)countCsaAttacking:(BAGame*)game {
+- (int)countCsaAttacking:(BATGame*)game {
     NSArray* units = [[game oob] unitsForSide:OtherPlayer([self side])];
     return [[units dpt_grep:[self isCsaUnitAttacking]] count];
 }
@@ -61,7 +61,7 @@
     };
 }
 
-- (int)countUsaDefending:(BAGame*)game {
+- (int)countUsaDefending:(BATGame*)game {
     return [[[[game oob] unitsForSide:[self side]]
              dpt_grep:[self isUsaUnitDefending]] count];
 }
@@ -130,7 +130,7 @@
     [self unitRoles][[unit name]] = @(newRole);
 }
 
-- (void)strategize:(BAGame*)game {
+- (void)strategize:(BATGame*)game {
 
 #ifdef DO_SANITY_CHECK
     [self checkSanity:game];

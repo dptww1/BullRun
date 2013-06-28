@@ -1,6 +1,5 @@
 //
-//  BAGame.m
-//  Bull Run
+//  BATGame.m
 //
 //  Created by Dave Townsend on 1/10/13.
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
@@ -8,7 +7,7 @@
 
 #import "BattleAt.h"
 #import "BATBattleReport.h"
-#import "BAGame.h"
+#import "BATGame.h"
 #import "BATGameObserving.h"
 #import "BATMoveOrders.h"
 #import "BATOrderOfBattle.h"
@@ -20,10 +19,10 @@
 #import "NSArray+DPTUtil.h"
 
 
-BAGame* game; // the global game instance
+BATGame* game; // the global game instance
 
 //==============================================================================
-@interface BAGame ()
+@interface BATGame ()
 
 @property (nonatomic, strong, readonly)  NSMutableArray*  observers;
 @property (nonatomic, assign, readwrite) int              turn;
@@ -31,7 +30,7 @@ BAGame* game; // the global game instance
 @end
 
 //==============================================================================
-@implementation BAGame
+@implementation BATGame
 
 #pragma mark - Init Methods
 

@@ -7,7 +7,7 @@
 //
 
 #import "DPTMath.h"
-#import "BAGame.h"
+#import "BATGame.h"
 #import "BATMoveOrders.h"
 #import "BATOrderOfBattle.h"
 #import "BAUnit.h"
@@ -132,7 +132,7 @@
            : BRAICSATheaterWest;
 }
 
-- (void)strategize:(BAGame *)game {
+- (void)strategize:(BATGame*)game {
     int westThreat = [self unitDisparityIn:BRAICSATheaterWest];
     int eastThreat = [self unitDisparityIn:BRAICSATheaterEast];
 

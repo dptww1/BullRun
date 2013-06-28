@@ -6,11 +6,11 @@
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
-#import "BAGame.h"
+#import "BATGame.h"
 
 /**
- * Bull Run-specific game class, for overriding `BAGame` methods.
+ * Bull Run-specific game class, for overriding `BATGame` methods.
  */
-@interface BRGame : BAGame
+@interface BRGame : BATGame
 
 @end

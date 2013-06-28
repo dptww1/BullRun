@@ -9,7 +9,7 @@
 #import "BAAAnimationList.h"
 #import "BAAAnimationListItemCombat.h"
 #import "BAAAnimationListItemMove.h"
-#import "BAGame.h"
+#import "BATGame.h"
 
 //==============================================================================
 @interface BAAAnimationList ()

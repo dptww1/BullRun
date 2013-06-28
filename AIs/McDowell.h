@@ -23,10 +23,10 @@ typedef enum UnitRole {
 @interface McDowell : NSObject <BATAIDelegate>
 
 /** BAAIProtocol implementation. */
-- (void)freeSetup:(BAGame*)game;
+- (void)freeSetup:(BATGame*)game;
 
 /** BAAIProtocol implementation. */
-- (void)giveOrders:(BAGame*)game;
+- (void)giveOrders:(BATGame*)game;
 
 /**
  * The unit names which have already been assigned orders this turn.

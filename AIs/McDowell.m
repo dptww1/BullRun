@@ -10,7 +10,7 @@
 #import "McDowell+Strategy.h"
 #import "McDowell+Tactics.h"
 #import "BATAIInfluenceMap.h"
-#import "BAGame.h"
+#import "BATGame.h"
 #import "BATOrderOfBattle.h"
 #import "BAUnit.h"
 #import "BRMap.h"
@@ -21,7 +21,7 @@
 
 @implementation McDowell (Private)
 
-- (BATAIInfluenceMap*)createInfluenceMap:(BAGame*)game {
+- (BATAIInfluenceMap*)createInfluenceMap:(BATGame*)game {
     BRMap* map = [BRMap map];
     NSArray* bases = [map basesForSide:[self side]];
 
@@ -111,9 +111,9 @@
     return self;
 }
 
-- (void)freeSetup:(BAGame*)game { }
+- (void)freeSetup:(BATGame*)game { }
 
-- (void)giveOrders:(BAGame*)game {
+- (void)giveOrders:(BATGame*)game {
     [_orderedThisTurn removeAllObjects];
 
     [self strategize:game];

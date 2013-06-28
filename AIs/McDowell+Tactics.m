@@ -7,7 +7,7 @@
 //
 
 #import "BATAIInfluenceMap.h"
-#import "BAGame.h"
+#import "BATGame.h"
 #import "BATMoveOrders.h"
 #import "BATOrderOfBattle.h"
 #import "BAUnit.h"

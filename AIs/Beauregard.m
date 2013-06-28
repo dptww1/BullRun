@@ -7,7 +7,7 @@
 //
 
 #import "BATAIInfluenceMap.h"
-#import "BAGame.h"
+#import "BATGame.h"
 #import "BATOrderOfBattle.h"
 #import "BAUnit.h"
 #import "Beauregard.h"
@@ -20,7 +20,7 @@
 
 @implementation Beauregard (Private)
 
-- (BATAIInfluenceMap*)createInfluenceMap:(BAGame*)game {
+- (BATAIInfluenceMap*)createInfluenceMap:(BATGame*)game {
     BRMap* map = [BRMap map];
     BATAIInfluenceMap* imap = [BATAIInfluenceMap mapFrom:map];
 
@@ -104,9 +104,9 @@
     return self;
 }
 
-- (void)freeSetup:(BAGame*)game { }
+- (void)freeSetup:(BATGame*)game { }
 
-- (void)giveOrders:(BAGame*)game {
+- (void)giveOrders:(BATGame*)game {
     [_orderedThisTurn removeAllObjects];
     
     [self strategize:game];
