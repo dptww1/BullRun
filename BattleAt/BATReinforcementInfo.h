@@ -1,6 +1,5 @@
 //
-//  BAReinforcementInfo.h
-//  Bull Run
+//  BATReinforcementInfo.h
 //
 //  Created by Dave Townsend on 2/20/13.
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
@@ -12,7 +11,7 @@
 @class BAUnit;
 
 /** Contains the location/turn information needed for a single reinforcement. */
-@interface BAReinforcementInfo : NSObject <NSCoding>
+@interface BATReinforcementInfo : NSObject <NSCoding>
 
 /** The name of the reinforcing unit. */
 @property (nonatomic, readonly, copy) NSString* unitName;
@@ -31,7 +30,7 @@
  *
  * @return the new reinforcement object
  */
-+ (BAReinforcementInfo*)createWithUnit:(BAUnit*)unit;
++ (BATReinforcementInfo*)createWithUnit:(BAUnit*)unit;
 
 /**
  * Designated initializer.
@@ -42,8 +41,8 @@
  *
  * @return the new reinforcement object
  */
-- (BAReinforcementInfo*)initWithUnit:(BAUnit*)unit
-                              onTurn:(int)turn
-                               atHex:(HXMHex)hex;
+- (BATReinforcementInfo*)initWithUnit:(BAUnit*)unit
+                               onTurn:(int)turn
+                                atHex:(HXMHex)hex;
 
 @end

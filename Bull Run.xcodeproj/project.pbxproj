@@ -11,7 +11,7 @@
 		CC058F691778960D00FD165C /* BATAIMoveTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CC058F681778960D00FD165C /* BATAIMoveTrackerTests.m */; };
 		CC058F6D177A19F500FD165C /* NSArray+DPTUtilTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CC058F6C177A19F500FD165C /* NSArray+DPTUtilTests.m */; };
 		CC0805A916D3085000CB8C79 /* BABattleReport.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0805A816D3085000CB8C79 /* BABattleReport.m */; };
-		CC0805AD16D5869E00CB8C79 /* BAReinforcementInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0805AC16D5869E00CB8C79 /* BAReinforcementInfo.m */; };
+		CC0805AD16D5869E00CB8C79 /* BATReinforcementInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0805AC16D5869E00CB8C79 /* BATReinforcementInfo.m */; };
 		CC0CF381168A4E72006D902D /* README.textile in Resources */ = {isa = PBXBuildFile; fileRef = CC0CF380168A4E72006D902D /* README.textile */; };
 		CC0CF3EF169916E2006D902D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC0CF3EE169916E2006D902D /* QuartzCore.framework */; };
 		CC1B671C16DC4B9F0078B20B /* bullet.png in Resources */ = {isa = PBXBuildFile; fileRef = CC1B671B16DC4B9F0078B20B /* bullet.png */; };
@@ -94,8 +94,8 @@
 		CC0805A716D3085000CB8C79 /* BABattleReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BABattleReport.h; sourceTree = "<group>"; };
 		CC0805A816D3085000CB8C79 /* BABattleReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BABattleReport.m; sourceTree = "<group>"; };
 		CC0805AA16D3165D00CB8C79 /* BAGameObserving.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAGameObserving.h; sourceTree = "<group>"; };
-		CC0805AB16D5869E00CB8C79 /* BAReinforcementInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAReinforcementInfo.h; sourceTree = "<group>"; };
-		CC0805AC16D5869E00CB8C79 /* BAReinforcementInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAReinforcementInfo.m; sourceTree = "<group>"; };
+		CC0805AB16D5869E00CB8C79 /* BATReinforcementInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BATReinforcementInfo.h; sourceTree = "<group>"; };
+		CC0805AC16D5869E00CB8C79 /* BATReinforcementInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BATReinforcementInfo.m; sourceTree = "<group>"; };
 		CC0CF380168A4E72006D902D /* README.textile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.textile; sourceTree = "<group>"; };
 		CC0CF3E91698CB40006D902D /* BullRun.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BullRun.h; sourceTree = "<group>"; };
 		CC0CF3EE169916E2006D902D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -253,8 +253,8 @@
 				CC392E4416D5AE4C00160B82 /* BAMoveOrders.m */,
 				CC392E3A16D5A6BE00160B82 /* BAOrderOfBattle.h */,
 				CC392E3B16D5A6BE00160B82 /* BAOrderOfBattle.m */,
-				CC0805AB16D5869E00CB8C79 /* BAReinforcementInfo.h */,
-				CC0805AC16D5869E00CB8C79 /* BAReinforcementInfo.m */,
+				CC0805AB16D5869E00CB8C79 /* BATReinforcementInfo.h */,
+				CC0805AC16D5869E00CB8C79 /* BATReinforcementInfo.m */,
 				CC523550173A7DB600CDBDC5 /* BATAIDelegate.h */,
 				CCF01A9E174FFECA003A1C77 /* BATAIInfluenceMap.h */,
 				CCF01A9F174FFECA003A1C77 /* BATAIInfluenceMap.m */,
@@ -625,7 +625,7 @@
 				CCC71D5D16CC72FF003636E3 /* HXMMapZone.m in Sources */,
 				CCC71D6016CC747B003636E3 /* HXMTerrainEffect.m in Sources */,
 				CC0805A916D3085000CB8C79 /* BABattleReport.m in Sources */,
-				CC0805AD16D5869E00CB8C79 /* BAReinforcementInfo.m in Sources */,
+				CC0805AD16D5869E00CB8C79 /* BATReinforcementInfo.m in Sources */,
 				CC392E3C16D5A6BE00160B82 /* BAOrderOfBattle.m in Sources */,
 				CC392E3F16D5A84500160B82 /* BAUnit.m in Sources */,
 				CC392E4216D5ACEC00160B82 /* BAGame.m in Sources */,

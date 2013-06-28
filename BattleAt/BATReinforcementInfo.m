@@ -1,26 +1,27 @@
 //
-//  BAReinforcementInfo.m
-//  Bull Run
+//  BATReinforcementInfo.m
 //
 //  Created by Dave Townsend on 2/20/13.
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
-#import "BAReinforcementInfo.h"
+#import "BATReinforcementInfo.h"
 #import "BAUnit.h"
 #import "HXMHex.h"
 
-@implementation BAReinforcementInfo
+@implementation BATReinforcementInfo
 
 #pragma mark - Initialization
 
-+ (BAReinforcementInfo*)createWithUnit:(BAUnit*)unit {
-    return [[BAReinforcementInfo alloc] initWithUnit:unit
-                                              onTurn:[unit turn]
-                                               atHex:[unit location]];
++ (BATReinforcementInfo*)createWithUnit:(BAUnit*)unit {
+    return [[BATReinforcementInfo alloc] initWithUnit:unit
+                                               onTurn:[unit turn]
+                                                atHex:[unit location]];
 }
 
-- (BAReinforcementInfo*)initWithUnit:(BAUnit*)unit onTurn:(int)turn atHex:(HXMHex)hex {
+- (BATReinforcementInfo*)initWithUnit:(BAUnit*)unit
+                               onTurn:(int)turn
+                                atHex:(HXMHex)hex {
     self = [super init];
 
     if (self) {

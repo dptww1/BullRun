@@ -10,7 +10,7 @@
 #import "BattleAt.h"
 #import "HXMHex.h"
 
-@class BAReinforcementInfo;
+@class BATReinforcementInfo;
 @class BAUnit;
 
 /**
@@ -72,6 +72,6 @@
  *
  * @param reinforcementInfo the reinforcement to add
  */
-- (void)addReinforcementInfo:(BAReinforcementInfo*)reinforcementInfo;
+- (void)addReinforcementInfo:(BATReinforcementInfo*)reinforcementInfo;
 
 @end

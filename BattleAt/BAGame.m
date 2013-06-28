@@ -12,7 +12,7 @@
 #import "BAGameObserving.h"
 #import "BAMoveOrders.h"
 #import "BAOrderOfBattle.h"
-#import "BAReinforcementInfo.h"
+#import "BATReinforcementInfo.h"
 #import "BAUnit.h"
 #import "HXMHex.h"
 #import "HXMMap.h"
@@ -267,7 +267,7 @@ BAGame* game; // the global game instance
     BOOL anyReinforcementsAppeared = NO;
 
     for (int i = 0; i < [[_oob reinforcements] count]; ++i) {
-        BAReinforcementInfo* rInfo = [[_oob reinforcements] objectAtIndex:i];
+        BATReinforcementInfo* rInfo = [[_oob reinforcements] objectAtIndex:i];
 
         if ([self turn] >= [rInfo entryTurn]) {
             if ([[self board] legal:[rInfo entryLocation]]) {

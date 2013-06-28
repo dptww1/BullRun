@@ -8,7 +8,7 @@
 
 #import "BAGame.h"
 #import "BAOrderOfBattle.h"
-#import "BAReinforcementInfo.h"
+#import "BATReinforcementInfo.h"
 #import "BAUnit.h"
 #import "DPTSysUtil.h"
 #import "HXMHex.h"
@@ -42,7 +42,7 @@
             if ([unit turn] == 0)
                 return;
 
-            BAReinforcementInfo* ri = [BAReinforcementInfo createWithUnit:unit];
+            BATReinforcementInfo* ri = [BATReinforcementInfo createWithUnit:unit];
             DEBUG_REINFORCEMENTS(@"Reinforcement: %@ arrives at %02d%02d on turn %d",
                                  [ri unitName],
                                  [ri entryLocation].column,
@@ -79,7 +79,7 @@
     return [_units dpt_grep:^BOOL(BAUnit* u) { return [u side] == side; }];
 }
 
-- (void)addReinforcementInfo:(BAReinforcementInfo*)reinforcementInfo {
+- (void)addReinforcementInfo:(BATReinforcementInfo*)reinforcementInfo {
     [_reinforcements addObject:reinforcementInfo];
 }
 
