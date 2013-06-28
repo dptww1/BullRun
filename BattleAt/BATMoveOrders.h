@@ -1,6 +1,5 @@
 //
-//  BAMoveOrders.h
-//  Bull Run
+//  BATMoveOrders.h
 //
 //  Created by Dave Townsend on 1/18/13.
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
@@ -16,7 +15,7 @@
  * just manages the list; it's up to the caller to ensure that only legal hexes
  * are added.
  */
-@interface BAMoveOrders : NSObject <NSCopying>
+@interface BATMoveOrders : NSObject <NSCopying>
 
 /**
  * Designated initializer.

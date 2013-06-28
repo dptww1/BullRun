@@ -1,6 +1,5 @@
 //
-//  BAMoveOrders.m
-//  Bull Run
+//  BATMoveOrders.m
 //
 //  Created by Dave Townsend on 1/18/13.
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
@@ -8,10 +7,10 @@
 
 #import "DPTResizableBuffer.h"
 #import "HXMHex.h"
-#import "BAMoveOrders.h"
+#import "BATMoveOrders.h"
 
 //==============================================================================
-@interface BAMoveOrders ()
+@interface BATMoveOrders ()
 
 @property (nonatomic, strong) DPTResizableBuffer* list;
 
@@ -19,7 +18,7 @@
 
 
 //==============================================================================
-@implementation BAMoveOrders
+@implementation BATMoveOrders
 
 - (id)init {
     self = [super init];
@@ -33,7 +32,7 @@
 }
 
 - (id)copyWithZone:(NSZone*)zone {
-    BAMoveOrders* newObj = [[BAMoveOrders alloc] init];
+    BATMoveOrders* newObj = [[BATMoveOrders alloc] init];
     
     if (newObj)
         [newObj setList:[_list copyWithZone:zone]];

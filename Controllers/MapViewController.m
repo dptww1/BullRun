@@ -13,7 +13,7 @@
 #import "BAAGunfire.h"
 #import "BATBattleReport.h"
 #import "BAGame.h"
-#import "BAMoveOrders.h"
+#import "BATMoveOrders.h"
 #import "BATOrderOfBattle.h"
 #import "BAUnit.h"
 #import "BullRun.h"
@@ -94,7 +94,7 @@
     if (![unit hasOrders])
         return;
 
-    BAMoveOrders* mos = [unit moveOrders];
+    BATMoveOrders* mos = [unit moveOrders];
 
     // Draw orders line
     CGPoint start = [[self coordXformer] hexCenterToScreen:[unit location]];

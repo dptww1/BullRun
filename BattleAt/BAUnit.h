@@ -10,7 +10,7 @@
 #import "BattleAt.h"
 #import "HXMHex.h"
 
-@class BAMoveOrders;
+@class BATMoveOrders;
 
 /**
  * A game unit. No designated initializer because units should be loaded
@@ -53,7 +53,7 @@
 @property (nonatomic, assign)           BOOL            sighted;
 
 /** The movement orders for this unit. */
-@property (nonatomic, strong)           BAMoveOrders*   moveOrders;
+@property (nonatomic, strong)           BATMoveOrders*  moveOrders;
 
 /** The unit's current mode. */
 @property (nonatomic, assign)           Mode            mode;

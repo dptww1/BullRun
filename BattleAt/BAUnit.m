@@ -1,12 +1,11 @@
 //
 //  BAUnit.m
-//  Bull Run
 //
 //  Created by Dave Townsend on 1/5/13.
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
-#import "BAMoveOrders.h"
+#import "BATMoveOrders.h"
 #import "BAUnit.h"
 
 @implementation BAUnit
@@ -78,7 +77,7 @@
         _location = HXMHexMake(col, row);
         
         // Initialize non-persistent properties
-        _moveOrders = [[BAMoveOrders alloc] init];
+        _moveOrders = [[BATMoveOrders alloc] init];
         _sighted    = NO;
     }
     

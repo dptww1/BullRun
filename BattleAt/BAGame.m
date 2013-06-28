@@ -10,7 +10,7 @@
 #import "BATBattleReport.h"
 #import "BAGame.h"
 #import "BATGameObserving.h"
-#import "BAMoveOrders.h"
+#import "BATMoveOrders.h"
 #import "BATOrderOfBattle.h"
 #import "BATReinforcementInfo.h"
 #import "BAUnit.h"

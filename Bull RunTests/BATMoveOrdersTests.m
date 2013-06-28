@@ -1,27 +1,26 @@
 //
-//  BAMoveOrdersTests.m
-//  Bull Run
+//  BATMoveOrdersTests.m
 //
 //  Created by Dave Townsend on 1/18/13.
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
-#import "BAMoveOrders.h"
-#import "BAMoveOrdersTests.h"
+#import "BATMoveOrders.h"
+#import "BATMoveOrdersTests.h"
 
 static BOOL compareHex(HXMHex h1, HXMHex h2) {
     return h1.row == h2.row && h1.column == h2.column;
 }
 
-@implementation BAMoveOrdersTests
+@implementation BATMoveOrdersTests
 
 - (void)testInit {
-    BAMoveOrders* mo = [[BAMoveOrders alloc] init];
+    BATMoveOrders* mo = [[BATMoveOrders alloc] init];
     STAssertNotNil(mo, nil);
 }
 
 - (void)testAddHex {
-    BAMoveOrders* mo = [[BAMoveOrders alloc] init];
+    BATMoveOrders* mo = [[BATMoveOrders alloc] init];
     
     [mo addHex:HXMHexMake(2, 3)];
     STAssertTrue([mo numHexes] == 1, nil);
@@ -33,7 +32,7 @@ static BOOL compareHex(HXMHex h1, HXMHex h2) {
 }
 
 - (void)testAddHexForceRealloc {
-    BAMoveOrders* mo = [[BAMoveOrders alloc] init];
+    BATMoveOrders* mo = [[BATMoveOrders alloc] init];
     
     for (int i = 0; i < 100; ++i) {
         [mo addHex:HXMHexMake(i, i + 2)];
@@ -45,7 +44,7 @@ static BOOL compareHex(HXMHex h1, HXMHex h2) {
 }
 
 - (void)testClear {
-    BAMoveOrders* mo = [[BAMoveOrders alloc] init];
+    BATMoveOrders* mo = [[BATMoveOrders alloc] init];
     
     [mo addHex:HXMHexMake(7, 3)];
     [mo addHex:HXMHexMake(8, 2)];
@@ -59,7 +58,7 @@ static BOOL compareHex(HXMHex h1, HXMHex h2) {
 }
 
 - (void)testFirstHexNoRemove {
-    BAMoveOrders* mo = [[BAMoveOrders alloc] init];
+    BATMoveOrders* mo = [[BATMoveOrders alloc] init];
     
     [mo addHex:HXMHexMake(7, 3)];
     [mo addHex:HXMHexMake(8, 2)];
@@ -70,7 +69,7 @@ static BOOL compareHex(HXMHex h1, HXMHex h2) {
 }
 
 - (void)testFirstHexRemove {
-    BAMoveOrders* mo = [[BAMoveOrders alloc] init];
+    BATMoveOrders* mo = [[BATMoveOrders alloc] init];
     
     [mo addHex:HXMHexMake(7, 3)];
     [mo addHex:HXMHexMake(8, 2)];
@@ -88,13 +87,13 @@ static BOOL compareHex(HXMHex h1, HXMHex h2) {
 }
 
 - (void)testCopy {
-    BAMoveOrders* mo = [[BAMoveOrders alloc] init];
+    BATMoveOrders* mo = [[BATMoveOrders alloc] init];
     
     [mo addHex:HXMHexMake(7, 5)];
     [mo addHex:HXMHexMake(8, 2)];
     [mo addHex:HXMHexMake(9, 1)];
     
-    BAMoveOrders* copy = [mo copy];
+    BATMoveOrders* copy = [mo copy];
     STAssertEquals([copy numHexes], 3, nil);
     
     // Removing from source shouldn't affect copy

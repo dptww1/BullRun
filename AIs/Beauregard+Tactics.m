@@ -9,7 +9,7 @@
 #import "BATAIInfluenceMap.h"
 #import "BAGame.h"
 #import "BAUnit.h"
-#import "BAMoveOrders.h"
+#import "BATMoveOrders.h"
 #import "Beauregard+Strategy.h"
 #import "Beauregard+Tactics.h"
 #import "BRMap.h"
