@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "BullRun.h"
+#import "BattleAt.h"
 #import "HXMHex.h"
 
 @class BAReinforcementInfo;

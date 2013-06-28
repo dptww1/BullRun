@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
+#import "BattleAt.h"
 #import "BABattleReport.h"
 #import "BAGame.h"
 #import "BAGameObserving.h"
@@ -13,8 +14,6 @@
 #import "BAOrderOfBattle.h"
 #import "BAReinforcementInfo.h"
 #import "BAUnit.h"
-#import "BRAppDelegate.h"
-#import "BullRun.h"
 #import "HXMHex.h"
 #import "HXMMap.h"
 #import "HXMTerrainEffect.h"
@@ -45,14 +44,10 @@ BAGame* game; // the global game instance
         _oob       = [BAOrderOfBattle createFromFile:[[NSBundle mainBundle] pathForResource:@"units" ofType:@"plist"]];
         _observers = [NSMutableArray array];
         _turn      = 1;
-        _userSide  = CSA;
+        _userSide  = PLAYER1;
     }
 
     return self;
-}
-
-- (BRAppDelegate*)app {
-    return (BRAppDelegate*)[[UIApplication sharedApplication] delegate];
 }
 
 - (void)hackUserSide:(PlayerSide)side {

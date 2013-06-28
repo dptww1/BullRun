@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BattleAt.h"
 #import "BAAIProtocol.h"
 #import "BAGameObserving.h"
 #import "BAOrderOfBattle.h"
-#import "BullRun.h"
 #import "HXMMap.h"
 
 @class BAUnit;

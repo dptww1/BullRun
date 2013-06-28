@@ -10,7 +10,6 @@
 #import "BAOrderOfBattle.h"
 #import "BAReinforcementInfo.h"
 #import "BAUnit.h"
-#import "BullRun.h"
 #import "DPTSysUtil.h"
 #import "HXMHex.h"
 #import "NSArray+DPTUtil.h"

@@ -90,6 +90,7 @@
 		CC058F681778960D00FD165C /* BATAIMoveTrackerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BATAIMoveTrackerTests.m; sourceTree = "<group>"; };
 		CC058F6B177A19F500FD165C /* NSArray+DPTUtilTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+DPTUtilTests.h"; sourceTree = "<group>"; };
 		CC058F6C177A19F500FD165C /* NSArray+DPTUtilTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+DPTUtilTests.m"; sourceTree = "<group>"; };
+		CC058F6E177DC1DD00FD165C /* BattleAt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleAt.h; sourceTree = "<group>"; };
 		CC0805A716D3085000CB8C79 /* BABattleReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BABattleReport.h; sourceTree = "<group>"; };
 		CC0805A816D3085000CB8C79 /* BABattleReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BABattleReport.m; sourceTree = "<group>"; };
 		CC0805AA16D3165D00CB8C79 /* BAGameObserving.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAGameObserving.h; sourceTree = "<group>"; };
@@ -243,6 +244,7 @@
 		CC0805A516D2F87300CB8C79 /* BattleAt */ = {
 			isa = PBXGroup;
 			children = (
+				CC058F6E177DC1DD00FD165C /* BattleAt.h */,
 				CCF01A9E174FFECA003A1C77 /* BAAIInfluenceMap.h */,
 				CCF01A9F174FFECA003A1C77 /* BAAIInfluenceMap.m */,
 				CC523550173A7DB600CDBDC5 /* BAAIProtocol.h */,

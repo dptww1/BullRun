@@ -42,8 +42,9 @@ static NSMutableDictionary* unitViewMap = nil;
     self = [super init];
     
     if (self) {
-        [self setBackgroundColor:([unit side] == USA) ? [[UIColor colorWithRed:0.3 green:0.3 blue:0.7 alpha:1.0] CGColor]
-                                                      : [[UIColor colorWithRed:0.7 green:0.3 blue:0.3 alpha:1.0] CGColor]];
+        [self setBackgroundColor:([unit side] == PLAYER2)
+             ? [[UIColor colorWithRed:0.3 green:0.3 blue:0.7 alpha:1.0] CGColor]
+             : [[UIColor colorWithRed:0.7 green:0.3 blue:0.3 alpha:1.0] CGColor]];
         [self setBounds:CGRectMake(0.0, 0.0, 30.0, 30.0)];
         [self setShadowColor:[[UIColor blackColor] CGColor]];
         [self setShadowOffset:CGSizeMake(3.0f, 3.0f)];
