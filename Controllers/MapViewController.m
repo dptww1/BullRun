@@ -14,6 +14,7 @@
 #import "BATBattleReport.h"
 #import "BAGame.h"
 #import "BAMoveOrders.h"
+#import "BATOrderOfBattle.h"
 #import "BAUnit.h"
 #import "BullRun.h"
 #import "HXMCoordinateTransformer.h"

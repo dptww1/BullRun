@@ -9,6 +9,7 @@
 #import "DPTMath.h"
 #import "BAGame.h"
 #import "BAMoveOrders.h"
+#import "BATOrderOfBattle.h"
 #import "BAUnit.h"
 #import "BRGame.h"
 #import "Beauregard.h"

@@ -11,6 +11,7 @@
 #import "McDowell+Tactics.h"
 #import "BATAIInfluenceMap.h"
 #import "BAGame.h"
+#import "BATOrderOfBattle.h"
 #import "BAUnit.h"
 #import "BRMap.h"
 #import "HXMGeometry.h"

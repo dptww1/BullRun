@@ -1,6 +1,5 @@
 //
-//  BAOrderOfBattle.h
-//  Bull Run
+//  BATOrderOfBattle.h
 //
 //  Created by Dave Townsend on 1/5/13.
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
@@ -16,7 +15,7 @@
 /**
  * The collection of units in the game.
  */
-@interface BAOrderOfBattle : NSObject
+@interface BATOrderOfBattle : NSObject
 
 /** 
  * Array of `BAUnit`s, in arbitrary order. Not mutable, as must always contain
@@ -38,7 +37,7 @@
  *
  * @return the initialized object
  */
-+ (BAOrderOfBattle*)createFromFile:(NSString*)filepath;
++ (BATOrderOfBattle*)createFromFile:(NSString*)filepath;
 
 /**
  * Saves this OOB to the given filename.

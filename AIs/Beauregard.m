@@ -8,6 +8,7 @@
 
 #import "BATAIInfluenceMap.h"
 #import "BAGame.h"
+#import "BATOrderOfBattle.h"
 #import "BAUnit.h"
 #import "Beauregard.h"
 #import "Beauregard+Strategy.h"

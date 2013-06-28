@@ -9,6 +9,7 @@
 #import "McDowell.h"
 #import "McDowell+Strategy.h"
 #import "BAGame.h"
+#import "BATOrderOfBattle.h"
 #import "BAUnit.h"
 #import "BRMap.h"
 #import "HXMHex.h"

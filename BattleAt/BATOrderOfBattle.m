@@ -1,20 +1,19 @@
 //
-//  BAOrderOfBattle.m
-//  Bull Run
+//  BATOrderOfBattle.m
 //
 //  Created by Dave Townsend on 1/5/13.
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
 #import "BAGame.h"
-#import "BAOrderOfBattle.h"
+#import "BATOrderOfBattle.h"
 #import "BATReinforcementInfo.h"
 #import "BAUnit.h"
 #import "DPTSysUtil.h"
 #import "HXMHex.h"
 #import "NSArray+DPTUtil.h"
 
-@implementation BAOrderOfBattle
+@implementation BATOrderOfBattle
 
 #pragma mark - Init Methods
 
@@ -30,8 +29,8 @@
 
 #pragma mark - Persistence Methods
 
-+ (BAOrderOfBattle*)createFromFile:(NSString *)filepath {
-    BAOrderOfBattle* oob = [[BAOrderOfBattle alloc] init];
++ (BATOrderOfBattle*)createFromFile:(NSString *)filepath {
+    BATOrderOfBattle* oob = [[BATOrderOfBattle alloc] init];
 
     if (oob) {
         [oob setUnits:[NSKeyedUnarchiver unarchiveObjectWithFile:filepath]];

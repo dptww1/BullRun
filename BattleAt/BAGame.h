@@ -10,10 +10,12 @@
 #import "BattleAt.h"
 #import "BATAIDelegate.h"
 #import "BATGameObserving.h"
-#import "BAOrderOfBattle.h"
 #import "HXMMap.h"
 
+
+@class BATOrderOfBattle;
 @class BAUnit;
+
 
 /**
  * A game, tying together the board (an `HMMap`), the units (via a
@@ -36,7 +38,7 @@
 @property (nonatomic, strong, readonly) HXMMap*           board;
 
 /** The order of battle used by this game. */
-@property (nonatomic, strong, readonly) BAOrderOfBattle*  oob;
+@property (nonatomic, strong, readonly) BATOrderOfBattle* oob;
 
 /** A list of observers */
 @property (nonatomic, assign, readonly) int               turn;
