@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "BattleAt.h"
-#import "BAAIProtocol.h"
+#import "BATAIDelegate.h"
 #import "BAGameObserving.h"
 #import "BAOrderOfBattle.h"
 #import "HXMMap.h"
@@ -27,19 +27,19 @@
  * The current AI that the human player is playing against. Since this is
  * battle-specific, this must be set in the derived class's initializer.
  */
-@property (nonatomic, strong)           id<BAAIProtocol> ai;
+@property (nonatomic, strong)           id<BATAIDelegate> ai;
 
 /** The side which represents the human player. */
-@property (nonatomic)                   PlayerSide       userSide;
+@property (nonatomic)                   PlayerSide        userSide;
 
 /** The mapboard used by this game. */
-@property (nonatomic, strong, readonly) HXMMap*          board;
+@property (nonatomic, strong, readonly) HXMMap*           board;
 
 /** The order of battle used by this game. */
-@property (nonatomic, strong, readonly) BAOrderOfBattle* oob;
+@property (nonatomic, strong, readonly) BAOrderOfBattle*  oob;
 
 /** A list of observers */
-@property (nonatomic, assign, readonly) int              turn;
+@property (nonatomic, assign, readonly) int               turn;
 
 /**
  * Sets the player side to the parameter.

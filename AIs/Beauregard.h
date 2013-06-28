@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "BAAIProtocol.h"
+#import "BATAIDelegate.h"
 #import "BullRun.h"
 #import "HXMHex.h"
 
@@ -38,7 +38,7 @@ typedef enum {
 /** 
  * CSA AI 
  */
-@interface Beauregard : NSObject <BAAIProtocol>
+@interface Beauregard : NSObject <BATAIDelegate>
 
 /** The side represented by this AI. */
 @property (nonatomic, readonly, assign) PlayerSide side;

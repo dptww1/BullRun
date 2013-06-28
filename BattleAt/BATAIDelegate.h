@@ -1,5 +1,5 @@
 //
-//  BAAIProtocol.h
+//  BATAIDelegate.h
 //  Bull Run
 //
 //  Created by Dave Townsend on 5/8/13.
@@ -10,13 +10,8 @@
 
 @class BAGame;
 
-/**
- * Protocol which all AI classes should implement. I realize that protocols
- * are supposed to be named with a gerund ("...ing") form, but I couldn't
- * figure out how do that.  At least with "Protocol" in the name, users
- * shouldn't think it's a class.
- */
-@protocol BAAIProtocol <NSObject>
+/** Protocol which all AI classes should implement. */
+@protocol BATAIDelegate <NSObject>
 
 /**
  * Called when the AI is required to supply a non-historical set up for the

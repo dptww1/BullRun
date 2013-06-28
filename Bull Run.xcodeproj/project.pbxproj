@@ -126,7 +126,7 @@
 		CC392E4A16D5AFD400160B82 /* HXMHexMapGeometryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXMHexMapGeometryTests.m; sourceTree = "<group>"; };
 		CC392E4C16D5B04F00160B82 /* BAMoveOrdersTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAMoveOrdersTests.h; sourceTree = "<group>"; };
 		CC392E4D16D5B04F00160B82 /* BAMoveOrdersTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAMoveOrdersTests.m; sourceTree = "<group>"; };
-		CC523550173A7DB600CDBDC5 /* BAAIProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BAAIProtocol.h; sourceTree = "<group>"; };
+		CC523550173A7DB600CDBDC5 /* BATAIDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BATAIDelegate.h; sourceTree = "<group>"; };
 		CC523553173A7F1700CDBDC5 /* McDowell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = McDowell.h; sourceTree = "<group>"; };
 		CC523554173A7F1700CDBDC5 /* McDowell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = McDowell.m; sourceTree = "<group>"; };
 		CC523556173A9BA700CDBDC5 /* Beauregard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Beauregard.h; sourceTree = "<group>"; };
@@ -244,10 +244,6 @@
 		CC0805A516D2F87300CB8C79 /* BattleAt */ = {
 			isa = PBXGroup;
 			children = (
-				CC058F6E177DC1DD00FD165C /* BattleAt.h */,
-				CCF01A9E174FFECA003A1C77 /* BATAIInfluenceMap.h */,
-				CCF01A9F174FFECA003A1C77 /* BATAIInfluenceMap.m */,
-				CC523550173A7DB600CDBDC5 /* BAAIProtocol.h */,
 				CC0805A716D3085000CB8C79 /* BABattleReport.h */,
 				CC0805A816D3085000CB8C79 /* BABattleReport.m */,
 				CC392E4016D5ACEB00160B82 /* BAGame.h */,
@@ -259,8 +255,12 @@
 				CC392E3B16D5A6BE00160B82 /* BAOrderOfBattle.m */,
 				CC0805AB16D5869E00CB8C79 /* BAReinforcementInfo.h */,
 				CC0805AC16D5869E00CB8C79 /* BAReinforcementInfo.m */,
+				CC523550173A7DB600CDBDC5 /* BATAIDelegate.h */,
+				CCF01A9E174FFECA003A1C77 /* BATAIInfluenceMap.h */,
+				CCF01A9F174FFECA003A1C77 /* BATAIInfluenceMap.m */,
 				CC058F5F17787ADE00FD165C /* BATAIMoveTracker.h */,
 				CC058F6017787ADE00FD165C /* BATAIMoveTracker.m */,
+				CC058F6E177DC1DD00FD165C /* BattleAt.h */,
 				CC392E3D16D5A84500160B82 /* BAUnit.h */,
 				CC392E3E16D5A84500160B82 /* BAUnit.m */,
 				CC058F661778960D00FD165C /* Tests */,

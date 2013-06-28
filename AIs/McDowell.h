@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "BAAIProtocol.h"
+#import "BATAIDelegate.h"
 #import "BullRun.h"
 #import "HXMHex.h"
 
@@ -20,7 +20,7 @@ typedef enum UnitRole {
 
 
 /** USA AI */
-@interface McDowell : NSObject <BAAIProtocol>
+@interface McDowell : NSObject <BATAIDelegate>
 
 /** BAAIProtocol implementation. */
 - (void)freeSetup:(BAGame*)game;
