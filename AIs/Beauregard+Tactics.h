@@ -9,7 +9,7 @@
 #import "Beauregard.h"
 
 
-@class BAAIInfluenceMap;
+@class BATAIInfluenceMap;
 
 
 /**
@@ -29,6 +29,6 @@
  *
  * @return `YES` if a defender was assigned, `NO` if not possible
  */
-- (BOOL)assignDefender:(BAAIInfluenceMap*)imap;
+- (BOOL)assignDefender:(BATAIInfluenceMap*)imap;
 
 @end

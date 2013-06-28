@@ -9,7 +9,7 @@
 #import "McDowell.h"
 #import "McDowell+Strategy.h"
 #import "McDowell+Tactics.h"
-#import "BAAIInfluenceMap.h"
+#import "BATAIInfluenceMap.h"
 #import "BAGame.h"
 #import "BAUnit.h"
 #import "BRMap.h"
@@ -20,11 +20,11 @@
 
 @implementation McDowell (Private)
 
-- (BAAIInfluenceMap*)createInfluenceMap:(BAGame*)game {
+- (BATAIInfluenceMap*)createInfluenceMap:(BAGame*)game {
     BRMap* map = [BRMap map];
     NSArray* bases = [map basesForSide:[self side]];
 
-    BAAIInfluenceMap* imap = [BAAIInfluenceMap mapFrom:map];
+    BATAIInfluenceMap* imap = [BATAIInfluenceMap mapFrom:map];
 
     NSArray* csaUnits = [[game oob] unitsForSide:OtherPlayer([self side])];
     [csaUnits enumerateObjectsUsingBlock:^(BAUnit* unit, NSUInteger idx, BOOL* stop){
@@ -117,7 +117,7 @@
 
     [self strategize:game];
 
-    BAAIInfluenceMap* imap = [self createInfluenceMap:game];
+    BATAIInfluenceMap* imap = [self createInfluenceMap:game];
     [imap dump];
 
     while ([self assignDefender:imap])

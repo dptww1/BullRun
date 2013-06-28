@@ -1,23 +1,22 @@
 //
-//  BAAIInfluenceMap.m
-//  Bull Run
+//  BATAIInfluenceMap.m
 //
 //  Created by Dave Townsend on 5/24/13.
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
-#import "BAAIInfluenceMap.h"
+#import "BATAIInfluenceMap.h"
 #import "HXMHex.h"
 #import "HXMMap.h"
 
-@interface BAAIInfluenceMap ()
+@interface BATAIInfluenceMap ()
 
 @property (nonatomic)        float*  mapData;
 @property (nonatomic,strong) HXMMap* srcMap;
 
 @end
 
-@implementation BAAIInfluenceMap (Private)
+@implementation BATAIInfluenceMap (Private)
 
 - (int)offsetForHex:(HXMHex)hex {
     return hex.row * [[[self srcMap] geometry] numColumns] + hex.column;
@@ -25,10 +24,10 @@
 
 @end
 
-@implementation BAAIInfluenceMap
+@implementation BATAIInfluenceMap
 
-+ (BAAIInfluenceMap*)mapFrom:(HXMMap*)board {
-    BAAIInfluenceMap* map = [[BAAIInfluenceMap alloc] init];
++ (BATAIInfluenceMap*)mapFrom:(HXMMap*)board {
+    BATAIInfluenceMap* map = [[BATAIInfluenceMap alloc] init];
 
     if (map) {
         [map setSrcMap:board];

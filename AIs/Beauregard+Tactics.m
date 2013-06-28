@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
-#import "BAAIInfluenceMap.h"
+#import "BATAIInfluenceMap.h"
 #import "BAGame.h"
 #import "BAUnit.h"
 #import "BAMoveOrders.h"
@@ -18,7 +18,7 @@
 //==============================================================================
 @implementation Beauregard (Private)
 
-- (void)devalueInfluenceMap:(BAAIInfluenceMap*)imap atHex:(HXMHex)hex {
+- (void)devalueInfluenceMap:(BATAIInfluenceMap*)imap atHex:(HXMHex)hex {
     HXMMap* map = [game board];
 
     [imap multiplyBy:0.25f atHex:hex];
@@ -122,7 +122,7 @@
     return attacker != nil;;
 }
 
-- (BOOL)assignDefender:(BAAIInfluenceMap*)imap {
+- (BOOL)assignDefender:(BATAIInfluenceMap*)imap {
     BRMap* map = [BRMap map];
     HXMHexAndDistance hexd = [imap largestValue];
     if (hexd.distance < 1)

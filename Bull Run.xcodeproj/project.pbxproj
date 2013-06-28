@@ -61,7 +61,7 @@
 		CCE03F6B171BA62100C5A217 /* BAAAnimationListItemMove.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE03F6A171BA62100C5A217 /* BAAAnimationListItemMove.m */; };
 		CCE03F6E171E278E00C5A217 /* BAAAnimationListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE03F6D171E278E00C5A217 /* BAAAnimationListItem.m */; };
 		CCF01A9A174D9705003A1C77 /* McDowell+Strategy.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF01A99174D9705003A1C77 /* McDowell+Strategy.m */; };
-		CCF01AA0174FFECA003A1C77 /* BAAIInfluenceMap.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF01A9F174FFECA003A1C77 /* BAAIInfluenceMap.m */; };
+		CCF01AA0174FFECA003A1C77 /* BATAIInfluenceMap.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF01A9F174FFECA003A1C77 /* BATAIInfluenceMap.m */; };
 		CCF01AA317510DB2003A1C77 /* McDowell+Tactics.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF01AA217510DB2003A1C77 /* McDowell+Tactics.m */; };
 		CCF01AA917568767003A1C77 /* HXMPathFinder.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF01AA817568767003A1C77 /* HXMPathFinder.m */; };
 		CCF01AB21758EC7C003A1C77 /* HXMPathFinderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF01AB11758EC7C003A1C77 /* HXMPathFinderTests.m */; };
@@ -178,8 +178,8 @@
 		CCE03F6D171E278E00C5A217 /* BAAAnimationListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAAAnimationListItem.m; sourceTree = "<group>"; };
 		CCF01A99174D9705003A1C77 /* McDowell+Strategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "McDowell+Strategy.m"; sourceTree = "<group>"; };
 		CCF01A9D174D9861003A1C77 /* McDowell+Strategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "McDowell+Strategy.h"; sourceTree = "<group>"; };
-		CCF01A9E174FFECA003A1C77 /* BAAIInfluenceMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAAIInfluenceMap.h; sourceTree = "<group>"; };
-		CCF01A9F174FFECA003A1C77 /* BAAIInfluenceMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAAIInfluenceMap.m; sourceTree = "<group>"; };
+		CCF01A9E174FFECA003A1C77 /* BATAIInfluenceMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BATAIInfluenceMap.h; sourceTree = "<group>"; };
+		CCF01A9F174FFECA003A1C77 /* BATAIInfluenceMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BATAIInfluenceMap.m; sourceTree = "<group>"; };
 		CCF01AA117510DB2003A1C77 /* McDowell+Tactics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "McDowell+Tactics.h"; sourceTree = "<group>"; };
 		CCF01AA217510DB2003A1C77 /* McDowell+Tactics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "McDowell+Tactics.m"; sourceTree = "<group>"; };
 		CCF01AA717568767003A1C77 /* HXMPathFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXMPathFinder.h; sourceTree = "<group>"; };
@@ -245,8 +245,8 @@
 			isa = PBXGroup;
 			children = (
 				CC058F6E177DC1DD00FD165C /* BattleAt.h */,
-				CCF01A9E174FFECA003A1C77 /* BAAIInfluenceMap.h */,
-				CCF01A9F174FFECA003A1C77 /* BAAIInfluenceMap.m */,
+				CCF01A9E174FFECA003A1C77 /* BATAIInfluenceMap.h */,
+				CCF01A9F174FFECA003A1C77 /* BATAIInfluenceMap.m */,
 				CC523550173A7DB600CDBDC5 /* BAAIProtocol.h */,
 				CC0805A716D3085000CB8C79 /* BABattleReport.h */,
 				CC0805A816D3085000CB8C79 /* BABattleReport.m */,
@@ -639,7 +639,7 @@
 				CC52355B173D97E500CDBDC5 /* BRMap.m in Sources */,
 				CC52355E173DD36200CDBDC5 /* BRGame.m in Sources */,
 				CCF01A9A174D9705003A1C77 /* McDowell+Strategy.m in Sources */,
-				CCF01AA0174FFECA003A1C77 /* BAAIInfluenceMap.m in Sources */,
+				CCF01AA0174FFECA003A1C77 /* BATAIInfluenceMap.m in Sources */,
 				CCF01AA317510DB2003A1C77 /* McDowell+Tactics.m in Sources */,
 				CCF01AA917568767003A1C77 /* HXMPathFinder.m in Sources */,
 				CCF01AB5175E70F0003A1C77 /* DPTResizableBuffer.m in Sources */,

@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
-#import "BAAIInfluenceMap.h"
+#import "BATAIInfluenceMap.h"
 #import "BAGame.h"
 #import "BAUnit.h"
 #import "Beauregard.h"
@@ -19,9 +19,9 @@
 
 @implementation Beauregard (Private)
 
-- (BAAIInfluenceMap*)createInfluenceMap:(BAGame*)game {
+- (BATAIInfluenceMap*)createInfluenceMap:(BAGame*)game {
     BRMap* map = [BRMap map];
-    BAAIInfluenceMap* imap = [BAAIInfluenceMap mapFrom:map];
+    BATAIInfluenceMap* imap = [BATAIInfluenceMap mapFrom:map];
 
     NSArray* usaUnits = [[game oob] unitsForSide:OtherPlayer([self side])];
     [usaUnits enumerateObjectsUsingBlock:^(BAUnit* unit, NSUInteger idx, BOOL* stop) {
@@ -110,7 +110,7 @@
     
     [self strategize:game];
 
-    BAAIInfluenceMap* imap = [self createInfluenceMap:game];
+    BATAIInfluenceMap* imap = [self createInfluenceMap:game];
 
     [self conductStrategicMovement];
 

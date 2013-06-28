@@ -8,7 +8,7 @@
 
 #import "McDowell.h"
 
-@class BAAIInfluenceMap;
+@class BATAIInfluenceMap;
 
 /** USA AI tactical thinking. */
 @interface McDowell (Tactics)
@@ -27,7 +27,7 @@
  *
  * @return `YES` if a unit was assigned, `NO` if no unit was assigned
  */
-- (BOOL)assignDefender:(BAAIInfluenceMap*)imap;
+- (BOOL)assignDefender:(BATAIInfluenceMap*)imap;
 
 /**
  * Assigns a flanker to the "flank" ford target, then a CSA base.

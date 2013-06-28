@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
-#import "BAAIInfluenceMap.h"
+#import "BATAIInfluenceMap.h"
 #import "BAGame.h"
 #import "BAMoveOrders.h"
 #import "BAOrderOfBattle.h"
@@ -41,7 +41,7 @@
     return minHex;
 }
 
-- (void)devalueInfluenceMap:(BAAIInfluenceMap*)imap atHex:(HXMHex)hex {
+- (void)devalueInfluenceMap:(BATAIInfluenceMap*)imap atHex:(HXMHex)hex {
     HXMMap* map = [game board];
 
     [imap multiplyBy:0.25f atHex:hex];
@@ -118,7 +118,7 @@
     return YES;
 }
 
-- (BOOL)assignDefender:(BAAIInfluenceMap*)imap {
+- (BOOL)assignDefender:(BATAIInfluenceMap*)imap {
     HXMHexAndDistance hexd = [imap largestValue];
     if (hexd.distance < 1)
         return NO;

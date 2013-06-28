@@ -1,6 +1,5 @@
 //
-//  BAAIInfluenceMap.h
-//  Bull Run
+//  BATAIInfluenceMap.h
 //
 //  Created by Dave Townsend on 5/24/13.
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
@@ -15,14 +14,14 @@
  * A map of abstract values for use by the AI routines.  There is a single
  * floating-point value per hex.
  */
-@interface BAAIInfluenceMap : NSObject
+@interface BATAIInfluenceMap : NSObject
 
 /**
  * Creates an influence map, initialized with 0f values for all hexes.
  *
  * @param board the board that the influence map should represent
  */
-+ (BAAIInfluenceMap*)mapFrom:(HXMMap*)board;
++ (BATAIInfluenceMap*)mapFrom:(HXMMap*)board;
 
 /**
  * Returns the hex coordinate and actual value of the hex with the 
