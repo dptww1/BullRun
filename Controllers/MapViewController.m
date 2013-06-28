@@ -11,7 +11,7 @@
 #import "BAAAnimationListItemMove.h"
 #import "BAAAnimationListItemCombat.h"
 #import "BAAGunfire.h"
-#import "BABattleReport.h"
+#import "BATBattleReport.h"
 #import "BAGame.h"
 #import "BAMoveOrders.h"
 #import "BAUnit.h"
@@ -359,7 +359,7 @@
     }];
 }
 
-- (void)showAttack:(BABattleReport *)report {
+- (void)showAttack:(BATBattleReport *)report {
     [_animationList
      addItem:[BAAAnimationListItemCombat itemWithAttacker:[report attacker]
                                                  defender:[report defender]

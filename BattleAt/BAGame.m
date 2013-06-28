@@ -7,7 +7,7 @@
 //
 
 #import "BattleAt.h"
-#import "BABattleReport.h"
+#import "BATBattleReport.h"
 #import "BAGame.h"
 #import "BATGameObserving.h"
 #import "BAMoveOrders.h"
@@ -301,8 +301,8 @@ BAGame* game; // the global game instance
 - (void)attackFrom:(BAUnit*)a to:(BAUnit*)d {
     DEBUG_COMBAT(@"COMBAT: %@ attacks %@", [a name], [d name]);
 
-    BABattleReport* report = [BABattleReport battleReportWithAttacker:a
-                                                          andDefender:d];
+    BATBattleReport* report = [BATBattleReport battleReportWithAttacker:a
+                                                            andDefender:d];
 
     // Compute base casualties
     int attCasualties = [self computeAttackerCasualtiesFor:a against:d];

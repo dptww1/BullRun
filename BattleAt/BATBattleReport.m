@@ -1,18 +1,17 @@
 //
-//  BABattleReport.m
-//  Bull Run
+//  BATBattleReport.m
 //
 //  Created by Dave Townsend on 2/18/13.
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
-#import "BABattleReport.h"
+#import "BATBattleReport.h"
 
-@implementation BABattleReport
+@implementation BATBattleReport
 
 + (id)battleReportWithAttacker:(BAUnit*)attacker andDefender:(BAUnit*)defender {
-    return [[BABattleReport alloc] initWithAttacker:attacker
-                                        andDefender:defender];
+    return [[BATBattleReport alloc] initWithAttacker:attacker
+                                         andDefender:defender];
 }
 
 - (id)initWithAttacker:(BAUnit*)attacker andDefender:(BAUnit*)defender {

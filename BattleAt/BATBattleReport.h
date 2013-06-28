@@ -1,6 +1,5 @@
 //
-//  BABattleReport.h
-//  Bull Run
+//  BATBattleReport.h
 //
 //  Created by Dave Townsend on 2/18/13.
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
@@ -19,7 +18,7 @@
  * It's basically immutable, but most of the parameters are read-write
  * to keep the number of parameters in the initializers down.
  */
-@interface BABattleReport : NSObject
+@interface BATBattleReport : NSObject
 
 /** The attacking unit. */
 @property (nonatomic, strong, readonly) BAUnit* attacker;
