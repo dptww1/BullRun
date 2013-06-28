@@ -14,6 +14,8 @@
 #import "Beauregard+Tactics.h"
 #import "BullRun.h"
 #import "BRMap.h"
+#import "NSArray+DPTUtil.h"
+
 
 @implementation Beauregard (Private)
 
@@ -122,6 +124,13 @@
 - (HXMHex)baseHexForTheater:(BRAICSATheater)theater {
     return theater == BRAICSATheaterEast ? HXMHexMake(9, 12)
                                          : HXMHexMake(4, 7);
+}
+
+- (NSArray*)unorderedCsaUnits {
+    return [[[game oob] unitsForSide:_side] dpt_grep:^BOOL(BAUnit* unit) {
+        return ![unit isOffMap]
+            && ![_orderedThisTurn containsObject:[unit name]];
+    }];
 }
 
 @end

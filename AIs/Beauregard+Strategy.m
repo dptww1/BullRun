@@ -108,12 +108,8 @@
 - (void)conductStrategicMovement {
     //    HMMap* map = [game board];
 
-    NSArray* csaUnits = [[game oob] unitsForSide:[self side]];
+    NSArray* csaUnits = [self unorderedCsaUnits];
     [csaUnits enumerateObjectsUsingBlock:^(BAUnit* unit, NSUInteger idx, BOOL* stop) {
-        // Don't order units twice
-        if ([[self orderedThisTurn] containsObject:[unit name]])
-            return;
-
         if (![self unitInCorrectTheater:unit]) {
             HXMHex baseHex = [self baseHexForTheater:[[self unitRoles][[unit name]] integerValue]];
 

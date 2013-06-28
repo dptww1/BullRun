@@ -75,4 +75,12 @@ typedef enum {
  */
 - (HXMHex)baseHexForTheater:(BRAICSATheater)theater;
 
+/**
+ * Returns list of CSA units which are on the map but have not yet
+ * been given orders.
+ *
+ * @return array of `BAUnit*`
+ */
+- (NSArray*)unorderedCsaUnits;
+
 @end

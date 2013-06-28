@@ -66,12 +66,46 @@ BAGame* game; // the global game instance
     [_observers addObject:object];
 }
 
-- (BAUnit*)unitInHex:(HXMHex)hex {  // TODO: rewrite using dpt_find
+- (BAUnit*)unitInHex:(HXMHex)hex {
     NSArray* units = [_oob units];
-    NSUInteger idx = [units indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL* stop) {
-        return HXMHexEquals(((BAUnit*) obj).location, hex);
+    return [units dpt_find:^BOOL(BAUnit* unit) {
+        return HXMHexEquals([unit location], hex);
     }];
-    return idx != NSNotFound ? [units objectAtIndex:idx] : nil;
+}
+
+- (BOOL)unitIsSurrounded:(BAUnit*)unit {
+    // We'll use an int wherein each direction # gets assigned the
+    // corresponding bit. Zeros mean the direction is clear, ones mean
+    // the direction is blocked.
+    int dirs = 0x00;
+
+    // Find the neighboring hex in every direction
+    for (int i = 0; i < 6; ++i) {
+        HXMHex adjHex = [_board hexAdjacentTo:[unit location] inDirection:i];
+
+        // Offmap or Prohibited hexes are blocked
+        if (![_board legal:adjHex] || [_board isProhibited:adjHex]) {
+            dirs |= (1 << i);
+            continue;
+        }
+
+        // Empty hexes need no further processing
+        BAUnit* occupier = [self unitInHex:adjHex];
+        if (!occupier)
+            continue;
+
+        // At this point the hex is occupied; both friends and foes block
+        dirs |= (1 << i);
+
+        // Enemy also exert ZOCs into the adjacent hexes.
+        if (![unit friends:occupier]) {
+            dirs |= (1 << [_board rotateDirection:i clockwise:YES]);
+            dirs |= (1 << [_board rotateDirection:i clockwise:NO]);
+        }
+    }
+
+    // If all six bits are set, the unit is indeed surrounded.
+    return dirs == 0x3f;
 }
 
 // Performs sighting from the POV of player `side'. In practice will

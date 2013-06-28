@@ -80,6 +80,16 @@
  */
 - (BAUnit*)unitInHex:(HXMHex)hex;
 
+/**
+ * Determines if a unit is surrounded by any combination of enemy units,
+ * enemy ZOC, friendly units, impassible terrain, or the board edge.
+ *
+ * @param unit the unit to check
+ *
+ * @return `YES` if the unit is surrounded, or `NO` if it isn't
+ */
+- (BOOL)unitIsSurrounded:(BAUnit*)unit;
+
 @end
 
 /** The single, publicly available global instance. */
