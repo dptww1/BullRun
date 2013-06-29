@@ -1,5 +1,5 @@
 //
-//  BAGunfire.h
+//  BATAnimationGunfire.h
 //
 //  Created by Dave Townsend on 2/27/13.
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
@@ -15,7 +15,7 @@
  * It would be nice to inherit from CAEmitterLayer, since this is a
  * specialization of that class, but doing that apparently doesn't work.
  */
-@interface BAGunfire : NSObject
+@interface BATAnimationGunfire : NSObject
 
 /**
  * Convenience class wrapper around designated initializer.

@@ -1,21 +1,20 @@
 //
-//  BAGunfire.m
-//  Bull Run
+//  BATAnimationGunfire.m
 //
 //  Created by Dave Townsend on 2/27/13.
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
-#import "BAGunfire.h"
+#import "BATAnimationGunfire.h"
 #import "UnitView.h"
 
-@interface BAGunfire ()
+@interface BATAnimationGunfire ()
 
 @property (nonatomic, strong) CAEmitterLayer* gun;
 
 @end
 
-@implementation BAGunfire (Private)
+@implementation BATAnimationGunfire (Private)
 
 + (NSArray*)createEmittersWithAzimuth:(float)azimuth {
     CAEmitterCell* bullet = [CAEmitterCell emitterCell];
@@ -34,10 +33,10 @@
 
 @end
 
-@implementation BAGunfire
+@implementation BATAnimationGunfire
 
-+ (id)gunfireFrom:(UnitView *)unitView withAzimuth:(float)azimuth {
-    return [[BAGunfire alloc] initFrom:unitView withAzimuth:azimuth];
++ (id)gunfireFrom:(UnitView*)unitView withAzimuth:(float)azimuth {
+    return [[BATAnimationGunfire alloc] initFrom:unitView withAzimuth:azimuth];
 }
 
 - (id)initFrom:(UnitView *)unitView withAzimuth:(float)azimuth {
@@ -48,7 +47,7 @@
 
         [_gun setEmitterPosition:CGPointMake(25.0f, 25.0f)]; // TODO: base on UnitView
         [_gun setEmitterSize:CGSizeMake(30.0f, 30.0f)]; // TODO: base on UnitView
-        [_gun setEmitterCells:[BAGunfire createEmittersWithAzimuth:azimuth]];
+        [_gun setEmitterCells:[BATAnimationGunfire createEmittersWithAzimuth:azimuth]];
         [_gun setRenderMode:kCAEmitterLayerSurface];
         [_gun setEmitterShape:kCAEmitterLayerRectangle];
 

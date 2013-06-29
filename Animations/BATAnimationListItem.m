@@ -1,12 +1,12 @@
 //
-//  BAAAnimationListItem.m
+//  BATAnimationListItem.m
 //  Bull Run
 //
 //  Created by Dave Townsend on 4/16/13.
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
-#import "BAAAnimationListItem.h"
+#import "BATAnimationListItem.h"
 #import "HXMCoordinateTransformer.h"
 
 
@@ -15,7 +15,7 @@
 
 float SECONDS_PER_HEX_MOVE = 0.75f;
 
-@implementation BAAAnimationListItem
+@implementation BATAnimationListItem
 
 - (CAAnimation*)createMoveAnimationFor:(BATUnit*)unit
                             movingFrom:(HXMHex)startHex
@@ -28,7 +28,7 @@ float SECONDS_PER_HEX_MOVE = 0.75f;
     return anim;
 }
 
-- (void)runWithParent:(BAAAnimationList*)list {
+- (void)runWithParent:(BATAnimationList*)list {
     // does nothing by default
 }
 

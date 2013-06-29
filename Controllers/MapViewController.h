@@ -12,9 +12,9 @@
 #import "HXMHex.h"
 
 
+@class BATAnimationList;
 @class BATBattleReport;
 @class BATUnit;
-@class BAAAnimationList;
 @class HXMCoordinateTransformer;
 @class InfoBarView;
 @class OrderOfBattle;
@@ -47,7 +47,7 @@
 @property (nonatomic)         BOOL                      givingNewOrders;
 
 /** List of animations to show for the current turn. */
-@property (nonatomic, strong) BAAAnimationList*         animationList;
+@property (nonatomic, strong) BATAnimationList*         animationList;
 
 #pragma mark - GameObserving Implementation
 

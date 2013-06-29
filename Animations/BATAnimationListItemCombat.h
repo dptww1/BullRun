@@ -1,21 +1,20 @@
 //
-//  BAAAnimationListItemCombat.h
-//  Bull Run
+//  BATAnimationListItemCombat.h
 //
 //  Created by Dave Townsend on 4/9/13.
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import "BAAAnimationListItem.h"
+#import "BATAnimationListItem.h"
 #import "HXMHex.h"
 
 @class BATUnit;
-@class BAAAnimationList;
-@class BAAGunfire;
+@class BATAnimationList;
+@class BATGunfire;
 
 /** Animation item showing combat, with optional retreat and advance. */
-@interface BAAAnimationListItemCombat : BAAAnimationListItem
+@interface BATAnimationListItemCombat : BATAnimationListItem
 
 /**
  * Designated class initializer.

@@ -48,6 +48,8 @@ h3. Functionality
 * Units can retreat into EZOC (but shouldn't be able to)
 * CSA AI attack subroutine
 * add "friend" and "enemies" as methods in OrderOfBattle, use in Game#sighting
+* When an unsighted enemy moves into sight, it first appears in the new hex, then the move animation shows it
+  moving from its old hex into its new hex
 
 h3. Organization
 * probably should have a controller for InfoBarView

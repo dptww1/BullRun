@@ -1,23 +1,22 @@
 //
-//  BAAAnimationListItemMove.h
-//  Bull Run
+//  BATAnimationListItemMove.h
 //
 //  Created by Dave Townsend on 4/8/13.
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import "BAAAnimationListItem.h"
+#import "BATAnimationListItem.h"
 #import "HXMHex.h"
 
-@class BAUnit;
-@class BAAAnimationList;
+@class BATUnit;
+@class BATAnimationList;
 
 /**
  * Animation item showing a unit moving from its current location
  * to a new hex.
  */
-@interface BAAAnimationListItemMove : BAAAnimationListItem
+@interface BATAnimationListItemMove : BATAnimationListItem
 
 /**
  * Designated class initializer.
@@ -27,6 +26,6 @@
  *
  * @return the initialized animation item
  */
-+ (id)itemMoving:(BAUnit*)unit toHex:(HXMHex)hex;
++ (id)itemMoving:(BATUnit*)unit toHex:(HXMHex)hex;
 
 @end

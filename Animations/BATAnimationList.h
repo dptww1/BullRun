@@ -1,6 +1,5 @@
 //
-//  BAAAnimationList.h
-//  Bull Run
+//  BATAnimationList.h
 //
 //  Created by Dave Townsend on 4/8/13.
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
@@ -8,13 +7,13 @@
 
 #import <Foundation/Foundation.h>
 
-@class BAAAnimationListItem;
+@class BATAnimationListItem;
 @class HXMCoordinateTransformer;
 
 /**
  * Manages a sequential list of animations.
  */
-@interface BAAAnimationList : NSObject
+@interface BATAnimationList : NSObject
 
 /** The coordinate transformer that this object was created with. */
 @property (nonatomic, weak, readonly)   HXMCoordinateTransformer* xformer;
@@ -26,14 +25,14 @@
  *
  * @return the initialized animation list
  */
-+ (BAAAnimationList*)listWithCoordXFormer:(HXMCoordinateTransformer*)xformer;
++ (BATAnimationList*)listWithCoordXFormer:(HXMCoordinateTransformer*)xformer;
 
 /**
  * Adds a new animation item to the end of the current list.
  *
  * @param item the item to add
  */
-- (void)addItem:(BAAAnimationListItem*)item;
+- (void)addItem:(BATAnimationListItem*)item;
 
 /**
  * Empties the animation list.

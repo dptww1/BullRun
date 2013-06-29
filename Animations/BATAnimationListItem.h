@@ -1,6 +1,5 @@
 //
-//  BAAAnimationListItem.h
-//  Bull Run
+//  BATAnimationListItem.h
 //
 //  Created by Dave Townsend on 4/16/13.
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
@@ -13,14 +12,16 @@
 /** The speed of movement animations. */
 extern float SECONDS_PER_HEX_MOVE;
 
-@class BAAAnimationList;
+
+@class BATAnimationList;
 @class BATUnit;
 @class HXMCoordinateTransformer;
+
 
 /**
  * Item suitable for including in a `BAAAnimationList`.
  */
-@interface BAAAnimationListItem : NSObject
+@interface BATAnimationListItem : NSObject
 
 /**
  * Light wrapper so BAAAnimationListCombat doesn't have to know about its
@@ -38,5 +39,5 @@ extern float SECONDS_PER_HEX_MOVE;
  *
  * @param list the parent animation list
  */
-- (void)runWithParent:(BAAAnimationList*)list;
+- (void)runWithParent:(BATAnimationList*)list;
 @end

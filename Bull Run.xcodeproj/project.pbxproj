@@ -16,7 +16,7 @@
 		CC0CF381168A4E72006D902D /* README.textile in Resources */ = {isa = PBXBuildFile; fileRef = CC0CF380168A4E72006D902D /* README.textile */; };
 		CC0CF3EF169916E2006D902D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC0CF3EE169916E2006D902D /* QuartzCore.framework */; };
 		CC1B671C16DC4B9F0078B20B /* bullet.png in Resources */ = {isa = PBXBuildFile; fileRef = CC1B671B16DC4B9F0078B20B /* bullet.png */; };
-		CC1B672A16DFA5C00078B20B /* BAGunfire.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1B672816DFA5C00078B20B /* BAGunfire.m */; };
+		CC1B672A16DFA5C00078B20B /* BATAnimationGunfire.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1B672816DFA5C00078B20B /* BATAnimationGunfire.m */; };
 		CC25F47D1765748F00F104BE /* Beauregard+Strategy.m in Sources */ = {isa = PBXBuildFile; fileRef = CC25F47C1765748F00F104BE /* Beauregard+Strategy.m */; };
 		CC25F481176E455E00F104BE /* Beauregard+Tactics.m in Sources */ = {isa = PBXBuildFile; fileRef = CC25F480176E455E00F104BE /* Beauregard+Tactics.m */; };
 		CC25F4B31774C92900F104BE /* NSValue+HXMHex.m in Sources */ = {isa = PBXBuildFile; fileRef = CC25F4B21774C92600F104BE /* NSValue+HXMHex.m */; };
@@ -56,10 +56,10 @@
 		CCDB610316A04EF2006668C2 /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = CCDB60FC16A04EF2006668C2 /* map.png */; };
 		CCDB610616A04EF2006668C2 /* InfoBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCDB610116A04EF2006668C2 /* InfoBarView.xib */; };
 		CCDB610716A04EF2006668C2 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCDB610216A04EF2006668C2 /* MapViewController.xib */; };
-		CCE03F611713A3C600C5A217 /* BAAAnimationList.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE03F5F1713A0D500C5A217 /* BAAAnimationList.m */; };
-		CCE03F6517162FE100C5A217 /* BAAAnimationListItemCombat.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE03F6417162FE100C5A217 /* BAAAnimationListItemCombat.m */; };
-		CCE03F6B171BA62100C5A217 /* BAAAnimationListItemMove.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE03F6A171BA62100C5A217 /* BAAAnimationListItemMove.m */; };
-		CCE03F6E171E278E00C5A217 /* BAAAnimationListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE03F6D171E278E00C5A217 /* BAAAnimationListItem.m */; };
+		CCE03F611713A3C600C5A217 /* BATAnimationList.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE03F5F1713A0D500C5A217 /* BATAnimationList.m */; };
+		CCE03F6517162FE100C5A217 /* BATAnimationListItemCombat.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE03F6417162FE100C5A217 /* BATAnimationListItemCombat.m */; };
+		CCE03F6B171BA62100C5A217 /* BATAnimationListItemMove.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE03F6A171BA62100C5A217 /* BATAnimationListItemMove.m */; };
+		CCE03F6E171E278E00C5A217 /* BATAnimationListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CCE03F6D171E278E00C5A217 /* BATAnimationListItem.m */; };
 		CCF01A9A174D9705003A1C77 /* McDowell+Strategy.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF01A99174D9705003A1C77 /* McDowell+Strategy.m */; };
 		CCF01AA0174FFECA003A1C77 /* BATAIInfluenceMap.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF01A9F174FFECA003A1C77 /* BATAIInfluenceMap.m */; };
 		CCF01AA317510DB2003A1C77 /* McDowell+Tactics.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF01AA217510DB2003A1C77 /* McDowell+Tactics.m */; };
@@ -102,8 +102,8 @@
 		CC0CF3E91698CB40006D902D /* BullRun.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BullRun.h; sourceTree = "<group>"; };
 		CC0CF3EE169916E2006D902D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		CC1B671B16DC4B9F0078B20B /* bullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullet.png; sourceTree = "<group>"; };
-		CC1B672716DFA5C00078B20B /* BAGunfire.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAGunfire.h; sourceTree = "<group>"; };
-		CC1B672816DFA5C00078B20B /* BAGunfire.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAGunfire.m; sourceTree = "<group>"; };
+		CC1B672716DFA5C00078B20B /* BATAnimationGunfire.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BATAnimationGunfire.h; sourceTree = "<group>"; };
+		CC1B672816DFA5C00078B20B /* BATAnimationGunfire.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BATAnimationGunfire.m; sourceTree = "<group>"; };
 		CC25F47B1765748F00F104BE /* Beauregard+Strategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Beauregard+Strategy.h"; sourceTree = "<group>"; };
 		CC25F47C1765748F00F104BE /* Beauregard+Strategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Beauregard+Strategy.m"; sourceTree = "<group>"; };
 		CC25F47E17666AAE00F104BE /* DPTMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPTMath.h; sourceTree = "<group>"; };
@@ -168,14 +168,14 @@
 		CCDB60FC16A04EF2006668C2 /* map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = map.png; sourceTree = "<group>"; };
 		CCDB610116A04EF2006668C2 /* InfoBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoBarView.xib; sourceTree = "<group>"; };
 		CCDB610216A04EF2006668C2 /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
-		CCE03F5E1713A0D400C5A217 /* BAAAnimationList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAAAnimationList.h; sourceTree = "<group>"; };
-		CCE03F5F1713A0D500C5A217 /* BAAAnimationList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAAAnimationList.m; sourceTree = "<group>"; };
-		CCE03F6317162FE100C5A217 /* BAAAnimationListItemCombat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAAAnimationListItemCombat.h; sourceTree = "<group>"; };
-		CCE03F6417162FE100C5A217 /* BAAAnimationListItemCombat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAAAnimationListItemCombat.m; sourceTree = "<group>"; };
-		CCE03F69171BA62000C5A217 /* BAAAnimationListItemMove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAAAnimationListItemMove.h; sourceTree = "<group>"; };
-		CCE03F6A171BA62100C5A217 /* BAAAnimationListItemMove.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAAAnimationListItemMove.m; sourceTree = "<group>"; };
-		CCE03F6C171E278E00C5A217 /* BAAAnimationListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAAAnimationListItem.h; sourceTree = "<group>"; };
-		CCE03F6D171E278E00C5A217 /* BAAAnimationListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAAAnimationListItem.m; sourceTree = "<group>"; };
+		CCE03F5E1713A0D400C5A217 /* BATAnimationList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BATAnimationList.h; sourceTree = "<group>"; };
+		CCE03F5F1713A0D500C5A217 /* BATAnimationList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BATAnimationList.m; sourceTree = "<group>"; };
+		CCE03F6317162FE100C5A217 /* BATAnimationListItemCombat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BATAnimationListItemCombat.h; sourceTree = "<group>"; };
+		CCE03F6417162FE100C5A217 /* BATAnimationListItemCombat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BATAnimationListItemCombat.m; sourceTree = "<group>"; };
+		CCE03F69171BA62000C5A217 /* BATAnimationListItemMove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BATAnimationListItemMove.h; sourceTree = "<group>"; };
+		CCE03F6A171BA62100C5A217 /* BATAnimationListItemMove.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BATAnimationListItemMove.m; sourceTree = "<group>"; };
+		CCE03F6C171E278E00C5A217 /* BATAnimationListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BATAnimationListItem.h; sourceTree = "<group>"; };
+		CCE03F6D171E278E00C5A217 /* BATAnimationListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BATAnimationListItem.m; sourceTree = "<group>"; };
 		CCF01A99174D9705003A1C77 /* McDowell+Strategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "McDowell+Strategy.m"; sourceTree = "<group>"; };
 		CCF01A9D174D9861003A1C77 /* McDowell+Strategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "McDowell+Strategy.h"; sourceTree = "<group>"; };
 		CCF01A9E174FFECA003A1C77 /* BATAIInfluenceMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BATAIInfluenceMap.h; sourceTree = "<group>"; };
@@ -273,16 +273,16 @@
 		CC1B672416DFA5C00078B20B /* Animations */ = {
 			isa = PBXGroup;
 			children = (
-				CCE03F5E1713A0D400C5A217 /* BAAAnimationList.h */,
-				CCE03F5F1713A0D500C5A217 /* BAAAnimationList.m */,
-				CCE03F6C171E278E00C5A217 /* BAAAnimationListItem.h */,
-				CCE03F6D171E278E00C5A217 /* BAAAnimationListItem.m */,
-				CCE03F6317162FE100C5A217 /* BAAAnimationListItemCombat.h */,
-				CCE03F6417162FE100C5A217 /* BAAAnimationListItemCombat.m */,
-				CCE03F69171BA62000C5A217 /* BAAAnimationListItemMove.h */,
-				CCE03F6A171BA62100C5A217 /* BAAAnimationListItemMove.m */,
-				CC1B672716DFA5C00078B20B /* BAGunfire.h */,
-				CC1B672816DFA5C00078B20B /* BAGunfire.m */,
+				CCE03F5E1713A0D400C5A217 /* BATAnimationList.h */,
+				CCE03F5F1713A0D500C5A217 /* BATAnimationList.m */,
+				CCE03F6C171E278E00C5A217 /* BATAnimationListItem.h */,
+				CCE03F6D171E278E00C5A217 /* BATAnimationListItem.m */,
+				CCE03F6317162FE100C5A217 /* BATAnimationListItemCombat.h */,
+				CCE03F6417162FE100C5A217 /* BATAnimationListItemCombat.m */,
+				CCE03F69171BA62000C5A217 /* BATAnimationListItemMove.h */,
+				CCE03F6A171BA62100C5A217 /* BATAnimationListItemMove.m */,
+				CC1B672716DFA5C00078B20B /* BATAnimationGunfire.h */,
+				CC1B672816DFA5C00078B20B /* BATAnimationGunfire.m */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -612,7 +612,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CCE03F611713A3C600C5A217 /* BAAAnimationList.m in Sources */,
+				CCE03F611713A3C600C5A217 /* BATAnimationList.m in Sources */,
 				CCC71D5716CC6F0B003636E3 /* HXMCoordinateTransformer.m in Sources */,
 				CCF61C9716CC6E2900391025 /* HXMGeometry.m in Sources */,
 				CCDB60E516A04D71006668C2 /* MapViewController.m in Sources */,
@@ -630,10 +630,10 @@
 				CC392E3F16D5A84500160B82 /* BATUnit.m in Sources */,
 				CC392E4216D5ACEC00160B82 /* BATGame.m in Sources */,
 				CC392E4516D5AE4C00160B82 /* BATMoveOrders.m in Sources */,
-				CC1B672A16DFA5C00078B20B /* BAGunfire.m in Sources */,
-				CCE03F6517162FE100C5A217 /* BAAAnimationListItemCombat.m in Sources */,
-				CCE03F6B171BA62100C5A217 /* BAAAnimationListItemMove.m in Sources */,
-				CCE03F6E171E278E00C5A217 /* BAAAnimationListItem.m in Sources */,
+				CC1B672A16DFA5C00078B20B /* BATAnimationGunfire.m in Sources */,
+				CCE03F6517162FE100C5A217 /* BATAnimationListItemCombat.m in Sources */,
+				CCE03F6B171BA62100C5A217 /* BATAnimationListItemMove.m in Sources */,
+				CCE03F6E171E278E00C5A217 /* BATAnimationListItem.m in Sources */,
 				CC523555173A7F1700CDBDC5 /* McDowell.m in Sources */,
 				CC523558173A9BA700CDBDC5 /* Beauregard.m in Sources */,
 				CC52355B173D97E500CDBDC5 /* BRMap.m in Sources */,

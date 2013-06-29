@@ -1,20 +1,19 @@
 //
-//  BAAAnimationListItemMove.m
-//  Bull Run
+//  BATAnimationListItemMove.m
 //
 //  Created by Dave Townsend on 4/8/13.
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
 #import <QuartzCore/QuartzCore.h>
-#import "BAAAnimationList.h"
-#import "BAAAnimationListItemMove.h"
+#import "BATAnimationList.h"
+#import "BATAnimationListItemMove.h"
 #import "BATUnit.h"
 #import "HXMCoordinateTransformer.h"
 #import "UnitView.h"
 
 //==============================================================================
-@interface BAAAnimationListItemMove ()
+@interface BATAnimationListItemMove ()
 
 @property (nonatomic, strong) BATUnit* actor;
 @property (nonatomic)         HXMHex   startHex;
@@ -23,10 +22,10 @@
 @end
 
 //==============================================================================
-@implementation BAAAnimationListItemMove
+@implementation BATAnimationListItemMove
 
 + (id)itemMoving:(BATUnit*)unit toHex:(HXMHex)hex {
-    BAAAnimationListItemMove* o = [[BAAAnimationListItemMove alloc] init];
+    BATAnimationListItemMove* o = [[BATAnimationListItemMove alloc] init];
 
     if (o) {
         [o setActor:unit];
@@ -37,7 +36,7 @@
     return o;
 }
 
-- (void)runWithParent:(BAAAnimationList*)list {
+- (void)runWithParent:(BATAnimationList*)list {
     DEBUG_ANIMATION(@"running animation %@", self);
 
     HXMCoordinateTransformer* xformer = [list xformer];

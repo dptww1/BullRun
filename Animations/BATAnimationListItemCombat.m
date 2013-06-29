@@ -1,15 +1,14 @@
 //
-//  BAAAnimationListItemCombat.m
-//  Bull Run
+//  BATAnimationListItemCombat.m
 //
 //  Created by Dave Townsend on 4/9/13.
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
 #import <QuartzCore/QuartzCore.h>
-#import "BAAAnimationListItemCombat.h"
-#import "BAAAnimationList.h"
-#import "BAGunfire.h"
+#import "BATAnimationListItemCombat.h"
+#import "BATAnimationList.h"
+#import "BATAnimationGunfire.h"
 #import "BATGame.h"
 #import "BATUnit.h"
 #import "DPTSysUtil.h"
@@ -24,25 +23,25 @@ static CGPoint shiftPoint(CGPoint pt, float dx, float dy) { // TODO: move to glo
 }
 
 //==============================================================================
-@interface BAAAnimationListItemCombat ()
+@interface BATAnimationListItemCombat ()
 
 // Copies of class init method parameters
-@property (nonatomic, strong) BATUnit*   attacker;
-@property (nonatomic, strong) BATUnit*   defender;
-@property (nonatomic)         HXMHex     retreatHex;
-@property (nonatomic)         HXMHex     advanceHex;
+@property (nonatomic, strong) BATUnit*             attacker;
+@property (nonatomic, strong) BATUnit*             defender;
+@property (nonatomic)         HXMHex               retreatHex;
+@property (nonatomic)         HXMHex               advanceHex;
 
 // Convenience parameters
-@property (nonatomic, strong) BAGunfire* attackerGunfire;
-@property (nonatomic)         HXMHex     attackerHex;
-@property (nonatomic)         HXMHex     defenderHex;
+@property (nonatomic, strong) BATAnimationGunfire* attackerGunfire;
+@property (nonatomic)         HXMHex               attackerHex;
+@property (nonatomic)         HXMHex               defenderHex;
 
 @end
 
 //==============================================================================
-@implementation BAAAnimationListItemCombat (Private)
+@implementation BATAnimationListItemCombat (Private)
 
-- (void)showRetreatAndAdvance:(BAAAnimationList*)list {
+- (void)showRetreatAndAdvance:(BATAnimationList*)list {
     DEBUG_ANIMATION(@"running animation %@ (advance/retreat)", self);
     
     [[self attackerGunfire] stop];
@@ -85,7 +84,7 @@ static CGPoint shiftPoint(CGPoint pt, float dx, float dy) { // TODO: move to glo
     }
 }
 
-- (void)endCombat:(BAAAnimationList*)list {
+- (void)endCombat:(BATAnimationList*)list {
     DEBUG_ANIMATION(@"running animation %@ (end)", self);
     [list run:nil];
 }
@@ -93,13 +92,13 @@ static CGPoint shiftPoint(CGPoint pt, float dx, float dy) { // TODO: move to glo
 @end
 
 //==============================================================================
-@implementation BAAAnimationListItemCombat
+@implementation BATAnimationListItemCombat
 
 + (id)itemWithAttacker:(BATUnit*)attacker
               defender:(BATUnit*)defender
              retreatTo:(HXMHex)retreatHex
              advanceTo:(HXMHex)advanceHex {
-    BAAAnimationListItemCombat* o = [[BAAAnimationListItemCombat alloc] init];
+    BATAnimationListItemCombat* o = [[BATAnimationListItemCombat alloc] init];
 
     if (o) {
         [o setAttacker:attacker];
@@ -115,7 +114,7 @@ static CGPoint shiftPoint(CGPoint pt, float dx, float dy) { // TODO: move to glo
     return o;
 }
 
-- (void)runWithParent:(BAAAnimationList*)list {
+- (void)runWithParent:(BATAnimationList*)list {
     DEBUG_ANIMATION(@"running animation %@ (gunfire)", self);
 
     HXMCoordinateTransformer* xformer = [list xformer];
@@ -153,7 +152,7 @@ static CGPoint shiftPoint(CGPoint pt, float dx, float dy) { // TODO: move to glo
     // the game logic angle to get the animation logic angle.
     CGFloat angleAToD = DEGREES_TO_RADIANS((dirAToD * 60) - 90);
 
-    [self setAttackerGunfire:[BAGunfire gunfireFrom:v withAzimuth:angleAToD]];
+    [self setAttackerGunfire:[BATAnimationGunfire gunfireFrom:v withAzimuth:angleAToD]];
 }
 
 - (NSString*)description {

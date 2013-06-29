@@ -7,9 +7,9 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
-#import "BAAAnimationList.h"
-#import "BAAAnimationListItemMove.h"
-#import "BAAAnimationListItemCombat.h"
+#import "BATAnimationList.h"
+#import "BATAnimationListItemMove.h"
+#import "BATAnimationListItemCombat.h"
 #import "BATBattleReport.h"
 #import "BATGame.h"
 #import "BATMoveOrders.h"
@@ -153,8 +153,8 @@
     }
     
     if (!_animationList)
-        [self setAnimationList:[BAAAnimationList listWithCoordXFormer:_coordXformer]];
-    
+        [self setAnimationList:[BATAnimationList listWithCoordXFormer:_coordXformer]];
+
     if (!_moveOrderLayer) {
         CGRect bounds = [[self view] bounds];
         
@@ -344,9 +344,9 @@
     [[self view] setNeedsDisplay];
 }
 
-- (void)moveUnit:(BAUnit*)unit to:(HXMHex)hex {
+- (void)moveUnit:(BATUnit*)unit to:(HXMHex)hex {
     DEBUG_MOVEMENT(@"Moving %@ to %02d%02d", [unit name], hex.column, hex.row);
-    [_animationList addItem:[BAAAnimationListItemMove itemMoving:unit toHex:hex]];
+    [_animationList addItem:[BATAnimationListItemMove itemMoving:unit toHex:hex]];
 }
 
 - (void)movePhaseWillBegin {
@@ -361,7 +361,7 @@
 
 - (void)showAttack:(BATBattleReport *)report {
     [_animationList
-     addItem:[BAAAnimationListItemCombat itemWithAttacker:[report attacker]
+     addItem:[BATAnimationListItemCombat itemWithAttacker:[report attacker]
                                                  defender:[report defender]
                                                 retreatTo:[report retreatHex]
                                                 advanceTo:[report advanceHex]]];

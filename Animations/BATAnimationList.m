@@ -1,31 +1,30 @@
 //
-//  BAAAnimationList.m
-//  Bull Run
+//  BATAnimationList.m
 //
 //  Created by Dave Townsend on 4/8/13.
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
-#import "BAAAnimationList.h"
-#import "BAAAnimationListItemCombat.h"
-#import "BAAAnimationListItemMove.h"
+#import "BATAnimationList.h"
+#import "BATAnimationListItemCombat.h"
+#import "BATAnimationListItemMove.h"
 #import "BATGame.h"
 
 //==============================================================================
-@interface BAAAnimationList ()
+@interface BATAnimationList ()
 
-@property (nonatomic, strong) NSMutableArray* items;
-@property (nonatomic, assign) int             nextItemIdx;
-@property (nonatomic, copy)   void            (^completionBlock)(void);
-@property (nonatomic, weak, readwrite)        HXMCoordinateTransformer* xformer;
+@property (nonatomic, strong)          NSMutableArray*           items;
+@property (nonatomic, assign)          int                       nextItemIdx;
+@property (nonatomic, copy)            void                     (^completionBlock)(void);
+@property (nonatomic, weak, readwrite) HXMCoordinateTransformer* xformer;
 
 @end
 
 //==============================================================================
-@implementation BAAAnimationList
+@implementation BATAnimationList
 
-+ (BAAAnimationList*) listWithCoordXFormer:(HXMCoordinateTransformer *)xformer {
-    BAAAnimationList* o = [[BAAAnimationList alloc] init];
++ (BATAnimationList*) listWithCoordXFormer:(HXMCoordinateTransformer *)xformer {
+    BATAnimationList* o = [[BATAnimationList alloc] init];
 
     if (o) {
         [o setItems:[NSMutableArray array]];
@@ -36,7 +35,7 @@
     return o;
 }
 
-- (void)addItem:(BAAAnimationListItem *)item {
+- (void)addItem:(BATAnimationListItem *)item {
     [[self items] addObject:item];
 }
 
@@ -52,11 +51,11 @@
         [game doSighting:[game userSide]];
 
     if ([self nextItemIdx] == -1)
-        DEBUG_ANIMATION(@"BAAAnimationList run() BEGIN");
+        DEBUG_ANIMATION(@"BATAnimationList run() BEGIN");
 
     // Are we done?
     if ([self nextItemIdx] >= (int)([[self items] count] - 1)) {
-        DEBUG_ANIMATION(@"BAAAnimationList run() END, calling completion block");
+        DEBUG_ANIMATION(@"BATAnimationList run() END, calling completion block");
         if ([self completionBlock])
             [self completionBlock]();
         return;
