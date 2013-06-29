@@ -10,6 +10,7 @@
 		CC058F6117787ADE00FD165C /* BATAIMoveTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = CC058F6017787ADE00FD165C /* BATAIMoveTracker.m */; };
 		CC058F691778960D00FD165C /* BATAIMoveTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CC058F681778960D00FD165C /* BATAIMoveTrackerTests.m */; };
 		CC058F6D177A19F500FD165C /* NSArray+DPTUtilTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CC058F6C177A19F500FD165C /* NSArray+DPTUtilTests.m */; };
+		CC058F71177E13A700FD165C /* BATMoveOrdersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CC058F70177E13A700FD165C /* BATMoveOrdersTests.m */; };
 		CC0805A916D3085000CB8C79 /* BATBattleReport.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0805A816D3085000CB8C79 /* BATBattleReport.m */; };
 		CC0805AD16D5869E00CB8C79 /* BATReinforcementInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0805AC16D5869E00CB8C79 /* BATReinforcementInfo.m */; };
 		CC0CF381168A4E72006D902D /* README.textile in Resources */ = {isa = PBXBuildFile; fileRef = CC0CF380168A4E72006D902D /* README.textile */; };
@@ -27,7 +28,6 @@
 		CC392E4216D5ACEC00160B82 /* BATGame.m in Sources */ = {isa = PBXBuildFile; fileRef = CC392E4116D5ACEB00160B82 /* BATGame.m */; };
 		CC392E4516D5AE4C00160B82 /* BATMoveOrders.m in Sources */ = {isa = PBXBuildFile; fileRef = CC392E4416D5AE4C00160B82 /* BATMoveOrders.m */; };
 		CC392E4B16D5AFD400160B82 /* HXMHexMapGeometryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CC392E4A16D5AFD400160B82 /* HXMHexMapGeometryTests.m */; };
-		CC392E4E16D5B04F00160B82 /* BATMoveOrdersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CC392E4D16D5B04F00160B82 /* BATMoveOrdersTests.m */; };
 		CC523555173A7F1700CDBDC5 /* McDowell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC523554173A7F1700CDBDC5 /* McDowell.m */; };
 		CC523558173A9BA700CDBDC5 /* Beauregard.m in Sources */ = {isa = PBXBuildFile; fileRef = CC523557173A9BA700CDBDC5 /* Beauregard.m */; };
 		CC52355B173D97E500CDBDC5 /* BRMap.m in Sources */ = {isa = PBXBuildFile; fileRef = CC52355A173D97E500CDBDC5 /* BRMap.m */; };
@@ -91,6 +91,8 @@
 		CC058F6B177A19F500FD165C /* NSArray+DPTUtilTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+DPTUtilTests.h"; sourceTree = "<group>"; };
 		CC058F6C177A19F500FD165C /* NSArray+DPTUtilTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+DPTUtilTests.m"; sourceTree = "<group>"; };
 		CC058F6E177DC1DD00FD165C /* BattleAt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleAt.h; sourceTree = "<group>"; };
+		CC058F6F177E13A700FD165C /* BATMoveOrdersTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BATMoveOrdersTests.h; sourceTree = "<group>"; };
+		CC058F70177E13A700FD165C /* BATMoveOrdersTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BATMoveOrdersTests.m; sourceTree = "<group>"; };
 		CC0805A716D3085000CB8C79 /* BATBattleReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BATBattleReport.h; sourceTree = "<group>"; };
 		CC0805A816D3085000CB8C79 /* BATBattleReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BATBattleReport.m; sourceTree = "<group>"; };
 		CC0805AA16D3165D00CB8C79 /* BATGameObserving.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BATGameObserving.h; sourceTree = "<group>"; };
@@ -124,8 +126,6 @@
 		CC392E4416D5AE4C00160B82 /* BATMoveOrders.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BATMoveOrders.m; sourceTree = "<group>"; };
 		CC392E4916D5AFD400160B82 /* HXMHexMapGeometryTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXMHexMapGeometryTests.h; sourceTree = "<group>"; };
 		CC392E4A16D5AFD400160B82 /* HXMHexMapGeometryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXMHexMapGeometryTests.m; sourceTree = "<group>"; };
-		CC392E4C16D5B04F00160B82 /* BATMoveOrdersTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BATMoveOrdersTests.h; sourceTree = "<group>"; };
-		CC392E4D16D5B04F00160B82 /* BATMoveOrdersTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BATMoveOrdersTests.m; sourceTree = "<group>"; };
 		CC523550173A7DB600CDBDC5 /* BATAIDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BATAIDelegate.h; sourceTree = "<group>"; };
 		CC523553173A7F1700CDBDC5 /* McDowell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = McDowell.h; sourceTree = "<group>"; };
 		CC523554173A7F1700CDBDC5 /* McDowell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = McDowell.m; sourceTree = "<group>"; };
@@ -226,6 +226,8 @@
 		CC058F661778960D00FD165C /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				CC058F6F177E13A700FD165C /* BATMoveOrdersTests.h */,
+				CC058F70177E13A700FD165C /* BATMoveOrdersTests.m */,
 				CC058F671778960D00FD165C /* BATAIMoveTrackerTests.h */,
 				CC058F681778960D00FD165C /* BATAIMoveTrackerTests.m */,
 			);
@@ -375,8 +377,6 @@
 		CC858576167A72610054E60D /* Bull RunTests */ = {
 			isa = PBXGroup;
 			children = (
-				CC392E4C16D5B04F00160B82 /* BATMoveOrdersTests.h */,
-				CC392E4D16D5B04F00160B82 /* BATMoveOrdersTests.m */,
 				CC392E4916D5AFD400160B82 /* HXMHexMapGeometryTests.h */,
 				CC392E4A16D5AFD400160B82 /* HXMHexMapGeometryTests.m */,
 				CCF01AB01758EC7C003A1C77 /* HXMPathFinderTests.h */,
@@ -659,10 +659,10 @@
 				CCF61C9616CC63C900391025 /* HXMGeometry.m in Sources */,
 				CCC71D5616CC6EE9003636E3 /* HXMCoordinateTransformer.m in Sources */,
 				CC392E4B16D5AFD400160B82 /* HXMHexMapGeometryTests.m in Sources */,
-				CC392E4E16D5B04F00160B82 /* BATMoveOrdersTests.m in Sources */,
 				CCF01AB21758EC7C003A1C77 /* HXMPathFinderTests.m in Sources */,
 				CC058F691778960D00FD165C /* BATAIMoveTrackerTests.m in Sources */,
 				CC058F6D177A19F500FD165C /* NSArray+DPTUtilTests.m in Sources */,
+				CC058F71177E13A700FD165C /* BATMoveOrdersTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
