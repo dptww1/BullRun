@@ -1,6 +1,5 @@
 //
-//  BAUnit.h
-//  Bull Run
+//  BATUnit.h
 //
 //  Created by Dave Townsend on 1/5/13.
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
@@ -16,7 +15,7 @@
  * A game unit. No designated initializer because units should be loaded
  * from a file anyway.
  */
-@interface BAUnit : NSObject <NSCoding>
+@interface BATUnit : NSObject <NSCoding>
 
 #pragma mark - Read-only Properties
 
@@ -83,7 +82,7 @@
  *
  * @return `YES` if the units are on the same side, `NO` if they aren't
  */
-- (BOOL)friends:(BAUnit*)other;
+- (BOOL)friends:(BATUnit*)other;
 
 /**
  * Determines if this unit is wrecked, meaning casualties are greater than

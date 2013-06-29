@@ -10,7 +10,7 @@
 #import "McDowell+Strategy.h"
 #import "BATGame.h"
 #import "BATOrderOfBattle.h"
-#import "BAUnit.h"
+#import "BATUnit.h"
 #import "BRMap.h"
 #import "HXMHex.h"
 #import "NSArray+DPTUtil.h"
@@ -27,7 +27,7 @@
                  [units count], [[self unitRoles] count]);
 
     [units enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        BAUnit* unit = obj;
+        BATUnit* unit = obj;
         if (![self unitRoles][[unit name]])
             DEBUG_AI(@"Unit %@ has no roles entry", [unit name]);
     }];
@@ -38,7 +38,7 @@
 #endif
 
 - (DPTUtilFilter)isCsaUnitAttacking {
-    return ^BOOL(BAUnit* unit) {
+    return ^BOOL(BATUnit* unit) {
         HXMHex hex = [unit location];
         return [unit sighted]
             && [[game board] is:hex inZone:@"usa"]
@@ -53,7 +53,7 @@
 }
 
 - (DPTUtilFilter)isUsaUnitDefending {
-    return ^BOOL(BAUnit* unit) {
+    return ^BOOL(BATUnit* unit) {
         NSNumber* role = [self unitRoles][[unit name]];
         return role
             && [role isEqualToNumber:@(ROLE_DEFEND)]
@@ -69,12 +69,11 @@
 - (void)changeOneDefenderToAttacker {
     // Find the defending unit nearest a ford
 
-    __block BAUnit* minUnit = nil;  // current closest unit
-    __block int     minDist = 1000; // current closest distance
+    __block BATUnit* minUnit = nil;  // current closest unit
+    __block int      minDist = 1000; // current closest distance
 
     NSArray* usaUnits = [[game oob] unitsForSide:[self side]];
-    [usaUnits enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL* stop) {
-        BAUnit* curUnit = obj;
+    [usaUnits enumerateObjectsUsingBlock:^(BATUnit* curUnit, NSUInteger idx, BOOL* stop) {
         if ([self isUsaUnitDefending](curUnit)) {
             HXMHexAndDistance hexd = [[BRMap map] closestFordTo:[curUnit location]];
 
@@ -94,8 +93,8 @@
 
 - (void)convertNonDefenderToDefender {
     // Find the non-defending unit nearest home base
-    __block BAUnit* minUnit = nil;
-    __block int     minDist = 1000;
+    __block BATUnit* minUnit = nil;
+    __block int      minDist = 1000;
 
     NSArray* bases = [[BRMap map] basesForSide:[self side]];
     NSArray* usaUnits = [[game oob] unitsForSide:[self side]];
@@ -104,9 +103,7 @@
         HXMHex base;
         [obj getValue:&base];
 
-        [usaUnits enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL* stop) {
-            BAUnit* curUnit = obj;
-
+        [usaUnits enumerateObjectsUsingBlock:^(BATUnit* curUnit, NSUInteger idx, BOOL* stop) {
             if (![self isUsaUnitDefending](curUnit) && ![curUnit isOffMap]) {
                 int dist = [[BRMap map] distanceFrom:[curUnit location] to:base];
                 if (dist < minDist) {
@@ -126,7 +123,7 @@
     }
 }
 
-- (void)switch:(BAUnit*)unit roleTo:(int)newRole {
+- (void)switch:(BATUnit*)unit roleTo:(int)newRole {
     [self unitRoles][[unit name]] = @(newRole);
 }
 

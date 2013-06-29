@@ -8,7 +8,7 @@
 #import <Foundation/Foundation.h>
 #import "HXMHex.h"
 
-@class BAUnit;
+@class BATUnit;
 
 /** Contains the location/turn information needed for a single reinforcement. */
 @interface BATReinforcementInfo : NSObject <NSCoding>
@@ -30,7 +30,7 @@
  *
  * @return the new reinforcement object
  */
-+ (BATReinforcementInfo*)createWithUnit:(BAUnit*)unit;
++ (BATReinforcementInfo*)createWithUnit:(BATUnit*)unit;
 
 /**
  * Designated initializer.
@@ -41,7 +41,7 @@
  *
  * @return the new reinforcement object
  */
-- (BATReinforcementInfo*)initWithUnit:(BAUnit*)unit
+- (BATReinforcementInfo*)initWithUnit:(BATUnit*)unit
                                onTurn:(int)turn
                                 atHex:(HXMHex)hex;
 

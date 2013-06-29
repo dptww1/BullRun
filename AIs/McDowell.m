@@ -12,7 +12,7 @@
 #import "BATAIInfluenceMap.h"
 #import "BATGame.h"
 #import "BATOrderOfBattle.h"
-#import "BAUnit.h"
+#import "BATUnit.h"
 #import "BRMap.h"
 #import "HXMGeometry.h"
 #import "HXMHex.h"
@@ -28,7 +28,7 @@
     BATAIInfluenceMap* imap = [BATAIInfluenceMap mapFrom:map];
 
     NSArray* csaUnits = [[game oob] unitsForSide:OtherPlayer([self side])];
-    [csaUnits enumerateObjectsUsingBlock:^(BAUnit* unit, NSUInteger idx, BOOL* stop){
+    [csaUnits enumerateObjectsUsingBlock:^(BATUnit* unit, NSUInteger idx, BOOL* stop){
         __block HXMHex location = [unit location];
 
         // Is unit on map, north of river, and not on a ford?

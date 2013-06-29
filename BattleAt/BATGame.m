@@ -12,7 +12,7 @@
 #import "BATMoveOrders.h"
 #import "BATOrderOfBattle.h"
 #import "BATReinforcementInfo.h"
-#import "BAUnit.h"
+#import "BATUnit.h"
 #import "HXMHex.h"
 #import "HXMMap.h"
 #import "HXMTerrainEffect.h"
@@ -60,14 +60,14 @@ BATGame* game; // the global game instance
     [_observers addObject:object];
 }
 
-- (BAUnit*)unitInHex:(HXMHex)hex {
+- (BATUnit*)unitInHex:(HXMHex)hex {
     NSArray* units = [_oob units];
-    return [units dpt_find:^BOOL(BAUnit* unit) {
+    return [units dpt_find:^BOOL(BATUnit* unit) {
         return HXMHexEquals([unit location], hex);
     }];
 }
 
-- (BOOL)unitIsSurrounded:(BAUnit*)unit {
+- (BOOL)unitIsSurrounded:(BATUnit*)unit {
     // We'll use an int wherein each direction # gets assigned the
     // corresponding bit. Zeros mean the direction is clear, ones mean
     // the direction is blocked.
@@ -84,7 +84,7 @@ BATGame* game; // the global game instance
         }
 
         // Empty hexes need no further processing
-        BAUnit* occupier = [self unitInHex:adjHex];
+        BATUnit* occupier = [self unitInHex:adjHex];
         if (!occupier)
             continue;
 
@@ -148,11 +148,11 @@ BATGame* game; // the global game instance
 
     [_ai giveOrders:self];
     
-    NSArray*      sortedUnits = [self sortUnits];                       // elements: Unit*
-    NSMutableSet* didntMove = [NSMutableSet setWithArray:sortedUnits];  // keys: Unit*; if present, this unit didn't move this turn
+    NSArray*      sortedUnits = [self sortUnits];                       // elements: BATUnit*
+    NSMutableSet* didntMove = [NSMutableSet setWithArray:sortedUnits];  // keys: BATUnit*; if present, this unit didn't move this turn
     
     // All units get 5 new MPs
-    for (BAUnit* u in sortedUnits) {
+    for (BATUnit* u in sortedUnits) {
         [u setMps:[u mps] + 5];
     }
     
@@ -161,7 +161,7 @@ BATGame* game; // the global game instance
     while (atLeastOneUnitMoved) {
         atLeastOneUnitMoved = NO;
         
-        for (BAUnit* u in sortedUnits) {
+        for (BATUnit* u in sortedUnits) {
             // Offmap or not moving?
             if (![_board legal:[u location]] || ![u hasOrders])
                 continue;
@@ -169,7 +169,7 @@ BATGame* game; // the global game instance
             HXMHex nextHex = [[u moveOrders] firstHexAndRemove:NO];
         
             // Is it occupied?
-            BAUnit* blocker = [self unitInHex:nextHex];
+            BATUnit* blocker = [self unitInHex:nextHex];
             if (blocker) {
                 if ([u friends:blocker]) { // friendly blocker; keep looping
                     DEBUG_MOVEMENT(@"%@ can't move into %02d%02d because a friend (%@) is there", [u name], nextHex.column, nextHex.row, [blocker name]);
@@ -222,7 +222,7 @@ BATGame* game; // the global game instance
     }
     
     // Reset MPs of units unwilling or unable to move due to blocked destinations and/or ZOC problems
-    for (BAUnit* u in didntMove)
+    for (BATUnit* u in didntMove)
         [u setMps:0];
 
     [self setTurn:[self turn] + 1];
@@ -256,7 +256,7 @@ BATGame* game; // the global game instance
     }
 }
 
-- (void) notifyObserversUnit:(BAUnit*)unit willMoveToHex:(HXMHex)hex {
+- (void) notifyObserversUnit:(BATUnit*)unit willMoveToHex:(HXMHex)hex {
     for (id<BATGameObserving> observer in [self observers]) {
         [observer moveUnit:unit to:hex];
     }
@@ -271,7 +271,7 @@ BATGame* game; // the global game instance
         if ([self turn] >= [rInfo entryTurn]) {
             if ([[self board] legal:[rInfo entryLocation]]) {
 
-                BAUnit* unit = [_oob unitByName:[rInfo unitName]];
+                BATUnit* unit = [_oob unitByName:[rInfo unitName]];
                 [unit setLocation:[rInfo entryLocation]];
 
                 DEBUG_REINFORCEMENTS(@"%@ appears at %02d%02d",
@@ -297,7 +297,7 @@ BATGame* game; // the global game instance
 }
 
 // Returns one or more of the COMBAT_MOVEMENT_XXXX constants
-- (void)attackFrom:(BAUnit*)a to:(BAUnit*)d {
+- (void)attackFrom:(BATUnit*)a to:(BATUnit*)d {
     DEBUG_COMBAT(@"COMBAT: %@ attacks %@", [a name], [d name]);
 
     BATBattleReport* report = [BATBattleReport battleReportWithAttacker:a
@@ -370,7 +370,7 @@ BATGame* game; // the global game instance
     [d setMps:0];
 }
 
-- (BOOL)doesAttackerAdvance:(BAUnit*)a {
+- (BOOL)doesAttackerAdvance:(BATUnit*)a {
     static int modeAdjustmentMatrix[NUM_MODES] = { 50, 25, 10, 0, 0, 0 };
 
     int pctChance = modeAdjustmentMatrix[[a mode]] + [a leadership];
@@ -383,7 +383,7 @@ BATGame* game; // the global game instance
     return d100 <= pctChance;
 }
 
-- (int)computeAttackerCasualtiesFor:(BAUnit*)a against:(BAUnit*)d {
+- (int)computeAttackerCasualtiesFor:(BATUnit*)a against:(BATUnit*)d {
     static int modeCasualtyMatrix[NUM_MODES][NUM_MODES] = {
      // CH AT SK DE WI RT  // Attacker mode
         5, 4, 3, 0, 0, 0,  // Defender is CHARGE
@@ -401,7 +401,7 @@ BATGame* game; // the global game instance
     return c;
 }
 
-- (int)computeDefenderCasualtiesFor:(BAUnit*)d against:(BAUnit*)a {
+- (int)computeDefenderCasualtiesFor:(BATUnit*)d against:(BATUnit*)a {
     static int modeCasualtyMatrix[NUM_MODES][NUM_MODES] = {
      // CH AT SK DE WI RT  // Attacker mode
         5, 4, 3, 0, 0, 0,  // Defender is CHARGE
@@ -419,20 +419,20 @@ BATGame* game; // the global game instance
     return c;
 }
 
-- (BOOL)is:(BAUnit*)unit movingThruEnemyZocTo:(HXMHex)hex {
+- (BOOL)is:(BATUnit*)unit movingThruEnemyZocTo:(HXMHex)hex {
     int moveDir = [_board directionFrom:[unit location] to:hex];
     int cwDir   = [_board rotateDirection:moveDir clockwise:YES];
     int ccwDir  = [_board rotateDirection:moveDir clockwise:NO];
     
-    BAUnit* cwUnit  = [self unitInHex:[_board hexAdjacentTo:[unit location] inDirection:cwDir]];
-    BAUnit* ccwUnit = [self unitInHex:[_board hexAdjacentTo:[unit location] inDirection:ccwDir]];
+    BATUnit* cwUnit  = [self unitInHex:[_board hexAdjacentTo:[unit location] inDirection:cwDir]];
+    BATUnit* ccwUnit = [self unitInHex:[_board hexAdjacentTo:[unit location] inDirection:ccwDir]];
 
     return (cwUnit  && ![cwUnit  friends:unit])
         || (ccwUnit && ![ccwUnit friends:unit]);
 }
 
 // -1 == no retreat possible, else direction to retreat in
-- (int)findRetreatDirFor:(BAUnit*)d attackedBy:(BAUnit*)a {
+- (int)findRetreatDirFor:(BATUnit*)d attackedBy:(BATUnit*)a {
     int attackDir = [_board directionFrom:[a location] to:[d location]];
     if ([self unit:d canRetreatInDirection:attackDir])
         return attackDir;
@@ -448,7 +448,7 @@ BATGame* game; // the global game instance
     return -1;
 }
 
-- (BOOL)unit:(BAUnit*)u canRetreatInDirection:(int)dir {
+- (BOOL)unit:(BATUnit*)u canRetreatInDirection:(int)dir {
     HXMHex hex = [_board hexAdjacentTo:[u location] inDirection:dir];
 
     return [_board legal:hex]
@@ -458,15 +458,15 @@ BATGame* game; // the global game instance
 }
 
 // Returns YES if `enemy' situated in given terrain is sighted by any of `friends'.
-- (BOOL)isUnit:(BAUnit*)enemy inHex:(HXMHex)hex sightedBy:(NSArray*)friends {
+- (BOOL)isUnit:(BATUnit*)enemy inHex:(HXMHex)hex sightedBy:(NSArray*)friends {
     return YES;  // TODO: Huh?
 }
 
 - (NSArray*)sortUnits {
     return [[_oob units] sortedArrayWithOptions:NSSortStable
                                 usingComparator:^(id obj1, id obj2) {
-                                    BAUnit* u1 = obj1;
-                                    BAUnit* u2 = obj2;
+                                    BATUnit* u1 = obj1;
+                                    BATUnit* u2 = obj2;
                                     
                                     // Leftover MPs are the first ordering determinant
                                     if ([u1 mps] > [u2 mps])

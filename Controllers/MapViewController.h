@@ -11,11 +11,14 @@
 #import "BATGameObserving.h"
 #import "HXMHex.h"
 
-@class BAUnit;
+
+@class BATBattleReport;
+@class BATUnit;
 @class BAAAnimationList;
 @class HXMCoordinateTransformer;
 @class InfoBarView;
 @class OrderOfBattle;
+
 
 /**
  * Main game view (which is the map) controller.
@@ -29,7 +32,7 @@
 @property (nonatomic, weak)   InfoBarView*              infoBarView;
 
 /** The currently-selected unit, possibly `nil`. */
-@property (nonatomic, weak)   BAUnit*                   currentUnit;
+@property (nonatomic, weak)   BATUnit*                  currentUnit;
 
 /** The layer for movement orders. */
 @property (nonatomic, strong) CALayer*                  moveOrderLayer;
@@ -49,10 +52,10 @@
 #pragma mark - GameObserving Implementation
 
 /** GameObserving method implementation. */
-- (void)unitNowSighted:(BAUnit*)unit;
+- (void)unitNowSighted:(BATUnit*)unit;
 
 /** GameObserving method implementation. */
-- (void)unitNowHidden:(BAUnit*)unit;
+- (void)unitNowHidden:(BATUnit*)unit;
 
 /** GameObserving method implementation. */
 - (void)movePhaseWillBegin;
@@ -61,9 +64,9 @@
 - (void)movePhaseDidEnd;
 
 /** GameObserving method implementation. */
-- (void)moveUnit:(BAUnit*)unit to:(HXMHex)hex;
+- (void)moveUnit:(BATUnit*)unit to:(HXMHex)hex;
 
 /** GameObserving method implementation. */
-- (void)showAttack:(BABattleReport*)report;
+- (void)showAttack:(BATBattleReport*)report;
 
 @end

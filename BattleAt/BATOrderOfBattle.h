@@ -10,7 +10,7 @@
 #import "HXMHex.h"
 
 @class BATReinforcementInfo;
-@class BAUnit;
+@class BATUnit;
 
 /**
  * The collection of units in the game.
@@ -55,7 +55,7 @@
  *
  * @return the corresponding unit, or `nil` if no such unit exists
  */
-- (BAUnit*)unitByName:(NSString*)name;
+- (BATUnit*)unitByName:(NSString*)name;
 
 /**
  * Retrieves all the units for the given side.

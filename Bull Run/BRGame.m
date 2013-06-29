@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
-#import "BAUnit.h"
+#import "BATUnit.h"
 #import "BRGame.h"
 #import "BRMap.h"
 
@@ -17,7 +17,7 @@
 }
 
 // Returns YES if `enemy' situated in given terrain is sighted by any of `friends'.
-- (BOOL)isUnit:(BAUnit*)enemy inHex:(HXMHex)hex sightedBy:(NSArray*)friends {
+- (BOOL)isUnit:(BATUnit*)enemy inHex:(HXMHex)hex sightedBy:(NSArray*)friends {
 
     // CSA north of river or USA south of river is always spotted (note that fords
     // are marked as on both sides of the river, so units on fords are always spotted).
@@ -29,7 +29,7 @@
     // Innocent until proven guilty.
     __block BOOL sighted = NO;
 
-    [friends enumerateObjectsUsingBlock:^(id friend, NSUInteger idx, BOOL* stop) {
+    [friends enumerateObjectsUsingBlock:^(BATUnit* friend, NSUInteger idx, BOOL* stop) {
         // Friends which are offboard can't spot.
         if (![[self board] legal:[friend location]])
             return;

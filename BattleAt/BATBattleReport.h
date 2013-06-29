@@ -8,7 +8,7 @@
 #import <Foundation/Foundation.h>
 #import "HXMHex.h"
 
-@class BAUnit;
+@class BATUnit;
 
 /**
  * Encapsulates all the information relevant to single attack.
@@ -21,22 +21,22 @@
 @interface BATBattleReport : NSObject
 
 /** The attacking unit. */
-@property (nonatomic, strong, readonly) BAUnit* attacker;
+@property (nonatomic, strong, readonly) BATUnit* attacker;
 
 /** The defending unit. */
-@property (nonatomic, strong, readonly) BAUnit* defender;
+@property (nonatomic, strong, readonly) BATUnit* defender;
 
 /** The number of casualties taken by the attacker. */
-@property (nonatomic, assign)           int     attackerCasualties;
+@property (nonatomic, assign)           int      attackerCasualties;
 
 /** The number of casualties taken by the defender. */
-@property (nonatomic, assign)           int     defenderCasualties;
+@property (nonatomic, assign)           int      defenderCasualties;
 
 /** The hex the defender is retreating to; (-1,-1) means no retreat. */
-@property (nonatomic, assign)           HXMHex  retreatHex;
+@property (nonatomic, assign)           HXMHex   retreatHex;
 
 /** The hex the attacker is advancing into; (-1,-1) means no advance. */
-@property (nonatomic, assign)           HXMHex  advanceHex;
+@property (nonatomic, assign)           HXMHex   advanceHex;
 
 /**
  * Convenience static initializer.
@@ -46,7 +46,7 @@
  *
  * @return the initialized object
  */
-+ (id)battleReportWithAttacker:(BAUnit*)attacker andDefender:(BAUnit*)defender;
++ (id)battleReportWithAttacker:(BATUnit*)attacker andDefender:(BATUnit*)defender;
 
 /**
  * Designated initializer.
@@ -56,6 +56,6 @@
  *
  * @return the initialized object
  */
-- (id)initWithAttacker:(BAUnit*)attacker andDefender:(BAUnit*)defender;
+- (id)initWithAttacker:(BATUnit*)attacker andDefender:(BATUnit*)defender;
 
 @end

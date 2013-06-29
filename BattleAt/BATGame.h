@@ -13,7 +13,7 @@
 
 
 @class BATOrderOfBattle;
-@class BAUnit;
+@class BATUnit;
 
 
 /**
@@ -79,7 +79,7 @@
  * 
  * @return the unit in the given hex, or `nil` if none
  */
-- (BAUnit*)unitInHex:(HXMHex)hex;
+- (BATUnit*)unitInHex:(HXMHex)hex;
 
 /**
  * Determines if a unit is surrounded by any combination of enemy units,
@@ -89,7 +89,7 @@
  *
  * @return `YES` if the unit is surrounded, or `NO` if it isn't
  */
-- (BOOL)unitIsSurrounded:(BAUnit*)unit;
+- (BOOL)unitIsSurrounded:(BATUnit*)unit;
 
 @end
 

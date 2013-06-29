@@ -15,7 +15,7 @@
 #import "BATGame.h"
 #import "BATMoveOrders.h"
 #import "BATOrderOfBattle.h"
-#import "BAUnit.h"
+#import "BATUnit.h"
 #import "BullRun.h"
 #import "HXMCoordinateTransformer.h"
 #import "HXMMap.h"
@@ -58,7 +58,7 @@
     return self;
 }
 
-- (void)drawLayer:(CALayer *)theLayer inContext:(CGContextRef)ctx {
+- (void)drawLayer:(CALayer*)theLayer inContext:(CGContextRef)ctx {
     DEBUG_MOVEORDERS(@"drawLayer:inContext:");
     
     if (!_currentUnit)
@@ -75,7 +75,7 @@
                             ? [UIColor colorWithRed:0.7f green:0.3f blue:0.3f alpha:0.3f]
                             : [UIColor colorWithRed:0.3f green:0.3f blue:0.7f alpha:0.3f];
         
-        for (BAUnit* u in [[game oob] unitsForSide:[_currentUnit side]]) {
+        for (BATUnit* u in [[game oob] unitsForSide:[_currentUnit side]]) {
             if (u != _currentUnit)
                 [self drawMoveOrdersForUnit:u withColor:color inContext:ctx];
         }
@@ -90,7 +90,7 @@
     UIGraphicsPopContext();
 }
 
-- (void)drawMoveOrdersForUnit:(BAUnit*)unit withColor:(UIColor*)color inContext:(CGContextRef)ctx {
+- (void)drawMoveOrdersForUnit:(BATUnit*)unit withColor:(UIColor*)color inContext:(CGContextRef)ctx {
     if (![unit hasOrders])
         return;
 
@@ -145,7 +145,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    for (BAUnit* unit in [[game oob] units]) {
+    for (BATUnit* unit in [[game oob] units]) {
         UnitView* v = [UnitView viewForUnit:unit];
         if (![v superlayer]) {
             [v setOpacity:0.0f];
@@ -233,7 +233,7 @@
     }
 }
 
-- (void) addOrdersFor:(BAUnit*)unit movingTo:(HXMHex)hex {
+- (void) addOrdersFor:(BATUnit*)unit movingTo:(HXMHex)hex {
     // There's some complication here because the user can drag so quickly
     // in the UI that when we convert to hexes we'll end up with non-adjacent
     // hexes, which would be a Bad Thing.
@@ -318,7 +318,7 @@
 
 #pragma mark - Battle@ Callbacks
 
-- (void)unitNowHidden:(BAUnit*)unit {
+- (void)unitNowHidden:(BATUnit*)unit {
     DEBUG_SIGHTING(@"MapViewController#unitNowHidden:%@, viewLoaded=%d", [unit name], [self isViewLoaded]);
     
     CALayer* unitLayer = [UnitView viewForUnit:unit];
@@ -328,7 +328,7 @@
     [[self view] setNeedsDisplay];
 }
 
-- (void)unitNowSighted:(BAUnit*)unit {
+- (void)unitNowSighted:(BATUnit*)unit {
     DEBUG_SIGHTING(@"MapViewController#unitNowSighted:%@, viewLoaded=%d", [unit name], [self isViewLoaded]);
     
     CALayer* unitLayer = [UnitView viewForUnit:unit];

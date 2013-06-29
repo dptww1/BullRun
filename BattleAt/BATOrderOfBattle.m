@@ -8,7 +8,7 @@
 #import "BATGame.h"
 #import "BATOrderOfBattle.h"
 #import "BATReinforcementInfo.h"
-#import "BAUnit.h"
+#import "BATUnit.h"
 #import "DPTSysUtil.h"
 #import "HXMHex.h"
 #import "NSArray+DPTUtil.h"
@@ -36,7 +36,7 @@
         [oob setUnits:[NSKeyedUnarchiver unarchiveObjectWithFile:filepath]];
 
         // Handle reinforcements
-        [[oob units] enumerateObjectsUsingBlock:^(BAUnit* unit, NSUInteger idx, BOOL* stop) {
+        [[oob units] enumerateObjectsUsingBlock:^(BATUnit* unit, NSUInteger idx, BOOL* stop) {
             // Nothing to do if unit starts on map
             if ([unit turn] == 0)
                 return;
@@ -67,15 +67,15 @@
 
 #pragma mark - Behaviors
 
-- (BAUnit*)unitByName:(NSString*)name {
-    return (BAUnit*)
-        [_units dpt_find:^BOOL(BAUnit* u) {
+- (BATUnit*)unitByName:(NSString*)name {
+    return (BATUnit*)
+        [_units dpt_find:^BOOL(BATUnit* u) {
             return [[u name] isEqualToString:name];
         }];
 }
 
 - (NSArray*)unitsForSide:(PlayerSide)side {
-    return [_units dpt_grep:^BOOL(BAUnit* u) { return [u side] == side; }];
+    return [_units dpt_grep:^BOOL(BATUnit* u) { return [u side] == side; }];
 }
 
 - (void)addReinforcementInfo:(BATReinforcementInfo*)reinforcementInfo {

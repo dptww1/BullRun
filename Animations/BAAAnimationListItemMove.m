@@ -9,23 +9,23 @@
 #import <QuartzCore/QuartzCore.h>
 #import "BAAAnimationList.h"
 #import "BAAAnimationListItemMove.h"
-#import "BAUnit.h"
+#import "BATUnit.h"
 #import "HXMCoordinateTransformer.h"
 #import "UnitView.h"
 
 //==============================================================================
 @interface BAAAnimationListItemMove ()
 
-@property (nonatomic, strong) BAUnit*                  actor;
-@property (nonatomic)         HXMHex                   startHex;
-@property (nonatomic)         HXMHex                   endHex;
+@property (nonatomic, strong) BATUnit* actor;
+@property (nonatomic)         HXMHex   startHex;
+@property (nonatomic)         HXMHex   endHex;
 
 @end
 
 //==============================================================================
 @implementation BAAAnimationListItemMove
 
-+ (id)itemMoving:(BAUnit*)unit toHex:(HXMHex)hex {
++ (id)itemMoving:(BATUnit*)unit toHex:(HXMHex)hex {
     BAAAnimationListItemMove* o = [[BAAAnimationListItemMove alloc] init];
 
     if (o) {

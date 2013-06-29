@@ -8,7 +8,7 @@
 
 #import "BATAIInfluenceMap.h"
 #import "BATGame.h"
-#import "BAUnit.h"
+#import "BATUnit.h"
 #import "BATMoveOrders.h"
 #import "Beauregard+Strategy.h"
 #import "Beauregard+Tactics.h"
@@ -27,12 +27,12 @@
         [imap multiplyBy:0.5f atHex:[map hexAdjacentTo:hex inDirection:dir]];
 }
 
-- (NSNumber*)computeAttackChanceOf:(BAUnit*)unit inDirection:(int)dir {
+- (NSNumber*)computeAttackChanceOf:(BATUnit*)unit inDirection:(int)dir {
     HXMHex hex = [[game board] hexAdjacentTo:[unit location] inDirection:dir];
     if (![[game board] legal:hex])
         return @(0);
 
-    BAUnit* enemy = [game unitInHex:hex];
+    BATUnit* enemy = [game unitInHex:hex];
     if (!enemy || [enemy side] == [self side])
         return @(0);
 
@@ -68,10 +68,10 @@
 @implementation Beauregard (Tactics)
 
 - (BOOL)assignAttacker {
-    __block BAUnit* attacker = nil;
+    __block BATUnit* attacker = nil;
 
     NSArray* csaUnits = [self unorderedCsaUnits];
-    [csaUnits enumerateObjectsUsingBlock:^(BAUnit* unit, NSUInteger idx, BOOL* stop) {
+    [csaUnits enumerateObjectsUsingBlock:^(BATUnit* unit, NSUInteger idx, BOOL* stop) {
         if ([unit isWrecked])
             return;
 
@@ -129,13 +129,13 @@
         return NO;
 
     NSArray* csaUnits = [self unorderedCsaUnits];
-    NSArray* distances = [csaUnits dpt_map:^NSNumber*(BAUnit* unit) {
+    NSArray* distances = [csaUnits dpt_map:^NSNumber*(BATUnit* unit) {
         return @([map distanceFrom:[unit location] to:hexd.hex]);
     }];
     int i = [distances dpt_min_idx];
 
     if (i >= 0) {
-        BAUnit* unit = csaUnits[i];
+        BATUnit* unit = csaUnits[i];
         DEBUG_AI(@"assignDefender %@ to %02d%02d", [unit name], hexd.hex.column, hexd.hex.row);
 
         if ([map is:[unit location] inZone:@"usa"]) {

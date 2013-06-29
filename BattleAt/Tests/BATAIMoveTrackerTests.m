@@ -8,7 +8,7 @@
 
 #import "BATAIMoveTracker.h"
 #import "BATAIMoveTrackerTests.h"
-#import "BAUnit.h"
+#import "BATUnit.h"
 
 
 @implementation BATAIMoveTrackerTests
@@ -34,8 +34,8 @@
 }
 
 - (void)testCaching {
-    BAUnit* unit1 = [[BAUnit alloc] init];
-    BAUnit* unit2 = [[BAUnit alloc] init];
+    BATUnit* unit1 = [[BATUnit alloc] init];
+    BATUnit* unit2 = [[BATUnit alloc] init];
 
     BATAIMoveTracker* mt = [BATAIMoveTracker tracker];
 
@@ -62,8 +62,8 @@
 }
 
 - (void)testClear {
-    BAUnit* unit1 = [[BAUnit alloc] init];
-    BAUnit* unit2 = [[BAUnit alloc] init];
+    BATUnit* unit1 = [[BATUnit alloc] init];
+    BATUnit* unit2 = [[BATUnit alloc] init];
 
     BATAIMoveTracker* mt = [BATAIMoveTracker tracker];
 

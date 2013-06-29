@@ -7,14 +7,17 @@
 //
 
 #import "BAAAnimationListItem.h"
-#import "BAUnit.h"
 #import "HXMCoordinateTransformer.h"
+
+
+@class BATUnit;
+
 
 float SECONDS_PER_HEX_MOVE = 0.75f;
 
 @implementation BAAAnimationListItem
 
-- (CAAnimation*)createMoveAnimationFor:(BAUnit*)unit
+- (CAAnimation*)createMoveAnimationFor:(BATUnit*)unit
                             movingFrom:(HXMHex)startHex
                                     to:(HXMHex)endHex
                             usingXform:(HXMCoordinateTransformer*)xform {

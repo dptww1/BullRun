@@ -9,12 +9,12 @@
 
 @implementation BATBattleReport
 
-+ (id)battleReportWithAttacker:(BAUnit*)attacker andDefender:(BAUnit*)defender {
++ (id)battleReportWithAttacker:(BATUnit*)attacker andDefender:(BATUnit*)defender {
     return [[BATBattleReport alloc] initWithAttacker:attacker
                                          andDefender:defender];
 }
 
-- (id)initWithAttacker:(BAUnit*)attacker andDefender:(BAUnit*)defender {
+- (id)initWithAttacker:(BATUnit*)attacker andDefender:(BATUnit*)defender {
     self = [super init];
 
     if (self) {

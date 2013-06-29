@@ -9,7 +9,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import <UIKit/UIKit.h>
 #import "BATGame.h"
-#import "BAUnit.h"
+#import "BATUnit.h"
 #import "DPTSysUtil.h"
 #import "InfoBarView.h"
 
@@ -52,7 +52,7 @@ static BOOL modeLabelIsChoosable[] = {
 
 @implementation InfoBarView
 
-- (void)showInfoForUnit:(BAUnit*)unit {
+- (void)showInfoForUnit:(BATUnit*)unit {
     if (unit) {
         for (UIView* ctl in [self unitControls])
             [ctl setHidden:NO];

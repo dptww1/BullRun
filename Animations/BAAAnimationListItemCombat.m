@@ -11,7 +11,7 @@
 #import "BAAAnimationList.h"
 #import "BAAGunfire.h"
 #import "BATGame.h"
-#import "BAUnit.h"
+#import "BATUnit.h"
 #import "DPTSysUtil.h"
 #import "HXMCoordinateTransformer.h"
 #import "UnitView.h"
@@ -27,8 +27,8 @@ static CGPoint shiftPoint(CGPoint pt, float dx, float dy) { // TODO: move to glo
 @interface BAAAnimationListItemCombat ()
 
 // Copies of class init method parameters
-@property (nonatomic, strong) BAUnit*     attacker;
-@property (nonatomic, strong) BAUnit*     defender;
+@property (nonatomic, strong) BATUnit*    attacker;
+@property (nonatomic, strong) BATUnit*    defender;
 @property (nonatomic)         HXMHex      retreatHex;
 @property (nonatomic)         HXMHex      advanceHex;
 
@@ -95,8 +95,8 @@ static CGPoint shiftPoint(CGPoint pt, float dx, float dy) { // TODO: move to glo
 //==============================================================================
 @implementation BAAAnimationListItemCombat
 
-+ (id)itemWithAttacker:(BAUnit*)attacker
-              defender:(BAUnit*)defender
++ (id)itemWithAttacker:(BATUnit*)attacker
+              defender:(BATUnit*)defender
              retreatTo:(HXMHex)retreatHex
              advanceTo:(HXMHex)advanceHex {
     BAAAnimationListItemCombat* o = [[BAAAnimationListItemCombat alloc] init];

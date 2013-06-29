@@ -9,7 +9,9 @@
 #import <QuartzCore/QuartzCore.h>
 #import <Foundation/Foundation.h>
 
-@class BAUnit;
+
+@class BATUnit;
+
 
 /**
  * The screen representation of a unit.  Not really a "View" in the UIKit
@@ -30,7 +32,7 @@
  *
  * @return the unit's view
  */
-+ (UnitView*)viewForUnit:(BAUnit*)unit;
++ (UnitView*)viewForUnit:(BATUnit*)unit;
 
 /**
  * Finds the view for the given unit name. The view must have already been

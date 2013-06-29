@@ -14,7 +14,7 @@
 extern float SECONDS_PER_HEX_MOVE;
 
 @class BAAAnimationList;
-@class BAUnit;
+@class BATUnit;
 @class HXMCoordinateTransformer;
 
 /**
@@ -26,7 +26,7 @@ extern float SECONDS_PER_HEX_MOVE;
  * Light wrapper so BAAAnimationListCombat doesn't have to know about its
  * sibling class.  This might be too cute.
  */
-- (CAAnimation*)createMoveAnimationFor:(BAUnit*)unit
+- (CAAnimation*)createMoveAnimationFor:(BATUnit*)unit
                             movingFrom:(HXMHex)startHex
                                     to:(HXMHex)endHex
                             usingXform:(HXMCoordinateTransformer*)transformer;

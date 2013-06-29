@@ -10,7 +10,7 @@
 #import "BAAAnimationListItem.h"
 #import "HXMHex.h"
 
-@class BAUnit;
+@class BATUnit;
 @class BAAAnimationList;
 @class BAAGunfire;
 
@@ -25,8 +25,8 @@
  * @param retreatHex the retreat hex, or (-1,-1) if none
  * @param advanceHex the advance hex, or (-1,-1) if none
  */
-+ (id)itemWithAttacker:(BAUnit*)attacker
-              defender:(BAUnit*)defender
++ (id)itemWithAttacker:(BATUnit*)attacker
+              defender:(BATUnit*)defender
              retreatTo:(HXMHex)retreatHex
              advanceTo:(HXMHex)advanceHex;
 

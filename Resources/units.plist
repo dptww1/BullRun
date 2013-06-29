@@ -161,11 +161,11 @@
 		<dict>
 			<key>$classes</key>
 			<array>
-				<string>BAUnit</string>
+				<string>BATUnit</string>
 				<string>NSObject</string>
 			</array>
 			<key>$classname</key>
-			<string>BAUnit</string>
+			<string>BATUnit</string>
 		</dict>
 		<dict>
 			<key>$class</key>

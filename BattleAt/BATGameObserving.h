@@ -4,8 +4,8 @@
 
 #import "HXMHex.h"
 
-@class BABattleReport;
-@class BAUnit;
+@class BATBattleReport;
+@class BATUnit;
 
 /**
  * Protocol for objects which wish to be informed about game events.
@@ -20,14 +20,14 @@
  *
  * @param unit the unit which is now sighted
  */
-- (void)unitNowSighted:(BAUnit*)unit;
+- (void)unitNowSighted:(BATUnit*)unit;
 
 /**
  * Callback when a unit is now no longer sighted during movement.
  *
  * @param unit the unit which is no longer sighted
  */
-- (void)unitNowHidden:(BAUnit*)unit;
+- (void)unitNowHidden:(BATUnit*)unit;
 
 /**
  * Callback just before orders begin being processed.
@@ -45,13 +45,13 @@
  * @param unit the unit which is moving
  * @param hex the hex that the unit is moving to
  */
-- (void)moveUnit:(BAUnit*)unit to:(HXMHex)hex;
+- (void)moveUnit:(BATUnit*)unit to:(HXMHex)hex;
 
 /**
  * Callback when an attack occurs.
  *
  * @param battleReport the specifics of the battle
  */
-- (void)showAttack:(BABattleReport*)battleReport;
+- (void)showAttack:(BATBattleReport*)battleReport;
 
 @end

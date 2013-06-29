@@ -9,7 +9,7 @@
 #import "BATAIInfluenceMap.h"
 #import "BATGame.h"
 #import "BATOrderOfBattle.h"
-#import "BAUnit.h"
+#import "BATUnit.h"
 #import "Beauregard.h"
 #import "Beauregard+Strategy.h"
 #import "Beauregard+Tactics.h"
@@ -25,7 +25,7 @@
     BATAIInfluenceMap* imap = [BATAIInfluenceMap mapFrom:map];
 
     NSArray* usaUnits = [[game oob] unitsForSide:OtherPlayer([self side])];
-    [usaUnits enumerateObjectsUsingBlock:^(BAUnit* unit, NSUInteger idx, BOOL* stop) {
+    [usaUnits enumerateObjectsUsingBlock:^(BATUnit* unit, NSUInteger idx, BOOL* stop) {
         if ([unit isOffMap] || ![unit sighted])
             return;
 
@@ -89,7 +89,7 @@
         _orderedThisTurn = [NSMutableSet set];
 
         [[[game oob] unitsForSide:_side]
-         enumerateObjectsUsingBlock:^(BAUnit* unit, NSUInteger idx, BOOL* stop) {
+         enumerateObjectsUsingBlock:^(BATUnit* unit, NSUInteger idx, BOOL* stop) {
              if ([unit isOffMap]) {
                  DEBUG_AI(@"Initial Role for %@: None!", [unit name]);
                  _unitRoles[[unit name]] = @(BRAICSARoleNone);
@@ -128,7 +128,7 @@
 }
 
 - (NSArray*)unorderedCsaUnits {
-    return [[[game oob] unitsForSide:_side] dpt_grep:^BOOL(BAUnit* unit) {
+    return [[[game oob] unitsForSide:_side] dpt_grep:^BOOL(BATUnit* unit) {
         return ![unit isOffMap]
             && ![_orderedThisTurn containsObject:[unit name]];
     }];

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class BAUnit;
+@class BATUnit;
 
 /**
  * The Info Bar view, the game display where various information about
@@ -40,7 +40,7 @@
     __weak IBOutlet UIActivityIndicatorView* processingTurn;
 
     /** The currently selected unit, possibly nil. */
-    __weak BAUnit*                           currentUnit;
+    __weak BATUnit*                          currentUnit;
 }
 
 /**
@@ -48,7 +48,7 @@
  *
  * @param unit the unit to show; if `nil` then clear the Info Bar
  */
-- (void)showInfoForUnit:(BAUnit*)unit;
+- (void)showInfoForUnit:(BATUnit*)unit;
 
 /**
  * Shows the Change Mode menu. Called automatically when the user clicks

@@ -1,14 +1,14 @@
 //
-//  BAUnit.m
+//  BTAUnit.m
 //
 //  Created by Dave Townsend on 1/5/13.
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
 #import "BATMoveOrders.h"
-#import "BAUnit.h"
+#import "BATUnit.h"
 
-@implementation BAUnit
+@implementation BATUnit
 
 #pragma mark - Convenience Methods
 
@@ -16,7 +16,7 @@
     return ![_moveOrders isEmpty];
 }
 
-- (BOOL)friends:(BAUnit*)other {
+- (BOOL)friends:(BATUnit*)other {
     return _side == [other side];
 }
 

@@ -10,7 +10,7 @@
 
 
 @class BATGame;
-@class BAUnit;
+@class BATUnit;
 
 
 /** 
@@ -32,7 +32,7 @@
  *
  * @return the unit's theater
  */
-- (BRAICSATheater)computeTheaterOf:(BAUnit*)unit;
+- (BRAICSATheater)computeTheaterOf:(BATUnit*)unit;
 
 /**
  * Orders units which are located in one theater but strategically
@@ -50,6 +50,6 @@
  *
  * TODO: probably belongs in Tactics, actually
  */
-- (void)routeUnit:(BAUnit*)unit toDestination:(HXMHex)destination;
+- (void)routeUnit:(BATUnit*)unit toDestination:(HXMHex)destination;
 
 @end

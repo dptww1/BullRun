@@ -10,7 +10,7 @@
 #import "BATGame.h"
 #import "BATMoveOrders.h"
 #import "BATOrderOfBattle.h"
-#import "BAUnit.h"
+#import "BATUnit.h"
 #import "BRGame.h"
 #import "Beauregard.h"
 #import "Beauregard+Strategy.h"
@@ -21,7 +21,7 @@
 
 @implementation Beauregard (Private)
 
-- (BOOL)unitInCorrectTheater:(BAUnit*)unit {
+- (BOOL)unitInCorrectTheater:(BATUnit*)unit {
     HXMMap* map = [game board];
 
     BRAICSATheater assignedTheater = [[self unitRoles][[unit name]] integerValue];
@@ -48,7 +48,7 @@
     __block int numHidden = 0;
 
     NSArray* usaUnits = [[game oob] unitsForSide:OtherPlayer([self side])];
-    [usaUnits enumerateObjectsUsingBlock:^(BAUnit* unit, NSUInteger idx, BOOL* stop) {
+    [usaUnits enumerateObjectsUsingBlock:^(BATUnit* unit, NSUInteger idx, BOOL* stop) {
         if ([unit isOffMap])
             return;
 
@@ -71,11 +71,11 @@
 - (void)transferUnitTo:(BRAICSATheater)theater {
     BRAICSATheater srcTheater = OtherTheater(theater);
 
-    __block BAUnit* bestUnit = nil;
-    __block HXMHex  bestHex  = HXMHexMake(1000, -1000);
+    __block BATUnit* bestUnit = nil;
+    __block HXMHex   bestHex  = HXMHexMake(1000, -1000);
 
     NSArray* csaUnits = [[game oob] unitsForSide:[self side]];
-    [csaUnits enumerateObjectsUsingBlock:^(BAUnit* unit, NSUInteger idx, BOOL* stop) {
+    [csaUnits enumerateObjectsUsingBlock:^(BATUnit* unit, NSUInteger idx, BOOL* stop) {
         // Candidate unit must be in the source theater
         if (![[self unitRoles][[unit name]] isEqualToNumber:@(srcTheater)])
             return;
@@ -110,7 +110,7 @@
     //    HMMap* map = [game board];
 
     NSArray* csaUnits = [self unorderedCsaUnits];
-    [csaUnits enumerateObjectsUsingBlock:^(BAUnit* unit, NSUInteger idx, BOOL* stop) {
+    [csaUnits enumerateObjectsUsingBlock:^(BATUnit* unit, NSUInteger idx, BOOL* stop) {
         if (![self unitInCorrectTheater:unit]) {
             HXMHex baseHex = [self baseHexForTheater:[[self unitRoles][[unit name]] integerValue]];
 
@@ -124,7 +124,7 @@
     }];
 }
 
-- (BRAICSATheater)computeTheaterOf:(BAUnit*)unit {
+- (BRAICSATheater)computeTheaterOf:(BATUnit*)unit {
     HXMMap* map = [game board];
 
     return [map is:[unit location] inZone:@"manassas"]
@@ -162,7 +162,7 @@
         [self transferUnitTo:needyTheater];
 }
 
-- (void)routeUnit:(BAUnit*)unit toDestination:(HXMHex)destination {
+- (void)routeUnit:(BATUnit*)unit toDestination:(HXMHex)destination {
     HXMMap* map = [game board];
     HXMHex curHex = [unit location];
 

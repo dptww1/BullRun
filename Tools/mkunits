@@ -7,7 +7,7 @@ require 'plist'
 @cfuid_map = { }  # key: type/value name ("NSArray", "1", etc)  value: index in @objs of that key
 @fields = []
 
-@class_names = ["BAUnit", "NSObject"]
+@class_names = ["BATUnit", "NSObject"]
 @objs = [
          "$null",
          {

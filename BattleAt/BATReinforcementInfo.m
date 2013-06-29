@@ -6,20 +6,20 @@
 //
 
 #import "BATReinforcementInfo.h"
-#import "BAUnit.h"
+#import "BATUnit.h"
 #import "HXMHex.h"
 
 @implementation BATReinforcementInfo
 
 #pragma mark - Initialization
 
-+ (BATReinforcementInfo*)createWithUnit:(BAUnit*)unit {
++ (BATReinforcementInfo*)createWithUnit:(BATUnit*)unit {
     return [[BATReinforcementInfo alloc] initWithUnit:unit
                                                onTurn:[unit turn]
                                                 atHex:[unit location]];
 }
 
-- (BATReinforcementInfo*)initWithUnit:(BAUnit*)unit
+- (BATReinforcementInfo*)initWithUnit:(BATUnit*)unit
                                onTurn:(int)turn
                                 atHex:(HXMHex)hex {
     self = [super init];

@@ -10,7 +10,7 @@
 #import "BATGame.h"
 #import "BATMoveOrders.h"
 #import "BATOrderOfBattle.h"
-#import "BAUnit.h"
+#import "BATUnit.h"
 #import "BRMap.h"
 #import "HXMHex.h"
 #import "McDowell.h"
@@ -53,9 +53,9 @@
 // Find combat-worthy unit having matching role, possibly nil
 // "Combat-Worthy" means 1) on-map, 2) not wrecked, 3) not already assigned
 // returned unit will be marked as ordered for this turn
-- (BAUnit*)findCombatWorthyUnitWithRole:(UnitRole)requiredRole {
+- (BATUnit*)findCombatWorthyUnitWithRole:(UnitRole)requiredRole {
     NSArray* usaUnits = [[game oob] unitsForSide:[self side]];
-    return [usaUnits dpt_find:^BOOL(BAUnit* unit) {
+    return [usaUnits dpt_find:^BOOL(BATUnit* unit) {
         if ([[self orderedThisTurn] containsObject:[unit name]])
             return NO;
 
@@ -77,7 +77,7 @@
 
 // TODO: Really needs to use A* algorithm, and respect things like not trying to
 // move unit through ZOC.
-- (void)routeUnit:(BAUnit*)unit toDestination:(HXMHex)destination {
+- (void)routeUnit:(BATUnit*)unit toDestination:(HXMHex)destination {
     [[unit moveOrders] clear];
 
     HXMMap* map = [game board];
@@ -103,7 +103,7 @@
 - (BOOL)assignAttacker {
     HXMMap* map = [game board];
 
-    BAUnit* u = [self findCombatWorthyUnitWithRole:ROLE_ATTACK];
+    BATUnit* u = [self findCombatWorthyUnitWithRole:ROLE_ATTACK];
     if (!u)
         return NO;
 
@@ -123,11 +123,11 @@
     if (hexd.distance < 1)
         return NO;
 
-    __block BAUnit* bestUnit     = nil;
-    __block int     bestDistance = 1000;
+    __block BATUnit* bestUnit     = nil;
+    __block int      bestDistance = 1000;
 
     NSArray* usaUnits = [[game oob] unitsForSide:[self side]];
-    [usaUnits enumerateObjectsUsingBlock:^(BAUnit* unit, NSUInteger idx, BOOL* stop) {
+    [usaUnits enumerateObjectsUsingBlock:^(BATUnit* unit, NSUInteger idx, BOOL* stop) {
         if (![self isUsaUnitDefending](unit))
             return;
 
@@ -159,7 +159,7 @@
 - (BOOL)assignFlanker {
     HXMMap* map = [game board];
 
-    BAUnit* u = [self findCombatWorthyUnitWithRole:ROLE_FLANK];
+    BATUnit* u = [self findCombatWorthyUnitWithRole:ROLE_FLANK];
     if (!u)
         return NO;
 
