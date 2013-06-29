@@ -9,7 +9,7 @@
 #import "HXMHex.h"
 
 
-@class BAUnit;
+@class BATUnit;
 
 
 /**
@@ -44,7 +44,7 @@
  * @param hex the hex being occupied
  * @param impulse the time within a turn when the unit occupies the hex
  */
-- (void)track:(BAUnit*)unit movingTo:(HXMHex)hex onImpulse:(int)impulse;
+- (void)track:(BATUnit*)unit movingTo:(HXMHex)hex onImpulse:(int)impulse;
 
 /**
  * Gets the unit occupying a hex at a given point in the turn.
@@ -54,6 +54,6 @@
  *
  * @return the relevant unit, or `nil` if no unit is in the hex in the impulse
  */
-- (BAUnit*)unitIn:(HXMHex)hex onImpulse:(int)impulse;
+- (BATUnit*)unitIn:(HXMHex)hex onImpulse:(int)impulse;
 
 @end

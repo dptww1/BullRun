@@ -43,7 +43,7 @@
     [_impulses removeAllObjects];
 }
 
-- (void)track:(BAUnit *)unit movingTo:(HXMHex)hex onImpulse:(int)impulse {
+- (void)track:(BATUnit *)unit movingTo:(HXMHex)hex onImpulse:(int)impulse {
     NSValue* key = [NSValue valueWithBytes:&impulse objCType:@encode(int)];
     NSMutableDictionary* dict = _impulses[key];
     if (!dict) {
@@ -54,7 +54,7 @@
     dict[[NSValue valueWithHex:hex]] = unit;
 }
 
-- (BAUnit*)unitIn:(HXMHex)hex onImpulse:(int)impulse {
+- (BATUnit*)unitIn:(HXMHex)hex onImpulse:(int)impulse {
     NSValue* key = [NSValue valueWithBytes:&impulse objCType:@encode(int)];
     NSMutableDictionary* dict = _impulses[key];
     if (!dict)

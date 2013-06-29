@@ -26,7 +26,7 @@
 - (void)testEmpty {
     BATAIMoveTracker* mt = [BATAIMoveTracker tracker];
 
-    BAUnit* u = [mt unitIn:HXMHexMake(1, 2) onImpulse:1];
+    BATUnit* u = [mt unitIn:HXMHexMake(1, 2) onImpulse:1];
     STAssertNil(u, nil);
 
     u = [mt unitIn:HXMHexMake(1, 2) onImpulse:2];
