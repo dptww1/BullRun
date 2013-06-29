@@ -126,7 +126,7 @@ static CGPoint shiftPoint(CGPoint pt, float dx, float dy) { // TODO: move to glo
         } ];
 
     // Attacker animation computation
-    CGPoint centerPt = [xformer hexCenterToScreen:[self attackerHex]];
+    CGPoint centerPt = [xformer hexCenterToScreen:_attackerHex];
 
     CAKeyframeAnimation* anim = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     [anim setValues:@[
@@ -140,13 +140,13 @@ static CGPoint shiftPoint(CGPoint pt, float dx, float dy) { // TODO: move to glo
     [anim setKeyTimes:@[ @0.0f, @0.2f, @0.6f, @0.8f, @1.0f ]];
     [anim setDuration:SECONDS_PER_HEX_MOVE];
 
-    UnitView* v = [UnitView viewForUnit:[self attacker]];
-    [v addAnimation:anim forKey:[[self attacker] name]];
+    UnitView* v = [UnitView viewForUnit:_attacker];
+    [v addAnimation:anim forKey:[_attacker name]];
 
     [CATransaction commit];
 
-    int dirAToD = [[game board] directionFrom:[self attackerHex]
-                                           to:[self defenderHex]];
+    int dirAToD = [[game board] directionFrom:_attackerHex
+                                           to:_defenderHex];
     // 0 degrees longitude is straight to the right, but direction 0 in
     // HMHexMap terms is straight to the top.  So subtract 90 degrees from
     // the game logic angle to get the animation logic angle.
@@ -157,13 +157,12 @@ static CGPoint shiftPoint(CGPoint pt, float dx, float dy) { // TODO: move to glo
 
 - (NSString*)description {
     return [NSString stringWithFormat:@"COMBAT attacker:%@ defender:%@ retreatHex:%02d%02d advanceHex:%02d%02d",
-            [[self attacker] name],
-            [[self defender] name],
-            [self retreatHex].column,
-            [self retreatHex].row,
-            [self advanceHex].column,
-            [self advanceHex].row
-            ];
+            [_attacker name],
+            [_defender name],
+            _retreatHex.column,
+            _retreatHex.row,
+            _advanceHex.column,
+            _advanceHex.row];
 }
 
 @end

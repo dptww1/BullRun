@@ -36,11 +36,11 @@
 }
 
 - (void)addItem:(BATAnimationListItem *)item {
-    [[self items] addObject:item];
+    [_items addObject:item];
 }
 
 - (void)reset {
-    [[self items] removeAllObjects];
+    [_items removeAllObjects];
     [self setNextItemIdx:-1];
 }
 
@@ -50,22 +50,22 @@
     else
         [game doSighting:[game userSide]];
 
-    if ([self nextItemIdx] == -1)
+    if (_nextItemIdx == -1)
         DEBUG_ANIMATION(@"BATAnimationList run() BEGIN");
 
     // Are we done?
-    if ([self nextItemIdx] >= (int)([[self items] count] - 1)) {
+    if (_nextItemIdx >= (int)([_items count] - 1)) {
         DEBUG_ANIMATION(@"BATAnimationList run() END, calling completion block");
-        if ([self completionBlock])
-            [self completionBlock]();
+        if (_completionBlock)
+            _completionBlock();
         return;
     }
 
     // Need to increment index before running the current list item,
     // since runWithParent might recurse here.
-    [self setNextItemIdx:[self nextItemIdx] + 1];
+    [self setNextItemIdx:_nextItemIdx + 1];
 
-    [[[self items] objectAtIndex:[self nextItemIdx]] runWithParent:self];
+    [_items[_nextItemIdx] runWithParent:self];
 }
 
 @end

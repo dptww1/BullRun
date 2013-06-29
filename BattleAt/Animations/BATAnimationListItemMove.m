@@ -40,8 +40,8 @@
     DEBUG_ANIMATION(@"running animation %@", self);
 
     HXMCoordinateTransformer* xformer = [list xformer];
-    UnitView* v = [UnitView viewForUnit:[self actor]];
-    CGPoint endPoint = [xformer hexCenterToScreen:[self endHex]];
+    UnitView* v = [UnitView viewForUnit:_actor];
+    CGPoint endPoint = [xformer hexCenterToScreen:_endHex];
 
     [CATransaction begin];
 
@@ -49,9 +49,9 @@
             [list run:nil];
         } ];
 
-    CAAnimation* anim = [self createMoveAnimationFor:[self actor]
-                                          movingFrom:[self startHex]
-                                                  to:[self endHex]
+    CAAnimation* anim = [self createMoveAnimationFor:_actor
+                                          movingFrom:_startHex
+                                                  to:_endHex
                                           usingXform:xformer];
 
     [v setPosition:endPoint];
@@ -62,12 +62,11 @@
 
 - (NSString*)description {
     return [NSString stringWithFormat:@"MOVE actor:%@ from:%02d%02d to:%02d%02d",
-            [[self actor] name],
-            [self startHex].column,
-            [self startHex].row,
-            [self endHex].column,
-            [self endHex].row
-            ];
+            [_actor name],
+            _startHex.column,
+            _startHex.row,
+            _endHex.column,
+            _endHex.row];
 }
 
 @end
