@@ -10,7 +10,6 @@
 #import "BAAAnimationList.h"
 #import "BAAAnimationListItemMove.h"
 #import "BAAAnimationListItemCombat.h"
-#import "BAAGunfire.h"
 #import "BATBattleReport.h"
 #import "BATGame.h"
 #import "BATMoveOrders.h"

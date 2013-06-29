@@ -1,21 +1,21 @@
 //
-//  BAAGunfire.m
+//  BAGunfire.m
 //  Bull Run
 //
 //  Created by Dave Townsend on 2/27/13.
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
-#import "BAAGunfire.h"
+#import "BAGunfire.h"
 #import "UnitView.h"
 
-@interface BAAGunfire ()
+@interface BAGunfire ()
 
 @property (nonatomic, strong) CAEmitterLayer* gun;
 
 @end
 
-@implementation BAAGunfire (Private)
+@implementation BAGunfire (Private)
 
 + (NSArray*)createEmittersWithAzimuth:(float)azimuth {
     CAEmitterCell* bullet = [CAEmitterCell emitterCell];
@@ -34,10 +34,10 @@
 
 @end
 
-@implementation BAAGunfire
+@implementation BAGunfire
 
 + (id)gunfireFrom:(UnitView *)unitView withAzimuth:(float)azimuth {
-    return [[BAAGunfire alloc] initFrom:unitView withAzimuth:azimuth];
+    return [[BAGunfire alloc] initFrom:unitView withAzimuth:azimuth];
 }
 
 - (id)initFrom:(UnitView *)unitView withAzimuth:(float)azimuth {
@@ -48,7 +48,7 @@
 
         [_gun setEmitterPosition:CGPointMake(25.0f, 25.0f)]; // TODO: base on UnitView
         [_gun setEmitterSize:CGSizeMake(30.0f, 30.0f)]; // TODO: base on UnitView
-        [_gun setEmitterCells:[BAAGunfire createEmittersWithAzimuth:azimuth]];
+        [_gun setEmitterCells:[BAGunfire createEmittersWithAzimuth:azimuth]];
         [_gun setRenderMode:kCAEmitterLayerSurface];
         [_gun setEmitterShape:kCAEmitterLayerRectangle];
 

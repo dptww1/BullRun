@@ -9,7 +9,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "BAAAnimationListItemCombat.h"
 #import "BAAAnimationList.h"
-#import "BAAGunfire.h"
+#import "BAGunfire.h"
 #import "BATGame.h"
 #import "BATUnit.h"
 #import "DPTSysUtil.h"
@@ -27,15 +27,15 @@ static CGPoint shiftPoint(CGPoint pt, float dx, float dy) { // TODO: move to glo
 @interface BAAAnimationListItemCombat ()
 
 // Copies of class init method parameters
-@property (nonatomic, strong) BATUnit*    attacker;
-@property (nonatomic, strong) BATUnit*    defender;
-@property (nonatomic)         HXMHex      retreatHex;
-@property (nonatomic)         HXMHex      advanceHex;
+@property (nonatomic, strong) BATUnit*   attacker;
+@property (nonatomic, strong) BATUnit*   defender;
+@property (nonatomic)         HXMHex     retreatHex;
+@property (nonatomic)         HXMHex     advanceHex;
 
 // Convenience parameters
-@property (nonatomic, strong) BAAGunfire* attackerGunfire;
-@property (nonatomic)         HXMHex      attackerHex;
-@property (nonatomic)         HXMHex      defenderHex;
+@property (nonatomic, strong) BAGunfire* attackerGunfire;
+@property (nonatomic)         HXMHex     attackerHex;
+@property (nonatomic)         HXMHex     defenderHex;
 
 @end
 
@@ -153,7 +153,7 @@ static CGPoint shiftPoint(CGPoint pt, float dx, float dy) { // TODO: move to glo
     // the game logic angle to get the animation logic angle.
     CGFloat angleAToD = DEGREES_TO_RADIANS((dirAToD * 60) - 90);
 
-    [self setAttackerGunfire:[BAAGunfire gunfireFrom:v withAzimuth:angleAToD]];
+    [self setAttackerGunfire:[BAGunfire gunfireFrom:v withAzimuth:angleAToD]];
 }
 
 - (NSString*)description {

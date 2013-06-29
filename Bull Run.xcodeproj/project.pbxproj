@@ -16,7 +16,7 @@
 		CC0CF381168A4E72006D902D /* README.textile in Resources */ = {isa = PBXBuildFile; fileRef = CC0CF380168A4E72006D902D /* README.textile */; };
 		CC0CF3EF169916E2006D902D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC0CF3EE169916E2006D902D /* QuartzCore.framework */; };
 		CC1B671C16DC4B9F0078B20B /* bullet.png in Resources */ = {isa = PBXBuildFile; fileRef = CC1B671B16DC4B9F0078B20B /* bullet.png */; };
-		CC1B672A16DFA5C00078B20B /* BAAGunfire.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1B672816DFA5C00078B20B /* BAAGunfire.m */; };
+		CC1B672A16DFA5C00078B20B /* BAGunfire.m in Sources */ = {isa = PBXBuildFile; fileRef = CC1B672816DFA5C00078B20B /* BAGunfire.m */; };
 		CC25F47D1765748F00F104BE /* Beauregard+Strategy.m in Sources */ = {isa = PBXBuildFile; fileRef = CC25F47C1765748F00F104BE /* Beauregard+Strategy.m */; };
 		CC25F481176E455E00F104BE /* Beauregard+Tactics.m in Sources */ = {isa = PBXBuildFile; fileRef = CC25F480176E455E00F104BE /* Beauregard+Tactics.m */; };
 		CC25F4B31774C92900F104BE /* NSValue+HXMHex.m in Sources */ = {isa = PBXBuildFile; fileRef = CC25F4B21774C92600F104BE /* NSValue+HXMHex.m */; };
@@ -102,8 +102,8 @@
 		CC0CF3E91698CB40006D902D /* BullRun.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BullRun.h; sourceTree = "<group>"; };
 		CC0CF3EE169916E2006D902D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		CC1B671B16DC4B9F0078B20B /* bullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullet.png; sourceTree = "<group>"; };
-		CC1B672716DFA5C00078B20B /* BAAGunfire.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAAGunfire.h; sourceTree = "<group>"; };
-		CC1B672816DFA5C00078B20B /* BAAGunfire.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAAGunfire.m; sourceTree = "<group>"; };
+		CC1B672716DFA5C00078B20B /* BAGunfire.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAGunfire.h; sourceTree = "<group>"; };
+		CC1B672816DFA5C00078B20B /* BAGunfire.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAGunfire.m; sourceTree = "<group>"; };
 		CC25F47B1765748F00F104BE /* Beauregard+Strategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Beauregard+Strategy.h"; sourceTree = "<group>"; };
 		CC25F47C1765748F00F104BE /* Beauregard+Strategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Beauregard+Strategy.m"; sourceTree = "<group>"; };
 		CC25F47E17666AAE00F104BE /* DPTMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DPTMath.h; sourceTree = "<group>"; };
@@ -281,8 +281,8 @@
 				CCE03F6417162FE100C5A217 /* BAAAnimationListItemCombat.m */,
 				CCE03F69171BA62000C5A217 /* BAAAnimationListItemMove.h */,
 				CCE03F6A171BA62100C5A217 /* BAAAnimationListItemMove.m */,
-				CC1B672716DFA5C00078B20B /* BAAGunfire.h */,
-				CC1B672816DFA5C00078B20B /* BAAGunfire.m */,
+				CC1B672716DFA5C00078B20B /* BAGunfire.h */,
+				CC1B672816DFA5C00078B20B /* BAGunfire.m */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -630,7 +630,7 @@
 				CC392E3F16D5A84500160B82 /* BATUnit.m in Sources */,
 				CC392E4216D5ACEC00160B82 /* BATGame.m in Sources */,
 				CC392E4516D5AE4C00160B82 /* BATMoveOrders.m in Sources */,
-				CC1B672A16DFA5C00078B20B /* BAAGunfire.m in Sources */,
+				CC1B672A16DFA5C00078B20B /* BAGunfire.m in Sources */,
 				CCE03F6517162FE100C5A217 /* BAAAnimationListItemCombat.m in Sources */,
 				CCE03F6B171BA62100C5A217 /* BAAAnimationListItemMove.m in Sources */,
 				CCE03F6E171E278E00C5A217 /* BAAAnimationListItem.m in Sources */,
