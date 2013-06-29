@@ -19,12 +19,12 @@ extern float SECONDS_PER_HEX_MOVE;
 
 
 /**
- * Item suitable for including in a `BAAAnimationList`.
+ * Item suitable for including in a `BATAnimationList`.
  */
 @interface BATAnimationListItem : NSObject
 
 /**
- * Light wrapper so BAAAnimationListCombat doesn't have to know about its
+ * Light wrapper so BATAnimationListCombat doesn't have to know about its
  * sibling class.  This might be too cute.
  */
 - (CAAnimation*)createMoveAnimationFor:(BATUnit*)unit

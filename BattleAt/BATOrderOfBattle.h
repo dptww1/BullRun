@@ -18,13 +18,13 @@
 @interface BATOrderOfBattle : NSObject
 
 /** 
- * Array of `BAUnit`s, in arbitrary order. Not mutable, as must always contain
+ * Array of `BATUnit`s, in arbitrary order. Not mutable, as must always contain
  * all the units that could possibly appear in play.
  */
 @property (nonatomic, strong) NSArray* units;
 
 /** 
- * Array of `BAReinforcementInfo` structures, describing the reinforcements
+ * Array of `BATReinforcementInfo` structures, describing the reinforcements
  * in use during play. This is mutable so that it can be adjusted dynamically,
  * to handle variable reinforcements based on user choices.
  */

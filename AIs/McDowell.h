@@ -22,10 +22,10 @@ typedef enum UnitRole {
 /** USA AI */
 @interface McDowell : NSObject <BATAIDelegate>
 
-/** BAAIProtocol implementation. */
+/** BATAIDelegate implementation. */
 - (void)freeSetup:(BATGame*)game;
 
-/** BAAIProtocol implementation. */
+/** BATAIDelegate implementation. */
 - (void)giveOrders:(BATGame*)game;
 
 /**

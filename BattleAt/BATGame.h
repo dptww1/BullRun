@@ -18,7 +18,7 @@
 
 /**
  * A game, tying together the board (an `HMMap`), the units (via a
- * `BAOrderOfBattle`), plus housekeeping information.  
+ * `BATOrderOfBattle`), plus housekeeping information.  
  *
  * Designed to be used as a base class for a battle-specific derived class.
  */

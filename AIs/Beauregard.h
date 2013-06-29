@@ -55,14 +55,14 @@ typedef enum {
 
 
 /** 
- * BAAIProtocol implementation. 
+ * BATAIDelegate implementation.
  *
  * @param game the game to run free setup on
  */
 - (void)freeSetup:(BATGame*)game;
 
 /**
- * BAAIProtocol implementation.
+ * BATAIDelegate implementation.
  *
  * @param game the game instance to give orders to
  */
@@ -79,7 +79,7 @@ typedef enum {
  * Returns list of CSA units which are on the map but have not yet
  * been given orders.
  *
- * @return array of `BAUnit*`
+ * @return array of `BATUnit*`
  */
 - (NSArray*)unorderedCsaUnits;
 
