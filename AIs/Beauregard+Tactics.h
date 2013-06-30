@@ -9,9 +9,6 @@
 #import "Beauregard.h"
 
 
-@class BATAIInfluenceMap;
-
-
 /**
  * Tactical module for CSA AI. This category contains internal methods only.
  */

@@ -8,8 +8,6 @@
 
 #import "McDowell.h"
 
-@class BATAIInfluenceMap;
-
 /** USA AI tactical thinking. */
 @interface McDowell (Tactics)
 

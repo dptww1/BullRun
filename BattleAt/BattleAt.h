@@ -30,3 +30,19 @@ typedef enum {
 #define DEBUG_MOVEORDERS(fmt, ...)     //NSLog(fmt, ## __VA_ARGS__)
 #define DEBUG_REINFORCEMENTS(fmt, ...) NSLog(fmt, ## __VA_ARGS__)
 #define DEBUG_SIGHTING(fmt, ...)       //NSLog(fmt, ## __VA_ARGS__)
+
+#import "BATAnimationGunfire.h"
+#import "BATAnimationList.h"
+#import "BATAnimationListItem.h"
+#import "BATAnimationListItemCombat.h"
+#import "BATAnimationListItemMove.h"
+#import "BATAIDelegate.h"
+#import "BATAIInfluenceMap.h"
+#import "BATAIMoveTracker.h"
+#import "BATBattleReport.h"
+#import "BATGame.h"
+#import "BATGameObserving.h"
+#import "BATMoveOrders.h"
+#import "BATOrderOfBattle.h"
+#import "BATReinforcementInfo.h"
+#import "BATUnit.h"

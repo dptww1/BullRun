@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
-#import "BATGame.h"
+#import "BattleAt.h"
 
 /**
  * Bull Run-specific game class, for overriding `BATGame` methods.

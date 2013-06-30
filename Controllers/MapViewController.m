@@ -7,14 +7,6 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
-#import "BATAnimationList.h"
-#import "BATAnimationListItemMove.h"
-#import "BATAnimationListItemCombat.h"
-#import "BATBattleReport.h"
-#import "BATGame.h"
-#import "BATMoveOrders.h"
-#import "BATOrderOfBattle.h"
-#import "BATUnit.h"
 #import "BullRun.h"
 #import "HexMap.h"
 #import "InfoBarView.h"

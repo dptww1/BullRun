@@ -6,10 +6,6 @@
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
-#import "BATAIInfluenceMap.h"
-#import "BATGame.h"
-#import "BATUnit.h"
-#import "BATMoveOrders.h"
 #import "Beauregard+Strategy.h"
 #import "Beauregard+Tactics.h"
 #import "BRMap.h"

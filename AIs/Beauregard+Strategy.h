@@ -9,10 +9,6 @@
 #import "Beauregard.h"
 
 
-@class BATGame;
-@class BATUnit;
-
-
 /** 
  * Strategy module for CSA AI. This category contains internal methods only.
  */

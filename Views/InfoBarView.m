@@ -8,8 +8,7 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import <UIKit/UIKit.h>
-#import "BATGame.h"
-#import "BATUnit.h"
+#import "BattleAt.h"
 #import "DPTSysUtil.h"
 #import "InfoBarView.h"
 

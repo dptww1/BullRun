@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
+#import "BattleAt.h"
 #import "HexMap.h"
 #import "BullRun.h"
 

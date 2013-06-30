@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "BATAIDelegate.h"
+#import "BattleAt.h"
 #import "BullRun.h"
 #import "HexMap.h"
 

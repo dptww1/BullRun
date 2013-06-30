@@ -8,9 +8,6 @@
 
 #import "McDowell.h"
 #import "McDowell+Strategy.h"
-#import "BATGame.h"
-#import "BATOrderOfBattle.h"
-#import "BATUnit.h"
 #import "BRMap.h"
 #import "HexMap.h"
 #import "NSArray+DPTUtil.h"

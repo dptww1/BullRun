@@ -6,11 +6,6 @@
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
-#import "BATAIInfluenceMap.h"
-#import "BATGame.h"
-#import "BATMoveOrders.h"
-#import "BATOrderOfBattle.h"
-#import "BATUnit.h"
 #import "BRMap.h"
 #import "HexMap.h"
 #import "McDowell.h"

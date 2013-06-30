@@ -8,10 +8,6 @@
 
 
 #import "DPTMath.h"
-#import "BATGame.h"
-#import "BATMoveOrders.h"
-#import "BATOrderOfBattle.h"
-#import "BATUnit.h"
 #import "BRGame.h"
 #import "Beauregard.h"
 #import "Beauregard+Strategy.h"
