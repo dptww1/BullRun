@@ -7,7 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import "BATAnimationListItem.h"
-#import "HXMHex.h"
+#import "HexMap.h"
 
 @class BATUnit;
 @class BATAnimationList;

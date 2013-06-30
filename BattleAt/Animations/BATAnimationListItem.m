@@ -7,7 +7,6 @@
 //
 
 #import "BATAnimationListItem.h"
-#import "HXMCoordinateTransformer.h"
 
 
 @class BATUnit;

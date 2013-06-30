@@ -9,7 +9,6 @@
 #import "BATAnimationList.h"
 #import "BATAnimationListItemMove.h"
 #import "BATUnit.h"
-#import "HXMCoordinateTransformer.h"
 #import "UnitView.h"
 
 //==============================================================================

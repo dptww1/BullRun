@@ -2,7 +2,7 @@
 // BATGameObserving.h
 //
 
-#import "HXMHex.h"
+#import "HexMap.h"
 
 @class BATBattleReport;
 @class BATUnit;

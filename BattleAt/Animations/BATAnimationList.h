@@ -6,9 +6,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "HexMap.h"
 
 @class BATAnimationListItem;
-@class HXMCoordinateTransformer;
 
 /**
  * Manages a sequential list of animations.

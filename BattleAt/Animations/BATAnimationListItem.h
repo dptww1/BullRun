@@ -7,7 +7,7 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import <Foundation/Foundation.h>
-#import "HXMHex.h"
+#import "HexMap.h"
 
 /** The speed of movement animations. */
 extern float SECONDS_PER_HEX_MOVE;
@@ -15,7 +15,6 @@ extern float SECONDS_PER_HEX_MOVE;
 
 @class BATAnimationList;
 @class BATUnit;
-@class HXMCoordinateTransformer;
 
 
 /**

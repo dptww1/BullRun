@@ -9,13 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 #import "BATGameObserving.h"
-#import "HXMHex.h"
+#import "HexMap.h"
 
 
 @class BATAnimationList;
 @class BATBattleReport;
 @class BATUnit;
-@class HXMCoordinateTransformer;
 @class InfoBarView;
 @class OrderOfBattle;
 
