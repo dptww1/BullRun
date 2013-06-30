@@ -56,7 +56,7 @@
     return ^BOOL(BATUnit* unit) {
         NSNumber* role = [self unitRoles][[unit name]];
         return role
-            && [role isEqualToNumber:@(ROLE_DEFEND)]
+            && [role isEqualToNumber:@(BRAIUSAUnitRoleDefend)]
             && ![unit isOffMap];
     };
 }
@@ -86,7 +86,7 @@
 
     if (minUnit) {
         DEBUG_AI(@"Switching %@'s role to ATTACK", [minUnit name]);
-        [self switch:minUnit roleTo:ROLE_ATTACK];
+        [self switch:minUnit roleTo:BRAIUSAUnitRoleAttack];
     } else
         DEBUG_AI(@"No unit is available for attack!");
 }
@@ -116,7 +116,7 @@
 
     if (minUnit) {
         DEBUG_AI(@"Switching %@'s role to DEFEND", [minUnit name]);
-        [self switch:minUnit roleTo:ROLE_DEFEND];
+        [self switch:minUnit roleTo:BRAIUSAUnitRoleDefend];
 
     } else {
         DEBUG_AI(@"No unit is available for defense!");

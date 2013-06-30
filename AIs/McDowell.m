@@ -90,19 +90,19 @@
         _unitRoles = [NSMutableDictionary dictionary];
         
         // Set the data for the historical setup.
-        _unitRoles[@"Blenker"]    = @(ROLE_DEFEND);
-        _unitRoles[@"Burnside"]   = @(ROLE_FLANK);
-        _unitRoles[@"Davies"]     = @(ROLE_DEFEND);
-        _unitRoles[@"Franklin"]   = @(ROLE_FLANK);
-        _unitRoles[@"Howard"]     = @(ROLE_FLANK);
-        _unitRoles[@"Keyes"]      = @(ROLE_ATTACK);
-        _unitRoles[@"Militia"]    = @(ROLE_DEFEND);
-        _unitRoles[@"Porter"]     = @(ROLE_FLANK);
-        _unitRoles[@"Richardson"] = @(ROLE_DEFEND);
-        _unitRoles[@"Schenck"]    = @(ROLE_ATTACK);
-        _unitRoles[@"Sherman"]    = @(ROLE_ATTACK);
-        _unitRoles[@"Volunteers"] = @(ROLE_DEFEND);
-        _unitRoles[@"Willcox"]    = @(ROLE_FLANK);
+        _unitRoles[@"Blenker"]    = @(BRAIUSAUnitRoleDefend);
+        _unitRoles[@"Burnside"]   = @(BRAIUSAUnitRoleFlank);
+        _unitRoles[@"Davies"]     = @(BRAIUSAUnitRoleDefend);
+        _unitRoles[@"Franklin"]   = @(BRAIUSAUnitRoleFlank);
+        _unitRoles[@"Howard"]     = @(BRAIUSAUnitRoleFlank);
+        _unitRoles[@"Keyes"]      = @(BRAIUSAUnitRoleAttack);
+        _unitRoles[@"Militia"]    = @(BRAIUSAUnitRoleDefend);
+        _unitRoles[@"Porter"]     = @(BRAIUSAUnitRoleFlank);
+        _unitRoles[@"Richardson"] = @(BRAIUSAUnitRoleDefend);
+        _unitRoles[@"Schenck"]    = @(BRAIUSAUnitRoleAttack);
+        _unitRoles[@"Sherman"]    = @(BRAIUSAUnitRoleAttack);
+        _unitRoles[@"Volunteers"] = @(BRAIUSAUnitRoleDefend);
+        _unitRoles[@"Willcox"]    = @(BRAIUSAUnitRoleFlank);
 
         _flankFord = HXMHexMake(3,2);
         _attackFord = HXMHexMake(6,4);

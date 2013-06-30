@@ -53,7 +53,7 @@
 // Find combat-worthy unit having matching role, possibly nil
 // "Combat-Worthy" means 1) on-map, 2) not wrecked, 3) not already assigned
 // returned unit will be marked as ordered for this turn
-- (BATUnit*)findCombatWorthyUnitWithRole:(UnitRole)requiredRole {
+- (BATUnit*)findCombatWorthyUnitWithRole:(BRAIUSAUnitRole)requiredRole {
     NSArray* usaUnits = [[game oob] unitsForSide:[self side]];
     return [usaUnits dpt_find:^BOOL(BATUnit* unit) {
         if ([[self orderedThisTurn] containsObject:[unit name]])
@@ -103,7 +103,7 @@
 - (BOOL)assignAttacker {
     HXMMap* map = [game board];
 
-    BATUnit* u = [self findCombatWorthyUnitWithRole:ROLE_ATTACK];
+    BATUnit* u = [self findCombatWorthyUnitWithRole:BRAIUSAUnitRoleAttack];
     if (!u)
         return NO;
 
@@ -159,7 +159,7 @@
 - (BOOL)assignFlanker {
     HXMMap* map = [game board];
 
-    BATUnit* u = [self findCombatWorthyUnitWithRole:ROLE_FLANK];
+    BATUnit* u = [self findCombatWorthyUnitWithRole:BRAIUSAUnitRoleFlank];
     if (!u)
         return NO;
 

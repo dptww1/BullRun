@@ -12,11 +12,11 @@
 #import "HXMHex.h"
 
 /** The possible types of roles which the strategy module might assign. */
-typedef enum UnitRole {
-    ROLE_ATTACK, /**< unit will advance on CSA base via the attack ford */
-    ROLE_FLANK,  /**< unit will advance on CSA base via the flank ford */
-    ROLE_DEFEND  /**< unit will respond to CSA advances */
-} UnitRole;
+typedef enum  {
+    BRAIUSAUnitRoleAttack, /**< unit will advance on CSA base via the attack ford */
+    BRAIUSAUnitRoleFlank,  /**< unit will advance on CSA base via the flank ford */
+    BRAIUSAUnitRoleDefend  /**< unit will respond to CSA advances */
+} BRAIUSAUnitRole;
 
 
 /** USA AI */
