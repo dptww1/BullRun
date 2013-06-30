@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
-#import "HXMMap.h"
+#import "HexMap.h"
 #import "BullRun.h"
 
 /**

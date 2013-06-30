@@ -5,10 +5,11 @@
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
-#import "BATAIInfluenceMap.h"
-#import "HXMHex.h"
-#import "HXMMap.h"
 
+#import "BATAIInfluenceMap.h"
+
+
+//==============================================================================
 @interface BATAIInfluenceMap ()
 
 @property (nonatomic)        float*  mapData;
@@ -16,6 +17,8 @@
 
 @end
 
+
+//==============================================================================
 @implementation BATAIInfluenceMap (Private)
 
 - (int)offsetForHex:(HXMHex)hex {
@@ -24,6 +27,8 @@
 
 @end
 
+
+//==============================================================================
 @implementation BATAIInfluenceMap
 
 + (BATAIInfluenceMap*)mapFrom:(HXMMap*)board {

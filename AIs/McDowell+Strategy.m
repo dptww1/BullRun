@@ -12,7 +12,7 @@
 #import "BATOrderOfBattle.h"
 #import "BATUnit.h"
 #import "BRMap.h"
-#import "HXMHex.h"
+#import "HexMap.h"
 #import "NSArray+DPTUtil.h"
 
 #define DO_SANITY_CHECK 1

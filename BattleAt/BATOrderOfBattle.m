@@ -10,7 +10,6 @@
 #import "BATReinforcementInfo.h"
 #import "BATUnit.h"
 #import "DPTSysUtil.h"
-#import "HXMHex.h"
 #import "NSArray+DPTUtil.h"
 
 @implementation BATOrderOfBattle

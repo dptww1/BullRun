@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "BATAIDelegate.h"
 #import "BullRun.h"
-#import "HXMHex.h"
+#import "HexMap.h"
 
 /** The possible types of roles which the strategy module might assign. */
 typedef enum  {

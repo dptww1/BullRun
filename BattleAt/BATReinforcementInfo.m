@@ -7,7 +7,6 @@
 
 #import "BATReinforcementInfo.h"
 #import "BATUnit.h"
-#import "HXMHex.h"
 
 @implementation BATReinforcementInfo
 

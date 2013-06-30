@@ -9,7 +9,7 @@
 #import "BattleAt.h"
 #import "BATAIDelegate.h"
 #import "BATGameObserving.h"
-#import "HXMMap.h"
+#import "HexMap.h"
 
 
 @class BATOrderOfBattle;

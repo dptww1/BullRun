@@ -6,7 +6,6 @@
 //
 
 #import "DPTResizableBuffer.h"
-#import "HXMHex.h"
 #import "BATMoveOrders.h"
 
 //==============================================================================

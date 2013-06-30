@@ -13,9 +13,6 @@
 #import "BATOrderOfBattle.h"
 #import "BATReinforcementInfo.h"
 #import "BATUnit.h"
-#import "HXMHex.h"
-#import "HXMMap.h"
-#import "HXMTerrainEffect.h"
 #import "NSArray+DPTUtil.h"
 
 

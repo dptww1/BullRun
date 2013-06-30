@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "BATAIDelegate.h"
 #import "BullRun.h"
-#import "HXMHex.h"
+#import "HexMap.h"
 
 
 /** Enum defining what strategic role a unit should fulfill. */

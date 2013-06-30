@@ -6,7 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "HXMHex.h"
+#import "HexMap.h"
 
 @class DPTResizableBuffer;
 

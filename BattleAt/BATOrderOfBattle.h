@@ -7,7 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import "BattleAt.h"
-#import "HXMHex.h"
+#import "HexMap.h"
 
 @class BATReinforcementInfo;
 @class BATUnit;

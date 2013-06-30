@@ -12,12 +12,11 @@
 #import "BATOrderOfBattle.h"
 #import "BATUnit.h"
 #import "BRMap.h"
-#import "HXMHex.h"
+#import "HexMap.h"
 #import "McDowell.h"
 #import "McDowell+Strategy.h"
 #import "McDowell+Tactics.h"
 #import "NSArray+DPTUtil.h"
-#import "NSValue+HXMHex.h"
 
 
 @implementation McDowell (Private)

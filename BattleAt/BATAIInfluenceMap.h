@@ -5,10 +5,10 @@
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "HXMHex.h"
 
-@class HXMMap;
+#import <Foundation/Foundation.h>
+#import "HexMap.h"
+
 
 /**
  * A map of abstract values for use by the AI routines.  There is a single

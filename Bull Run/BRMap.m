@@ -8,7 +8,6 @@
 
 #import "BATGame.h"
 #import "BRMap.h"
-#import "NSValue+HXMHex.h"
 
 @implementation BRMap
 

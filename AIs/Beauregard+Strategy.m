@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
+
 #import "DPTMath.h"
 #import "BATGame.h"
 #import "BATMoveOrders.h"
@@ -14,10 +15,7 @@
 #import "BRGame.h"
 #import "Beauregard.h"
 #import "Beauregard+Strategy.h"
-#import "HXMMap.h"
-#import "HXMPathFinder.h"
-#import "HXMTerrainEffect.h"
-#import "NSValue+HXMHex.h"
+
 
 @implementation Beauregard (Private)
 

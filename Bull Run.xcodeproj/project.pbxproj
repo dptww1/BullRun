@@ -103,6 +103,7 @@
 		CC058F7A177F407700FD165C /* BATAnimationListItemCombat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BATAnimationListItemCombat.m; sourceTree = "<group>"; };
 		CC058F7B177F407700FD165C /* BATAnimationListItemMove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BATAnimationListItemMove.h; sourceTree = "<group>"; };
 		CC058F7C177F407700FD165C /* BATAnimationListItemMove.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BATAnimationListItemMove.m; sourceTree = "<group>"; };
+		CC058F82178092C300FD165C /* HexMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HexMap.h; sourceTree = "<group>"; };
 		CC0805A716D3085000CB8C79 /* BATBattleReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BATBattleReport.h; sourceTree = "<group>"; };
 		CC0805A816D3085000CB8C79 /* BATBattleReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BATBattleReport.m; sourceTree = "<group>"; };
 		CC0805AA16D3165D00CB8C79 /* BATGameObserving.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BATGameObserving.h; sourceTree = "<group>"; };
@@ -432,6 +433,7 @@
 		CCDB60EC16A04E43006668C2 /* HexMap */ = {
 			isa = PBXGroup;
 			children = (
+				CC058F82178092C300FD165C /* HexMap.h */,
 				CCC71D5416CC6EE9003636E3 /* HXMCoordinateTransformer.h */,
 				CCC71D5516CC6EE9003636E3 /* HXMCoordinateTransformer.m */,
 				CCF61C9416CC63C900391025 /* HXMGeometry.h */,
