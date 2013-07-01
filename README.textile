@@ -62,3 +62,4 @@ h3. Bugs
 * Trying to enter an impossible hex lets unit accumulate a crazy number of MPs
 * Deploying reinforcement nonreproducibly gets Access Violation
 * Time widget sometimes shifts upwards a bit
+* Shouldn't be able to click time while resolving turn
