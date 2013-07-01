@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
+
 #import "Beauregard.h"
 #import "Beauregard+Strategy.h"
 #import "Beauregard+Tactics.h"
@@ -14,6 +15,7 @@
 #import "NSArray+DPTUtil.h"
 
 
+//==============================================================================
 @implementation Beauregard (Private)
 
 - (BATAIInfluenceMap*)createInfluenceMap:(BATGame*)game {
@@ -74,6 +76,7 @@
 @end
 
 
+//==============================================================================
 @implementation Beauregard
 
 - (id)init {
@@ -114,8 +117,7 @@
     while ([self assignDefender:imap])
         ;
 
-    while ([self assignAttacker])
-        ;
+    [self assignAttackers];
 }
 
 - (HXMHex)baseHexForTheater:(BRAICSATheater)theater {

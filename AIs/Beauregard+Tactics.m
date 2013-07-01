@@ -63,10 +63,8 @@
 //==============================================================================
 @implementation Beauregard (Tactics)
 
-- (BOOL)assignAttacker {
-    __block BATUnit* attacker = nil;
-
-    NSArray* csaUnits = [self unorderedCsaUnits];
+- (void)assignAttackers {
+    NSArray* csaUnits = [[game oob] unitsForSide:CSA];
     [csaUnits enumerateObjectsUsingBlock:^(BATUnit* unit, NSUInteger idx, BOOL* stop) {
         if ([unit isWrecked])
             return;
@@ -79,7 +77,7 @@
 
         // find max value in attackChances
         int attackDir = [attackChances dpt_max_idx];
-        int attackChance = attackChances[attackDir];
+        int attackChance = [attackChances[attackDir] intValue];
 
         if ([game unitIsSurrounded:unit])
             attackChance *= 2;
@@ -114,8 +112,6 @@
         DEBUG_AI(@"  => attacking dir %d in mode %d because roll %d chance %d",
                  attackDir, [unit mode], dieroll, attackChance);
     }];
-
-    return attacker != nil;;
 }
 
 - (BOOL)assignDefender:(BATAIInfluenceMap*)imap {

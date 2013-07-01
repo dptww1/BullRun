@@ -15,11 +15,9 @@
 @interface Beauregard (Tactics)
 
 /**
- * Assigns an attacker, if possible.
- *
- * @return `YES` if an attacker was assigned, `NO` if no attack was possible
+ * Evaluates attack possibilities of all CSA units, and sets up attacks.
  */
-- (BOOL)assignAttacker;
+- (void)assignAttackers;
 
 /**
  * Assigns a defender, if possible.
