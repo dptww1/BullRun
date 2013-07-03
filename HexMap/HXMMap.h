@@ -41,9 +41,11 @@
 - (float)mpCostOf:(HXMHex)hex;
 
 /**
- * Determines if the given hex is prohibited for movement.
+ * Determines if the given hex is prohibited for movement. This could be
+ * because the coordinates are offmap, or because the terrain in the hex
+ * is prohibited.
  *
- * @param hex to get movement cost of
+ * @param hex to check
  *
  * @return `YES` if the hex is prohibited, `NO` if it isn't
  */
