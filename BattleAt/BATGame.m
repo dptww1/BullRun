@@ -164,7 +164,11 @@ BATGame* game; // the global game instance
                 continue;
             
             HXMHex nextHex = [[u moveOrders] firstHexAndRemove:NO];
-        
+
+            // Trying to enter illegal hex?
+            if ([_board isProhibited:nextHex])
+                continue;
+
             // Is it occupied?
             BATUnit* blocker = [self unitInHex:nextHex];
             if (blocker) {

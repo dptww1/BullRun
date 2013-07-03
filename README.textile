@@ -50,6 +50,8 @@ h3. Functionality
 * add "friend" and "enemies" as methods in OrderOfBattle, use in Game#sighting
 * When an unsighted enemy moves into sight, it first appears in the new hex, then the move animation shows it
   moving from its old hex into its new hex
+* MPs should be per-unit, not hardwired
+* McDowell should be using dpt_xxx methods instead of enumerateUsingBlock:
 
 h3. Organization
 * probably should have a controller for InfoBarView
@@ -59,7 +61,6 @@ h3. API
 * BAGame (and BRGame?) needs a "startGame" method (and can't use "initialize"!) so can restart after ending game
 
 h3. Bugs
-* Trying to enter an impossible hex lets unit accumulate a crazy number of MPs
 * Deploying reinforcement nonreproducibly gets Access Violation
 * Time widget sometimes shifts upwards a bit
 * Shouldn't be able to click time while resolving turn
