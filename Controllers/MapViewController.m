@@ -34,7 +34,7 @@
     if (self) {
         _coordXformer = [[HXMCoordinateTransformer alloc]
                          initWithMap:[game board]
-                              origin:CGPointMake(67, 58)
+                              origin:CGPointMake(66, 54)
                              hexSize:CGSizeMake(51, 51)];
         _currentUnit = nil;
         [self setWantsFullScreenLayout:YES];
