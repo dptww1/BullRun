@@ -140,6 +140,13 @@ BATGame* game; // the global game instance
     }];
 }
 
+- (void)allotMovementPoints {
+    @throw [NSException
+            exceptionWithName:@"BAMissingOverride"
+                       reason:@"Classes derived from BAGame must implement allotMovementPoints"
+                     userInfo:@{}];
+}
+
 - (void)processTurn {
     [self notifyObserversWithSelector:@selector(movePhaseWillBegin)];
 
@@ -147,11 +154,8 @@ BATGame* game; // the global game instance
     
     NSArray*      sortedUnits = [self sortUnits];                       // elements: BATUnit*
     NSMutableSet* didntMove = [NSMutableSet setWithArray:sortedUnits];  // keys: BATUnit*; if present, this unit didn't move this turn
-    
-    // All units get 5 new MPs
-    for (BATUnit* u in sortedUnits) {
-        [u setMps:[u mps] + 5];
-    }
+
+    [self allotMovementPoints];
     
     // Because lower-rated units can block higher-rated units, we have to keep processing until no moves were possible.
     BOOL atLeastOneUnitMoved = YES;

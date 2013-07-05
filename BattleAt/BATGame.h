@@ -67,6 +67,13 @@
 - (void)doSighting:(PlayerSide)side;
 
 /**
+ * Called at beginning of turn to assign new movement points to all
+ * the units in the game.  
+ * Must be implemented by derived classes!
+ */
+- (void)allotMovementPoints;
+
+/**
  * Begins processing the turn. Orders are implemented, game events trigger
  * callbacks, and the turn is advanced.
  */

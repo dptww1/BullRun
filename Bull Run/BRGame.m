@@ -15,6 +15,12 @@
     return (BRMap*)[self board];
 }
 
+// Override of BAGame method
+- (void)allotMovementPoints {
+    for (BATUnit* u in [[self oob] units])
+        [u setMps:[u mps] + 5];
+}
+
 // Returns YES if `enemy' situated in given terrain is sighted by any of `friends'.
 - (BOOL)isUnit:(BATUnit*)enemy inHex:(HXMHex)hex sightedBy:(NSArray*)friends {
 
