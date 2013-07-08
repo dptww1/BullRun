@@ -54,7 +54,6 @@ h3. Functionality
 
 h3. Organization
 * probably should have a controller for InfoBarView
-* BATAnimation isn't really BAT, since its implementations use Views
 
 h3. API
 * HMPathFinder doesn't need "minCost" parameter, since it can be inferred from the "map" parameter
