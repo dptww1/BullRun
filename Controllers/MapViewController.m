@@ -308,31 +308,12 @@
 
 #pragma mark - Battle@ Callbacks
 
-- (void)unitNowHidden:(BATUnit*)unit {
-    DEBUG_SIGHTING(@"MapViewController#unitNowHidden:%@, viewLoaded=%d", [unit name], [self isViewLoaded]);
-    
-    CALayer* unitLayer = [UnitView viewForUnit:unit];
-
-    [unitLayer setOpacity:0.0f];
-    
-    [[self view] setNeedsDisplay];
-}
-
-- (void)unitNowSighted:(BATUnit*)unit {
-    DEBUG_SIGHTING(@"MapViewController#unitNowSighted:%@, viewLoaded=%d", [unit name], [self isViewLoaded]);
-    
-    CALayer* unitLayer = [UnitView viewForUnit:unit];
-    
-    // Layer might be out of position because didn't begin on map, but disable animations
-    [CATransaction begin];
-    [CATransaction setDisableActions:YES];
-    [unitLayer setPosition:[_coordXformer hexCenterToScreen:[unit location]]];
-    [CATransaction commit];
-
-    // But animate the opacity
-    [unitLayer setOpacity:1.0f];
-
-    [[self view] setNeedsDisplay];
+- (void)sightingChangedWithNowSightedUnits:(NSSet*)sightedUnits
+                         andNowHiddenUnits:(NSSet*)hiddenUnits {
+    DEBUG_SIGHTING(@"Sighting changed; sighted=%@ hidden=%@", sightedUnits, hiddenUnits);
+    [_animationList addItem:[BATAnimationListItemSightingChanges
+                             itemSightingChangesWithNowSightedUnits:sightedUnits
+                                                  andNowHiddenUnits:hiddenUnits]];
 }
 
 - (void)moveUnit:(BATUnit*)unit to:(HXMHex)hex {
@@ -363,13 +344,13 @@
 - (IBAction)playerIsUsa:(id)sender {
     NSLog(@"Now player is USA");
     [game hackUserSide:USA];
-    [[self view] setNeedsDisplay];
+    [_animationList run:nil];
 }
 
 - (IBAction)playerIsCsa:(id)sender {
     NSLog(@"Now player is CSA");
     [game hackUserSide:CSA];
-    [[self view] setNeedsDisplay];
+    [_animationList run:nil];
 }
 
 @end

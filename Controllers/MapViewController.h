@@ -48,10 +48,8 @@
 #pragma mark - GameObserving Implementation
 
 /** GameObserving method implementation. */
-- (void)unitNowSighted:(BATUnit*)unit;
-
-/** GameObserving method implementation. */
-- (void)unitNowHidden:(BATUnit*)unit;
+- (void)sightingChangedWithNowSightedUnits:(NSSet*)sightedUnits
+                         andNowHiddenUnits:(NSSet*)hiddenUnits;
 
 /** GameObserving method implementation. */
 - (void)movePhaseWillBegin;

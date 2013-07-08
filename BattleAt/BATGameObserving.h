@@ -16,18 +16,13 @@
 @optional
 
 /**
- * Callback when a unit is sighted during movement.
+ * Callback after a unit moves and unit(s) now become hidden and/or sighted.
  *
- * @param unit the unit which is now sighted
+ * @param sightedUnits collection of `BATUnit*` which are now sighted
+ * @param hiddenUnits collection of `BATUnit*` which are now hidden
  */
-- (void)unitNowSighted:(BATUnit*)unit;
-
-/**
- * Callback when a unit is now no longer sighted during movement.
- *
- * @param unit the unit which is no longer sighted
- */
-- (void)unitNowHidden:(BATUnit*)unit;
+- (void)sightingChangedWithNowSightedUnits:(NSSet*)sightedUnits
+                         andNowHiddenUnits:(NSSet*)hiddenUnits;
 
 /**
  * Callback just before orders begin being processed.

@@ -35,15 +35,24 @@
     __block BOOL sighted = NO;
 
     [friends enumerateObjectsUsingBlock:^(BATUnit* friend, NSUInteger idx, BOOL* stop) {
+        HXMMap* map = [self board];
+
         // Friends which are offboard can't spot.
-        if (![[self board] legal:[friend location]])
+        if (![map legal:[friend location]])
             return;
 
+        BOOL friendInUsaZone = [map is:[friend location] inZone:@"usa"];
+        BOOL friendInCsaZone = [map is:[friend location] inZone:@"csa"];
+
         // Friendly units within three hexes sight enemies...
-        if ([[self board] distanceFrom:[friend location] to:[enemy location]] < 4) {
+        if ([map distanceFrom:[friend location] to:[enemy location]] < 4) {
 
             // ...as long as both units are on the same side of the river
-            if ([self.board is:[friend location] inSameZoneAs:hex]) {
+            BOOL enemyInUsaZone = [map is:[enemy location] inZone:@"usa"];
+            BOOL enemyInCsaZone = [map is:[enemy location] inZone:@"csa"];
+
+            if ((friendInUsaZone && enemyInUsaZone) ||
+                (friendInCsaZone && enemyInCsaZone)) {
                 DEBUG_SIGHTING(@"%@ spots %@", [friend name], [enemy name]);
                 *stop = sighted = YES;
             }

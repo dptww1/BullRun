@@ -309,13 +309,15 @@ static const int DEFAULT_CAPACITY = 12;
     return fx ? [fx mpCost] : 10000.0f;
 }
 
-- (BOOL)is:(HXMHex)hex inSameZoneAs:(HXMHex)other {
+- (NSSet*)zonesForHex:(HXMHex)hex {
+    NSMutableSet* zones = [NSMutableSet set];
+
     for (NSString* zname in [_zones keyEnumerator]) {
-        if ([self is:hex inZone:zname] && [self is:other inZone:zname])
-            return YES;
+        if ([self is:hex inZone:zname])
+            [zones addObject:zname];
     }
     
-    return NO;
+    return zones;
 }
 
 - (BOOL)is:(HXMHex)hex inZone:(NSString*)zoneName {

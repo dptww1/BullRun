@@ -23,19 +23,20 @@ typedef enum {
 ((mode) == CHARGE || (mode) == ATTACK || (mode) == SKIRMISH)
 
 #define DEBUG_AI(fmt, ...)             //NSLog(fmt, ## __VA_ARGS__)
-#define DEBUG_ANIMATION(fmt, ...)      //NSLog(fmt, ## __VA_ARGS__)
+#define DEBUG_ANIMATION(fmt, ...)      NSLog(fmt, ## __VA_ARGS__)
 #define DEBUG_COMBAT(fmt, ...)         //NSLog(fmt, ## __VA_ARGS__)
 #define DEBUG_MAP(fmt, ...)            //NSLog(fmt, ## __VA_ARGS__)
 #define DEBUG_MOVEMENT(fmt, ...)       //NSLog(fmt, ## __VA_ARGS__)
 #define DEBUG_MOVEORDERS(fmt, ...)     //NSLog(fmt, ## __VA_ARGS__)
 #define DEBUG_REINFORCEMENTS(fmt, ...) //NSLog(fmt, ## __VA_ARGS__)
-#define DEBUG_SIGHTING(fmt, ...)       //NSLog(fmt, ## __VA_ARGS__)
+#define DEBUG_SIGHTING(fmt, ...)       NSLog(fmt, ## __VA_ARGS__)
 
 #import "BATAnimationGunfire.h"
 #import "BATAnimationList.h"
 #import "BATAnimationListItem.h"
 #import "BATAnimationListItemCombat.h"
 #import "BATAnimationListItemMove.h"
+#import "BATAnimationListItemSightingChanges.h"
 #import "BATAIDelegate.h"
 #import "BATAIInfluenceMap.h"
 #import "BATAIMoveTracker.h"

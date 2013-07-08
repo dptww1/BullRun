@@ -10,6 +10,7 @@
 #import "BRAppDelegate.h"
 #import "BRGame.h"
 #import "MapViewController.h"
+#import "McDowell.h"
 
 @implementation BRAppDelegate
 
@@ -23,7 +24,8 @@ static MapViewController* mvController;
     game = [[BRGame alloc] init];
 
     // Easiest to do this after `game` is assigned, so AI can use it
-    [game setAi:[[Beauregard alloc] init]];
+    //[game setAi:[[Beauregard alloc] init]];  // TODO: remove
+    [game setAi:[[McDowell alloc] init]];    // TODO: remove
     
     mvController = [[MapViewController alloc] initWithNibName:nil bundle:nil];
     UINavigationController* navController = [[UINavigationController alloc] initWithRootViewController:mvController];
@@ -34,6 +36,7 @@ static MapViewController* mvController;
     [game addObserver:mvController];
     
     [game doSighting:CSA]; // TODO: get rid of this once game setup works
+    [[mvController animationList] run:nil];
 
     [_window makeKeyAndVisible];
 

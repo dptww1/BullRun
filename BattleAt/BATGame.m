@@ -104,22 +104,26 @@ BATGame* game; // the global game instance
 // but doing it this way allows more convenient testing and debugging.
 - (void)doSighting:(PlayerSide)side {
 
+    NSMutableSet* newlySighted = [NSMutableSet set]; // contains BATUnit*
+    NSMutableSet* newlyHidden  = [NSMutableSet set]; // contains BATUnit*
+
     // TODO: friends and enemies should be methods on OOB
 
     NSArray* friends = [_oob unitsForSide:side];
     NSArray* enemies = [_oob unitsForSide:OtherPlayer(side)];
 
-    [friends enumerateObjectsUsingBlock:^(id friend, NSUInteger idx, BOOL* stop) {
+    [friends enumerateObjectsUsingBlock:^(BATUnit* friend, NSUInteger idx, BOOL* stop) {
         if ([_board legal:[friend location]]) {
             if (![friend sighted]) {
                 [friend setSighted:YES];
-                [self notifyObserversWithSelector:@selector(unitNowSighted:) andObject:friend];
+                [newlySighted addObject:friend];
+                //[self notifyObserversWithSelector:@selector(unitNowSighted:) andObject:friend];
             }
         }
         // doesn't handle case of on-board unit moving off-board
     }];
 
-    [enemies enumerateObjectsUsingBlock:^(id enemy, NSUInteger idx, BOOL* stop) {
+    [enemies enumerateObjectsUsingBlock:^(BATUnit* enemy, NSUInteger idx, BOOL* stop) {
         BOOL enemyNowSighted = NO;
 
         // Ignore units unless they are on the map
@@ -129,15 +133,21 @@ BATGame* game; // the global game instance
             // if enemy is no longer sighted, but used to be, update it
             if (!enemyNowSighted && [enemy sighted]) {
                 [enemy setSighted:NO];
-                [self notifyObserversWithSelector:@selector(unitNowHidden:) andObject:enemy];
+                [newlyHidden addObject:enemy];
 
             } else if (enemyNowSighted && ![enemy sighted]) {
                 [enemy setSighted:YES];
-                [self notifyObserversWithSelector:@selector(unitNowSighted:) andObject:enemy];
+                [newlySighted addObject:enemy];
             }
         }
         // Note that we're not handling the case of an on-board unit moving off-board.
     }];
+
+    // No point in updating unless something actually changed.
+    if ([newlySighted count] || [newlyHidden count])
+        [self notifyObserversWithSelector:@selector(sightingChangedWithNowSightedUnits:andNowHiddenUnits:)
+                                   object:newlySighted
+                                andObject:newlyHidden];
 }
 
 - (void)allotMovementPoints {
@@ -187,6 +197,7 @@ BATGame* game; // the global game instance
                     // Must have enough MPs to attack, and be in an offensive mode
                     if ([u mps] >= 4 && IsOffensiveMode([u mode])) { // TODO: IsOffensiveMode is BR-specific
                         [self attackFrom:u to:blocker];
+                        [self doSighting:_userSide];
 
                     } else {
                         DEBUG_COMBAT(@"%@ can't attack %@ due to mode and/or MP cost", [u name], [blocker name]);
@@ -220,7 +231,9 @@ BATGame* game; // the global game instance
                 [u setMps:[u mps] - mpCost];
                 
                 DEBUG_MOVEMENT(@"%@ moved into %02d%02d, deducted %d MPs, leaving %d", [u name], nextHex.column, nextHex.row, mpCost, [u mps]);
-               
+
+                [self doSighting:_userSide];
+
                 atLeastOneUnitMoved = YES;
             }
         }
@@ -257,6 +270,16 @@ BATGame* game; // the global game instance
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
             [observer performSelector:selector withObject:object];
+#pragma clang diagnostic pop
+    }
+}
+
+- (void)notifyObserversWithSelector:(SEL)selector object:(id)param1 andObject:(id)param2 {
+    for (id<BATGameObserving> observer in [self observers]) {
+        if ([observer respondsToSelector:selector])
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+            [observer performSelector:selector withObject:param1 withObject:param2];
 #pragma clang diagnostic pop
     }
 }

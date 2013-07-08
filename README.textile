@@ -48,17 +48,17 @@ h3. Functionality
 * Units can retreat into EZOC (but shouldn't be able to)
 * CSA AI attack subroutine
 * add "friend" and "enemies" as methods in OrderOfBattle, use in Game#sighting
-* When an unsighted enemy moves into sight, it first appears in the new hex, then the move animation shows it
-  moving from its old hex into its new hex
 * MPs should be per-unit, not hardwired
 * McDowell should be using dpt_xxx methods instead of enumerateUsingBlock:
+* UI waits for completely-hidden movement
 
 h3. Organization
 * probably should have a controller for InfoBarView
+* BATAnimation isn't really BAT, since its implementations use Views
 
 h3. API
 * HMPathFinder doesn't need "minCost" parameter, since it can be inferred from the "map" parameter
-* BAGame (and BRGame?) needs a "startGame" method (and can't use "initialize"!) so can restart after ending game
+* BATGame (and BRGame?) needs a "startGame" method (and can't use "initialize"!) so can restart after ending game
 
 h3. Bugs
 * Deploying reinforcement nonreproducibly gets Access Violation

@@ -67,16 +67,6 @@
 - (BOOL)saveToFile:(NSString*)filename;
 
 /**
- * Determines if two hexes are in the same zone.
- *
- * @param hex the first hex to check
- * @param other the second hex to check
- *
- * @return `YES` if the hexes are in the same zone, `NO` if they aren't
- */
-- (BOOL)is:(HXMHex)hex inSameZoneAs:(HXMHex)other;
-
-/**
  * Determine if a hex is in the given zone.
  *
  * @param hex the hex to check
@@ -86,6 +76,15 @@
  *         doesn't exist
  */
 - (BOOL)is:(HXMHex)hex inZone:(NSString*)zoneName;
+
+/**
+ * Finds names of all zones containing `hex`.
+ *
+ * @param hex the hex to check
+ *
+ * @return set with names of all zones containing `hex`, possibly empty
+ */
+- (NSSet*)zonesForHex:(HXMHex)hex;
 
 /**
  * Gets the terrain information for the given hex.

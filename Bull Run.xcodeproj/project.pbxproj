@@ -49,6 +49,7 @@
 		CC85857B167A72610054E60D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CC858579167A72610054E60D /* InfoPlist.strings */; };
 		CC9AF8C81781204F00BBC711 /* HXMHexMapGeometryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9AF8C51781204F00BBC711 /* HXMHexMapGeometryTests.m */; };
 		CC9AF8C91781204F00BBC711 /* HXMPathFinderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9AF8C71781204F00BBC711 /* HXMPathFinderTests.m */; };
+		CC9AF8CC1789FDFC00BBC711 /* BATAnimationListItemSightingChanges.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9AF8CB1789FDFC00BBC711 /* BATAnimationListItemSightingChanges.m */; };
 		CCC71D5716CC6F0B003636E3 /* HXMCoordinateTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC71D5516CC6EE9003636E3 /* HXMCoordinateTransformer.m */; };
 		CCC71D5A16CC711E003636E3 /* HXMMap.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC71D5916CC711E003636E3 /* HXMMap.m */; };
 		CCC71D5D16CC72FF003636E3 /* HXMMapZone.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC71D5C16CC72FF003636E3 /* HXMMapZone.m */; };
@@ -159,6 +160,8 @@
 		CC9AF8C51781204F00BBC711 /* HXMHexMapGeometryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXMHexMapGeometryTests.m; sourceTree = "<group>"; };
 		CC9AF8C61781204F00BBC711 /* HXMPathFinderTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXMPathFinderTests.h; sourceTree = "<group>"; };
 		CC9AF8C71781204F00BBC711 /* HXMPathFinderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXMPathFinderTests.m; sourceTree = "<group>"; };
+		CC9AF8CA1789FDFC00BBC711 /* BATAnimationListItemSightingChanges.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BATAnimationListItemSightingChanges.h; sourceTree = "<group>"; };
+		CC9AF8CB1789FDFC00BBC711 /* BATAnimationListItemSightingChanges.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BATAnimationListItemSightingChanges.m; sourceTree = "<group>"; };
 		CCC71D5416CC6EE9003636E3 /* HXMCoordinateTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXMCoordinateTransformer.h; sourceTree = "<group>"; };
 		CCC71D5516CC6EE9003636E3 /* HXMCoordinateTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXMCoordinateTransformer.m; sourceTree = "<group>"; };
 		CCC71D5816CC711E003636E3 /* HXMMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXMMap.h; sourceTree = "<group>"; };
@@ -255,6 +258,8 @@
 				CC058F7A177F407700FD165C /* BATAnimationListItemCombat.m */,
 				CC058F7B177F407700FD165C /* BATAnimationListItemMove.h */,
 				CC058F7C177F407700FD165C /* BATAnimationListItemMove.m */,
+				CC9AF8CA1789FDFC00BBC711 /* BATAnimationListItemSightingChanges.h */,
+				CC9AF8CB1789FDFC00BBC711 /* BATAnimationListItemSightingChanges.m */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -657,6 +662,7 @@
 				CC058F7F177F407700FD165C /* BATAnimationListItem.m in Sources */,
 				CC058F80177F407700FD165C /* BATAnimationListItemCombat.m in Sources */,
 				CC058F81177F407700FD165C /* BATAnimationListItemMove.m in Sources */,
+				CC9AF8CC1789FDFC00BBC711 /* BATAnimationListItemSightingChanges.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -47,8 +47,6 @@
 - (void)run:(void (^)(void))completionBlock {
     if (completionBlock)
         [self setCompletionBlock:completionBlock];
-    else
-        [game doSighting:[game userSide]];
 
     if (_nextItemIdx == -1)
         DEBUG_ANIMATION(@"BATAnimationList run() BEGIN");
