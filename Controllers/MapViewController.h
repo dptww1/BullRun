@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
+#import "Animations.h"
 #import "BattleAt.h"
 #import "HexMap.h"
 

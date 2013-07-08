@@ -6,6 +6,7 @@
 //
 
 
+#import "BATAnimationList.h"
 #import "BATAnimationListItemSightingChanges.h"
 #import "BATUnit.h"
 #import "UnitView.h"

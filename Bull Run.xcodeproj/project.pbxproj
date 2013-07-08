@@ -11,11 +11,6 @@
 		CC058F691778960D00FD165C /* BATAIMoveTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CC058F681778960D00FD165C /* BATAIMoveTrackerTests.m */; };
 		CC058F6D177A19F500FD165C /* NSArray+DPTUtilTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CC058F6C177A19F500FD165C /* NSArray+DPTUtilTests.m */; };
 		CC058F71177E13A700FD165C /* BATMoveOrdersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CC058F70177E13A700FD165C /* BATMoveOrdersTests.m */; };
-		CC058F7D177F407700FD165C /* BATAnimationGunfire.m in Sources */ = {isa = PBXBuildFile; fileRef = CC058F74177F407700FD165C /* BATAnimationGunfire.m */; };
-		CC058F7E177F407700FD165C /* BATAnimationList.m in Sources */ = {isa = PBXBuildFile; fileRef = CC058F76177F407700FD165C /* BATAnimationList.m */; };
-		CC058F7F177F407700FD165C /* BATAnimationListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CC058F78177F407700FD165C /* BATAnimationListItem.m */; };
-		CC058F80177F407700FD165C /* BATAnimationListItemCombat.m in Sources */ = {isa = PBXBuildFile; fileRef = CC058F7A177F407700FD165C /* BATAnimationListItemCombat.m */; };
-		CC058F81177F407700FD165C /* BATAnimationListItemMove.m in Sources */ = {isa = PBXBuildFile; fileRef = CC058F7C177F407700FD165C /* BATAnimationListItemMove.m */; };
 		CC0805A916D3085000CB8C79 /* BATBattleReport.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0805A816D3085000CB8C79 /* BATBattleReport.m */; };
 		CC0805AD16D5869E00CB8C79 /* BATReinforcementInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0805AC16D5869E00CB8C79 /* BATReinforcementInfo.m */; };
 		CC0CF381168A4E72006D902D /* README.textile in Resources */ = {isa = PBXBuildFile; fileRef = CC0CF380168A4E72006D902D /* README.textile */; };
@@ -49,7 +44,12 @@
 		CC85857B167A72610054E60D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CC858579167A72610054E60D /* InfoPlist.strings */; };
 		CC9AF8C81781204F00BBC711 /* HXMHexMapGeometryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9AF8C51781204F00BBC711 /* HXMHexMapGeometryTests.m */; };
 		CC9AF8C91781204F00BBC711 /* HXMPathFinderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9AF8C71781204F00BBC711 /* HXMPathFinderTests.m */; };
-		CC9AF8CC1789FDFC00BBC711 /* BATAnimationListItemSightingChanges.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9AF8CB1789FDFC00BBC711 /* BATAnimationListItemSightingChanges.m */; };
+		CC9AF8DA178B4BCC00BBC711 /* BATAnimationGunfire.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9AF8CF178B4BCC00BBC711 /* BATAnimationGunfire.m */; };
+		CC9AF8DB178B4BCC00BBC711 /* BATAnimationList.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9AF8D1178B4BCC00BBC711 /* BATAnimationList.m */; };
+		CC9AF8DC178B4BCC00BBC711 /* BATAnimationListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9AF8D3178B4BCC00BBC711 /* BATAnimationListItem.m */; };
+		CC9AF8DD178B4BCC00BBC711 /* BATAnimationListItemCombat.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9AF8D5178B4BCC00BBC711 /* BATAnimationListItemCombat.m */; };
+		CC9AF8DE178B4BCC00BBC711 /* BATAnimationListItemMove.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9AF8D7178B4BCC00BBC711 /* BATAnimationListItemMove.m */; };
+		CC9AF8DF178B4BCC00BBC711 /* BATAnimationListItemSightingChanges.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9AF8D9178B4BCC00BBC711 /* BATAnimationListItemSightingChanges.m */; };
 		CCC71D5716CC6F0B003636E3 /* HXMCoordinateTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC71D5516CC6EE9003636E3 /* HXMCoordinateTransformer.m */; };
 		CCC71D5A16CC711E003636E3 /* HXMMap.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC71D5916CC711E003636E3 /* HXMMap.m */; };
 		CCC71D5D16CC72FF003636E3 /* HXMMapZone.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC71D5C16CC72FF003636E3 /* HXMMapZone.m */; };
@@ -92,16 +92,6 @@
 		CC058F6E177DC1DD00FD165C /* BattleAt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleAt.h; sourceTree = "<group>"; };
 		CC058F6F177E13A700FD165C /* BATMoveOrdersTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BATMoveOrdersTests.h; sourceTree = "<group>"; };
 		CC058F70177E13A700FD165C /* BATMoveOrdersTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BATMoveOrdersTests.m; sourceTree = "<group>"; };
-		CC058F73177F407700FD165C /* BATAnimationGunfire.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BATAnimationGunfire.h; sourceTree = "<group>"; };
-		CC058F74177F407700FD165C /* BATAnimationGunfire.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BATAnimationGunfire.m; sourceTree = "<group>"; };
-		CC058F75177F407700FD165C /* BATAnimationList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BATAnimationList.h; sourceTree = "<group>"; };
-		CC058F76177F407700FD165C /* BATAnimationList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BATAnimationList.m; sourceTree = "<group>"; };
-		CC058F77177F407700FD165C /* BATAnimationListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BATAnimationListItem.h; sourceTree = "<group>"; };
-		CC058F78177F407700FD165C /* BATAnimationListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BATAnimationListItem.m; sourceTree = "<group>"; };
-		CC058F79177F407700FD165C /* BATAnimationListItemCombat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BATAnimationListItemCombat.h; sourceTree = "<group>"; };
-		CC058F7A177F407700FD165C /* BATAnimationListItemCombat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BATAnimationListItemCombat.m; sourceTree = "<group>"; };
-		CC058F7B177F407700FD165C /* BATAnimationListItemMove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BATAnimationListItemMove.h; sourceTree = "<group>"; };
-		CC058F7C177F407700FD165C /* BATAnimationListItemMove.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BATAnimationListItemMove.m; sourceTree = "<group>"; };
 		CC058F82178092C300FD165C /* HexMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HexMap.h; sourceTree = "<group>"; };
 		CC0805A716D3085000CB8C79 /* BATBattleReport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BATBattleReport.h; sourceTree = "<group>"; };
 		CC0805A816D3085000CB8C79 /* BATBattleReport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BATBattleReport.m; sourceTree = "<group>"; };
@@ -160,8 +150,19 @@
 		CC9AF8C51781204F00BBC711 /* HXMHexMapGeometryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXMHexMapGeometryTests.m; sourceTree = "<group>"; };
 		CC9AF8C61781204F00BBC711 /* HXMPathFinderTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXMPathFinderTests.h; sourceTree = "<group>"; };
 		CC9AF8C71781204F00BBC711 /* HXMPathFinderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXMPathFinderTests.m; sourceTree = "<group>"; };
-		CC9AF8CA1789FDFC00BBC711 /* BATAnimationListItemSightingChanges.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BATAnimationListItemSightingChanges.h; sourceTree = "<group>"; };
-		CC9AF8CB1789FDFC00BBC711 /* BATAnimationListItemSightingChanges.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BATAnimationListItemSightingChanges.m; sourceTree = "<group>"; };
+		CC9AF8CE178B4BCC00BBC711 /* BATAnimationGunfire.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BATAnimationGunfire.h; sourceTree = "<group>"; };
+		CC9AF8CF178B4BCC00BBC711 /* BATAnimationGunfire.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BATAnimationGunfire.m; sourceTree = "<group>"; };
+		CC9AF8D0178B4BCC00BBC711 /* BATAnimationList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BATAnimationList.h; sourceTree = "<group>"; };
+		CC9AF8D1178B4BCC00BBC711 /* BATAnimationList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BATAnimationList.m; sourceTree = "<group>"; };
+		CC9AF8D2178B4BCC00BBC711 /* BATAnimationListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BATAnimationListItem.h; sourceTree = "<group>"; };
+		CC9AF8D3178B4BCC00BBC711 /* BATAnimationListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BATAnimationListItem.m; sourceTree = "<group>"; };
+		CC9AF8D4178B4BCC00BBC711 /* BATAnimationListItemCombat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BATAnimationListItemCombat.h; sourceTree = "<group>"; };
+		CC9AF8D5178B4BCC00BBC711 /* BATAnimationListItemCombat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BATAnimationListItemCombat.m; sourceTree = "<group>"; };
+		CC9AF8D6178B4BCC00BBC711 /* BATAnimationListItemMove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BATAnimationListItemMove.h; sourceTree = "<group>"; };
+		CC9AF8D7178B4BCC00BBC711 /* BATAnimationListItemMove.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BATAnimationListItemMove.m; sourceTree = "<group>"; };
+		CC9AF8D8178B4BCC00BBC711 /* BATAnimationListItemSightingChanges.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BATAnimationListItemSightingChanges.h; sourceTree = "<group>"; };
+		CC9AF8D9178B4BCC00BBC711 /* BATAnimationListItemSightingChanges.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BATAnimationListItemSightingChanges.m; sourceTree = "<group>"; };
+		CC9AF8E0178B4C1F00BBC711 /* Animations.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Animations.h; sourceTree = "<group>"; };
 		CCC71D5416CC6EE9003636E3 /* HXMCoordinateTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXMCoordinateTransformer.h; sourceTree = "<group>"; };
 		CCC71D5516CC6EE9003636E3 /* HXMCoordinateTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXMCoordinateTransformer.m; sourceTree = "<group>"; };
 		CCC71D5816CC711E003636E3 /* HXMMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXMMap.h; sourceTree = "<group>"; };
@@ -245,25 +246,6 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
-		CC058F72177F407600FD165C /* Animations */ = {
-			isa = PBXGroup;
-			children = (
-				CC058F73177F407700FD165C /* BATAnimationGunfire.h */,
-				CC058F74177F407700FD165C /* BATAnimationGunfire.m */,
-				CC058F75177F407700FD165C /* BATAnimationList.h */,
-				CC058F76177F407700FD165C /* BATAnimationList.m */,
-				CC058F77177F407700FD165C /* BATAnimationListItem.h */,
-				CC058F78177F407700FD165C /* BATAnimationListItem.m */,
-				CC058F79177F407700FD165C /* BATAnimationListItemCombat.h */,
-				CC058F7A177F407700FD165C /* BATAnimationListItemCombat.m */,
-				CC058F7B177F407700FD165C /* BATAnimationListItemMove.h */,
-				CC058F7C177F407700FD165C /* BATAnimationListItemMove.m */,
-				CC9AF8CA1789FDFC00BBC711 /* BATAnimationListItemSightingChanges.h */,
-				CC9AF8CB1789FDFC00BBC711 /* BATAnimationListItemSightingChanges.m */,
-			);
-			path = Animations;
-			sourceTree = "<group>";
-		};
 		CC058F831780FDA300FD165C /* Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -278,7 +260,6 @@
 		CC0805A516D2F87300CB8C79 /* BattleAt */ = {
 			isa = PBXGroup;
 			children = (
-				CC058F72177F407600FD165C /* Animations */,
 				CC523550173A7DB600CDBDC5 /* BATAIDelegate.h */,
 				CCF01A9E174FFECA003A1C77 /* BATAIInfluenceMap.h */,
 				CCF01A9F174FFECA003A1C77 /* BATAIInfluenceMap.m */,
@@ -326,6 +307,7 @@
 			isa = PBXGroup;
 			children = (
 				CC523552173A7EF200CDBDC5 /* AIs */,
+				CC9AF8CD178B4BCC00BBC711 /* Animations */,
 				CCDB60E616A04D8C006668C2 /* AppDelegate */,
 				CC0805A516D2F87300CB8C79 /* BattleAt */,
 				CC858552167A72610054E60D /* Bull Run */,
@@ -404,6 +386,26 @@
 				CC858579167A72610054E60D /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CC9AF8CD178B4BCC00BBC711 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				CC9AF8CE178B4BCC00BBC711 /* BATAnimationGunfire.h */,
+				CC9AF8CF178B4BCC00BBC711 /* BATAnimationGunfire.m */,
+				CC9AF8D0178B4BCC00BBC711 /* BATAnimationList.h */,
+				CC9AF8D1178B4BCC00BBC711 /* BATAnimationList.m */,
+				CC9AF8D2178B4BCC00BBC711 /* BATAnimationListItem.h */,
+				CC9AF8D3178B4BCC00BBC711 /* BATAnimationListItem.m */,
+				CC9AF8D4178B4BCC00BBC711 /* BATAnimationListItemCombat.h */,
+				CC9AF8D5178B4BCC00BBC711 /* BATAnimationListItemCombat.m */,
+				CC9AF8D6178B4BCC00BBC711 /* BATAnimationListItemMove.h */,
+				CC9AF8D7178B4BCC00BBC711 /* BATAnimationListItemMove.m */,
+				CC9AF8D8178B4BCC00BBC711 /* BATAnimationListItemSightingChanges.h */,
+				CC9AF8D9178B4BCC00BBC711 /* BATAnimationListItemSightingChanges.m */,
+				CC9AF8E0178B4C1F00BBC711 /* Animations.h */,
+			);
+			path = Animations;
 			sourceTree = "<group>";
 		};
 		CCDB60D916A04B30006668C2 /* Util */ = {
@@ -657,12 +659,12 @@
 				CC25F481176E455E00F104BE /* Beauregard+Tactics.m in Sources */,
 				CC25F4B31774C92900F104BE /* NSValue+HXMHex.m in Sources */,
 				CC058F6117787ADE00FD165C /* BATAIMoveTracker.m in Sources */,
-				CC058F7D177F407700FD165C /* BATAnimationGunfire.m in Sources */,
-				CC058F7E177F407700FD165C /* BATAnimationList.m in Sources */,
-				CC058F7F177F407700FD165C /* BATAnimationListItem.m in Sources */,
-				CC058F80177F407700FD165C /* BATAnimationListItemCombat.m in Sources */,
-				CC058F81177F407700FD165C /* BATAnimationListItemMove.m in Sources */,
-				CC9AF8CC1789FDFC00BBC711 /* BATAnimationListItemSightingChanges.m in Sources */,
+				CC9AF8DA178B4BCC00BBC711 /* BATAnimationGunfire.m in Sources */,
+				CC9AF8DB178B4BCC00BBC711 /* BATAnimationList.m in Sources */,
+				CC9AF8DC178B4BCC00BBC711 /* BATAnimationListItem.m in Sources */,
+				CC9AF8DD178B4BCC00BBC711 /* BATAnimationListItemCombat.m in Sources */,
+				CC9AF8DE178B4BCC00BBC711 /* BATAnimationListItemMove.m in Sources */,
+				CC9AF8DF178B4BCC00BBC711 /* BATAnimationListItemSightingChanges.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
