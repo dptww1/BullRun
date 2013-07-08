@@ -84,4 +84,16 @@
     return self;
 }
 
+#pragma mark - NSObject
+
+- (NSString*) description {
+    return [NSString stringWithFormat:@"<BATUnit: 0x%p> %@ %d/%d mode %d",
+            self,
+            [self name],
+            [self strength],
+            [self originalStrength],
+            [self mode]
+            ];
+}
+
 @end
