@@ -112,7 +112,7 @@
     [self strategize:game];
 
     BATAIInfluenceMap* imap = [self createInfluenceMap:game];
-    [imap dump];
+    //[imap dump];
 
     while ([self assignDefender:imap])
         ;
