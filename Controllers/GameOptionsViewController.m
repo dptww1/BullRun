@@ -19,7 +19,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         [self setModalPresentationStyle:UIModalPresentationFormSheet];
-        //[self setModalTransitionStyle:UIModalTransitionStylePartialCurl];
     }
     return self;
 }
