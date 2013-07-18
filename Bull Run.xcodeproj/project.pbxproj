@@ -50,6 +50,9 @@
 		CC9AF8DD178B4BCC00BBC711 /* BATAnimationListItemCombat.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9AF8D5178B4BCC00BBC711 /* BATAnimationListItemCombat.m */; };
 		CC9AF8DE178B4BCC00BBC711 /* BATAnimationListItemMove.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9AF8D7178B4BCC00BBC711 /* BATAnimationListItemMove.m */; };
 		CC9AF8DF178B4BCC00BBC711 /* BATAnimationListItemSightingChanges.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9AF8D9178B4BCC00BBC711 /* BATAnimationListItemSightingChanges.m */; };
+		CCC060AD178EDA7400F8631A /* GameOptionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCC060AB178EDA7400F8631A /* GameOptionsViewController.xib */; };
+		CCC060B0178EDAC400F8631A /* GameOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC060AF178EDAC400F8631A /* GameOptionsViewController.m */; };
+		CCC060B3179868FF00F8631A /* MenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC060B2179868FF00F8631A /* MenuController.m */; };
 		CCC71D5716CC6F0B003636E3 /* HXMCoordinateTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC71D5516CC6EE9003636E3 /* HXMCoordinateTransformer.m */; };
 		CCC71D5A16CC711E003636E3 /* HXMMap.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC71D5916CC711E003636E3 /* HXMMap.m */; };
 		CCC71D5D16CC72FF003636E3 /* HXMMapZone.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC71D5C16CC72FF003636E3 /* HXMMapZone.m */; };
@@ -163,6 +166,11 @@
 		CC9AF8D8178B4BCC00BBC711 /* BATAnimationListItemSightingChanges.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BATAnimationListItemSightingChanges.h; sourceTree = "<group>"; };
 		CC9AF8D9178B4BCC00BBC711 /* BATAnimationListItemSightingChanges.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BATAnimationListItemSightingChanges.m; sourceTree = "<group>"; };
 		CC9AF8E0178B4C1F00BBC711 /* Animations.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Animations.h; sourceTree = "<group>"; };
+		CCC060AB178EDA7400F8631A /* GameOptionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameOptionsViewController.xib; sourceTree = "<group>"; };
+		CCC060AE178EDAC400F8631A /* GameOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOptionsViewController.h; sourceTree = "<group>"; };
+		CCC060AF178EDAC400F8631A /* GameOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOptionsViewController.m; sourceTree = "<group>"; };
+		CCC060B1179868FF00F8631A /* MenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuController.h; sourceTree = "<group>"; };
+		CCC060B2179868FF00F8631A /* MenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuController.m; sourceTree = "<group>"; };
 		CCC71D5416CC6EE9003636E3 /* HXMCoordinateTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXMCoordinateTransformer.h; sourceTree = "<group>"; };
 		CCC71D5516CC6EE9003636E3 /* HXMCoordinateTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXMCoordinateTransformer.m; sourceTree = "<group>"; };
 		CCC71D5816CC711E003636E3 /* HXMMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXMMap.h; sourceTree = "<group>"; };
@@ -426,8 +434,12 @@
 		CCDB60E216A04D71006668C2 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				CCC060AE178EDAC400F8631A /* GameOptionsViewController.h */,
+				CCC060AF178EDAC400F8631A /* GameOptionsViewController.m */,
 				CCDB60E316A04D71006668C2 /* MapViewController.h */,
 				CCDB60E416A04D71006668C2 /* MapViewController.m */,
+				CCC060B1179868FF00F8631A /* MenuController.h */,
+				CCC060B2179868FF00F8631A /* MenuController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -469,12 +481,12 @@
 		CCDB60F616A04E96006668C2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CCDB60F716A04E96006668C2 /* InfoBarView.h */,
+				CCDB60F816A04E96006668C2 /* InfoBarView.m */,
 				CC35E68016AF5EE700F9F0B1 /* MapView.h */,
 				CC35E68116AF5EE700F9F0B1 /* MapView.m */,
 				CC35E68216AF5EE700F9F0B1 /* UnitView.h */,
 				CC35E68316AF5EE700F9F0B1 /* UnitView.m */,
-				CCDB60F716A04E96006668C2 /* InfoBarView.h */,
-				CCDB60F816A04E96006668C2 /* InfoBarView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -505,6 +517,7 @@
 			children = (
 				CCDB610116A04EF2006668C2 /* InfoBarView.xib */,
 				CCDB610216A04EF2006668C2 /* MapViewController.xib */,
+				CCC060AB178EDA7400F8631A /* GameOptionsViewController.xib */,
 			);
 			path = XIBs;
 			sourceTree = "<group>";
@@ -593,6 +606,7 @@
 				CC65EB8C16BF3EE400C47BD0 /* units.plist in Resources */,
 				CCF61C9216C5EE3300391025 /* map.plist in Resources */,
 				CC1B671C16DC4B9F0078B20B /* bullet.png in Resources */,
+				CCC060AD178EDA7400F8631A /* GameOptionsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -665,6 +679,8 @@
 				CC9AF8DD178B4BCC00BBC711 /* BATAnimationListItemCombat.m in Sources */,
 				CC9AF8DE178B4BCC00BBC711 /* BATAnimationListItemMove.m in Sources */,
 				CC9AF8DF178B4BCC00BBC711 /* BATAnimationListItemSightingChanges.m in Sources */,
+				CCC060B0178EDAC400F8631A /* GameOptionsViewController.m in Sources */,
+				CCC060B3179868FF00F8631A /* MenuController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

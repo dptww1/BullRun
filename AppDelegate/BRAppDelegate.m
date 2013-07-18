@@ -9,32 +9,37 @@
 #import "Beauregard.h"
 #import "BRAppDelegate.h"
 #import "BRGame.h"
+#import "GameOptionsViewController.h"
 #import "MapViewController.h"
 #import "McDowell.h"
+#import "MenuController.h"
 
 @implementation BRAppDelegate
 
-static MapViewController* mvController;
++ (BRAppDelegate*)app {
+    return [[UIApplication sharedApplication] delegate];
+}
 
 #pragma mark - UIApplicationDelegate Callbacks
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     game = [[BRGame alloc] init];
 
     // Easiest to do this after `game` is assigned, so AI can use it
     //[game setAi:[[Beauregard alloc] init]];  // TODO: remove
     [game setAi:[[McDowell alloc] init]];    // TODO: remove
-    
-    mvController = [[MapViewController alloc] initWithNibName:nil bundle:nil];
-    UINavigationController* navController = [[UINavigationController alloc] initWithRootViewController:mvController];
-    [navController setNavigationBarHidden:YES];
+
+    _menuController = [[MenuController alloc] initForWindow:_window];
+
+    MapViewController* mvController = [[MapViewController alloc] initWithNibName:nil bundle:nil];
+
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
-    [_window setRootViewController:navController];
 
     [game addObserver:mvController];
-    
+    [_menuController pushController:mvController];
+
     [game doSighting:CSA]; // TODO: get rid of this once game setup works
     [[mvController animationList] run:nil];
 

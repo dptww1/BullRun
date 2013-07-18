@@ -7,11 +7,14 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
-#import "BullRun.h"
+#import "BullRun.h"  // TODO: remove, can't use BR
+#import "BRAppDelegate.h" // TODO: remove/rename, can't use BR
 #import "HexMap.h"
+#import "GameOptionsViewController.h"
 #import "InfoBarView.h"
 #import "MapView.h"
 #import "MapViewController.h"
+#import "MenuController.h"
 #import "UnitView.h"
 
 #pragma mark - Private Methods
@@ -28,7 +31,7 @@
 
 #pragma mark - Initialization
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
     if (self) {
@@ -38,6 +41,7 @@
                              hexSize:CGSizeMake(51, 51)];
         _currentUnit = nil;
         [self setWantsFullScreenLayout:YES];
+        [self setModalPresentationStyle:UIModalPresentationFullScreen];
         
         UITapGestureRecognizer* tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
         [tapRecognizer setNumberOfTapsRequired:2];
@@ -132,6 +136,11 @@
 
 #pragma mark - Callbacks
 
+- (void)viewDidAppear:(BOOL)animated {
+    UIViewController* gameOptionsController = [[GameOptionsViewController alloc] initWithNibName:@"GameOptionsViewController" bundle:nil];
+    [[[BRAppDelegate app] menuController] pushController:gameOptionsController];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -151,9 +160,9 @@
         
         // The sub layer does not seem to inherit the orientation of the parent view, so we have to rotate the bounds,
         // which is equivalent to just exchanging the height and the width;
-        float tmp = bounds.size.height;
-        bounds.size.height = bounds.size.width;
-        bounds.size.width = tmp;
+        //float tmp = bounds.size.height;
+        //bounds.size.height = bounds.size.width;
+        //bounds.size.width = tmp;   // DELETE
         
         _moveOrderLayer = [CALayer layer];
         [_moveOrderLayer setBounds:bounds];
