@@ -10,6 +10,8 @@
 
 @interface GameOptionsViewController ()
 
+@property (weak, nonatomic) IBOutlet UIButton *btnDone;
+
 @end
 
 @implementation GameOptionsViewController
@@ -18,19 +20,29 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        [self setModalPresentationStyle:UIModalPresentationFormSheet];
     }
     return self;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [self view].bounds = CGRectMake(0, 0, 790, 400);
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    CGRect screenBounds = [[UIScreen mainScreen] bounds];
+    [[self view] setCenter:CGPointMake(CGRectGetMidX(screenBounds),
+                                       CGRectGetMidY(screenBounds))];
+    //[[self view] setCenter:CGPointMake(512, 384)];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+}
+
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }

@@ -41,8 +41,7 @@
                              hexSize:CGSizeMake(51, 51)];
         _currentUnit = nil;
         [self setWantsFullScreenLayout:YES];
-        [self setModalPresentationStyle:UIModalPresentationFullScreen];
-        
+
         UITapGestureRecognizer* tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
         [tapRecognizer setNumberOfTapsRequired:2];
 
@@ -136,7 +135,14 @@
 
 #pragma mark - Callbacks
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
+}
+
 - (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+
     UIViewController* gameOptionsController = [[GameOptionsViewController alloc] initWithNibName:@"GameOptionsViewController" bundle:nil];
     [[[BRAppDelegate app] menuController] pushController:gameOptionsController];
 }
@@ -157,12 +163,6 @@
 
     if (!_moveOrderLayer) {
         CGRect bounds = [[self view] bounds];
-        
-        // The sub layer does not seem to inherit the orientation of the parent view, so we have to rotate the bounds,
-        // which is equivalent to just exchanging the height and the width;
-        //float tmp = bounds.size.height;
-        //bounds.size.height = bounds.size.width;
-        //bounds.size.width = tmp;   // DELETE
         
         _moveOrderLayer = [CALayer layer];
         [_moveOrderLayer setBounds:bounds];

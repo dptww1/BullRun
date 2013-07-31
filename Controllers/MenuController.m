@@ -25,24 +25,42 @@
                           initWithNavigationBarClass:nil
                           toolbarClass:nil];
         [_navController setNavigationBarHidden:YES];
+        [_navController setModalPresentationStyle:UIModalPresentationFormSheet];
         [window setRootViewController:_navController];
     }
 
     return self;
 }
 
+- (UIViewController*)topViewController {
+    NSArray* stack = [_navController viewControllers];
+    if (!stack || [stack count] == 0)
+        return nil;
+
+    int top = [stack count] - 1;
+    return stack[top];
+}
+
 - (void)pushController:(UIViewController *)controller {
     // First push?
-    if (![_navController viewControllers] ||
-        [[_navController viewControllers] count] == 0) {
+    UIViewController* topViewController = [self topViewController];
+    if (!topViewController) {
 
         [_navController setViewControllers:@[ controller ]];
 
     } else { // stack already established
-        [_navController presentViewController:controller
-                                     animated:YES
-                                   completion:nil];
+        [_navController setModalPresentationStyle:UIModalPresentationCurrentContext];
+        [topViewController setDefinesPresentationContext:YES];
+        [topViewController presentViewController:controller
+                                        animated:YES
+                                      completion:nil];
     }
+}
+
+- (NSString*)description {
+    return [NSString stringWithFormat:@"<MenuController: 0x%p %@",
+            self,
+            _navController];
 }
 
 @end
