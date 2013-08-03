@@ -50,7 +50,6 @@
 
     } else { // stack already established
         [_navController setModalPresentationStyle:UIModalPresentationCurrentContext];
-        [topViewController setDefinesPresentationContext:YES];
         [topViewController presentViewController:controller
                                         animated:YES
                                       completion:nil];
@@ -58,9 +57,10 @@
 }
 
 - (NSString*)description {
-    return [NSString stringWithFormat:@"<MenuController: 0x%p %@",
+    return [NSString stringWithFormat:@"<MenuController: 0x%p navController:%p stack: %@",
             self,
-            _navController];
+            _navController,
+            _navController.viewControllers];
 }
 
 @end

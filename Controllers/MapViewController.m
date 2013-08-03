@@ -40,7 +40,9 @@
                               origin:CGPointMake(66, 54)
                              hexSize:CGSizeMake(51, 51)];
         _currentUnit = nil;
+        
         [self setWantsFullScreenLayout:YES];
+        [self setDefinesPresentationContext:YES];
 
         UITapGestureRecognizer* tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
         [tapRecognizer setNumberOfTapsRequired:2];
@@ -143,7 +145,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 
-    UIViewController* gameOptionsController = [[GameOptionsViewController alloc] initWithNibName:@"GameOptionsViewController" bundle:nil];
+    UIViewController* gameOptionsController = [[GameOptionsViewController alloc] initWithNibName:nil bundle:nil];
     [[[BRAppDelegate app] menuController] pushController:gameOptionsController];
 }
 
