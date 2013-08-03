@@ -144,9 +144,6 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-
-    UIViewController* gameOptionsController = [[GameOptionsViewController alloc] initWithNibName:nil bundle:nil];
-    [[[BRAppDelegate app] menuController] pushController:gameOptionsController];
 }
 
 - (void)viewDidLoad {
@@ -351,6 +348,12 @@
 }
 
 #pragma mark - Debugging
+
+- (IBAction)showOpts:(id)sender {
+    NSLog(@"showing opts");
+    UIViewController* gameOptionsController = [[GameOptionsViewController alloc] initWithNibName:nil bundle:nil];
+    [[[BRAppDelegate app] menuController] pushController:gameOptionsController];
+}
 
 - (IBAction)playerIsUsa:(id)sender {
     NSLog(@"Now player is USA");

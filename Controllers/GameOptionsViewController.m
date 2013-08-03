@@ -16,6 +16,11 @@
 
 @implementation GameOptionsViewController
 
+- (IBAction)btnDoneTouched:(id)sender {
+    NSLog(@"Yo, Done!");
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
