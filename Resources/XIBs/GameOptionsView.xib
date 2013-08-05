@@ -599,14 +599,8 @@
 						<int key="NSID">2</int>
 					</object>
 				</object>
-				<bool key="IBUIOpaque">NO</bool>
 				<bool key="IBUIAutoresizesSubviews">NO</bool>
-				<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 				<int key="IBUIContentMode">4</int>
-				<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
-					<int key="IBUIInterfaceOrientation">3</int>
-					<int key="interfaceOrientation">3</int>
-				</object>
 				<object class="IBUISimulatedSizeMetrics" key="IBUISimulatedDestinationMetrics">
 					<string key="IBUISimulatedSizeMetricsClass">IBUISimulatedFreeformSizeMetricsSentinel</string>
 					<string key="IBUIDisplayName">Freeform</string>
@@ -852,6 +846,17 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">GameOptionsViewController</string>
 					<string key="superclassName">UIViewController</string>
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">btnDoneTouched:</string>
+						<string key="NS.object.0">id</string>
+					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<string key="NS.key.0">btnDoneTouched:</string>
+						<object class="IBActionInfo" key="NS.object.0">
+							<string key="name">btnDoneTouched:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</object>
 					<object class="NSMutableDictionary" key="outlets">
 						<string key="NS.key.0">btnDone</string>
 						<string key="NS.object.0">UIButton</string>

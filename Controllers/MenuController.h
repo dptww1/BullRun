@@ -13,11 +13,13 @@
  */
 @interface MenuController : NSObject
 
-/** 
+/**
  * A `UINavigationController` instance available to clients. This is
  * initially empty until one or more `pushController` calls are made.
  */
-@property (nonatomic, readonly, strong) UINavigationController* navController;
+//@property (nonatomic, readonly, strong) UINavigationController* navController;
+
++ (MenuController*)sharedInstance;
 
 /**
  * Designated initializer.
@@ -35,5 +37,7 @@
  * @param controller the view controller to activate
  */
 - (void)pushController:(UIViewController*)controller;
+
+- (void)popController;
 
 @end

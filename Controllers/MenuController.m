@@ -10,57 +10,72 @@
 
 @interface MenuController ()
 
-@property (nonatomic, readwrite, strong) UINavigationController* navController;
+@property (nonatomic, readwrite, weak)   UIWindow* window;
+@property (nonatomic, readwrite, strong) NSMutableArray* viewControllers;
 
 @end
 
+static MenuController* instance;
+
 
 @implementation MenuController
+
++ (id)sharedInstance {
+    return instance;
+}
 
 - (id)initForWindow:(UIWindow*)window {
     self = [super init];
 
     if (self) {
-        _navController = [[UINavigationController alloc]
-                          initWithNavigationBarClass:nil
-                          toolbarClass:nil];
-        [_navController setNavigationBarHidden:YES];
-        [_navController setModalPresentationStyle:UIModalPresentationFormSheet];
-        [window setRootViewController:_navController];
+        _window = window;
+        _viewControllers = [NSMutableArray array];
+
+        instance = self;
     }
 
     return self;
 }
 
-- (UIViewController*)topViewController {
-    NSArray* stack = [_navController viewControllers];
-    if (!stack || [stack count] == 0)
-        return nil;
-
-    int top = [stack count] - 1;
-    return stack[top];
-}
-
-- (void)pushController:(UIViewController *)controller {
+- (void)pushController:(UIViewController*)controller {
+    UIViewController* topViewController = [_viewControllers lastObject];
+    
     // First push?
-    UIViewController* topViewController = [self topViewController];
     if (!topViewController) {
 
-        [_navController setViewControllers:@[ controller ]];
+        //[controller setDefinesPresentationContext:YES];
+        [_window setRootViewController:controller];
+        [controller setWantsFullScreenLayout:YES];
 
     } else { // stack already established
-        [_navController setModalPresentationStyle:UIModalPresentationCurrentContext];
+        [controller setModalPresentationStyle:UIModalPresentationFormSheet];
+
+        CGRect nibBounds = controller.view.bounds;
+
         [topViewController presentViewController:controller
                                         animated:YES
                                       completion:nil];
+        
+        controller.view.superview.bounds = nibBounds;
+
+        // NB: x,y reversed because we're in landscape mode
+        controller.view.superview.center = CGPointMake(topViewController.view.center.y,
+                                                       topViewController.view.center.x);
     }
+
+    [_viewControllers addObject:controller];
+}
+
+- (void)popController {
+    UIViewController* curViewController = [_viewControllers lastObject];
+    [curViewController.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    [_viewControllers removeLastObject];
 }
 
 - (NSString*)description {
-    return [NSString stringWithFormat:@"<MenuController: 0x%p navController:%p stack: %@",
+    return [NSString stringWithFormat:@"<MenuController: 0x%p stack: %@",
             self,
-            _navController,
-            _navController.viewControllers];
+            _viewControllers];
 }
 
 @end

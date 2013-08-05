@@ -7,6 +7,7 @@
 //
 
 #import "GameOptionsViewController.h"
+#import "MenuController.h"
 
 @interface GameOptionsViewController ()
 
@@ -18,7 +19,7 @@
 
 - (IBAction)btnDoneTouched:(id)sender {
     NSLog(@"Yo, Done!");
-    [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    [[MenuController sharedInstance] popController];
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -30,16 +31,10 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-    [self view].bounds = CGRectMake(0, 0, 790, 400);
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    CGRect screenBounds = [[UIScreen mainScreen] bounds];
-    [[self view] setCenter:CGPointMake(CGRectGetMidX(screenBounds),
-                                       CGRectGetMidY(screenBounds))];
-    //[[self view] setCenter:CGPointMake(512, 384)];
 }
 
 - (void)viewDidLoad {
