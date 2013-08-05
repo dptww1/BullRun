@@ -9,9 +9,20 @@
 #import "BattleAt.h"
 #import "UnitView.h"
 
+
 // Key: BATUnit*  Value: UnitView*
 static NSMutableDictionary* unitViewMap = nil;
 
+
+//==============================================================================
+@interface UnitView ()
+
+@property (nonatomic, weak) BATUnit* unit;
+
+@end
+
+
+//==============================================================================
 @implementation UnitView
 
 #pragma mark - Class Methods
@@ -50,9 +61,17 @@ static NSMutableDictionary* unitViewMap = nil;
         [self setShadowOffset:CGSizeMake(3.0f, 3.0f)];
         [self setShadowRadius:3.0f];
         [self setShadowOpacity:0.8f];
+
+        _unit = unit;
     }
     
     return self;
+}
+
+#pragma mark - Debugging Support
+
+- (NSString*)description {
+    return [NSString stringWithFormat:@"UnitView 0x%p %@", self, [_unit name]];
 }
 
 @end
