@@ -22,8 +22,15 @@
 /** The root navigation control. */
 @property (nonatomic, strong) MenuController* menuController;
 
+/** 
+ * Convenience accessor for retrieving the global app delegate as the
+ * proper type.
+ *
+ * @return the global instance of the application
+ */
 + (BRAppDelegate*)app;
 
 @end
 
+/** Global instance of game delegate. */
 extern BR1GameDelegate* BR1gameDelegate;

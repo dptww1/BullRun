@@ -8,10 +8,19 @@
 #import "BATAnimationListItem.h"
 
 /**
- * Animation item showing a unit appearing to the user in its current location.
+ * Animation item showing sighting changes caused by a unit moving
+ * from one hex to another.
  */
 @interface BATAnimationListItemSightingChanges : BATAnimationListItem
 
+/**
+ * Convenience constructor.
+ *
+ * @param sightedUnits set of `BATUnit*` units now sighted
+ * @param hiddenUnits set of `BATUnit*` units now hidden
+ *
+ * @return an initialized instance
+ */
 + (id)itemSightingChangesWithNowSightedUnits:(NSSet*)sightedUnits
                            andNowHiddenUnits:(NSSet*)hiddenUnits;
 

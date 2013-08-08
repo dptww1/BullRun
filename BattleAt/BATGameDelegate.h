@@ -12,7 +12,10 @@
 
 @class BATUnit;
 
-
+/**
+ * Protocol enumerating the game-specific methods which need to be 
+ * implemented for use of the generic game engine.
+ */
 @protocol BATGameDelegate <NSObject>
 
 /**

@@ -38,6 +38,9 @@
  */
 - (void)pushController:(UIViewController*)controller;
 
+/**
+ * Removes the most-recently added controller from the stack.
+ */
 - (void)popController;
 
 @end
