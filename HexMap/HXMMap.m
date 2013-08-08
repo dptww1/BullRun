@@ -48,7 +48,7 @@ static const int DEFAULT_CAPACITY = 12;
     return board;
 }
 
-- (HXMMap*)initWithGeometry:(HXMGeometry *)geometry {
+- (HXMMap*)initWithGeometry:(HXMGeometry*)geometry {
     self = [super init];
 
     if (self) {
@@ -61,7 +61,7 @@ static const int DEFAULT_CAPACITY = 12;
 
 #pragma mark - Coding Implementation
 
-- (void)encodeWithCoder:(NSCoder *)coder {
+- (void)encodeWithCoder:(NSCoder*)coder {
     [coder encodeObject:self.geometry forKey:@"geometry"];
     [coder encodeObject:self.terrainEffects forKey:@"terrainEffects"];
     [coder encodeObject:self.zones forKey:@"zones"];
@@ -70,7 +70,7 @@ static const int DEFAULT_CAPACITY = 12;
                               at:self.mapData];
 }
 
-- (id)initWithCoder:(NSCoder *)decoder {
+- (id)initWithCoder:(NSCoder*)decoder {
     self = [super init];
     
     _geometry = [decoder decodeObjectForKey:@"geometry"];
@@ -276,7 +276,7 @@ static const int DEFAULT_CAPACITY = 12;
     return newHex;
 }
 
-- (BOOL)saveToFile:(NSString *)filename {
+- (BOOL)saveToFile:(NSString*)filename {
     NSString* path = [[DPTSysUtil applicationFileDir] stringByAppendingPathComponent:filename];
     
     BOOL success = [NSKeyedArchiver archiveRootObject:self toFile:path];
@@ -332,14 +332,14 @@ static const int DEFAULT_CAPACITY = 12;
     return ![self terrainAt:hex];
 }
 
-- (HXMTerrainEffect*)findTerrainByName:(NSString *)name {
+- (HXMTerrainEffect*)findTerrainByName:(NSString*)name {
     return (HXMTerrainEffect*)
            [_terrainEffects dpt_find:^BOOL(HXMTerrainEffect* o) {
                return [[o name] isEqualToString:name];
            }];
 }
 
-- (NSArray*)findHexesOfType:(NSString *)terrainName {
+- (NSArray*)findHexesOfType:(NSString*)terrainName {
     NSMutableArray* list = [NSMutableArray arrayWithCapacity:DEFAULT_CAPACITY];
 
     HXMTerrainEffect* fx = [self findTerrainByName:terrainName];

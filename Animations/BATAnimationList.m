@@ -23,7 +23,7 @@
 //==============================================================================
 @implementation BATAnimationList
 
-+ (BATAnimationList*) listWithCoordXFormer:(HXMCoordinateTransformer *)xformer {
++ (BATAnimationList*) listWithCoordXFormer:(HXMCoordinateTransformer*)xformer {
     BATAnimationList* o = [[BATAnimationList alloc] init];
 
     if (o) {
@@ -35,7 +35,7 @@
     return o;
 }
 
-- (void)addItem:(BATAnimationListItem *)item {
+- (void)addItem:(BATAnimationListItem*)item {
     [_items addObject:item];
 }
 

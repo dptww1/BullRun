@@ -34,14 +34,14 @@
 
 #pragma mark - NSCoding Implementation
 
-- (void)encodeWithCoder:(NSCoder *)coder {
+- (void)encodeWithCoder:(NSCoder*)coder {
     [coder encodeObject:_unitName forKey:@"unitName"];
     [coder encodeInt:_entryLocation.column forKey:@"column"];
     [coder encodeInt:_entryLocation.row forKey:@"row"];
     [coder encodeInt:_entryTurn forKey:@"turn"];
 }
 
-- (id)initWithCoder:(NSCoder *)coder {
+- (id)initWithCoder:(NSCoder*)coder {
     self = [super init];
 
     if (self) {

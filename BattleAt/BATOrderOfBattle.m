@@ -28,7 +28,7 @@
 
 #pragma mark - Persistence Methods
 
-+ (BATOrderOfBattle*)createFromFile:(NSString *)filepath {
++ (BATOrderOfBattle*)createFromFile:(NSString*)filepath {
     BATOrderOfBattle* oob = [[BATOrderOfBattle alloc] init];
 
     if (oob) {
@@ -54,7 +54,7 @@
     return oob;
 }
 
-- (BOOL)saveToFile:(NSString *)filename {
+- (BOOL)saveToFile:(NSString*)filename {
     NSString* path = [[DPTSysUtil applicationFileDir] stringByAppendingPathComponent:filename];
 
     BOOL success = [NSKeyedArchiver archiveRootObject:[self units] toFile:path];

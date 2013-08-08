@@ -24,14 +24,14 @@
 
 #pragma mark - NSCoding Implementation
 
-- (void)encodeWithCoder:(NSCoder *)aCoder {
+- (void)encodeWithCoder:(NSCoder*)aCoder {
     [aCoder encodeBool:_isLongGrain       forKey:@"isLongGrain"];
     [aCoder encodeBool:_firstColumnIsLong forKey:@"firstColumnIsLong"];
     [aCoder encodeInt:_numRows            forKey:@"numRows"];
     [aCoder encodeInt:_numColumns         forKey:@"numColumns"];
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder {
+- (id)initWithCoder:(NSCoder*)aDecoder {
     self = [super init];
     
     if (self) {

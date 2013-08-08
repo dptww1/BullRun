@@ -18,11 +18,10 @@
 @implementation GameOptionsViewController
 
 - (IBAction)btnDoneTouched:(id)sender {
-    NSLog(@"Yo, Done!");
     [[MenuController sharedInstance] popController];
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+- (id)initWithNibName:(NSString*)nibNameOrNil bundle:(NSBundle*)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
     }

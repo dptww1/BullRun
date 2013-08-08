@@ -164,7 +164,7 @@ static BOOL modeLabelIsChoosable[] = {
 
 #pragma mark - UIActionSheetDelegate Implementation
 
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIdx {
+- (void)actionSheet:(UIActionSheet*)actionSheet clickedButtonAtIndex:(NSInteger)buttonIdx {
     if (0 <= buttonIdx && buttonIdx < NUM_ELTS(modeLabelStrings)) {
         int newMode = [self modeFromMenuIndex:buttonIdx];
         [unitMode setTitle:modeLabelStrings[newMode] forState:UIControlStateNormal];

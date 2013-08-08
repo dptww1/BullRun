@@ -202,7 +202,7 @@
     }
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+- (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event {
     for (UITouch* t in touches) {
         
         CGPoint p = [t locationInView:[self view]];
@@ -249,7 +249,7 @@
     }
 }
 
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+- (void)touchesMoved:(NSSet*)touches withEvent:(UIEvent*)event {
     if (!_currentUnit)
         return;
 
@@ -301,7 +301,7 @@
     }
 }
 
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+- (void)touchesEnded:(NSSet*)touches withEvent:(UIEvent*)event {
     if (!_currentUnit)
         return;
     
@@ -310,7 +310,7 @@
     [_moveOrderLayer setNeedsDisplay];
 }
 
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
+- (void)touchesCancelled:(NSSet*)touches withEvent:(UIEvent*)event {
     [self touchesEnded:touches withEvent:event];
 }
 
@@ -339,7 +339,7 @@
     }];
 }
 
-- (void)showAttack:(BATBattleReport *)report {
+- (void)showAttack:(BATBattleReport*)report {
     [_animationList
      addItem:[BATAnimationListItemCombat itemWithAttacker:[report attacker]
                                                  defender:[report defender]

@@ -39,7 +39,7 @@
     return [[BATAnimationGunfire alloc] initFrom:unitView withAzimuth:azimuth];
 }
 
-- (id)initFrom:(UnitView *)unitView withAzimuth:(float)azimuth {
+- (id)initFrom:(UnitView*)unitView withAzimuth:(float)azimuth {
     self = [super init];
 
     if (self) {

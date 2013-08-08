@@ -69,7 +69,7 @@ static const int DEFAULT_BUFFER_CAPACITY = 2;
 
 #pragma mark - NSCoding Implementation
 
-- (id)initWithCoder:(NSCoder *)aDecoder {
+- (id)initWithCoder:(NSCoder*)aDecoder {
     self = [super init];
     
     if (self) {
@@ -79,7 +79,7 @@ static const int DEFAULT_BUFFER_CAPACITY = 2;
     return self;
 }
 
-- (void)encodeWithCoder:(NSCoder *)aCoder {
+- (void)encodeWithCoder:(NSCoder*)aCoder {
     [aCoder encodeObject:[self columns] forKey:@"columnData"];
 }
 

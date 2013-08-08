@@ -42,7 +42,7 @@
     [_impulses removeAllObjects];
 }
 
-- (void)track:(BATUnit *)unit movingTo:(HXMHex)hex onImpulse:(int)impulse {
+- (void)track:(BATUnit*)unit movingTo:(HXMHex)hex onImpulse:(int)impulse {
     NSValue* key = [NSValue valueWithBytes:&impulse objCType:@encode(int)];
     NSMutableDictionary* dict = _impulses[key];
     if (!dict) {

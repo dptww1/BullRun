@@ -37,7 +37,7 @@
 
 #pragma mark - NSCoding
 
-- (void)encodeWithCoder:(NSCoder *)aCoder {
+- (void)encodeWithCoder:(NSCoder*)aCoder {
     [aCoder encodeInt:   _imageXIdx        forKey:@"imageXIdx"];
     [aCoder encodeInt:   _imageYIdx        forKey:@"imageYIdx"];
     [aCoder encodeInt:   _leadership       forKey:@"leadership"];
@@ -55,7 +55,7 @@
     [aCoder encodeInt:   _location.row     forKey:@"location_row"];
 }
 
-- (id)initWithCoder:(NSCoder *)aDecoder {
+- (id)initWithCoder:(NSCoder*)aDecoder {
     self = [super init];
     
     if (self) {

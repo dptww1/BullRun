@@ -109,7 +109,7 @@
 //==============================================================================
 @implementation HXMPathFinderOpenSet
 
-+ (HXMPathFinderOpenSet*)openSetWithNode:(HXMPathNode *)node {
++ (HXMPathFinderOpenSet*)openSetWithNode:(HXMPathNode*)node {
     HXMPathFinderOpenSet* set = [[HXMPathFinderOpenSet alloc] init];
     [set setNodes:[NSMutableArray arrayWithObject:node]];
     return set;
@@ -179,7 +179,7 @@
 //==============================================================================
 @implementation HXMPathFinder
 
-+ (HXMPathFinder*)pathFinderOnMap:(HXMMap *)map withMinCost:(float)minCost {
++ (HXMPathFinder*)pathFinderOnMap:(HXMMap*)map withMinCost:(float)minCost {
     return [[HXMPathFinder alloc] initForMap:map withMinCost:minCost];
 }
 
