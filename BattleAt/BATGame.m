@@ -31,12 +31,17 @@ BATGame* game; // the global game instance
 
 #pragma mark - Init Methods
 
-- (id)init {
++ (BATGame*)gameWithDelegate:(id<BATGameDelegate>)delegate {
+    return [[BATGame alloc] initWithDelegate:delegate];
+}
+
+- (id)initWithDelegate:(id<BATGameDelegate>)delegate {
     self = [super init];
     
     if (self) {
         // _ai must be set by derived classes
         _board     = [HXMMap createFromFile:[[NSBundle mainBundle] pathForResource:@"map" ofType:@"plist"]];
+        _delegate  = delegate;
         _oob       = [BATOrderOfBattle createFromFile:[[NSBundle mainBundle] pathForResource:@"units" ofType:@"plist"]];
         _observers = [NSMutableArray array];
         _turn      = 1;
@@ -128,7 +133,7 @@ BATGame* game; // the global game instance
 
         // Ignore units unless they are on the map
         if ([_board legal:[enemy location]]) {
-            enemyNowSighted = [self isUnit:enemy inHex:[enemy location] sightedBy:friends];
+            enemyNowSighted = [_delegate isUnit:enemy inHex:[enemy location] sightedBy:friends];
 
             // if enemy is no longer sighted, but used to be, update it
             if (!enemyNowSighted && [enemy sighted]) {
@@ -165,7 +170,7 @@ BATGame* game; // the global game instance
     NSArray*      sortedUnits = [self sortUnits];                       // elements: BATUnit*
     NSMutableSet* didntMove = [NSMutableSet setWithArray:sortedUnits];  // keys: BATUnit*; if present, this unit didn't move this turn
 
-    [self allotMovementPoints];
+    [_delegate allotMovementPoints];
     
     // Because lower-rated units can block higher-rated units, we have to keep processing until no moves were possible.
     BOOL atLeastOneUnitMoved = YES;
@@ -485,33 +490,26 @@ BATGame* game; // the global game instance
         && ![self is:u movingThruEnemyZocTo:hex];
 }
 
-// Returns YES if `enemy' situated in given terrain is sighted by any of `friends'.
-- (BOOL)isUnit:(BATUnit*)enemy inHex:(HXMHex)hex sightedBy:(NSArray*)friends {
-    return YES;  // TODO: Huh?
-}
-
 - (NSArray*)sortUnits {
-    return [[_oob units] sortedArrayWithOptions:NSSortStable
-                                usingComparator:^(id obj1, id obj2) {
-                                    BATUnit* u1 = obj1;
-                                    BATUnit* u2 = obj2;
+    return [[_oob units]
+            sortedArrayWithOptions:NSSortStable
+            usingComparator:^(BATUnit* u1, BATUnit* u2) {
+                // Leftover MPs are the first ordering determinant
+                if ([u1 mps] > [u2 mps])
+                    return NSOrderedAscending;
                                     
-                                    // Leftover MPs are the first ordering determinant
-                                    if ([u1 mps] > [u2 mps])
-                                        return NSOrderedAscending;
+                else if ([u1 mps] < [u2 mps])
+                    return NSOrderedDescending;
                                     
-                                    else if ([u1 mps] < [u2 mps])
-                                        return NSOrderedDescending;
+                // When MPs are equal, Leadership is the tiebreaker
+                if ([u1 leadership] > [u2 leadership])
+                    return NSOrderedAscending;
+
+                else if ([u1 leadership] < [u2 leadership])
+                    return NSOrderedDescending;
                                     
-                                    // When MPs are equal, Leadership is the tiebreaker
-                                    if ([u1 leadership] > [u2 leadership])
-                                        return NSOrderedAscending;
-                                    
-                                    else if ([u1 leadership] < [u2 leadership])
-                                        return NSOrderedDescending;
-                                    
-                                    return NSOrderedSame;
-                                }];
+                return NSOrderedSame;
+            }];
 }
 
 @end

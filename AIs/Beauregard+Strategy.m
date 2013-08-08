@@ -8,7 +8,7 @@
 
 
 #import "DPTMath.h"
-#import "BRGame.h"
+#import "BR1GameDelegate.h"
 #import "Beauregard.h"
 #import "Beauregard+Strategy.h"
 

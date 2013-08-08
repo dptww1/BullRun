@@ -29,7 +29,6 @@
 		CC523555173A7F1700CDBDC5 /* McDowell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC523554173A7F1700CDBDC5 /* McDowell.m */; };
 		CC523558173A9BA700CDBDC5 /* Beauregard.m in Sources */ = {isa = PBXBuildFile; fileRef = CC523557173A9BA700CDBDC5 /* Beauregard.m */; };
 		CC52355B173D97E500CDBDC5 /* BRMap.m in Sources */ = {isa = PBXBuildFile; fileRef = CC52355A173D97E500CDBDC5 /* BRMap.m */; };
-		CC52355E173DD36200CDBDC5 /* BRGame.m in Sources */ = {isa = PBXBuildFile; fileRef = CC52355D173DD36200CDBDC5 /* BRGame.m */; };
 		CC65EB8C16BF3EE400C47BD0 /* units.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC65EB8B16BF3EE400C47BD0 /* units.plist */; };
 		CC85854D167A72610054E60D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC85854C167A72610054E60D /* UIKit.framework */; };
 		CC85854F167A72610054E60D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC85854E167A72610054E60D /* Foundation.framework */; };
@@ -73,6 +72,7 @@
 		CCF01ABB175E72AC003A1C77 /* NSArray+DPTUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF01ABA175E72AC003A1C77 /* NSArray+DPTUtil.m */; };
 		CCF61C9216C5EE3300391025 /* map.plist in Resources */ = {isa = PBXBuildFile; fileRef = CCF61C9116C5EE3300391025 /* map.plist */; };
 		CCF61C9716CC6E2900391025 /* HXMGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF61C9516CC63C900391025 /* HXMGeometry.m */; };
+		CCFD9C7717B3CDD600EDB3FB /* BR1GameDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFD9C7617B3CDD600EDB3FB /* BR1GameDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,8 +132,6 @@
 		CC523557173A9BA700CDBDC5 /* Beauregard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Beauregard.m; sourceTree = "<group>"; };
 		CC523559173D97E500CDBDC5 /* BRMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMap.h; sourceTree = "<group>"; };
 		CC52355A173D97E500CDBDC5 /* BRMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMap.m; sourceTree = "<group>"; };
-		CC52355C173DD36200CDBDC5 /* BRGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRGame.h; sourceTree = "<group>"; };
-		CC52355D173DD36200CDBDC5 /* BRGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRGame.m; sourceTree = "<group>"; };
 		CC65EB8B16BF3EE400C47BD0 /* units.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = units.plist; sourceTree = "<group>"; };
 		CC858548167A72610054E60D /* Bull Run.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bull Run.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC85854C167A72610054E60D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -207,6 +205,9 @@
 		CCF61C9316CC627400391025 /* HXMHex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXMHex.h; sourceTree = "<group>"; };
 		CCF61C9416CC63C900391025 /* HXMGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXMGeometry.h; sourceTree = "<group>"; };
 		CCF61C9516CC63C900391025 /* HXMGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXMGeometry.m; sourceTree = "<group>"; };
+		CCFD9C7417B188C600EDB3FB /* BATGameDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BATGameDelegate.h; sourceTree = "<group>"; };
+		CCFD9C7517B3CDD600EDB3FB /* BR1GameDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BR1GameDelegate.h; sourceTree = "<group>"; };
+		CCFD9C7617B3CDD600EDB3FB /* BR1GameDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BR1GameDelegate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,6 +278,7 @@
 				CC0805A816D3085000CB8C79 /* BATBattleReport.m */,
 				CC392E4016D5ACEB00160B82 /* BATGame.h */,
 				CC392E4116D5ACEB00160B82 /* BATGame.m */,
+				CCFD9C7417B188C600EDB3FB /* BATGameDelegate.h */,
 				CC0805AA16D3165D00CB8C79 /* BATGameObserving.h */,
 				CC392E4316D5AE4C00160B82 /* BATMoveOrders.h */,
 				CC392E4416D5AE4C00160B82 /* BATMoveOrders.m */,
@@ -356,8 +358,8 @@
 		CC858552167A72610054E60D /* Bull Run */ = {
 			isa = PBXGroup;
 			children = (
-				CC52355C173DD36200CDBDC5 /* BRGame.h */,
-				CC52355D173DD36200CDBDC5 /* BRGame.m */,
+				CCFD9C7517B3CDD600EDB3FB /* BR1GameDelegate.h */,
+				CCFD9C7617B3CDD600EDB3FB /* BR1GameDelegate.m */,
 				CC523559173D97E500CDBDC5 /* BRMap.h */,
 				CC52355A173D97E500CDBDC5 /* BRMap.m */,
 				CC0CF3E91698CB40006D902D /* BullRun.h */,
@@ -661,7 +663,6 @@
 				CC523555173A7F1700CDBDC5 /* McDowell.m in Sources */,
 				CC523558173A9BA700CDBDC5 /* Beauregard.m in Sources */,
 				CC52355B173D97E500CDBDC5 /* BRMap.m in Sources */,
-				CC52355E173DD36200CDBDC5 /* BRGame.m in Sources */,
 				CCF01A9A174D9705003A1C77 /* McDowell+Strategy.m in Sources */,
 				CCF01AA0174FFECA003A1C77 /* BATAIInfluenceMap.m in Sources */,
 				CCF01AA317510DB2003A1C77 /* McDowell+Tactics.m in Sources */,
@@ -681,6 +682,7 @@
 				CC9AF8DF178B4BCC00BBC711 /* BATAnimationListItemSightingChanges.m in Sources */,
 				CCC060B0178EDAC400F8631A /* GameOptionsViewController.m in Sources */,
 				CCC060B3179868FF00F8631A /* MenuController.m in Sources */,
+				CCFD9C7717B3CDD600EDB3FB /* BR1GameDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

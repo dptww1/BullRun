@@ -8,6 +8,7 @@
 #import <Foundation/Foundation.h>
 #import "BattleAt.h"
 #import "BATAIDelegate.h"
+#import "BATGameDelegate.h"
 #import "BATGameObserving.h"
 #import "HexMap.h"
 
@@ -23,6 +24,11 @@
  * Designed to be used as a base class for a battle-specific derived class.
  */
 @interface BATGame : NSObject
+
+/**
+ * The game-specific Battle At rules.
+ */
+@property (nonatomic, strong) id<BATGameDelegate> delegate;
 
 /** 
  * The current AI that the human player is playing against. Since this is
@@ -41,6 +47,24 @@
 
 /** A list of observers */
 @property (nonatomic, assign, readonly) int               turn;
+
+/**
+ * Convenience constructor.
+ *
+ * @param delegate the game-specific rules
+ *
+ * @return an initialized game instance
+ */
++ (BATGame*)gameWithDelegate:(id<BATGameDelegate>)delegate;
+
+/**
+ * Designated initializer.
+ *
+ * @param delegate the game-specific rules
+ *
+ * @return an initialized game instance
+ */
+- (id)initWithDelegate:(id<BATGameDelegate>)delegate;
 
 /**
  * Sets the player side to the parameter.
@@ -65,13 +89,6 @@
  * 
  */
 - (void)doSighting:(PlayerSide)side;
-
-/**
- * Called at beginning of turn to assign new movement points to all
- * the units in the game.  
- * Must be implemented by derived classes!
- */
-- (void)allotMovementPoints;
 
 /**
  * Begins processing the turn. Orders are implemented, game events trigger

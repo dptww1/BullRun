@@ -7,12 +7,16 @@
 //
 
 #import "Beauregard.h"
+#import "BR1GameDelegate.h"
 #import "BRAppDelegate.h"
-#import "BRGame.h"
 #import "GameOptionsViewController.h"
 #import "MapViewController.h"
 #import "McDowell.h"
 #import "MenuController.h"
+
+
+BR1GameDelegate* BR1gameDelegate = NULL;
+
 
 @implementation BRAppDelegate
 
@@ -22,10 +26,11 @@
 
 #pragma mark - UIApplicationDelegate Callbacks
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+- (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions {
     _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    game = [[BRGame alloc] init];
+    BR1gameDelegate = [[BR1GameDelegate alloc] init];
+    game = [BATGame gameWithDelegate:BR1gameDelegate];
 
     // Easiest to do this after `game` is assigned, so AI can use it
     //[game setAi:[[Beauregard alloc] init]];  // TODO: remove
@@ -35,7 +40,7 @@
 
     MapViewController* mvController = [[MapViewController alloc] initWithNibName:nil bundle:nil];
 
-    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    [application setStatusBarHidden:YES];
 
     [game addObserver:mvController];
     [_menuController pushController:mvController];

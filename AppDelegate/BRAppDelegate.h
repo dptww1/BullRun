@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
+@class BR1GameDelegate;
 @class MenuController;
 
 
@@ -16,7 +17,7 @@
 @interface BRAppDelegate : UIResponder <UIApplicationDelegate>
 
 /** The application window. */
-@property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) UIWindow* window;
 
 /** The root navigation control. */
 @property (nonatomic, strong) MenuController* menuController;
@@ -24,3 +25,5 @@
 + (BRAppDelegate*)app;
 
 @end
+
+extern BR1GameDelegate* BR1gameDelegate;

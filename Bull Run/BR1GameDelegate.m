@@ -1,29 +1,32 @@
 //
-//  BRGame.m
+//  BR1GameDelegate.m
 //  Bull Run
 //
-//  Created by Dave Townsend on 5/10/13.
+//  Created by Dave Townsend on 8/8/13.
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
-#import "BRGame.h"
+#import "BR1GameDelegate.h"
 #import "BRMap.h"
+#import "BattleAt.h"
 
-@implementation BRGame
+@implementation BR1GameDelegate
+
+#pragma mark - Utility Methods
 
 - (BRMap*)map {
-    return (BRMap*)[self board];
+    return (BRMap*)[game board];
 }
 
-// Override of BAGame method
+#pragma mark - BATGameDelegate implementation
+
+
 - (void)allotMovementPoints {
-    for (BATUnit* u in [[self oob] units])
+    for (BATUnit* u in [[game oob] units])
         [u setMps:[u mps] + 5];
 }
 
-// Returns YES if `enemy' situated in given terrain is sighted by any of `friends'.
 - (BOOL)isUnit:(BATUnit*)enemy inHex:(HXMHex)hex sightedBy:(NSArray*)friends {
-
     // CSA north of river or USA south of river is always spotted (note that fords
     // are marked as on both sides of the river, so units on fords are always spotted).
     if ([[self map] isEnemy:[enemy location] of:[enemy side]]) {
@@ -35,7 +38,7 @@
     __block BOOL sighted = NO;
 
     [friends enumerateObjectsUsingBlock:^(BATUnit* friend, NSUInteger idx, BOOL* stop) {
-        HXMMap* map = [self board];
+        HXMMap* map = [game board];
 
         // Friends which are offboard can't spot.
         if (![map legal:[friend location]])
@@ -58,8 +61,16 @@
             }
         }
     }];
-
+    
     return sighted;
+}
+
+- (NSString*)convertTurnToString:(int)turn {
+    return @"";
+}
+
+- (int)convertStringToTurn:(NSString*)string {
+    return 0;
 }
 
 @end

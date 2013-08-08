@@ -36,6 +36,7 @@ typedef enum {
 #import "BATAIMoveTracker.h"
 #import "BATBattleReport.h"
 #import "BATGame.h"
+#import "BATGameDelegate.h"
 #import "BATGameObserving.h"
 #import "BATMoveOrders.h"
 #import "BATOrderOfBattle.h"
