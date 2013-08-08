@@ -8,7 +8,7 @@
 
 #import "Beauregard+Strategy.h"
 #import "Beauregard+Tactics.h"
-#import "BRMap.h"
+#import "BR1Map.h"
 #import "NSArray+DPTUtil.h"
 
 //==============================================================================
@@ -115,7 +115,7 @@
 }
 
 - (BOOL)assignDefender:(BATAIInfluenceMap*)imap {
-    BRMap* map = [BRMap map];
+    BR1Map* map = [BR1Map map];
     HXMHexAndDistance hexd = [imap largestValue];
     if (hexd.distance < 1)
         return NO;

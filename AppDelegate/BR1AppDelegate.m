@@ -8,7 +8,7 @@
 
 #import "Beauregard.h"
 #import "BR1GameDelegate.h"
-#import "BRAppDelegate.h"
+#import "BR1AppDelegate.h"
 #import "GameOptionsViewController.h"
 #import "MapViewController.h"
 #import "McDowell.h"
@@ -18,9 +18,9 @@
 BR1GameDelegate* BR1gameDelegate = NULL;
 
 
-@implementation BRAppDelegate
+@implementation BR1AppDelegate
 
-+ (BRAppDelegate*)app {
++ (BR1AppDelegate*)app {
     return [[UIApplication sharedApplication] delegate];
 }
 

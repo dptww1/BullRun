@@ -8,7 +8,7 @@
 
 #import "McDowell.h"
 #import "McDowell+Strategy.h"
-#import "BRMap.h"
+#import "BR1Map.h"
 #import "HexMap.h"
 #import "NSArray+DPTUtil.h"
 
@@ -72,7 +72,7 @@
     NSArray* usaUnits = [[game oob] unitsForSide:[self side]];
     [usaUnits enumerateObjectsUsingBlock:^(BATUnit* curUnit, NSUInteger idx, BOOL* stop) {
         if ([self isUsaUnitDefending](curUnit)) {
-            HXMHexAndDistance hexd = [[BRMap map] closestFordTo:[curUnit location]];
+            HXMHexAndDistance hexd = [[BR1Map map] closestFordTo:[curUnit location]];
 
             if (hexd.distance < minDist) {
                 minUnit = curUnit;
@@ -93,7 +93,7 @@
     __block BATUnit* minUnit = nil;
     __block int      minDist = 1000;
 
-    NSArray* bases = [[BRMap map] basesForSide:[self side]];
+    NSArray* bases = [[BR1Map map] basesForSide:[self side]];
     NSArray* usaUnits = [[game oob] unitsForSide:[self side]];
 
     [bases enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL* stop) {
@@ -102,7 +102,7 @@
 
         [usaUnits enumerateObjectsUsingBlock:^(BATUnit* curUnit, NSUInteger idx, BOOL* stop) {
             if (![self isUsaUnitDefending](curUnit) && ![curUnit isOffMap]) {
-                int dist = [[BRMap map] distanceFrom:[curUnit location] to:base];
+                int dist = [[BR1Map map] distanceFrom:[curUnit location] to:base];
                 if (dist < minDist) {
                     minUnit = curUnit;
                     minDist = dist;

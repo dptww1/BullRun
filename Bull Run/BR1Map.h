@@ -1,5 +1,5 @@
 //
-//  BRMap.h
+//  BR1Map.h
 //  Bull Run
 //
 //  Created by Dave Townsend on 5/10/13.
@@ -15,14 +15,14 @@
  * encapsulate some `HMMap` extensions that aren't general enough to
  * belong in `BRGame`.
  */
-@interface BRMap : HXMMap
+@interface BR1Map : HXMMap
 
 /** 
  * Gets the global map instance, cast to the correct type. 
  * 
  * @return the map
  */
-+ (BRMap*)map;
++ (BR1Map*)map;
 
 /**
  * Determines if a hex is in enemy territory.

@@ -28,7 +28,7 @@
 		CC392E4516D5AE4C00160B82 /* BATMoveOrders.m in Sources */ = {isa = PBXBuildFile; fileRef = CC392E4416D5AE4C00160B82 /* BATMoveOrders.m */; };
 		CC523555173A7F1700CDBDC5 /* McDowell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC523554173A7F1700CDBDC5 /* McDowell.m */; };
 		CC523558173A9BA700CDBDC5 /* Beauregard.m in Sources */ = {isa = PBXBuildFile; fileRef = CC523557173A9BA700CDBDC5 /* Beauregard.m */; };
-		CC52355B173D97E500CDBDC5 /* BRMap.m in Sources */ = {isa = PBXBuildFile; fileRef = CC52355A173D97E500CDBDC5 /* BRMap.m */; };
+		CC52355B173D97E500CDBDC5 /* BR1Map.m in Sources */ = {isa = PBXBuildFile; fileRef = CC52355A173D97E500CDBDC5 /* BR1Map.m */; };
 		CC65EB8C16BF3EE400C47BD0 /* units.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC65EB8B16BF3EE400C47BD0 /* units.plist */; };
 		CC85854D167A72610054E60D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC85854C167A72610054E60D /* UIKit.framework */; };
 		CC85854F167A72610054E60D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC85854E167A72610054E60D /* Foundation.framework */; };
@@ -57,7 +57,7 @@
 		CCC71D5D16CC72FF003636E3 /* HXMMapZone.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC71D5C16CC72FF003636E3 /* HXMMapZone.m */; };
 		CCC71D6016CC747B003636E3 /* HXMTerrainEffect.m in Sources */ = {isa = PBXBuildFile; fileRef = CCC71D5F16CC747B003636E3 /* HXMTerrainEffect.m */; };
 		CCDB60E516A04D71006668C2 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB60E416A04D71006668C2 /* MapViewController.m */; };
-		CCDB60EA16A04D8C006668C2 /* BRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB60E816A04D8C006668C2 /* BRAppDelegate.m */; };
+		CCDB60EA16A04D8C006668C2 /* BR1AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB60E816A04D8C006668C2 /* BR1AppDelegate.m */; };
 		CCDB60EB16A04D8C006668C2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB60E916A04D8C006668C2 /* main.m */; };
 		CCDB60F916A04E96006668C2 /* InfoBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = CCDB60F816A04E96006668C2 /* InfoBarView.m */; };
 		CCDB610316A04EF2006668C2 /* map.png in Resources */ = {isa = PBXBuildFile; fileRef = CCDB60FC16A04EF2006668C2 /* map.png */; };
@@ -130,8 +130,8 @@
 		CC523554173A7F1700CDBDC5 /* McDowell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = McDowell.m; sourceTree = "<group>"; };
 		CC523556173A9BA700CDBDC5 /* Beauregard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Beauregard.h; sourceTree = "<group>"; };
 		CC523557173A9BA700CDBDC5 /* Beauregard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Beauregard.m; sourceTree = "<group>"; };
-		CC523559173D97E500CDBDC5 /* BRMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRMap.h; sourceTree = "<group>"; };
-		CC52355A173D97E500CDBDC5 /* BRMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRMap.m; sourceTree = "<group>"; };
+		CC523559173D97E500CDBDC5 /* BR1Map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BR1Map.h; sourceTree = "<group>"; };
+		CC52355A173D97E500CDBDC5 /* BR1Map.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BR1Map.m; sourceTree = "<group>"; };
 		CC65EB8B16BF3EE400C47BD0 /* units.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = units.plist; sourceTree = "<group>"; };
 		CC858548167A72610054E60D /* Bull Run.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bull Run.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC85854C167A72610054E60D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -179,8 +179,8 @@
 		CCC71D5F16CC747B003636E3 /* HXMTerrainEffect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXMTerrainEffect.m; sourceTree = "<group>"; };
 		CCDB60E316A04D71006668C2 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		CCDB60E416A04D71006668C2 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
-		CCDB60E716A04D8C006668C2 /* BRAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRAppDelegate.h; sourceTree = "<group>"; };
-		CCDB60E816A04D8C006668C2 /* BRAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BRAppDelegate.m; sourceTree = "<group>"; };
+		CCDB60E716A04D8C006668C2 /* BR1AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BR1AppDelegate.h; sourceTree = "<group>"; };
+		CCDB60E816A04D8C006668C2 /* BR1AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BR1AppDelegate.m; sourceTree = "<group>"; };
 		CCDB60E916A04D8C006668C2 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CCDB60F716A04E96006668C2 /* InfoBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoBarView.h; sourceTree = "<group>"; };
 		CCDB60F816A04E96006668C2 /* InfoBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoBarView.m; sourceTree = "<group>"; };
@@ -360,8 +360,8 @@
 			children = (
 				CCFD9C7517B3CDD600EDB3FB /* BR1GameDelegate.h */,
 				CCFD9C7617B3CDD600EDB3FB /* BR1GameDelegate.m */,
-				CC523559173D97E500CDBDC5 /* BRMap.h */,
-				CC52355A173D97E500CDBDC5 /* BRMap.m */,
+				CC523559173D97E500CDBDC5 /* BR1Map.h */,
+				CC52355A173D97E500CDBDC5 /* BR1Map.m */,
 				CC0CF3E91698CB40006D902D /* BullRun.h */,
 				CC858553167A72610054E60D /* Supporting Files */,
 			);
@@ -449,8 +449,8 @@
 		CCDB60E616A04D8C006668C2 /* AppDelegate */ = {
 			isa = PBXGroup;
 			children = (
-				CCDB60E716A04D8C006668C2 /* BRAppDelegate.h */,
-				CCDB60E816A04D8C006668C2 /* BRAppDelegate.m */,
+				CCDB60E716A04D8C006668C2 /* BR1AppDelegate.h */,
+				CCDB60E816A04D8C006668C2 /* BR1AppDelegate.m */,
 				CCDB60E916A04D8C006668C2 /* main.m */,
 			);
 			path = AppDelegate;
@@ -646,7 +646,7 @@
 				CCC71D5716CC6F0B003636E3 /* HXMCoordinateTransformer.m in Sources */,
 				CCF61C9716CC6E2900391025 /* HXMGeometry.m in Sources */,
 				CCDB60E516A04D71006668C2 /* MapViewController.m in Sources */,
-				CCDB60EA16A04D8C006668C2 /* BRAppDelegate.m in Sources */,
+				CCDB60EA16A04D8C006668C2 /* BR1AppDelegate.m in Sources */,
 				CCDB60EB16A04D8C006668C2 /* main.m in Sources */,
 				CCDB60F916A04E96006668C2 /* InfoBarView.m in Sources */,
 				CC35E68416AF5EE700F9F0B1 /* MapView.m in Sources */,
@@ -662,7 +662,7 @@
 				CC392E4516D5AE4C00160B82 /* BATMoveOrders.m in Sources */,
 				CC523555173A7F1700CDBDC5 /* McDowell.m in Sources */,
 				CC523558173A9BA700CDBDC5 /* Beauregard.m in Sources */,
-				CC52355B173D97E500CDBDC5 /* BRMap.m in Sources */,
+				CC52355B173D97E500CDBDC5 /* BR1Map.m in Sources */,
 				CCF01A9A174D9705003A1C77 /* McDowell+Strategy.m in Sources */,
 				CCF01AA0174FFECA003A1C77 /* BATAIInfluenceMap.m in Sources */,
 				CCF01AA317510DB2003A1C77 /* McDowell+Tactics.m in Sources */,

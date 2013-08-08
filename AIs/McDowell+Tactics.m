@@ -6,7 +6,7 @@
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
-#import "BRMap.h"
+#import "BR1Map.h"
 #import "HexMap.h"
 #import "McDowell.h"
 #import "McDowell+Strategy.h"
@@ -17,7 +17,7 @@
 @implementation McDowell (Private)
 
 - (HXMHex)closestCsaBaseTo:(HXMHex)hex {
-    BRMap*         map     = [BRMap map];
+    BR1Map*        map     = [BR1Map map];
     __block HXMHex minHex  = HXMHexMake(-1, -1);
     __block int    minDist = INT_MAX;
 

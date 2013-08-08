@@ -7,16 +7,10 @@
 //
 
 #import "BR1GameDelegate.h"
-#import "BRMap.h"
+#import "BR1Map.h"
 #import "BattleAt.h"
 
 @implementation BR1GameDelegate
-
-#pragma mark - Utility Methods
-
-- (BRMap*)map {
-    return (BRMap*)[game board];
-}
 
 #pragma mark - BATGameDelegate implementation
 
@@ -29,7 +23,7 @@
 - (BOOL)isUnit:(BATUnit*)enemy inHex:(HXMHex)hex sightedBy:(NSArray*)friends {
     // CSA north of river or USA south of river is always spotted (note that fords
     // are marked as on both sides of the river, so units on fords are always spotted).
-    if ([[self map] isEnemy:[enemy location] of:[enemy side]]) {
+    if ([[BR1Map map] isEnemy:[enemy location] of:[enemy side]]) {
         DEBUG_SIGHTING(@"%@ is in enemy territory", [enemy name]);
         return YES;
     }

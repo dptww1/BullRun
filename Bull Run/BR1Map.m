@@ -1,5 +1,5 @@
 //
-//  BRMap.m
+//  BR1Map.m
 //  Bull Run
 //
 //  Created by Dave Townsend on 5/10/13.
@@ -7,25 +7,17 @@
 //
 
 #import "BATGame.h"
-#import "BRMap.h"
+#import "BR1Map.h"
 
-@implementation BRMap
+@implementation BR1Map
 
-+ (BRMap*)map {
-    return (BRMap*)[game board];
-}
-
-- (BOOL)isCsa:(HXMHex)hex {
-    return [self is:hex inZone:@"csa"];
-}
-
-- (BOOL)isUsa:(HXMHex)hex {
-    return [self is:hex inZone:@"usa"];
++ (BR1Map*)map {
+    return (BR1Map*)[game board];
 }
 
 - (BOOL)isEnemy:(HXMHex)hex of:(PlayerSide)side { // TODO: generalize?
-    return (side == CSA && [self isUsa:hex])
-        || (side == USA && [self isCsa:hex]);
+    return (side == CSA && [self is:hex inZone:@"usa"])
+        || (side == USA && [self is:hex inZone:@"csa"]);
 }
 
 - (HXMHexAndDistance)closestFordTo:(HXMHex)hex {

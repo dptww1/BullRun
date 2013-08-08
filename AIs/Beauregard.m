@@ -11,7 +11,7 @@
 #import "Beauregard+Strategy.h"
 #import "Beauregard+Tactics.h"
 #import "BullRun.h"
-#import "BRMap.h"
+#import "BR1Map.h"
 #import "NSArray+DPTUtil.h"
 
 
@@ -19,7 +19,7 @@
 @implementation Beauregard (Private)
 
 - (BATAIInfluenceMap*)createInfluenceMap:(BATGame*)game {
-    BRMap* map = [BRMap map];
+    BR1Map* map = [BR1Map map];
     BATAIInfluenceMap* imap = [BATAIInfluenceMap mapFrom:map];
 
     NSArray* usaUnits = [[game oob] unitsForSide:OtherPlayer([self side])];

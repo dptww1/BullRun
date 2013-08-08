@@ -8,7 +8,7 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import "BullRun.h"  // TODO: remove, can't use BR
-#import "BRAppDelegate.h" // TODO: remove/rename, can't use BR
+#import "BR1AppDelegate.h" // TODO: remove/rename, can't use BR
 #import "HexMap.h"
 #import "GameOptionsViewController.h"
 #import "InfoBarView.h"
@@ -352,7 +352,7 @@
 - (IBAction)showOpts:(id)sender {
     NSLog(@"showing opts");
     UIViewController* gameOptionsController = [[GameOptionsViewController alloc] initWithNibName:nil bundle:nil];
-    [[[BRAppDelegate app] menuController] pushController:gameOptionsController];
+    [[[BR1AppDelegate app] menuController] pushController:gameOptionsController];
 }
 
 - (IBAction)playerIsUsa:(id)sender {

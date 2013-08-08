@@ -9,13 +9,13 @@
 #import "McDowell.h"
 #import "McDowell+Strategy.h"
 #import "McDowell+Tactics.h"
-#import "BRMap.h"
+#import "BR1Map.h"
 #import "NSArray+DPTUtil.h"
 
 @implementation McDowell (Private)
 
 - (BATAIInfluenceMap*)createInfluenceMap:(BATGame*)game {
-    BRMap* map = [BRMap map];
+    BR1Map* map = [BR1Map map];
     NSArray* bases = [map basesForSide:[self side]];
 
     BATAIInfluenceMap* imap = [BATAIInfluenceMap mapFrom:map];

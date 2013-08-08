@@ -1,6 +1,6 @@
 # Source data for map.plist; compile with mkmap
 
-className = BRMap
+className = BR1Map
 
 - geometry
 

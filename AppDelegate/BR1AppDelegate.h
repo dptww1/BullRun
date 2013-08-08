@@ -14,7 +14,7 @@
 
 
 /** The Bull Run-specific application delegate. */
-@interface BRAppDelegate : UIResponder <UIApplicationDelegate>
+@interface BR1AppDelegate : UIResponder <UIApplicationDelegate>
 
 /** The application window. */
 @property (strong, nonatomic) UIWindow* window;
@@ -28,7 +28,7 @@
  *
  * @return the global instance of the application
  */
-+ (BRAppDelegate*)app;
++ (BR1AppDelegate*)app;
 
 @end
 

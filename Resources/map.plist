@@ -3737,11 +3737,11 @@
 		<dict>
 			<key>$classes</key>
 			<array>
-				<string>BRMap</string>
+				<string>BR1Map</string>
 				<string>HXMMap</string>
 			</array>
 			<key>$classname</key>
-			<string>BRMap</string>
+			<string>BR1Map</string>
 		</dict>
 	</array>
 	<key>$top</key>
