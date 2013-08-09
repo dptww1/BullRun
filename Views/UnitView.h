@@ -15,7 +15,7 @@
 
 /**
  * The screen representation of a unit.  Not really a "View" in the UIKit
- * sense of the word.  Maybe "UnitGfx" would be better?  (Or UnitGEL as a not
+ * sense of the word.  Maybe "UnitGfx" would be better?  (Or UnitGEL as a nod
  * to the Amiga....)
  *
  * This class has no designated initializers; you must use the class method
