@@ -60,15 +60,17 @@
 
     for (BATUnit* unit in _sightedUnits) {
         CALayer* unitLayer = [UnitView viewForUnit:unit];
+        [unitLayer setHidden:NO];
         [unitLayer setOpacity:1.0f];
     }
 
-    for (BATUnit* unit in _hiddenUnits) {
-        CALayer* unitLayer = [UnitView viewForUnit:unit];
-        [unitLayer setOpacity:0.0f];
-    }
+    for (BATUnit* unit in _hiddenUnits)
+        [[UnitView viewForUnit:unit] setOpacity:0.0f];
 
     [CATransaction commit];
+
+    for (BATUnit* unit in _hiddenUnits)
+        [[UnitView viewForUnit:unit] setHidden:YES];
 }
 
 - (NSString*)description {

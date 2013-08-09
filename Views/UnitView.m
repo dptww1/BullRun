@@ -57,11 +57,14 @@ static NSMutableDictionary* unitViewMap = nil;
              ? [[UIColor colorWithRed:0.1 green:0.1 blue:0.8 alpha:1.0] CGColor]
              : [[UIColor colorWithRed:1.0 green:0.2 blue:0.2 alpha:1.0] CGColor]];
         [self setBounds:CGRectMake(0.0, 0.0, 30.0, 30.0)];
+
         [self setShadowColor:[[UIColor blackColor] CGColor]];
         [self setShadowOffset:CGSizeMake(3.0f, 3.0f)];
         [self setShadowRadius:3.0f];
         [self setShadowOpacity:0.8f];
 
+        [self setHidden:YES];
+        
         _unit = unit;
     }
     

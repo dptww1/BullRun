@@ -152,7 +152,6 @@
     for (BATUnit* unit in [[game oob] units]) {
         UnitView* v = [UnitView viewForUnit:unit];
         if (![v superlayer]) {
-            [v setOpacity:0.0f];
             [[[self view] layer] addSublayer:v];
         }
     }
@@ -330,7 +329,7 @@
     // to play.  The sighting routines will take care of showing hidden units
     // and/or hiding visible units as needed.
     UnitView* vw = [UnitView viewForUnit:unit];
-    if ([vw opacity] < 0.01f)
+    if ([vw isHidden])
         return;
 
     DEBUG_MOVEMENT(@"Moving %@ to %02d%02d", [unit name], hex.column, hex.row);
