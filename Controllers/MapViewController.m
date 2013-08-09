@@ -325,6 +325,14 @@
 }
 
 - (void)moveUnit:(BATUnit*)unit to:(HXMHex)hex {
+    // There's no point in showing units which are hidden; from the user's
+    // POV, nothing is happening while the game waits for an invisible animation
+    // to play.  The sighting routines will take care of showing hidden units
+    // and/or hiding visible units as needed.
+    UnitView* vw = [UnitView viewForUnit:unit];
+    if ([vw opacity] < 0.01f)
+        return;
+
     DEBUG_MOVEMENT(@"Moving %@ to %02d%02d", [unit name], hex.column, hex.row);
     [_animationList addItem:[BATAnimationListItemMove itemMoving:unit toHex:hex]];
 }

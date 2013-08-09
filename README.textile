@@ -50,14 +50,18 @@ h3. Functionality
 * add "friend" and "enemies" as methods in OrderOfBattle, use in Game#sighting
 * MPs should be per-unit, not hardwired
 * McDowell should be using dpt_xxx methods instead of enumerateUsingBlock:
-* UI waits for completely-hidden movement
+* Need to wire up options dialog
+* separate animation when entering woods?
+* Larger info box?
 
 h3. Organization
 * probably should have a controller for InfoBarView
 
 h3. API
 * HMPathFinder doesn't need "minCost" parameter, since it can be inferred from the "map" parameter
-* BATGame (and BRGame?) needs a "startGame" method (and can't use "initialize"!) so can restart after ending game
+* BATGame needs a "startGame" method (and can't use "initialize"!) so can restart after ending game
+* BR1Map isEnemy:of: => isHex:enemyOfSide:
+* BR1GameDelegate isUnit:inHex:sightedBy: doesn't use "hex" parameter
 
 h3. Bugs
 * Deploying reinforcement nonreproducibly gets Access Violation
