@@ -73,6 +73,7 @@
 		CCF61C9216C5EE3300391025 /* map.plist in Resources */ = {isa = PBXBuildFile; fileRef = CCF61C9116C5EE3300391025 /* map.plist */; };
 		CCF61C9716CC6E2900391025 /* HXMGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF61C9516CC63C900391025 /* HXMGeometry.m */; };
 		CCFD9C7717B3CDD600EDB3FB /* BR1GameDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFD9C7617B3CDD600EDB3FB /* BR1GameDelegate.m */; };
+		CCFD9C7B17BA92FB00EDB3FB /* BR1TurnConversionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFD9C7A17BA92FB00EDB3FB /* BR1TurnConversionTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -208,6 +209,8 @@
 		CCFD9C7417B188C600EDB3FB /* BATGameDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BATGameDelegate.h; sourceTree = "<group>"; };
 		CCFD9C7517B3CDD600EDB3FB /* BR1GameDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BR1GameDelegate.h; sourceTree = "<group>"; };
 		CCFD9C7617B3CDD600EDB3FB /* BR1GameDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BR1GameDelegate.m; sourceTree = "<group>"; };
+		CCFD9C7917BA92FB00EDB3FB /* BR1TurnConversionTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BR1TurnConversionTests.h; sourceTree = "<group>"; };
+		CCFD9C7A17BA92FB00EDB3FB /* BR1TurnConversionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BR1TurnConversionTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -364,6 +367,7 @@
 				CC52355A173D97E500CDBDC5 /* BR1Map.m */,
 				CC0CF3E91698CB40006D902D /* BullRun.h */,
 				CC858553167A72610054E60D /* Supporting Files */,
+				CCFD9C7817BA92FB00EDB3FB /* Tests */,
 			);
 			path = "Bull Run";
 			sourceTree = "<group>";
@@ -522,6 +526,15 @@
 				CCC060AB178EDA7400F8631A /* GameOptionsView.xib */,
 			);
 			path = XIBs;
+			sourceTree = "<group>";
+		};
+		CCFD9C7817BA92FB00EDB3FB /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				CCFD9C7917BA92FB00EDB3FB /* BR1TurnConversionTests.h */,
+				CCFD9C7A17BA92FB00EDB3FB /* BR1TurnConversionTests.m */,
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -695,6 +708,7 @@
 				CC058F691778960D00FD165C /* BATAIMoveTrackerTests.m in Sources */,
 				CC9AF8C81781204F00BBC711 /* HXMHexMapGeometryTests.m in Sources */,
 				CC9AF8C91781204F00BBC711 /* HXMPathFinderTests.m in Sources */,
+				CCFD9C7B17BA92FB00EDB3FB /* BR1TurnConversionTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

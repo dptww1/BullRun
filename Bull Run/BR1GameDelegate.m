@@ -60,11 +60,50 @@
 }
 
 - (NSString*)convertTurnToString:(int)turn {
-    return @"";
+    // Turns begin at 6:30 AM, increment by 30 minutes per turn
+    // Turn 1 => 6:30 AM
+    // Turn 2 => 7:00 AM
+    // Turn 3 => 7:30 AM
+    // ...
+    const char* amPm    = "AM";
+    int         hour    = (turn / 2) + 6;
+    int         minutes = turn & 1 ? 30 : 0;
+
+    if (hour >= 12) {
+        amPm = "PM";
+        if (hour > 12)
+            hour -= 12;
+    }
+
+    return [NSString stringWithFormat:@"%d:%02d %s",
+            hour,
+            minutes,
+            amPm];
 }
 
 - (int)convertStringToTurn:(NSString*)string {
-    return 0;
+    NSCharacterSet* separators = [NSCharacterSet
+                                  characterSetWithCharactersInString:@": "];
+    NSArray* elts = [string componentsSeparatedByCharactersInSet:separators];
+
+    if ([elts count] != 3)
+        @throw [NSException
+                exceptionWithName:@"IllegalTimeString"
+                           reason:@"String missing (or too many) separators"
+                         userInfo:nil];
+
+    int hour = [elts[0] intValue];
+    if ([elts[2] isEqualToString:@"PM"] && hour != 12)
+        hour += 12;
+
+    hour -= 6;
+    int turn = hour * 2;
+
+    // Minutes
+    if ([elts[1] isEqualToString:@"30"])
+        turn += 1;
+
+    return turn;
 }
 
 @end
