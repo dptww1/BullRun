@@ -41,11 +41,6 @@
                 return;
 
             BATReinforcementInfo* ri = [BATReinforcementInfo createWithUnit:unit];
-            DEBUG_REINFORCEMENTS(@"Reinforcement: %@ arrives at %02d%02d on turn %d",
-                                 [ri unitName],
-                                 [ri entryLocation].column,
-                                 [ri entryLocation].row,
-                                 [ri entryTurn]);
             [oob addReinforcementInfo:ri];
             [unit setLocation:HXMHexMake(-1, -1)];
         }];
@@ -71,6 +66,12 @@
         [_units dpt_find:^BOOL(BATUnit* u) {
             return [[u name] isEqualToString:name];
         }];
+
+    // I can't think of a reason why we would want to allow queries
+    // for units which aren't actually in the game.
+    @throw [NSException exceptionWithName:@"unitByName illegal state"
+                                   reason:name
+                                 userInfo:nil];
 }
 
 - (NSArray*)unitsForSide:(PlayerSide)side {
@@ -78,8 +79,36 @@
 }
 
 - (void)addReinforcementInfo:(BATReinforcementInfo*)reinforcementInfo {
+    DEBUG_REINFORCEMENTS(@"Reinforcement: %@ arrives at %02d%02d on turn %d",
+                         [reinforcementInfo unitName],
+                         [reinforcementInfo entryLocation].column,
+                         [reinforcementInfo entryLocation].row,
+                         [reinforcementInfo entryTurn]);
     [_reinforcements addObject:reinforcementInfo];
 }
 
+- (void)deleteReinforcementInfoForUnitName:(NSString *)unitName {
+    for (NSUInteger i = 0; i < [_reinforcements count]; ++i) {
+        BATReinforcementInfo* info = [_reinforcements objectAtIndex:i];
+        if ([[info unitName] isEqualToString:unitName]) {
+            [_reinforcements removeObjectAtIndex:i];
+            DEBUG_REINFORCEMENTS(@"Deleting reinforcement %@ at index %d",
+                                 unitName, i);
+            return;
+        }
+    }
+
+    DEBUG_REINFORCEMENTS(@"Deleting reinforcement %@ but there was none to remove", unitName);
+}
+
+- (void)removeFromGame:(NSString*)unitName {
+    [[self unitByName:unitName] setLocation:HXMHexMake(-1, -1)];
+    // TODO: notifications?
+}
+
+- (void)addStartingUnit:(NSString *)unitName atHex:(HXMHex)hex {
+    [[self unitByName:unitName] setLocation:hex];
+    // TODO: notifications?
+}
 
 @end

@@ -24,7 +24,7 @@ require 'plist'
 
 #========================================================================
 def infer_typed_data(str)
-  return str.to_i if str =~ /^\d+$/
+  return str.to_i if str =~ /^-?\d+$/
   return true     if str =~ /^true$/
   return false    if str =~ /^false$/
   str

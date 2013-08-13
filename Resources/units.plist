@@ -846,9 +846,9 @@
 			<key>leadership</key>
 			<integer>10</integer>
 			<key>location_column</key>
-			<integer>13</integer>
+			<integer>-1</integer>
 			<key>location_row</key>
-			<integer>3</integer>
+			<integer>-1</integer>
 			<key>mode</key>
 			<integer>3</integer>
 			<key>morale</key>
@@ -1031,9 +1031,9 @@
 			<key>leadership</key>
 			<integer>19</integer>
 			<key>location_column</key>
-			<integer>13</integer>
+			<integer>-1</integer>
 			<key>location_row</key>
-			<integer>4</integer>
+			<integer>-1</integer>
 			<key>mode</key>
 			<integer>3</integer>
 			<key>morale</key>

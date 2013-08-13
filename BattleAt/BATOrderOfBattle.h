@@ -53,7 +53,9 @@
  *
  * @param name the unit name
  *
- * @return the corresponding unit, or `nil` if no such unit exists
+ * @return the corresponding unit
+ *
+ * @exception NSException no unit of the given name exists
  */
 - (BATUnit*)unitByName:(NSString*)name;
 
@@ -72,5 +74,17 @@
  * @param reinforcementInfo the reinforcement to add
  */
 - (void)addReinforcementInfo:(BATReinforcementInfo*)reinforcementInfo;
+
+/**
+ * Deletes reinforcement info for the given unit. Safe to call even
+ * if there isn't any reinforcement info for the unit.
+ *
+ * @param unitName the unit name whose info should be deleted
+ */
+- (void)deleteReinforcementInfoForUnitName:(NSString*)unitName;
+
+- (void)removeFromGame:(NSString*)unitName;
+
+- (void)addStartingUnit:(NSString*)unitName atHex:(HXMHex)hex;
 
 @end

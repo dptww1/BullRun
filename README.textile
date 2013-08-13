@@ -53,6 +53,15 @@ h3. Functionality
 * Need to wire up options dialog
 * separate animation when entering woods?
 * Larger info box?
+* GameOptionsView edits
+** add convenience methods for adding/removing reinforcements which are then called by the control-specific callbacks
+** create outlets and wire everything up: Bartow, Bee, Jackson, Smith
+** initial state needs to be loadable based on current conditions (or not, because reinforcement info might be gone)
+** disable once game is underway
+* GameStartView + Controller
+** USA, CSA, Free Setup controls
+** Free Setup rules for UI and AI
+* HMPathFinder needs to pass path (or something) to callback; can use that info to prevent traffic jamsh
 
 h3. Organization
 * probably should have a controller for InfoBarView
@@ -60,6 +69,8 @@ h3. Organization
 h3. API
 * HMPathFinder doesn't need "minCost" parameter, since it can be inferred from the "map" parameter
 * BATGame needs a "startGame" method (and can't use "initialize"!) so can restart after ending game
+** "free setup" parameter
+** "user side" parameter
 * BR1Map isEnemy:of: => isHex:enemyOfSide:
 * BR1GameDelegate isUnit:inHex:sightedBy: doesn't use "hex" parameter
 
