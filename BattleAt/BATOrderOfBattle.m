@@ -40,8 +40,7 @@
             if ([unit turn] == 0)
                 return;
 
-            BATReinforcementInfo* ri = [BATReinforcementInfo createWithUnit:unit];
-            [oob addReinforcementInfo:ri];
+            [oob addReinforcingUnit:[unit name] atHex:[unit location] onTurn:[unit turn]];
             [unit setLocation:HXMHexMake(-1, -1)];
         }];
     }
@@ -78,16 +77,7 @@
     return [_units dpt_grep:^BOOL(BATUnit* u) { return [u side] == side; }];
 }
 
-- (void)addReinforcementInfo:(BATReinforcementInfo*)reinforcementInfo {
-    DEBUG_REINFORCEMENTS(@"Reinforcement: %@ arrives at %02d%02d on turn %d",
-                         [reinforcementInfo unitName],
-                         [reinforcementInfo entryLocation].column,
-                         [reinforcementInfo entryLocation].row,
-                         [reinforcementInfo entryTurn]);
-    [_reinforcements addObject:reinforcementInfo];
-}
-
-- (void)deleteReinforcementInfoForUnitName:(NSString *)unitName {
+- (void)deleteReinforcementInfoForUnitName:(NSString*)unitName {
     for (NSUInteger i = 0; i < [_reinforcements count]; ++i) {
         BATReinforcementInfo* info = [_reinforcements objectAtIndex:i];
         if ([[info unitName] isEqualToString:unitName]) {
@@ -103,12 +93,27 @@
 
 - (void)removeFromGame:(NSString*)unitName {
     [[self unitByName:unitName] setLocation:HXMHexMake(-1, -1)];
+    [self deleteReinforcementInfoForUnitName:unitName];
     // TODO: notifications?
 }
 
-- (void)addStartingUnit:(NSString *)unitName atHex:(HXMHex)hex {
+- (void)addStartingUnit:(NSString*)unitName atHex:(HXMHex)hex {
     [[self unitByName:unitName] setLocation:hex];
+    [self deleteReinforcementInfoForUnitName:unitName];
     // TODO: notifications?
+}
+
+- (void)addReinforcingUnit:(NSString*)unitName atHex:(HXMHex)hex onTurn:(int)turn {
+    // Prevent multiple reinforcement entries for the same unit
+    [self deleteReinforcementInfoForUnitName:unitName];
+
+    BATUnit* unit = [self unitByName:unitName];
+
+    BATReinforcementInfo* rInfo = [BATReinforcementInfo createWithUnit:unit];
+    [rInfo setEntryLocation:hex];
+    [rInfo setEntryTurn:turn];
+
+    [_reinforcements addObject:rInfo];
 }
 
 @end

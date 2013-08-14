@@ -55,13 +55,13 @@ h3. Functionality
 * Larger info box?
 * GameOptionsView edits
 ** add convenience methods for adding/removing reinforcements which are then called by the control-specific callbacks
-** create outlets and wire everything up: Bartow, Bee, Jackson, Smith
+** create outlets and wire everything up; already done Bartow, Bee, Jackson, Smith, USA
 ** initial state needs to be loadable based on current conditions (or not, because reinforcement info might be gone)
 ** disable once game is underway
 * GameStartView + Controller
 ** USA, CSA, Free Setup controls
 ** Free Setup rules for UI and AI
-* HMPathFinder needs to pass path (or something) to callback; can use that info to prevent traffic jamsh
+* HMPathFinder needs to pass path (or something) to callback; can use that info to prevent traffic jams
 
 h3. Organization
 * probably should have a controller for InfoBarView
@@ -78,3 +78,4 @@ h3. Bugs
 * Deploying reinforcement nonreproducibly gets Access Violation
 * Time widget sometimes shifts upwards a bit
 * Shouldn't be able to click time while resolving turn
+* Move lines cut off in rightmost three columns (orientation problem again?)

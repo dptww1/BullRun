@@ -69,13 +69,6 @@
 - (NSArray*)unitsForSide:(PlayerSide)side;
 
 /**
- * Adds reinforcement information to this OOB.
- *
- * @param reinforcementInfo the reinforcement to add
- */
-- (void)addReinforcementInfo:(BATReinforcementInfo*)reinforcementInfo;
-
-/**
  * Deletes reinforcement info for the given unit. Safe to call even
  * if there isn't any reinforcement info for the unit.
  *
@@ -86,5 +79,7 @@
 - (void)removeFromGame:(NSString*)unitName;
 
 - (void)addStartingUnit:(NSString*)unitName atHex:(HXMHex)hex;
+
+- (void)addReinforcingUnit:(NSString*)unitName atHex:(HXMHex)hex onTurn:(int)turn;
 
 @end

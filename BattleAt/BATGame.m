@@ -248,11 +248,9 @@ BATGame* game; // the global game instance
     for (BATUnit* u in didntMove)
         [u setMps:0];
 
-    [self setTurn:[self turn] + 1];
-    
-    [self notifyObserversWithSelector:@selector(movePhaseDidEnd)];
-
     [self processReinforcements];
+    [self setTurn:[self turn] + 1];
+    [self notifyObserversWithSelector:@selector(movePhaseDidEnd)];
 
     // TODO: compute whether game over
 }
