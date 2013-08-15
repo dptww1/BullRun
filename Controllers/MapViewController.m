@@ -160,7 +160,13 @@
         [self setAnimationList:[BATAnimationList listWithCoordXFormer:_coordXformer]];
 
     if (!_moveOrderLayer) {
+        // iOS apps always appear in portrait mode until the end of
+        // application:didFinishLaunchingWithOptions:, but this occurs before
+        // then.  So the rotation is off, and we have to correct it ourselves.
         CGRect bounds = [[self view] bounds];
+        CGFloat tmp = bounds.size.height;
+        bounds.size.height = bounds.size.width;
+        bounds.size.width = tmp;
         
         _moveOrderLayer = [CALayer layer];
         [_moveOrderLayer setBounds:bounds];

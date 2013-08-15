@@ -78,4 +78,3 @@ h3. Bugs
 * Deploying reinforcement nonreproducibly gets Access Violation
 * Time widget sometimes shifts upwards a bit
 * Shouldn't be able to click time while resolving turn
-* Move lines cut off in rightmost three columns (orientation problem again?)
