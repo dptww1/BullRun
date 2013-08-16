@@ -76,10 +76,31 @@
  */
 - (void)deleteReinforcementInfoForUnitName:(NSString*)unitName;
 
+/**
+ * Removes the given unit entirely from the game, whether it's already
+ * deployed or is a reinforcement, or is already out of the game.
+ *
+ * @param unitName the name of the unit to remove
+ */
 - (void)removeFromGame:(NSString*)unitName;
 
+/**
+ * Deploys the given unit at the given hex, erasing any reinforcement
+ * information for the unit, if any.
+ *
+ * @param unitName the name of the unit to deploy
+ * @param hex where to deploy the unit
+ */
 - (void)addStartingUnit:(NSString*)unitName atHex:(HXMHex)hex;
 
+/**
+ * Adds the given unit as a reinforcement. The unit is removed from the map
+ * if it is already deployed.
+ *
+ * @param unitName the name of the unit to make a reinforcement
+ * @param hex where the reinforcement should arrive
+ * @param turn the turn of arrival of the reinforcement
+ */
 - (void)addReinforcingUnit:(NSString*)unitName atHex:(HXMHex)hex onTurn:(int)turn;
 
 @end
