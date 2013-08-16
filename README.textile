@@ -23,6 +23,10 @@ Reinforcements show up; infrastructure is there to support arbitrary OOB manipul
 
 Map and Unit compilers are implemented in Tools dir.
 
+Game Options work, sort of.  The model logic is correct, but the views don't update for units (e.g. Bee) which
+start on map but get changed to Not Appearing In This Picture or a reinforcement.
+
+
 h1. To Do
 
 h3. UI/Art

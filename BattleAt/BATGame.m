@@ -300,15 +300,23 @@ BATGame* game; // the global game instance
         BATReinforcementInfo* rInfo = [[_oob reinforcements] objectAtIndex:i];
 
         if ([self turn] >= [rInfo entryTurn]) {
-            if ([[self board] legal:[rInfo entryLocation]]) {
 
-                BATUnit* unit = [_oob unitByName:[rInfo unitName]];
-                [unit setLocation:[rInfo entryLocation]];
+            BATUnit* unit     = [_oob unitByName:[rInfo unitName]];
+            HXMHex   entryHex = [rInfo entryLocation];
+
+            if ([[self board] legal:entryHex]) {
+
+                BATUnit* occupier = [self unitInHex:entryHex];
+                if (occupier) {
+                    DEBUG_REINFORCEMENTS(@"%@ can't enter because %@ is in the way",
+                                         [unit name], [occupier name]);
+                    continue;
+                }
+
+                [unit setLocation:entryHex];
 
                 DEBUG_REINFORCEMENTS(@"%@ appears at %02d%02d",
-                                     [unit name],
-                                     [rInfo entryLocation].column,
-                                     [rInfo entryLocation].row);
+                                     [unit name], entryHex.column, entryHex.row);
 
                 [[_oob reinforcements] removeObjectAtIndex:i];
 
@@ -319,7 +327,11 @@ BATGame* game; // the global game instance
                 --i;
 
                 anyReinforcementsAppeared = YES;
+            } else {
+                DEBUG_REINFORCEMENTS(@"%@ has bad reinforcement hex %02d%02d!",
+                                     [unit name], entryHex.column, entryHex.row);
             }
+
         }
     }
 

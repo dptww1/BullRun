@@ -15,6 +15,15 @@
 @implementation GameOptionsViewController
 
 - (void)setStartStateForUnit:(NSString*)name
+                    startHex:(HXMHex)hex
+              basedOnControl:(id)segmentedControl {
+    [self setStartStateForUnit:name
+                      startHex:hex
+              reinforcementHex:hex
+                basedOnControl:segmentedControl];
+}
+
+- (void)setStartStateForUnit:(NSString*)name
                     startHex:(HXMHex)startHex
             reinforcementHex:(HXMHex)reinforcementHex
               basedOnControl:(id)segmentedControl {
@@ -52,7 +61,11 @@
                          [choiceStr substringFromIndex:[choiceStr length] - 2]];
         }
 
-        int turn = [[game delegate] convertStringToTurn:choiceStr];
+        // Subtract one because reinforcements are deployed at the end of
+        // the turn passed to addReinforcingUnit:atHex:OnTurn:, but the
+        // time in the label really should be the first turn when the unit
+        // is available for orders.
+        int turn = [[game delegate] convertStringToTurn:choiceStr] - 1;
 
         DEBUG_REINFORCEMENTS(@"%@ arriving turn %d at %02d%02d",
                              name, turn,
@@ -65,14 +78,12 @@
 - (IBAction)sgCtlMilitia:(id)sender {
     [self setStartStateForUnit:@"Militia"
                       startHex:HXMHexMake(13, 3)
-              reinforcementHex:HXMHexMake(13, 3)
                 basedOnControl:sender];
 }
 
 - (IBAction)sgCtlVolunteers:(id)sender {
     [self setStartStateForUnit:@"Volunteers"
                       startHex:HXMHexMake(13, 4)
-              reinforcementHex:HXMHexMake(13, 4)
                 basedOnControl:sender];
 }
 
@@ -93,7 +104,6 @@
 - (IBAction)sgCtlHolmes:(id)sender {
     [self setStartStateForUnit:@"Holmes"
                       startHex:HXMHexMake(13, 11)
-              reinforcementHex:HXMHexMake(13, 11)
                 basedOnControl:sender];
 }
 
@@ -107,7 +117,6 @@
 - (IBAction)sgCtlSmith:(id)sender {
     [self setStartStateForUnit:@"Smith"
                       startHex:HXMHexMake(9, 12)
-              reinforcementHex:HXMHexMake(9, 12)
                 basedOnControl:sender];
 }
 
