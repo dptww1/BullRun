@@ -16,13 +16,16 @@
 
 - (void)setStartStateForUnit:(NSString*)name
                     startHex:(HXMHex)startHex
-                 fromChoices:(NSArray*)choices
-                  usingIndex:(int)idx {
+            reinforcementHex:(HXMHex)reinforcementHex
+              basedOnControl:(id)segmentedControl {
 
-    // Get selected choice, removing the "this is the historical choice" marker
-    NSString* choiceStr = [choices[idx]
-                           stringByReplacingOccurrencesOfString:@"*"
-                           withString:@""];
+    // Get the selected segment title
+    NSString* choiceStr =
+        [segmentedControl titleForSegmentAtIndex:[segmentedControl selectedSegmentIndex]];
+
+    // Remove the "this is the historical choice" marker
+    choiceStr = [choiceStr stringByReplacingOccurrencesOfString:@"*"
+                                                     withString:@""];
 
     if ([choiceStr isEqualToString:@"At Start"]) {
         DEBUG_REINFORCEMENTS(@"%@ starting in hex %02d%02d",
@@ -33,55 +36,80 @@
         DEBUG_REINFORCEMENTS(@"%@ removed from game", name);
         [[game oob] removeFromGame:name];
 
-    } else { // must be formatted as "hh:mm pm/cc.rr"
-        NSArray* elts = [choiceStr componentsSeparatedByString:@"/"];
-        int turn = [[game delegate] convertStringToTurn:elts[0]];
+    } else {
+        // Must be a reinforcement; remove the "Arrives " leading text
+        choiceStr = [choiceStr stringByReplacingOccurrencesOfString:@"Arrives "
+                                                         withString:@""];
+        // The labels use "Noon" instead of "12:00 PM"
+        if ([choiceStr isEqualToString:@"Noon"])
+            choiceStr = @"12:00 PM";
 
-        elts = [elts[1] componentsSeparatedByString:@"."];
-        HXMHex hex = HXMHexMake([elts[0] intValue], [elts[1] intValue]);
+        // Convert 8AM, 4PM into canonical form
+        if ([choiceStr length] <= 4) {
+            NSString* hr = [choiceStr substringToIndex:[choiceStr length] - 2];
+            choiceStr = [NSString stringWithFormat:@"%@:00 %@",
+                         hr,
+                         [choiceStr substringFromIndex:[choiceStr length] - 2]];
+        }
+
+        int turn = [[game delegate] convertStringToTurn:choiceStr];
 
         DEBUG_REINFORCEMENTS(@"%@ arriving turn %d at %02d%02d",
-                             name, turn, hex.column, hex.row);
+                             name, turn,
+                             reinforcementHex.column, reinforcementHex.row);
 
-        [[game oob] addReinforcingUnit:name atHex:hex onTurn:turn];
+        [[game oob] addReinforcingUnit:name atHex:reinforcementHex onTurn:turn];
     }
 }
 
-- (void)toggleStartStateForUnit:(NSString*)name atHex:(HXMHex)hex withSelectState:(int)state {
-    DEBUG_REINFORCEMENTS(@"%@ (%02d%0d) set to state %d",
-                         name, hex.column, hex.row, state);
-    if (state == 0) // then not in battle
-        [[game oob] removeFromGame:name];
-
-    else // shows up at start
-        [[game oob] addStartingUnit:name atHex:hex];
-}
-
 - (IBAction)sgCtlMilitia:(id)sender {
-    [self toggleStartStateForUnit:@"Militia"
-                            atHex:HXMHexMake(13, 3)
-                  withSelectState:[sender selectedSegmentIndex]];
+    [self setStartStateForUnit:@"Militia"
+                      startHex:HXMHexMake(13, 3)
+              reinforcementHex:HXMHexMake(13, 3)
+                basedOnControl:sender];
 }
 
 - (IBAction)sgCtlVolunteers:(id)sender {
-    [self toggleStartStateForUnit:@"Volunteers"
-                            atHex:HXMHexMake(13, 4)
-                  withSelectState:[sender selectedSegmentIndex]];
+    [self setStartStateForUnit:@"Volunteers"
+                      startHex:HXMHexMake(13, 4)
+              reinforcementHex:HXMHexMake(13, 4)
+                basedOnControl:sender];
+}
+
+- (IBAction)sgCtlBartow:(id)sender {
+    [self setStartStateForUnit:@"Bartow"
+                      startHex:HXMHexMake(12, 10)
+              reinforcementHex:HXMHexMake(9, 12)
+                basedOnControl:sender];
+}
+
+- (IBAction)sgCtlBee:(id)sender {
+    [self setStartStateForUnit:@"Bee"
+                      startHex:HXMHexMake(11, 10)
+              reinforcementHex:HXMHexMake(9, 12)
+                basedOnControl:sender];
 }
 
 - (IBAction)sgCtlHolmes:(id)sender {
-    [self toggleStartStateForUnit:@"Holmes"
-                            atHex:HXMHexMake(13, 11)
-                  withSelectState:1 - [sender selectedSegmentIndex]];
+    [self setStartStateForUnit:@"Holmes"
+                      startHex:HXMHexMake(13, 11)
+              reinforcementHex:HXMHexMake(13, 11)
+                basedOnControl:sender];
+}
+
+- (IBAction)sgCtlJackson:(id)sender {
+    [self setStartStateForUnit:@"Jackson"
+                      startHex:HXMHexMake(11, 9)
+              reinforcementHex:HXMHexMake(9, 12)
+                basedOnControl:sender];
 }
 
 - (IBAction)sgCtlSmith:(id)sender {
     [self setStartStateForUnit:@"Smith"
-                      startHex:HXMHexMake(-1, -1)
-                   fromChoices:@[@"12:00 PM/09.12", @"Not in Battle"]
-                    usingIndex:[sender selectedSegmentIndex]];
+                      startHex:HXMHexMake(9, 12)
+              reinforcementHex:HXMHexMake(9, 12)
+                basedOnControl:sender];
 }
-
 
 - (IBAction)btnDoneTouched:(id)sender {
     [[MenuController sharedInstance] popController];

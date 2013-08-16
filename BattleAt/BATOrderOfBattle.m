@@ -108,6 +108,7 @@
     [self deleteReinforcementInfoForUnitName:unitName];
 
     BATUnit* unit = [self unitByName:unitName];
+    [unit setLocation:HXMHexMake(-1, -1)];
 
     BATReinforcementInfo* rInfo = [BATReinforcementInfo createWithUnit:unit];
     [rInfo setEntryLocation:hex];
