@@ -74,6 +74,10 @@
 		CCF61C9716CC6E2900391025 /* HXMGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = CCF61C9516CC63C900391025 /* HXMGeometry.m */; };
 		CCFD9C7717B3CDD600EDB3FB /* BR1GameDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFD9C7617B3CDD600EDB3FB /* BR1GameDelegate.m */; };
 		CCFD9C7B17BA92FB00EDB3FB /* BR1TurnConversionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CCFD9C7A17BA92FB00EDB3FB /* BR1TurnConversionTests.m */; };
+		CCFD9C9317C121F600EDB3FB /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = CCFD9C9217C121F500EDB3FB /* Icon-72.png */; };
+		CCFD9C9717C1225400EDB3FB /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CCFD9C9417C1224200EDB3FB /* Icon-72@2x.png */; };
+		CCFD9C9817C1225400EDB3FB /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = CCFD9C9517C1224400EDB3FB /* Icon-Small-50.png */; };
+		CCFD9C9917C1225400EDB3FB /* Icon-Small-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CCFD9C9617C1224C00EDB3FB /* Icon-Small-50@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -211,6 +215,10 @@
 		CCFD9C7617B3CDD600EDB3FB /* BR1GameDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BR1GameDelegate.m; sourceTree = "<group>"; };
 		CCFD9C7917BA92FB00EDB3FB /* BR1TurnConversionTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BR1TurnConversionTests.h; sourceTree = "<group>"; };
 		CCFD9C7A17BA92FB00EDB3FB /* BR1TurnConversionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BR1TurnConversionTests.m; sourceTree = "<group>"; };
+		CCFD9C9217C121F500EDB3FB /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
+		CCFD9C9417C1224200EDB3FB /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
+		CCFD9C9517C1224400EDB3FB /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
+		CCFD9C9617C1224C00EDB3FB /* Icon-Small-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -328,6 +336,10 @@
 				CCDB60E216A04D71006668C2 /* Controllers */,
 				CC85854B167A72610054E60D /* Frameworks */,
 				CCDB60EC16A04E43006668C2 /* HexMap */,
+				CCFD9C9217C121F500EDB3FB /* Icon-72.png */,
+				CCFD9C9417C1224200EDB3FB /* Icon-72@2x.png */,
+				CCFD9C9517C1224400EDB3FB /* Icon-Small-50.png */,
+				CCFD9C9617C1224C00EDB3FB /* Icon-Small-50@2x.png */,
 				CC858549167A72610054E60D /* Products */,
 				CC0CF380168A4E72006D902D /* README.textile */,
 				CCDB60FA16A04EF2006668C2 /* Resources */,
@@ -622,6 +634,10 @@
 				CCF61C9216C5EE3300391025 /* map.plist in Resources */,
 				CC1B671C16DC4B9F0078B20B /* bullet.png in Resources */,
 				CCC060AD178EDA7400F8631A /* GameOptionsView.xib in Resources */,
+				CCFD9C9317C121F600EDB3FB /* Icon-72.png in Resources */,
+				CCFD9C9717C1225400EDB3FB /* Icon-72@2x.png in Resources */,
+				CCFD9C9817C1225400EDB3FB /* Icon-Small-50.png in Resources */,
+				CCFD9C9917C1225400EDB3FB /* Icon-Small-50@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
