@@ -15,7 +15,7 @@
     return (BR1Map*)[game board];
 }
 
-- (BOOL)isEnemy:(HXMHex)hex of:(PlayerSide)side { // TODO: generalize?
+- (BOOL)isHex:(HXMHex)hex enemyOfPlayer:(PlayerSide)side { // TODO: generalize?
     return (side == CSA && [self is:hex inZone:@"usa"])
         || (side == USA && [self is:hex inZone:@"csa"]);
 }
@@ -50,7 +50,7 @@
         HXMHex townHex;
         [obj getValue:&townHex];
 
-        if (![self isEnemy:townHex of:side])
+        if (![self isHex:townHex enemyOfPlayer:side])
             [bases addObject:[NSValue valueWithHex:townHex]];
      }];
 

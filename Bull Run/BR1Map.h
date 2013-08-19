@@ -32,7 +32,7 @@
  *
  * @return `YES` if the hex is in enemy territory, `NO` if it isn't
  */
-- (BOOL)isEnemy:(HXMHex)hex of:(PlayerSide)side;
+- (BOOL)isHex:(HXMHex)hex enemyOfPlayer:(PlayerSide)side;
 
 /**
  * Finds the closes ford to the given hex

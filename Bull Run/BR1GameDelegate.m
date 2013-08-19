@@ -23,7 +23,7 @@
 - (BOOL)isUnit:(BATUnit*)enemy inHex:(HXMHex)hex sightedBy:(NSArray*)friends {
     // CSA north of river or USA south of river is always spotted (note that fords
     // are marked as on both sides of the river, so units on fords are always spotted).
-    if ([[BR1Map map] isEnemy:[enemy location] of:[enemy side]]) {
+    if ([[BR1Map map] isHex:[enemy location] enemyOfPlayer:[enemy side]]) {
         DEBUG_SIGHTING(@"%@ is in enemy territory", [enemy name]);
         return YES;
     }
