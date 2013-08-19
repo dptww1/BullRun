@@ -50,24 +50,24 @@
 }
 
 - (void)addValue:(float)value atHex:(HXMHex)hex {
-    if ([_srcMap legal:hex])
+    if ([_srcMap isHexOnMap:hex])
         _mapData[[self offsetForHex:hex]] += value;
 }
 
 - (void)setValue:(float)value atHex:(HXMHex)hex {
-    if ([_srcMap legal:hex])
+    if ([_srcMap isHexOnMap:hex])
         _mapData[[self offsetForHex:hex]] = value;
 }
 
 - (float)valueAt:(HXMHex)hex {
-    if ([[self srcMap] legal:hex])
+    if ([[self srcMap] isHexOnMap:hex])
         return _mapData[[self offsetForHex:hex]];
 
     return 0.0f;
 }
 
 - (float)multiplyBy:(float)value atHex:(HXMHex)hex {
-    if ([_srcMap legal:hex]) {
+    if ([_srcMap isHexOnMap:hex]) {
         int offset = [self offsetForHex:hex];
         _mapData[offset] *= 4.0f;
         return _mapData[offset];

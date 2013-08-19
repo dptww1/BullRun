@@ -44,7 +44,7 @@
                     float curValue = value;
 
                     // Beware of moving offmap, or into CSA territory
-                    if (![map legal:curHex] || [map is:curHex inZone:@"csa"])
+                    if (![map isHexOnMap:curHex] || [map is:curHex inZone:@"csa"])
                         continue;
 
                     // Reduce the value by half if it's not directly towards the base

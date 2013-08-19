@@ -35,7 +35,7 @@
         HXMMap* map = [game board];
 
         // Friends which are offboard can't spot.
-        if (![map legal:[friend location]])
+        if (![map isHexOnMap:[friend location]])
             return;
 
         BOOL friendInUsaZone = [map is:[friend location] inZone:@"usa"];

@@ -25,7 +25,7 @@
 
 - (NSNumber*)computeAttackChanceOf:(BATUnit*)unit inDirection:(int)dir {
     HXMHex hex = [[game board] hexAdjacentTo:[unit location] inDirection:dir];
-    if (![[game board] legal:hex])
+    if (![[game board] isHexOnMap:hex])
         return @(0);
 
     BATUnit* enemy = [game unitInHex:hex];

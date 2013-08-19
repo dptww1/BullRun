@@ -218,7 +218,7 @@
         } else {
             HXMHex hex = [[self coordXformer] screenToHex:p];
             
-            if ([[game board] legal:hex]) {
+            if ([[game board] isHexOnMap:hex]) {
 
                 DEBUG_MAP(@"Hex %02d%02d, zones:%@,%@", hex.column, hex.row, [[game board] is:hex inZone:@"csa"] ? @"CSA" : @"", [[game board] is:hex inZone:@"usa"] ? @"USA" : @"");
                 DEBUG_MAP(@"   Terrain %@ cost %2.0f",
@@ -262,7 +262,7 @@
         HXMHex h = [_coordXformer screenToHex:[t locationInView:[self view]]];
         
         // Just ignore illegal hexes
-        if (![[game board] legal:h])
+        if (![[game board] isHexOnMap:h])
             return;
             
         if (!_givingNewOrders && HXMHexEquals([_currentUnit location], h)) {

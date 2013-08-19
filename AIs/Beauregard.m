@@ -43,7 +43,7 @@
             HXMHex curHex = [map hexAdjacentTo:location inDirection:i];
             float curValue = value;
 
-            if (![map legal:curHex])
+            if (![map isHexOnMap:curHex])
                 continue;
 
             // Double value in CSA territory

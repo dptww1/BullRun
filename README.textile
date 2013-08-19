@@ -30,7 +30,6 @@ start on map but get changed to Not Appearing In This Picture or a reinforcement
 h1. To Do
 
 h3. UI/Art
-* App Icon (+ x2)
 * Loading Screen (+ x2)
 * Real map (+ x2)
 * Info box (+ x2)

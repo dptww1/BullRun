@@ -76,7 +76,7 @@
     int row = p.y / [self hexSize].height;
     
     HXMHex h = HXMHexMake(col, row);
-    return [_map legal:h] ? h : HXMHexMake(-1, -1);
+    return [_map isHexOnMap:h] ? h : HXMHexMake(-1, -1);
 }
 
 @end

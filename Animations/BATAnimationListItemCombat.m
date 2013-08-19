@@ -47,7 +47,7 @@ static CGPoint shiftPoint(CGPoint pt, float dx, float dy) { // TODO: move to glo
     [[self attackerGunfire] stop];
     [self setAttackerGunfire:nil];
 
-    if ([[game board] legal:[self retreatHex]]) {
+    if ([[game board] isHexOnMap:[self retreatHex]]) {
         [CATransaction begin];
 
         [CATransaction setAnimationDuration:SECONDS_PER_HEX_MOVE];
@@ -66,7 +66,7 @@ static CGPoint shiftPoint(CGPoint pt, float dx, float dy) { // TODO: move to glo
         [dv setPosition:[xformer hexCenterToScreen:[self retreatHex]]];
         [dv addAnimation:dAnim forKey:@"position"];
 
-        if ([[game board] legal:[self advanceHex]]) {
+        if ([[game board] isHexOnMap:[self advanceHex]]) {
             CAAnimation* aAnim = [self createMoveAnimationFor:[self attacker]
                                                    movingFrom:[self attackerHex]
                                                            to:[self defenderHex]

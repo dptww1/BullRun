@@ -80,7 +80,7 @@ BATGame* game; // the global game instance
         HXMHex adjHex = [_board hexAdjacentTo:[unit location] inDirection:i];
 
         // Offmap or Prohibited hexes are blocked
-        if (![_board legal:adjHex] || [_board isProhibited:adjHex]) {
+        if (![_board isHexOnMap:adjHex] || [_board isProhibited:adjHex]) {
             dirs |= (1 << i);
             continue;
         }
@@ -118,7 +118,7 @@ BATGame* game; // the global game instance
     NSArray* enemies = [_oob unitsForSide:OtherPlayer(side)];
 
     [friends enumerateObjectsUsingBlock:^(BATUnit* friend, NSUInteger idx, BOOL* stop) {
-        if ([_board legal:[friend location]]) {
+        if ([_board isHexOnMap:[friend location]]) {
             if (![friend sighted]) {
                 [friend setSighted:YES];
                 [newlySighted addObject:friend];
@@ -132,7 +132,7 @@ BATGame* game; // the global game instance
         BOOL enemyNowSighted = NO;
 
         // Ignore units unless they are on the map
-        if ([_board legal:[enemy location]]) {
+        if ([_board isHexOnMap:[enemy location]]) {
             enemyNowSighted = [_delegate isUnit:enemy inHex:[enemy location] sightedBy:friends];
 
             // if enemy is no longer sighted, but used to be, update it
@@ -179,7 +179,7 @@ BATGame* game; // the global game instance
         
         for (BATUnit* u in sortedUnits) {
             // Offmap or not moving?
-            if (![_board legal:[u location]] || ![u hasOrders])
+            if (![_board isHexOnMap:[u location]] || ![u hasOrders])
                 continue;
             
             HXMHex nextHex = [[u moveOrders] firstHexAndRemove:NO];
@@ -304,7 +304,7 @@ BATGame* game; // the global game instance
             BATUnit* unit     = [_oob unitByName:[rInfo unitName]];
             HXMHex   entryHex = [rInfo entryLocation];
 
-            if ([[self board] legal:entryHex]) {
+            if ([[self board] isHexOnMap:entryHex]) {
 
                 BATUnit* occupier = [self unitInHex:entryHex];
                 if (occupier) {
@@ -400,11 +400,11 @@ BATGame* game; // the global game instance
     [a setStrength:[a strength] - attCasualties];
     [d setStrength:[d strength] - defCasualties];
 
-    if ([_board legal:[report retreatHex]]) {
+    if ([_board isHexOnMap:[report retreatHex]]) {
         [d setLocation:[report retreatHex]];
     }
 
-    if ([_board legal:[report advanceHex]]) {
+    if ([_board isHexOnMap:[report advanceHex]]) {
         [a setLocation:[report advanceHex]];
     }
 
@@ -494,7 +494,7 @@ BATGame* game; // the global game instance
 - (BOOL)unit:(BATUnit*)u canRetreatInDirection:(int)dir {
     HXMHex hex = [_board hexAdjacentTo:[u location] inDirection:dir];
 
-    return [_board legal:hex]
+    return [_board isHexOnMap:hex]
         && ![self unitInHex:hex]
         && ![[self board] isProhibited:hex]
         && ![self is:u movingThruEnemyZocTo:hex];

@@ -96,7 +96,7 @@ static const int DEFAULT_CAPACITY = 12;
 
 #pragma mark - Behaviors
 
-- (BOOL)legal:(HXMHex)hex {
+- (BOOL)isHexOnMap:(HXMHex)hex {
     if (hex.row < 0 || hex.column < 0)
         return NO;
 
@@ -171,7 +171,7 @@ static const int DEFAULT_CAPACITY = 12;
 }
 
 - (int)distanceFrom:(HXMHex)from to:(HXMHex)to {
-    if (![self legal:from] || ![self legal:to])
+    if (![self isHexOnMap:from] || ![self isHexOnMap:to])
         return -1;
 
     // Distance is reciprocal, so despite the parameter names it doesn't really matter
@@ -287,7 +287,7 @@ static const int DEFAULT_CAPACITY = 12;
 }
 
 - (HXMTerrainEffect*)terrainAt:(HXMHex)hex {
-    if (![self legal:hex])
+    if (![self isHexOnMap:hex])
         return nil;
 
     int rawData = [self rawDataAt:hex];
@@ -350,7 +350,7 @@ static const int DEFAULT_CAPACITY = 12;
         for (int row = 0; row < [_geometry numRows] + 1; ++row) {
             for (int col = 0; col < [_geometry numColumns]; ++col) {
                 HXMHex hex = HXMHexMake(col, row);
-                if ([self legal:hex] && [self rawDataAt:hex] & bitMask) {
+                if ([self isHexOnMap:hex] && [self rawDataAt:hex] & bitMask) {
                     [list addObject:[NSValue valueWithHex:hex]];
                 }
             }

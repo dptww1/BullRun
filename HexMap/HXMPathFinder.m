@@ -214,7 +214,7 @@
 
         for (int i = 0; i < 6; ++i) {
             HXMHex neighbor = [[self map] hexAdjacentTo:curHex inDirection:i];
-            if (![[self map] legal:neighbor])
+            if (![[self map] isHexOnMap:neighbor])
                 continue;
 
             float cost = fn(curHex, neighbor);

@@ -44,34 +44,34 @@ static HXMMap*      map;
 
 - (void)testLegal {
     // Obviouly wrong, as both coordinates are illegal
-    STAssertFalse( [map legal:HXMHexMake(-1, -1)], nil );
-    STAssertFalse( [map legal:HXMHexMake(10, 10)], nil );
+    STAssertFalse( [map isHexOnMap:HXMHexMake(-1, -1)], nil );
+    STAssertFalse( [map isHexOnMap:HXMHexMake(10, 10)], nil );
     
     // Obviously wrong as one coordinate is illegal
-    STAssertFalse( [map legal:HXMHexMake(-1,  4)], nil );
-    STAssertFalse( [map legal:HXMHexMake( 4, -1)], nil );
-    STAssertFalse( [map legal:HXMHexMake(10,  4)], nil );
-    STAssertFalse( [map legal:HXMHexMake( 4, 10)], nil );
+    STAssertFalse( [map isHexOnMap:HXMHexMake(-1,  4)], nil );
+    STAssertFalse( [map isHexOnMap:HXMHexMake( 4, -1)], nil );
+    STAssertFalse( [map isHexOnMap:HXMHexMake(10,  4)], nil );
+    STAssertFalse( [map isHexOnMap:HXMHexMake( 4, 10)], nil );
     
     // Check the top, bottom, and one past the bottom of the first column
-    STAssertTrue(  [map legal:HXMHexMake( 0,  0)], nil );
-    STAssertTrue(  [map legal:HXMHexMake( 0,  6)], nil );
-    STAssertFalse( [map legal:HXMHexMake( 0,  7)], nil );  // would be true if firstColumnIsLong:YES
+    STAssertTrue(  [map isHexOnMap:HXMHexMake( 0,  0)], nil );
+    STAssertTrue(  [map isHexOnMap:HXMHexMake( 0,  6)], nil );
+    STAssertFalse( [map isHexOnMap:HXMHexMake( 0,  7)], nil );  // would be true if firstColumnIsLong:YES
     
     // Check the extra row and one past the extra row at the bottom of the second column
-    STAssertTrue(  [map legal:HXMHexMake( 1,  6)], nil );
-    STAssertTrue(  [map legal:HXMHexMake( 1,  7)], nil );  // because firstColumnIsLong:NO, so second column is long
-    STAssertFalse( [map legal:HXMHexMake( 1,  8)], nil );
+    STAssertTrue(  [map isHexOnMap:HXMHexMake( 1,  6)], nil );
+    STAssertTrue(  [map isHexOnMap:HXMHexMake( 1,  7)], nil );  // because firstColumnIsLong:NO, so second column is long
+    STAssertFalse( [map isHexOnMap:HXMHexMake( 1,  8)], nil );
     
     // Check the top, bottom, and one past the bottom of the penultimate column
-    STAssertTrue(  [map legal:HXMHexMake( 8,  0)], nil );
-    STAssertTrue(  [map legal:HXMHexMake( 8,  6)], nil );
-    STAssertFalse( [map legal:HXMHexMake( 8,  7)], nil );  // would be true if firstColumnIsLong:YES
+    STAssertTrue(  [map isHexOnMap:HXMHexMake( 8,  0)], nil );
+    STAssertTrue(  [map isHexOnMap:HXMHexMake( 8,  6)], nil );
+    STAssertFalse( [map isHexOnMap:HXMHexMake( 8,  7)], nil );  // would be true if firstColumnIsLong:YES
     
     // Check the top and bottom of the last column
-    STAssertTrue(  [map legal:HXMHexMake( 9,  0)], nil );
-    STAssertTrue(  [map legal:HXMHexMake( 9,  7)], nil );
-    STAssertFalse( [map legal:HXMHexMake( 9,  8)], nil );
+    STAssertTrue(  [map isHexOnMap:HXMHexMake( 9,  0)], nil );
+    STAssertTrue(  [map isHexOnMap:HXMHexMake( 9,  7)], nil );
+    STAssertFalse( [map isHexOnMap:HXMHexMake( 9,  8)], nil );
 }
 
 - (void)testDirection {

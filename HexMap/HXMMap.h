@@ -119,12 +119,12 @@
  * Determine if the given hex defines a legal location for this hexmap. Note
  * "legal" here is solely in terms of coordinates and has nothing to do with
  * any terrain effects.
- * 
+ *
  * @param hex the hex to check for legality
  *
  * return `YES` if the hex is legal, `NO` if it isn't
  */
-- (BOOL)legal:(HXMHex)hex;  // TODO: rename to isOnMap
+- (BOOL)isHexOnMap:(HXMHex)hex;
 
 /**
  * Determines the distance (in hexes) between two hexes.
