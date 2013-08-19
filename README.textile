@@ -72,7 +72,6 @@ h3. API
 * BATGame needs a "startGame" method (and can't use "initialize"!) so can restart after ending game
 ** "free setup" parameter
 ** "user side" parameter
-* BR1Map isEnemy:of: => isHex:enemyOfSide:
 * BR1GameDelegate isUnit:inHex:sightedBy: doesn't use "hex" parameter
 
 h3. Bugs
