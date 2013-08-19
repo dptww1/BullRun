@@ -144,4 +144,34 @@
 
     return i >= 0;
 }
+
+- (void)routeUnit:(BATUnit*)unit toDestination:(HXMHex)destination {
+    HXMMap* map = [game board];
+    HXMHex curHex = [unit location];
+
+    HXMPathFinder* pf = [HXMPathFinder pathFinderOnMap:map withMinCost:4.0f];
+
+    NSArray* path = [pf findPathFrom:curHex
+                                  to:destination
+                               using:^float(HXMHex from, HXMHex to) {
+                                   HXMTerrainEffect* fx = [map terrainAt:to];
+
+                                   if (!fx) // impassible
+                                       return -1.0f;
+
+                                   // TODO: ZOC/occupancy checks
+
+                                   return [fx mpCost];
+                               }];
+
+    [[unit moveOrders] clear];
+
+    // There's no point in planning out more than two hexes, because
+    // we recalculate orders every turn and no unit moves more than
+    // two hexes per turn.  Remember that the path finder returns the
+    // starting hex in path[0], so the new hexes begin at path[1].
+    for (int i = 1; i < 3 && i < [path count]; ++i)
+        [[unit moveOrders] addHex:[path[i] hexValue]];
+}
+
 @end

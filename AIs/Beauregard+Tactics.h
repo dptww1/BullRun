@@ -26,4 +26,14 @@
  */
 - (BOOL)assignDefender:(BATAIInfluenceMap*)imap;
 
+/**
+ * Assigns the orders needed to move a unit to a given destination.
+ * A maximum of two hexes are ordered, since no unit can move more than
+ * that number of hexes in any given turn.
+ *
+ * @param unit the unit to order
+ * @param destination the destination hex
+ */
+- (void)routeUnit:(BATUnit*)unit toDestination:(HXMHex)destination;
+
 @end
