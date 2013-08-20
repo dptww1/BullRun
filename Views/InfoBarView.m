@@ -151,35 +151,21 @@ static BOOL modeLabelIsChoosable[] = {
 }
 
 - (void)updateCurrentTimeForTurn:(int)turn {
-    // Turns begin at 6:30 AM, increment by 30 minutes per turn
-    // Turn 1 => 6:30 AM
-    // Turn 2 => 7:00 AM
-    // Turn 3 => 7:30 AM
-    // ...
+    NSString* timeStr = [[game delegate] convertTurnToString:turn];
 
-    const char* amPm = "AM";
-    int hour = (turn / 2) + 6;
-    if (hour >= 12) {
-        amPm = "PM";
-        if (hour > 12)
-            hour -= 12;
-    }
-
-    [UIView animateWithDuration:0.5
-                     animations:^{
-                         [currentTime layer].transform = CATransform3DRotate(CATransform3DIdentity, DEGREES_TO_RADIANS(90), 1, 0, 0);
-
-                     }
-                     completion:^(BOOL finished){
-                         [currentTime setText:[NSString stringWithFormat:@"%d:%02d %s",
-                                               hour,
-                                               turn & 1 ? 30 : 0,
-                                               amPm]];
-                         [UIView animateWithDuration:0.5
-                                          animations:^{
-                                              [currentTime layer].transform = CATransform3DRotate([currentTime layer].transform, DEGREES_TO_RADIANS(-90), 1, 0, 0);
-                                          }];
-                     }];
+    [UIView
+     animateWithDuration:0.5
+     animations:^{
+         [currentTime layer].transform = CATransform3DRotate(CATransform3DIdentity, DEGREES_TO_RADIANS(90), 1, 0, 0);
+     }
+     completion:^(BOOL finished){
+         [currentTime setText:timeStr];
+         [UIView
+          animateWithDuration:0.5
+          animations:^{
+              [currentTime layer].transform = CATransform3DRotate([currentTime layer].transform, DEGREES_TO_RADIANS(-90), 1, 0, 0);
+          }];
+     }];
 
     [processingTurn stopAnimating];
 }
