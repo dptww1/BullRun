@@ -47,6 +47,31 @@ static BOOL modeLabelIsChoosable[] = {
              unitMode];
 }
 
+/*
+ * The portrait source image is a concatenation of all the individual portrait
+ * images, in two rows with the CSA leaders on the top row and the USA leaders
+ * on the bottom row.  Within a row, the leaders are arranged alphabetically by
+ * last name. The unit itself tells us the X,Y coordinates of the image in
+ * /portrait/ terms, i.e.  * "3rd image in the 1st row"; this method converts
+ * those coordinates to* values usable by the portrait UIView.contents, 
+ * which wants percentages. Oh, iOS, you so wacky.
+ */
+- (CGRect)getContentRectForUnit:(BATUnit*)unit {
+    // The dimensions of the window onto the portraits, sized so that only
+    // one portrait shows at a time.
+    CGSize viewFrameSize = [unitImage frame].size;
+
+    // The dimensions of the portraits src image; much bigger than viewFrameSize!
+    CGSize srcImageSize = [unitImage image].size;
+
+    float x = viewFrameSize.width  * [unit imageXIdx] / srcImageSize.width;
+    float y = viewFrameSize.height * [unit imageYIdx] / srcImageSize.height;
+    float w = viewFrameSize.width / srcImageSize.width;
+    float h = 0.5f;
+
+    return CGRectMake(x, y, w, h);
+}
+
 @end
 
 @implementation InfoBarView
@@ -61,10 +86,7 @@ static BOOL modeLabelIsChoosable[] = {
         [currentStrength setProgress:(float)[unit strength] / (float)[unit originalStrength]];
         [unitMode setTitle:modeLabelStrings[[unit mode]] forState:UIControlStateNormal];
 
-        // Cell size: 55w x 64h
-        [[unitImage layer] setContentsRect:CGRectMake(54.0 * [unit imageXIdx] / 702.0,  // TODO: get rid of constant; this is width of source image
-                                                      64.0 * [unit imageYIdx] / 128.0,  // TODO: get rid of constant; this is height of source image
-                                                      54.0 / 702.0, 0.5)];
+        [[unitImage layer] setContentsRect:[self getContentRectForUnit:unit]];
 
         BOOL isWrecked = [unit isWrecked];
         for (int i = 0; i < NUM_ELTS(modeLabelStrings); ++i)
