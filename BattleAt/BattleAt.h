@@ -5,22 +5,25 @@
 //  Copyright (c) 2013 Dave Townsend. All rights reserved.
 //
 
-typedef enum { PLAYER1, PLAYER2 } PlayerSide;
+typedef enum { kBATPlayerSide1, kBATPlayerSide2 } BATPlayerSide;
 
-#define OtherPlayer(SIDE) ((SIDE) == PLAYER1 ? PLAYER2 : PLAYER1)
+#define OtherPlayer(SIDE) \
+    ((SIDE) == kBATPlayerSide1 ? kBATPlayerSide2 : kBATPlayerSide1)
 
 typedef enum {
-    CHARGE,
-    ATTACK,
-    SKIRMISH,
-    DEFEND,
-    WITHDRAW,
-    ROUTED } Mode;
+    kBATModeCharge,
+    kBATModeAttack,
+    kBATModeSkirmish,
+    kBATModeDefend,
+    kBATModeWithdraw,
+    kBATModeRouted } BATMode;
 
-#define NUM_MODES ROUTED+1
+#define NUM_MODES kBATModeRouted+1
 
 #define IsOffensiveMode(mode) \
-((mode) == CHARGE || (mode) == ATTACK || (mode) == SKIRMISH)
+    ((mode) == kBATModeCharge || \
+     (mode) == kBATModeAttack || \
+     (mode) == kBATModeSkirmish)
 
 #define DEBUG_AI(fmt, ...)             //NSLog(fmt, ## __VA_ARGS__)
 #define DEBUG_ANIMATION(fmt, ...)      //NSLog(fmt, ## __VA_ARGS__)

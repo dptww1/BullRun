@@ -73,7 +73,7 @@
                                  userInfo:nil];
 }
 
-- (NSArray*)unitsForSide:(PlayerSide)side {
+- (NSArray*)unitsForSide:(BATPlayerSide)side {
     return [_units dpt_grep:^BOOL(BATUnit* u) { return [u side] == side; }];
 }
 

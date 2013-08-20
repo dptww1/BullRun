@@ -36,7 +36,7 @@ static BOOL modeLabelIsChoosable[] = {
 - (int)modeFromMenuIndex:(int)idx {
     // 0 normally means |Charge|, and so on down the line, but
     // if |Charge| is disabled then 0 means |Defend|.
-    return modeLabelIsChoosable[CHARGE] ? idx : DEFEND + idx;
+    return modeLabelIsChoosable[kBATModeCharge] ? idx : kBATModeDefend + idx;
 }
 
 - (NSArray*)unitControls {
@@ -176,7 +176,7 @@ static BOOL modeLabelIsChoosable[] = {
     if (0 <= buttonIdx && buttonIdx < NUM_ELTS(modeLabelStrings)) {
         int newMode = [self modeFromMenuIndex:buttonIdx];
         [unitMode setTitle:modeLabelStrings[newMode] forState:UIControlStateNormal];
-        [currentUnit setMode:(Mode)newMode];
+        [currentUnit setMode:(BATMode)newMode];
     }
 }
 

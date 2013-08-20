@@ -65,7 +65,7 @@
     
     // Draw orders all all friendly units other than the current unit
     if (_currentUnit) {
-        UIColor* color = [_currentUnit side] == PLAYER1
+        UIColor* color = [_currentUnit side] == kBATPlayerSide1
                             ? [UIColor colorWithRed:0.7f green:0.3f blue:0.3f alpha:0.3f]
                             : [UIColor colorWithRed:0.3f green:0.3f blue:0.7f alpha:0.3f];
         
@@ -76,7 +76,7 @@
     }
     
     // Draw orders for current unit
-    UIColor* color = [_currentUnit side] == PLAYER1
+    UIColor* color = [_currentUnit side] == kBATPlayerSide1
                         ? [UIColor colorWithRed:0.7f green:0.3f blue:0.3f alpha:1.0f]
                         : [UIColor colorWithRed:0.3f green:0.3f blue:0.7f alpha:1.0f];
     [self drawMoveOrdersForUnit:_currentUnit withColor:color inContext:ctx];
@@ -369,13 +369,13 @@
 
 - (IBAction)playerIsUsa:(id)sender {
     NSLog(@"Now player is USA");
-    [game hackUserSide:PLAYER2];
+    [game hackUserSide:kBATPlayerSide2];
     [_animationList run:nil];
 }
 
 - (IBAction)playerIsCsa:(id)sender {
     NSLog(@"Now player is CSA");
-    [game hackUserSide:PLAYER1];
+    [game hackUserSide:kBATPlayerSide1];
     [_animationList run:nil];
 }
 

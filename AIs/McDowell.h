@@ -40,7 +40,7 @@ typedef enum  {
 @property (nonatomic,assign) HXMHex        flankFord;
 
 /** The USA game side. */
-@property (nonatomic) PlayerSide side;
+@property (nonatomic) BATPlayerSide side;
 
 /**
  * The strategic role assigned to each USA unit.

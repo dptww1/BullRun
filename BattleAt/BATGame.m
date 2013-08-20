@@ -45,13 +45,13 @@ BATGame* game; // the global game instance
         _oob       = [BATOrderOfBattle createFromFile:[[NSBundle mainBundle] pathForResource:@"units" ofType:@"plist"]];
         _observers = [NSMutableArray array];
         _turn      = 1;
-        _userSide  = PLAYER1;
+        _userSide  = kBATPlayerSide1;
     }
 
     return self;
 }
 
-- (void)hackUserSide:(PlayerSide)side {
+- (void)hackUserSide:(BATPlayerSide)side {
     _userSide = side;
     [self doSighting:_userSide];
 }
@@ -107,7 +107,7 @@ BATGame* game; // the global game instance
 // Performs sighting from the POV of player `side'. In practice will
 // most usually be called with side parameter == _userSide attribute,
 // but doing it this way allows more convenient testing and debugging.
-- (void)doSighting:(PlayerSide)side {
+- (void)doSighting:(BATPlayerSide)side {
 
     NSMutableSet* newlySighted = [NSMutableSet set]; // contains BATUnit*
     NSMutableSet* newlyHidden  = [NSMutableSet set]; // contains BATUnit*
@@ -366,7 +366,7 @@ BATGame* game; // the global game instance
 
     int retreatProbability = ((5 - [a mode]) - (5 - [d mode])) * 25;
     retreatProbability += ([a leadership] / 2) - ([d leadership] / 2);
-    if ([d mode] == WITHDRAW || (random() % 100) < retreatProbability) {
+    if ([d mode] == kBATModeWithdraw || (random() % 100) < retreatProbability) {
         // The defender is supposed to retreat.
         DEBUG_COMBAT(@"  defender must retreat, probability was %d", retreatProbability);
 

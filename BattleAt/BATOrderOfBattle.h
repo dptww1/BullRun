@@ -66,7 +66,7 @@
  *
  * @return an array of all units for that side, in arbitrary order
  */
-- (NSArray*)unitsForSide:(PlayerSide)side;
+- (NSArray*)unitsForSide:(BATPlayerSide)side;
 
 /**
  * Deletes reinforcement info for the given unit. Safe to call even

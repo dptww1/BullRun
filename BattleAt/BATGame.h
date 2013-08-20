@@ -37,7 +37,7 @@
 @property (nonatomic, strong)           id<BATAIDelegate> ai;
 
 /** The side which represents the human player. */
-@property (nonatomic)                   PlayerSide        userSide;
+@property (nonatomic)                   BATPlayerSide     userSide;
 
 /** The mapboard used by this game. */
 @property (nonatomic, strong, readonly) HXMMap*           board;
@@ -71,7 +71,7 @@
  *
  * @param newSide the side which the user represents
  */
-- (void)hackUserSide:(PlayerSide)newSide;
+- (void)hackUserSide:(BATPlayerSide)newSide;
 
 /**
  * Adds an observer of this game.
@@ -88,7 +88,7 @@
  * @param side the POV of the sighting
  * 
  */
-- (void)doSighting:(PlayerSide)side;
+- (void)doSighting:(BATPlayerSide)side;
 
 /**
  * Begins processing the turn. Orders are implemented, game events trigger

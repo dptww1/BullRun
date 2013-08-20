@@ -42,7 +42,7 @@ typedef enum {
 @interface Beauregard : NSObject <BATAIDelegate>
 
 /** The side represented by this AI. */
-@property (nonatomic, readonly, assign) PlayerSide side;
+@property (nonatomic, readonly, assign) BATPlayerSide side;
 
 /** 
  * The strategic role assigned to each unit.

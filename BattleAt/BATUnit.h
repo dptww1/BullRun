@@ -23,7 +23,7 @@
 @property (nonatomic, readonly, copy)   NSString*       name;
 
 /** The side that the unit is on. */
-@property (nonatomic, readonly, assign) PlayerSide      side;
+@property (nonatomic, readonly, assign) BATPlayerSide   side;
 
 /** The original strength of the unit. */
 @property (nonatomic, readonly, assign) int             originalStrength;
@@ -55,7 +55,7 @@
 @property (nonatomic, strong)           BATMoveOrders*  moveOrders;
 
 /** The unit's current mode. */
-@property (nonatomic, assign)           Mode            mode;
+@property (nonatomic, assign)           BATMode         mode;
 
 /** The unit's movement points.  Sorry, "mps" was just too convenient. */
 @property (nonatomic, assign)           int             mps;

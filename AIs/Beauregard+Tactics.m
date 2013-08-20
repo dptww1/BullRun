@@ -97,13 +97,13 @@
         }
 
         if (dieroll < attackChance)
-            [unit setMode:CHARGE];
+            [unit setMode:kBATModeCharge];
 
         else if (dieroll < attackChance * 1.5)
-            [unit setMode:ATTACK];
+            [unit setMode:kBATModeAttack];
 
         else
-            [unit setMode:SKIRMISH];
+            [unit setMode:kBATModeSkirmish];
         
         // set unit orders to hex
         [[unit moveOrders]

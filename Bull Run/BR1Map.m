@@ -15,7 +15,7 @@
     return (BR1Map*)[game board];
 }
 
-- (BOOL)isHex:(HXMHex)hex enemyOfPlayer:(PlayerSide)side {
+- (BOOL)isHex:(HXMHex)hex enemyOfPlayer:(BATPlayerSide)side {
     return (side == CSA && [self is:hex inZone:@"usa"])
         || (side == USA && [self is:hex inZone:@"csa"]);
 }
@@ -42,7 +42,7 @@
     return hexd;
 }
 
-- (NSArray*)basesForSide:(PlayerSide)side {
+- (NSArray*)basesForSide:(BATPlayerSide)side {
     NSMutableArray* bases = [NSMutableArray arrayWithCapacity:5];
 
     NSArray* towns = [self findHexesOfType:@"Town"];

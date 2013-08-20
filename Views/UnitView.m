@@ -53,7 +53,7 @@ static NSMutableDictionary* unitViewMap = nil;
     self = [super init];
     
     if (self) {
-        [self setBackgroundColor:([unit side] == PLAYER2)
+        [self setBackgroundColor:([unit side] == kBATPlayerSide2)
              ? [[UIColor colorWithRed:0.1 green:0.1 blue:0.8 alpha:1.0] CGColor]
              : [[UIColor colorWithRed:1.0 green:0.2 blue:0.2 alpha:1.0] CGColor]];
         [self setBounds:CGRectMake(0.0, 0.0, 30.0, 30.0)];

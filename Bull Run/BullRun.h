@@ -8,6 +8,6 @@
 
 #import "BattleAt.h"
 
-#define CSA PLAYER1
-#define USA PLAYER2
+#define CSA kBATPlayerSide1
+#define USA kBATPlayerSide2
 
