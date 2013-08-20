@@ -66,6 +66,7 @@ h3. Functionality
 
 h3. Organization
 * probably should have a controller for InfoBarView
+* InfoBarView should get modes (including shattered logic) from BATGameDelegate, not hardwired
 
 h3. API
 * HMPathFinder doesn't need "minCost" parameter, since it can be inferred from the "map" parameter
