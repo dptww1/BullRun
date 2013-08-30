@@ -49,6 +49,7 @@
     for (BATUnit* unit in _sightedUnits) {
         CALayer* unitLayer = [UnitView viewForUnit:unit];
         [unitLayer setPosition:[xformer hexCenterToScreen:[unit location]]];
+        [unitLayer setNeedsDisplay];
     }
 
     [CATransaction commit];
