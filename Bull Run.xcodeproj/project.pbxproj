@@ -41,6 +41,9 @@
 		CC858572167A72610054E60D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC85854C167A72610054E60D /* UIKit.framework */; };
 		CC858573167A72610054E60D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC85854E167A72610054E60D /* Foundation.framework */; };
 		CC85857B167A72610054E60D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CC858579167A72610054E60D /* InfoPlist.strings */; };
+		CC87388117D031A8009473ED /* UnitLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = CC87388017D031A8009473ED /* UnitLabel.m */; };
+		CC87388417D03579009473ED /* NSString+DPTUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CC87388317D03579009473ED /* NSString+DPTUtil.m */; };
+		CC87388717D03726009473ED /* CALayer+DPTUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = CC87388617D03726009473ED /* CALayer+DPTUtil.m */; };
 		CC9AF8C81781204F00BBC711 /* HXMHexMapGeometryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9AF8C51781204F00BBC711 /* HXMHexMapGeometryTests.m */; };
 		CC9AF8C91781204F00BBC711 /* HXMPathFinderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9AF8C71781204F00BBC711 /* HXMPathFinderTests.m */; };
 		CC9AF8DA178B4BCC00BBC711 /* BATAnimationGunfire.m in Sources */ = {isa = PBXBuildFile; fileRef = CC9AF8CF178B4BCC00BBC711 /* BATAnimationGunfire.m */; };
@@ -152,6 +155,12 @@
 		CC858570167A72610054E60D /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		CC858578167A72610054E60D /* Bull RunTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Bull RunTests-Info.plist"; sourceTree = "<group>"; };
 		CC85857A167A72610054E60D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CC87387F17D031A8009473ED /* UnitLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnitLabel.h; sourceTree = "<group>"; };
+		CC87388017D031A8009473ED /* UnitLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnitLabel.m; sourceTree = "<group>"; };
+		CC87388217D03579009473ED /* NSString+DPTUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DPTUtil.h"; sourceTree = "<group>"; };
+		CC87388317D03579009473ED /* NSString+DPTUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DPTUtil.m"; sourceTree = "<group>"; };
+		CC87388517D03726009473ED /* CALayer+DPTUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+DPTUtil.h"; sourceTree = "<group>"; };
+		CC87388617D03726009473ED /* CALayer+DPTUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+DPTUtil.m"; sourceTree = "<group>"; };
 		CC9AF8C41781204F00BBC711 /* HXMHexMapGeometryTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXMHexMapGeometryTests.h; sourceTree = "<group>"; };
 		CC9AF8C51781204F00BBC711 /* HXMHexMapGeometryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HXMHexMapGeometryTests.m; sourceTree = "<group>"; };
 		CC9AF8C61781204F00BBC711 /* HXMPathFinderTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HXMPathFinderTests.h; sourceTree = "<group>"; };
@@ -437,6 +446,8 @@
 		CCDB60D916A04B30006668C2 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				CC87388517D03726009473ED /* CALayer+DPTUtil.h */,
+				CC87388617D03726009473ED /* CALayer+DPTUtil.m */,
 				CC25F47E17666AAE00F104BE /* DPTMath.h */,
 				CCF01AB3175E70EF003A1C77 /* DPTResizableBuffer.h */,
 				CCF01AB4175E70F0003A1C77 /* DPTResizableBuffer.m */,
@@ -444,6 +455,8 @@
 				CCF01AB7175E7190003A1C77 /* DPTSysUtil.m */,
 				CCF01AB9175E72AC003A1C77 /* NSArray+DPTUtil.h */,
 				CCF01ABA175E72AC003A1C77 /* NSArray+DPTUtil.m */,
+				CC87388217D03579009473ED /* NSString+DPTUtil.h */,
+				CC87388317D03579009473ED /* NSString+DPTUtil.m */,
 				CC058F6A177A19F400FD165C /* Tests */,
 			);
 			path = Util;
@@ -503,6 +516,8 @@
 				CCDB60F816A04E96006668C2 /* InfoBarView.m */,
 				CC35E68016AF5EE700F9F0B1 /* MapView.h */,
 				CC35E68116AF5EE700F9F0B1 /* MapView.m */,
+				CC87387F17D031A8009473ED /* UnitLabel.h */,
+				CC87388017D031A8009473ED /* UnitLabel.m */,
 				CC35E68216AF5EE700F9F0B1 /* UnitView.h */,
 				CC35E68316AF5EE700F9F0B1 /* UnitView.m */,
 			);
@@ -712,6 +727,9 @@
 				CCC060B0178EDAC400F8631A /* GameOptionsViewController.m in Sources */,
 				CCC060B3179868FF00F8631A /* MenuController.m in Sources */,
 				CCFD9C7717B3CDD600EDB3FB /* BR1GameDelegate.m in Sources */,
+				CC87388117D031A8009473ED /* UnitLabel.m in Sources */,
+				CC87388417D03579009473ED /* NSString+DPTUtil.m in Sources */,
+				CC87388717D03726009473ED /* CALayer+DPTUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

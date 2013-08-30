@@ -7,6 +7,7 @@
 //
 
 #import "BattleAt.h"
+#import "UnitLabel.h"
 #import "UnitView.h"
 
 
@@ -53,6 +54,7 @@ static NSMutableDictionary* unitViewMap = nil;
         ? [UIColor colorWithRed:0.1 green:0.1 blue:0.8 alpha:1.0]
         : [UIColor colorWithRed:1.0 green:0.2 blue:0.2 alpha:1.0];
 
+    // TODO: can use dpt_setShadow:etc:etc:etc:?
     CGContextSetFillColorWithColor(ctx, [fillColor CGColor]);
     CGContextSetShadowWithColor(ctx, CGSizeMake(3.0f, 3.0f), 3.0f,
                                 [[UIColor colorWithRed:.1f green:.1f blue:.1f alpha:0.8f] CGColor]);
@@ -66,27 +68,15 @@ static NSMutableDictionary* unitViewMap = nil;
 // Client code shouldn't call this because it bypasses the cache
 - (UnitView*)initForUnit:(BATUnit*)unit {
     self = [super init];
-    
+
     if (self) {
-        [self setBounds:CGRectMake(0.0, 0.0, 51.0, 51.0)];
+        [self setBounds:CGRectMake(0.0, 0.0, 51.0, 51.0)]; // TODO: get size from xform
 
-        CGSize nameSize = [[unit name] sizeWithFont:[UIFont fontWithName:@"GillSans" size:12.0f]];
-        nameSize.height += 1.0f;
-        nameSize.width  += 1.0f;
-
-        CATextLayer* txt = [[CATextLayer alloc] init];
-        [txt setForegroundColor:[[UIColor whiteColor] CGColor]];
-        [txt setShadowColor:[[UIColor blackColor] CGColor]];
-        [txt setShadowOffset:CGSizeMake(1.0f, 1.0f)];
-        [txt setShadowRadius:0.0f];
-        [txt setShadowOpacity:1.0f];
-        [txt setBounds:CGRectMake(0.0f, 0.0f, nameSize.width, nameSize.height)];
-        [txt setString:[unit name]];
-        [txt setFontSize:12.0f];
-        [txt setFont:@"GillSans"];
-        [txt setPosition:CGPointMake((int)([self bounds].size.width / 2.0f),
-                                     (int)(51.0f - nameSize.height / 4.0f))];
-        [self setSublayers:@[ txt ]];
+        CATextLayer* nameLabel = [UnitLabel labelForUnit:unit];
+        CGPoint pos = CGPointMake((int)([self bounds].size.width / 2.0f),
+                                  (int)(51.f - [nameLabel bounds].size.height / 4.0f)); // TODO: get hex size from xform
+        [nameLabel setPosition:pos];
+        [self setSublayers:@[ nameLabel ]];
 
         [self setHidden:YES];
         
