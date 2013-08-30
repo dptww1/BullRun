@@ -35,12 +35,6 @@
                         opacity:1.f
                          offset:CGSizeMake(2.f, 2.f)
                          radius:0.f];
-
-        NSLog(@"UnitLabel#labelForUnit: bounds = %f,%f,%f,%f",
-              bounds.origin.x,
-              bounds.origin.y,
-              bounds.size.width,
-              bounds.size.height);
     }
 
     return lbl;
