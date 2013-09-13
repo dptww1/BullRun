@@ -12,32 +12,7 @@
 #import "DPTSysUtil.h"
 #import "InfoBarView.h"
 
-#define NUM_ELTS(ARRAY_NAME) (sizeof(ARRAY_NAME) / sizeof(ARRAY_NAME[0]))
-
-static NSString* modeLabelStrings[] = {
-    @"Charge",
-    @"Attack",
-    @"Skirmish",
-    @"Defend",
-    @"Withdraw",
-    @"Routed"
-};
-static BOOL modeLabelIsChoosable[] = {
-    YES,  // Charge
-    YES,  // Attack
-    YES,  // Skirmish
-    YES,  // Defend
-    YES,  // Withdraw
-    NO    // Routed
-};
-
 @implementation InfoBarView (Private)
-
-- (int)modeFromMenuIndex:(int)idx {
-    // 0 normally means |Charge|, and so on down the line, but
-    // if |Charge| is disabled then 0 means |Defend|.
-    return modeLabelIsChoosable[kBATModeCharge] ? idx : kBATModeDefend + idx;
-}
 
 - (NSArray*)unitControls {
     return @[originalStrength,
@@ -52,8 +27,8 @@ static BOOL modeLabelIsChoosable[] = {
  * images, in two rows with the CSA leaders on the top row and the USA leaders
  * on the bottom row.  Within a row, the leaders are arranged alphabetically by
  * last name. The unit itself tells us the X,Y coordinates of the image in
- * /portrait/ terms, i.e.  * "3rd image in the 1st row"; this method converts
- * those coordinates to* values usable by the portrait UIView.contents, 
+ * /portrait/ terms, i.e. "3rd image in the 1st row"; this method converts
+ * those coordinates to values usable by the portrait UIView.contents, 
  * which wants percentages. Oh, iOS, you so wacky.
  */
 - (CGRect)getContentRectForUnit:(BATUnit*)unit {
@@ -84,14 +59,10 @@ static BOOL modeLabelIsChoosable[] = {
         [unitName setText:[unit name]];
         [originalStrength setText:[[NSString alloc] initWithFormat:@"%d men", [unit originalStrength]]];
         [currentStrength setProgress:(float)[unit strength] / (float)[unit originalStrength]];
-        [unitMode setTitle:modeLabelStrings[[unit mode]] forState:UIControlStateNormal];
+        [unitMode setTitle:[[game delegate] getCurrentModeStringForUnit:unit]
+                  forState:UIControlStateNormal];
 
         [[unitImage layer] setContentsRect:[self getContentRectForUnit:unit]];
-
-        BOOL isWrecked = [unit isWrecked];
-        for (int i = 0; i < NUM_ELTS(modeLabelStrings); ++i)
-            if (IsOffensiveMode(i))
-                modeLabelIsChoosable[i] = isWrecked ? NO : YES;
 
         currentUnit = unit;
         
@@ -132,9 +103,9 @@ static BOOL modeLabelIsChoosable[] = {
                                         destructiveButtonTitle:nil
                                              otherButtonTitles:nil, nil];
     
-    for (int i = 0; i < NUM_ELTS(modeLabelStrings); ++i)
-        if (modeLabelIsChoosable[i])
-            [menu addButtonWithTitle:modeLabelStrings[i]];
+    NSArray* possibleModes = [[game delegate] getPossibleModesForUnit:currentUnit];
+    for (NSString* modeStr in possibleModes)
+        [menu addButtonWithTitle:modeStr];
     
     [menu setDelegate:self];
     
@@ -173,11 +144,13 @@ static BOOL modeLabelIsChoosable[] = {
 #pragma mark - UIActionSheetDelegate Implementation
 
 - (void)actionSheet:(UIActionSheet*)actionSheet clickedButtonAtIndex:(NSInteger)buttonIdx {
-    if (0 <= buttonIdx && buttonIdx < NUM_ELTS(modeLabelStrings)) {
-        int newMode = [self modeFromMenuIndex:buttonIdx];
-        [unitMode setTitle:modeLabelStrings[newMode] forState:UIControlStateNormal];
-        [currentUnit setMode:(BATMode)newMode];
-    }
+    NSString* newModeStr = [actionSheet buttonTitleAtIndex:buttonIdx];
+    int newMode = [[game delegate] getModeIndexForUnit:currentUnit inMode:newModeStr];
+
+    DEBUG_MODES(@"Changing %@'s mode from %d to %d", [currentUnit name], [currentUnit mode], newMode);
+    
+    [unitMode setTitle:newModeStr forState:UIControlStateNormal];
+    [currentUnit setMode:newMode];
 }
 
 @end

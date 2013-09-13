@@ -14,7 +14,6 @@
 
 #pragma mark - BATGameDelegate implementation
 
-
 - (void)allotMovementPoints {
     for (BATUnit* u in [[game oob] units])
         [u setMps:[u mps] + 5];
@@ -104,6 +103,30 @@
         turn += 1;
 
     return turn;
+}
+
+- (NSArray*)getPossibleModesForUnit:(BATUnit*)unit {
+    if ([unit isWrecked])
+        return @[ @"Defend", @"Withdraw" ];
+
+    return @[ @"Charge", @"Attack", @"Skirmish", @"Defend", @"Withdraw" ];
+}
+
+- (int)getModeIndexForUnit:(BATUnit*)unit inMode:(NSString*)modeString {
+    NSArray* modeStrings = [self getPossibleModesForUnit:nil];
+    for (int i = 0; i < [modeStrings count]; ++i) {
+        if ([modeStrings[i] isEqualToString:modeString])
+             return i;
+    }
+
+    @throw [NSException exceptionWithName:@"Bad Mode string"
+                                   reason:modeString
+                                 userInfo:nil];
+}
+
+- (NSString*)getCurrentModeStringForUnit:(BATUnit*)unit {
+    NSArray* modeStrings = [self getPossibleModesForUnit:nil];
+    return modeStrings[[unit mode]];
 }
 
 @end

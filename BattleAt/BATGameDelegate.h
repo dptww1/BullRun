@@ -57,5 +57,39 @@
  */
 - (int)convertStringToTurn:(NSString*)string;
 
+/**
+ * Returns the list of possible mode names for the given unit. The ordering
+ * can be arbitrary but return consistent results across repeated calls for
+ * the same unit.
+ *
+ * @param unit the unit to get the mode strings for
+ *
+ * @return the mode names, as NSArray of NSString*; never `nil`
+ */
+- (NSArray*)getPossibleModesForUnit:(BATUnit*)unit;
+
+/**
+ * Returns the mode number corresponding to the given mode string.  The mode
+ * number is not necessarily the index of the passed string within the return
+ * results of `getPossibleModesForUnit:`, but any given combination of
+ * parameters should consistently return the same index.
+ *
+ * @param unit the unit to get the mode index for
+ * @param modeString the mode string to look up
+ *
+ * @return the mode index
+ *
+ * @throws "Bad Mode string" exception if `modeString` is not a known mode
+ */
+- (int)getModeIndexForUnit:(BATUnit*)unit inMode:(NSString*)modeString;
+
+/**
+ * Gets the mode string for the unit's current mode.
+ *
+ * @unit unit to get mode string for
+ *
+ * @return the mode string
+ */
+- (NSString*)getCurrentModeStringForUnit:(BATUnit*)unit;
 
 @end
