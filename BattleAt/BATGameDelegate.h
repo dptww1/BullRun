@@ -86,7 +86,7 @@
 /**
  * Gets the mode string for the unit's current mode.
  *
- * @unit unit to get mode string for
+ * @param unit to get mode string for
  *
  * @return the mode string
  */
