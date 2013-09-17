@@ -115,6 +115,18 @@
  */
 - (BOOL)unitIsSurrounded:(BATUnit*)unit;
 
+/**
+ * Determines if unit would be moving through enemy ZOC in trying to
+ * move from its current location to the given hex.  The given hex
+ * is assumed to be adjacent to the unit's location.
+ *
+ * @param unit unit to check
+ * @param hex destination hex
+ *
+ * @return `YES` if the move would be a ZOC violation, `FALSE` if it isn't
+ */
+- (BOOL)is:(BATUnit*)unit movingThruEnemyZocTo:(HXMHex)hex;
+
 @end
 
 /** The single, publicly available global instance. */

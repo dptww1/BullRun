@@ -55,7 +55,7 @@
 @property (nonatomic, strong)           BATMoveOrders*  moveOrders;
 
 /** The unit's current mode. */
-@property (nonatomic, assign)           BATMode         mode;
+@property (nonatomic, assign)           int             mode;
 
 /** The unit's movement points.  Sorry, "mps" was just too convenient. */
 @property (nonatomic, assign)           int             mps;

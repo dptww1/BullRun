@@ -10,20 +10,6 @@ typedef enum { kBATPlayerSide1, kBATPlayerSide2 } BATPlayerSide;
 #define OtherPlayer(SIDE) \
     ((SIDE) == kBATPlayerSide1 ? kBATPlayerSide2 : kBATPlayerSide1)
 
-typedef enum {                        // TODO: Banish to BR1
-    kBATModeCharge,
-    kBATModeAttack,
-    kBATModeSkirmish,
-    kBATModeDefend,
-    kBATModeWithdraw,
-    kBATModeRouted } BATMode;
-
-#define NUM_MODES kBATModeRouted+1    // TODO: Banish to BR1
-
-#define IsOffensiveMode(mode) \
-    ((mode) == kBATModeCharge || \
-     (mode) == kBATModeAttack || \
-     (mode) == kBATModeSkirmish)       // TODO: Banish to BR1
 
 #define DEBUG_AI(fmt, ...)             //NSLog(fmt, ## __VA_ARGS__)
 #define DEBUG_ANIMATION(fmt, ...)      //NSLog(fmt, ## __VA_ARGS__)
@@ -34,6 +20,7 @@ typedef enum {                        // TODO: Banish to BR1
 #define DEBUG_MOVEORDERS(fmt, ...)     //NSLog(fmt, ## __VA_ARGS__)
 #define DEBUG_REINFORCEMENTS(fmt, ...) //NSLog(fmt, ## __VA_ARGS__)
 #define DEBUG_SIGHTING(fmt, ...)       //NSLog(fmt, ## __VA_ARGS__)
+
 
 #import "BATAIDelegate.h"
 #import "BATAIInfluenceMap.h"

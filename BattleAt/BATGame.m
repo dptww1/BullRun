@@ -58,6 +58,18 @@ BATGame* game; // the global game instance
 
 #pragma mark - Public Methods
 
+- (BOOL)is:(BATUnit*)unit movingThruEnemyZocTo:(HXMHex)hex {
+    int moveDir = [_board directionFrom:[unit location] to:hex];
+    int cwDir   = [_board rotateDirection:moveDir clockwise:YES];
+    int ccwDir  = [_board rotateDirection:moveDir clockwise:NO];
+
+    BATUnit* cwUnit  = [self unitInHex:[_board hexAdjacentTo:[unit location] inDirection:cwDir]];
+    BATUnit* ccwUnit = [self unitInHex:[_board hexAdjacentTo:[unit location] inDirection:ccwDir]];
+
+    return (cwUnit  && ![cwUnit  friends:unit])
+    || (ccwUnit && ![ccwUnit friends:unit]);
+}
+
 - (void)addObserver:(id<BATGameObserving>)object {
     [_observers addObject:object];
 }
@@ -157,7 +169,7 @@ BATGame* game; // the global game instance
 
 - (void)allotMovementPoints {
     @throw [NSException
-            exceptionWithName:@"BAMissingOverride"
+            exceptionWithName:@"BATMissingOverride"
                        reason:@"Classes derived from BAGame must implement allotMovementPoints"
                      userInfo:@{}];
 }
@@ -174,6 +186,7 @@ BATGame* game; // the global game instance
     
     // Because lower-rated units can block higher-rated units, we have to keep processing until no moves were possible.
     BOOL atLeastOneUnitMoved = YES;
+    
     while (atLeastOneUnitMoved) {
         atLeastOneUnitMoved = NO;
         
@@ -199,8 +212,7 @@ BATGame* game; // the global game instance
 
                     DEBUG_MOVEMENT(@"%@ can't move into %02d%02d because an enemy (%@) is there", [u name], nextHex.column, nextHex.row, [blocker name]);
 
-                    // Must have enough MPs to attack, and be in an offensive mode
-                    if ([u mps] >= 4 && IsOffensiveMode([u mode])) { // TODO: IsOffensiveMode is BR-specific
+                    if ([_delegate canUnit:u attackHex:nextHex]) {
                         [self attackFrom:u to:blocker];
                         [self doSighting:_userSide];
 
@@ -339,56 +351,12 @@ BATGame* game; // the global game instance
         [self doSighting:_userSide];
 }
 
-// Returns one or more of the COMBAT_MOVEMENT_XXXX constants
 - (void)attackFrom:(BATUnit*)a to:(BATUnit*)d {
     DEBUG_COMBAT(@"COMBAT: %@ attacks %@", [a name], [d name]);
 
-    BATBattleReport* report = [BATBattleReport battleReportWithAttacker:a
-                                                            andDefender:d];
-
-    // Compute base casualties
-    int attCasualties = [self computeAttackerCasualtiesFor:a against:d];
-    int defCasualties = [self computeDefenderCasualtiesFor:d against:a];
-
-    // Adjust for terrain (TODO: BR-specific)
-    HXMTerrainEffect* fx = [[game board] terrainAt:[d location]];
-    if ([[fx name] isEqualToString:@"Ford"]) {   // att + 100%, def - 50%
-        attCasualties *= 2;
-        defCasualties /= 2;
-        DEBUG_COMBAT(@"  Ford hex has attacker now at %d and defender at %d", attCasualties, defCasualties);
-    }
-
-    if ([[fx name] isEqualToString:@"Woods"]) {  // att + 25%, def - 25%
-        attCasualties += attCasualties / 4;
-        defCasualties = (defCasualties * 3) / 4;
-        DEBUG_COMBAT(@"  Woods hex has attacker now at %d and defender at %d", attCasualties, defCasualties);
-    }
-
-    int retreatProbability = ((5 - [a mode]) - (5 - [d mode])) * 25;
-    retreatProbability += ([a leadership] / 2) - ([d leadership] / 2);
-    if ([d mode] == kBATModeWithdraw || (random() % 100) < retreatProbability) {
-        // The defender is supposed to retreat.
-        DEBUG_COMBAT(@"  defender must retreat, probability was %d", retreatProbability);
-
-        int retreatDir = [self findRetreatDirFor:d attackedBy:a];
-        if (retreatDir == -1) { // then no retreat possible
-            defCasualties *= 2;
-            DEBUG_COMBAT(@"  no retreat possible, doubling casualties to %d", defCasualties);
-
-        } else { // defender retreats
-            DEBUG_COMBAT(@"  defender retreats in direction %d", retreatDir);
-
-            HXMHex defenderOriginalHex = [d location];
-            HXMHex retreatHex = [_board hexAdjacentTo:[d location] inDirection:retreatDir];
-            [report setRetreatHex:retreatHex];
-
-            if ([self doesAttackerAdvance:a])
-                [report setAdvanceHex:defenderOriginalHex];
-        }
-    }
-
-    [report setAttackerCasualties:attCasualties];
-    [report setDefenderCasualties:defCasualties];
+    BATBattleReport* report = [_delegate resolveCombatFrom:a attacking:d];
+    [report setAttackerCasualties:[report attackerCasualties]];
+    [report setDefenderCasualties:[report defenderCasualties]];
 
     // Let observers know what's going to happen
     [self notifyObserversWithSelector:@selector(showAttack:) andObject:report];
@@ -397,8 +365,8 @@ BATGame* game; // the global game instance
 
     // TODO: takeCasualties; in addition to changing strength, set to
     // Defend mode if in an attack mode and now wrecked.
-    [a setStrength:[a strength] - attCasualties];
-    [d setStrength:[d strength] - defCasualties];
+    [a setStrength:[a strength] - [report attackerCasualties]];
+    [d setStrength:[d strength] - [report defenderCasualties]];
 
     if ([_board isHexOnMap:[report retreatHex]]) {
         [d setLocation:[report retreatHex]];
@@ -413,93 +381,6 @@ BATGame* game; // the global game instance
     [d setMps:0];
 }
 
-- (BOOL)doesAttackerAdvance:(BATUnit*)a {
-    static int modeAdjustmentMatrix[NUM_MODES] = { 50, 25, 10, 0, 0, 0 };
-
-    int pctChance = modeAdjustmentMatrix[[a mode]] + [a leadership];
-
-    int d100 = random() % 100;
-
-    DEBUG_COMBAT(@"  %@ advance pct: %d, roll %d, so %s advance",
-                 [a name], pctChance, d100, d100 <= pctChance ? "will" : "wont");
-
-    return d100 <= pctChance;
-}
-
-- (int)computeAttackerCasualtiesFor:(BATUnit*)a against:(BATUnit*)d {
-    static int modeCasualtyMatrix[NUM_MODES][NUM_MODES] = {
-     // CH AT SK DE WI RT  // Attacker mode
-        5, 4, 3, 0, 0, 0,  // Defender is CHARGE
-        4, 3, 2, 0, 0, 0,  // Defender is ATTACK
-        3, 2, 1, 0, 0, 0,  // Defender is SKIRMISH
-        5, 4, 2, 0, 0, 0,  // Defender is DEFEND
-        2, 1, 1, 0, 0, 0,  // Defender is WITHDRAW
-        0, 0, 0, 0, 0, 0   // Defender is ROUTED
-    };
-    
-    int c = ([d strength] / 256) + ((random() & 0xff) * ([d strength] / 256)) / 256;
-    DEBUG_COMBAT(@"  %@ base casualties: %d", [a name], c);
-    c *= modeCasualtyMatrix[[d mode]][[a mode]];
-    DEBUG_COMBAT(@"    adjusted by mode matrix to %d", c);
-    return c;
-}
-
-- (int)computeDefenderCasualtiesFor:(BATUnit*)d against:(BATUnit*)a {
-    static int modeCasualtyMatrix[NUM_MODES][NUM_MODES] = {
-     // CH AT SK DE WI RT  // Attacker mode
-        5, 4, 3, 0, 0, 0,  // Defender is CHARGE
-        4, 3, 2, 0, 0, 0,  // Defender is ATTACK
-        3, 2, 1, 0, 0, 0,  // Defender is SKIRMISH
-        2, 1, 1, 0, 0, 0,  // Defender is DEFEND
-        4, 3, 2, 0, 0, 0,  // Defender is WITHDRAW
-        0, 0, 0, 0, 0, 0   // Defender is ROUTED
-    };
-
-    int c = ([a strength] / 256) + ((random() & 0xff) * ([a strength] / 256)) / 256;
-    DEBUG_COMBAT(@"  %@ base casualties: %d", [d name], c);
-    c *= modeCasualtyMatrix[[d mode]][[a mode]];
-    DEBUG_COMBAT(@"    adjusted by mode matrix to %d", c);
-    return c;
-}
-
-- (BOOL)is:(BATUnit*)unit movingThruEnemyZocTo:(HXMHex)hex {
-    int moveDir = [_board directionFrom:[unit location] to:hex];
-    int cwDir   = [_board rotateDirection:moveDir clockwise:YES];
-    int ccwDir  = [_board rotateDirection:moveDir clockwise:NO];
-    
-    BATUnit* cwUnit  = [self unitInHex:[_board hexAdjacentTo:[unit location] inDirection:cwDir]];
-    BATUnit* ccwUnit = [self unitInHex:[_board hexAdjacentTo:[unit location] inDirection:ccwDir]];
-
-    return (cwUnit  && ![cwUnit  friends:unit])
-        || (ccwUnit && ![ccwUnit friends:unit]);
-}
-
-// -1 == no retreat possible, else direction to retreat in
-- (int)findRetreatDirFor:(BATUnit*)d attackedBy:(BATUnit*)a {
-    int attackDir = [_board directionFrom:[a location] to:[d location]];
-    if ([self unit:d canRetreatInDirection:attackDir])
-        return attackDir;
-
-    int attackDirCW = [_board rotateDirection:attackDir clockwise:YES];
-    if ([self unit:d canRetreatInDirection:attackDirCW])
-        return attackDirCW;
-
-    int attackDirCCW = [_board rotateDirection:attackDir clockwise:NO];
-    if ([self unit:d canRetreatInDirection:attackDirCCW])
-        return attackDirCCW;
-
-    return -1;
-}
-
-- (BOOL)unit:(BATUnit*)u canRetreatInDirection:(int)dir {
-    HXMHex hex = [_board hexAdjacentTo:[u location] inDirection:dir];
-
-    return [_board isHexOnMap:hex]
-        && ![self unitInHex:hex]
-        && ![[self board] isProhibited:hex]
-        && ![self is:u movingThruEnemyZocTo:hex];
-}
-
 - (NSArray*)sortUnits {
     return [[_oob units]
             sortedArrayWithOptions:NSSortStable
@@ -507,17 +388,17 @@ BATGame* game; // the global game instance
                 // Leftover MPs are the first ordering determinant
                 if ([u1 mps] > [u2 mps])
                     return NSOrderedAscending;
-                                    
+
                 else if ([u1 mps] < [u2 mps])
                     return NSOrderedDescending;
-                                    
+
                 // When MPs are equal, Leadership is the tiebreaker
                 if ([u1 leadership] > [u2 leadership])
                     return NSOrderedAscending;
 
                 else if ([u1 leadership] < [u2 leadership])
                     return NSOrderedDescending;
-                                    
+
                 return NSOrderedSame;
             }];
 }

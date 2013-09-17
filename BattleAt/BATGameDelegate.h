@@ -10,7 +10,9 @@
 #include "HexMap.h"
 
 
+@class BATBattleReport;
 @class BATUnit;
+
 
 /**
  * Protocol enumerating the game-specific methods which need to be 
@@ -91,5 +93,30 @@
  * @return the mode string
  */
 - (NSString*)getCurrentModeStringForUnit:(BATUnit*)unit;
+
+/**
+ * Determines if given unit can attack given hex adjacent to its
+ * current position.  Reasons why it might not be able to attack
+ * are up to the individual game, but include such things as being
+ * in the wrong mode, not having enough remaining movement, etc.
+ * This method isn't called if the given hex is prohibited, so
+ * implementers don't need to bother checking that.
+ *
+ * @param unit attacking unit
+ * @param hex the hex to attack
+ *
+ * @return `YES` if the unit can attack the hex, else `NO`
+ */
+- (BOOL)canUnit:(BATUnit*)unit attackHex:(HXMHex)hex;
+
+/**
+ * Performs combat resolution when one unit attacks another.
+ *
+ * @param attacker the attacking unit
+ * @param defender the defending unit
+ *
+ * @return a filled-in battle report detailing what happened
+ */
+- (BATBattleReport*)resolveCombatFrom:(BATUnit*)attacker attacking:(BATUnit*)defender;
 
 @end
