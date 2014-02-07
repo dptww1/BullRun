@@ -612,6 +612,11 @@
 				CLASSPREFIX = BR;
 				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = "Dave Townsend";
+				TargetAttributes = {
+					CC858547167A72600054E60D = {
+						DevelopmentTeam = XV9NBWGZHR;
+					};
+				};
 			};
 			buildConfigurationList = CC858542167A72600054E60D /* Build configuration list for PBXProject "Bull Run" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -833,11 +838,14 @@
 		CC858582167A72610054E60D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Bull Run/Bull Run-Prefix.pch";
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = "Bull Run/Bull Run-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -845,11 +853,14 @@
 		CC858583167A72610054E60D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Bull Run/Bull Run-Prefix.pch";
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = "Bull Run/Bull Run-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

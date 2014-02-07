@@ -127,6 +127,8 @@
 				<key>CF$UID</key>
 				<integer>4</integer>
 			</dict>
+			<key>facing</key>
+			<integer>1</integer>
 			<key>imageXIdx</key>
 			<integer>0</integer>
 			<key>imageYIdx</key>
@@ -173,6 +175,8 @@
 				<key>CF$UID</key>
 				<integer>4</integer>
 			</dict>
+			<key>facing</key>
+			<integer>2</integer>
 			<key>imageXIdx</key>
 			<integer>1</integer>
 			<key>imageYIdx</key>
@@ -210,6 +214,8 @@
 				<key>CF$UID</key>
 				<integer>4</integer>
 			</dict>
+			<key>facing</key>
+			<integer>1</integer>
 			<key>imageXIdx</key>
 			<integer>2</integer>
 			<key>imageYIdx</key>
@@ -247,6 +253,8 @@
 				<key>CF$UID</key>
 				<integer>4</integer>
 			</dict>
+			<key>facing</key>
+			<integer>1</integer>
 			<key>imageXIdx</key>
 			<integer>3</integer>
 			<key>imageYIdx</key>
@@ -284,6 +292,8 @@
 				<key>CF$UID</key>
 				<integer>4</integer>
 			</dict>
+			<key>facing</key>
+			<integer>3</integer>
 			<key>imageXIdx</key>
 			<integer>4</integer>
 			<key>imageYIdx</key>
@@ -321,6 +331,8 @@
 				<key>CF$UID</key>
 				<integer>4</integer>
 			</dict>
+			<key>facing</key>
+			<integer>1</integer>
 			<key>imageXIdx</key>
 			<integer>5</integer>
 			<key>imageYIdx</key>
@@ -358,6 +370,8 @@
 				<key>CF$UID</key>
 				<integer>4</integer>
 			</dict>
+			<key>facing</key>
+			<integer>1</integer>
 			<key>imageXIdx</key>
 			<integer>6</integer>
 			<key>imageYIdx</key>
@@ -395,6 +409,8 @@
 				<key>CF$UID</key>
 				<integer>4</integer>
 			</dict>
+			<key>facing</key>
+			<integer>4</integer>
 			<key>imageXIdx</key>
 			<integer>7</integer>
 			<key>imageYIdx</key>
@@ -432,6 +448,8 @@
 				<key>CF$UID</key>
 				<integer>4</integer>
 			</dict>
+			<key>facing</key>
+			<integer>5</integer>
 			<key>imageXIdx</key>
 			<integer>8</integer>
 			<key>imageYIdx</key>
@@ -469,6 +487,8 @@
 				<key>CF$UID</key>
 				<integer>4</integer>
 			</dict>
+			<key>facing</key>
+			<integer>1</integer>
 			<key>imageXIdx</key>
 			<integer>9</integer>
 			<key>imageYIdx</key>
@@ -506,6 +526,8 @@
 				<key>CF$UID</key>
 				<integer>4</integer>
 			</dict>
+			<key>facing</key>
+			<integer>1</integer>
 			<key>imageXIdx</key>
 			<integer>10</integer>
 			<key>imageYIdx</key>
@@ -543,6 +565,8 @@
 				<key>CF$UID</key>
 				<integer>4</integer>
 			</dict>
+			<key>facing</key>
+			<integer>1</integer>
 			<key>imageXIdx</key>
 			<integer>11</integer>
 			<key>imageYIdx</key>
@@ -580,6 +604,8 @@
 				<key>CF$UID</key>
 				<integer>4</integer>
 			</dict>
+			<key>facing</key>
+			<integer>0</integer>
 			<key>imageXIdx</key>
 			<integer>12</integer>
 			<key>imageYIdx</key>
@@ -617,6 +643,8 @@
 				<key>CF$UID</key>
 				<integer>4</integer>
 			</dict>
+			<key>facing</key>
+			<integer>4</integer>
 			<key>imageXIdx</key>
 			<integer>0</integer>
 			<key>imageYIdx</key>
@@ -654,6 +682,8 @@
 				<key>CF$UID</key>
 				<integer>4</integer>
 			</dict>
+			<key>facing</key>
+			<integer>0</integer>
 			<key>imageXIdx</key>
 			<integer>1</integer>
 			<key>imageYIdx</key>
@@ -691,6 +721,8 @@
 				<key>CF$UID</key>
 				<integer>4</integer>
 			</dict>
+			<key>facing</key>
+			<integer>4</integer>
 			<key>imageXIdx</key>
 			<integer>2</integer>
 			<key>imageYIdx</key>
@@ -728,6 +760,8 @@
 				<key>CF$UID</key>
 				<integer>4</integer>
 			</dict>
+			<key>facing</key>
+			<integer>4</integer>
 			<key>imageXIdx</key>
 			<integer>3</integer>
 			<key>imageYIdx</key>
@@ -765,6 +799,8 @@
 				<key>CF$UID</key>
 				<integer>4</integer>
 			</dict>
+			<key>facing</key>
+			<integer>4</integer>
 			<key>imageXIdx</key>
 			<integer>4</integer>
 			<key>imageYIdx</key>
@@ -802,6 +838,8 @@
 				<key>CF$UID</key>
 				<integer>4</integer>
 			</dict>
+			<key>facing</key>
+			<integer>4</integer>
 			<key>imageXIdx</key>
 			<integer>5</integer>
 			<key>imageYIdx</key>
@@ -839,6 +877,8 @@
 				<key>CF$UID</key>
 				<integer>4</integer>
 			</dict>
+			<key>facing</key>
+			<integer>4</integer>
 			<key>imageXIdx</key>
 			<integer>6</integer>
 			<key>imageYIdx</key>
@@ -876,6 +916,8 @@
 				<key>CF$UID</key>
 				<integer>4</integer>
 			</dict>
+			<key>facing</key>
+			<integer>4</integer>
 			<key>imageXIdx</key>
 			<integer>7</integer>
 			<key>imageYIdx</key>
@@ -913,6 +955,8 @@
 				<key>CF$UID</key>
 				<integer>4</integer>
 			</dict>
+			<key>facing</key>
+			<integer>4</integer>
 			<key>imageXIdx</key>
 			<integer>8</integer>
 			<key>imageYIdx</key>
@@ -950,6 +994,8 @@
 				<key>CF$UID</key>
 				<integer>4</integer>
 			</dict>
+			<key>facing</key>
+			<integer>4</integer>
 			<key>imageXIdx</key>
 			<integer>9</integer>
 			<key>imageYIdx</key>
@@ -987,6 +1033,8 @@
 				<key>CF$UID</key>
 				<integer>4</integer>
 			</dict>
+			<key>facing</key>
+			<integer>4</integer>
 			<key>imageXIdx</key>
 			<integer>10</integer>
 			<key>imageYIdx</key>
@@ -1024,6 +1072,8 @@
 				<key>CF$UID</key>
 				<integer>4</integer>
 			</dict>
+			<key>facing</key>
+			<integer>4</integer>
 			<key>imageXIdx</key>
 			<integer>11</integer>
 			<key>imageYIdx</key>
@@ -1061,6 +1111,8 @@
 				<key>CF$UID</key>
 				<integer>4</integer>
 			</dict>
+			<key>facing</key>
+			<integer>4</integer>
 			<key>imageXIdx</key>
 			<integer>12</integer>
 			<key>imageYIdx</key>

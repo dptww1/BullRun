@@ -7,6 +7,7 @@
 //
 
 #import "BattleAt.h"
+#import "MapViewController.h"
 #import "UnitLabel.h"
 #import "UnitView.h"
 
@@ -36,6 +37,7 @@ static NSMutableDictionary* unitViewMap = nil;
     
     if (!uv) {
         uv = [[UnitView alloc] initForUnit:unit];
+        [uv setTransform:[MapViewController getRotationTransformForDirection:[unit facing]]];
         
         unitViewMap[[unit name]] = uv;
     }
@@ -54,11 +56,19 @@ static NSMutableDictionary* unitViewMap = nil;
         ? [UIColor colorWithRed:0.1 green:0.1 blue:0.8 alpha:1.0]
         : [UIColor colorWithRed:1.0 green:0.2 blue:0.2 alpha:1.0];
 
+    CGColorRef shadowColor = [[UIColor colorWithRed:.1f green:.1f blue:.1f alpha:0.8f] CGColor];
+    CGSize shadowOffset = [MapViewController getShadowOffsetForDirection:[_unit facing]];
+
     // TODO: can use dpt_setShadow:etc:etc:etc:?
     CGContextSetFillColorWithColor(ctx, [fillColor CGColor]);
-    CGContextSetShadowWithColor(ctx, CGSizeMake(3.0f, 3.0f), 3.0f,
-                                [[UIColor colorWithRed:.1f green:.1f blue:.1f alpha:0.8f] CGColor]);
-    CGContextFillRect(ctx, CGRectMake(8.f, 8.f, 32.f, 32.f));
+    CGContextSetShadowWithColor(ctx, shadowOffset, 3.0f, shadowColor);
+    CGContextFillRect(ctx, CGRectMake(6.f, 16.f, 40.f, 20.f));
+
+    NSLog(@"drawInContext: %@ facing %d shadowoffset %.2fw,%.2fh",
+          [_unit name],
+          [_unit facing],
+          shadowOffset.width,
+          shadowOffset.height);
 
     UIGraphicsPopContext();
 }

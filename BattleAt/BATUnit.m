@@ -38,6 +38,7 @@
 #pragma mark - NSCoding
 
 - (void)encodeWithCoder:(NSCoder*)aCoder {
+    [aCoder encodeInt:   _facing           forKey:@"facing"];
     [aCoder encodeInt:   _imageXIdx        forKey:@"imageXIdx"];
     [aCoder encodeInt:   _imageYIdx        forKey:@"imageYIdx"];
     [aCoder encodeInt:   _leadership       forKey:@"leadership"];
@@ -59,6 +60,7 @@
     self = [super init];
     
     if (self) {
+        _facing           = [aDecoder decodeIntForKey:@"facing"];
         _imageXIdx        = [aDecoder decodeIntForKey:@"imageXIdx"];
         _imageYIdx        = [aDecoder decodeIntForKey:@"imageYIdx"];
         _leadership       = [aDecoder decodeIntForKey:@"leadership"];

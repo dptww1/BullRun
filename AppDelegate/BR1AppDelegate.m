@@ -34,7 +34,7 @@ BR1GameDelegate* BR1gameDelegate = NULL;
 
     // Easiest to do this after `game` is assigned, so AI can use it
     //[game setAi:[[Beauregard alloc] init]];  // TODO: remove
-    [game setAi:[[McDowell alloc] init]];    // TODO: remove
+    //[game setAi:[[McDowell alloc] init]];    // TODO: remove
 
     _menuController = [[MenuController alloc] initForWindow:_window];
 

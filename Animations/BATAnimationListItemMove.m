@@ -9,6 +9,7 @@
 #import "BATAnimationList.h"
 #import "BATAnimationListItemMove.h"
 #import "BATUnit.h"
+#import "MapViewController.h"
 #import "UnitView.h"
 
 //==============================================================================
@@ -39,14 +40,22 @@
     DEBUG_ANIMATION(@"running animation %@", self);
 
     HXMCoordinateTransformer* xformer = [list xformer];
-    UnitView* v = [UnitView viewForUnit:_actor];
+    __block UnitView* v = [UnitView viewForUnit:_actor];
     CGPoint endPoint = [xformer hexCenterToScreen:_endHex];
+
+    __block int dir = [[game board] directionFrom:_startHex to:_endHex];
 
     [CATransaction begin];
 
     [CATransaction setCompletionBlock:^{
-            [list run:nil];
-        } ];
+        [_actor setFacing:dir];
+        [list run:nil];
+        [v setShadowOffset:[MapViewController getShadowOffsetForDirection:dir]];
+        NSLog(@"runWithParent: facing:%d offset %.2f,%.2f",
+              dir,
+              [MapViewController getShadowOffsetForDirection:dir].width,
+              [MapViewController getShadowOffsetForDirection:dir].height);
+    }];
 
     CAAnimation* anim = [self createMoveAnimationFor:_actor
                                           movingFrom:_startHex
@@ -55,6 +64,8 @@
 
     [v setPosition:endPoint];
     [v addAnimation:anim forKey:@"position"]; //[[self actor] name]];
+
+    [v setTransform:[MapViewController getRotationTransformForDirection:dir]];
 
     [CATransaction commit];
 }

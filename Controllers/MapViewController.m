@@ -8,6 +8,7 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import "BR1AppDelegate.h" // TODO: remove/rename, can't use BR
+#import "DPTSysUtil.h"
 #import "HexMap.h"
 #import "GameOptionsViewController.h"
 #import "InfoBarView.h"
@@ -27,6 +28,24 @@
 @end
 
 @implementation MapViewController
+
+#pragma mark - Class Utilities
+
++ (CATransform3D)getRotationTransformForDirection:(int)dir {
+    CGFloat angle = DEGREES_TO_RADIANS(dir * 60.0f);
+    return CATransform3DMakeRotation(angle, 0.0f, 0.0f, 1.0f);
+}
+
++ (CGSize)getShadowOffsetForDirection:(int)dir {
+    CGSize offset = CGSizeMake(3.0f, 3.0f);
+
+    CGFloat angle = DEGREES_TO_RADIANS(dir * 60.0f);
+
+    CGFloat x = offset.height * sinf(angle) + offset.width * cosf(angle);
+    CGFloat y = offset.height * cosf(angle) - offset.width * sinf(angle);
+    
+    return CGSizeMake(x, y);
+}
 
 #pragma mark - Initialization
 

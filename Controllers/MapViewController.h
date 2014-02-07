@@ -64,4 +64,10 @@
 /** GameObserving method implementation. */
 - (void)showAttack:(BATBattleReport*)report;
 
+#pragma mark - Class Utilities
+
++ (CATransform3D)getRotationTransformForDirection:(int)dir;
+
++ (CGSize)getShadowOffsetForDirection:(int)dir;
+
 @end

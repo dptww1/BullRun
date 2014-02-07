@@ -48,6 +48,9 @@
 /** The current hex location of the unit. */
 @property (nonatomic, assign)           HXMHex          location;
 
+/** The direction (0-5) that the unit is facing. */
+@property (nonatomic, assign)           int             facing;
+
 /** If `YES`, the unit is visible to the enemy. */
 @property (nonatomic, assign)           BOOL            sighted;
 
